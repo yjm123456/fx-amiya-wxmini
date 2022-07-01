@@ -1,5 +1,5 @@
 import { login } from "./login"
-const BASEURL = 'https://app.ameiyes.com/amiyamini/amiya/wxmini';//线上
+const BASEURL = 'https://app.ameiyes.com/amiyamini/amiya/wxmini';//线上地址3
 // const BASEURL = 'http://8.142.171.247:5621/amiya/wxmini';//测试 
 
 let exeQueue = false;
