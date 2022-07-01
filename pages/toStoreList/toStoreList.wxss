@@ -1,0 +1,61 @@
+.item{
+  width: 100%;
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+.item_top,.content{
+  display: flex;
+}
+.memo{
+  flex:1;
+  margin-left: 20rpx;
+}
+.title{
+  font-size: 30rpx;
+  margin-top: 15rpx;
+}
+.hospital{
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.item_time_con{
+  display: flex;
+  justify-content: space-between;
+}
+.time{
+  font-size: 28rpx;
+  color: #919090;
+  margin-bottom: 20rpx;
+}
+.text1,.text2,.text3{
+  font-size: 26rpx;
+  text-align: end;
+}
+.text2{
+  color: #ff1554;
+}
+.text1{
+  color: #3B4879;
+}
+.text3{
+  color:#919090
+}
+.button_con{
+  display: flex;
+  justify-content:flex-end;
+}
+.cancel_button,.submite_button{
+  padding: 8rpx 15rpx;
+  box-sizing: border-box;
+  color: #fff;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.cancel_button{
+  background-color: #919090;
+}
+.submite_button{
+  background-color: #ff1554;
+}

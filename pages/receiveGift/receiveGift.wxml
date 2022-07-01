@@ -1,0 +1,26 @@
+<view>
+	<view class="wrap" wx:for="{{list}}" wx:key="id">
+		<view class="item">
+			<view class="thumbPicUrl">
+				<image src="{{item.thumbPicUrl}}"></image>
+			</view>
+			<view class="info">
+				<view>{{item.name}}</view>
+				<view>
+					<van-checkbox value="{{ item._checked }}" data-id="{{item.id}}" bind:change="onChange"></van-checkbox>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view wx:if="{{!nextPage}}">
+		<van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%;margin:10rpx 0">暂无更多数据
+		</van-divider>
+	</view>
+</view>
+
+<!-- 确认按钮 -->
+<view class="confirm" bindtap="confirm">
+	<van-button type="default" custom-style="width:100%;border:none;">
+		<view>确认</view>
+	</van-button>
+</view>

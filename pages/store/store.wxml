@@ -1,0 +1,30 @@
+<!--pages/store/store.wxml-->
+  <view class="content" wx:if="{{hospitalInfoList.length}}">
+    <view class="store_item"   wx:for="{{hospitalInfoList}}" wx:key="index">
+        <van-radio-group value="{{ radio }}" bind:change="onChange"  data-storeInfo="{{item}}">
+          <van-radio name="{{item.id}}" checked-color="#ff1554">
+            <view>
+              <text class="store_name">{{item.name}}</text>
+              <view class="store_price">
+                <text class="iconfont icon-01zhushuju_jiageguanli"></text>
+                <text class="text">门店价格: {{item.hospitalSalePrice}}</text>
+              </view>
+              <view  class="store_price">
+                <text class="iconfont icon-shijian00"></text>
+                <text  class="text">营业时间：{{item.businessHours ? item.businessHours : '暂无营业时间'}}</text>
+              </view>
+            </view>
+            <view class="address_con">
+              <view class="address_nav" bindtap="navAddress" data-storeInfo="{{item}}">
+                <text class="iconfont icon-address"></text>
+                <text class="address">{{item.address}}</text>
+              </view>
+              <text class="iconfont icon-dianhua font_color" bindtap="phone" data-storeInfo="{{item}}"></text>
+            </view>
+          </van-radio>
+        </van-radio-group>
+    </view>
+    <view class="button" bindtap="storeSubmit">确定</view>
+  </view>
+<van-divider contentPosition="center" customStyle="font-size: 28rpx;color:#515a6e" wx:if="{{!hospitalInfoList.length}}">暂无数据</van-divider>
+

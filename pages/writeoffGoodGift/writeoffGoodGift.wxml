@@ -1,0 +1,9 @@
+<!--pages/writeoffGoodGift/writeoffGoodGift.wxml-->
+<van-tabs active="{{ active }}" bind:change="handleTabChange" sticky>
+  <van-tab title="未领取">
+    <notClaimed active="{{active}}" id="notClaimed"></notClaimed>
+  </van-tab>
+  <van-tab title="已领取">
+    <received active="{{active}}" id="received"></received>
+  </van-tab>
+</van-tabs>

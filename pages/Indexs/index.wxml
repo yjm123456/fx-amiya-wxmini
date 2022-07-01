@@ -1,0 +1,52 @@
+<view class="warpper">
+	<!-- 头部 -->
+	<view class="header_wrap">
+		<view class="address" bindtap="handleSelectCity">
+			<text>{{currentCity}}</text>
+			<text class="iconfont icon-arrowdown"></text>
+		</view>
+		<view>
+			<button class='customerService' hover-class="none" openType="contact">
+				<text class="iconfont icon-kefu"></text>
+			</button>
+		</view>
+	</view>
+
+	<!-- 轮播图 -->
+	<swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">
+		<swiper-item wx:for="{{carouselImage}}" wx:key="picUrl">
+			<image src='{{item.picUrl}}' class='slide' mode='widthFix'></image>
+		</swiper-item>
+	</swiper>
+
+	<!-- 项目 -->
+	<view class="project_wrap">
+		<view class="title">
+			<view><text>可核销项目</text></view>
+			<view><text>全部 {{itemInfoList.length}} 个</text></view>
+		</view>
+
+		<view class="list" wx:if="{{isCustomer}}">
+			<view class='item' wx:for="{{itemInfoList}}" wx:key="id" bindtap="handleReserveHospital" data-id="{{item.orderId}}">
+				<view class="thumbPicUrl">
+					<image src="{{item.thumbPicUrl}}"></image>
+				</view>
+				<view class="name">{{item.name}}</view>
+				<view class="iconfont icon-arrow-left"></view>
+			</view>
+		</view>
+
+		<view class="tips" wx:else>
+			<text class="text">您当前没有绑定手机号码，所以未能显示可核销的项目</text>
+			<button class="btn" type="primary" bindtap="handleBindPhone">绑定手机号</button>
+		</view>
+
+		<view class="tips" wx:if="{{isCustomer && itemInfoList.length === 0}}">
+			<text class="text">您没有可核销的项目，如有疑问请联系客服</text>
+			<button class="btn" type="primary" open-type="contact">联系客服</button>
+		</view>
+	</view>
+</view>
+
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

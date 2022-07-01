@@ -1,0 +1,16 @@
+<!-- 授权 -->
+<van-popup show="{{control}}" position="bottom" close-on-click-overlay="{{false}}" z-index="10001">
+	<view class="authPopupWrapper">
+		<view>
+			<image src="./../../images/amylogo.png"></image>
+			<text>阿美雅</text>
+		</view>
+		<view>
+			<text>获取您的公开信息（昵称，头像）</text>
+			<text>获取您的公开信息方便您使用全部功能</text>
+		</view>
+		<view>
+			<button class="submit" type="primary" catchtap="getUserProfile">授权公开信息</button>
+		</view>
+	</view>
+</van-popup>

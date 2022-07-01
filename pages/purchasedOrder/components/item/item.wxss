@@ -1,0 +1,152 @@
+.item{
+  width: 100%;
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+.content{
+  margin-bottom: 110rpx;
+}
+.top_item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.date,.order_number{
+  font-size: 30rpx;
+  color: #919090;
+}
+.date{
+  margin-top: 10rpx;
+}
+.state,.refund_successful,.tobe_written{
+  font-size: 28rpx;
+  text-align: end;
+}
+.state{
+  color: #ff1554;
+}
+.refund_successful{
+  color: #919090;
+}
+.tobe_written{
+  color: #3B4879;
+}
+.title_bottom{
+  width: 100%;
+  font-size: 28rpx;
+  text-align: center;
+  background-color: #ff1554;
+  color: #ccc;
+  position: fixed;
+  bottom: 0 ;
+  left: 0;
+  padding: 20rpx 0 ;
+  box-sizing: border-box;
+}
+/* goods */
+.goods_content{
+  margin-top: 20rpx;
+}
+.goods{
+  display: flex;
+}
+.memo{
+  margin-left: 10rpx;
+  flex: 1;
+}
+.title{
+  font-size: 30rpx;
+}
+.city_hos{
+  margin-top: 10rpx;
+}
+.city,.hospital,.price_content{
+  font-size: 28rpx;
+  color: #919090;
+}
+.hospital{
+  margin-left: 10rpx;
+}
+.price_number{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+.price{
+  color: #ff1554;
+}
+.price_content{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10rpx;
+}
+.total_price{
+  margin-right: 20rpx;
+}
+.single_platform_content{
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: space-between;
+}
+.single_platform{
+  display: flex;
+  align-items: center;
+}
+.state_type{
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+.platform_img{
+  width: 40rpx;
+  height: 40rpx;
+}
+.button_con{
+  display: flex;
+}
+.button,.cancel_button{
+  padding: 8rpx 15rpx;
+  box-sizing: border-box;
+  color: #fff;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.button{
+  background-color: #ff1554;
+}
+.cancel_button{
+  background-color: #919090;
+}
+.active{
+  color: #3B4879;
+}
+/* 积分退款 */
+.pointReundClass{
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin: 30rpx 0;
+  font-size: 24rpx;
+}
+.confrim{
+  text-align: center;
+  font-size: 30rpx;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+}
+.button_both{
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  font-size: 30rpx;
+}
+.cancel_but,.confrim_but{
+  width: 50%;
+  text-align: center;
+}
+.confrim_but{
+  color:#ff1554
+}

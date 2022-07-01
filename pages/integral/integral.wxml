@@ -1,0 +1,28 @@
+<!--pages/integral/integral.wxml-->
+<view class="container" >
+  <view bind:handleRefreshOrderList="handleRefreshOrderList" class="content">
+    <view class="integral_top">
+      <image src="/images/bg_3.jpg" class="img"></image>
+      <view class="integral_con">
+        <view class="title">当前积分</view>
+        <view class="integral_num">{{balance}}</view>
+      </view>
+    </view>
+    <!-- <view class="memo_con"  wx:if="{{list.length}}">
+      <text class="memo_pro">来源/用途</text>
+      <text  class="memo_se">积分变化</text>
+    </view> -->
+  <view class="title_bottom">2022年度积分将在2023年3月30日清零，请及时兑换</view>
+    <view class="content" >
+      <view class="item" wx:for="{{list}}" wx:key="index">
+        <view class="order_num">{{item.generateOrUsed}}</view>
+        <view class="date_con">
+          <view class="date">{{item.createDate}}</view>
+          <view class="inter {{item.interGrationAmount > 0 ? 'inter' : 'active'}}">{{item.interGrationAmount}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+  </van-divider>
+</view>

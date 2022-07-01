@@ -1,0 +1,17 @@
+<view class="header_wrap">
+	<view class="title">核销项目</view>
+	<view class="info_wrap">
+		<view class="info">
+			<text>名称：</text><text>{{appointmentInfo.itemInfo.itemName}}</text>
+		</view>
+		<view class="info">
+			<text>简介：</text><text>{{appointmentInfo.itemInfo.itemDescription}}</text>
+		</view>
+		<view class="info">
+			<text>规格：</text><text>{{appointmentInfo.itemInfo.standard}}</text>
+		</view>
+		<view class="info">
+			<text>部位：</text><text>{{appointmentInfo.itemInfo.parts}}</text>
+		</view>
+	</view>
+</view>

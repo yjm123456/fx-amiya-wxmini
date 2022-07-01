@@ -1,0 +1,9 @@
+<view class="header_wrap">
+	<view class="title">核销项目</view>
+	<view class="goods_info">
+		<view class='name'><text>名称:</text> <text>{{itemInfo.name}}</text></view>
+		<view class='description'><text>简介:</text> <text>{{itemInfo.description}}</text></view>
+		<view class='unit'><text>规格:</text> <text>{{itemInfo.standard}}</text></view>
+		<view class='scope'><text>部位:</text> <text>{{itemInfo.parts}}</text></view>
+	</view>
+</view>

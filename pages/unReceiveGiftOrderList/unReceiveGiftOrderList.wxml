@@ -1,0 +1,13 @@
+<block wx:if="{{!order.length}}">
+	<van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%;margin:10rpx 0;color:#515a6e">暂无订单</van-divider>
+</block>
+
+<block wx:else>
+	<view class="wrap" bindtap="receiveGift" wx:for="{{order}}" wx:key="orderId" data-orderId="{{item.orderId}}">
+		<view class="left_wrap">
+			<image src="{{item.thumbPicUrl}}"></image>
+			<view>{{item.goodsName}}</view>
+		</view>
+		<view class="right_wrap">领取礼品</view>
+	</view>
+</block>

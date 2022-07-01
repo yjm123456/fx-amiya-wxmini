@@ -1,0 +1,132 @@
+/* pages/productDetails/productDetails.wxss */
+
+.banner {
+  width: 100%;
+  height: 800rpx;
+}
+.img_slide {
+  width: 100%;
+  height: 100%;
+}
+.detail_con,.message{
+  background-color: #fff;
+  padding:45rpx 50rpx;
+  box-sizing: border-box;
+}
+.detail{
+  font-size: 32rpx;
+  color: #505050;
+  font-weight: 600;
+}
+.price{
+  display: flex;
+  align-items: flex-start;
+}
+.present_price{
+  font-size: 58rpx;
+  margin-bottom: 10rpx;
+}
+.original_price{
+  text-decoration:line-through;
+  margin-left: 15rpx;
+  color: #818181;
+  padding-top: 10rpx;
+  box-sizing: border-box;
+}
+/* 数量  所在城市 选择门店  */
+.item_spe{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+  align-items: center;
+  
+}
+.item_spe_num{
+  margin-bottom: 180rpx;
+}
+.item_spe:first-child{
+  margin-top: 0;
+}
+.message{
+  margin: 20rpx 0 100rpx;
+}
+.city_con{
+  display: flex;
+  align-items: center;
+}
+.city_text{
+  font-size: 24rpx;
+  margin-bottom: 6rpx;
+}
+
+.footer{
+  position: fixed;
+  width: 100%;
+  height: auto;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1rpx solid #f5f5f5;
+  left: 0;
+  bottom:0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+}
+.but{
+  width: 260rpx;
+  height: 60rpx;
+  border-radius: 50rpx;
+  background-color: #ff1554;
+  color: #fff;
+  text-align: center;
+  line-height: 60rpx;
+  margin: auto 0;
+}
+
+.van-stepper__minus,.van-stepper__minus--disabled,.van-stepper__plus{
+  border-radius: 50% !important;
+  width: 40rpx !important;
+  height: 40rpx !important;
+}
+.van-stepper__input{
+  background-color: #fff !important;
+}
+input {
+  color: #000 !important;
+}
+
+/*  */
+.canCal_submit{
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.citys{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.city_name{
+  font-size: 24rpx;
+  width: 18%;
+  height: 45rpx;
+  line-height: 45rpx;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  text-align: center;
+  border-radius: 10rpx;
+  margin: 20rpx 1.7% 0 0;
+}
+.city_name:nth-child(5n){
+  margin-right: 0;
+}
+.checked_name{
+  border: 1px solid #ff1554;
+  color: #ff1554;
+}

@@ -1,0 +1,8 @@
+<view class="customerService">
+	<van-button type="default" custom-style="width:100%;border:none;" open-type="contact">
+		<view class="btn_warp">
+			<van-icon name="chat-o" size="20" custom-style="margin-right:10rpx;" />
+			<view>客服</view>
+		</view>
+	</van-button>
+</view>

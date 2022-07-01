@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-divider": "@vant/weapp/divider/index"
+  },
+  "navigationBarTitleText": "选择门店"
+}

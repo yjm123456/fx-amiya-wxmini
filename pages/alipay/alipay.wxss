@@ -1,0 +1,57 @@
+/* pages/alipay/alipay.wxss */
+.content{
+  width: 100%;
+  
+}
+.text{
+  text-align: center;
+  margin: 200rpx 0 40rpx;
+}
+.url{
+  width: 90%;
+  word-break: break-word;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  padding-left: 30rpx ;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.copy{
+  text-align: center;
+  /* border: 1rpx solid #ccc; */
+  /* border-radius: 10rpx; */
+  /* width: 80rpx;
+  height: 40rpx;
+  line-height: 40rpx; */
+  font-size: 28rpx;
+  /* text-align: center;
+  margin: 30rpx auto;
+  color: #333; */
+  margin-top: 20rpx;
+}
+.background_con{
+  background-color: #edecee;
+  border-radius: 50%;
+  width: 260rpx;
+  height: 260rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.img{
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 15rpx;
+  padding: 12rpx;
+  box-sizing: border-box;
+}

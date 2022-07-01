@@ -1,0 +1,45 @@
+page {
+  background-color: #fff;
+}
+
+.phone {
+  margin: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1rpx solid #e8eaec;
+}
+
+.phone .title {
+  font-size: 25rpx;
+  padding-bottom: 10px;
+}
+
+.code {
+  margin: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1rpx solid #e8eaec;
+}
+
+.code .title {
+  font-size: 25rpx;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.code .title .getCode {
+  font-size: 28rpx;
+}
+
+.code .title text:last-child {
+  color: #1aad19;
+}
+
+.login .btn {
+  width: 40%;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}

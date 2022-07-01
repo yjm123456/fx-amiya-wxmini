@@ -1,0 +1,33 @@
+<view class="warp" wx:for="{{appointmentInfo}}" wx:key="orderId">
+	<!-- 标题 -->
+	<view class="title">
+		<view class="left">{{item.hospitalInfo.hospitalName}}</view>
+		<view class="right">
+			<text class="iconfont icon-md-place" bindtap="gotohere" data-latitude="{{item.hospitalInfo.latitude}}" data-longitude="{{item.hospitalInfo.longitude}}" data-hospitalName="{{item.hospitalInfo.hospitalName}}" data-address="{{item.hospitalInfo.address}}"></text>
+			<text class="iconfont icon-fasfa-phone-volume1" bindtap="handlePhone" data-phone="{{item.hospitalInfo.hospitalPhone}}"></text>
+		</view>
+	</view>
+	<!-- 信息 -->
+	<view class="info">
+		<view class="item">{{item.itemInfo.itemName}}</view>
+		<view class="item">{{item.itemInfo.itemDescription}}</view>
+		<view class="item">{{item.itemInfo.standard}}</view>
+		<view class="item">{{item.itemInfo.parts}}</view>
+	</view>
+	<!-- 核销日期 -->
+	<view class="reserve_date">
+		<view class="lable">核销日期</view>
+		<view class="info">
+			<text>{{item.appointmentDate}}</text>
+			<text>{{item.week}}</text>
+			<text>{{item.time}}</text>
+		</view>
+	</view>
+	<!-- 操作 -->
+	<view class="footer_tool">
+		<view wx:if="{{item.status === 1}}" bindtap="handleCancelReserve" data-id="{{item.id}}">取消核销</view>
+		<view wx:if="{{item.status === 1}}" bindtap="handleSeeQrcode" data-id="{{item.id}}">查看详情</view>
+		<view wx:if="{{item.status === 2}}" style="border:1rpx solid #958F8F;color:#958F8F">已完成</view>
+		<view wx:if="{{item.status === 3}}" style="border:1rpx solid #958F8F;color:#958F8F">已取消</view>
+	</view>
+</view>

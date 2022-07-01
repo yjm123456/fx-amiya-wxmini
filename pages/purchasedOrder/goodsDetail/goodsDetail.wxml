@@ -1,0 +1,134 @@
+<!--pages/purchasedOrder/goodsDetail/goodsDetail.wxml-->
+<view class="container">
+  <view class="shop">
+    <view class="con">
+      <view class="state">{{orderInfo.statusText}}</view>
+      <view class="date">购买时间：{{orderInfo.createDate}}</view>
+    </view>
+    <image src="/images/bg_1.jpg" class="bg"></image>
+  </view>
+  <!-- 商品信息 -->
+  <view class="goods">
+    <van-image width="110" height="110" src="{{orderInfo.thumbPicUrl}}" />
+    <view class="memo">
+      <view class="title">{{orderInfo.goodsName}}</view>
+      <view class="city_hos">
+        <!-- type为1是支付订单 为2是积分订单 -->
+        <text class="hospital" wx:if="{{type==1}}">{{orderInfo.appointmentHospital ? orderInfo.appointmentHospital : ''}}</text>
+        <text class="hospital" wx:else>{{orderInfo.goodsCategory ? orderInfo.goodsCategory : ''}}</text>
+      </view>
+      <!--  type=1 支付订单 虚拟订单 orderType=0是自提  取得是商品单价-->
+      <view class="price_number" wx:if="{{type== 1 && orderInfo.orderType==0}}">
+        <text class="price">￥{{orderInfo.singlePrice}}</text>
+        <text class="goods_number">x {{orderInfo.quantity}}</text>
+      </view>
+      <!-- 支付订单 虚拟订单-->
+      <view class="price_number" wx:elif="{{type== 1 && orderInfo.orderType==1}}">
+        <text class="price">￥{{orderInfo.singlePrice}}</text>
+        <text class="goods_number">x {{orderInfo.quantity}}</text>
+      </view>
+      <!--  type=1 支付订单 真实订单 orderType=1是快递 取得是积分单价-->
+      <view class="price_number" wx:elif="{{type== 1 && orderInfo.orderType==1}}">
+      <!-- appType == 3真实支付订单 公众号下单商品展示 -->
+        <view wx:if="{{orderInfo.appType == 3}}" class="num_con" >
+          <text class="price">￥{{orderInfo.singlePrice}}</text>
+          <text class="goods_number">x {{orderInfo.quantity}}</text>
+        </view>
+        <view wx:else class="num_con" >
+          <text class="price">￥{{orderInfo.singleIntegrationQuantity}}</text>
+          <text class="goods_number">x {{orderInfo.quantity}}</text>
+        </view>
+      </view>
+      <!--  type=2 积分订单 -->
+      <view class="price_number" wx:if="{{type==2}}">
+        <text class="price">{{orderInfo.singleIntegrationQuantity}}积分</text>
+        <text class="goods_number">x {{orderInfo.quantity}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 费用明细 -->
+  <view class="expense_details" wx:if="{{orderInfo.statusText !='付款前交易关闭'}}">
+    <text class="line">|</text>
+    <text class="expense_title">费用明细</text>
+    <view class="goods_total">
+      <text class="titles">商品合计</text>
+      <text wx:if="{{type==1 && orderInfo.orderType==0 }}">￥{{orderInfo.actualPayment}}</text>
+      <text wx:elif="{{type==1 && orderInfo.orderType==1 }}">￥{{orderInfo.actualPayment}}</text>
+      <text wx:elif="{{type==1 && orderInfo.orderType==1 &&orderInfo.appType==3}}">
+         <text wx:if="{{orderInfo.appType==3}}">￥{{orderInfo.actualPayment}}</text>
+         <text wx:else>￥{{orderInfo.integrationQuantity}}</text>
+      </text>
+      <text wx:if="{{type==2}}">{{orderInfo.integrationQuantity}}积分</text>
+    </view>
+    <view class="goods_total">
+      <text>优惠券</text>
+      <text>￥0</text>
+    </view>
+    <view class="goods_total">
+      <text>运费</text>
+      <text>￥0</text>
+    </view>
+    <view class="actual_payment">
+      <text>实付款：</text>
+      <text class="price" wx:if="{{type==1  && orderInfo.orderType==0}}">￥{{orderInfo.actualPayment}}</text>
+      <text class="price" wx:if="{{type==1  && orderInfo.orderType==1}}">￥{{orderInfo.actualPayment}}</text>
+      <text class="price" wx:if="{{type==1  && orderInfo.orderType==1 & orderInfo.appType==3}}">
+        <text wx:if="{{orderInfo.appType==3}}">￥{{orderInfo.actualPayment}}</text>
+        <text wx:else>￥{{orderInfo.integrationQuantity}}</text>
+      </text>
+      <text class="price" wx:if="{{type==2}}">{{orderInfo.integrationQuantity}}积分</text>
+    </view>
+  </view>
+  <!-- 订单详情 -->
+  <view class="expense_details"  wx:if="{{orderInfo.statusText !='付款前交易关闭'}}">
+    <text class="line">|</text>
+    <text class="expense_title">订单详情</text>
+    <view class="goods_detail">
+      <text class="titles">订单编号：</text>
+      <text class="titles_num">{{orderInfo.orderId}}</text>
+      <text class="copy" bindtap="copyOrderNum" data-order="{{orderInfo.orderId}}">复制</text>
+    </view>
+    <view class="goods_detail">
+      <text>配送方式：</text>
+      <text>{{orderInfo.orderType == 0 ? '自提' : '快递'}}</text>
+    </view>
+    <view class="goods_detail">
+      <text>客户昵称：</text>
+      <text>{{orderInfo.buyerNick}}</text>
+    </view>
+    <view class="goods_detail"  wx:if="{{orderInfo.hospitalAddress}}">
+      <text>配送门店：</text>
+      <text>{{orderInfo.hospitalAddress}}</text>
+    </view>
+    <!-- 核销码 -->
+    <view class="write_off_code" wx:if="{{orderInfo.writeOffCode && orderInfo.appType==2}}">
+      <text class="code_title">核销码</text>
+      <view>
+        <image src="{{qrCodeBase64}}" class="code"></image>
+        <view class="code_number">
+          {{orderInfo.writeOffCode}}
+          <text wx:if="{{orderInfo.statusCode == 'TRADE_FINISHED'}}" class="text_num">( 已使用 )</text>
+          <text wx:if="{{orderInfo.statusCode == 'TRADE_CLOSED'}}" class="text_close">( 退款 已失效 )</text>
+        </view>  
+      </view>
+    </view>
+  </view>
+  <!-- 退款详情 -->
+  <view class="expense_details"  wx:if="{{orderInfo.refundOrderInfo.checkTypeText}}">
+    <text class="line">|</text>
+    <text class="expense_title">退款详情</text>
+    <view class="goods_detail_re"  wx:if="{{orderInfo.refundOrderInfo.checkTypeText}}">
+      <text>审核状态：</text>
+      <text class="flex_h4">{{orderInfo.refundOrderInfo.checkTypeText}}</text>
+    </view>
+    <view class="goods_detail_re" wx:if="{{orderInfo.refundOrderInfo.checkReason}}">
+      <text>审核原因：</text>
+      <text  class="flex_h4">{{orderInfo.refundOrderInfo.checkReason}}</text>
+    </view>
+    <view class="goods_detail_re"  wx:if="{{orderInfo.refundOrderInfo.refundReason}}">
+      <text >退款原因：</text>
+      <text  class="flex_h4">{{orderInfo.refundOrderInfo.refundReason}}</text>
+    </view>
+  </view>
+  
+</view>

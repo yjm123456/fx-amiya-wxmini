@@ -1,0 +1,17 @@
+<van-tabs active="{{ currentTargetActive }}" bind:change="onChange" tab-active-class="tab-active-class" sticky swipeable>
+	<van-tab title="全部">
+		<item appointmentInfo="{{appointmentInfo}}" currentTargetActive="{{currentTargetActive}}" bind:cancelReserveSuccess="cancelReserveSuccess" bind:confirmCompleteSuccess="confirmCompleteSuccess" />
+	</van-tab>
+	<van-tab title="待完成">
+		<item appointmentInfo="{{appointmentInfo}}" currentTargetActive="{{currentTargetActive}}" bind:cancelReserveSuccess="cancelReserveSuccess" bind:confirmCompleteSuccess="confirmCompleteSuccess" />
+	</van-tab>
+	<van-tab title="已完成">
+		<item appointmentInfo="{{appointmentInfo}}" currentTargetActive="{{currentTargetActive}}" />
+	</van-tab>
+	<van-tab title="已取消">
+		<item appointmentInfo="{{appointmentInfo}}" />
+	</van-tab>
+	<van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%" wx:if="{{!appointmentInfo.length}}">暂无数据</van-divider>
+</van-tabs>
+<!-- 客服 -->
+<customerService />

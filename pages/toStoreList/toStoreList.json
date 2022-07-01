@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "planned":"./components/planned/planned",
+    "completed":"./components/completed/completed",
+    "cancel":"./components/cancel/cancel"
+  },
+  "navigationBarTitleText": "计划到店列表"
+}

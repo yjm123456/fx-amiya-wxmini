@@ -1,0 +1,278 @@
+/* 轮播图 */
+.banner {
+  background-color: #fff;
+  height: 400rpx;
+}
+.banner .slide {
+  width: 100%;
+}
+.title_con,.consulting_service{
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.title_con{
+  color: #ff1554 ;
+  text-align: center;
+}
+.h2{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.h5{
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+.consulting_service{
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+}
+.consulting_center{
+  flex:1;
+  margin-left: 20rpx;
+}
+.h3{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.h4{
+  font-size: 24rpx;
+  color: #818181;
+  margin-top: 20rpx;
+}
+.service{
+  font-size: 24rpx;
+  padding: 5rpx 8rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  border: 1rpx solid #ffa001;
+  color: #ffa001;
+  text-align: center;
+}
+/* 项目介绍 */
+.title_h3{
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.con{
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  padding:  30rpx;
+  box-sizing: border-box;
+}
+.item{
+  width: 25%;
+  text-align: center;
+  font-size: 24rpx;
+  margin-bottom: 30rpx;
+}
+.customerService {
+  background-color: white;
+  border-radius: 0rpx;
+  line-height: normal;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+.customerService::after {
+  border: none;
+}
+/* 医院介绍 */
+.hospital_con{
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.hospital_scroll{
+  display: flex;
+  padding:30rpx;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  
+}
+
+::-webkit-scrollbar {
+	/*隐藏滚轮*/
+	display: none;
+}
+.hospital_item{
+  width:  78%;
+  padding:20rpx;
+  box-sizing: border-box;
+  box-shadow: #ccc 0px 0px 10px 3px;
+  flex-shrink: 0;
+  margin-right: 30rpx;
+}
+
+.hospital_top{
+  width: 100%;
+  display:flex;
+  margin-bottom: 20rpx;
+  align-items: center
+}
+.hospital_title_con{
+  flex:1;
+  margin-left: 10rpx;
+}
+.hospital_title{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.hospital_memo{
+  font-size: 22rpx;
+  background-color: #f4f4f4;
+  color: #bdbdbd;
+  width: 120rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+}
+.address{
+  font-size: 24rpx;
+  margin: 20rpx 0;
+}
+.nav{
+  font-size: 24rpx;
+  text-align: end;
+  margin-top: 20rpx;
+}
+.hospital_top,.hos_cen,.flex_bot{
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.switch_con{
+  width: 120rpx;
+  height: 47rpx;
+  border-radius: 10rpx;
+  background-color: #D1CEC7;
+  text-align: center;
+  line-height: 47rpx;
+  /* padding-right: 30rpx;
+  box-sizing: border-box; */
+  margin: 22rpx 30rpx 0 0;
+}
+.hos_cen{
+  margin: 28rpx 30rpx 0 0;
+}
+.cancel,.submite{
+  padding: 6rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  color: #fff;
+  margin: 0 10rpx;
+  font-size: 26rpx;
+ }
+ .cancel{
+   background-color: #ccc;
+ }
+ .submite{
+   background-color: #ff1554;
+ }
+ .popup_con{
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+ .name_com{
+  display: flex;
+  flex-wrap: wrap;
+}
+.type_name{
+  margin: 10rpx 0;
+  font-weight: bold;
+  font-size: 28rpx;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ccc;
+}
+.items{
+  margin-bottom: 50rpx;
+}
+.item_type{
+  /* margin-top: 20rpx; */
+}
+ .popup_text{
+  font-size: 26rpx;
+  padding: 4rpx 30rpx;
+  box-sizing:border-box;
+  border:1rpx solid #ccc;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  color: #333;
+}
+.buttons{
+  margin-top: 60rpx;
+}
+._on,.active,.actives {
+  color: #ff1554;
+  border: 1rpx solid #ff1554;
+}
+.arrival_plan{
+  width: 120rpx;
+  height: 47rpx;
+  line-height: 47rpx;
+  background-color: #D1CEC7;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  text-align: center;
+  margin-left: 76% ;
+}
+.diary_con{
+  padding: 30rpx 30rpx 15rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin: 20rpx 0;
+}
+.diary_like_con{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.diary_img{
+  width: 100%;
+  border-radius: 10rpx;
+  margin: 10rpx 0;
+  width: 100%;
+  height: 400rpx;
+}
+.diary_title{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.diary_right{
+  font-weight: bold;
+  font-size: 30rpx;
+  position: relative;
+  bottom: 10rpx;
+}
+.diary_left{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+.dian{
+  margin: 0 20rpx;
+}
+.hot_con{
+  margin-bottom: 50rpx;
+}

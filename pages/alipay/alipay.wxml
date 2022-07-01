@@ -1,0 +1,11 @@
+
+<view class="content">
+  <!-- <view class="text">请使用浏览器访问</view>
+  <view class="url " >{{alipayUrl}}</view>
+  <view bindtap="copy" data-url="{{alipayUrl}}" class="copy">复制</view> -->
+  <view class="text">请复制链接使用浏览器访问</view>
+  <view class="background_con" bindtap="copy" data-url="{{alipayUrl}}">
+    <image src="/images/llq.png" class="img"></image>
+    <view  class="copy">点击复制</view>
+  </view>
+</view>

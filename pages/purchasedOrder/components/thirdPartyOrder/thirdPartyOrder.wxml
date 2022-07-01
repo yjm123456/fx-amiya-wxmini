@@ -1,0 +1,2 @@
+<!--pages/purchasedOrder/components/thirdPartyOrder/thirdPartyOrder.wxml-->
+<item list="{{list}}" bind:handleRefreshOrderList="handleRefreshOrderList" type="1"></item>

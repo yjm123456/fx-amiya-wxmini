@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-image": "@vant/weapp/image/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-divider": "@vant/weapp/divider/index"
+  },
+  "navigationBarTitleText": "到店计划"
+}

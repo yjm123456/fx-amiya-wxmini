@@ -1,0 +1,80 @@
+<view class="personalContainer">
+  <view class="user_section">
+    <image class="bg" src="/images/cbg.jpg"></image>
+    <view class="user_info_box" bindtap="toLogin">
+      <view class="portrait_box">
+        <image class="portrait" src='{{userInfo.avatarUrl}}'></image>
+      </view>
+      <view class="info_box">
+        <text class="username">{{userInfo.nickName ? userInfo.nickName : '游客'}}</text>
+        <!-- <text class="balance" wx:if="{{balance}}">积分余额 {{balance}}</text> -->
+      </view>
+    </view>
+
+    <view class="vip_card_box" wx:if="{{memberCard}}">
+      <image src="{{ memberCard.imageUrl}}" mode="widthFix"></image>
+      <view class="up">
+        {{memberCard.memberCardNum}}
+      </view>
+    </view>
+    <view class="vip_card_box" bindtap="handleReceiveMemberCard" wx:else>
+      <image src="/images/receiveCard.png" mode="widthFix"></image>
+    </view>
+  </view>
+
+  <view class="cover_container" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove"
+    bindtouchend="handleTouchEnd" style="transform: {{coverTransform}}; transition: {{coveTransition}}">
+    <image class="arc" src="/images/arc.png"></image>
+    <!-- 积分 优惠券 账户余额 -->
+    <view class="integral_con">
+      <navigator class="integral_item" url="/pages/integral/integral" hover-class="none">
+        <view class="integral">{{balance ? balance : 0}}</view>
+        <view class="integral_text">可用积分</view>
+      </navigator>
+      <view class="integral_item">
+        <view class="integral">0</view>
+        <view class="integral_text">优惠券</view>
+      </view>
+      <view class="integral_item">
+        <view class="integral">0</view>
+        <view class="integral_text">账户余额</view>
+      </view>
+    </view>
+    <view class="tools">
+      <!-- bindtap="arrivalPlan"  到店计划 -->
+      <view bindtap="arrivalPlan">
+        <image src="/images/1.png" ></image>
+        <text>到店计划</text>
+      </view>
+      <view >
+        <image src="/images/5.png" bindtap="purchasedOrder"></image>
+        <text>已购买订单</text>
+      </view>
+      <view bindtap="editPhone">
+        <image src="/images/3.png"></image>
+        <text>修改手机号</text>
+      </view>
+      <view  style="border:none;" bindtap="myGift">
+        <image src="/images/6.png"></image>
+        <text>核销好礼</text>
+      </view>
+      <view bindtap="myAddress" style="border:none;">
+        <image src="/images/7.png"></image>
+        <text>收货地址</text>
+      </view>
+      <view class="contactus">
+        <image src="/images/4.png"></image>
+        <text>客服</text>
+        <button open-type="contact" hover-class="none" class="contact"></button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 授权 -->
+<auth control="{{controlAuth}}" bind:getUserInfoSuccess='getUserInfoSuccess'
+  bind:cancelGetUserInfo="cancelGetUserInfo" />
+
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone"
+  bind:cancelBindPhone="cancelBindPhone"></authPhone>

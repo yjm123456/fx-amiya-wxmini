@@ -1,0 +1,156 @@
+page {
+  padding-bottom: 100rpx;
+}
+
+.address {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.select_address {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #383839;
+}
+
+.select_address>view:first-of-type {
+  display: flex;
+  align-items: center;
+}
+
+.select_address>view:first-of-type>text:first-of-type {
+  font-size: 60rpx;
+  color: #3388FF;
+}
+
+.select_address>view:first-of-type>text:last-of-type {
+  color: #383839;
+  padding-left: 10rpx;
+}
+
+.select_address>view:last-of-type text {
+  font-size: 40rpx;
+}
+
+.address_info {
+  display: flex;
+  align-items: center;
+}
+
+.address_info .icon {
+  color: #383839;
+  font-size: 28rpx;
+}
+
+.address_info .text {
+  flex: 1;
+  padding-left: 20rpx;
+}
+
+.address_info .text>view:first-of-type {
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.address_info .text>view:last-of-type {
+  font-size: 28rpx;
+  color: #383839;
+  padding-top: 10rpx;
+}
+
+/* 商品信息 */
+.goods {
+  padding: 20rpx 0;
+}
+
+.goods::before,
+.goods::after {
+  content: '';
+  display: block;
+  height: 30rpx;
+  background-color: #fff;
+  width: 100%;
+}
+
+.goods .title text:first-of-type {
+  font-size: 40rpx;
+}
+
+.goods .title text:last-of-type {
+  padding-left: 10rpx;
+}
+
+.goods .item {
+  padding: 20rpx 30rpx;
+  display: flex;
+}
+
+.goods .item image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.goods .item>view:first-of-type {
+  flex: 1;
+  padding-left: 10rpx;
+  position: relative;
+}
+
+.goods .item>view:first-of-type .name {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.goods .item>view:first-of-type .description {
+  color: #383839;
+  font-size: 25rpx;
+}
+
+.goods .item>view:first-of-type .price {
+  width: 100%;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+}
+
+.goods .item>view:first-of-type .price>text:first-of-type {
+  color: #EE0A24;
+  font-weight: bold;
+}
+
+.submit_order {
+  width: 100%;
+  height: 100rpx;
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #fff;
+}
+
+.submit_order>view:first-of-type>text:first-of-type {
+  font-weight: bold;
+}
+
+.submit_order>view:first-of-type>text:last-of-type {
+  color: #EE0A24;
+}
+
+.submit_order>view:last-of-type {
+  height: 100%;
+  width: 30%;
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EE0A24;
+  color: #fff;
+}

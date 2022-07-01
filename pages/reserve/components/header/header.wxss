@@ -1,0 +1,34 @@
+/* 头部 */
+.header_wrap {
+  background-color: #114857;
+  color: #fff;
+  padding: 26rpx;
+}
+
+.header_wrap .title {
+  color: rgba(249, 247, 247, 100);
+  font-size: 30rpx;
+}
+
+.goods_info .name,
+.goods_info .description,
+.goods_info .unit,
+.goods_info .scope {
+  font-size: 26rpx;
+  display: flex;
+  color: rgba(249, 247, 247, 100);
+}
+
+.goods_info .name>text:first-child,
+.goods_info .description>text:first-child,
+.goods_info .unit>text:first-child,
+.goods_info .scope>text:first-child {
+  width: 85rpx;
+}
+
+.goods_info .name>text:last-child,
+.goods_info .description>text:last-child,
+.goods_info .unit>text:last-child,
+.goods_info .scope>text:last-child {
+  flex: 1;
+}

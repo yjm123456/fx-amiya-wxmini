@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-divider": "@vant/weapp/divider/index",
+    "customerService": "./../../components/customerService/customerService"
+  },
+  "navigationBarTitleText": "已购买项目"
+}

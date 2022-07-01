@@ -1,0 +1,122 @@
+/* 头部 */
+.header_wrap {
+  background-color: #fff;
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+
+.header_wrap .address {
+  width: 130rpx;
+  height: 60rpx;
+  color: #A8A4A4;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header_wrap .customerService {
+  background-color: white;
+  border-radius: 0rpx;
+  line-height: normal;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.header_wrap .customerService::after {
+  border: none;
+}
+
+/* 轮播图 */
+.banner {
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+
+.banner .slide {
+  width: 100%;
+}
+
+/* 项目 */
+
+.project_wrap .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 30rpx 20rpx 30rpx;
+  background-color: #fff;
+}
+
+.project_wrap .title>view:first-child {
+  color: rgba(16, 16, 16, 100);
+  font-size: 28rpx;
+}
+
+.project_wrap .title>view:last-child {
+  color: rgba(149, 143, 143, 100);
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.project_wrap .item {
+  display: flex;
+  color: #646464;
+  font-size: 28rpx;
+  padding: 20rpx 30rpx;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+  position: relative;
+}
+
+.project_wrap .item .thumbPicUrl image {
+  width: 160rpx;
+  height: 160rpx;
+  background-color: #ffffff;
+  box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(3, 3, 3, 0.07);
+  border-radius: 10rpx;
+  vertical-align: middle;
+}
+
+.project_wrap .item .name {
+  margin-left: 22rpx;
+}
+
+.project_wrap .item .icon-arrow-left {
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40rpx;
+  color: #aeaeae;
+}
+
+.tips {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tips .text {
+  font-size: 28rpx;
+  color: rgba(69, 90, 100, 0.6);
+}
+
+.tips .btn {
+  width: 40%;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #fff;
+  margin: 20rpx 0;
+}

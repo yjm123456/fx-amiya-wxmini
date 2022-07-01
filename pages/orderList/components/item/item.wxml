@@ -1,0 +1,45 @@
+<view class="warp">
+  <view class="item" wx:for="{{list}}" wx:key="id">
+    <view class="header">
+      <view class="order_state">
+        {{item.statusText}}
+      </view>
+      <view class="order_id"><text>交易编号：</text><text>{{item.tradeId}}</text></view>
+    </view>
+    <block wx:for="{{item.orderInfoList}}" wx:key="id" wx:for-item="goods">
+      <view class="content" >
+        <!-- <image src="{{goods.thumbPicUrl}}" class="thumbPic"></image> -->
+        <van-image width="100" height="100" src="{{goods.thumbPicUrl}}" style="margin-right:20rpx"/>
+        <view class="info">
+          <view class="name">{{goods.goodsName}}</view>
+          <view class="standard">{{goods.standard}}</view>
+          <view class="price">
+            <text wx:if="{{goods.exchangeType>=1}}">{{goods.singlePrice}}元</text>
+            <text wx:else>{{goods.singleIntegrationQuantity}}积分</text>
+            <text>x {{goods.quantity}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="footer">
+        <text>{{item.statusCode === 'WAIT_BUYER_PAY' ? '需付款：' : '实付款：'}}</text>
+        <text wx:if="{{goods.exchangeType>=1}}">{{item.totalAmount}}元</text>
+        <text wx:else>{{item.totalIntegration}}积分</text>
+      </view>
+    </block>
+    
+    <!-- 待发货不显示tool -->
+    <view class="tool" wx:if="{{item.statusCode !== 'WAIT_SELLER_SEND_GOODS'}}">
+      <!-- 待付款 -->
+      <van-button type="default" size="small" class="cancel" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handleCancelOrder">取消
+      </van-button>
+      <van-button type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay" data-orderIfon="{{item.orderInfoList}}">付款
+      </van-button>
+      <!-- 待收货 -->
+      <van-button type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'}}" data-tradeId="{{item.tradeId}}" bind:click="handleConfirm">
+        确认收货
+      </van-button>
+    </view>
+  </view>
+  <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+  </van-divider>
+</view>

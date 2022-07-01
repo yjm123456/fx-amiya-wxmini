@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-steps": "@vant/weapp/steps/index",
+    "van-divider": "@vant/weapp/divider/index"
+  },
+  "navigationBarTitleText": "物流信息"
+}

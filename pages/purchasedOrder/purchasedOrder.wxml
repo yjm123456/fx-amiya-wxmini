@@ -1,0 +1,8 @@
+<van-tabs active="{{ active }}" bind:change="handleTabChange" sticky>
+  <van-tab title="支付订单">
+    <thirdPartyOrder active="{{active}}" id="thirdPartyOrder"></thirdPartyOrder>
+  </van-tab>
+  <van-tab title="积分订单">
+    <pointOrder active="{{active}}" id="pointOrder"></pointOrder>
+  </van-tab>
+</van-tabs>

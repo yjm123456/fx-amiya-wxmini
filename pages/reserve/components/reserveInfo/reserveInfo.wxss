@@ -1,0 +1,75 @@
+.wrap {
+  padding: 25rpx 50rpx;
+}
+
+/* title */
+.wrap>.title {
+  color: rgba(17, 72, 87, 100);
+  font-size: 36rpx;
+}
+
+.wrap .lable {
+  flex: 1;
+}
+
+/* 核销日期 创建时间*/
+.wrap>.reserve_date,
+.wrap>.create_date {
+  display: flex;
+  align-items: center;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+}
+
+.wrap>.reserve_date>.info,
+.wrap>.create_date>.info {
+  width: 480rpx;
+}
+
+.wrap>.reserve_date>.info>text:first-child,
+.wrap>.create_date>.info>text:first-child {
+  margin-right: 20rpx;
+}
+
+.wrap>.reserve_date>.info>text:nth-child(2),
+.wrap>.create_date>.info>text:nth-child(2) {
+  margin-right: 20rpx;
+}
+
+
+
+/* 验证码 备注 */
+.wrap .remarks {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  margin-top: 16rpx;
+}
+
+.wrap .remarks .form {
+  width: 480rpx;
+  height: 80rpx;
+}
+
+.wrap .remarks .form input {
+  border: 1px solid rgba(220, 223, 230, 100);
+  height: 100%;
+  background-color: #fff;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+  padding: 0 0 0 30rpx;
+}
+
+/* 提交 */
+.wrap .tool {
+  width: 320rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 28rpx;
+  background-color: rgba(240, 7, 7, 100);
+  color: rgba(249, 247, 247, 100);
+  font-size: 28rpx;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 38rpx;
+}

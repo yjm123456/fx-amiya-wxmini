@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "item": "./components/item/item",
+    "customerService": "../../components/customerService/customerService"
+  },
+  "navigationBarTitleText": "我的核销"
+}

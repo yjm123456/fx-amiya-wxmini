@@ -1,0 +1,31 @@
+page {
+  padding-bottom: 88rpx;
+}
+
+/* 商品信息 */
+
+.wrap {
+  padding: 20rpx;
+  margin: 20rpx;
+  background-color: #fff;
+}
+
+.wrap .goods_info {
+  display: flex;
+}
+
+.wrap .goods_info>view:first-child {
+  width: 150rpx;
+  height: 150rpx;
+  background-color: #fff;
+}
+
+.wrap .goods_info>view:first-child image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.wrap .goods_info>view:last-child {
+  margin-left: 42rpx;
+  font-size: 26rpx;
+}

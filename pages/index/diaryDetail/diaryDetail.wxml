@@ -1,0 +1,35 @@
+<view class="contain" wx:if="{{beautyDiaryManage.releaseState === true}}">
+  <swiper class='banner' indicator-dots='true'  interval='5000' duration='1000' indicator-active-color="#fff" wx:if="{{beautyDiaryManage.bannerImage || beautyDiaryManage.videoUrl}}" bindchange="swiperChange">
+    <swiper-item style="margin:0 auto;text-align:center;background:#000;width:100%" wx:if="{{beautyDiaryManage.videoUrl}}">
+      <video 
+        id="myVideo" 
+        src='{{beautyDiaryManage.videoUrl}}' 
+        controls='true' 
+        style="height:1000rpx;" 
+        autoplay="{{autoplay}}"
+        bindplay='bindplay'
+        bindended="funended"
+      ></video>
+		</swiper-item>
+		<swiper-item wx:for="{{beautyDiaryManage.bannerImage}}" wx:key="index" wx:if="{{beautyDiaryManage.bannerImage.length}}" style="display:flex;align-items:center;background-color: #000;">
+			<image src='{{item.picUrl}}' class='slide' mode='widthFix' style="display:block"></image>
+		</swiper-item>
+    <!-- <image src="/images/4.png" class="stop_img" wx:if="{{stopFlag}}" bindtap="videoTap"></image> -->
+	</swiper>
+
+  <view class="edit_text">
+    <view class="title">{{beautyDiaryManage.detailsTitle}}</view>
+    <rich-text nodes="{{beautyDiaryManage.detailsDescription}}"></rich-text>
+  </view>
+  <view class="tab_item">
+      <block  wx:for="{{beautyDiaryManage.beautyDiaryTagName}}" wx:key="index">
+        <text >{{item.name}}</text>
+      </block>
+    </view>
+  <view class="time" wx:if="{{createDate}}">{{createDate}} 发布</view>
+  <view class="views_num" wx:if="{{beautyDiaryManage.views}}"><text class="iconfont icon-liulanliang"></text><text>{{beautyDiaryManage.views}} 浏览量</text></view>
+  <view class="bottom_con">
+    <view class="like" bindtap="like" data-id="{{id}}" ><text class="iconfont icon-dianzan" style="font-size:45rpx!important;"></text><text class="like_num">{{givingLikes}}</text></view>
+    <view class="share_bottom"><button data-name="shareBtn" open-type="share" bindtap="shareButton"><text class="iconfont icon-fenxiang"  style="font-size:45rpx!important;" ></text></button></view>
+  </view>
+</view>

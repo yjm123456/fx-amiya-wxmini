@@ -1,0 +1,17 @@
+<view class="wrapper">
+	<view class="phone">
+		<view class="title">手机号</view>
+		<input class="input" placeholder="请输入手机号" bindinput="phoneInput" />
+	</view>
+	<view class="code">
+		<view class="title">
+			<text>验证码</text>
+			<text bindtap="getCode" wx:if="{{sendAuthCode}}" class="getCode">获取验证码</text>
+      <text wx:else class="getCode">{{auth_time}}秒后重新发送</text>
+		</view>
+		<input class="input" password placeholder="- - - -" bindinput="codeInput" type="number"/>
+	</view>
+	<view class="login">
+		<button type="primary" class="btn" bindtap="login">提交</button>
+  </view>
+</view>

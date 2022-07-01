@@ -1,0 +1,36 @@
+.wrap {
+  margin: 0 50rpx;
+}
+
+.wrap>view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+}
+
+.morning {
+  border-bottom: 1rpx solid #BBBBBB;
+}
+
+/* 日期 */
+.morning>view:first-child>text:first-child,
+.afternoon>view:first-child>text:first-child {
+  margin-right: 20rpx;
+}
+
+/* 星期 */
+.morning>view:first-child>text:nth-child(2),
+.afternoon>view:first-child>text:nth-child(2) {
+  margin-right: 20rpx;
+}
+
+/* 按钮 */
+.morning>view:last-child,
+.afternoon>view:last-child {
+  background-color: #D1CEC7;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  /* color: #fff; */
+}

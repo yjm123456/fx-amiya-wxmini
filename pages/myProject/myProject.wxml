@@ -1,0 +1,16 @@
+	<!-- 商品信息 -->
+	<view class="wrap" wx:for="{{itemInfo}}" wx:key="id" bindtap="handleReserve" data-id="{{item.id}}">
+		<view class="goods_info">
+			<view>
+				<image src="{{item.thumbPicUrl}}"></image>
+			</view>
+			<view>
+				{{item.name}}
+			</view>
+		</view>
+	</view>
+	<view wx:if="{{!itemInfo.length}}">
+		<van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%;margin:10rpx 0">暂无数据</van-divider>
+	</view>
+	<!-- 客服 -->
+	<customerService />

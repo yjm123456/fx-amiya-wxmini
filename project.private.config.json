@@ -1,0 +1,162 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/shopping/shopping",
+          "pathName": "pages/shopping/shopping",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsDetails/goodsDetails",
+          "pathName": "pages/goodsDetails/goodsDetails",
+          "query": "goodsId=054b1c075c5547bfaa2118fdea16a93e",
+          "scene": null
+        },
+        {
+          "name": "confirmOrder",
+          "pathName": "pages/confirmOrder/confirmOrder",
+          "query": "goodsId=054b1c075c5547bfaa2118fdea16a93e",
+          "scene": null
+        },
+        {
+          "name": "pages/orderList/orderList",
+          "pathName": "pages/orderList/orderList",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "pages/productDetails/productDetails",
+          "pathName": "pages/productDetails/productDetails",
+          "query": "goodsId=cc02cad29b6949e893df578208678aab",
+          "scene": null
+        },
+        {
+          "name": "pages/store/store",
+          "pathName": "pages/store/store",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/shoppingMall/shoppingMall",
+          "pathName": "pages/shoppingMall/shoppingMall",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/store/store",
+          "pathName": "pages/store/store",
+          "query": "city=4&goodsId=b792547dd39d44ccb242ab4fb22af22f",
+          "scene": null
+        },
+        {
+          "name": "pages/productDetails/productDetails",
+          "pathName": "pages/productDetails/productDetails",
+          "query": "goodsId=b792547dd39d44ccb242ab4fb22af22f",
+          "scene": null
+        },
+        {
+          "name": "pages/personal/personal",
+          "pathName": "pages/personal/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/purchasedOrder/purchasedOrder",
+          "pathName": "pages/purchasedOrder/purchasedOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/purchasedOrder/goodsDetail/goodsDetail",
+          "pathName": "pages/purchasedOrder/goodsDetail/goodsDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/writeoffGoodGift/writeoffGoodGift",
+          "pathName": "pages/writeoffGoodGift/writeoffGoodGift",
+          "query": "active=1",
+          "scene": null
+        },
+        {
+          "name": "pages/giftList/giftList",
+          "pathName": "pages/giftList/giftList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myGift/myGift",
+          "pathName": "pages/myGift/myGift",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/integral/integral",
+          "pathName": "pages/integral/integral",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/Indexs/index",
+          "pathName": "pages/Indexs/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/arrivalPlan/arrivalPlan",
+          "pathName": "pages/arrivalPlan/arrivalPlan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/logistics/logistics",
+          "pathName": "pages/logistics/logistics",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/city/city",
+          "pathName": "pages/city/city",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/storeUserMessage/storeUserMessage",
+          "pathName": "pages/storeUserMessage/storeUserMessage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/toStoreList/toStoreList",
+          "pathName": "pages/toStoreList/toStoreList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/a/a",
+          "pathName": "pages/a/a",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/alipay/alipay",
+          "pathName": "pages/alipay/alipay",
+          "query": "alipayUrl=https%25253A%25252F%25252Fmapi.alipay.com%25252Fgateway.do%25253F_input_charset%25253Dutf-8%252526body%25253Dtest2%252526out_trade_no%25253D0cf38e53ec3046bf959829f071a01af0%252526partner%25253D2088041587343081%252526payment_type%25253D1%252526return_url%25253Dhttps%2525253a%2525252f%2525252fapp.hsltm.com%2525252ffxgatetest%2525252famiyamini%2525252famiya%2525252fwxmini%2525252fOrder%2525252fgetAlreadyBuyOrderList%2525253fExchangeType%2525253d1%25252526pageNum%2525253d1%25252526pageSize%2525253d10%252526seller_id%25253D2088041587343081%252526service%25253Dalipay.wap.create.direct.pay.by.user%252526sign%25253D2a3c7fc4bab3b0d2b28bbf7b4d2ad8c7%252526sign_type%25253DMD5%252526subject%25253D2110230412018027%252526total_fee%25253D0.01",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+/* pages/writeoffGoodGift/notClaimed/notClaimed.wxss */
+.item{
+  width: 100%;
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+.item_top{
+  display: flex;
+}
+.memo{
+  flex:1;
+  margin-left: 20rpx;
+}
+.title{
+  font-size: 30rpx;
+  margin-top: 15rpx;
+}
+.hospital{
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.item_bottom,.type{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.type_img{
+  width: 40rpx;
+  height: 40rpx;
+}
+.receive{
+  padding: 8rpx 15rpx;
+  box-sizing: border-box;
+  background-color: #ff1554;
+  color: #fff;
+  font-size: 24rpx;
+}
+.state_type{
+  font-size: 26rpx;
+  margin-left:10rpx ;
+}

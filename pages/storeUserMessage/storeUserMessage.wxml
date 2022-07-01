@@ -1,0 +1,82 @@
+<view class="container">
+    <image src="/images/bg_4.jpg" class="img"></image>
+    <view class="content">
+      <view class="head_portrait_con">
+        <image src="/images/ameiy.jpg" class="head_portrait"></image>
+      </view>
+      <view class="user_message">
+        <view class="item">
+          <view class="item_left">
+              <view class="item_icon">
+                <text class="iconfont icon-xiangmu" style="font-size:46rpx"></text>
+              </view>
+              <view class="selected_project" wx:if="{{!itemInfoName}}">项目</view>
+              <view class="select_text" wx:else>{{itemInfoName}}</view>
+            </view>
+          <view class="select_button" bindtap="selectProject">选择项目</view>
+        </view>
+        <view class="item">
+          <view class="item_left">
+              <view class="item_icon">
+                <text class="iconfont icon-xingming"  style="font-size:46rpx"></text>
+              </view>
+              <input type="text" placeholder="请输入姓名" style="font-size:30rpx" placeholder-style="color: #D1cec7;" bindinput="nameInput"/>
+            </view>
+        </view>
+        <view class="item">
+          <view class="item_left">
+              <view class="item_icon">
+                <text class="iconfont icon-tianchongxing-"  style="font-size:46rpx"></text>
+              </view>
+              <input type="text" placeholder="请输入手机号" style="font-size:30rpx" placeholder-style="color: #D1cec7;"  bindinput="phoneInput" maxlength="11"  type="number"/>
+          </view>
+        </view>
+        <view class="item">
+          <view class="item_left">
+              <view class="item_icon">
+                <text class="iconfont icon-yanzhengma" style="font-size:46rpx"></text>
+              </view>
+              <input type="text" placeholder="请输入验证码" style="font-size:30rpx;width:220rpx" placeholder-style="color: #D1cec7;"  bindinput="verificationCodeInput" maxlength="4" type="number"/>
+          </view>
+          <view class="select_button" wx:if="{{send}}" bindtap="sendCode">发送</view>
+          <view class="select_button" wx:else>{{seconds}}s后重新发送</view>
+
+        </view>
+        <view class="button_submit" bindtap="submitUserMessage">确定</view>
+      </view>
+    </view>
+    <!-- 切换城市弹窗 -->
+    <van-popup
+      show="{{ projectModel }}"
+      position="right"
+      bind:close="onCancel"
+      custom-style="height: 100%;width:78%"
+    >
+    <view class="popup_con">
+      <view class="pro_content">
+        <view class="popup_item">
+          <!-- <block  wx:for="{{AmiyaGoodsDemandList}}" wx:key="index">
+            <view class="popup_text {{item.id==currentId?'active':'popup_text'}}" bindtap="selected" data-item="{{item}}">{{item.projectName}}</view>
+          </block> -->
+          <view class="item_type">
+            <block  wx:for="{{AmiyaGoodsDemandList}}" wx:key="index">
+              <view class="items">
+                <view class="type_name" wx:if="{{item.goodsDemandList.length !=0}}">{{item.departmentName}}</view>
+                <view  class="name_com">
+                  <block wx:for="{{item.goodsDemandList}}" wx:key="index" wx:for-item="i">
+                    <view class="popup_text {{i.id==currentId?'active':'popup_text'}}" bindtap="selected" data-item="{{i}}">{{i.projectName}}</view>
+                  </block>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+        
+      </view>
+      <!-- <view class="buttons">
+        <text class="cancel" bindtap="onCancel">取消</text>
+        <text class="submite" bindtap="submit">确定</text>
+      </view> -->
+    </view>
+    </van-popup>
+</view>

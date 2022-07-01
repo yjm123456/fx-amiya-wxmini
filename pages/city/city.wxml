@@ -1,0 +1,34 @@
+<view class="searchLetter touchClass">
+	<view class="thishotText" bindtap="hotCity">
+		<view style="margin-top:0;">当前</view>
+		<view style="margin-top:0;">热门</view>
+	</view>
+	<view wx:for="{{searchLetter}}" style="color:#2ab4ff;font-size:20rpx;" wx:key="item" data-letter="{{item}}" catchtouchend="clickLetter">{{item}}</view>
+</view>
+
+<block wx:if="{{isShowLetter}}">
+	<view class="showSlectedLetter">
+		{{showLetter}}
+	</view>
+</block>
+
+<scroll-view scroll-y="true" style="height:{{winHeight}}px" scroll-into-view="{{scrollTopId}}" scroll-top="{{scrollTop}}" scroll-with-animation>
+	<view class="hotcity-common thisCity" wx:if="{{city}}">当前选择城市</view>
+	<view class="thisCityName" wx:if="{{city}}">{{city}}</view>
+	<view>
+		<text class="hotcity hotcity-common">热门城市</text>
+		<view class="weui-grids">
+			<block wx:for-items="{{hotcityList}}" wx:key="cityCode">
+				<view class="weui-grid" data-cityCode="{{item.cityCode}}" data-city="{{item.city}}" bindtap="bindHotCity">
+					<view class="weui-grid__label">{{item.city}}</view>
+				</view>
+			</block>
+		</view>
+	</view>
+	<view class="selection" wx:for="{{cityList}}" wx:key="id">
+		<view class="item_letter" id="{{index}}">{{index}}</view>
+		<view class="item_city" wx:for="{{item}}" wx:for-item="ct" wx:key="id" data-city="{{ct.name}}" bindtap="bindCity">
+			{{ct.name}}
+		</view>
+	</view>
+</scroll-view>

@@ -1,0 +1,124 @@
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fasfa-map-pin:before {
+  content: "\e610";
+}
+
+.icon-fasfa-phone-volume:before {
+  content: "\e615";
+}
+
+.wrap {
+  padding: 25rpx 50rpx;
+}
+
+/* title */
+.wrap>.title {
+  color: rgba(17, 72, 87, 100);
+  font-size: 36rpx;
+}
+
+.wrap>.item {
+  display: flex;
+  align-items: center;
+  margin-top: 16rpx;
+  font-size: 28rpx;
+}
+
+.wrap .item .lable {
+  flex: 1;
+}
+
+.wrap>.item>.info {
+  width: 480rpx;
+}
+
+.wrap>.item>.info>text:first-child {
+  margin-right: 20rpx;
+}
+
+.wrap>.item>.info>text:nth-child(2) {
+  margin-right: 20rpx;
+}
+
+/* 核销成功 */
+.tool {
+  width: 320rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 28rpx;
+  background-color: rgba(240, 143, 7, 100);
+  color: rgba(249, 247, 247, 100);
+  font-size: 28rpx;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 64rpx;
+}
+
+/* 二维码 */
+.qrcode {
+  width: 252rpx;
+  height: 252rpx;
+  background-color: rgba(255, 255, 255, 100);
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+
+.qrcode image {
+  width: 252rpx;
+  height: 252rpx;
+}
+
+/* 地址 */
+.address {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100rpx;
+}
+
+.address .left {
+  flex: 1;
+}
+
+.address .left .top {
+  display: flex;
+  align-items: center;
+}
+
+.address .left .top text:first-child {
+  color: rgba(240, 143, 7, 100);
+  font-size: 40rpx;
+}
+
+.address .left .top text:last-child {
+  color: rgba(16, 16, 16, 100);
+  font-size: 32rpx;
+}
+
+.address .left .bottom {
+  color: rgba(89, 87, 87, 100);
+  font-size: 24rpx;
+  margin-top: 15rpx;
+  margin-left: 40rpx;
+}
+
+/* 右边 */
+
+.address .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1rpx solid #DBD9D9;
+  padding-left: 30rpx;
+}
+
+.address .right text {
+  font-size: 50rpx;
+  color: rgba(240, 143, 7, 100);
+}

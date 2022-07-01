@@ -1,0 +1,40 @@
+/* pages/store/store.wxss */
+
+.store_item{
+  width: 100%;
+  background-color: #fff;
+  margin-top: 30rpx;
+  padding: 40rpx 70rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.content{
+  margin-bottom: 120rpx;
+}
+.store_price , .address_con{
+  color: #818181;
+  font-size: 26rpx;
+}
+.store_price{
+  margin-top: 20rpx;
+}
+.address_con{
+  width: 100%;
+  display: flex;
+  margin-top: 20rpx;
+}
+.address_nav{
+  display: flex;
+}
+.address,.text{
+  margin: 0 10rpx;
+}
+.phone{
+  width: 80rpx;
+  text-align: center;
+}
+.van-radio__icon-wrap{
+  position: absolute;
+  top: 40rpx;
+  left: 35rpx;
+}

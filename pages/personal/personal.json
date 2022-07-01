@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "auth": "./../../components/auth/auth",
+    "authPhone": "./../../components/authPhone/auth"
+  },
+  "navigationBarTitleText": "我的",
+  "disableScroll": true
+}

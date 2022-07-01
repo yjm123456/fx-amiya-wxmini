@@ -1,0 +1,102 @@
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-md-place:before {
+  content: "\e620";
+}
+
+.icon-fasfa-phone-volume1:before {
+  content: "\e622";
+}
+
+.warp {
+  margin: 20rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+}
+
+/* title */
+.warp .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.warp .title .left {
+  color: rgba(16, 16, 16, 100);
+  font-size: 32rpx;
+}
+
+.warp .title .right {
+  display: flex;
+  align-items: center;
+}
+
+.warp .title .right text:first-child {
+  font-size: 45rpx;
+  margin-right: 30rpx;
+}
+
+.warp .title .right text:last-child {
+  font-size: 40rpx;
+  border-left: 1rpx solid #BBBBBB;
+  color: rgba(240, 143, 7, 100);
+  padding-left: 30rpx;
+}
+
+/* 信息 */
+.warp>.info {
+  margin-top: 14rpx;
+  margin-left: 70rpx;
+  font-size: 28rpx;
+}
+
+.warp>.info .item {
+  margin-top: 5rpx;
+}
+
+/* 核销日期 */
+.warp .reserve_date {
+  display: flex;
+  align-items: center;
+  margin-top: 14rpx;
+  font-size: 28rpx;
+}
+
+.warp .reserve_date .lable {
+  margin-right: 50rpx;
+}
+
+.warp .reserve_date .info text:first-child {
+  margin-right: 30rpx;
+}
+
+.warp .reserve_date .info text:nth-child(2) {
+  margin-right: 30rpx;
+}
+
+/* 操作 */
+.footer_tool {
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer_tool view {
+  width: 166rpx;
+  height: 48rpx;
+  border-radius: 28rpx;
+  color: rgba(225, 18, 18, 100);
+  font-size: 28rpx;
+  border: 1rpx solid rgba(225, 18, 18, 100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

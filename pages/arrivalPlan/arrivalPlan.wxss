@@ -1,0 +1,39 @@
+.hospital_item{
+  width: 94%;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin: 25rpx auto;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.hospital_top,.hospital_center,.tab_item{
+  display: flex;
+  align-items: center;
+}
+.hospital_name{
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.address{
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.distance{
+  margin-left: 15rpx;
+  font-size: 26rpx;
+}
+.tab_item{
+  margin-top:10rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tab_item>text{
+  padding: 4rpx 20rpx;
+  box-sizing: border-box;
+  border:1rpx solid #D1cec7;
+  border-radius:10rpx ;
+  margin-right: 20rpx;
+  font-size: 24rpx;
+  margin: 10rpx;
+}

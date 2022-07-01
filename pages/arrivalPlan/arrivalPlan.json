@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-image": "@vant/weapp/image/index",
+    "calendar": "./components/calendar/calendar",
+    "footer": "./components/footer/footer"
+  },
+  "navigationBarTitleText": "到店计划"
+}

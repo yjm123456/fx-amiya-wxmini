@@ -1,0 +1,67 @@
+<view class="wrap">
+	<!-- title -->
+	<view class="title">核销信息</view>
+	<!-- 核销日期 -->
+	<view class="item">
+		<view class="lable">核销日期</view>
+		<view class="info">
+			<text>{{appointmentInfo.appointmentDate}}</text>
+			<text>{{appointmentInfo.week}}</text>
+			<text>{{appointmentInfo.time}}</text>
+		</view>
+	</view>
+	<!-- 创建时间 -->
+	<view class="item">
+		<view class="lable">创建时间</view>
+		<view class="info">
+			<text>{{appointmentInfo.createDate}}</text>
+		</view>
+	</view>
+	<!-- 提交时间 -->
+	<view class="item">
+		<view class="lable">提交时间</view>
+		<view class="info">
+			<text>{{appointmentInfo.submitDate}}</text>
+		</view>
+	</view>
+	<!-- 订单编号 -->
+	<view class="item">
+		<view class="lable">订单编号</view>
+		<view class="info">
+			<text>{{appointmentInfo.orderId}}</text>
+		</view>
+	</view>
+	<!-- 手机号码 -->
+	<view class="item">
+		<view class="lable">手机号码</view>
+		<view class="info">
+			<text>{{appointmentInfo.phone}}</text>
+		</view>
+	</view>
+	<!-- 备注 -->
+	<view class="item" wx:if="{{remark}}">
+		<view class="lable">备注</view>
+		<view class="info">
+			<text>{{appointmentInfo.remark}}</text>
+		</view>
+	</view>
+	<!-- 核销成功 -->
+	<view class="tool">核销成功</view>
+	<!-- 二维码 -->
+	<!-- <view class="qrcode">
+		<image src="{{qrCodeBase64}}"></image>
+	</view> -->
+	<!-- 地址 -->
+	<view class="address">
+		<view class="left">
+			<view class="top">
+				<text class="iconfont icon-fasfa-map-pin"></text>
+				<text>{{appointmentInfo.hospitalInfo.hospitalName}}</text>
+			</view>
+			<view class="bottom">{{appointmentInfo.hospitalInfo.address}}</view>
+		</view>
+		<view class="right">
+			<text class="iconfont icon-fasfa-phone-volume"></text>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "received":"./components/received/received",
+    "notClaimed":"./components/notClaimed/notClaimed"
+  },
+  "navigationBarTitleText": "核销好礼"
+}

@@ -1,0 +1,35 @@
+<!--pages/writeoffGoodGift/notClaimed/notClaimed.wxml-->
+<view class="container">
+  <view class="item" wx:for="{{list}}" wx:key="index">
+    <view class="item_top">
+      <van-image width="100" height="100" src="{{item.thumbPicUrl}}" />
+      <view class="memo">
+        <view class="title">{{item.goodsName}}</view>
+        <view class="hospital" wx:if="{{item.appointmentHospital}}">{{item.appointmentHospital}}</view>
+      </view>
+    </view>
+    <!-- 下单平台 -->
+    <view class="item_bottom">
+      <view class="type" wx:if="{{item.appType==0}}">
+        <image src="/images/tm.jpg" class="type_img"></image>
+        <text class="state_type">天猫</text>
+      </view>
+      <view class="type" wx:if="{{item.appType==1}}">
+        <image src="/images/jd.jpg" class="type_img"></image>
+        <text class="state_type">京东</text>
+      </view>
+      <view class="type" wx:if="{{item.appType==2}}">
+        <image src="/images/xcx.jpg" class="type_img"></image>
+        <text class="state_type">小程序</text>
+      </view>
+      <view class="type" wx:if="{{item.appType==3}}">
+        <image src="/images/gzh.jpg" class="type_img"></image>
+        <text class="state_type">公众号</text>
+      </view>
+      <navigator class="receive" url="/pages/giftList/giftList?orderId={{item.orderId}}" hover-class="none">领取礼品</navigator>
+    </view>
+  </view>
+  <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+  </van-divider>
+</view>
+

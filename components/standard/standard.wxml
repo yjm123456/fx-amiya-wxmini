@@ -1,0 +1,62 @@
+<van-popup 
+	show="{{control}}" 
+	position="bottom" 
+	closeable 
+	close-icon="close" 
+	custom-style="border-top-left-radius: 20rpx;border-top-right-radius: 20rpx;" 
+	bind:close="handleClose"
+>
+	<view class="wrap">
+		<view class="sku_pro">
+			<view class="sku_pro_picture">
+				<image src="{{goodsInfo.thumbPicUrl}}"></image>
+			</view>
+			<view class="sku_pro_info">
+				<view class="price">
+					<view>
+						{{goodsInfo.integrationQuantity}}积分
+					</view>
+					<view>{{goodsInfo.name}}</view>
+				</view>
+				<view class="standard">规格 {{goodsInfo.standard}}</view>
+				<view class="unit">单位 {{goodsInfo.unit}}</view>
+			</view>
+		</view>
+		<!-- 规格 -->
+		<view class="sku_info" wx:if="{{goodsInfos.length}}">
+			<view class="title">规格</view>
+			<view class="wrap">
+				<text 
+					wx:for="{{goodsInfos}}" 
+					wx:key="id"
+					class="item {{goodsInfo.id === item.id ? 'current_a' : ''}}" 
+					bindtap="handleSelectStandard" 
+					data-standard="{{item}}"
+				>{{item.standard}}</text>
+			</view>
+		</view>
+		<!-- 描述 -->
+		<view class="description" wx:if="{{goodsInfo.description}}">
+			<view>
+				<view class="title">[描述说明]</view>
+				<view class="info">{{goodsInfo.description}}</view>
+			</view>
+		</view>
+		<view class="footer">
+			<view class="sku_quantity">
+				<view>
+					<text>购买数量</text>
+					<text wx:if="{{goodsInfo.isLimitBuy}}">(限购{{goodsInfo.canBuyQuantity}}{{goodsInfo.unit}})</text>
+				</view>
+				<view>
+					<van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" />
+				</view>
+			</view>
+			<view class="sku_btns">
+				<view>
+					<van-button type="default" custom-class="gobuy" bind:click="handlePayment" data-type="2">{{totalPrice}}积分</van-button>
+				</view>
+			</view>
+		</view>
+	</view>
+</van-popup>

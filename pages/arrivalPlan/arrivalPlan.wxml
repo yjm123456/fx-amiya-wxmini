@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="hospital_item">
+    <view class="hospital_top">
+      <van-image width="50" height="50" src="{{hospitalItem.thumbPicUrl}}"/>
+      <text class="hospital_name">{{hospitalItem.name}}</text>
+    </view>
+    <view class="hospital_center">
+      <text class="address">{{hospitalItem.address}}</text>
+      <!-- <text class="distance">3.23km</text> -->
+    </view>
+    <view class="tab_item">
+      <block  wx:for="{{tabList}}" wx:key="index">
+        <text >{{item.name}}</text>
+      </block>
+    </view>
+  </view>
+  <!-- 日历 -->
+  <calendar bind:select="select" bind:toggleYearMonth="toggleYearMonth" defaultValue="{{currentDate}}" dateList="{{dateList}}" />
+  <!-- 底部 -->
+  <footer defaultValue="{{currentDate}}"  hospitalId="{{hospitalItem.id}}" itemInfoId="{{itemInfoId}}" surplusQuantity="{{surplusQuantity}}" />
+</view>

@@ -1,0 +1,44 @@
+page {
+  padding-bottom: 88rpx;
+}
+
+.wrap {
+  padding: 20rpx;
+  margin: 20rpx;
+  background-color: #fff;
+}
+
+.wrap .item {
+  display: flex;
+}
+
+.wrap .item .thumbPicUrl {
+  width: 150rpx;
+  height: 150rpx;
+  background-color: #fff;
+}
+
+.wrap .item .thumbPicUrl image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.wrap .item .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 42rpx;
+  font-size: 26rpx;
+}
+
+.wrap .item .info>view:last-child {
+  text-align: right;
+}
+
+.confirm {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+}

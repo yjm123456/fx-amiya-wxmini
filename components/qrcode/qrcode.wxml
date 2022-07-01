@@ -1,0 +1,5 @@
+<van-dialog use-slot title="{{title}}" show-confirm-button="{{false}}" show-cancel-button="{{true}}" show="{{ control }}" cancel-button-text="关闭" width="650rpx">
+	<view class="wrap">
+		<image src="{{qrCodeBase64}}" />
+	</view>
+</van-dialog>

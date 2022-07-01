@@ -1,0 +1,9 @@
+<view class="wrapper">
+	<button class="getPhoneNumber" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号绑定</button>
+</view>
+
+<van-dialog use-slot title="该号码是否购买订单填写号码？" show="{{control}}" show-cancel-button bind:confirm="handleUseOtherPhone" bind:cancel="handleUseCurrentPhone" confirmButtonText="不是，其他手机号" cancelButtonText="是" confirm-button-color="#1989fa" cancel-button-color="#1989fa">
+	<view class="dialog">
+		{{phoneNumber}}
+	</view>
+</van-dialog>

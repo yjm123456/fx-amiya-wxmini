@@ -1,0 +1,14 @@
+<van-tabs active="{{ active }}" bind:change="handleTabChange" sticky>
+  <van-tab title="全部">
+    <all active="{{active}}" id="all"></all>
+  </van-tab>
+  <van-tab title="待付款">
+    <waitPay active="{{active}}" id="waitPay"></waitPay>
+  </van-tab>
+  <van-tab title="待发货">
+    <waitSendGoods active="{{active}}" id="waitSendGoods"></waitSendGoods>
+  </van-tab>
+  <van-tab title="待收货">
+    <waitConfirm active="{{active}}" id="waitConfirm"></waitConfirm>
+  </van-tab>
+</van-tabs>

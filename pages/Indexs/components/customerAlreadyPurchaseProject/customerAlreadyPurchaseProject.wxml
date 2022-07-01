@@ -1,0 +1,11 @@
+<view class="project_wrap">
+	<view class="list">
+		<view class='item' wx:for="{{itemInfoList}}" wx:key="id">
+			<view>
+				<image src="{{item.thumbPicUrl}}"></image>
+			</view>
+			<view>{{item.name}}</view>
+			<view bindtap="handleReserveHospital" data-id="{{item.id}}">核销</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,80 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/Indexs/index",
+    "pages/personal/personal",
+    "pages/city/city",
+    "pages/reserveSuccess/reserveSuccess",
+    "pages/reserve/reserve",
+    "pages/myReserve/myReserve",
+    "pages/myProject/myProject",
+    "pages/login/login",
+    "pages/receiveGift/receiveGift",
+    "pages/myGift/myGift",
+    "pages/unReceiveGiftOrderList/unReceiveGiftOrderList",
+    "pages/addressList/addressList",
+    "pages/address/address",
+    "pages/giftSubmit/giftSubmit",
+    "pages/shopping/shopping",
+    "pages/goodsDetails/goodsDetails",
+    "pages/confirmOrder/confirmOrder",
+    "pages/orderList/orderList",
+    "pages/shoppingMall/shoppingMall",
+    "pages/productDetails/productDetails",
+    "pages/store/store",
+    "pages/purchasedOrder/purchasedOrder",
+    "pages/arrivalPlan/arrivalPlan",
+    "pages/writeoffGoodGift/writeoffGoodGift",
+    "pages/purchasedOrder/goodsDetail/goodsDetail",
+    "pages/giftList/giftList",
+    "pages/integral/integral",
+    "pages/logistics/logistics",
+    "pages/storeUserMessage/storeUserMessage",
+    "pages/toStoreList/toStoreList",
+    "pages/index/diaryDetail/diaryDetail",
+    "pages/alipay/alipay"
+  ],
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#ff1554",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/tabbarImg/home_t.jpg",
+        "iconPath": "images/tabbarImg/home_f.jpg",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/tabbarImg/shop_t.jpg",
+        "iconPath": "images/tabbarImg/shop_f.jpg",
+        "pagePath": "pages/shoppingMall/shoppingMall",
+        "text": "商城"
+      },
+      {
+        "selectedIconPath": "images/tabbarImg/integral_t.jpg",
+        "iconPath": "images/tabbarImg/integral_f.jpg",
+        "pagePath": "pages/shopping/shopping",
+        "text": "积分兑换"
+      },
+      {
+        "selectedIconPath": "images/tabbarImg/my_t.jpg",
+        "iconPath": "images/tabbarImg/my_f.jpg",
+        "pagePath": "pages/personal/personal",
+        "text": "我的"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "阿美雅",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于地图展示"
+    }
+  }
+}

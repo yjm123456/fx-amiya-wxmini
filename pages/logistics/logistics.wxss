@@ -1,0 +1,35 @@
+.title_con{
+  width: 96%;
+  border-radius: 10rpx;
+  background-color: #fff;
+  margin: 20rpx auto;
+  
+}
+.item{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.item:last-child{
+  padding: 0rpx 30rpx 20rpx;
+  box-sizing: border-box;
+}
+.statue{
+  display: flex;
+  align-items: center;
+}
+.circle{
+  width: 20rpx;
+  height: 20rpx;
+  background: #ee0a24;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.item{
+  font-size: 26rpx;
+  margin-bottom: 30rpx;
+}
+.item:last-child{
+  margin-bottom: 0;
+}

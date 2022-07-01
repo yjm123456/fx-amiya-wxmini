@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="item" wx:for="{{list}}" wx:key="index">
+    <view class="item_top">
+      <view class="time" wx:if="{{item.appointmentDate}}">计划时间 : {{item.appointmentDate}} {{item.week}} {{item.time}}</view>
+      <view wx:if="{{item.status==1 || item.status==4}}" class="text1">计划中</view>
+      <view wx:elif="{{item.status==2}}"  class="text2">已到店</view>
+      <view wx:elif="{{item.status==3}}"  class="text3">已取消</view>
+    </view>
+    <view class="content">
+      <van-image width="80" height="80" src="{{item.itemInfopicUrl}}" />
+      <view class="memo">
+        <view class="title">{{item.itemInfoName}}</view>
+        <view class="hospital">{{item.hospitalInfo.hospitalName}}</view>
+      </view>
+    </view>
+    <view class="button_con">
+    <!-- status==1 未派单的情况 为4已派单 字体判断-->
+    <view wx:if="{{item.status==1}}" class="text_flag">请耐心等待工作人员审核</view>
+    <view wx:else></view>
+    <!-- 按钮判断 -->
+    <view wx:if="{{item.status==1 }}" class="right_button">
+      <view class="cancel_button" bindtap="cancel" data-id="{{item.id}}">取消计划</view>
+      <!-- <view class="submite_button" bindtap="submite"  data-id="{{item.id}}">确认到店</view> -->
+    </view>
+    <view wx:if="{{item.status==4}}" class="right_button">
+      <view class="cancel_button" bindtap="cancel" data-id="{{item.id}}">取消计划</view>
+      <view class="submite_button" bindtap="submite"  data-id="{{item.id}}">确认到店</view>
+    </view>
+    </view>
+  </view>
+  <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据</van-divider>
+</view>

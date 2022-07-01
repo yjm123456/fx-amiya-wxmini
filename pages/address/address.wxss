@@ -1,0 +1,3 @@
+.area {
+  min-height: 150rpx !important;
+}

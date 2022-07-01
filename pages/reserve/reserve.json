@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "header": "./components/header/header",
+    "reserveInfo": "./components/reserveInfo/reserveInfo"
+  },
+  "navigationBarTitleText": "核销"
+}

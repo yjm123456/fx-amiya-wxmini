@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-divider": "@vant/weapp/divider/index",
+    "van-image": "@vant/weapp/image/index"
+  },
+  "navigationBarTitleText": "积分兑换"
+}

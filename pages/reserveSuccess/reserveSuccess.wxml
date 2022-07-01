@@ -1,0 +1,5 @@
+<header appointmentInfo="{{appointmentInfo}}" />
+
+<reserveInfo appointmentInfo="{{appointmentInfo}}" qrCodeBase64="{{qrCodeBase64}}" />
+
+<customerService />

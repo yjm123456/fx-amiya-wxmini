@@ -1,0 +1,19 @@
+<view>
+	<view class="block" wx:for="{{list}}" wx:key="id">
+		<view class="title" style="justify-content:{{!item.courierNumber ? 'flex-end;' : 'space-between;'}}">
+			<text wx:if="{{item.courierNumber}}">快递单号：{{item.courierNumber}}</text>
+			<text>{{item.deliveryStatus}}</text>
+		</view>
+		<view class="list">
+			<view class="item" wx:for="{{item.giftInfos}}" wx:for-item="i" wx:key="id">
+				<view>
+					<image src="{{i.thumbPicUrl}}"></image>
+				</view>
+				<view>{{i.giftName}}</view>
+			</view>
+		</view>
+	</view>
+	<view wx:if="{{!nextPage}}">
+		<van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%;margin:10rpx 0">暂无更多数据</van-divider>
+	</view>
+</view>

@@ -1,0 +1,3 @@
+<header itemInfo="{{itemInfo}}" />
+
+<reserveInfo appointmentDate="{{appointmentDate}}" hospitalId="{{hospitalId}}" itemInfoId="{{itemInfoId}}" time="{{time}}" week="{{week}}" currentDate="{{currentDate}}" currentWeek="{{currentWeek}}" currentTime="{{currentTime}}" />

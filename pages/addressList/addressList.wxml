@@ -1,0 +1,34 @@
+<view class="warp">
+	<block wx:for="{{addressList}}" wx:for-item='item' wx:key="id">
+		<van-swipe-cell id="swipe-cell" right-width="{{ 60 }}" async-close bind:close="handleItemDelete" data-id="{{item.id}}">
+			<view class="item" bindtap="handleSelectAddress" data-item="{{item}}">
+				<view class="item_left">
+					<text>{{item.lastname}}</text>
+				</view>
+				<view class="item_center">
+					<view class="item_center_title">
+						<text class="item_center_title_name">{{item.contact}}</text>
+						<text class="item_center_title_phone">{{item.phone}}</text>
+					</view>
+					<view class="item_center_content">
+						<text class="item_center_content_default" wx:if="{{item.isDefault}}">默认</text>
+						<text class="item_center_content_info"
+							style="margin-left: {{item.isDefault ? '20rpx' : ''}}">{{item.province}}{{item.city}} {{item.district}}
+							{{item.other}}</text>
+					</view>
+				</view>
+				<view class="item_right" bindtap="handleEdit" data-item="{{item}}">
+					<text>编辑</text>
+				</view>
+			</view>
+			<view slot="right" class="delete_btn">删除</view>
+		</van-swipe-cell>
+	</block>
+</view>
+
+<!-- 删除提示 -->
+<van-dialog id="van-dialog" />
+
+<view class="addAddress">
+	<van-button type="primary" block bind:click="handleAddAddress">添加新地址</van-button>
+</view>

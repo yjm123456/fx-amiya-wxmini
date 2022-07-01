@@ -1,0 +1,29 @@
+<!-- 地址 -->
+<view class="address_wrap" bindtap="handleSelectAddress" wx:if="{{address}}">
+  <view class="left iconfont icon-dizhi">
+  </view>
+  <view class="center">
+    <view class="center_top">
+      <text>{{address.contact}}</text>
+      <text>{{address.phone}}</text>
+    </view>
+    <view class="center_bottom">
+      {{address.province}}{{address.city}} {{address.district}}{{address.other}}
+    </view>
+  </view>
+  <view class="right iconfont icon-arrow-left">
+  </view>
+</view>
+<!-- 商品信息 -->
+<view class="gift_info">
+  <image src="{{item.thumbPicUrl}}"></image>
+  <view>
+    {{item.name}}
+  </view>
+</view>
+<!-- 提交 -->
+<view class="submit" bindtap="confirm">
+  <van-button type="primary" block round color="#3884FF">提交</van-button>
+</view>
+<!-- 提示 -->
+<van-dialog id="van-dialog" />

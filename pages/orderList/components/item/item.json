@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-image": "@vant/weapp/image/index"
+  }
+}

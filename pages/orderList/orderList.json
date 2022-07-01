@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "all": "./components/all/all",
+    "waitPay": "./components/waitPay/waitPay",
+    "waitSendGoods": "./components/waitSendGoods/waitSendGoods",
+    "waitConfirm": "./components/waitConfirm/waitConfirm"
+  },
+  "navigationBarTitleText": "小程序订单"
+}

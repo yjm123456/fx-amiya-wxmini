@@ -1,0 +1,15 @@
+<!--pages/writeoffGoodGift/components/received.wxml-->
+<view class="container">
+  <view class="item_content" wx:for="{{list}}" wx:key="index">
+    <view class="state">{{item.deliveryStatus}}</view>
+    <view class="item" wx:for="{{item.giftInfos}}" wx:key="index" wx:for-item="i">
+      <view class="item_con">
+        <van-image width="100" height="100" src="{{i.thumbPicUrl}}" />
+        <view class="name">{{i.giftName}}</view>
+      </view>
+      <view class="button" bindtap="lookLogistics" wx:if="{{item.deliveryStatus == '已发货'}}" data-item="{{item}}">查看物流</view>
+    </view>
+  </view>
+  <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+  </van-divider>
+</view>

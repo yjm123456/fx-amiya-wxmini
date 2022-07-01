@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "header": "./components/header/header",
+    "reserveInfo": "./components/reserveInfo/reserveInfo",
+    "customerService": "./../../components/customerService/customerService"
+  },
+  "navigationBarTitleText": "二维码"
+}

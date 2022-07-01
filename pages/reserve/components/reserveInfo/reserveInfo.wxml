@@ -1,0 +1,30 @@
+<view class="wrap">
+	<view class="title">核销信息</view>
+	<!-- 核销日期 -->
+	<view class="reserve_date">
+		<view class="lable">核销日期</view>
+		<view class="info">
+			<text>{{appointmentDate}}</text>
+			<text>{{week}}</text>
+			<text>{{time}}</text>
+		</view>
+	</view>
+	<!-- 创建时间 -->
+	<view class="create_date">
+		<view class="lable">创建时间</view>
+		<view class="info">
+			<text>{{currentDate}}</text>
+			<text>星期{{currentWeek}}</text>
+			<text>{{currentTime}}</text>
+		</view>
+	</view>
+	<!-- 备注 -->
+	<view class="remarks">
+		<view class="lable">备注</view>
+		<view class="form">
+			<input placeholder="选填，请输入其他要求" bindinput="remarkInputChange"></input>
+		</view>
+	</view>
+	<!-- 核销按钮 -->
+	<view class="tool" bindtap="handleReserve">提交</view>
+</view>

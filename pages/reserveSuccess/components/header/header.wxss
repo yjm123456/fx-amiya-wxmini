@@ -1,0 +1,21 @@
+/* 头部 */
+.header_wrap {
+  background-color: #114857;
+  color: #fff;
+  padding: 40rpx 48rpx;
+}
+
+.header_wrap .title {
+  color: rgba(249, 247, 247, 100);
+  font-size: 36rpx;
+}
+
+.header_wrap .info_wrap {
+  margin-left: 70rpx;
+  margin-top: 22rpx;
+  font-size: 28rpx;
+}
+
+.header_wrap .info_wrap .info text:last-child {
+  margin-left: 40rpx;
+}

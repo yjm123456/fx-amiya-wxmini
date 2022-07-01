@@ -1,0 +1,111 @@
+<!-- type为1是支付订单 -->
+<view class="container">
+<view class="content">
+  <view class="item"  wx:for="{{list}}" wx:key="index" >
+    <view class="state" wx:if="{{item.statusCode == '待付款' || item.statusCode == '已完成' || item.statusCode == '已取消'  || item.statusCode == '退款中' || item.statusCode == '兑换成功'|| item.statusCode == '退款中'}}">{{item.statusCode}}</view>
+    <view class="refund_successful" wx:elif="{{item.statusCode == '退货成功' || item.statusCode == '已关闭'}}">{{item.statusCode}}</view>
+    <view class="tobe_written" wx:else>{{item.statusCode}}</view>
+    <view class="order_number">订单号：{{item.orderId}}</view>
+    <view class="date">日期：{{item.createDate}}</view>
+    <!-- goods -->
+    <view class="goods_content">
+      <view class="goods">
+        <van-image width="110" height="110" src="{{item.thumbPicUrl}}" />
+        <view class="memo">
+          <view class="title">{{item.goodsName}}</view>
+          <view class="city_hos">
+            <!-- type == 1是支付订单 展示医院 为2是积分订单 展示积分 -->
+            <text class="hospital" wx:if="{{type==1}}">{{item.appointmentHospital ? item.appointmentHospital : '' }}</text>
+            <text class="hospital" wx:else>{{item.goodsCategory ? item.goodsCategory : '' }}</text>
+          </view>
+          <view class="price_number" wx:if="{{type==1}}">
+            <text class="price">￥{{item.singlePrice}}</text>
+            <text class="goods_number">x {{item.quantity}}</text>
+          </view>
+          <view class="price_number" wx:if="{{type==2}}">
+            <text class="price" wx:if="{{item.singleIntegrationQuantity}}">{{item.singleIntegrationQuantity}}积分</text>
+            <text class="goods_number">x {{item.quantity}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 商品总价 type==1支付订单 为2积分订单-->
+      <view class="price_content" wx:if="{{type==1}}">
+        <text class="total_price">商品总价：￥{{item.actualPayment}}</text>
+        <text>实付款：￥{{item.actualPayment}}</text>
+      </view>
+      <view class="price_content" wx:if="{{type==2}}">
+        <text class="total_price">商品积分：{{item.integrationQuantity}}</text>
+        <text>实付积分：{{item.integrationQuantity}}</text>
+      </view>
+      <!-- 下单平台  -->
+      <view class="single_platform_content">
+        <view class="single_platform" wx:if="{{item.appType==0}}">
+          <image src="/images/tm.jpg" class="platform_img"></image>
+          <text class="state_type">天猫</text>
+        </view>
+        <view class="single_platform" wx:if="{{item.appType==1}}">
+          <image src="/images/jd.jpg" class="platform_img"></image>
+          <text class="state_type">京东</text>
+        </view>
+        <view class="single_platform" wx:if="{{item.appType==2}}">
+          <image src="/images/xcx.jpg" class="platform_img"></image>
+          <text class="state_type">小程序</text>
+        </view>
+        <view class="single_platform" wx:if="{{item.appType==3}}">
+          <image src="/images/gzh.jpg" class="platform_img"></image>
+          <text class="state_type">公众号</text>
+        </view>
+        <!-- 支付订单判断 -->
+        <!-- 待付款  -->
+        <view wx:if="{{type==1}}">
+          <view class="button_con" wx:if="{{item.statusCode=='待付款' && type==1}}">
+            <view class="button" bindtap="handlePay" data-appType="{{item.appType}}" data-tradeId="{{item.tradeId}}" data-singlePlatform="1" data-item="{{item}}">去付款</view>
+            <navigator class="button" url="/pages/purchasedOrder/goodsDetail/goodsDetail?orderId={{item.orderId}}&type={{type}}" hover-class="none">订单详情</navigator>
+            <view class="cancel_button" bindtap="handleCancelOrder" data-tradeId="{{item.tradeId}}" data-appType="{{item.appType}}" data-singlePlatform="1">取消订单</view>
+          </view>
+          <!-- 退货成功  -->
+          <view class="button_con" wx:elif="{{item.statusCode=='退货成功' && type==1}}"></view>
+          <!-- 待核销 退款中 已完成  -->
+          <view class="button_con" wx:else="{{(item.statusCode=='待核销' && type==1) || (item.statusCode=='退款中' && type==1) || (item.statusCode=='已完成' && type==1) }}">
+            <navigator class="button" url="/pages/purchasedOrder/goodsDetail/goodsDetail?orderId={{item.orderId}}&type={{type}}" hover-class="none">订单详情</navigator>
+          </view>
+        </view>
+        
+        <!-- 积分订单 状态判断显示按钮  -->
+        <view wx:else>
+          <view class="button_con" wx:if="{{item.statusCode=='未兑换' && type==2}}">
+            <view class="button" bindtap="handlePay" data-appType="{{item.appType}}" data-tradeId="{{item.tradeId}}" data-singlePlatform="2" >去付款</view>
+            <navigator class="button" url="/pages/purchasedOrder/goodsDetail/goodsDetail?orderId={{item.orderId}}&type={{type}}" hover-class="none">订单详情</navigator>
+            <view class="cancel_button" bindtap="handleCancelOrder" data-tradeId="{{item.tradeId}}" data-appType="{{item.appType}}" data-singlePlatform="2">取消订单</view>
+          </view>
+          <!-- 兑换成功 -->
+          <view class="button_con" wx:elif="{{item.statusCode=='兑换成功' && type==2}}">
+            <navigator class="button" url="/pages/purchasedOrder/goodsDetail/goodsDetail?orderId={{item.orderId}}&type={{type}}" hover-class="none">订单详情</navigator>
+            <navigator class="button" url="/pages/logistics/logistics?tradeId={{item.tradeId}}" hover-class="none" wx:if="{{item.statusCodeInfo=='WAIT_BUYER_CONFIRM_GOODS'}}">查看物流</navigator>
+            <view class="button"  wx:if="{{item.statusCodeInfo=='WAIT_SELLER_SEND_GOODS' || item.statusCodeInfo=='WAIT_BUYER_CONFIRM_GOODS' }}" bindtap="pointReund" data-orderId="{{item.orderId}}">积分退款</view>
+          </view>
+          <!--已关闭 已完成 -->
+          <view class="button_con" wx:else="{{(item.statusCode=='已关闭' && type==2) || (item.statusCode=='已完成' && type==2) }}">
+            <navigator class="button" url="/pages/purchasedOrder/goodsDetail/goodsDetail?orderId={{item.orderId}}&type={{type}}" hover-class="none">订单详情</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+<van-popup show="{{ show }}" custom-style="border-radius:20rpx;width:80%">
+  <view class="confrim">确认要退款吗</view>
+  <view class="pointReundClass">退款原因：
+    <textarea  	value="{{refundReason}}"  style="width:400rpx;height:70px;border:1rpx solid #ccc;padding:10rpx;box-sizing:border-box;border-radius:10rpx;font-size:24rpx" bindinput="refundReasonChange" placeholder-style="font-size:24rpx"	></textarea>
+  </view>
+  <view class="button_both">
+    <view class="cancel_but" bindtap="onClose">取消</view>
+    <view class="confrim_but"  bindtap="onConfirm">确认</view>
+  </view>
+</van-popup>
+</view>
+  <view class="title_bottom">仅展示2021-06-01之后的订单</view>
+
+  <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+  </van-divider>
+</view>
+

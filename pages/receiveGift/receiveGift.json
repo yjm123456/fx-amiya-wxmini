@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-divider": "@vant/weapp/divider/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-button": "@vant/weapp/button/index"
+  },
+  "navigationBarTitleText": "选择礼品"
+}

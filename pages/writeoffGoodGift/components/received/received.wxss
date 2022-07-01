@@ -1,0 +1,39 @@
+/* pages/writeoffGoodGift/components/received.wxss */
+.item,.item_content{
+  width: 100%;
+  background-color: #fff;
+}
+.item{
+  position: relative;
+}
+.item_content{
+  margin-top: 30rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.state{
+  font-size: 26rpx;
+  color: #ff1554;
+  text-align: end;
+}
+.item_con{
+  display: flex;
+  align-items: center;
+}
+.name{
+  flex:1;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.button{
+  width: 124rpx;
+  padding: 6rpx 15rpx;
+  box-sizing: border-box;
+  color: #fff;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  background-color: #ff1554;
+  position: absolute;
+  bottom: 10rpx;
+  right: 0rpx;
+}
