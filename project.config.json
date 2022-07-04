@@ -1,90 +1,94 @@
 {
-  "description": "项目配置文件",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "enhance": true,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": false,
-    "coverView": true,
-    "nodeModules": false,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": false,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
+    "description": "项目配置文件",
+    "packOptions": {
+        "ignore": []
     },
-    "enableEngineNative": false,
-    "useIsolateContext": true,
-    "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "showES6CompileOption": false
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.18.1",
-  "appid": "wx695942e4818de445",
-  "projectname": "%E9%98%BF%E7%BE%8E%E9%9B%85",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "scripts": {},
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
-  "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/shopping/shopping",
-          "pathName": "pages/shopping/shopping",
-          "query": "",
-          "scene": null
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "enhance": true,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": false,
+        "coverView": true,
+        "nodeModules": false,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": true,
+        "scopeDataCheck": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": false,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "lazyloadPlaceholderEnable": false,
+        "useMultiFrameRuntime": true,
+        "useApiHook": true,
+        "useApiHostProcess": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
         },
-        {
-          "name": "pages/goodsDetails/goodsDetails",
-          "pathName": "pages/goodsDetails/goodsDetails",
-          "query": "goodsId=054b1c075c5547bfaa2118fdea16a93e",
-          "scene": null
+        "enableEngineNative": false,
+        "useIsolateContext": true,
+        "userConfirmedBundleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "disableUseStrict": false,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": false,
+        "minifyWXML": true
+    },
+    "compileType": "miniprogram",
+    "libVersion": "2.18.1",
+    "appid": "wx695942e4818de445",
+    "projectname": "%E9%98%BF%E7%BE%8E%E9%9B%85",
+    "debugOptions": {
+        "hidedInDevtools": []
+    },
+    "scripts": {},
+    "isGameTourist": false,
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "condition": {
+        "plugin": {
+            "list": []
         },
-        {
-          "name": "confirmOrder",
-          "pathName": "pages/confirmOrder/confirmOrder",
-          "query": "goodsId=054b1c075c5547bfaa2118fdea16a93e",
-          "scene": null
+        "game": {
+            "list": []
         },
-        {
-          "name": "pages/orderList/orderList",
-          "pathName": "pages/orderList/orderList",
-          "query": "",
-          "scene": null
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/shopping/shopping",
+                    "pathName": "pages/shopping/shopping",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/goodsDetails/goodsDetails",
+                    "pathName": "pages/goodsDetails/goodsDetails",
+                    "query": "goodsId=054b1c075c5547bfaa2118fdea16a93e",
+                    "scene": null
+                },
+                {
+                    "name": "confirmOrder",
+                    "pathName": "pages/confirmOrder/confirmOrder",
+                    "query": "goodsId=054b1c075c5547bfaa2118fdea16a93e",
+                    "scene": null
+                },
+                {
+                    "name": "pages/orderList/orderList",
+                    "pathName": "pages/orderList/orderList",
+                    "query": "",
+                    "scene": null
+                }
+            ]
         }
-      ]
     }
-  }
 }
