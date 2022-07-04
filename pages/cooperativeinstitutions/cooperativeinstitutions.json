@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "van-popup": "@vant/weapp/popup/index",
+        "van-image": "@vant/weapp/image/index",
+        "authPhone": "./../../components/authPhone/auth"
+    },
+    "navigationBarTitleText": "合作机构概览"
+}

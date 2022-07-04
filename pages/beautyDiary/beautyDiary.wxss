@@ -1,0 +1,31 @@
+.container{
+    padding: 10rpx;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.diary{
+    width: 100%;
+    border-radius: 10rpx;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+    box-shadow: 2rpx 2rpx 10rpx 1rpx;
+}
+.diary image{
+    width:100%;
+}
+.diary_title{
+    font-family: FZShuTi;
+    font-size: 38rpx;
+    font-weight: 600;
+    padding-top:5rpx;
+    padding-bottom:5rpx ;
+}
+.diary_bottom{
+    padding: 10rpx;
+}
+.diary_left{
+    font-size: 35rpx;
+    color: #545454;
+}

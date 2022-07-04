@@ -1,0 +1,19 @@
+<view class="container">
+    <view class="member_info">
+        <image></image>
+        <text>用户名</text>
+    </view>
+    <view class="member_card">
+        <view>
+            <text>立即授权,开启会员之旅</text>
+            <button>立即授权</button>
+        </view>
+        <view>
+        <text>0成长值</text>
+        </view>
+        <view></view>
+    </view>
+    <view class="member_leave_info">
+    <view>会员等级介绍</view>
+    </view>
+</view>

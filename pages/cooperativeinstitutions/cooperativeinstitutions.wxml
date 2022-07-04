@@ -1,0 +1,66 @@
+<!-- 医院列表 -->
+<view class="hospital_con">
+    <view class="hospital_top">
+        <view class="title_h3">医院列表</view>
+        <view class="flex_bot">
+            <view class="hos_cen" wx:if="{{currentCity}}">
+                <text class="iconfont icon-address" style="font-size:26rpx;margin:5rpx 5rpx  0 0;font-weight:bold"></text>
+                <text>{{currentCity}}</text>
+            </view>
+            <view class="switch_con" bindtap="switchCity">
+                <text class="iconfont icon-qiehuan" style="margin-right:8rpx"></text>
+                <text>城市</text>
+            </view>
+        </view>
+    </view>
+    <view class="hospital_scroll">
+        <view class="hospital_item" wx:for="{{hospitalList}}" wx:key="index">
+            <view bindtap="arrivalPlan" data-item="{{item}}">
+                <view class="hospital_top">
+                    <van-image width="50" height="50" src="{{item.thumbPicUrl}}" />
+                    <view class="hospital_title_con">
+                        <view class="hospital_title">{{item.name}}</view>
+                    </view>
+                </view>
+                <view class="address_con">
+                    <view class="address" data-item="{{item}}">地址：{{item.address}}</view>
+                    <view class="arrival_plan">到店计划</view>
+                </view>
+            </view>
+        </view>
+        <van-divider wx:if="{{!hospitalList.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 150%;width:100%">暂无医院</van-divider>
+
+    </view>
+</view>
+<!-- 切换城市弹窗 -->
+<van-popup show="{{ cityModel }}" position="right" bind:close="onCancel" custom-style="height: 100%;width:78%">
+    <view class="popup_con">
+        <view class="pro_content">
+            <view class="popup_item">
+                <!-- 热门城市 -->
+                <view class="hot_con">
+                    <view class="type_name">热门城市</view>
+                    <view class="name_com">
+                        <block wx:for="{{hosCityList}}" wx:key="index">
+                            <view class="popup_text  {{item.id==currentId?'active':'popup_text'}}" bindtap="selectedCity" data-item="{{item}}" data-type="1">{{item.name}}</view>
+                        </block>
+                    </view>
+                </view>
+                <view class="item_type">
+                    <block wx:for="{{cityList}}" wx:key="index">
+                        <view class="{{item.city.length !=0 ? 'items' : ''}}">
+                            <view class="type_name" wx:if="{{item.city.length !=0}}">{{item.provinceName}}</view>
+                            <view class="name_com">
+                                <block wx:for="{{item.city}}" wx:key="index" wx:for-item="i">
+                                    <view class="popup_text {{i.id==currentIds?'actives':'popup_text'}}" bindtap="selectedCity" data-item="{{i}}" data-type="2">{{i.name}}</view>
+                                </block>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</van-popup>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

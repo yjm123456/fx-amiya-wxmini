@@ -32,8 +32,18 @@
     "pages/storeUserMessage/storeUserMessage",
     "pages/toStoreList/toStoreList",
     "pages/index/diaryDetail/diaryDetail",
-    "pages/alipay/alipay"
+    "pages/alipay/alipay",
+    "pages/cooperativeinstitutions/cooperativeinstitutions",
+    "pages/memberbenefits/memberbenefits",
+    "pages/aboutAmeiya/aboutAmeiya",
+    "pages/userProtection/userProtection",
+    "pages/meiYaCard/meiYaCard",
+    "pages/meiYaSelection/meiYaSelection",
+    "pages/beautyDiary/beautyDiary",
+    "pages/oldinvitenew/oldinvitenew",
+    "pages/activity/activity"
   ],
+  "onReachBottomDistance": 50,
   "tabBar": {
     "color": "#000",
     "selectedColor": "#ff1554",
