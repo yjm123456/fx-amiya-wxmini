@@ -41,7 +41,10 @@
     "pages/meiYaSelection/meiYaSelection",
     "pages/beautyDiary/beautyDiary",
     "pages/oldinvitenew/oldinvitenew",
-    "pages/activity/activity"
+    "pages/activity/activity",
+    "pages/IntegralRule/IntegralRule",
+    "pages/shoppingCart/shoppingCart",
+    "pages/personalInfo/personalInfo"
   ],
   "onReachBottomDistance": 50,
   "tabBar": {

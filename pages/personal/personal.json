@@ -1,8 +1,12 @@
 {
-  "usingComponents": {
-    "auth": "./../../components/auth/auth",
-    "authPhone": "./../../components/authPhone/auth"
-  },
-  "navigationBarTitleText": "我的",
-  "disableScroll": true
+    "usingComponents": {
+        "auth": "./../../components/auth/auth",
+        "authPhone": "./../../components/authPhone/auth",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-grid": "@vant/weapp/grid/index",
+        "van-grid-item": "@vant/weapp/grid-item/index"
+    },
+    "navigationBarTitleText": "我的",
+    "disableScroll": true
 }

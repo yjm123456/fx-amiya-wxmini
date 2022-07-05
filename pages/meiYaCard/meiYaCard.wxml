@@ -1,2 +1,24 @@
 <!--pages/meiYaCard/meiYaCard.wxml-->
-<text>MEIYA卡</text>
+<view class="container">
+    <view class="member_card">
+        <view class="member_detail">
+            <view class="grant">
+                <view class="tips"><text class="tip">立即授权,开启会员之旅</text></view>
+                <view class="grant_btn">
+                    <van-button custom-class='btn' type="primary">立即授权</van-button>
+                </view>
+            </view>
+            <view class="growth">
+                <view class="growth_value">
+                    <text class="value">{{0}}</text>成长值
+                </view>
+                <view class="qr_img">
+                    <canvas type="2d" style="width: 210rpx; height: 210rpx;" id="myQrcode"></canvas>             
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="member_leave_info">
+        <view>会员权益</view>
+    </view>
+</view>

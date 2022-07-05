@@ -40,7 +40,9 @@ Page({
     // 获取手指起始坐标
     startY = event.touches[0].clientY;
   },
-
+  tpPersonalInfo(){
+      
+  },
   handleTouchMove(event) {
     moveY = event.touches[0].clientY;
     moveDistance = moveY - startY;

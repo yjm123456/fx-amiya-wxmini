@@ -1,4 +1,7 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "van-image": "@vant/weapp/image/index",
+        "van-button": "@vant/weapp/button/index"
+    },
     "navigationBarTitleText": "会员权益"
 }

@@ -6,3 +6,8 @@
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@vant/weapp/-/weapp-1.5.1.tgz#71049153e66e4cd5ccd42a1338fab472e5a5244b"
   integrity sha512-rfaZy8oW+yE/hz2EK2hwS3eTWXPcddJ+/j7GCHd4+GOlSJuXzk6xpM63ARAWWe+EUQrXqGXl7ssOHdqK3Z9Ejg==
+
+wx-qr@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/wx-qr/-/wx-qr-0.1.2.tgz#3825671008429eb5a2c47f5a53937a74bd5d915e"
+  integrity sha512-U9c6qtQdHYIVnv3joK7FJK1yn3Ia6JTUUaUTTl2RjSxst3NxGr21ytJQ9UngTIIn87g19udFiUHVaQvxmJ4uIQ==

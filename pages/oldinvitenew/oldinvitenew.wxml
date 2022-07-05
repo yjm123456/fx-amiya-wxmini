@@ -1,2 +1,14 @@
 <!--pages/oldinvitenew/oldinvitenew.wxml-->
-<text>老带新</text>
+<view class="container">
+    <image class="logo" src="/images/amy.png"></image>
+    <image class="pic" src="http://iph.href.lu/300x200?text=图片" mode="widthFix"></image>
+    <view class="txt">
+        <view class="big">引"新"有礼<text class="strong">MEIYA</text>宠你</view>
+        <view class="middle">老顾客介绍新客下单,双方均有好礼回赠</view>
+    </view>
+    <image class="pic" src="http://iph.href.lu/300x200?text=图片" mode="widthFix"></image>
+    <view class="welfare">
+        <text class="customer middle">老客权益:XXXX</text>
+        <text class="user middle">新客福利:XXXX</text>
+    </view>
+</view>

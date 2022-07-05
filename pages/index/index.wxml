@@ -52,12 +52,10 @@
     <!-- 活动 -->
     <view class="activity">
         <view class="activity_item" bindtap="handleActivity" data-activity="{{1}}">
-            <text>活动一</text>
-            <image></image>
+            <image src="http://iph.href.lu/300x150?text=活动一" mode="widthFix"></image>
         </view>
         <view class="activity_item" bindtap="handleActivity" data-activity="{{2}}">
-            <text>活动二</text>
-            <image></image>
+            <image src="http://iph.href.lu/300x150?text=活动二" mode="widthFix"></image>
         </view>
     </view>
     <!-- 导航栏二 -->
@@ -92,8 +90,6 @@
                         </view>
                     </view>
                 </view>
-
-
             </view>
         </view>
     </view>
@@ -101,3 +97,5 @@
     <!-- 切换城市弹窗 -->
 
 </view>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

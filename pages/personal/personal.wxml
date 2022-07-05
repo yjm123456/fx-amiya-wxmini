@@ -1,80 +1,108 @@
 <view class="personalContainer">
-  <view class="user_section">
-    <image class="bg" src="/images/cbg.jpg"></image>
-    <view class="user_info_box" bindtap="toLogin">
-      <view class="portrait_box">
-        <image class="portrait" src='{{userInfo.avatarUrl}}'></image>
-      </view>
-      <view class="info_box">
-        <text class="username">{{userInfo.nickName ? userInfo.nickName : '游客'}}</text>
-        <!-- <text class="balance" wx:if="{{balance}}">积分余额 {{balance}}</text> -->
-      </view>
+    <view class="user_section">
+        <!-- <image class="bg" src="/images/cbg.jpg"></image> -->
+        <view class="user_info_box" bindtap="toLogin">
+            <view class="portrait_box" bindtap="tpPersonalInfo">
+                <image class="portrait" src='{{userInfo.avatarUrl}}'></image>
+            </view>
+            <view class="info_box">
+                <view class="info_box_top">
+                    <text class="username">{{userInfo.nickName ? userInfo.nickName : '游客'}}</text>
+                </view>
+                <view class="info_box_bottom">
+                    <view class="bottom_left"><text class="leave">金卡会员</text></view>
+                    <view class="bottom_right">
+                        <image class="leave_img" src="http://iph.href.lu/300x100?text=会员卡" mode="scaleToFill"></image>
+                    </view>
+                </view>
+                <!-- <text class="balance" wx:if="{{balance}}">积分余额 {{balance}}</text> -->
+            </view>
+        </view>
+
+        <!-- <view class="vip_card_box" wx:if="{{memberCard}}">
+            <image src="{{ memberCard.imageUrl}}" mode="widthFix"></image>
+            <view class="up">
+                {{memberCard.memberCardNum}}
+            </view>
+        </view>
+        <view class="vip_card_box" bindtap="handleReceiveMemberCard" wx:else>
+            <image src="/images/receiveCard.png" mode="widthFix"></image>
+        </view> -->
     </view>
 
-    <view class="vip_card_box" wx:if="{{memberCard}}">
-      <image src="{{ memberCard.imageUrl}}" mode="widthFix"></image>
-      <view class="up">
-        {{memberCard.memberCardNum}}
-      </view>
+    <view class="cover_container" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd" style="transform: {{coverTransform}}; transition: {{coveTransition}}">
+        <image class="arc" src="/images/arc.png"></image>
+        <!-- 积分 优惠券 账户余额 -->
+        <!-- <view class="integral_con">
+            <navigator class="integral_item" url="/pages/integral/integral" hover-class="none">
+                <view class="integral">{{balance ? balance : 0}}</view>
+                <view class="integral_text">可用积分</view>
+            </navigator>
+            <view class="integral_item">
+                <view class="integral">0</view>
+                <view class="integral_text">优惠券</view>
+            </view>
+            <view class="integral_item">
+                <view class="integral">0</view>
+                <view class="integral_text">账户余额</view>
+            </view>
+        </view> -->
+        <view>
+            <van-cell-group>
+                <van-cell link-type="navigateTo" url="/pages/orderList/orderList" title="我的订单" value="查看全部订单" />
+                <van-cell title="我的余额{{0}}" value="内容" />
+            </van-cell-group>
+        </view>
+        <view>
+            <van-grid column-num="5">
+                <van-grid-item icon="photo-o" text="待付款" />
+                <van-grid-item icon="photo-o" text="代发货" />
+                <van-grid-item icon="photo-o" text="待收货" />
+                <van-grid-item icon="photo-o" text="评价" />
+                <van-grid-item icon="photo-o" text="退款/售后" />
+            </van-grid>
+        </view>
+        <view>
+            <van-cell is-link link-type="navigateTo" url="/pages/shoppingCart/shoppingCart" title="购物车" />
+            <van-cell is-link link-type="navigateTo" url="/pages/orderList/orderList" title="任务中心" />
+            <van-cell is-link link-type="navigateTo" url="/pages/orderList/orderList" title="赠品" />
+            <van-cell is-link link-type="navigateTo" url="/pages/orderList/orderList" title="联系客服" />
+            <van-cell is-link link-type="navigateTo" url="/pages/orderList/orderList" title="个人信息" />
+            <van-cell is-link link-type="navigateTo" url="/pages/orderList/orderList" title="账号设置" />
+        </view>
+        <view class="tools">
+            <!-- bindtap="arrivalPlan"  到店计划 -->
+            <view bindtap="arrivalPlan">
+                <image src="/images/1.png"></image>
+                <text>到店计划</text>
+            </view>
+            <view>
+                <image src="/images/5.png" bindtap="purchasedOrder"></image>
+                <text>已购买订单</text>
+            </view>
+            <view bindtap="editPhone">
+                <image src="/images/3.png"></image>
+                <text>修改手机号</text>
+            </view>
+            <view style="border:none;" bindtap="myGift">
+                <image src="/images/6.png"></image>
+                <text>核销好礼</text>
+            </view>
+            <view bindtap="myAddress" style="border:none;">
+                <image src="/images/7.png"></image>
+                <text>收货地址</text>
+            </view>
+            <view class="contactus">
+                <image src="/images/4.png"></image>
+                <text>客服</text>
+                <button open-type="contact" hover-class="none" class="contact"></button>
+            </view>
+        </view>
     </view>
-    <view class="vip_card_box" bindtap="handleReceiveMemberCard" wx:else>
-      <image src="/images/receiveCard.png" mode="widthFix"></image>
-    </view>
-  </view>
-
-  <view class="cover_container" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove"
-    bindtouchend="handleTouchEnd" style="transform: {{coverTransform}}; transition: {{coveTransition}}">
-    <image class="arc" src="/images/arc.png"></image>
-    <!-- 积分 优惠券 账户余额 -->
-    <view class="integral_con">
-      <navigator class="integral_item" url="/pages/integral/integral" hover-class="none">
-        <view class="integral">{{balance ? balance : 0}}</view>
-        <view class="integral_text">可用积分</view>
-      </navigator>
-      <view class="integral_item">
-        <view class="integral">0</view>
-        <view class="integral_text">优惠券</view>
-      </view>
-      <view class="integral_item">
-        <view class="integral">0</view>
-        <view class="integral_text">账户余额</view>
-      </view>
-    </view>
-    <view class="tools">
-      <!-- bindtap="arrivalPlan"  到店计划 -->
-      <view bindtap="arrivalPlan">
-        <image src="/images/1.png" ></image>
-        <text>到店计划</text>
-      </view>
-      <view >
-        <image src="/images/5.png" bindtap="purchasedOrder"></image>
-        <text>已购买订单</text>
-      </view>
-      <view bindtap="editPhone">
-        <image src="/images/3.png"></image>
-        <text>修改手机号</text>
-      </view>
-      <view  style="border:none;" bindtap="myGift">
-        <image src="/images/6.png"></image>
-        <text>核销好礼</text>
-      </view>
-      <view bindtap="myAddress" style="border:none;">
-        <image src="/images/7.png"></image>
-        <text>收货地址</text>
-      </view>
-      <view class="contactus">
-        <image src="/images/4.png"></image>
-        <text>客服</text>
-        <button open-type="contact" hover-class="none" class="contact"></button>
-      </view>
-    </view>
-  </view>
 </view>
 
 <!-- 授权 -->
-<auth control="{{controlAuth}}" bind:getUserInfoSuccess='getUserInfoSuccess'
-  bind:cancelGetUserInfo="cancelGetUserInfo" />
+<auth control="{{controlAuth}}" bind:getUserInfoSuccess='getUserInfoSuccess' bind:cancelGetUserInfo="cancelGetUserInfo" />
 
 <!-- 授权手机号 -->
-<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone"
-  bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

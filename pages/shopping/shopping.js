@@ -7,34 +7,37 @@ Page({
    */
   data: {
     // 是否正在处理滚动事件，避免一次滚动多次触发
-    isScrolling: false,
-
-    categoryActive: 0,
-
+    //isScrolling: false,
+    //categoryActive: 0,
     // 商品分类
-    goodsCategoryList: [],
-
+    //goodsCategoryList: [],
     // 商品分类
-    categoryId: "",
-
+    categoryId: 5,
     // 商品名称
     keyword: "",
-
     pageNum: 1,
-
     pageSize: 10,
-
     // 商品列表
     goodsInfos: [],
-
     // 是否存在下一页
     nextPage: true,
+    integral:0
   },
 
   onShow() {
     this.refresh();
   },
-
+  handleRuleTap(){
+      wx.navigateTo({
+        url: '/pages/IntegralRule/IntegralRule',
+      })
+  },
+  handleToShop(){
+      wx.switchTab({
+        url: '/pages/shoppingMall/shoppingMall',
+      })
+  }
+  ,
   refresh() {
     this.setData({
       pageNum: 1,
@@ -51,8 +54,8 @@ Page({
         const { goodsCategorys } = res.data;
         this.setData({
           goodsCategorys,
-          categoryActive: 0,
-          categoryId: goodsCategorys.length && goodsCategorys[0].id
+          categoryActive: 0
+          //categoryId: goodsCategorys.length && goodsCategorys[0].id
         })
         this.getGoodsInfo();
       }
