@@ -21,11 +21,25 @@ Page({
     goodsInfos: [],
     // 是否存在下一页
     nextPage: true,
-    integral:0
+    //积分
+    balance:0
   },
-
+  onLoad(){
+    this.getIntegral();
+  },
   onShow() {
     this.refresh();
+  },
+  // 获取客户的积分余额   get
+getIntegral() {
+    http("get", `/IntegrationAccount/balance`).then(res => {
+      if (res.code === 0) {
+        const { balance } = res.data;
+        this.setData({
+          balance
+        })
+      }
+    })
   },
   handleRuleTap(){
       wx.navigateTo({

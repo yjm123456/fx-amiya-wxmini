@@ -104,7 +104,18 @@ Component({
         })
       }
     },
-
+    toDetail(e){
+        const {orderid,type}=e.currentTarget.dataset;
+        wx.navigateTo({
+          url: "/pages/purchasedOrder/goodsDetail/goodsDetail?orderId="+orderid+"&type="+type,
+        })
+    },
+    toLogistics(e){
+        const{tradeId,type}=e.currentTarget.dataset;
+        wx.navigateTo({
+          url: '/pages/logistics/logistics.js',
+        })
+    },
     // 确认收货
     handleConfirm(e) {
       const { tradeid } = e.currentTarget.dataset;

@@ -18,7 +18,7 @@
     <view>
       
     </view>
-    <button class='customerService' hover-class="none" openType="contact">
+    <button class='customerService' hover-class="none" bindcontact="handleContact" openType="contact">
       <view class="service">立即咨询</view>
       
 		</button>

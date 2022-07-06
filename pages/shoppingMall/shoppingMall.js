@@ -30,8 +30,9 @@ Page({
 
     // 是否存在下一页
     nextPage: true,
+    
   },
-
+  
   onShow() {
     this.refresh();
   },

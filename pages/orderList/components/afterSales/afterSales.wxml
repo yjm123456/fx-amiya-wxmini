@@ -1,0 +1,2 @@
+<!--pages/orderList/components/afterSales/afterSales.wxml-->
+<item list="{{list}}" bind:handleRefreshOrderList="handleRefreshOrderList"></item>

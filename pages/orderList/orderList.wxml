@@ -1,4 +1,4 @@
-<van-tabs active="{{ active }}" bind:change="handleTabChange" sticky>
+<van-tabs wx:if="show" active="{{active}}" bind:change="handleTabChange" id="tabs">
   <van-tab title="全部">
     <all active="{{active}}" id="all"></all>
   </van-tab>
@@ -10,5 +10,11 @@
   </van-tab>
   <van-tab title="待收货">
     <waitConfirm active="{{active}}" id="waitConfirm"></waitConfirm>
+  </van-tab>
+  <van-tab title="待评价">
+    <waitEvaluation active="{{active}}" id="waitEvaluation"></waitEvaluation>
+  </van-tab>
+  <van-tab title="退款/售后">
+    <afterSales active="{{active}}" id="afterSales"></afterSales>
   </van-tab>
 </van-tabs>

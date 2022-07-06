@@ -162,6 +162,20 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "我的",
+                    "pathName": "pages/personal/personal",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "订单",
+                    "pathName": "pages/orderList/orderList",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

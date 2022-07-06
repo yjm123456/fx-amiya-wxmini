@@ -1,12 +1,19 @@
+.warp{
+    padding: 20rpx;
+}
 .item {
-  margin-top: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2;
+  overflow: hidden;
+  margin-bottom: 20rpx;
 }
 
 .header {
   padding: 20rpx 30rpx;
-  background-color: #fff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .header .order_state {

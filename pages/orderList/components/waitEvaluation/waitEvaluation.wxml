@@ -1,0 +1,2 @@
+<!--pages/orderList/components/waitEvaluation/waitEvaluation.wxml-->
+<item list="{{list}}" bind:handleRefreshOrderList="handleRefreshOrderList"></item>

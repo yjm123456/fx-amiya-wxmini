@@ -5,8 +5,8 @@
         "van-cell": "@vant/weapp/cell/index",
         "van-cell-group": "@vant/weapp/cell-group/index",
         "van-grid": "@vant/weapp/grid/index",
-        "van-grid-item": "@vant/weapp/grid-item/index"
+        "van-grid-item": "@vant/weapp/grid-item/index",
+        "van-icon": "@vant/weapp/icon/index"
     },
-    "navigationBarTitleText": "我的",
-    "disableScroll": true
+    "navigationBarTitleText": "我的"
 }

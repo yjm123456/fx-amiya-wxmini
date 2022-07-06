@@ -165,7 +165,7 @@ Page({
             url: '/pages/shoppingMall/shoppingMall',
         })
     },
-
+    
 
     // 绑定手机号
     handleBindPhone() {
