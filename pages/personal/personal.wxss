@@ -1,4 +1,12 @@
-
+.con_btn{
+    width: 200rpx;
+    background-color: #fff;
+    border: 0rpx #fff;
+    width: 100%;
+}
+.con_btn::after{
+    border: 0;
+}
 .user_info_box {
     height: 480rpx;
     display: flex;

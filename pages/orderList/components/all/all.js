@@ -27,7 +27,8 @@ Component({
     pageSize: 10,
     list: [],
     // 是否还有下一页
-    nextPage: true
+    nextPage: true,
+    ExchangeType:1
   },
 
   /**
@@ -35,12 +36,12 @@ Component({
    */
   methods: {
     getOrderList(callback) {
-      const { statusCode, pageNum, pageSize, nextPage } = this.data;
+      const {  pageNum, pageSize, nextPage,ExchangeType } = this.data;
       if (!nextPage) return;
       const data = {
-        statusCode, pageNum, pageSize
+         pageNum, pageSize,ExchangeType
       }
-      http("get", `/Order/list`, data).then(res => {
+      http("get", `/Order/getAlreadyBuyOrderList`, data).then(res => {
         if (res.code === 0) {
           const { list, totalCount } = res.data.orders;
           this.setData({

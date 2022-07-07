@@ -1,7 +1,7 @@
 <view class="warp">
 
     <!-- <navigator class="button" url="/pages/purchasedOrder/goodsDetail/goodsDetail?orderId={{item.orderId}}&type={{type}}" hover-class="none">订单详情</navigator> -->
-    <view class="item" wx:for="{{list}}" bindtap="toDetail" data-orderid="{{item.orderInfoList[0].id}}" data-type="{{item.orderInfoList[0].exchangeType}}" wx:key="id">
+    <view class="item" wx:for="{{list}}" wx:key="id">
         <view class="header">
             <view class="order_state">
                 {{item.statusText}}
@@ -34,15 +34,29 @@
             <!-- 待付款 -->
             <van-button type="default" size="small" class="cancel" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handleCancelOrder">取消
             </van-button>
-            <van-button type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay" data-orderIfon="{{item.orderInfoList}}">付款
+            <van-button type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2"  data-singlePlatform="1" data-orderIfon="{{item.orderInfoList}}">付款
             </van-button>
             <!-- 待收货 -->
-            <van-button type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'}}" data-tradeId="{{item.tradeId}}" bind:click="handleConfirm">
+            <van-button type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'}}" data-tradeid="{{item.tradeId}}" bind:click="handleConfirm">
                 确认收货
             </van-button>
-            <van-button type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' && item.orderInfoList[0].orderType===1}}" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].orderType}}" catch:click="toLogistics">
+            <!-- 查看物流 -->
+            <van-button type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' && item.orderInfoList[0].orderType===1}}" data-tradeid="{{item.tradeId}}" data-type="{{item.orderInfoList[0].orderType}}" bind:click="toLogistics">
                 查看物流
             </van-button>
+            <!-- 订单详情 -->
+            <van-button type="default" size="small" data-orderid="{{item.orderInfoList[0].id}}" data-type="{{item.orderInfoList[0].exchangeType===0 ? 2:1}}" bind:click="toDetail">
+                订单详情
+            </van-button>
+        </view>
+        <view wx:else>
+            <view class="tool">
+                <!-- 订单详情 -->
+                <van-button type="default" size="small" data-orderid="{{item.orderInfoList[0].id}}" data-type="{{item.orderInfoList[0].orderType}}" bind:click="toDetail">
+                    订单详情
+                </van-button>
+            </view>
+
         </view>
     </view>
     <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据

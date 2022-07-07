@@ -1,5 +1,6 @@
 // pages/integral/integral.js
 import http from "./../../utils/http"
+import { iscustomer, isAuthorizationUserInfo } from "./../../api/user";
 Page({
 
   /**
@@ -17,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      //this.isCustomer();
     this.getIntegral()
     this.getInterList()
   },
@@ -31,8 +33,19 @@ Page({
       }
     })
   },
+  isCustomer(callback) {
+    iscustomer().then(res => {
+      if (res.code === 0) {
+        const {
+          isCustomer
+        } = res.data;
+        callback && callback(isCustomer)
+      }
+    })
+  },
   getInterList(callback){
     const { pageNum, pageSize, nextPage } = this.data;
+    console.log(nextPage);
       if (!nextPage) return;
       const data = {
         pageNum, pageSize
@@ -82,6 +95,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+      console.log("到底")
     this.getInterList();
   },
 })

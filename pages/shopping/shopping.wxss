@@ -10,7 +10,9 @@
 .big {
     font-size: 38rpx;
 }
-
+.strong{
+    font-weight: 600;
+}
 .middle {
     font-size: 32rpx;
 }

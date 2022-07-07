@@ -37,7 +37,7 @@
     </scroll-view>
   </view> -->
     <view class="integral_info">
-        <view class="integral_value big"><text>可用积分</text><text>{{balance}}</text></view>
+        <view class="integral_value big"><text class="strong">可用积分</text><text class="big strong">{{balance}}</text></view>
         <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
     </view>
     <view class="integral_detail">

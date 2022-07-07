@@ -134,17 +134,19 @@ getIntegral() {
     })
     this.getGoodsInfo();
   },
-
+  onReachBottom: function () {
+  this.getGoodsInfo();
+},
   // 上拉加载
-  loadMore() {
-    if (this.data.nextPage) {
-      if (this.data.isScrolling === true) return;
-      this.data.isScrolling = true;
-      this.getGoodsInfo(() => {
-        this.data.isScrolling = false;
-      });
-    }
-  },
+//   loadMore() {
+//     if (this.data.nextPage) {
+//       if (this.data.isScrolling === true) return;
+//       this.data.isScrolling = true;
+//       this.getGoodsInfo(() => {
+//         this.data.isScrolling = false;
+//       });
+//     }
+//   },
 
   // 商品详情
   goodsDetails(e) {

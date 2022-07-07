@@ -9,5 +9,5 @@
         "waitEvaluation": "./components/waitEvaluation/waitEvaluation",
         "afterSales": "./components/afterSales/afterSales"
     },
-    "navigationBarTitleText": "小程序订单"
+    "navigationBarTitleText": "我的订单"
 }

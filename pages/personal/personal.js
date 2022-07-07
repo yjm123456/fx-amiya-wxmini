@@ -140,7 +140,29 @@ Page({
       }
     })
   },
-
+ to(e){
+    this.isCustomer((isCustomer) => {
+        if (isCustomer) {
+          wx.navigateTo({
+            url: e.currentTarget.dataset.url,
+          })
+        } else {
+          this.handleBindPhone();
+        }
+      })
+ },
+ toIntegral(e){
+    const{url}=e.currentTarget.dataset
+    this.isCustomer((isCustomer) => {
+        if (isCustomer) {
+          wx.switchTab({
+            url: url,
+          })
+        } else {
+          this.handleBindPhone();
+        }
+      })
+ },
   // 收货地址
   myAddress() {
     this.isCustomer((isCustomer) => {
@@ -252,7 +274,10 @@ Page({
       }
     })
   },
-
+  concat(){
+    wx.openCustomerServiceChat();
+  }
+,
   onHide() {
     this.setData({
       controlAuth: false,

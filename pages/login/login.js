@@ -13,6 +13,7 @@ Page({
   onLoad(e) {
     this.data.path = e.path;
     this.data.editPhone = e.editPhone ? JSON.parse(e.editPhone) : false;
+    console.log(this.data.editPhone)
   },
 
   // 手机号
@@ -101,6 +102,7 @@ Page({
       validateCode(data).then(res => {
         if (res.code === 0) {
           if (this.data.editPhone) {
+              console.log("修改")
             // 修改手机号
             editPhone(phone).then(res => {
               if (res.code === 0) {

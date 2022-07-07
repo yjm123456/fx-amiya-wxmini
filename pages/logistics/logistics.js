@@ -17,15 +17,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const {tradeId,type,courierNumber,expressId,receiverPhone} = options
+    const {tradeid,type,courierNumber,expressId,receiverPhone} = options
     this.setData({
-      tradeId:tradeId,
+      tradeId:tradeid,
     })
     // type为1 判断是点击核销好礼页面 还是积分订单页面 如果是核销好礼页面调用核销好礼接口 
     if(type==1){
       this.getGiftLogistics(courierNumber,expressId,receiverPhone)
     }else{
-      this.getLogistics(tradeId)
+      this.getLogistics(tradeid)
     }
   },
   // 获取积分订单物流信息

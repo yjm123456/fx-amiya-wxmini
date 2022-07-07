@@ -44,7 +44,9 @@
     "pages/activity/activity",
     "pages/IntegralRule/IntegralRule",
     "pages/shoppingCart/shoppingCart",
-    "pages/personalInfo/personalInfo"
+    "pages/personalInfo/personalInfo",
+    "pages/accountSettings/accountSettings",
+    "pages/missionCenter/missionCenter"
   ],
   "onReachBottomDistance": 50,
   "tabBar": {
