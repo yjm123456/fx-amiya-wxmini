@@ -19,8 +19,9 @@ Page({
 
     const {orderId,type} = options
     console.log(orderId);
+    console.log(type)
     this.setData({
-      type:options.type
+      type:type
     })
     this.getOrderInfoById(orderId)
   },

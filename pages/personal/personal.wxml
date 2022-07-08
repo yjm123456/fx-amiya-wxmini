@@ -50,7 +50,7 @@
         <view class="info_list">
             <van-cell-group>
                 <van-cell link-type="navigateTo" bindtap="to" data-url="/pages/orderList/orderList" title="我的订单" value="查看全部订单" />
-                <van-cell  >
+                <van-cell>
                     <view slot="title">我的余额:<text>{{0}}</text></view>
                 </van-cell>
             </van-cell-group>
@@ -78,7 +78,7 @@
             <van-cell is-link link-type="navigateTo" data-url="/pages/personalInfo/personalInfo" bindtap="to" title="个人信息" />
             <van-cell is-link link-type="navigateTo" data-url="/pages/accountSettings/accountSettings" bindtap="to" title="账号设置" />
         </view>
-        <view class="tools">
+        <!-- <view class="tools">
             <view bindtap="arrivalPlan">
                 <image src="/images/1.png"></image>
                 <text>到店计划</text>
@@ -104,7 +104,7 @@
                 <text>客服</text>
                 <button open-type="contact" hover-class="none" class="contact"></button>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>
 

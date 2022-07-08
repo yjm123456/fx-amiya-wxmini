@@ -1,2 +1,16 @@
 <!--pages/missionCenter/missionCenter.wxml-->
-<text>pages/missionCenter/missionCenter.wxml</text>
+<view class="container">
+    <view class="circle">
+        <view class="content">
+            <view class="tip">我的成长值</view>
+            <view class="growth">100</view>
+            <view class="diff">还差<text>10</text>成长值升级XX会员</view>
+        </view>
+    </view>
+    <view class="content">
+        <view>基础任务</view>
+        <view>购物任务</view>
+        <view>已完成任务</view>
+        <view>已绑定手机号</view>
+    </view>
+</view>

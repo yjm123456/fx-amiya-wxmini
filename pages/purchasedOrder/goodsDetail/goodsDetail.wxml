@@ -72,7 +72,7 @@
             <text>实付款：</text>
             <text class="price" wx:if="{{type==1  && orderInfo.orderType==0}}">￥{{orderInfo.actualPayment}}</text>
             <text class="price" wx:if="{{type==1  && orderInfo.orderType==1}}">￥{{orderInfo.actualPayment}}</text>
-            <text class="price" wx:if="{{type==1  && orderInfo.orderType==1 & orderInfo.appType==3}}">
+            <text class="price" wx:if="{{type==1  && orderInfo.orderType==1 && orderInfo.appType==3}}">
                 <text wx:if="{{orderInfo.appType==3}}">￥{{orderInfo.actualPayment}}</text>
                 <text wx:else>￥{{orderInfo.integrationQuantity}}</text>
             </text>

@@ -45,7 +45,7 @@ Component({
       const data = {
         statusCode, pageNum, pageSize
       }
-      http("get", `/Order/list`, data).then(res => {
+      http("get", `/Order/alllist`, data).then(res => {
         if (res.code === 0) {
           const { list, totalCount } = res.data.orders;
           this.setData({

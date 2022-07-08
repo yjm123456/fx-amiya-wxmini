@@ -1,2 +1,13 @@
 <!--pages/personalInfo/personalInfo.wxml-->
-<text>pages/personalInfo/personalInfo.wxml</text>
+<view class="container">
+    <view>基本信息</view>
+    <van-cell-group>
+        <van-cell title="头像" value="{{userInfo.avatarUrl}}" />
+        <van-cell title="手机号" value="{{userInfo.phone}}" />
+        <van-cell title="会员等级" value="vip1" />
+        <van-cell title="性别" value="{{userInfo.sex}}" />
+        <van-cell title="生日" value="" />
+        <van-cell title="地区" value="{{userInfo.city}}" />
+        <van-cell title="收货地址" value="内容" />
+    </van-cell-group>
+</view>

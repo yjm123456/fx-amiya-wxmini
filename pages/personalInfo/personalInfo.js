@@ -1,18 +1,19 @@
 // pages/personalInfo/personalInfo.js
+import http from "../../utils/http";
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        userInfo:{}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.getUserInfo();
     },
 
     /**
@@ -42,7 +43,15 @@ Page({
     onUnload() {
 
     },
-
+    getUserInfo() {
+        http("get","/User/info").then(res => {
+            if(res.code === 0){
+              this.setData({
+                userInfo:res.data.userInfo
+              })
+            }
+        });
+    },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
