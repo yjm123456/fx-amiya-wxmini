@@ -41,7 +41,9 @@ Page({
     startY = event.touches[0].clientY;
   },
   tpPersonalInfo(){
-      
+      wx.navigateTo({
+        url: '/pages/personalInfo/personalInfo',
+      })
   },
   handleTouchMove(event) {
     moveY = event.touches[0].clientY;

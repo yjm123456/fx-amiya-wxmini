@@ -1,2 +1,40 @@
 <!--pages/shoppingCart/shoppingCart.wxml-->
-<text>pages/shoppingCart/shoppingCart.wxml</text>
+<view>
+    <view class="content">
+        <view>
+            <van-checkbox-group value="{{ result }}" bind:change="onChange">
+                <van-cell-group>
+                    <van-cell wx:for="{{ list }}" wx:key="index" link-type="navigateTo" url="/pages/productDetails/productDetails?goodsId={{item.id}}" value-class="value-class" clickable data-index="{{ index }}">
+                        <view slot="title" class="cell_title">
+                            <view>
+                                <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item }}" />
+                            </view>
+                            <view>
+                                <image src="{{item.thumbPicUrl}}" alt="" />
+                            </view>
+                            <view class="des">
+                                <view><text>{{item.name}}</text></view>
+                                <view><text>{{item.description}}</text></view>
+                                <view><text>{{item.allmoney}}</text><text>数量:{{item.quantity}}</text></view>
+                            </view>
+                            <view class="btn">
+                                <van-button type="default">删除</van-button>
+                            </view>
+                        </view>
+                    </van-cell>
+                </van-cell-group>
+            </van-checkbox-group>
+        </view>
+    </view>
+    <view class="bottom">
+        <van-submit-bar price="{{ sum }}" button-text="提交订单" bind:submit="onClickButton" tip="{{ true }}">
+            <van-tag type="primary">
+                <label>
+                    <view>
+                        <radio bindtap="radioChange" checked="{{selectAll}}" />全选
+                    </view>
+                </label>
+            </van-tag>
+        </van-submit-bar>
+    </view>
+</view>

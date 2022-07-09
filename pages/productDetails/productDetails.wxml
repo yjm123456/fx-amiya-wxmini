@@ -1,73 +1,77 @@
 <!--pages/productDetails/productDetails.wxml-->
 <view class="container">
-  <swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000'>
-    <block wx:for="{{goodsInfo.carouselImageUrls}}" wx:for-index="index" wx:key="id">
-      <swiper-item>
-        <image src='{{item.picUrl}}' class='img_slide' mode='aspectFill'></image>
-      </swiper-item>
-    </block>
-  </swiper>
-
-  <!-- 商品详情 -->
-  <view class="detail_con">
-    <view class="price">
-      <text class="present_price font_color">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text>
-      <text class="original_price">￥ {{goodsInfo.maxShowPrice}}</text>
-    </view>
-    <view class="detail ">{{goodsInfo.name}}</view>
-  </view>
-  <!--  -->
-  <view class="message">
-   
-    <view class="item_spe" bindtap="cityChoice" wx:if="{{goodsInfo.isMaterial==false}}">
-      <text>所在城市</text>
-      <view class="city_con">
-        <text class="city_text">{{cityNames}}</text>
-        <text class="iconfont icon-arrow-left"></text>
-      </view>
-    </view>
-    <view class="item_spe"  bindtap="selectStore"  wx:if="{{goodsInfo.isMaterial==false}}"  data-cityName="{{cityNames}}">
-      <text>选择门店</text>
-      <view class="city_con">
-        <text class="city_text">{{storeInfo.name}}</text>
-        <text class="iconfont icon-arrow-left"></text>
-      </view>
-    </view>
-    <view class="item_spe item_spe_num">
-      <text>数量</text>
-      <!-- type==0 计算的是 门店价格x数量 -->
-      <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" wx:if="{{storeInfo.name}}" data-type="0" data-isMaterial="{{goodsInfo.isMaterial}}"/>
-      <!-- type==0 没有选择门店的情况下数量是禁用状态 -->
-      <van-stepper min="1" integer  disabled  bindtap="disabledNum" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==false}}"/>
-      <!-- type==1 判断是否为实物 如果是实物的话需要发货 销售价格x数量 -->
-      <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-salePrice="{{goodsInfo.salePrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1"  data-isMaterial="{{goodsInfo.isMaterial}}"/>
-    </view>
-  </view>
-  <!-- 底部 -->
-  <view class="dis footer padding_both" style='padding-bottom:{{ isIphoneX ? 10 : 0 }}px;'>
-    <view class="total_price" >
-      <text class="present_price font_color">￥{{ goodsInfo.quantity==1 ? (storeInfo.name ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}</text> 
-    </view>
-    <view class="but" bindtap="purchase"  data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice= "{{storeInfo.hospitalSalePrice}}" data-allmoney= "{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}" >立即购买</view>
-    
-  </view>
-  <!-- 城市选择 弹出层 -->
-  <van-popup
-    show="{{ cityShow }}"
-    position="bottom"
-    bind:close="onClose"
-    >
-    <view class="canCal_submit">
-      <text bind:close="onClose">取消</text>
-      <text bindtap="cityConfirms" data-cityName="{{cityName}}" data-cityId="{{cityId}}">确定</text>
-    </view>
-    <view  class="citys">
-        <block wx:for="{{cityLists}}" wx:key="index">
-          <view class="city_name {{current == index ? 'checked_name' : ''}}" bindtap="citysName" data-index="{{index}}" data-cityinfo="{{item}}" >{{item.name}}</view>
+    <swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000'>
+        <block wx:for="{{goodsInfo.carouselImageUrls}}" wx:for-index="index" wx:key="id">
+            <swiper-item>
+                <image src='{{item.picUrl}}' class='img_slide' mode='aspectFill'></image>
+            </swiper-item>
         </block>
+    </swiper>
+
+    <!-- 商品详情 -->
+    <view class="detail_con">
+        <view class="price">
+            <!-- 是否有门店价格有显示门店价格没有显示salprice -->
+            <text class="present_price font_color">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text>
+            <text class="original_price">￥ {{goodsInfo.maxShowPrice}}</text>
+        </view>
+        <view class="detail ">{{goodsInfo.name}}</view>
     </view>
-  </van-popup>
+    <!--  -->
+    <view class="message">
+        <!-- 如果为虚拟产品显示选择城市 -->
+        <view class="item_spe" bindtap="cityChoice" wx:if="{{goodsInfo.isMaterial==false}}">
+            <text>所在城市</text>
+            <view class="city_con">
+                <text class="city_text">{{cityNames}}</text>
+                <text class="iconfont icon-arrow-left"></text>
+            </view>
+        </view>
+        <!-- 如果为虚拟产品显示选择门店 -->
+        <view class="item_spe" bindtap="selectStore" wx:if="{{goodsInfo.isMaterial==false}}" data-cityname="{{cityNames}}">
+            <text>选择门店</text>
+            <view class="city_con">
+                <text class="city_text">{{storeInfo.name}}</text>
+                <text class="iconfont icon-arrow-left"></text>
+            </view>
+        </view>
+        <view class="item_spe item_spe_num">
+            <text>数量</text>
+            <!-- type==0 计算的是 门店价格x数量 -->
+            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" wx:if="{{storeInfo.name}}" data-type="0" data-isMaterial="{{goodsInfo.isMaterial}}" />
+            <!-- type==0 没有选择门店的情况下数量是禁用状态 -->
+            <van-stepper min="1" integer disabled bindtap="disabledNum" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==false}}" />
+            <!-- type==1 判断是否为实物 如果是实物的话需要发货 销售价格x数量 -->
+            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-salePrice="{{goodsInfo.salePrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
+        </view>
+    </view>
+    <!-- 底部 -->
+    <view class="dis footer padding_both" style='padding-bottom:{{ isIphoneX ? 10 : 0 }}px;'>
+        <view class="total_price">
+            <text class="present_price font_color">￥{{ goodsInfo.quantity==1 ? (storeInfo.name ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}</text>
+        </view>
+        <!-- <view class="but" bindtap="purchase"  data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice= "{{storeInfo.hospitalSalePrice}}" data-allmoney= "{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}" >立即购买</view> -->
+        <van-goods-action>
+            <van-goods-action-icon icon="chat-o" text="客服" open-type='contact' />
+            <van-goods-action-icon icon="cart-o" text="购物车" bind:click="toShoppingCart" />
+            <van-goods-action-button data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
+            <van-goods-action-button text="立即购买" bind:click="onClickButton" />
+        </van-goods-action>
+
+
+    </view>
+    <!-- 城市选择 弹出层 -->
+    <van-popup show="{{ cityShow }}" position="bottom" bind:close="onClose">
+        <view class="canCal_submit">
+            <text bind:close="onClose">取消</text>
+            <text bindtap="cityConfirms" data-cityName="{{cityName}}" data-cityId="{{cityId}}">确定</text>
+        </view>
+        <view class="citys">
+            <!-- cityLists(包含合作城市id和name) -->
+            <block wx:for="{{cityLists}}" wx:key="index">
+                <view class="city_name {{current == index ? 'checked_name' : ''}}" bindtap="citysName" data-index="{{index}}" data-cityinfo="{{item}}">{{item.name}}</view>
+            </block>
+        </view>
+    </van-popup>
 </view>
-
-
-
+<van-toast id="van-toast" />

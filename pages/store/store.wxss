@@ -10,6 +10,11 @@
 }
 .content{
   margin-bottom: 120rpx;
+  padding: 20rpx;
+}
+.store_item{
+    border-radius: 20rpx;
+    box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2;
 }
 .store_price , .address_con{
   color: #818181;

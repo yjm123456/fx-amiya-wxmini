@@ -70,6 +70,7 @@ Page({
   onLoad: function (options) {
     let goodsId = options.goodsId
     let city = options.city
+    //根据传递过来的商品和城市id获取hospitalInfoList
     this.getStoreList(goodsId,city)
   },
   /**
@@ -84,6 +85,7 @@ Page({
       goodsId,
       city
     }
+    //根据城市和商品id获取医院信息
     http("get", `/HospitalInfo/GoodsOfflineDoor`,data).then(res => {
       if(res.code === 0){
         const { hospitalInfoList } = res.data
