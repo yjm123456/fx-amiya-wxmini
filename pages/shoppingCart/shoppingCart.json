@@ -6,7 +6,9 @@
         "van-checkbox-group": "@vant/weapp/checkbox-group/index",
         "van-cell": "@vant/weapp/cell/index",
         "van-cell-group": "@vant/weapp/cell-group/index",
-        "van-button": "@vant/weapp/button/index"
+        "van-button": "@vant/weapp/button/index",
+        "van-divider": "@vant/weapp/divider/index",
+        "van-empty": "@vant/weapp/empty/index"
     },
     "navigationBarTitleText": "购物车"
 }

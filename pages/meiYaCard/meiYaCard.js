@@ -100,6 +100,11 @@ Page({
       }
     })
   },
+  auth(){
+      wx.showToast({
+        title: '此功能暂未开通...',
+      })
+  },
   // 获取客户的积分余额   get
   getIntegral() {
     http("get", `/IntegrationAccount/balance`).then(res => {

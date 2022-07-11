@@ -1,4 +1,7 @@
 /* pages/shoppingCart/shoppingCart.wxss */
+.content{
+    background-color: #fff;
+}
 .cell_title{
     display: flex;
     align-items: center;
@@ -11,17 +14,99 @@
     border-radius: 20rpx;
     margin-left: 20rpx;
 }
+.right{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20rpx;
+    align-items: center;
+}
+.des_bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .des{
     height: 200rpx;
     margin-left: 20rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 70%;
 }
 .btn{
     display: flex;
     align-items: flex-end;
+    width: 30%;
 }
 .bottom{
     bottom: 0;
 }
+.delete{
+    background-color: #fff;
+    border-radius: 20rpx;
+    border:1rpx solid orange;
+    overflow: hidden;
+    font-size: 28rpx;
+}
+.product_card{
+    display: flex;
+    flex-direction: column;
+  }
+  .tag{
+      position: absolute;
+      top: 0;
+      right: 20rpx;
+      background-color: #ff1554;
+      color: #fff;
+      padding: 5rpx;
+      border-radius: 10rpx;
+  }
+  .product_list{
+    background-color: #fff;
+    border-radius: 10rpx;
+  }
+  .product_list .title{
+    padding: 10rpx 10rpx 10rpx;
+    font-size: 38rpx;
+  }
+  
+  .product_warp{
+    padding: 10rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .product{
+    width: 45%;
+    padding-bottom: 20rpx;
+  }
+  .product .product_top image{
+    width: 100%;
+    border-radius: 20rpx 20rpx 0 0;
+  }
+  .product_bottom{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+  }
+  .product_name{
+      font-size: 38rpx;
+      white-space: nowrap; 
+      text-overflow: ellipsis;
+      overflow: hidden;
+  }
+  .price{
+  color: #ff1554;
+  }
+  .present_price{
+    font-size: 38rpx;
+    margin-bottom: 10rpx;
+  }
+  .original_price{
+    text-decoration:line-through;
+    margin-left: 15rpx;
+    color: #818181;
+    padding-top: 10rpx;
+    box-sizing: border-box;
+  }

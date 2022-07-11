@@ -1,4 +1,7 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index"
+    },
     "navigationBarTitleText": "任务中心"
 }

@@ -1,1 +1,5 @@
 /* pages/personalInfo/personalInfo.wxss */
+.avatar{
+    width: 45rpx;
+    border-radius: 5rpx;
+}

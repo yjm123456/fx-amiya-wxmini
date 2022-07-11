@@ -80,7 +80,7 @@
     overflow: hidden;
 }
 .price{
-color: #ff5000;
+color: #ff1554;
 }
 .present_price{
   font-size: 38rpx;

@@ -8,15 +8,18 @@
     border: 0;
 }
 .user_info_box {
-    height: 480rpx;
+    height: 320rpx;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #ff1554;
+    width: 100%;
+    padding-left: 30rpx;
     align-items: center;
-    background-color: rgb(245, 169, 28);
 }
 
 .user_info_box .portrait {
-    margin-top: 50rpx;
+    margin-right: 30rpx;
     width: 180rpx;
     height: 180rpx;
     border: 5rpx solid #fff;
@@ -24,25 +27,26 @@
 }
 
 .user_info_box .info_box {
-    height: 130rpx;
-    width: 100%;
+    height: 210rpx;
+    width: 255rpx;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    overflow: hidden;
 }
 
 .user_info_box .info_box .username {
+    width: 100%;
     font-size: 38rpx;
     color: #fff;
 
 }
 
 .user_info_box .info_box .info_box_bottom {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    width: 100%;
+    justify-content: flex-start;
 }
 
 .leave {
@@ -52,15 +56,14 @@
 }
 
 .leave_img {
-    width: 50%;
-    height: 100%;
+width: 200rpx;
+height: 80rpx;
+border-radius: 10rpx;
 }
 
 .bottom_left {
     height: 60rpx;
     line-height: 60rpx;
-    width: 50%;
-    text-align: end;
 }
 
 .bottom_right {
@@ -74,7 +77,9 @@
     color: #fff;
     margin-left: 30rpx;
 }
-
+.member_no{
+    width: 255rpx;
+}
 /* vip-box */
 .vip_card_box {
     position: relative;
@@ -96,9 +101,12 @@
 }
 
 .cover_container {
-    padding: 0 10rpx;
+    margin-top: -30rpx;
+    padding: 0 20rpx;
     background: #F7F7F7;
     padding-bottom: 20rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
 }
 
 /* .cover_container .arc {

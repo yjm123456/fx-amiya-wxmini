@@ -2,15 +2,39 @@
 <view class="container">
     <view class="circle">
         <view class="content">
-            <view class="tip">我的成长值</view>
-            <view class="growth">100</view>
-            <view class="diff">还差<text>10</text>成长值升级XX会员</view>
+            <view class="tip big">我的成长值</view>
+            <view class="growth big">100</view>
+            <view class="diff big">还差<text>10</text>成长值升级XX会员</view>
         </view>
     </view>
     <view class="content">
-        <view>基础任务</view>
-        <view>购物任务</view>
-        <view>已完成任务</view>
-        <view>已绑定手机号</view>
+        <view class="base_mission card">
+            <view class="title">
+                <text>基础任务</text>
+            </view>
+            <view>
+                <van-cell title="完善信息" title-width="400rpx" border="{{false}}" value="去完成" label="+5成长值" />
+            </view>
+            <view></view>
+        </view>
+        <view class="shopping_mission card">
+            <view class="title"><text>购物任务</text></view>
+            <view>
+                <van-cell title="完成下单" title-width="400rpx" value="去完成" label="每完成一笔订单,获得10点成长值" />
+                <van-cell title="购买产品" title-width="400rpx" border="{{false}}" value="去完成" label="每消费一元获得10点成长值" />
+            </view>
+        </view>
+        <view class="complete_mission card">
+            <view class="title"><text>已完成任务</text></view>
+            <view>
+                <van-cell title="任务完成" title-width="400rpx" border="{{false}}" label="+5成长值" />
+            </view>
+        </view>
+        <view class="card">
+            <view><text class="title">已绑定手机号</text></view>
+            <view>
+                <van-cell title="完善信息" title-width="400rpx" border="{{false}}" value="去完成" label="+5成长值" />
+            </view>
+        </view>
     </view>
 </view>

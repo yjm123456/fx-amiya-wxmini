@@ -1,6 +1,4 @@
-<view class="header">
-    <van-nav-bar title="啊美雅AMEIYA甄选" />
-</view>
+
 <view class="container">
     <!-- 轮播图 -->
     <swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">

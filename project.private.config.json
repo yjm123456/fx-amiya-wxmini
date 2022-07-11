@@ -176,6 +176,20 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "购物车",
+                    "pathName": "pages/shoppingCart/shoppingCart",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "任务中心",
+                    "pathName": "pages/missionCenter/missionCenter",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

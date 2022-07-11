@@ -5,5 +5,5 @@
     "received":"./components/received/received",
     "notClaimed":"./components/notClaimed/notClaimed"
   },
-  "navigationBarTitleText": "核销好礼"
+  "navigationBarTitleText": "赠品"
 }

@@ -42,11 +42,7 @@ Page({
         ],
         // 当前地址
         currentCity: '',
-        pageNum: 1,
-        pageSize: 10,
-        nextPage: true,
-        pageNums: 1,
-        pageSizes: 10,
+        
         // 通过城市获取医院列表
         hospitalList: [],
         // 切换城市model
@@ -65,6 +61,11 @@ Page({
         list: [],
         //商品列表
         goodsList: [],
+        pageNum: 1,
+        pageSize: 10,
+        nextPage: true,
+        pageNums: 1,
+        pageSizes: 10,
         //当前商品展示列表页码
         currentPageIndex: 1
     },

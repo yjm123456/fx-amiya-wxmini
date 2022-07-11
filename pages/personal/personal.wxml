@@ -9,14 +9,14 @@
                 <view class="info_box_top">
                     <text class="username">{{userInfo.nickName ? userInfo.nickName : '游客'}}</text>
                 </view>
-                <view class="info_box_bottom">
-                    <view class="bottom_left"><text class="leave">VIP1 :</text></view>
-                    <view class="bottom_right">
-                        <image class="leave_img" src="http://iph.href.lu/300x100?text=会员卡" mode="scaleToFill"></image>
-                    </view>
+                <view class="bottom_left"><text class="leave">VIP1</text></view>
+                <view class="bottom_right">
+                    <image class="leave_img" src="/images/hc.png" mode="scaleToFill"></image>
                 </view>
+
                 <!-- <text class="balance" wx:if="{{balance}}">积分余额 {{balance}}</text> -->
             </view>
+            <view class="member_no"> <canvas type="2d" style="width: 180rpx; height: 180rpx;margin-right: 0rpx;" id="myQrcode"></canvas> </view>
         </view>
 
         <!-- <view class="vip_card_box" wx:if="{{memberCard}}">

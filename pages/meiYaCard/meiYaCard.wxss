@@ -27,7 +27,8 @@
 }
 .btn{
     background-color: #fff;
-    width: 210rpx;
+    width: 180rpx;
+    padding:10rpx;
     border-radius: 30rpx;
 }
 .tip{
@@ -49,8 +50,8 @@
     color: #fff;
 }
 .qr_img{
-    width: 210rpx;
-    height: 210rpx;
+    width: 180rpx;
+    height: 180rpx;
 }
 .qrcode{
     width: 210rpx;

@@ -22,7 +22,7 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    background-color: rgb(245, 169, 28);
+    background-color: #ff1554;
     height: 120rpx;
     border-radius: 20rpx;
     box-shadow: 2rpx 2rpx 5rpx 5rpx #e8e8e8;
@@ -75,7 +75,7 @@
 }
 
 .price {
-    color: #ff5000;
+    color: #ff1554;
 }
 
 .present_price {

@@ -8,6 +8,6 @@
         "van-divider": "@vant/weapp/divider/index",    
         "van-card": "@vant/weapp/card/index"
     },
-    "navigationBarTitleText": "啊美雅AMEIYA甄选",
-    "navigationStyle": "custom"
+    "navigationBarTitleText": "啊美雅AMEIYA甄选"
+    
 }
