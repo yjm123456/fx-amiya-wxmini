@@ -25,6 +25,12 @@
   <van-goods-action>
     <van-goods-action-button color="#7232dd" text="立即购买" bind:click="purchase" />
   </van-goods-action>
+  <van-goods-action>
+            <van-goods-action-icon icon="chat-o" text="客服" open-type='contact' />
+            <van-goods-action-icon icon="cart-o" text="购物车" bind:click="toShoppingCart" />
+            <van-goods-action-button data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
+            <van-goods-action-button color="#7232dd" text="立即购买" bind:click="purchase" />
+        </van-goods-action>
 </view>
 
 <standard control="{{control}}" bindresetControlStandard="resetControlStandard" goods="{{goodsInfo}}" />

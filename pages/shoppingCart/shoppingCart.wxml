@@ -1,33 +1,40 @@
 <!--pages/shoppingCart/shoppingCart.wxml-->
 <view class="container">
     <view class="content">
-        <view class="empty" bindtap="toShopMall" wx:if="{{list.length===0}}">
+        <view class="empty" bindtap="toShopMall" wx:if="{{empty}}">
             <!-- 通用错误 -->
             <van-empty image="/images/cart_empty.png" description="这里还什么都没有." />
         </view>
         <view wx:else class="cart_content">
             <van-checkbox-group value="{{ result }}" bind:change="onChange">
                 <van-cell-group>
-                    <van-cell wx:for="{{ list }}" wx:key="index" link-type="navigateTo" url="/pages/productDetails/productDetails?goodsId={{item.goodsId}}" value-class="value-class" clickable data-index="{{ index }}">
+                    <van-cell wx:if="{{list[index].num!==0}}" wx:for="{{ list }}" wx:key="index" link-type="navigateTo" url="{{item.exchangeType===0?'/pages/goodsDetails/goodsDetails?goodsId='+item.goodsId : '/pages/productDetails/productDetails?goodsId='+item.goodsId}}" value-class="value-class" clickable data-index="{{ index }}">
                         <view slot="title" class="cell_title">
                             <view>
                                 <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
                             </view>
                             <view>
-                                <image src="{{item.thumbPicUrl}}" alt="" />
+                                <!-- <image src="{{item.thumbPicUrl}}" alt="" /> -->
+                                <image src="{{item.goodsPictureUrl}}" alt="" />
                             </view>
                             <view class="right">
                                 <view class="des">
                                     <view><text>{{item.goodsName}}</text></view>
+                                    <view><text wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
+                                    <view><text wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
                                     <view><text>{{item.description}}</text></view>
-                                    <view class="des_bottom"><text>价格:{{item.price}}</text><text>数量:{{item.num}}</text></view>
+                                    <view catchtap="stopPro" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'价格'}}:{{item.singleprice*item.num}}</text>数量:
+                                        <van-stepper min="0" input-width="40rpx" button-size="40rpx" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" 
+                                        data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}"
+                                        catch:change="onNumChange" />
+                                    </view>
                                 </view>
-                                <view class="btn">
+                                <!-- <view class="btn">
                                     <button class="delete" data-goodsid='{{item.goodsId}}' data-id="{{item.id}}" catch:tap='deleteFromCart'>移除</button>
-                                </view>
+                                </view> -->
                             </view>
                             <view class="tag" wx:if="{{item.exchangeType===0}}">
-                               积分兑换
+                                积分兑换
                             </view>
                         </view>
 
@@ -35,12 +42,10 @@
                 </van-cell-group>
             </van-checkbox-group>
         </view>
-
-
         <view wx:if="{{!nextPage}}" class="product_list">
             <van-divider contentPosition="center">更多精选商品</van-divider>
             <view class="product_warp">
-                <view class="product" wx:for="{{goodsList}}" bindtap="goodsDetails" data-goodsid="{{item.goodsId}}" wx:key="index">
+                <view class="product" wx:for="{{goodsList}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
                     <view>
                         <view class="product_top">
                             <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>
@@ -58,7 +63,7 @@
         </view>
     </view>
     <view class="bottom">
-        <van-submit-bar price="{{ sum }}" button-text="提交订单" bind:submit="onClickButton" tip="{{ true }}">
+        <van-submit-bar price="{{ sum }}" button-text="提交订单" bindtap="purchase" tip="{{ true }}">
             <van-tag type="primary">
                 <label>
                     <view>
@@ -69,3 +74,4 @@
         </van-submit-bar>
     </view>
 </view>
+<van-toast id="van-toast" />

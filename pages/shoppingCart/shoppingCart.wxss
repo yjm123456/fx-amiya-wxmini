@@ -22,6 +22,7 @@
     align-items: center;
 }
 .des_bottom{
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -32,7 +33,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 70%;
+    width: 100%;
+}
+.total_price{
+    color: #ff1554;
 }
 .btn{
     display: flex;
@@ -55,8 +59,8 @@
   }
   .tag{
       position: absolute;
-      top: 0;
-      right: 20rpx;
+      top: 20rpx;
+      right: 10rpx;
       background-color: #ff1554;
       color: #fff;
       padding: 5rpx;

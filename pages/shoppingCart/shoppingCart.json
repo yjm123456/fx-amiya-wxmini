@@ -8,7 +8,9 @@
         "van-cell-group": "@vant/weapp/cell-group/index",
         "van-button": "@vant/weapp/button/index",
         "van-divider": "@vant/weapp/divider/index",
-        "van-empty": "@vant/weapp/empty/index"
+        "van-empty": "@vant/weapp/empty/index",
+        "van-stepper": "@vant/weapp/stepper/index",
+        "van-toast": "@vant/weapp/toast/index"
     },
     "navigationBarTitleText": "购物车"
 }

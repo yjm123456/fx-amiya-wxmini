@@ -10,7 +10,7 @@
     border-radius: 10rpx;
     overflow: hidden;
     margin-bottom: 20rpx;
-    box-shadow: 2rpx 2rpx 10rpx 1rpx;
+    box-shadow: 2rpx 2rpx 5rpx 2rpx #ccc;
 }
 .diary image{
     width:100%;

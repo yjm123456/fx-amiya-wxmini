@@ -36,7 +36,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
     const {hospitalid , type , allmoney} = options
     this.setData({
       hospitalid,

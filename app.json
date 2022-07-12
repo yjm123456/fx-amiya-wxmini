@@ -46,7 +46,8 @@
     "pages/shoppingCart/shoppingCart",
     "pages/personalInfo/personalInfo",
     "pages/accountSettings/accountSettings",
-    "pages/missionCenter/missionCenter"
+    "pages/missionCenter/missionCenter",
+    "pages/cartConfirmOrder/cartConfirmOrder"
   ],
   "onReachBottomDistance": 50,
   "tabBar": {

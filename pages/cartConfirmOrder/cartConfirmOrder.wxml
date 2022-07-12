@@ -1,0 +1,53 @@
+<!--pages/cartConfirmOrder/cartConfirmOrder.wxml-->
+<view class="container">
+    <view class="address" wx:if="{{isMaterial}}">
+        <view class="select_address" wx:if="{{!address}}" bindtap="handleSelectAddress">
+            <view>
+                <text class="iconfont icon-dizhi"></text>
+                <text>选择收货地址</text>
+            </view>
+            <view>
+                <text class="iconfont icon-arrow-left"></text>
+            </view>
+        </view>
+        <view class="address_info" wx:else bindtap="handleSelectAddress">
+            <view class="icon">
+                <text class="iconfont icon-dizhi"></text>
+            </view>
+            <view class="text">
+                <view>
+                    <text>收货人：{{address.contact}}</text>
+                    <text>{{address.phone}}</text>
+                </view>
+                <view>
+                    收货地址：{{address.province}}{{address.city}} {{address.district}}{{address.other}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="product_list">
+        <view class="product_item" wx:for="{{goodsInfo}}" wx:key="index">
+            <view class="product_img">
+                <image mode="widthFix" src="{{item.goodsPictureUrl}}"></image>
+            </view>
+            <view class="dec">
+                <view class="name">{{item.goodsName}}</view>
+                <view><text wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
+                <view><text wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
+                <view class="pri_num"><text class="price">价格:{{item.price}}</text><text class="num">数量:{{item.num}}</text></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="submit_order">
+    <view>
+        <text>合计：</text>
+        <text class="money">{{allMoney}}</text>
+        <text>元</text>
+        <text class="point">{{allPoint}}</text>
+        <text>积分</text>
+    </view>
+    <view bindtap="handlePay" data-isMaterial="{{isMaterial}}" data-allmoney="{{allmoney}}">
+        提交订单
+    </view>
+</view>
