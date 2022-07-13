@@ -35,7 +35,7 @@
   </view> -->
     <!-- 导航栏一 -->
     <view class="navigation_list">
-        <van-grid border="true" column-num="3" custom-class=".grid_navigation" content-class=".grid_navigation_item">
+        <van-grid border="{{true}}" column-num="3" custom-class="grid_navigation" >
             <van-grid-item link-type="navigateTo" url="/pages/aboutAmeiya/aboutAmeiya" use-slot="true">
                 <text>关于啊美雅</text>
             </van-grid-item>
@@ -58,7 +58,7 @@
     </view>
     <!-- 导航栏二 -->
     <view class="navigation_list">
-        <van-grid border="true" column-num="3" custom-class=".grid_navigation" content-class=".grid_navigation_item">
+        <van-grid border="{{true}}" column-num="3" custom-class=".grid_navigation" content-class=".grid_navigation_item">
             <van-grid-item link-type="navigateTo" url="/pages/meiYaCard/meiYaCard" use-slot="true" text="文字">
                 <text>MEIYA卡</text>
             </van-grid-item>

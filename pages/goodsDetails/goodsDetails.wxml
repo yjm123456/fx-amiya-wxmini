@@ -32,5 +32,5 @@
             <van-goods-action-button color="#7232dd" text="立即购买" bind:click="purchase" />
         </van-goods-action>
 </view>
-
+<van-toast id="van-toast" />
 <standard control="{{control}}" bindresetControlStandard="resetControlStandard" goods="{{goodsInfo}}" />

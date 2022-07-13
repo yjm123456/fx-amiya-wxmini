@@ -4,7 +4,8 @@
     "van-goods-action": "@vant/weapp/goods-action/index",
     "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
     "van-goods-action-button": "@vant/weapp/goods-action-button/index",
-    "standard": "/components/standard/standard"
+    "standard": "/components/standard/standard",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "商品详情"
 }

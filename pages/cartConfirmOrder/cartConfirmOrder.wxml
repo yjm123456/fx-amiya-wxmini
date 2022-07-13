@@ -28,15 +28,22 @@
     <view class="product_list">
         <view class="product_item" wx:for="{{goodsInfo}}" wx:key="index">
             <view class="product_img">
-                <image mode="widthFix" src="{{item.goodsPictureUrl}}"></image>
+                <image mode="scaleToFill" src="{{item.goodsPictureUrl}}"></image>
             </view>
             <view class="dec">
-                <view class="name">{{item.goodsName}}</view>
-                <view><text wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
-                <view><text wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
-                <view class="pri_num"><text class="price">价格:{{item.price}}</text><text class="num">数量:{{item.num}}</text></view>
+                <view class="name"><text>{{item.goodsName}}</text></view>
+                <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
+                <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
+                <view wx:if="{{item.exchangeType===1}}" class="pri_num"><text class="price">价格:{{item.price}}</text><text class="num">x{{item.num}}</text></view>
+                <view wx:if="{{item.exchangeType===0}}" class="pri_num"><text class="price">积分:{{item.interGrationAccount*item.num}}</text><text class="num">x{{item.num}}</text></view>
             </view>
         </view>
+    </view>
+    <view class="remark">
+        <view class="label"><text>买家留言:</text></view>
+        <van-cell-group>
+            <van-field value="{{ remark  }}" type="textarea" clearable placeholder="请输入留言" title-width="4em" bind:change="handleRemarkChange" maxlength="200" />
+        </van-cell-group>
     </view>
 </view>
 <view class="submit_order">
@@ -47,7 +54,7 @@
         <text class="point">{{allPoint}}</text>
         <text>积分</text>
     </view>
-    <view bindtap="handlePay" data-isMaterial="{{isMaterial}}" data-allmoney="{{allmoney}}">
+    <view catchtap="handlePay" data-isMaterial="{{isMaterial}}" data-allmoney="{{allmoney}}">
         提交订单
     </view>
 </view>

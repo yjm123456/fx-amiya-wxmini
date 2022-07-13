@@ -13,4 +13,5 @@
         "van-toast": "@vant/weapp/toast/index"
     },
     "navigationBarTitleText": "购物车"
+
 }

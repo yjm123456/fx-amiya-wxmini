@@ -1,5 +1,5 @@
 import http from '../../utils/http.js';
-
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
     data: {
         control: false,

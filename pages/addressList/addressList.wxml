@@ -17,7 +17,7 @@
 							{{item.other}}</text>
 					</view>
 				</view>
-				<view class="item_right" bindtap="handleEdit" data-item="{{item}}">
+				<view class="item_right" catchtap="handleEdit" data-item="{{item}}">
 					<text>编辑</text>
 				</view>
 			</view>

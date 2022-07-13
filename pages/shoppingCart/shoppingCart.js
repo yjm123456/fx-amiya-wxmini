@@ -40,7 +40,6 @@ Page({
         empty: true
     },
     onChange(event) {
-        console.log(event.detail)
         this.setData({
             result: event.detail,
         });
@@ -259,7 +258,6 @@ Page({
 
     },
     radioChange(e) {
-        console.log('触发')
         if (this.data.selectAll) {
 
             this.setData({
@@ -281,8 +279,6 @@ Page({
         let sumMoney = 0;
         for (let i = 0; i < this.data.result.length; i++) {
             for (let j = 0; j < this.data.list.length; j++) {
-                console.log(this.data.result[i]);
-                console.log(this.data.list[j].id);
                 if (this.data.result[i] === this.data.list[j].id) {
                     sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
                 }

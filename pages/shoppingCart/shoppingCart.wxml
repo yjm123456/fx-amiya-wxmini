@@ -2,31 +2,28 @@
 <view class="container">
     <view class="content">
         <view class="empty" bindtap="toShopMall" wx:if="{{empty}}">
-            <!-- 通用错误 -->
             <van-empty image="/images/cart_empty.png" description="这里还什么都没有." />
         </view>
         <view wx:else class="cart_content">
             <van-checkbox-group value="{{ result }}" bind:change="onChange">
-                <van-cell-group>
-                    <van-cell wx:if="{{list[index].num!==0}}" wx:for="{{ list }}" wx:key="index" link-type="navigateTo" url="{{item.exchangeType===0?'/pages/goodsDetails/goodsDetails?goodsId='+item.goodsId : '/pages/productDetails/productDetails?goodsId='+item.goodsId}}" value-class="value-class" clickable data-index="{{ index }}">
+                <van-cell-group border="{{false}}">
+                    <van-cell custom-class="cell"  border="{{false}}" wx:if="{{list[index].num!==0}}" wx:for="{{ list }}" wx:key="index" link-type="navigateTo" url="{{item.exchangeType===0?'/pages/goodsDetails/goodsDetails?goodsId='+item.goodsId : '/pages/productDetails/productDetails?goodsId='+item.goodsId}}" value-class="value-class" clickable data-index="{{ index }}">
                         <view slot="title" class="cell_title">
                             <view>
                                 <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
                             </view>
-                            <view>
+                            <view class="product_img">
                                 <!-- <image src="{{item.thumbPicUrl}}" alt="" /> -->
-                                <image src="{{item.goodsPictureUrl}}" alt="" />
+                                <image src="{{item.goodsPictureUrl}}" mode="scaleToFill" alt="" />
                             </view>
                             <view class="right">
                                 <view class="des">
                                     <view><text>{{item.goodsName}}</text></view>
-                                    <view><text wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
-                                    <view><text wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
+                                    <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
+                                    <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
                                     <view><text>{{item.description}}</text></view>
-                                    <view catchtap="stopPro" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'价格'}}:{{item.singleprice*item.num}}</text>数量:
-                                        <van-stepper min="0" input-width="40rpx" button-size="40rpx" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" 
-                                        data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}"
-                                        catch:change="onNumChange" />
+                                    <view catchtap="stopPro" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'价格'}}:{{item.singleprice*item.num}}</text>
+                                        <van-stepper min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
                                     </view>
                                 </view>
                                 <!-- <view class="btn">
@@ -63,11 +60,11 @@
         </view>
     </view>
     <view class="bottom">
-        <van-submit-bar price="{{ sum }}" button-text="提交订单" bindtap="purchase" tip="{{ true }}">
-            <van-tag type="primary">
+        <van-submit-bar price="{{ sum }}" button-text="提交订单" bind:submit="purchase" tip="{{ true }}">
+            <van-tag>
                 <label>
                     <view>
-                        <radio bindtap="radioChange" checked="{{selectAll}}" />全选
+                        <radio color="#1989fa" catchtap="radioChange" checked="{{selectAll}}" />全选
                     </view>
                 </label>
             </van-tag>
