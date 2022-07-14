@@ -136,7 +136,6 @@ Page({
                 //     Toast.success('添加成功');
                 //     return;
                 // }
-                wx.setStorageSync('cart', [goodsInfo]);
                 Toast.success('添加成功');
             } else {
                 if (!cityname) {
@@ -177,21 +176,6 @@ Page({
                             Toast.success('添加失败');
                         }
                     })
-                    // if (wx.getStorageSync('cart')) {
-                    //     const s = wx.getStorageSync('cart');
-                    //     console.log(s);
-                    //     for (let i = 0; i < s.length; i++) {
-                    //         if (s[i].id === goodsInfo.id) {
-                    //             Toast.success('购物车中已包含此商品');
-                    //             return;
-                    //         }
-                    //     }
-                    //     wx.setStorageSync('cart', [...s, goodsInfo]);
-                    //     Toast.success('添加成功');
-                    //     return;
-                    // }
-                    // wx.setStorageSync('cart', [goodsInfo]);
-                    // Toast.success('添加成功');
                 }
             }
         }

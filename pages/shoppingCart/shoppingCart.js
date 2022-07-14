@@ -54,6 +54,30 @@ Page({
         }
         this.getAllMoney()
     },
+    refreshPage(){
+        this.setData({
+            selectAll: false,
+        //购物车商品列表
+        list: [],
+        //选中的商品列表
+        result: [],
+        sum: 0,
+        //商品列表
+        goodsList: [],
+        pageNum: 1,
+        pageSize: 10,
+        nextPage: true,
+        pageNums: 1,
+        pageSizes: 10,
+        //当前商品展示列表页码
+        currentPageIndex: 1,
+        goodsNextPage: true,
+        //判断购物车是否为空
+        empty: true
+        })
+        this.getCartProduct()
+        this.getGoodsList();
+    },
     onNumChange(e) {
         const {
             index,
@@ -63,22 +87,21 @@ Page({
             hospitalid
         } = e.currentTarget.dataset
         const num = e.detail;
-        console.log(index);
-        console.log(num);
         this.data.list[index].num = num
         this.setData({
             ["list[" + index + "]"]: this.data.list[index]
         });
         this.isEmpty();
-        throttle(this.updateNum(id, goodsid, index,cityid,hospitalid), 1000)
+        throttle(this.updateNum(id, goodsid, index, cityid, hospitalid), 1000)
+        this.getAllMoney();
     },
-    updateNum(id, goodsid, index,cityid,hospitalid) {
+    updateNum(id, goodsid, index, cityid, hospitalid) {
         const data = {
             Id: id,
             GoodsId: goodsid,
             Num: this.data.list[index].num,
-            CityId:cityid,
-            HospitalId:hospitalid
+            CityId: cityid,
+            HospitalId: hospitalid
         }
         http("put", "/GoodsShopCar", data).then(res => {
             if (res.code == 0) {
@@ -104,7 +127,7 @@ Page({
     },
     // 购买
     purchase(e) {
-        if(this.data.result.length<=0){
+        if (this.data.result.length <= 0) {
             Toast("请先选择商品");
             return;
         }
@@ -113,8 +136,8 @@ Page({
             //const element = this.data.result[i];
             for (let j = 0; j < this.data.list.length; j++) {
                 if (this.data.result[i] === this.data.list[j].id) {
-                    if(!this.data.list[j].isMaterial){
-                        if(!this.data.list[j].hospitalid){
+                    if (!this.data.list[j].isMaterial) {
+                        if (!this.data.list[j].hospitalid) {
                             Toast('请先选择门店');
                         }
                     }
@@ -205,8 +228,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getCartProduct();
-        console.log()
+        this.getCartProduct()
         this.getGoodsList();
 
     },
@@ -238,7 +260,6 @@ Page({
                     } else {
                         list[index].singleprice = list[index].price / list[index].num
                     }
-
                 }
                 this.setData({
                     list: [...this.data.list, ...list],
@@ -251,11 +272,8 @@ Page({
                     })
                     this.getGoodsList();
                 }
-
-
             }
         })
-
     },
     radioChange(e) {
         if (this.data.selectAll) {
@@ -347,7 +365,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        //this.refreshPage()
     },
 
     /**

@@ -15,7 +15,8 @@ Page({
         tradeId: "",
         hospitalid: 0,
         remark: "",
-        moneyTradeId: ""
+        moneyTradeId: "",
+        removeList: []
     },
 
     /**
@@ -30,6 +31,11 @@ Page({
                 })
                 break;
             }
+        }
+        for (let i = 0; i < goodsinfo.length; i++) {
+            this.setData({
+                removeList: [...this.data.removeList, goodsinfo[i].id]
+            })
         }
         this.setData({
             goodsInfo: goodsinfo
@@ -139,7 +145,7 @@ Page({
                                                         // 购买数量
                                                         quantity: _item.num,
                                                         hospitalId: _item.hospitalId ? _item.hospitalId : 0,
-                                                        actualPayment: Number(_item.price) ? Number(_item.price) : 0
+                                                        actualPayment: Number(_item.singleprice) ? Number(_item.singleprice*_item.num) : 0
                                                     }
                                                 })
                                             }
@@ -148,6 +154,7 @@ Page({
                                             }
                                             http("post", `/Order`, data).then(res => {
                                                 if (res.code === 0) {
+                                                    this.deleteFormShopCart()
                                                     const {
                                                         tradeId,
                                                         payRequestInfo,
@@ -156,14 +163,13 @@ Page({
                                                     this.setData({
                                                         moneyTradeId: tradeId
                                                     })
-                                                    
                                                     wx.redirectTo({
-                                                        url: '/pages/alipay/alipay?tradeId=' + moneyTradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
+                                                        url: '/pages/alipay/alipay?tradeId=' + this.data.moneyTradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
                                                     })
                                                 }
-
                                             })
                                         } else {
+                                            this.deleteFormShopCart();
                                             wx.showToast({
                                                 title: '支付成功',
                                                 icon: 'success',
@@ -177,19 +183,8 @@ Page({
                                                 }
                                             })
                                         }
-                                    }else{
-                                       
-                                    }
+                                    } else {}
                                 })
-
-
-
-
-
-
-                                //积分订单成功下单后
-                                //支付商品下单
-
                             } else if (res.cancel) {
                                 // 取消支付
                             }
@@ -199,7 +194,6 @@ Page({
             })
         } else {
             if (moneyItemList.length > 0) {
-                console.log("下单")
                 const data = {
                     // 地址编号
                     //addressId: address && address.id,
@@ -212,7 +206,7 @@ Page({
                             // 购买数量
                             quantity: _item.num,
                             hospitalId: _item.hospitalId ? _item.hospitalId : 0,
-                            actualPayment: Number(_item.price) ? Number(_item.price) : 0
+                            actualPayment: Number(_item.singleprice) ? Number(_item.singleprice*_item.num) : 0
                         }
                     })
                 }
@@ -221,7 +215,7 @@ Page({
                 }
                 http("post", `/Order`, data).then(res => {
                     if (res.code === 0) {
-                        console.log("请求")
+                        this.deleteFormShopCart();
                         const {
                             tradeId,
                             payRequestInfo,
@@ -234,7 +228,6 @@ Page({
                             url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
                         })
                     }
-
                 })
             }
         }
@@ -339,6 +332,47 @@ Page({
         //     }
         // })
     },
+    deleteFormShopCart() {
+        // var pages = getCurrentPages();
+        // var prevPage = pages[pages.length - 2]; //购物车页面
+        // var list = prevPage.data.list;
+        // const {
+        //     removeList
+        // } = this.data;
+        // let newCart=[];
+        // for (let i = 0; i < removeList.length; i++) {
+        //     const item = removeList[i];
+        //     for (let j = 0; j < list.length; j++) {
+        //         if(item===list[j].id){
+        //             continue;
+        //         }else{
+        //             newCart=[...newCart,list[j]]
+        //         }
+        //     }
+        // }
+        // prevPage.setData({
+            
+        // })
+        // prevPage.setData({
+        //     //直接给上一个页面赋值
+        //     storeInfo: this.data.storeInfo
+        // });
+        // wx.navigateBack({
+        //     //返回
+        //     delta: 1
+        // })
+        const {
+            removeList
+        } = this.data;
+        const data = {
+            idList: removeList
+        }
+        http("put", "/GoodsShopCar/deleteGoodsShopCar", data).then(res => {
+            if (res.code === 0) {
+                console.log("移除成功")
+            }
+        })
+    },
     //生成订单,type为1支付订单,type为2积分支付订单
     generateOrder(data, type) {
         http("post", `/Order`, data).then(res => {
@@ -413,7 +447,7 @@ Page({
         let sumMoney = 0;
         for (let i = 0; i < this.data.goodsInfo.length; i++) {
             if (this.data.goodsInfo[i].exchangeType === 1) {
-                sumMoney += this.data.goodsInfo[i].price;
+                sumMoney += this.data.goodsInfo[i].singleprice*this.data.goodsInfo[i].num;
             }
         }
         this.setData({
@@ -456,9 +490,7 @@ Page({
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload() {
-
-    },
+    onUnload() {},
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作

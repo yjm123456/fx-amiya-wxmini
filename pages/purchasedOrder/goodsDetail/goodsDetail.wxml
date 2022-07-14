@@ -20,7 +20,7 @@
             <!--  type=1 支付订单,type=2积分订单 虚拟订单 orderType=0是自提虚拟订单1为实物订单(到店消费)  取得是商品单价-->
             <view class="price_number" wx:if="{{type== 1 && orderInfo.orderType==0}}">
                 <text class="price">￥{{orderInfo.singlePrice}}</text>
-                <text class="goods_number">数量 {{orderInfo.quantity}}</text>
+                <text class="goods_number">x{{orderInfo.quantity}}</text>
             </view>
             <!-- 支付订单 实物订单-->
             <view class="price_number" wx:elif="{{type== 1 && orderInfo.orderType==1}}">

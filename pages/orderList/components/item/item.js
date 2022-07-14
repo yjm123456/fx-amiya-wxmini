@@ -63,6 +63,8 @@ Component({
                 } else {
                     wx.showToast({
                         title: '此订单不在小程序下单,请到下单平台取消订单.',
+                        icon: "none",
+                        duration: 2000
                     })
                 }
             },
@@ -71,12 +73,12 @@ Component({
                 const {
                     tradeid,
                     singleplatform,
-                    appType
+                    apptype
                 } = e.currentTarget.dataset;
                 // singleplatform为1表示支付订单 为2表示积分订单
                 if (singleplatform == 1) {
                     // apptype为2表示在小程序下的单直接调起支付接口 不为2时在其他平台下的单 提示去下单平台支付
-                    if (appType === 2) {
+                    if (apptype === 2) {
                         http("post", `/Order/wechatPay/${tradeid}`).then(res => {
                             const {
                                 alipayUrl
@@ -119,7 +121,9 @@ Component({
                         // })
                     } else {
                         wx.showToast({
-                            title: '此订单不在小程序下单 需要你去下单平台进行支付',
+                            title: '此订单不在小程序下单 请去下单平台进行支付',
+                            icon: "none",
+                            duration: 2000
                         })
                     }
                 } else {
@@ -266,6 +270,8 @@ Component({
                 } else {
                     wx.showToast({
                         title: '此订单不是小程序订单,请到下单平台确认收货.',
+                        icon: "none",
+                        duration: 2000
                     })
                 }
             },

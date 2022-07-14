@@ -50,10 +50,10 @@
     <!-- 活动 -->
     <view class="activity">
         <view class="activity_item" bindtap="handleActivity" data-activity="{{1}}">
-            <image src="http://iph.href.lu/300x150?text=活动一" mode="widthFix"></image>
+            <image src="http://iph.href.lu/300x300?text=活动一" mode="widthFix"></image>
         </view>
         <view class="activity_item" bindtap="handleActivity" data-activity="{{2}}">
-            <image src="http://iph.href.lu/300x150?text=活动二" mode="widthFix"></image>
+            <image src="http://iph.href.lu/300x300?text=活动二" mode="widthFix"></image>
         </view>
     </view>
     <!-- 导航栏二 -->
@@ -66,7 +66,7 @@
                 <text>MEIYA甄选</text>
             </van-grid-item>
             <van-grid-item link-type="navigateTo" url="/pages/beautyDiary/beautyDiary" use-slot="true" text="文字">
-                <text>美学分析</text>
+                <text>美丽日记</text>
             </van-grid-item>
         </van-grid>
     </view>

@@ -27,8 +27,8 @@
                 <view class="order_source">订单来源: <text class="source">{{goods.exchangeType===0 ? '积分兑换':goods.appTypeText}}</text></view>
                 <view>
                     <text>{{item.statusCode === 'WAIT_BUYER_PAY' ? '需付款：' : '实付款：'}}</text>
-                    <text wx:if="{{goods.exchangeType>=1}}">{{item.totalAmount}}元</text>
-                    <text wx:else>{{item.totalIntegration}}积分</text>
+                    <text wx:if="{{goods.exchangeType>=1}}">{{goods.actualPayment}}元</text>
+                    <text wx:else>{{goods.integrationQuantity}}积分</text>
                 </view>
             </view>
 
