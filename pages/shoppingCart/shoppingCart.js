@@ -54,26 +54,26 @@ Page({
         }
         this.getAllMoney()
     },
-    refreshPage(){
+    refreshPage() {
         this.setData({
             selectAll: false,
-        //购物车商品列表
-        list: [],
-        //选中的商品列表
-        result: [],
-        sum: 0,
-        //商品列表
-        goodsList: [],
-        pageNum: 1,
-        pageSize: 10,
-        nextPage: true,
-        pageNums: 1,
-        pageSizes: 10,
-        //当前商品展示列表页码
-        currentPageIndex: 1,
-        goodsNextPage: true,
-        //判断购物车是否为空
-        empty: true
+            //购物车商品列表
+            list: [],
+            //选中的商品列表
+            result: [],
+            sum: 0,
+            //商品列表
+            goodsList: [],
+            pageNum: 1,
+            pageSize: 10,
+            nextPage: true,
+            pageNums: 1,
+            pageSizes: 10,
+            //当前商品展示列表页码
+            currentPageIndex: 1,
+            goodsNextPage: true,
+            //判断购物车是否为空
+            empty: true
         })
         this.getCartProduct()
         this.getGoodsList();
@@ -255,10 +255,16 @@ Page({
                 } = res.data.goodsShopCarInfos;
                 for (let index = 0; index < list.length; index++) {
                     if (list[index].exchangeType === 0) {
+
                         list[index].singleprice = list[index].interGrationAccount
 
                     } else {
-                        list[index].singleprice = list[index].price / list[index].num
+                        if (list[index].isMaterial) {
+                            list[index].singleprice = list[index].price / list[index].num
+                        } else {
+                            list[index].singleprice = list[index].hospitalSalePrice / list[index].num
+                        }
+
                     }
                 }
                 this.setData({

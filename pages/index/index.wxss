@@ -29,13 +29,11 @@
   display: flex;
   border-radius: 20rpx;
   overflow: hidden;
-  box-sizing: content-box;
   justify-content: space-between;
 }
 .activity_item{
   width: 50%;
   border: 1rpx solid #e4e4e4;
-  box-sizing: border-box;
   background-color: #fff;
 }
 .activity_item image{

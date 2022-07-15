@@ -1,5 +1,6 @@
 import http from '../../utils/http.js';
-
+import { checkUserTokenInfo } from "../../utils/login";
+import { iscustomer, isAuthorizationUserInfo } from "./../../api/user";
 Page({
 
   /**
@@ -22,13 +23,67 @@ Page({
     // 是否存在下一页
     nextPage: true,
     //积分
-    balance:0
+    balance:0,
+    controlAuthPhone:false
   },
   onLoad(){
-    this.getIntegral();
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+            } else {
+              this.handleBindPhone();
+            }
+          })
+        this.getIntegral();
+      
+    // this.getIntegral();
+  },
+  // 取消绑定手机号
+  cancelBindPhone() {
+    this.setData({
+      controlAuthPhone: false
+    }),
+    //取消绑定直接调转到首页
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
+  // 绑定手机号
+  handleBindPhone() {
+    this.setData({
+      controlAuthPhone: true
+    })
   },
   onShow() {
     this.refresh();
+  },
+  isCustomer(callback) {
+    iscustomer().then(res => {
+      if (res.code === 0) {
+        const {
+          isCustomer
+        } = res.data;
+        callback && callback(isCustomer)
+      }
+    })
+  },
+  // 判断是否需要授权微信用户信息
+  isAuthorizationUserInfo() {
+    isAuthorizationUserInfo().then(res => {
+      if (res.code === 0) {
+        const { userInfo } = res.data
+        const { isAuthorizationUserInfo } = userInfo;
+        if (isAuthorizationUserInfo) {
+          this.setData({
+            controlAuth: true,
+          })
+        } else {
+          getApp().globalData.userInfo = userInfo;
+          this.setData({
+            userInfo: userInfo
+          })
+        }
+      }
+    })
   },
   // 获取客户的积分余额   get
 getIntegral() {

@@ -54,7 +54,7 @@ Page({
                 text: this.data.userInfo.id,
             })
     
-            // 获取临时路径（得到之后，想干嘛就干嘛了）
+
             wx.canvasToTempFilePath({
                 canvasId: 'myQrcode',
                 canvas: canvas,
@@ -65,7 +65,7 @@ Page({
                 destWidth: 260,
                 destHeight: 260,
                 success(res) {
-                    console.log('二维码临时路径：', res.tempFilePath)
+                    // console.log('二维码临时路径：', res.tempFilePath)
                 },
                 fail(res) {
                     console.error(res)
@@ -190,6 +190,10 @@ Page({
             url: e.currentTarget.dataset.url,
           })
         } else {
+            wx.showToast({
+                title: '请绑定手机号',
+                icon:'none'
+              })
           this.handleBindPhone();
         }
       })
@@ -301,6 +305,10 @@ Page({
           }
         })
       } else {
+          wx.showToast({
+            title: '请绑定手机号',
+            icon:'none'
+          })
         this.handleBindPhone();
       }
     })

@@ -27,7 +27,7 @@ export const login = () => {
   })
 }
 
-// 检测token信息
+// 检测token信息判断用户是否登录
 export const checkUserTokenInfo = () => {
   return new Promise((resolve, rejcet) => {
     // token存在
