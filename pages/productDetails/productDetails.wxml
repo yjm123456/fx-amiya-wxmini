@@ -3,7 +3,7 @@
     <swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000'>
         <block wx:for="{{goodsInfo.carouselImageUrls}}" wx:for-index="index" wx:key="id">
             <swiper-item>
-                <image src='{{item.picUrl}}' class='img_slide' mode='aspectFill'></image>
+                <image src='{{item.picUrl}}' class='img_slide' mode='widthFix'></image>
             </swiper-item>
         </block>
     </swiper>
@@ -45,21 +45,14 @@
             <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-salePrice="{{goodsInfo.salePrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
         </view>
     </view>
-    <!-- 底部 -->
-    <view class="dis footer padding_both" style='padding-bottom:{{ isIphoneX ? 10 : 0 }}px;'>
-        <view class="total_price">
-            <text class="present_price font_color">￥{{ goodsInfo.quantity==1 ? (storeInfo.name ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}</text>
+    <view wx:if="{{goodsInfo.goodsDetailHtml!==null}}" class="desc">
+        <view class="title"><text>详情介绍</text></view>
+        <view class="goods_detail">
+            <rich-text nodes="{{goodsInfo.goodsDetailHtml}} "></rich-text>
         </view>
-        <!-- <view class="but" bindtap="purchase"  data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice= "{{storeInfo.hospitalSalePrice}}" data-allmoney= "{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}" >立即购买</view> -->
-        <van-goods-action>
-            <van-goods-action-icon icon="chat-o" text="客服" open-type='contact' />
-            <van-goods-action-icon icon="cart-o" text="购物车" bind:click="toShoppingCart" />
-            <van-goods-action-button data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
-            <van-goods-action-button text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}" />
-        </van-goods-action>
-
-
     </view>
+    <!-- 底部 -->
+
     <!-- 城市选择 弹出层 -->
     <van-popup show="{{ cityShow }}" position="bottom" bind:close="onClose">
         <view class="canCal_submit">
@@ -73,5 +66,19 @@
             </block>
         </view>
     </van-popup>
+</view>
+<view class="dis footer padding_both" style='padding-bottom:{{ isIphoneX ? 10 : 0 }}px;'>
+    <view class="total_price">
+        <text class="present_price font_color">￥{{ goodsInfo.quantity==1 ? (storeInfo.name ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}</text>
+    </view>
+    <!-- <view class="but" bindtap="purchase"  data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice= "{{storeInfo.hospitalSalePrice}}" data-allmoney= "{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}" >立即购买</view> -->
+    <van-goods-action>
+        <van-goods-action-icon icon="chat-o" text="客服" open-type='contact' />
+        <van-goods-action-icon icon="cart-o" text="购物车" bind:click="toShoppingCart" />
+        <van-goods-action-button data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
+        <van-goods-action-button text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}" />
+    </van-goods-action>
+
+
 </view>
 <van-toast id="van-toast" />

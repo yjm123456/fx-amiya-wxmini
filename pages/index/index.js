@@ -42,7 +42,7 @@ Page({
         ],
         // 当前地址
         currentCity: '',
-        
+
         // 通过城市获取医院列表
         hospitalList: [],
         // 切换城市model
@@ -74,9 +74,19 @@ Page({
      */
     onLoad: function (options) {
         this.getCarouselImage()
-        
+
         this.getGoodsList()
         // http("post", `/Order/pay/f2702bb0b2dc4b7f944f05408f60980a`).then(res => {})
+    },
+    to(e) {
+        wx.navigateTo({
+            url: e.currentTarget.dataset.url,
+        })
+    },
+    toShop(e) {
+        wx.switchTab({
+            url: e.currentTarget.dataset.url,
+        })
     },
     getGoodsList() {
         const {
@@ -109,15 +119,15 @@ Page({
             }
         })
     },
-    handleActivity(e){
-        if(e.currentTarget.dataset.activity===1){
+    handleActivity(e) {
+        if (e.currentTarget.dataset.activity === 1) {
             wx.navigateTo({
-              url: '/pages/activity/activity?activityid=1',
+                url: '/pages/activity/activity?activityid=1',
             })
-        }else{
+        } else {
             wx.navigateTo({
                 url: '/pages/activity/activity?activityid=2',
-              })
+            })
         }
     },
     // 商品详情
@@ -166,7 +176,7 @@ Page({
             url: '/pages/shoppingMall/shoppingMall',
         })
     },
-    
+
 
     // 绑定手机号
     handleBindPhone() {

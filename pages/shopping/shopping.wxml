@@ -37,23 +37,23 @@
     </scroll-view>
   </view> -->
     <view class="integral_info">
-        <view class="integral_value big"><text class="strong">可用积分</text><text class="big strong">{{balance}}</text></view>
+        <view class="integral_value big"><text class="middle">可用积分</text><text class="big strong color">{{balance}}</text></view>
         <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
     </view>
-    <view class="integral_detail">
+    <!-- <view class="integral_detail"> -->
         <view class="integral_receive">
             <image mode="widthFix" class="to_shop" src="http://iph.href.lu/300x100?text=好物随心换" bindtap="handleToShop"></image>
         </view>
         <view class="goods_swiper">
             <swiper class='banner' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">
                 <swiper-item>
-                    <image mode="widthFix" src="http://iph.href.lu/300x160?text=面诊卡"></image>
+                    <image mode="aspectFill" src="http://iph.href.lu/300x260?text=面诊卡"></image>
                 </swiper-item>
                 <swiper-item>
-                    <image mode="widthFix" src="http://iph.href.lu/300x160?text=节日营销"></image>
+                    <image mode="aspectFill" src="http://iph.href.lu/300x160?text=节日营销"></image>
                 </swiper-item>
                 <swiper-item>
-                    <image mode="widthFix" src="http://iph.href.lu/300x160?text=异业联盟"></image>
+                    <image mode="aspectFill" src="http://iph.href.lu/300x160?text=异业联盟"></image>
                 </swiper-item>
             </swiper>
         </view>
@@ -68,15 +68,15 @@
                         <view class="product_bottom">
                             <view class="product_name">{{item.name}}</view>
                             <view class="price">
-                                <text class="present_price">¥{{item.minShowPrice}}</text>
-                                <text class="original_price">¥{{item.maxShowPrice}}</text>
+                                <text class="present_price">{{item.integrationQuantity}}积分</text>
+                                <!-- <text class="original_price">¥{{item.maxShowPrice}}</text> -->
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
         </view>
-    </view>
+    <!-- </view> -->
 </view>
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

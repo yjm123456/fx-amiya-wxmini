@@ -1,3 +1,12 @@
+page{
+    height:100%;
+    background-color: #000000;
+}
+.personal_container{
+    background-color: #000000;
+    margin-bottom: 0;
+    height: 100%;
+}
 .con_btn{
     width: 200rpx;
     background-color: #fff;
@@ -7,12 +16,17 @@
 .con_btn::after{
     border: 0;
 }
+.user_section{
+    height: 520rpx;
+    background-color: #262626;
+    border-radius: 0 0 20rpx 20rpx;
+}
 .user_info_box {
     height: 320rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    background-color: #ff1554;
+    background-color: #262626;
     width: 100%;
     padding-left: 30rpx;
     align-items: center;
@@ -20,24 +34,29 @@
 
 .user_info_box .portrait {
     margin-right: 30rpx;
-    width: 180rpx;
-    height: 180rpx;
+    width: 160rpx;
+    height: 160rpx;
     border: 5rpx solid #fff;
     border-radius: 50%;
 }
 
 .user_info_box .info_box {
-    height: 210rpx;
+    height: 180rpx;
     width: 255rpx;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
     overflow: hidden;
 }
-
+.info_box_top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
 .user_info_box .info_box .username {
-    width: 100%;
-    font-size: 38rpx;
+   
+    font-size: 48rpx;
     color: #fff;
 
 }
@@ -50,9 +69,12 @@
 }
 
 .leave {
-    color: #fff;
-    font-size: 38rpx;
-    font-weight: 600;
+    color: #BE9F1E;
+    font-size: 32rpx;
+    background-color: #000;
+    padding: 5rpx 10rpx; 
+    border-radius: 10rpx;
+    margin-left: 20rpx;
 }
 
 .leave_img {
@@ -60,7 +82,10 @@ width: 200rpx;
 height: 80rpx;
 border-radius: 10rpx;
 }
-
+.balance{
+    font-size: 38rpx;
+    color: #fff;
+}
 .bottom_left {
     height: 60rpx;
     line-height: 60rpx;
@@ -72,13 +97,15 @@ border-radius: 10rpx;
     width: 50%;
 }
 
-.user_info_box .info_box .balance {
+/* .user_info_box .info_box .balance {
     font-size: 28rpx;
     color: #fff;
     margin-left: 30rpx;
-}
+} */
 .member_no{
-    width: 255rpx;
+    width: 155rpx;
+    height: 155rpx;
+    justify-self: right;
 }
 /* vip-box */
 .vip_card_box {
@@ -103,12 +130,21 @@ border-radius: 10rpx;
 .cover_container {
     margin-top: -30rpx;
     padding: 0 20rpx;
-    background: #F7F7F7;
+    background: #000000;
     padding-bottom: 20rpx;
     border-radius: 20rpx;
     overflow: hidden;
+    margin-bottom: 0rpx;
 }
-
+.card{
+    width: 710rpx;
+    padding: 20rpx;
+    margin-top: -220rpx;
+    z-index: 99;
+}
+.card image{
+    width: 100%;
+}
 /* .cover_container .arc {
     position: absolute;
     left: 0;
@@ -143,9 +179,60 @@ border-radius: 10rpx;
 .info_list {
     padding: 20rpx 0;
 }
+.order{
+    border-radius: 20rpx;
+    background-color: #262626;
+    margin-top: 20rpx;
+    padding: 20rpx;
+}
+.order_title{
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.title_tip{
+    font-size: 30rpx;
+}
+.all_order{
+    font-size: 28rpx;
+}
+.order_item{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 5rpx;
+   justify-content: center;
+   box-sizing: border-box;
+   border-radius: 20rpx;
+   background-color: #3C3C3C;
+   width: 120rpx;
+   height: 130rpx;
+    color: #fff;
+    font-size: 25rpx;
+}
+.order_item image{
+    width: 45rpx;
+    height: 45rpx;
+}
+.cell{
+    border-radius: 20rpx;
+    margin-top: 20rpx;
+    overflow: hidden;
+}
+.cell_item{
+    background-color: #262626 !important;
+    color: #fff!important;
+    font-size: 30rpx !important;
+}
 
+.custom_class{
+    background-color: #262626 !important;
+}
 .order_status {
-    padding-bottom: 20rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .contact {

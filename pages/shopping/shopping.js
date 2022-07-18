@@ -29,6 +29,7 @@ Page({
   onLoad(){
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
+
             } else {
               this.handleBindPhone();
             }
@@ -54,7 +55,7 @@ Page({
     })
   },
   onShow() {
-    this.refresh();
+     this.refresh();
   },
   isCustomer(callback) {
     iscustomer().then(res => {
@@ -150,7 +151,7 @@ getIntegral() {
   getGoodsInfo(callback) {
     const { categoryId, keyword, pageNum, pageSize } = this.data;
     const data = {
-      categoryId, keyword, pageNum, pageSize
+      categoryId, keyword, pageNum, pageSize,exchangeType:0
     }
     http("get", `/Goods/infoList`, data).then(res => {
       if (res.code === 0) {

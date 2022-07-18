@@ -51,9 +51,10 @@
   ],
   "onReachBottomDistance": 50,
   "tabBar": {
-    "color": "#000",
-    "selectedColor": "#ff1554",
+    "color": "#fff",
+    "selectedColor": "#DEC350",
     "borderStyle": "white",
+    "backgroundColor": "#000000",
     "list": [
       {
         "selectedIconPath": "images/tabbarImg/home_t.jpg",
@@ -83,9 +84,10 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "阿美雅",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
+
   },
   "sitemapLocation": "sitemap.json",
   "permission": {

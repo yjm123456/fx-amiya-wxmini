@@ -1,8 +1,11 @@
 /* pages/productDetails/productDetails.wxss */
-
+.container{
+    box-sizing: border-box;
+    margin-bottom: 500rpx;
+}
 .banner {
   width: 100%;
-  height: 800rpx;
+  height: 500rpx;
 }
 .img_slide {
   width: 100%;
@@ -43,13 +46,13 @@
   
 }
 .item_spe_num{
-  margin-bottom: 180rpx;
+  margin-bottom: 10rpx;
 }
 .item_spe:first-child{
   margin-top: 0;
 }
 .message{
-  margin: 20rpx 0 100rpx;
+  margin: 20rpx 0 10rpx;
 }
 .city_con{
   display: flex;
@@ -59,7 +62,18 @@
   font-size: 24rpx;
   margin-bottom: 6rpx;
 }
-
+.desc{
+    background-color: #fff;
+    padding: 20rpx;
+}
+.title{
+    font-size: 32rpx;
+    font-weight: 600;
+}
+.goods_detail{
+    background-color: #fff;
+    padding: 20rpx 20rpx 130rpx 20rpx;
+}
 .footer{
   position: fixed;
   width: 100%;

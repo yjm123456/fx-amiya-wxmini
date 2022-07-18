@@ -28,6 +28,6 @@ page {
   background-color: #ff1554;
 }
 text{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
 }
 @import "/static/iconfont/iconfont.wxss";

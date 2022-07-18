@@ -24,7 +24,7 @@
                 <view>
                     <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
                     <!-- <image src='{{item.thumbPicUrl}}'></image> -->
-                    <van-image width="80" height="80" custom-class="goods_img" src="{{item.thumbPicUrl}}" />
+                    <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
                 </view>
                 <view>
                     <view>{{item.name}}</view>
