@@ -194,6 +194,7 @@ Page({
         })
     },
     to(e) {
+        console.log("点击");
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 wx.navigateTo({

@@ -1,7 +1,7 @@
 <view class="personal_container">
     <view class="user_section">
         <!-- <image class="bg" src="/images/cbg.jpg"></image> -->
-        <view class="user_info_box" bindtap="toLogin">
+        <view class="user_info_box">
             <view class="portrait_box" bindtap="tpPersonalInfo">
                 <image class="portrait" src='{{userInfo.avatarUrl}}'></image>
             </view>
@@ -13,15 +13,12 @@
                 <view class="balance">
                     我的余额:{{balance}}
                 </view>
-
                 <!-- <view class="bottom_right">
                     <image class="leave_img" src="/images/hc.png" mode="scaleToFill"></image>
                 </view> -->
-
                 <!-- <text class="balance" wx:if="{{balance}}">积分余额 {{balance}}</text> -->
             </view>
-
-            <view class="member_no"> <canvas bindclick="disscro" disable-scroll="true" type="2d" style="width: 100%; height: 100%;position: static;" id="myQrcode"></canvas> </view>
+            <view class="member_no"> <canvas  type="2d" style="width:128rpx ; height: 128rpx;margin-left: 127rpx;margin-top: 67.5rpx;" id="myQrcode"></canvas> </view>
         </view>
 
         <!-- <view class="vip_card_box" wx:if="{{memberCard}}">
@@ -35,10 +32,9 @@
         </view> -->
     </view>
     <view class="card">
-        <image src="../../images/receiveCard.png"></image>
+        <image src="../../images/receiveCard.png" mode="widthFix"></image>
     </view>
     <view class="cover_container">
-
         <!-- <image class="arc" src="/images/arc.png"></image> -->
         <!-- 积分 优惠券 账户余额 -->
         <!-- <view class="integral_con">
@@ -69,31 +65,31 @@
                 <text catchtap="to" data-url="/pages/orderList/orderList" class="all_order">查看全部订单</text>
             </view>
             <view class="order_status">
-                <view class="order_item" bindtap="to" data-url="/pages/orderList/orderList?active=1">
+                <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=1">
                     <view>
                         <image src="../../images/dfk.png"></image>
                     </view>
                     <view><text>待付款</text></view>
                 </view>
-                <view class="order_item" bindtap="to" data-url="/pages/orderList/orderList?active=2">
+                <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=2">
                     <view>
                         <image src="../../images/dfh.png"></image>
                     </view>
                     <view><text>待发货</text></view>
                 </view>
-                <view class="order_item" bindtap="to" data-url="/pages/orderList/orderList?active=3">
+                <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=3">
                     <view>
                         <image src="../../images/dsh.png"></image>
                     </view>
                     <view><text>待收货</text></view>
                 </view>
-                <view class="order_item" bindtap="to" data-url="/pages/orderList/orderList?active=4">
+                <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=4">
                     <view>
                         <image src="../../images/dpj.png"></image>
                     </view>
                     <view><text>待评价</text></view>
                 </view>
-                <view class="order_item" bindtap="to" data-url="/pages/orderList/orderList?active=5">
+                <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=5">
                     <view>
                         <image src="../../images/thsh.png"></image>
                     </view>
@@ -120,7 +116,7 @@
                 </view>
             </van-cell>
             <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/personalInfo/personalInfo" bindtap="to" title="个人信息" />
-            <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/accountSettings/accountSettings" bindtap="to" title="账号设置" />
+            <van-cell border="{{false}}" custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/accountSettings/accountSettings" bindtap="to" title="账号设置" />
         </view>
         <!-- <view class="tools">
             <view bindtap="arrivalPlan">

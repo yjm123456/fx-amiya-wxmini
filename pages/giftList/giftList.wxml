@@ -1,21 +1,21 @@
 <!--pages/giftList/giftList.wxml-->
 <view class="container">
-  <block wx:for="{{list}}" wx:key="index">
+  <view class="gift_item" wx:for="{{list}}" wx:key="index">
     <van-radio-group value="{{ radio }}" bind:change="onChange">
-      <van-radio name="{{item.id}}" checked-color="#ff1554">
+      <van-radio  name="{{item.id}}" checked-color="#dec350">
         <view class="item">
-          <van-image width="80" height="80" src="{{item.thumbPicUrl}}" />
+          <image src="{{item.thumbPicUrl}}" />
           <view class="name">{{item.name}}</view>
         </view>
       </van-radio>
     </van-radio-group>
-  </block>
+  </view>
   <view wx:if="{{!nextPage}}">
     <van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%;margin:10rpx 0">暂无更多数据
     </van-divider>
   </view>
   <view class="confirm" bindtap="confirm">
-    <van-button color="#ff1554" custom-style="width:100%;border:none;">
+    <van-button color="#DEC350" custom-style="width:100%;border:none;">
       <view>确认</view>
     </van-button>
   </view>

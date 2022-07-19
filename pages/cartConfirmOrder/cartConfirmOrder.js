@@ -43,6 +43,12 @@ Page({
         this.getAllMoney();
         this.getAllPoint();
     },
+    handleRemarkChange(e) {
+        const { detail } = e;
+        this.setData({
+          remark: detail
+        })
+      },
     handleSelectAddress() {
         const path = 'pages/cartConfirmOrder/cartConfirmOrder';
         wx.navigateTo({

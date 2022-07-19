@@ -2,11 +2,10 @@
 
     <!-- <navigator class="button" url="/pages/purchasedOrder/goodsDetail/goodsDetail?orderId={{item.orderId}}&type={{type}}" hover-class="none">订单详情</navigator> -->
     <view class="item" wx:for="{{list}}" wx:key="id">
-
         <block wx:for="{{item.orderInfoList}}" wx:key="id" wx:for-item="goods">
             <view class="content">
                 <!-- <image src="{{goods.thumbPicUrl}}" class="thumbPic"></image> -->
-                <van-image width="100" height="100" src="{{goods.thumbPicUrl}}" style="margin-right:20rpx" />
+                <van-image width="100" height="100" src="{{goods.thumbPicUrl}}" style="margin-right:20rpx" image-class="goods_pic" />
                 <view class="info">
                     <view class="name">
                         <view class="g_name">{{goods.goodsName}}</view>
@@ -33,34 +32,34 @@
             </view>
 
             <view class="order_detail">
-                <van-button type="default" size="small" data-orderid="{{goods.id}}" data-type="{{goods.exchangeType==0 ? 2:1}}" bind:click="toDetail">
+                <van-button color="#313131" type="default" size="small" data-orderid="{{goods.id}}" data-type="{{goods.exchangeType==0 ? 2:1}}" bind:click="toDetail">
                     订单详情
                 </van-button>
             </view>
 
         </block>
-        <view wx:if="{{item.statusCode==='WAIT_BUYER_PAY' || item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'}}">
+        <!-- <view wx:if="{{item.statusCode==='WAIT_BUYER_PAY' || item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'}}">
             <van-divider customStyle="font-size: 18px;margin-top:10rpx;margin-bottom:10rpx" />
-        </view>
+        </view> -->
 
         <!-- 待发货不显示tool -->
         <view class="tool" wx:if="{{item.statusCode !== 'WAIT_SELLER_SEND_GOODS'}}">
             <!-- 待付款 -->
             <view class="tool_btn">
-                <van-button type="default" size="small" class="cancel" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelOrder">取消
+                <van-button color="#313131" type="default" size="small" class="cancel" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelOrder">取消
                 </van-button>
-                <van-button type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="1" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
+                <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="1" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
                 </van-button>
                 <!-- 待收货 -->
-                <van-button type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'}}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleConfirm">
+                <van-button color="#313131" type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'}}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleConfirm">
                     确认收货
                 </van-button>
                 <!-- 查看物流 -->
-                <van-button type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' && item.orderInfoList[0].orderType===1}}" data-tradeid="{{item.tradeId}}" data-type="{{item.orderInfoList[0].orderType}}" bind:click="toLogistics">
+                <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' && item.orderInfoList[0].orderType===1}}" data-tradeid="{{item.tradeId}}" data-type="{{item.orderInfoList[0].orderType}}" bind:click="toLogistics">
                     查看物流
                 </van-button>
                 <!-- 积分退款 -->
-                <van-button type="default" size="small" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0 && item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'}}" data-orderid="{{item.orderInfoList[0].id}}" bind:click="pointReund">
+                <van-button color="#313131" type="default" size="small" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0 && item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'}}" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" bind:click="pointReund">
                     积分退款
                 </van-button>
                 <!-- <view class="button" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0 && item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}">积分退款</view> -->

@@ -19,6 +19,7 @@
 .middle {
     font-size: 32rpx;
     color: #ffffff;
+    vertical-align: text-bottom;
 }
 
 .integral_info {
@@ -97,7 +98,7 @@
       color: #fff;
   }
   .price{
-  color: #ff1554;
+  color: #dec530;
   }
   .present_price{
     font-size: 38rpx;

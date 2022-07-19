@@ -1,33 +1,47 @@
 page {
-  background-color: #f1f1f1;
-  font-family: PingFangSC-regular;
+    background-color: #f1f1f1;
+    font-family: PingFangSC-regular;
 }
-.font_color{
-  color: #ff1554
+
+::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    color: transparent;
 }
-.title{
-  font-size: 28rpx
+
+.font_color {
+    color: #ff1554
 }
-.padding_both{
-  padding:0 50rpx;
-  box-sizing: border-box
+
+.title {
+    font-size: 28rpx
 }
-.dis{
-  display: flex;
-  justify-content: space-between
+
+.padding_both {
+    padding: 0 50rpx;
+    box-sizing: border-box
 }
-.button{
-  width: 100%;
-  height: 90rpx;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  line-height: 90rpx;
-  color: #fff;
-  background-color: #ff1554;
+
+.dis {
+    display: flex;
+    justify-content: space-between
 }
-text{
+
+.button {
+    width: 100%;
+    height: 90rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 90rpx;
+    color: #fff;
+    background-color: #ff1554;
+}
+
+text {
     /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
 }
+
 @import "/static/iconfont/iconfont.wxss";

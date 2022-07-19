@@ -1,1 +1,10 @@
 /* pages/writeoffGoodGift/writeoffGoodGift.wxss */
+page{
+    background-color: #000;
+}
+.van-tabs__scroll{
+    background-color: #000 !important;
+}
+.tabs{
+    background-color: #000 !important;
+}

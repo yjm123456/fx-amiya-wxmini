@@ -279,7 +279,8 @@ Component({
             pointReund(e) {
                 this.setData({
                     show: true,
-                    orderId: e.currentTarget.dataset.orderid
+                    orderId: e.currentTarget.dataset.orderid,
+                    tradeId:e.currentTarget.dataset.tradeid
                 });
             },
             // 取消
@@ -293,13 +294,15 @@ Component({
             onConfirm() {
                 const {
                     orderId,
-                    refundReason
+                    refundReason,
+                    tradeId
                 } = this.data
                 const data = {
                     orderId,
-                    refundReason
+                    refundReason,
+                    tradeId
                 }
-                http("post", `/IntegrationAccount/Refund`, data).then(res => {
+                http("post", `/IntegrationAccount/RefundTrade`, data).then(res => {
                     if (res.code === 0) {
                         wx.showToast({
                             title: '已提交退款申请',

@@ -1,0 +1,7 @@
+
+.van-tabs__scroll{
+    background-color: #000 !important;
+}
+.tabs{
+    background-color: #000 !important;
+}

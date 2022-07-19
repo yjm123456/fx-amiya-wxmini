@@ -1,5 +1,4 @@
 page{
-    height:100%;
     background-color: #000000;
 }
 .personal_container{
@@ -36,7 +35,7 @@ page{
     margin-right: 30rpx;
     width: 160rpx;
     height: 160rpx;
-    border: 5rpx solid #fff;
+    border: 5rpx solid #939393;
     border-radius: 50%;
 }
 
@@ -69,11 +68,11 @@ page{
 }
 
 .leave {
-    color: #BE9F1E;
+    color: #dec350;
     font-size: 32rpx;
     background-color: #000;
     padding: 5rpx 10rpx; 
-    border-radius: 10rpx;
+    border-radius: 20rpx;
     margin-left: 20rpx;
 }
 
@@ -103,8 +102,8 @@ border-radius: 10rpx;
     margin-left: 30rpx;
 } */
 .member_no{
-    width: 155rpx;
-    height: 155rpx;
+    width: 245rpx;
+    height: 255rpx;
     justify-self: right;
 }
 /* vip-box */
@@ -134,7 +133,6 @@ border-radius: 10rpx;
     padding-bottom: 20rpx;
     border-radius: 20rpx;
     overflow: hidden;
-    margin-bottom: 0rpx;
 }
 .card{
     width: 710rpx;

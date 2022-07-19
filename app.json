@@ -57,26 +57,26 @@
     "backgroundColor": "#000000",
     "list": [
       {
-        "selectedIconPath": "images/tabbarImg/home_t.jpg",
-        "iconPath": "images/tabbarImg/home_f.jpg",
+        "selectedIconPath": "images/tabbarImg/indexsel.png",
+        "iconPath": "images/tabbarImg/index.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "selectedIconPath": "images/tabbarImg/shop_t.jpg",
-        "iconPath": "images/tabbarImg/shop_f.jpg",
+        "selectedIconPath": "images/tabbarImg/shopsel.png",
+        "iconPath": "images/tabbarImg/shop.png",
         "pagePath": "pages/shoppingMall/shoppingMall",
         "text": "商城"
       },
       {
-        "selectedIconPath": "images/tabbarImg/integral_t.jpg",
-        "iconPath": "images/tabbarImg/integral_f.jpg",
+        "selectedIconPath": "images/tabbarImg/internalsel.png",
+        "iconPath": "images/tabbarImg/internal.png",
         "pagePath": "pages/shopping/shopping",
         "text": "积分兑换"
       },
       {
-        "selectedIconPath": "images/tabbarImg/my_t.jpg",
-        "iconPath": "images/tabbarImg/my_f.jpg",
+        "selectedIconPath": "images/tabbarImg/minesel.png",
+        "iconPath": "images/tabbarImg/mine.png",
         "pagePath": "pages/personal/personal",
         "text": "我的"
       }

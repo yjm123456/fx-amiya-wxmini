@@ -1,5 +1,30 @@
 /* pages/personalInfo/personalInfo.wxss */
+page{
+    background-color: #000;
+}
+.container{
+    border-radius: 20rpx;
+    overflow: hidden;
+    margin-top: 20rpx;
+    margin-right: 30rpx;
+    margin-left: 30rpx;
+}
 .avatar{
     width: 45rpx;
     border-radius: 5rpx;
 }
+.cell_item{
+    background-color: #262626 !important;
+    color: #fff!important;
+    font-size: 30rpx !important;
+}
+.cell_value{
+    color: #fff !important;
+}
+.confirm {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+  }

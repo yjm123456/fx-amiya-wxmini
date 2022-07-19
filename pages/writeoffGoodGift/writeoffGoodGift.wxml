@@ -1,5 +1,5 @@
 <!--pages/writeoffGoodGift/writeoffGoodGift.wxml-->
-<van-tabs active="{{ active }}" bind:change="handleTabChange" sticky>
+<van-tabs color="#DEC350" title-inactive-color="#fff" title-active-color="#DEC350" active="{{ active }}" bind:change="handleTabChange" sticky>
   <van-tab title="未领取">
     <notClaimed active="{{active}}" id="notClaimed"></notClaimed>
   </van-tab>

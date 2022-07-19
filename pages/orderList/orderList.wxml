@@ -1,4 +1,4 @@
-<van-tabs wx:if="show" active="{{active}}" bind:change="handleTabChange" id="tabs">
+<van-tabs wx:if="show" active="{{active}}" nav-class="tabs" custom-class="tabs" color="#DEC350" title-inactive-color="#fff" title-active-color="#DEC350" bind:change="handleTabChange" id="tabs">
   <van-tab title="全部">
     <all active="{{active}}" id="all"></all>
   </van-tab>

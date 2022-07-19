@@ -4,7 +4,8 @@
 }
 .item{
   width: 100%;
-  background-color: #fff;
+  background-color: #212121;
+  color: #fff;
   padding: 20rpx;
   box-sizing: border-box;
   margin-top: 30rpx;
@@ -13,6 +14,15 @@
 }
 .item_top{
   display: flex;
+  background-color: #363636;
+  border-radius: 20rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+.item_top image{
+    height: 200rpx;
+    width: 200rpx;
+    border-radius:  20rpx;
 }
 .memo{
   flex:1;
@@ -21,6 +31,9 @@
 .title{
   font-size: 30rpx;
   margin-top: 15rpx;
+}
+.source{
+    font-size: 26rpx;
 }
 .hospital{
   font-size: 24rpx;
@@ -39,7 +52,8 @@
 .receive{
   padding: 8rpx 15rpx;
   box-sizing: border-box;
-  background-color: #ff1554;
+  background-color: #dec530;
+  border-radius: 20rpx;
   color: #fff;
   font-size: 24rpx;
 }

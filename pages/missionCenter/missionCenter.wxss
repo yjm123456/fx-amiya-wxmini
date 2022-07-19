@@ -1,55 +1,83 @@
 /* pages/missionCenter/missionCenter.wxss */
-.container{
+page {
+    color: #000;
+}
+
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    background-color: #000;
     width: 100%;
     height: 100%;
 }
-.big{
+
+.big {
     font-size: 35rpx;
     color: #fff;
     font-weight: bold;
 }
-.title{
+
+.title {
     font-size: 35rpx;
     font-weight: bold;
+    color: #fff;
 }
-.card{
-    box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2;
+
+.card {
+    /* box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2; */
     border-radius: 20rpx;
     margin: 20rpx 30rpx;
     padding: 10rpx;
+    background-color: #212121;
 }
-.circle{
+
+.mission_list {
+    border-radius: 20rpx;
+    overflow: hidden;
+    margin: 20rpx;
+}
+
+.mission_cell {
+    background-color: #363636 !important;
+    color: #fff!important;
+    font-size: 30rpx!important;
+}
+.mission_value{
+    font-size: 28rpx;
+}
+
+.circle {
     width: 500rpx;
     height: 500rpx;
     border-radius: 250rpx;
     margin-top: 30rpx;
-    background-image: linear-gradient(to top, #c71d6f 0%, #ff1554 100%);
-    box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2;
+    background-image: linear-gradient(to top, #dec350 0%, #FED428 100%);
+    /* box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.circle view{
+
+.circle view {
     text-align: center;
 }
 
-.tip{
+.tip {}
 
-}
-.growth{
+.growth {
     margin-top: 50rpx;
     margin-bottom: 50rpx;
 }
-.content{
+
+.content {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-top: 30rpx;
 }
-.base_mission{
-    
+.card{
+    border-radius: 20rpx;
+    overflow: hidden;
 }
+.base_mission {}

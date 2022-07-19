@@ -1,8 +1,33 @@
 /* pages/giftList/giftList.wxss */
+page{
+    background-color: #000;
+}
+.container{
+    padding: 30rpx;
+}
+.gift_item{
+    border-radius: 20rpx;
+    overflow: hidden;
+    background-color: #262626;
+    margin-top: 20rpx;
+}
+ view .van-radio{
+    background-color: #262626 !important;
+}
+
 .item{
   display: flex;
   align-items: center;
-  margin-top: 30rpx;
+  background-color: #363636;
+  color: #fff;
+  border-radius: 20rpx;
+  height: 150rpx;
+  width:590rpx
+}
+.item image{
+    width: 150rpx;
+    height:150rpx;
+    border-radius: 20rpx;
 }
 .name{
   flex:1;

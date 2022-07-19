@@ -1,16 +1,47 @@
 <!--pages/personalInfo/personalInfo.wxml-->
 <view class="container">
-    <van-cell-group>
-        <van-cell title="头像">
+    <van-cell-group border="{{fasle}}">
+        <van-cell custom-class='cell_item' value-class="cell_value" title="头像">
             <view>
                 <image class="avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
             </view>
         </van-cell>
-        <van-cell title="手机号" value="{{userInfo.phone}} " is-link bindtap="editPhone" value="{{userInfo.phone}}" />
-        <van-cell title="会员等级" value="vip1" />
-        <van-cell title="性别" value="{{userInfo.sex}}" />
-        <van-cell title="生日" value="未知" />
-        <van-cell title="地区" value="{{userInfo.city==='' ? '未知':userInfo.city}}" />
-        <van-cell title="收货地址" is-link link-type="navigateTo" data-url="/pages/addressList/addressList" bindtap="to" value="修改/设置" />
+        <van-cell custom-class='cell_item' value-class="cell_value" title="手机号" value="{{userInfo.phone}} " is-link bindtap="editPhone" value="{{userInfo.phone}}" />
+        <van-cell custom-class='cell_item' value-class="cell_value" title="会员等级" value="vip1" />
+        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="性别" value="{{userInfo.sex}}" />
+        <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="性别">
+            <view slot="right-icon">
+                <van-field value="{{ value }}" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" />
+            </view>
+        </van-cell>
+
+        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="生日" value="未知" />
+        <view wx:else="">
+            <picker mode="date" bindchange="bindChange"  value="{{date}}" >
+                <van-cell custom-class='cell_item' value-class="cell_value" title="生日" value="{{isEditBirth? date:'请选择'}}" bindtap="showBirthPicker">
+                </van-cell>
+            </picker>
+        </view>
+
+
+        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="地区" value="{{userInfo.city==='' ? '未知':userInfo.city}}" />
+        <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="地区" value="{{ }}" />
+
+        <van-cell border="{{fasle}}" custom-class='cell_item' value-class="cell_value" title="收货地址" is-link link-type="navigateTo" data-url="/pages/addressList/addressList" bindtap="to" value="修改/设置" />
     </van-cell-group>
 </view>
+<view wx:if="{{!isEdit}}" class="confirm" bindtap="edit">
+    <van-button color="#DEC350" custom-style="width:100%;border:none;">
+        <view>编辑</view>
+    </van-button>
+</view>
+<view wx:if="{{isEdit}}" class="confirm" bindtap="save">
+    <van-button color="#DEC350" custom-style="width:100%;border:none;">
+        <view>保存</view>
+    </van-button>
+</view>
+
+<!-- <van-popup show="{{ showBirthPicker }}" bind:close="onClose">
+    <picker mode="date" header-text="选择时间" value="{{date}}" bindchange="bindDateChange">
+    </picker>
+</van-popup> -->

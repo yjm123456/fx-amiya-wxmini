@@ -3,7 +3,7 @@
     <!-- 轮播图 -->
     <swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
         <swiper-item wx:for="{{carouselImage}}" wx:key="picUrl" bindtap="redirect" data-url="{{item.linkUrl}}">
-            <image src='{{item.picUrl}}' class='slide' mode='widthFix'></image>
+            <image src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
         </swiper-item>
     </swiper>
     <!-- 咨询 -->

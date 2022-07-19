@@ -1,4 +1,7 @@
 /* pages/shoppingMall/shoppingMall.wxss */
+page{
+    background-color: #000;
+}
 .wrap {
     width: 100%;
     background-color: #000;
@@ -23,6 +26,7 @@
 .panel .panel_left {
     height: 100%;
     flex: 1;
+    color: #fff;
     border-top-left-radius: 32rpx;
     border-bottom-left-radius: 32rpx;
 }
