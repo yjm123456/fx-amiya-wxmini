@@ -190,6 +190,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "个人信息",
+                    "pathName": "pages/personalInfo/personalInfo",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

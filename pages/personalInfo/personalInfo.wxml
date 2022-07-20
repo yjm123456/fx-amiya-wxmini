@@ -6,28 +6,41 @@
                 <image class="avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
             </view>
         </van-cell>
-        <van-cell custom-class='cell_item' value-class="cell_value" title="手机号" value="{{userInfo.phone}} " is-link bindtap="editPhone" value="{{userInfo.phone}}" />
+        <van-cell custom-class="cell_item" value-class="cell_value" title="手机号" value="{{userInfo.phone}} " is-link="{{!isEdit}}" bindtap="{{isEdit? '':'editPhone'}}" value="{{userInfo.phone}}" />
         <van-cell custom-class='cell_item' value-class="cell_value" title="会员等级" value="vip1" />
-        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="性别" value="{{userInfo.sex}}" />
-        <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="性别">
+
+        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="昵称" value="{{userInfo.nickName}}" />
+        <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="昵称">
             <view slot="right-icon">
-                <van-field value="{{ value }}" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" />
+                <text bindtap="changeNickName">{{isEditNickName?newName:'请填写新昵称'}}</text>
             </view>
         </van-cell>
 
-        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="生日" value="未知" />
+        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="性别" value="{{userInfo.sex}}" />
+        <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="性别">
+            <view slot="right-icon">
+                <!-- <van-field value="{{ value }}" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" /> -->
+                <text bindtap="chooseGender">{{isEditGender?genderList[gender-1]:'请选择'}}</text>
+            </view>
+        </van-cell>
+
+        <!-- <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="生日" value="未知" />
         <view wx:else="">
-            <picker mode="date" bindchange="bindChange"  value="{{date}}" >
+            <picker mode="date" end='{{timeNow}}' bindchange="bindChange" value="{{date}}">
                 <van-cell custom-class='cell_item' value-class="cell_value" title="生日" value="{{isEditBirth? date:'请选择'}}" bindtap="showBirthPicker">
                 </van-cell>
             </picker>
-        </view>
+        </view> -->
 
 
         <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="地区" value="{{userInfo.city==='' ? '未知':userInfo.city}}" />
-        <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="地区" value="{{ }}" />
+        <view wx:else>
+            <picker mode="region" bindchange="bindAreaChange" value="{{area}}">
+                <van-cell custom-class='cell_item' value-class="cell_value" title="地区" value="{{ isEditArea? area[1]:'请选择' }}" />
+            </picker>
+        </view>
 
-        <van-cell border="{{fasle}}" custom-class='cell_item' value-class="cell_value" title="收货地址" is-link link-type="navigateTo" data-url="/pages/addressList/addressList" bindtap="to" value="修改/设置" />
+        <van-cell border="{{fasle}}" custom-class='cell_item' value-class="cell_value" title="收货地址" is-link="{{!isEdit}}" link-type="navigateTo" data-url="/pages/addressList/addressList" bindtap="{{isEdit?'':'to'}}" value="修改/设置" />
     </van-cell-group>
 </view>
 <view wx:if="{{!isEdit}}" class="confirm" bindtap="edit">
@@ -35,13 +48,16 @@
         <view>编辑</view>
     </van-button>
 </view>
-<view wx:if="{{isEdit}}" class="confirm" bindtap="save">
-    <van-button color="#DEC350" custom-style="width:100%;border:none;">
+<view wx:if="{{isEdit}}" class="confirm">
+    <van-button bind:click="saveInfo" color="#DEC350" custom-style="width:100%;border:none;">
         <view>保存</view>
     </van-button>
 </view>
 
-<!-- <van-popup show="{{ showBirthPicker }}" bind:close="onClose">
-    <picker mode="date" header-text="选择时间" value="{{date}}" bindchange="bindDateChange">
-    </picker>
-</van-popup> -->
+<van-popup show="{{ show }}" closeable custom-style="height: 300rpx;width:500rpx;border-radius:20rpx;display:flex;justify-content:center;align-items:center;" bind:close="onClose">
+    <van-field maxlength="10" custom-style="height:background-color:e2e2e2;border:1rpx solid #e2e2e2;border-radius:20rpx" model:value="{{ newName }}" placeholder="请输入新的昵称" border="{{ false }}">
+        <van-button slot="button" size="small" type="primary" bindtap="updateNickName">
+            确认修改
+        </van-button>
+    </van-field>
+</van-popup>

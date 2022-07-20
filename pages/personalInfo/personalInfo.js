@@ -12,16 +12,87 @@ Page({
     data: {
         userInfo: {},
         isEdit: false,
-        isEditBirth:false,
+        isEditBirth: false,
         showBirthPicker: false,
-        date: ""
+        date: "",
+        area: [],
+        province: '',
+        city: '',
+        gender: '',
+        genderList: ['男', '女'],
+        isEditArea: false,
+        isEditGender: false,
+        timeNow: '',
+        nickName: '',
+        show: false,
+        newName:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        var myDate = new Date();
+        var year = myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+        var month = myDate.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+        if (month < 10) {
+            month = '0' + month
+        }
+        var day = myDate.getDate();
+        if (day < 10) {
+            day = '0' + day
+        }
+        console.log(year + '-' + month + '-' + day)
+        this.setData({
+            timeNow: year + '-' + month + '-' + day
+        })
         this.getUserInfo();
+    },
+    updateNickName(){
+        if(this.data.newName!==""){
+            this.setData({show:false,isEditNickName:true})
+        }
+    
+
+    },
+    saveInfo() {
+        // if(!this.data.date){
+        //     wx.showToast({
+        //       title: '请输入生日',
+        //       icon:'none'
+        //     })
+        //     return
+        // }
+        console.log("调用")
+        let {
+            gender,
+            // date,
+            province,
+            city,
+            nickName,newName
+        } = this.data
+        if(newName!==""){
+            nickName=newName
+        }
+        const data = {
+            gender,
+            //date,
+            province,
+            city,
+            nickName
+        }
+        http("put", "/User/userEditInfo", data).then((res) => {
+            if (res.code === 0) {
+                wx.showToast({
+                    title: '修改成功',
+                    icon: 'none',
+                    duration: 1000
+                })
+                this.save();
+                this.getUserInfo();
+            }
+
+        })
     },
     showBirthPicker() {
         this.setData({
@@ -30,7 +101,7 @@ Page({
     },
     onClose() {
         this.setData({
-            showBirthPicker: false
+            show: false
         })
     },
     edit() {
@@ -39,19 +110,59 @@ Page({
         })
     },
     save() {
-
         this.setData({
             isEdit: false,
-            date:'',
-            isEditBirth:false,
-            isEditArea:false
+            date: '',
+            isEditBirth: false,
+            isEditArea: false,
+            isEditGender: false,
+            isEditNickName:false,
+            area: [],
+            province: '',
+            city: '',
+            gender: '',
+            newName:''
         })
     },
     bindChange: function (e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
         this.setData({
             date: e.detail.value,
-            isEditBirth:true
+            isEditBirth: true
+        })
+    },
+    bindAreaChange: function (e) {
+        const area = e.detail.value
+        this.setData({
+            area: area,
+            isEditArea: true,
+            province: area[0],
+            city: area[1]
+        })
+    },
+    chooseGender() {
+        this.setData({
+            isEditGender: true
+        })
+        wx.showActionSheet({
+            itemList: this.data.genderList,
+            success: (res) => {
+                this.setData({
+                    gender: res.tapIndex === 0 ? 1 : 2
+                })
+            },
+            fail: (res) => {
+                if (this.data.gender === '') {
+                    this.setData({
+                        isEditGender: false
+                    })
+                }
+
+            }
+        })
+    },
+    changeNickName() {
+        this.setData({
+            show:true
         })
     },
     isCustomer(callback) {
@@ -76,7 +187,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        this.getUserInfo();
+        //this.getUserInfo();
     },
 
     /**
@@ -106,8 +217,13 @@ Page({
     getUserInfo() {
         http("get", "/User/info").then(res => {
             if (res.code === 0) {
+                console.log(res.data.userInfo.sex === '男')
                 this.setData({
-                    userInfo: res.data.userInfo
+                    userInfo: res.data.userInfo,
+                    gender: res.data.userInfo.sex === '男' ? 1 : res.data.userInfo.sex === '女' ? 2 : 0,
+                    city: res.data.userInfo.city,
+                    province: res.data.userInfo.province,
+                    nickName:res.data.userInfo.nickName
                 })
             }
         });

@@ -41,7 +41,7 @@ page{
 
 .user_info_box .info_box {
     height: 180rpx;
-    width: 255rpx;
+    width: 355rpx;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +54,9 @@ page{
     justify-content: flex-start;
 }
 .user_info_box .info_box .username {
-   
+   max-width: 80%;
+   overflow: hidden;
+   text-overflow: ellipsis;
     font-size: 48rpx;
     color: #fff;
 
@@ -102,8 +104,8 @@ border-radius: 10rpx;
     margin-left: 30rpx;
 } */
 .member_no{
-    width: 245rpx;
-    height: 255rpx;
+    width: 145rpx;
+    height: 155rpx;
     justify-self: right;
 }
 /* vip-box */
