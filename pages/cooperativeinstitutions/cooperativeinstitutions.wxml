@@ -1,5 +1,6 @@
+<view class="center">敬请期待...</view>
 <!-- 医院列表 -->
-<view class="hospital_con">
+<!-- <view class="hospital_con">
     <view class="hospital_top">
         <view class="title_h3">医院列表</view>
         <view class="flex_bot">
@@ -31,14 +32,14 @@
         <van-divider wx:if="{{!hospitalList.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 150%;width:100%">暂无医院</van-divider>
 
     </view>
-</view>
+</view> -->
 <!-- 切换城市弹窗 -->
-<van-popup show="{{ cityModel }}" position="right" bind:close="onCancel" custom-style="height: 100%;width:78%">
+<!-- <van-popup show="{{ cityModel }}" position="right" bind:close="onCancel" custom-style="height: 100%;width:78%">
     <view class="popup_con">
         <view class="pro_content">
             <view class="popup_item">
                 <!-- 热门城市 -->
-                <view class="hot_con">
+                <!-- <view class="hot_con">
                     <view class="type_name">热门城市</view>
                     <view class="name_com">
                         <block wx:for="{{hosCityList}}" wx:key="index">
@@ -61,6 +62,6 @@
             </view>
         </view>
     </view>
-</van-popup>
+</van-popup>  -->
 <!-- 授权手机号 -->
-<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<!-- <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone> -->

@@ -16,7 +16,7 @@ page{
     border: 0;
 }
 .user_section{
-    height: 520rpx;
+    height: 480rpx;
     background-color: #262626;
     border-radius: 0 0 20rpx 20rpx;
 }
@@ -33,18 +33,18 @@ page{
 
 .user_info_box .portrait {
     margin-right: 30rpx;
-    width: 160rpx;
-    height: 160rpx;
+    width: 120rpx;
+    height: 120rpx;
     border: 5rpx solid #939393;
     border-radius: 50%;
 }
 
 .user_info_box .info_box {
-    height: 180rpx;
+    height: 110rpx;
     width: 355rpx;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     overflow: hidden;
 }
 .info_box_top{
@@ -57,8 +57,13 @@ page{
    max-width: 80%;
    overflow: hidden;
    text-overflow: ellipsis;
-    font-size: 48rpx;
+    font-size: 28rpx;
     color: #fff;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
 
 }
 
@@ -71,7 +76,7 @@ page{
 
 .leave {
     color: #dec350;
-    font-size: 32rpx;
+    font-size: 28rpx;
     background-color: #000;
     padding: 5rpx 10rpx; 
     border-radius: 20rpx;
@@ -84,7 +89,7 @@ height: 80rpx;
 border-radius: 10rpx;
 }
 .balance{
-    font-size: 38rpx;
+    font-size: 28rpx;
     color: #fff;
 }
 .bottom_left {

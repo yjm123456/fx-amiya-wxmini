@@ -1,29 +1,42 @@
+page{
+    background-color: #000;
+}
 .container{
     padding: 10rpx;
-    background-color: #fff;
+    background-color: #000;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 .diary{
     width: 100%;
     border-radius: 10rpx;
     overflow: hidden;
-    margin-bottom: 20rpx;
-    box-shadow: 2rpx 2rpx 5rpx 2rpx #ccc;
+    /* box-shadow: 2rpx 2rpx 5rpx 2rpx #ccc; */
 }
 .diary image{
     width:100%;
+    /* height: 100%; */
+}
+.img{
+    width: 100%;
+    height: 390rpx;
 }
 .diary_title{
     font-family: FZShuTi;
     font-size: 38rpx;
     font-weight: 600;
-    padding-top:5rpx;
+    padding-top:25rpx;
+    color: #fff;
     padding-bottom:5rpx ;
+}
+.diary_img{
+    margin: 0;
+    padding: 0;
 }
 .diary_bottom{
     padding: 10rpx;
+    background-color: #313131;
+    height: 100%;
 }
 .diary_left{
     font-size: 35rpx;

@@ -106,12 +106,13 @@ text{
 color: #ff1554;
 }
 .present_price{
-  font-size: 38rpx;
+  font-size: 32rpx;
   margin-bottom: 10rpx;
 }
 .original_price{
   text-decoration:line-through;
   margin-left: 15rpx;
+  font-size: 28rpx;
   color: #818181;
   padding-top: 10rpx;
   box-sizing: border-box;

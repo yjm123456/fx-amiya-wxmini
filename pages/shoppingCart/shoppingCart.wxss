@@ -225,7 +225,15 @@ page {
 .total {
     color: #DEC350 !important;
 }
-
+.goods_name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    font-size: 25rpx;
+}
 .van-submit-bar__text {
     color: #fff !important;
 }

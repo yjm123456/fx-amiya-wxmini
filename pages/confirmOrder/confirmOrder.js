@@ -105,12 +105,16 @@ Page({
         })
         // type为2是积分兑换
         if(type == 2 ){
+            console.log("积分兑换");
           wx.showModal({
             title: '提示',
             content: '是否支付',
             success: (res) => {
               if (res.confirm) {
+                  console.log("确认")
+                  console.log(tradeId);
                 this.pay(tradeId)
+                
               } else if (res.cancel) {
                 // 取消支付
               }
@@ -156,6 +160,7 @@ Page({
   },
 
   pay(tradeId) {
+      console.log("开始支付");
     http("post", `/Order/pay/${tradeId}`).then(res => {
       if (res.code === 0) {
         wx.showToast({

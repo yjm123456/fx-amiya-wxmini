@@ -24,9 +24,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getLocation()
-        this.getCityList()
-        this.getHotList()
+        //this.getLocation()
+        //this.getCityList()
+        //this.getHotList()
     },
     // 根据所在城市获取医院列表
     getHospitalList(city) {

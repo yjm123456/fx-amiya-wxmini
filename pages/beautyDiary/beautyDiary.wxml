@@ -1,13 +1,16 @@
 <view class="container">
     <view class="diary" wx:for="{{list}}" wx:key="index">
         <navigator class="diary_con" url="/pages/index/diaryDetail/diaryDetail?id={{item.id}}&givingLikes={{item.givingLikes}}" hover-class="none">
-
-            <image src="{{item.thumbPictureUrl}}" class="diary_img" mode="widthFix"></image>
+            <view>
+               <view class="img">
+                <image src="{{item.thumbPictureUrl}}" class="diary_img"  mode="widthFix"/>
+               </view>
             <view class="diary_bottom">
                 <view class="diary_title">{{item.coverTitle}}</view>
                 <view class="diary_like_con">
                     <view class="diary_left"><text>{{item.views}} 浏览</text><text class="dian">.</text><text>{{item.givingLikes}} 赞同</text></view>
                 </view>
+            </view>
             </view>
         </navigator>
     </view>

@@ -43,3 +43,6 @@
   top: 40rpx;
   left: 35rpx;
 }
+.button{
+    background-color: #dec530;
+}

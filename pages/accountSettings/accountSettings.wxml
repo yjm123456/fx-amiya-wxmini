@@ -1,3 +1,5 @@
 <!--pages/accountSettings/accountSettings.wxml-->
-<van-cell is-link bindtap="editPhone" title="绑定/修改手机号" />
-<van-cell is-link link-type="navigateTo" url="/pages/addressList/addressList?editPhone=${true}" title="收货地址" />
+<view class="container">
+    <van-cell custom-class='cell_item' value-class="cell_value" is-link bindtap="editPhone" title="绑定/修改手机号" />
+<van-cell border="{{fasle}}" custom-class='cell_item' value-class="cell_value" is-link link-type="navigateTo" url="/pages/addressList/addressList?editPhone=${true}" title="收货地址" />
+</view>

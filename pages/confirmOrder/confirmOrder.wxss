@@ -151,6 +151,6 @@ page {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #EE0A24;
+  background-color: #dec530;
   color: #fff;
 }

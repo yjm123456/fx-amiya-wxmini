@@ -38,25 +38,14 @@
     <view class="grid_item" data-url="/pages/aboutAmeiya/aboutAmeiya" bindtap="to"><text>关于啊美雅</text></view>
     <view class="grid_item" data-url="/pages/userProtection/userProtection" bindtap="to"><text>用户保障</text></view>
     <view class="grid_item" data-url="/pages/memberbenefits/memberbenefits" bindtap="to"><text>会员权益</text></view>
-        <!-- <van-grid gutter="{{5}}"  border="{{true}}" column-num="3" custom-class="grid_navigation" >
-            <van-grid-item custom-class="grid_item" link-type="navigateTo" url="/pages/aboutAmeiya/aboutAmeiya" use-slot="true">
-                <text>关于啊美雅</text>
-            </van-grid-item>
-            <van-grid-item custom-class="grid_item" link-type="navigateTo" url="/pages/userProtection/userProtection" use-slot="true" text="文字">
-                <text>用户保障</text>
-            </van-grid-item>
-            <van-grid-item custom-class="grid_item" link-type="navigateTo" url="/pages/memberbenefits/memberbenefits" use-slot="true" text="文字">
-                <text>会员权益</text>
-            </van-grid-item>
-        </van-grid> -->
     </view>
     <!-- 活动 -->
     <view class="activity">
         <view class="activity_item" bindtap="handleActivity" data-activity="{{1}}">
-            <image src="http://iph.href.lu/300x300?text=活动一" mode="aspectFill"></image>
+            <image src="../../images/hyfl.jpg" mode="heightFix"></image>
         </view>
         <view class="activity_item" bindtap="handleActivity" data-activity="{{2}}">
-            <image src="http://iph.href.lu/300x300?text=活动二" mode="aspectFill"></image>
+            <image src="../../images/yqxyh.jpg" mode="aspectFill"></image>
         </view>
     </view>
     <!-- 导航栏二 -->
@@ -64,17 +53,6 @@
         <view class="grid_item" data-url="/pages/meiYaCard/meiYaCard" bindtap="to"><text>MEIYA卡</text></view>
     <view class="grid_item" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><text>MEIYA甄选</text></view>
     <view class="grid_item" data-url="/pages/beautyDiary/beautyDiary" bindtap="to"><text>美丽日记</text></view>
-        <!-- <van-grid border="{{true}}" column-num="3" custom-class=".grid_navigation" content-class=".grid_navigation_item">
-            <van-grid-item link-type="navigateTo" url="/pages/meiYaCard/meiYaCard" use-slot="true" text="文字">
-                <text>MEIYA卡</text>
-            </van-grid-item>
-            <van-grid-item link-type="switchTab" url="/pages/shoppingMall/shoppingMall" use-slot="true" text="文字">
-                <text>MEIYA甄选</text>
-            </van-grid-item>
-            <van-grid-item link-type="navigateTo" url="/pages/beautyDiary/beautyDiary" use-slot="true" text="文字">
-                <text>美丽日记</text>
-            </van-grid-item>
-        </van-grid> -->
     </view>
 
     <!-- 商品列表 -->
@@ -97,9 +75,6 @@
             </view>
         </view>
     </view>
-
-    <!-- 切换城市弹窗 -->
-
 </view>
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

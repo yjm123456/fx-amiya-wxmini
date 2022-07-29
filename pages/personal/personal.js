@@ -28,7 +28,7 @@ Page({
         coverTransform: 'translateY(0)',
 
         coveTransition: '',
-        balance : 0
+        totalBalance : 0
     },
 
     onShow() {

@@ -27,8 +27,8 @@
                     <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
                 </view>
                 <view>
-                    <view>{{item.name}}</view>
-                    <view>{{item.description}}</view>
+                    <view class="middle">{{item.name}}</view>
+                    <view class="middle">{{item.description}}</view>
                     <view>￥{{item.salePrice}}</view>
                 </view>
             </view>

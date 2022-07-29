@@ -189,6 +189,7 @@ page{
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     word-break: break-all;
+    font-size: 25rpx;
 }
 
 .goods_item>view:last-child>view:nth-child(1) {

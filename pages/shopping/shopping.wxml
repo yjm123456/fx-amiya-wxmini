@@ -37,23 +37,28 @@
     </scroll-view>
   </view> -->
     <view class="integral_info">
-        <view class="integral_value big"><text class="middle">可用积分</text><text class="big strong color">{{balance}}</text></view>
+    <view class="img">
+        <image class="integral_img" src="../../images/integral.jpg"></image>
+    </view>
+        <view class="integral">
+            <view class="integral_value big"><text class="middle">可用积分</text><text class="big strong color">{{balance}}</text></view>
         <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
+        </view>
     </view>
     <!-- <view class="integral_detail"> -->
         <view class="integral_receive">
-            <image mode="widthFix" class="to_shop" src="http://iph.href.lu/300x100?text=好物随心换" bindtap="handleToShop"></image>
+            <image mode="widthFix" class="to_shop" src="../../images/hwsxh.jpg" bindtap="handleToShop"></image>
         </view>
         <view class="goods_swiper">
             <swiper class='banner' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">
                 <swiper-item>
-                    <image mode="aspectFill" src="http://iph.href.lu/300x260?text=面诊卡"></image>
+                    <image mode="aspectFill" src="../../images/mz.jpg"></image>
                 </swiper-item>
                 <swiper-item>
-                    <image mode="aspectFill" src="http://iph.href.lu/300x160?text=节日营销"></image>
+                    <image mode="aspectFill" src="../../images/jryx.jpg"></image>
                 </swiper-item>
                 <swiper-item>
-                    <image mode="aspectFill" src="http://iph.href.lu/300x160?text=异业联盟"></image>
+                    <image mode="aspectFill" src="../../images/yylm.jpg"></image>
                 </swiper-item>
             </swiper>
         </view>

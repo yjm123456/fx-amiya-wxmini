@@ -1,5 +1,6 @@
 <!--pages/meiYaCard/meiYaCard.wxml-->
-<view class="container">
+<view class="center">敬请期待...</view>
+<!-- <view class="container">
     <view class="member_card">
         <view class="member_detail">
             <view class="grant">
@@ -21,4 +22,4 @@
     <view class="member_leave_info">
         <view>会员权益</view>
     </view>
-</view>
+</view> -->

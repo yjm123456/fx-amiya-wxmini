@@ -310,8 +310,7 @@ Page({
                         sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
                     }else if(this.data.list[j].exchangeType===0){
                         sumPoint += this.data.list[j].singleprice * this.data.list[j].num;
-                    }
-                    
+                    }                    
                 }
             }
         }

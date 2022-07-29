@@ -1,1 +1,17 @@
 /* pages/accountSettings/accountSettings.wxss */
+.container{
+    border-radius: 20rpx;
+    overflow: hidden;
+    margin: 50rpx 20rpx;
+}
+page{
+    background-color: #000;
+}
+.cell_item{
+    background-color: #262626 !important;
+    color: #fff!important;
+    font-size: 30rpx !important;
+}
+.cell_value{
+    color: #fff !important;
+}

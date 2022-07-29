@@ -1,4 +1,16 @@
 /* pages/cooperativeinstitutions/cooperativeinstitutions.wxss */
+page{
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.center{
+    color:#fff;
+    font-size: 38rpx;
+    font-weight: 600
+}
 /* 项目介绍 */
 .title_h3{
     font-size: 34rpx;

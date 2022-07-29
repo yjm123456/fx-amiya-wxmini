@@ -14,7 +14,12 @@ Page({
     onLoad(options) {
 
     },
-
+    toCompelete(){
+        wx.showToast({
+          title: '敬请期待...',
+          icon:'none'
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

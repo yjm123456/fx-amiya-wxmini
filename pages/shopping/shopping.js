@@ -151,9 +151,10 @@ getIntegral() {
   getGoodsInfo(callback) {
     const { categoryId, keyword, pageNum, pageSize } = this.data;
     const data = {
-      categoryId, keyword, pageNum, pageSize,exchangeType:0
+      //categoryId, keyword, pageNum, pageSize,exchangeType:0
+      pageNum, pageSize
     }
-    http("get", `/Goods/infoList`, data).then(res => {
+    http("get", `/Goods/integralList`, data).then(res => {
       if (res.code === 0) {
         let { list, totalCount } = res.data.goodsInfos;
         this.setData({

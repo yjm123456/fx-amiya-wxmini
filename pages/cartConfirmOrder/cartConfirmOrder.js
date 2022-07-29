@@ -64,8 +64,8 @@ Page({
                     duration: 2000,
                     success: function () {
                         setTimeout(function () {
-                            wx.redirectTo({
-                                url: '/pages/purchasedOrder/purchasedOrder?active=1'
+                            wx.switchTab({
+                                url: '/pages/orderList/orderList?active=0'
                             })
                         }, 2000);
                     }

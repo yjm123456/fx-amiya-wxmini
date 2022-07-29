@@ -11,7 +11,7 @@
                     <text class="leave">VIP1</text>
                 </view>
                 <view class="balance">
-                    我的余额:{{balance}}
+                    我的余额:{{totalBalance}}
                 </view>
                 <!-- <view class="bottom_right">
                     <image class="leave_img" src="/images/hc.png" mode="scaleToFill"></image>
@@ -32,7 +32,7 @@
         </view> -->
     </view>
     <view class="card">
-        <image src="../../images/receiveCard.png" mode="widthFix"></image>
+        <image src="../../images/vipcard.png" mode="widthFix"></image>
     </view>
     <view class="cover_container">
         <!-- <image class="arc" src="/images/arc.png"></image> -->

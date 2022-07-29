@@ -1,2 +1,2 @@
 <!--pages/activity/activity.wxml-->
-<text>活动{{activity}}</text>
+<view class="center">敬请期待...</view>

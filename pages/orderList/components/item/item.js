@@ -36,10 +36,10 @@ Component({
             handleCancelOrder(e) {
                 const {
                     tradeid,
-                    appType
+                    type
                 } = e.currentTarget.dataset;
 
-                if (appType === 2) {
+                if (type === 2) {
                     wx.showModal({
                         title: '提示',
                         content: '确认取消订单',

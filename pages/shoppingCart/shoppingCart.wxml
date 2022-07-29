@@ -19,7 +19,7 @@
                             </view>
                             <view class="right">
                                 <view class="des">
-                                    <view><text>{{item.goodsName}}</text></view>
+                                    <view><text class="goods_name">{{item.goodsName}}</text></view>
                                     <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
                                     <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
                                     <view><text>{{item.description}}</text></view>
