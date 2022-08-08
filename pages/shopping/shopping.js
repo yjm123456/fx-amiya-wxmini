@@ -55,6 +55,7 @@ Page({
     })
   },
   onShow() {
+      this.getIntegral();
      this.refresh();
   },
   isCustomer(callback) {

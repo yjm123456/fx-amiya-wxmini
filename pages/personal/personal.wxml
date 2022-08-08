@@ -20,7 +20,11 @@
             </view>
             <view class="member_no"> <canvas  type="2d" style="width:128rpx ; height: 128rpx;margin-left: 8rpx;margin-top: 13rpx;" id="myQrcode"></canvas> </view>
         </view>
-
+        <view class="navigation_list">
+    <view class="grid_item" data-url="/pages/aboutAmeiya/aboutAmeiya" bindtap="to"><text>关于啊美雅</text></view>
+    <view class="grid_item" data-url="/pages/userProtection/userProtection" bindtap="to"><text>用户保障</text></view>
+    <view class="grid_item" data-url="/pages/memberbenefits/memberbenefits" bindtap="to"><text>会员权益</text></view>
+    </view>
         <!-- <view class="vip_card_box" wx:if="{{memberCard}}">
             <image src="{{ memberCard.imageUrl}}" mode="widthFix"></image>
             <view class="up">
@@ -31,6 +35,7 @@
             <image src="/images/receiveCard.png" mode="widthFix"></image>
         </view> -->
     </view>
+    
     <view class="card">
         <image src="../../images/vipcard.png" mode="widthFix"></image>
     </view>

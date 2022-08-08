@@ -16,6 +16,13 @@ text{
 .banner .slide {
   width: 100%;
 }
+.notice{
+    background-color: #313131 !important;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
 .navigation_list{
   padding-top: 30rpx;
   padding-bottom: 30rpx;

@@ -33,12 +33,15 @@
       </block>
     </view>
   </view> -->
-    <!-- 导航栏一 -->
-    <view class="navigation_list">
-    <view class="grid_item" data-url="/pages/aboutAmeiya/aboutAmeiya" bindtap="to"><text>关于啊美雅</text></view>
-    <view class="grid_item" data-url="/pages/userProtection/userProtection" bindtap="to"><text>用户保障</text></view>
-    <view class="grid_item" data-url="/pages/memberbenefits/memberbenefits" bindtap="to"><text>会员权益</text></view>
-    </view>
+   <!-- 公告 -->
+   <view class="notice">
+    <van-notice-bar
+  left-icon="volume-o"
+  scrollable="{{ true }}"
+  color="#DEC350" 
+  background="#262626" 
+  text="啊美雅MEIYA卡即将上线,敬请期待"/>
+   </view>
     <!-- 活动 -->
     <view class="activity">
         <view class="activity_item" bindtap="handleActivity" data-activity="{{1}}">
@@ -52,7 +55,7 @@
     <view class="navigation_list">
         <view class="grid_item" data-url="/pages/meiYaCard/meiYaCard" bindtap="to"><text>MEIYA卡</text></view>
     <view class="grid_item" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><text>MEIYA甄选</text></view>
-    <view class="grid_item" data-url="/pages/beautyDiary/beautyDiary" bindtap="to"><text>美丽日记</text></view>
+    <view class="grid_item" data-url="/pages/beautyDiary/beautyDiary" bindtap="to"><text>美学分享</text></view>
     </view>
 
     <!-- 商品列表 -->
