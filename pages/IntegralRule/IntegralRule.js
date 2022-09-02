@@ -5,14 +5,20 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        sysheight:0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        wx.getSystemInfo({//获取设备屏幕真实高度
+            success: (result) => {
+              this.setData({
+                sysheight:result.windowHeight
+              })
+            },
+          })
     },
 
     /**

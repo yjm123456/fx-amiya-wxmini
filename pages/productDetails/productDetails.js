@@ -57,13 +57,15 @@ Page({
         cityName: "",
         cityIds: "",
         cityNames: "",
+        voucherId:"",
+        deductmoney:0,
+        vouchername:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options.goodsId);
         const {
             goodsId
         } = options;
@@ -388,7 +390,11 @@ Page({
             allmoney
         } = e.currentTarget.dataset
         const {
-            goodsInfo
+            goodsInfo,
+            voucherId,
+            deductmoney,
+            vouchername,
+
         } = this.data
         let token = wx.getStorageSync("token")
         if (!token) {
@@ -421,7 +427,7 @@ Page({
                     })
                     wx.navigateTo({
                         // url: `/pages/confirmOrder/confirmOrder?goodsInfo=${JSON.stringify([goodsinfo])}`
-                        url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney
+                        url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney+'&voucherId='+voucherId+'&voucherName='+vouchername+'&deductMoney='+deductmoney
                     })
                 }
             } else {
@@ -438,5 +444,25 @@ Page({
             }
 
         }
+    },
+    //获取用户拥有的抵用券
+    getCustomerVoucher(){
+        const data={
+            isUsed:false
+        };
+        http("get", `/CustomerConsumptionVoucher/allList`, data).then(res => {
+            if (res.code === 0) {
+                const {
+                    customerConsumptionVoucherList
+                } = res.data;       
+                if(customerConsumptionVoucherList.length>0){
+                    console.log("跳转");
+                    wx.navigateTo({
+                      url: '/pages/selectVoucher/selectVoucher?list='+JSON.stringify(res.data.customerConsumptionVoucherList),
+                    })
+                }
+            }
+        })
     }
+    
 })

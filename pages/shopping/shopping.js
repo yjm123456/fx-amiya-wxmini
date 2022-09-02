@@ -38,6 +38,12 @@ Page({
       
     // this.getIntegral();
   },
+  toInternal(){
+      console.log("调用");
+      wx.navigateTo({
+        url: '/pages/integral/integral',
+      })
+  },
   // 取消绑定手机号
   cancelBindPhone() {
     this.setData({

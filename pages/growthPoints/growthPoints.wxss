@@ -1,0 +1,117 @@
+/* pages/integral/integral.wxss */
+page{
+    background-color: #000;
+}
+.integral_top{
+    position: relative;
+    border-bottom-left-radius: 30rpx;
+    border-bottom-right-radius: 30rpx;
+    overflow: hidden;
+  }
+  .img{
+    width: 100%;
+    height: 300rpx;
+  }
+  .title{
+    font-size: 30rpx;
+  }
+  .integral_con{
+    position: absolute;
+    left: 43%;
+    top: 34%;
+    color: #fff;
+    font-size: 48rpx;
+    text-align: center;
+    font-weight: bold;
+  }
+  .memo_con{
+    display: flex;
+  }
+  .memo_pro{
+    flex:1;
+    text-align: start;
+    padding-left: 40rpx;
+    box-sizing: border-box;
+  }
+  .memo_se{
+    width: 200rpx;
+    text-align: end;
+    padding-right: 20rpx;
+    box-sizing: border-box;
+  }
+  .memo_pro,.memo_se{
+    font-size: 34rpx;
+    font-weight: bold;
+    margin-top: 20rpx;
+  }
+
+  .list{
+   background-color: #313131;
+   margin: 20rpx;
+   border-radius: 30rpx;
+   overflow: hidden;
+  }
+
+  .item{
+    background-color: #262626;
+    padding: 20rpx 20rpx;
+    margin: 20rpx 10rpx;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    word-break: break-all;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .expire{
+      color: #e2e2e2 !important;
+  }
+  .remark{
+      color: #DEC350;
+      height: 80rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 30rpx;
+  }
+  .memo{
+    width: 120rpx;
+  }
+  
+  
+  .order_num{
+    flex: 1;
+    margin: 0 20rpx;
+    font-size: 23rpx;
+  }
+  .date,.inter{
+    font-size: 21rpx;
+  }
+  .inter{
+    color: #ff1554;
+  }
+  .date_con{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 10rpx;
+  }
+  .active{
+    color: green;
+  }
+  .title_bottom{
+    width: 100%;
+    font-size: 28rpx;
+    text-align: center;
+    /* background-color: #ff1554; */
+    color: #ff1554;
+    /* position: fixed;
+    bottom: 0 ;
+    left: 0; */
+    /* padding: 20rpx 0 ;
+    box-sizing: border-box; */
+    margin-top: 20rpx;
+  }
+  

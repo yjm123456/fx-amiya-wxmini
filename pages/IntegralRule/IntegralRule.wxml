@@ -1,2 +1,5 @@
 <!--pages/IntegralRule/IntegralRule.wxml-->
-<view class="center">敬请期待...</view>
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f7fe1b0ae9344158a803b294f0296ba5.jpg"></image>
+</scroll-view>
+

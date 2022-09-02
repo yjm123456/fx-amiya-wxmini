@@ -19,7 +19,8 @@ Page({
     data: {
         // 授权
         controlAuth: false,
-
+        //会员卡信息
+        memberCard:{},
         // 授权手机号
         controlAuthPhone: false,
 
@@ -30,14 +31,41 @@ Page({
         coveTransition: '',
         totalBalance : 0
     },
-
+    toRechargeList(){
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                wx.navigateTo({
+                    url: '/pages/rechargeRecord/rechargeRecord',
+                })
+            } else {
+                wx.showToast({
+                    title: '请绑定手机号',
+                    icon: 'none'
+                })
+                this.handleBindPhone();
+            }
+        })
+    },
     onShow() {
         checkUserTokenInfo().then(res => {
             this.isAuthorizationUserInfo();
             this.getMemberCardInfo();
             this.getIntegral();
+            this.getBalance();
         })
         this.getCode()
+    },
+    getBalance(){
+        http("get", `/Recharge/balance`).then(res => {
+            if (res.code === 0) {
+                const {
+                    balance
+                } = res.data;
+                this.setData({
+                    totalBalance:balance
+                })
+            }
+        })
     },
     disscro(){},
     getCode() {
@@ -194,11 +222,10 @@ Page({
         })
     },
     to(e) {
-        console.log("点击");
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 wx.navigateTo({
-                    url: e.currentTarget.dataset.url,
+                    url: e.currentTarget.dataset.url+'?nickname='+e.currentTarget.dataset.nickname,
                 })
             } else {
                 wx.showToast({
@@ -299,7 +326,7 @@ Page({
 
     // 获取会员信息
     getMemberCardInfo() {
-        http("get", `/MemberCard/info`).then(res => {
+        http("get", `/MemberCard/cardinfo`).then(res => {
             if (res.code === 0) {
                 this.setData({
                     memberCard: res.data.memberCard
@@ -307,7 +334,22 @@ Page({
             }
         })
     },
-
+    //跳转到成长值明细页面
+    toGrowthList(){
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                wx.navigateTo({
+                    url: '/pages/growthPoints/growthPoints',
+                })
+            } else {
+                wx.showToast({
+                    title: '请绑定手机号',
+                    icon: 'none'
+                })
+                this.handleBindPhone();
+            }
+        })
+    },
     // 领取会员卡
     handleReceiveMemberCard() {
         this.isCustomer((isCustomer) => {

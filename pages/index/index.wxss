@@ -91,6 +91,16 @@ text{
   overflow: hidden;
   margin-top: 20rpx;
   border-radius: 20rpx;
+  position: relative;
+}
+.tag{
+    position: absolute;
+    padding: 5rpx;
+    font-size: 22rpx;
+    background-color: #dec530;
+    color: #fff;
+    right: 0;
+    border-bottom-left-radius: 20rpx;
 }
 .product .product_top image{
   width: 100%;
@@ -217,4 +227,67 @@ color: #ff1554;
 }
 .hot_con{
   margin-bottom: 50rpx;
+}
+.share{
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+}
+.share_by{
+    margin-bottom: 20rpx;
+}
+.share_content{
+    padding: 10rpx;
+    background-color: #262626;
+    color: #fff;
+    border-radius: 20rpx;
+}
+.content{
+    background-color: #313131;
+    padding: 10rpx;
+    border-radius: 20rpx;
+}
+.item{
+    height:60rpx;
+    border-radius: 20rpx;
+    margin: 10rpx;
+    padding: 15rpx 15rpx 5rpx 15rpx;
+    background-color: #262626;
+    overflow: hidden;
+}
+
+.item_top{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60rpx;
+}
+.item_name{
+    font-size: 28rpx;
+}
+.item_price{
+    font-size: 32rpx;
+    color: #DEC350;
+    border-left: #DEC350 dashed 2rpx;
+    padding: 20rpx;
+    text-align: center;
+}
+.item_bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 30rpx;
+    color: #e2e2e2;
+    font-size: 22rpx;
+}
+.van-goods-action{
+    background-color: #000 !important;
+}
+.van-button--danger{
+    background: #DEC350 !important;
+    border: 0rpx !important;
+    border-radius: 20rpx !important;
 }

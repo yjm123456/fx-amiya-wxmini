@@ -1,0 +1,10 @@
+{
+
+    "usingComponents": {
+        "van-divider": "@vant/weapp/divider/index",
+        "van-button": "@vant/weapp/button/index",
+        "van-share-sheet": "@vant/weapp/share-sheet/index",
+        "van-dialog": "@vant/weapp/dialog/index"
+    },
+    "navigationBarTitleText": "抵用券"
+}

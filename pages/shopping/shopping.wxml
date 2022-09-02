@@ -41,7 +41,7 @@
         <image class="integral_img" src="../../images/integral.jpg"></image>
     </view>
         <view class="integral">
-            <view class="integral_value big"><text class="middle">可用积分</text><text class="big strong color">{{balance}}</text></view>
+            <view class="integral_value big"><text  class="middle">可用积分</text><text catchtap="toInternal" class="big strong color">{{balance}}</text></view>
         <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
         </view>
     </view>

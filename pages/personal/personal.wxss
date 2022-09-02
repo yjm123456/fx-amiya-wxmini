@@ -88,9 +88,22 @@ width: 200rpx;
 height: 80rpx;
 border-radius: 10rpx;
 }
-.balance{
+/* .balance{
     font-size: 28rpx;
     color: #fff;
+} */
+.balance{
+    background-color: #000;
+    color: #dec350;
+    padding:0 10rpx;
+    font-size: 28rpx;
+    display: inline-block;
+    width: max-content;
+    border-radius: 20rpx;
+}
+.balance_amount{
+    margin-left: 10rpx;
+    color: #DEC350;
 }
 .bottom_left {
     height: 60rpx;
@@ -106,6 +119,7 @@ border-radius: 10rpx;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
+    background-color: #262626;
     color: #DEC350;
   }
   .grid_navigation{

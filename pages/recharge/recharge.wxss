@@ -1,0 +1,96 @@
+/* pages/recharge.wxss */
+page{
+    background-color: #000;
+}
+.title{
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: 600;
+    padding-left: 65rpx;
+}
+.recharge_block{
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx 65rpx;
+}
+.block_line{
+    margin-bottom: 20rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.block_item{
+    color: #dec530;
+    width: 280rpx;
+    height: 120rpx;
+    background-color: #313131;
+    border-radius: 20rpx;
+    border: #dec530 2rpx solid;
+    line-height: 120rpx;
+    text-align: center;
+    font-size: 32rpx;
+}
+.active{
+    background-color: #dec530;
+    color: #fff;
+}
+.recharge{
+    background-color: #dec530;
+    width: 500rpx;
+    height: 60rpx;
+    border-radius: 20rpx;
+    line-height: 60rpx;
+    text-align: center;
+    margin: 20rpx auto;
+}
+.record{
+    color: #fff;
+    background-color: #313131;
+    margin: 20rpx;
+    border-radius: 20rpx;
+    padding: 20rpx 10rpx;
+}
+.record_title{
+    text-align: center;
+    font-size: 26rpx;
+}
+.item_content{
+    background-color: #262626;
+    margin: 10rpx;
+    border-radius: 20rpx;
+    padding: 10rpx;
+}
+.time{
+    font-size: 25rpx;
+    color: #e2e2e2;
+}
+.detail{
+    font-size: 28rpx;
+    margin-top: 10rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.control{
+    display: flex;
+}
+.cancel{
+    background-color: #313131;
+    padding: 10rpx;
+    border-radius: 10rpx;
+}
+.pay{
+    margin-left: 20rpx;
+    background-color: #dec530;
+    padding: 10rpx;
+    border-radius: 10rpx;
+}
+.more{
+    background-color: #dec350;
+    border-radius: 20rpx;
+    margin: 30rpx 80rpx;
+    text-align: center;
+    color: #000;
+    padding: 10rpx;
+}

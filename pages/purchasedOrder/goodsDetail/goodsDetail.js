@@ -9,7 +9,7 @@ Page({
     orderInfo:{},
     qrCodeBase64:"",
     // 判断是否是支付订单 1支付订单 2积分订单
-    type:""
+    type:"",
   },
 
   /**

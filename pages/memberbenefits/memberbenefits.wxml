@@ -1,5 +1,7 @@
-<view class="container">
-    <view class="center">敬请期待...</view>
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/39dde7fb295d45ac9c6f57e480a7484e.jpg"></image>
+</scroll-view>
+    
     <!-- <view class="member_info">
         <view class="avatar">
             <van-image width="150rpx" height="150rpx" round fit="cover" src="{{userInfo.avatarUrl}}" />
@@ -27,4 +29,3 @@
     <view class="member_leave_info">
         <view>会员权益</view>
     </view> -->
-</view>

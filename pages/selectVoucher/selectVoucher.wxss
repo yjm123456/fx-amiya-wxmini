@@ -1,0 +1,45 @@
+/* pages/selectVoucher/selectVoucher.wxss */
+page{
+    background-color: #000;
+}
+.container{
+    padding-bottom: 150rpx;
+}
+.item{
+    background-color: #313131;
+    padding: 20rpx;
+    border-radius: 30rpx;
+    margin-top: 30rpx;
+}
+.radio-group{
+    width: 100% !important;
+    border-radius: 20rpx !important; 
+    overflow: hidden;
+    
+}
+.voucher{
+    background-color: #262626;   
+    color: #fff;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    justify-content: space-between;
+}
+.name{
+    width: 80%;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+.money{
+    height: 100rpx;
+    line-height: 100rpx;
+    width:20%;
+    color: #dec530;
+    border-left: #dec530 4rpx dashed;
+    text-align: center;
+}
+.button{
+    background-color: #DEC530;
+}

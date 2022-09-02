@@ -1,0 +1,39 @@
+<!--pages/recharge.wxml-->
+<view class="title">充值金额</view>
+<view class="recharge_block">
+    <view class="block_line">
+        <view class="block_item {{index==1 ? 'active':''}}" data-amount='100' data-index='1' catchtap="select">100元</view>
+        <view class="block_item {{index==2 ? 'active':''}}" data-amount='500' data-index='2' catchtap="select">500元</view>
+    </view>
+    <view class="block_line">
+        <view class="block_item {{index==3 ? 'active':''}}" data-amount='1000' data-index='3' catchtap="select">1000元</view>
+        <view class="block_item {{index==4 ? 'active':''}}" data-amount='2000' data-index='4' catchtap="select">2000元</view>
+    </view>
+</view>
+<view class="recharge" catchtap="handlePay">立即充值</view>
+<view class="record">
+    <view class="record_title">充值记录</view>
+    <view class="record_content">
+        <view wx:for="{{list}}" wx:key="index">
+            <view class="item_content">
+                <view class="">
+                    <view class="time">{{item.rechargeDate}}</view>
+                    <view class="detail">
+                        <view class="detail_right">
+                            <view>支付方式:{{item.exchangeTypeText}}</view>
+                            <view wx:if="{{item.exchangeType==2}}">退款状态:退款成功</view>
+                            <view wx:else>支付状态:{{item.statusText}}</view>
+                        </view>
+                        <view wx:if="{{item.status!=0}}" class="detail_left">支付:{{item.rechargeAmount}}</view>
+                        <view class="control" wx:else>
+                            <view class="cancel" data-recordid="{{item.id}}" catchtap="cancel">取消</view>
+                            <view class="pay" data-recordid="{{item.id}}" catchtap="toPay">去支付</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{totalCount==0}}">暂无记录</view>
+        <view catchtap="toMore" class="more" wx:else>查看更多</view>
+    </view>
+</view>

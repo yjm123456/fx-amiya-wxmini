@@ -35,6 +35,13 @@
                 <text class="iconfont icon-arrow-left"></text>
             </view>
         </view>
+        <view class="item_spe" bindtap="getCustomerVoucher">
+            <text>选择抵用券</text>
+            <view class="city_con">
+                <text wx:if="{{voucherId}}" class="city_text">{{vouchername}}</text>
+                <text class="iconfont icon-arrow-left"></text>
+            </view>
+        </view>
         <view class="item_spe item_spe_num">
             <text>数量</text>
             <!-- type==0 计算的是 门店价格x数量 -->

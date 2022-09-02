@@ -6,6 +6,9 @@ page{
     align-items: center;
     height: 100%;
 }
+.img{
+    width: 750rpx;
+}
 .center{
     color:#fff;
     font-size: 38rpx;

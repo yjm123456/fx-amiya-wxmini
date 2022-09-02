@@ -1,0 +1,76 @@
+/* pages/ConsumptionVoucher/ConsumptionVoucher.wxss */
+page{
+    background-color: #000;
+}
+.van-tabs__scroll{
+    background-color: #000 !important;
+}
+.tabs{
+    background-color: #000 !important;
+}
+.custom_vandivider{
+    margin: 0 !important;
+}
+.content{
+    background-color: #313131;
+    padding: 10rpx;
+    border-radius: 20rpx;
+    margin: 20rpx;
+}
+.item{
+    height:150rpx;
+    border-radius: 20rpx;
+    margin: 10rpx;
+    padding: 15rpx 15rpx 5rpx 15rpx;
+    background-color: #262626;
+    position: relative;
+    overflow: hidden;
+}
+.share_tag{
+    color: #fff;
+    position: absolute;
+    background-color: #DEC350;
+    font-size: 18rpx;
+    right: 0;
+    top: 0;
+    border-bottom-left-radius: 10rpx;
+    padding: 5rpx;
+}
+.item_top{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90rpx;
+
+}
+.item_name{
+    font-size: 28rpx;
+}
+.item_price{
+    font-size: 32rpx;
+    color: #DEC350;
+}
+.item_bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60rpx;
+    color: #e2e2e2;
+    font-size: 22rpx;
+}
+.use{
+    padding: 8rpx;
+    font-size: 22rpx;
+    background-color: #DEC350;
+    text-align: center;
+    border-radius: 20rpx;
+}
+.used{
+    color: #e2e2e2;
+}
+.code_number{
+    text-align: center;
+}

@@ -1,0 +1,66 @@
+<!--pages/integral/integral.wxml-->
+<view class="container">
+    <view bind:handleRefreshOrderList="handleRefreshOrderList" class="content">
+        <view class="integral_top">
+            <image src="/images/bg_3.jpg" class="img"></image>
+            <view class="integral_con">
+                <view class="title">当前余额</view>
+                <view class="integral_num">{{balance}}</view>
+            </view>
+        </view>
+        <view class="tabs_content">
+            <van-tabs active="{{active}}" nav-class="tabs" custom-class="tabs" color="#DEC350" title-inactive-color="#fff" title-active-color="#DEC350" bind:change="onChange" id="tabs">
+                <van-tab title="充值记录">
+                    <view wx:for="{{list}}" wx:key="index">
+                        <view class="item_content">
+                            <view class="">
+                                <view class="time">{{item.rechargeDate}}</view>
+                                <view class="detail">
+                                    <view class="detail_right">
+                                        <view>支付方式:{{item.exchangeTypeText}}</view>
+                                        <view>支付状态:{{item.statusText}}</view>
+                                    </view>
+                                    <view class="detail_left">支付:{{item.rechargeAmount}}元</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </van-tab>
+                <van-tab title="消费记录">
+                    <view wx:for="{{list}}" wx:key="index">
+                        <view class="item_content">
+                            <view class="">
+                                <view class="time">{{item.useDate}}</view>
+                                <view class="detail">
+                                    <view class="detail_right">
+                                        <view>商品名称:{{item.goodsName}}</view>
+                                        <view>支付状态:支付成功</view>
+                                    </view>
+                                    <view class="detail_left">支付:{{item.amount}}元</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </van-tab>
+                <van-tab title="余额退款记录">
+                    <view wx:for="{{list}}" wx:key="index">
+                        <view class="item_content">
+                            <view class="">
+                                <view class="time">{{item.rechargeDate}}</view>
+                                <view class="detail">
+                                    <view class="detail_right">
+                                        <view>支付方式:{{item.exchangeTypeText}}</view>
+                                        <view>退款状态:{{item.statusText}}</view>
+                                    </view>
+                                    <view class="detail_left">退款:{{item.rechargeAmount}}元</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </van-tab>
+            </van-tabs>
+        </view>
+    </view>
+    <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+    </van-divider>
+</view>

@@ -1,0 +1,24 @@
+<!--pages/integral/integral.wxml-->
+<view class="container" >
+  <view bind:handleRefreshOrderList="handleRefreshOrderList" class="content">
+    <view class="integral_top">
+      <image src="/images/bg_3.jpg" class="img"></image>
+      <view class="integral_con">
+        <view class="title">当前成长值</view>
+        <view class="integral_num">{{growthbalance}}</view>
+      </view>
+    </view>
+    <view class="list" >
+      <view class="item" wx:for="{{list}}" wx:key="index">
+        <view wx:if="{{item.type==0}}" class="remark {{item.isExpire ?expire:''}}">签到:+{{item.quantity}}成长值</view>
+        <view wx:if="{{item.type==1}}" class="remark {{item.isExpire ?expire:''}}">完成任务:+{{item.quantity}}成长值</view>
+        <view wx:if="{{item.type==2}}" class="remark {{item.isExpire ?expire:''}}">商城消费:+{{item.quantity}}成长值</view>
+        <view class="date_con">
+          <view class="date">{{item.createDate}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+  </van-divider>
+</view>

@@ -11,3 +11,6 @@ page{
     font-size: 38rpx;
     font-weight: 600;
 }
+.img{
+    width: 750rpx;
+}

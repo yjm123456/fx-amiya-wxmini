@@ -1,0 +1,13 @@
+<view class="container">
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+        <view wx:for="{{list}}" wx:key="index" class="item">
+            <van-radio label-class='radio-group' data-vouchername="{{item.consumptionVoucherName}}" data-deductmoney="{{item.deductMoney}}" data-voucherid="{{item.id}}" bindtap="onClick" name="{{index}}">
+                <view class="voucher">
+                    <view class="name">{{item.consumptionVoucherName}}</view>
+                    <view class="money">{{item.deductMoney}}元</view>
+                </view>
+            </van-radio>
+        </view>
+    </van-radio-group>
+</view>
+<view class="button" bindtap="storeSubmit">确定</view>

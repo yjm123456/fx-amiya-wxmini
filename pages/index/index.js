@@ -1,5 +1,9 @@
 import http from '../../utils/http';
-
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import {
+    iscustomer,
+    isAuthorizationUserInfo
+} from "./../../api/user";
 Page({
     /**
      * 页面的初始数据
@@ -67,16 +71,89 @@ Page({
         pageNums: 1,
         pageSizes: 10,
         //当前商品展示列表页码
-        currentPageIndex: 1
+        currentPageIndex: 1,
+        vouchername: '',
+        vouchermoney: 0,
+        nickname: ''
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         this.getCarouselImage()
-
         this.getGoodsList()
-        // http("post", `/Order/pay/f2702bb0b2dc4b7f944f05408f60980a`).then(res => {})
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+
+            } else {
+                this.handleBindPhone();
+            }
+        })
+        this.getShareInfo();
+    },
+    getShareInfo() {
+        var page = getCurrentPages();
+        var currentPage = page[page.length - 1];
+        var {
+            shareid,
+            customerconsumptionvoucherid,
+            vouchername,
+            vouchermoney,
+            nickname
+        } = currentPage.options;
+        this.setData({
+            vouchername,
+            vouchermoney,
+            nickname
+        });
+        if (shareid != null) {
+            Dialog.alert({
+                title: '好友分享',
+                message: '弹窗内容',
+                theme: 'round-button',
+                confirmButtonText: '立即领取',
+                closeOnClickOverlay: true,
+                customStyle: 'background-color:#000;color:#fff;border: 2rpx solid #DEC350;',
+                className: 'van_dialog_action'
+            }).then(() => {
+                const data = {
+                    shareBy: shareid,
+                    consumerConsumptionVoucherId: customerconsumptionvoucherid
+                }
+                this.isCustomer((isCustomer) => {
+                    if (isCustomer) {
+                        http("post", `/CustomerConsumptionVoucher/reciveShareVoucher`, data).then(res => {
+                            if (res.code === 0) {
+                                wx.showToast({
+                                    title: '领取成功!',
+                                    icon: 'none',
+                                    duration: 1000
+                                })
+                            } else {
+                                wx.showToast({
+                                    title: res.data.msg,
+                                    icon: 'none',
+                                    duration: 1000
+                                })
+                            }
+                        })
+                    } else {
+                        this.handleBindPhone();
+                    }
+                })
+            });
+        }
+    },
+
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
     },
     to(e) {
         wx.navigateTo({
@@ -151,9 +228,9 @@ Page({
     },
     onShow() {
         // this.getLocationAuth();
-        this.setData({
-            controlAuthPhone: false
-        })
+        // this.setData({
+        //     controlAuthPhone: false
+        // })
 
     },
 
@@ -189,6 +266,8 @@ Page({
         this.setData({
             controlAuthPhone: false
         })
+        //绑定成功后获取分享信息
+        this.getShareInfo();
     },
 
     // 取消绑定手机号

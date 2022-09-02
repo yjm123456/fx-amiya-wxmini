@@ -3,12 +3,23 @@
     <view class="circle">
         <view class="content">
             <view class="tip big">我的成长值</view>
-            <view class="growth big">0</view>
-            <view class="diff big">还差<text>0</text>成长值升级会员</view>
+            <view class="growth big">{{growthBalanceInfo.balance}}</view>
+            <view wx:if="{{growthBalanceInfo.upgradeGrowthPoints==0}}" class="diff big"></view>
+            <view wx:else class="diff big">还差<text>{{growthBalanceInfo.upgradeGrowthPoints}}</text>成长值升级{{growthBalanceInfo.nextLeaveText}}</view>
         </view>
     </view>
     <view class="content">
         <view class="base_mission card">
+            <view class="title">
+                <text>每日签到</text>
+            </view>
+            <view class="mission_list">
+                <van-cell wx:if="{{Signed}}" custom-class="mission_cell" value-class="mission_value" title="签到" title-width="400rpx"  border="{{false}}" value="已签到" label="+1成长值" />
+                <van-cell wx:else custom-class="mission_cell" value-class="mission_value" title="签到" title-width="400rpx" bindtap="toSignIn" border="{{false}}" value="去完成" label="+1成长值" />
+            </view>
+            <view></view>
+        </view>
+        <!-- <view class="base_mission card">
             <view class="title">
                 <text>基础任务</text>
             </view>
@@ -16,19 +27,19 @@
                 <van-cell custom-class="mission_cell" value-class="mission_value" title="完善信息" title-width="400rpx" bindtap="toCompelete" border="{{false}}" value="去完成" label="+5成长值" />
             </view>
             <view></view>
-        </view>
+        </view> -->
         <view class="shopping_mission card">
             <view class="title"><text>购物任务</text></view>
             <view class="mission_list">
-                <van-cell custom-class="mission_cell" value-class="mission_value"  title="完成下单" title-width="400rpx" bindtap="toCompelete" value="去完成" label="每完成一笔订单,获得10点成长值" />
-                <van-cell custom-class="mission_cell" value-class="mission_value"  title="购买产品" title-width="400rpx" bindtap="toCompelete" border="{{false}}" value="去完成" label="每消费一元获得10点成长值" />
+                <!-- <van-cell custom-class="mission_cell" value-class="mission_value"  title="完成下单" title-width="400rpx" bindtap="toCompelete" value="去完成" label="每完成一笔订单,获得10点成长值" /> -->
+                <van-cell custom-class="mission_cell" value-class="mission_value"  title="购买产品" title-width="400rpx" bindtap="toCompelete" border="{{false}}" data-task="{{'shop'}}" value="去消费" label="每消费20元获得1点成长值" />
             </view>
         </view>
-        <view class="complete_mission card">
+        <!-- <view class="complete_mission card">
             <view class="title"><text>已完成任务</text></view>
-            <view class="mission_list">
+            <view class="mission_list"> -->
                 <!-- <van-cell custom-class="mission_cell" value-class="mission_value" title="任务完成" title-width="400rpx" border="{{false}}" label="+5成长值" /> -->
-                <van-cell custom-class="mission_cell" value-class="mission_value" title="这里什么都没有" title-width="400rpx" border="{{false}}" label="......" />
+                <!-- <van-cell custom-class="mission_cell" value-class="mission_value" title="这里什么都没有" title-width="400rpx" border="{{false}}" label="......" />
             </view>
         </view>
         <view class="card">
@@ -36,6 +47,6 @@
             <view class="mission_list">
                 <van-cell custom-class="mission_cell" bindtap="toCompelete" value-class="mission_value" title="完善信息" title-width="400rpx" border="{{false}}" value="去完成" label="+5成长值" />
             </view>
-        </view>
+        </view> -->
     </view>
 </view>

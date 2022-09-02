@@ -1,5 +1,5 @@
 <view class="personal_container">
-    <view class="user_section">
+    <view class="user_section"  >
         <!-- <image class="bg" src="/images/cbg.jpg"></image> -->
         <view class="user_info_box">
             <view class="portrait_box" bindtap="tpPersonalInfo">
@@ -8,23 +8,24 @@
             <view class="info_box">
                 <view class="info_box_top">
                     <text class="username">{{userInfo.nickName ? userInfo.nickName : '游客'}}</text>
-                    <text class="leave">VIP1</text>
+                    <text catchtap="toGrowthList" class="leave">{{memberCard.memberRankName ?memberCard.memberRankName :""}}</text>
                 </view>
                 <view class="balance">
-                    我的余额:{{totalBalance}}
+                    <!-- 余额:<text catchtap="toRechargeList" class="balance_amount">{{totalBalance}}</text> -->
+                    <text catchtap="toRechargeList">我的储值:{{totalBalance}}</text>
                 </view>
                 <!-- <view class="bottom_right">
                     <image class="leave_img" src="/images/hc.png" mode="scaleToFill"></image>
                 </view> -->
                 <!-- <text class="balance" wx:if="{{balance}}">积分余额 {{balance}}</text> -->
             </view>
-            <view class="member_no"> <canvas  type="2d" style="width:128rpx ; height: 128rpx;margin-left: 8rpx;margin-top: 13rpx;" id="myQrcode"></canvas> </view>
+            <view class="member_no"> <canvas type="2d" style="width:128rpx ; height: 128rpx;margin-left: 8rpx;margin-top: 13rpx;" id="myQrcode"></canvas> </view>
         </view>
         <view class="navigation_list">
-    <view class="grid_item" data-url="/pages/aboutAmeiya/aboutAmeiya" bindtap="to"><text>关于啊美雅</text></view>
-    <view class="grid_item" data-url="/pages/userProtection/userProtection" bindtap="to"><text>用户保障</text></view>
-    <view class="grid_item" data-url="/pages/memberbenefits/memberbenefits" bindtap="to"><text>会员权益</text></view>
-    </view>
+            <view class="grid_item" data-url="/pages/aboutAmeiya/aboutAmeiya" bindtap="to"><text>关于啊美雅</text></view>
+            <view class="grid_item" data-url="/pages/userProtection/userProtection" bindtap="to"><text>用户保障</text></view>
+            <view class="grid_item" data-url="/pages/memberbenefits/memberbenefits" bindtap="to"><text>会员权益</text></view>
+        </view>
         <!-- <view class="vip_card_box" wx:if="{{memberCard}}">
             <image src="{{ memberCard.imageUrl}}" mode="widthFix"></image>
             <view class="up">
@@ -35,9 +36,9 @@
             <image src="/images/receiveCard.png" mode="widthFix"></image>
         </view> -->
     </view>
-    
+
     <view class="card">
-        <image src="../../images/vipcard.png" mode="widthFix"></image>
+        <image src="{{memberCard.imageUrl}}" mode="widthFix"></image>
     </view>
     <view class="cover_container">
         <!-- <image class="arc" src="/images/arc.png"></image> -->
@@ -111,6 +112,8 @@
         </view>
         <view class="cell">
             <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/shoppingCart/shoppingCart" bindtap="to" title="购物车" />
+            <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/ConsumptionVoucher/ConsumptionVoucher" bindtap="to" data-nickname='{{userInfo.nickName}}' title="抵用券" />
+            <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/recharge/recharge" bindtap="to" title="充值中心" />
             <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/missionCenter/missionCenter" bindtap="to" title="任务中心" />
             <van-cell custom-class="cell_item" is-link link-type="switchTab" data-url="/pages/shopping/shopping" bindtap="toIntegral" title="积分" />
             <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/writeoffGoodGift/writeoffGoodGift" bindtap="to" title="赠品" />

@@ -16,13 +16,21 @@ Page({
     data: {
         controlAuth:false,
         balance:0,
-        userInfo:{}
+        userInfo:{},
+        sysheight:0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        wx.getSystemInfo({//获取设备屏幕真实高度
+            success: (result) => {
+              this.setData({
+                sysheight:result.windowHeight
+              })
+            },
+          })
         checkUserTokenInfo().then(res => {
             this.isAuthorizationUserInfo();
             //this.getMemberCardInfo();

@@ -127,27 +127,32 @@ Component({
                         })
                     }
                 } else {
-                    // 积分支付
-                    wx.showModal({
-                        title: '提示',
-                        content: '确认支付',
-                        success: (res) => {
-                            if (res.confirm) {
-                                http("post", `/Order/pay/${tradeid}`).then(res => {
-                                    if (res.code === 0) {
-                                        wx.showToast({
-                                            title: '支付成功',
-                                            icon: 'success',
-                                            duration: 2000,
-                                            success: () => {
-                                                this.triggerEvent("handleRefreshOrderList")
-                                            }
-                                        })
-                                    }
-                                })
-                            }
-                        }
+                    wx.showToast({
+                      title: '余额或积分支付不支持重新支付,请取消重新下单',
+                      icon:'none',
+                      duration:1000
                     })
+                    // 积分支付
+                    // wx.showModal({
+                    //     title: '提示',
+                    //     content: '确认支付',
+                    //     success: (res) => {
+                    //         if (res.confirm) {
+                    //             http("post", `/Order/pay/${tradeid}`).then(res => {
+                    //                 if (res.code === 0) {
+                    //                     wx.showToast({
+                    //                         title: '支付成功',
+                    //                         icon: 'success',
+                    //                         duration: 2000,
+                    //                         success: () => {
+                    //                             this.triggerEvent("handleRefreshOrderList")
+                    //                         }
+                    //                     })
+                    //                 }
+                    //             })
+                    //         }
+                    //     }
+                    // })
                 }
             },
 

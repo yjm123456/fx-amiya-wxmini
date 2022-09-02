@@ -1,2 +1,5 @@
 <!--pages/userProtection/userProtection.wxml-->
-<view class="center">敬请期待...</view>
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a6e521e840c64e5a8a8a73958d4bd0d5.jpg"></image>
+</scroll-view>
+

@@ -1,5 +1,6 @@
 {
     "usingComponents": {
+        "authPhone": "./../../components/authPhone/auth",
         "van-nav-bar": "@vant/weapp/nav-bar/index",
         "van-grid": "@vant/weapp/grid/index",
         "van-grid-item": "@vant/weapp/grid-item/index",
@@ -7,7 +8,8 @@
         "van-popup": "@vant/weapp/popup/index",
         "van-divider": "@vant/weapp/divider/index",    
         "van-card": "@vant/weapp/card/index",
-        "van-notice-bar": "@vant/weapp/notice-bar/index"
+        "van-notice-bar": "@vant/weapp/notice-bar/index",
+        "van-dialog": "@vant/weapp/dialog/index"
     },
     "navigationBarTitleText": "啊美雅AMEIYA甄选",
     "navigationBarBackgroundColor": "#000000"

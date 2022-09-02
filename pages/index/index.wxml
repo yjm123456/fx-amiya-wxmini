@@ -63,6 +63,7 @@
         <view class="h3 title">猜你喜欢</view>
         <view class="product_warp">
             <view class="product" wx:for="{{goodsList}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
+                <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">
                         <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>
@@ -81,3 +82,17 @@
 </view>
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<!-- 分享弹窗 -->
+<van-dialog custom-class="van_dialog_action" use-slot id="van-dialog">
+    <view class="share">
+        <view class="share_by">{{nickname}}分享给您一张抵用券:</view>
+        <view class="content" >
+            <view class="item" >
+                <view class="item_top">
+                    <view class="item_name">{{vouchername}}</view>                   
+                    <view class="item_price">¥{{vouchermoney}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</van-dialog>
