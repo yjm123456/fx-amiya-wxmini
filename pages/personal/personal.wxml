@@ -1,6 +1,6 @@
 <view class="personal_container">
-    <view class="user_section"  >
-        <!-- <image class="bg" src="/images/cbg.jpg"></image> -->
+<!-- style="background-image: url(../../images/bc.png);background-size: 100% 100%;" -->
+    <view class="user_section" style="background-image: url(../../images/bc.png);background-size: 100% 100%;" >
         <view class="user_info_box">
             <view class="portrait_box" bindtap="tpPersonalInfo">
                 <image class="portrait" src='{{userInfo.avatarUrl}}'></image>
@@ -20,6 +20,7 @@
                 <!-- <text class="balance" wx:if="{{balance}}">积分余额 {{balance}}</text> -->
             </view>
             <view class="member_no"> <canvas type="2d" style="width:128rpx ; height: 128rpx;margin-left: 8rpx;margin-top: 13rpx;" id="myQrcode"></canvas> </view>
+            
         </view>
         <view class="navigation_list">
             <view class="grid_item" data-url="/pages/aboutAmeiya/aboutAmeiya" bindtap="to"><text>关于啊美雅</text></view>
@@ -35,11 +36,14 @@
         <view class="vip_card_box" bindtap="handleReceiveMemberCard" wx:else>
             <image src="/images/receiveCard.png" mode="widthFix"></image>
         </view> -->
+        <view class="card">
+            <image src="{{memberCard.imageUrl}}" mode="widthFix"></image>
+            <!-- <image src="/images/hj.png" mode="widthFix"></image> -->
+        </view>
+        <!-- <view class="bottom_image"><image src="../../images/arc.png" mode="widthFix"></image></view> -->
     </view>
 
-    <view class="card">
-        <image src="{{memberCard.imageUrl}}" mode="widthFix"></image>
-    </view>
+
     <view class="cover_container">
         <!-- <image class="arc" src="/images/arc.png"></image> -->
         <!-- 积分 优惠券 账户余额 -->

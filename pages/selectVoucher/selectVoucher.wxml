@@ -1,13 +1,29 @@
 <view class="container">
     <van-radio-group value="{{ radio }}" bind:change="onChange">
-        <view wx:for="{{list}}" wx:key="index" class="item">
+        <view wx:for="{{list}}" wx:key="index" class="content">
             <van-radio label-class='radio-group' data-vouchername="{{item.consumptionVoucherName}}" data-deductmoney="{{item.deductMoney}}" data-voucherid="{{item.id}}" bindtap="onClick" name="{{index}}">
-                <view class="voucher">
-                    <view class="name">{{item.consumptionVoucherName}}</view>
-                    <view class="money">{{item.deductMoney}}元</view>
+                <view class="item" catchtap="{{item.isShare&&!item.isUsed ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0}}">
+                    <view class="item_left">
+                        <text class="money">¥{{item.deductMoney}}</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view class="item_right">
+                        <view class="right_top">
+                            <view class="descrip">
+                                <text wx:if="{{item.isSpecifyProduct&&item.type==0}}" class="">指定商品可用</text>
+                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
+                                <text class="source" wx:elif="{{item.source==2}}">每月领取</text>                              
+                            </view>
+                        </view>
+                        <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
+                        <view class="right_bottom">
+                            <text catchtap="show">使用说明</text>
+                        </view>
+                    </view>
                 </view>
             </van-radio>
         </view>
-    </van-radio-group>
+</van-radio-group>
 </view>
 <view class="button" bindtap="storeSubmit">确定</view>

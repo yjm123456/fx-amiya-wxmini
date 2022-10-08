@@ -5,41 +5,75 @@ page{
 .container{
     padding-bottom: 150rpx;
 }
-.item{
-    background-color: #313131;
-    padding: 20rpx;
-    border-radius: 30rpx;
-    margin-top: 30rpx;
-}
+
 .radio-group{
     width: 100% !important;
     border-radius: 20rpx !important; 
     overflow: hidden;
     
 }
-.voucher{
-    background-color: #262626;   
-    color: #fff;
-    height: 100rpx;
-    display: flex;
-    align-items: center;
+.custom_vandivider{
+    margin: 0 !important;
+}
+.content{
+    border: #DEC350 2rpx solid;
+    background-color: #313131;
+    border-radius: 20rpx;
+    margin: 20rpx;
+    position: relative;
+    overflow: hidden;
     padding-left: 30rpx;
-    padding-right: 30rpx;
-    justify-content: space-between;
 }
-.name{
-    width: 80%;
-    height: 100rpx;
-    line-height: 100rpx;
+.item{
+    height:150rpx;
+    display: flex;
 }
-.money{
-    height: 100rpx;
-    line-height: 100rpx;
-    width:20%;
-    color: #dec530;
-    border-left: #dec530 4rpx dashed;
+.item_left{
+    width: 20%;
+    background-color: #262626;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.item_left>.money{
+    color: #DEC350;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+.item_left>.type{
+    color: #fff;
+}
+.item_right{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 10rpx;
+}
+.right_top{
+    color: #fff;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 75%;
+    align-items: center;
+}
+.right_top .descrip{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.right_top .source{
+    font-size: 18rpx;
+}
+.right_bottom{
+    height: 25%;
+    color: #e2e2e2;
+    font-size: 22rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .button{
-    background-color: #DEC530;
+    background-color: #DEC350;
 }

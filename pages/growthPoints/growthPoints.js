@@ -70,6 +70,7 @@ Page({
           })
           callback && callback();
           this.data.pageNum++;
+          console.log("总数"+totalCount);
           if (this.data.list.length === totalCount) {
             this.setData({
               nextPage: false

@@ -14,28 +14,31 @@
                             </view>
                             <view class="goods_content">
                                 <view class="product_img">
-                                <!-- <image src="{{item.thumbPicUrl}}" alt="" /> -->
-                                <image src="{{item.goodsPictureUrl}}" mode="scaleToFill" alt="" />
-                            </view>
-                            <view class="right">
-                                <view class="des">
-                                    <view><text class="goods_name">{{item.goodsName}}</text></view>
-                                    <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
-                                    <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
-                                    <view><text>{{item.description}}</text></view>
-                                    <view catchtap="stopPro" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'价格'}}:{{item.singleprice*item.num}}</text>
-                                        <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
-                                    </view>
+                                    <!-- <image src="{{item.thumbPicUrl}}" alt="" /> -->
+                                    <image src="{{item.goodsPictureUrl}}" mode="scaleToFill" alt="" />
                                 </view>
-                                <!-- <view class="btn">
+                                <view class="right">
+                                    <view class="des">
+                                        <view><text class="goods_name">{{item.goodsName}}</text></view>
+                                        <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
+                                        <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
+                                        <view><text>{{item.description}}</text></view>
+                                        <view catchtap="stopPro" wx:if="{{!item.isMember}}" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{item.singleprice*item.num}}</text>
+                                            <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
+                                        </view>
+                                        <view catchtap="stopPro" wx:else class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{item.memberPrice*item.num}}</text>
+                                            <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
+                                        </view>
+                                    </view>
+                                    <!-- <view class="btn">
                                     <button class="delete" data-goodsid='{{item.goodsId}}' data-id="{{item.id}}" catch:tap='deleteFromCart'>移除</button>
                                 </view> -->
+                                </view>
+                                <view class="tag" wx:if="{{item.exchangeType===0}}">
+                                    积分兑换
+                                </view>
                             </view>
-                            <view class="tag" wx:if="{{item.exchangeType===0}}">
-                                积分兑换
-                            </view>
-                            </view>
-                            
+
                         </view>
                     </van-cell>
                 </van-cell-group>
@@ -46,6 +49,7 @@
             <text class="title">更多精选商品</text>
             <view class="product_warp">
                 <view class="product" wx:for="{{goodsList}}" data-exchangetype="{{item.exchangeType}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
+                    <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                     <view>
                         <view class="product_top">
                             <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>

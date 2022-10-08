@@ -244,44 +244,38 @@ color: #ff1554;
 }
 .content{
     background-color: #313131;
-    padding: 10rpx;
     border-radius: 20rpx;
-}
-.item{
-    height:60rpx;
-    border-radius: 20rpx;
-    margin: 10rpx;
-    padding: 15rpx 15rpx 5rpx 15rpx;
-    background-color: #262626;
+    border: #DEC350 2rpx solid;
+    display: flex;
+    flex-direction: row;
     overflow: hidden;
+    height:120rpx;
 }
 
-.item_top{
-    color: #fff;
+.item_left{
+
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: 60rpx;
+    background-color: #262626;
+    width: 25%;
 }
-.item_name{
-    font-size: 28rpx;
-}
-.item_price{
-    font-size: 32rpx;
+.item_left>.money{
     color: #DEC350;
-    border-left: #DEC350 dashed 2rpx;
-    padding: 20rpx;
-    text-align: center;
+    font-weight: 600;
+    font-size: 32rpx;
 }
-.item_bottom{
+.item_left>.type{
+    color: #fff;
+}
+.item_right{
+    width: 75%;
+    background-color: #313131;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 30rpx;
-    color: #e2e2e2;
-    font-size: 22rpx;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30rpx;
 }
 .van-goods-action{
     background-color: #000 !important;
@@ -291,3 +285,35 @@ color: #ff1554;
     border: 0rpx !important;
     border-radius: 20rpx !important;
 }
+.voucher_cotent{
+    padding: 30rpx;
+    
+}
+.member_benefits{
+    background-color: #313131;
+    padding: 20rpx;
+    margin: 20rpx;
+    border-radius: 20rpx;
+}
+.benefits_content{
+    padding: 20rpx;
+    background-color: #262626;
+    border-radius: 20rpx;
+    text-align: center;
+    color: #DEC350;
+    font-weight: 600;
+}
+#bind_tip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300rpx;
+}
+
+#bind_tips .van-goods-action{
+    background-color: transparent !important;
+}
+.tip_img{
+    width: 100%;
+}
+

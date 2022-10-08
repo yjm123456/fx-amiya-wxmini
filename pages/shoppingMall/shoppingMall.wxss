@@ -146,8 +146,17 @@ page{
     border-radius: 20rpx;
     overflow: hidden;
     height: 240rpx;
+    position: relative;
 }
-
+.tag{
+    position: absolute;
+    padding: 5rpx;
+    font-size: 22rpx;
+    background-color: #dec530;
+    color: #fff;
+    right: 0;
+    border-bottom-left-radius: 20rpx;
+}
 /* 图片 */
 
 

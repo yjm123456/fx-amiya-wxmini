@@ -48,7 +48,7 @@
             <view class="tool_btn">
                 <van-button color="#313131" type="default" size="small" class="cancel" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelOrder">取消
                 </van-button>
-                <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType==1?1:0}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
+                <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&item.orderInfoList[0].exchangeType===0}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
                 </van-button>
                 <!-- 待收货 -->
                 <van-button color="#313131" type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'}}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleConfirm">

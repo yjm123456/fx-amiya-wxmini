@@ -62,12 +62,11 @@ Page({
                 return acc += cur.integrationQuantity * cur.quantity
             }, 0).toFixed(2)
         })
-        console.log(voucherId !== '');
     },
     onChange(event) {
-        this.setData({
-            pay: event.detail,
-        });
+        // this.setData({
+        //     pay: event.detail,
+        // });
     },
     onClick(event) {
         const {
@@ -209,20 +208,37 @@ Page({
                         wx.redirectTo({
                             url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
                         })
-                    } else {
-                        wx.showModal({
-                            title: '提示',
-                            content: '是否支付',
-                            success: (res) => {
-                                if (res.confirm) {
-                                    console.log("确认")
-                                    console.log(tradeId);
-                                    this.balancePay(tradeId)
-                                } else if (res.cancel) {
-                                    // 取消支付
-                                }
-                            }
-                        })
+                    } else if(pay==2){
+                    wx.requestPayment({
+                      timeStamp:  payRequestInfo.timeStamp,
+                      nonceStr:  payRequestInfo.nonceStr,
+                      package:  payRequestInfo.package,
+                      signType:  payRequestInfo.signType,
+                      paySign: payRequestInfo.paySign,
+                      success (res) { 
+                        wx.showToast({ title: '支付成功', icon: 'none', duration: 2000 })
+                        // http("post", `/Order/pay/${tradeId}`).then(res => {
+                        //   if (res.code === 0) {
+                        //     wx.showToast({
+                        //       title: '支付成功',
+                        //       icon: 'success',
+                        //       duration: 2000,
+                        //       success: function () {
+                        //         // http("post", `/Order/pay/${tradeId}`).then(res => {})
+                        //         setTimeout(function () {
+                        //           wx.redirectTo({
+                        //             url: '/pages/purchasedOrder/purchasedOrder',
+                        //           })
+                        //         }, 2000);
+                        //       }
+                        //     })
+                        //   }
+                        // })
+                      },
+                      fail (res) { 
+                        wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })
+                      }
+                    })
                     }
                 }
             }

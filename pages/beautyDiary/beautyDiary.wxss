@@ -11,7 +11,8 @@ page{
     width: 100%;
     border-radius: 10rpx;
     overflow: hidden;
-    /* box-shadow: 2rpx 2rpx 5rpx 2rpx #ccc; */
+    box-shadow: 2rpx 2rpx 5rpx 5rpx #313131;
+    
 }
 .diary image{
     width:100%;
@@ -35,10 +36,10 @@ page{
 }
 .diary_bottom{
     padding: 10rpx;
-    background-color: #313131;
-    height: 100%;
+    background-color: #262626;
+    height: 100%;  
 }
 .diary_left{
     font-size: 35rpx;
-    color: #545454;
+    color: #e2e2e2;
 }

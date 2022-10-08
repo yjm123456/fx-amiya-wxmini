@@ -88,7 +88,6 @@ Page({
             hospitalsaleprice,
             allmoney
         } = e.currentTarget.dataset
-        console.log(hospitalid);
         const {
             goodsInfo
         } = this.data
@@ -101,7 +100,6 @@ Page({
             })
         } else {
             if (goodsInfo.isMaterial) {
-                console.log("实体商品")
                 goodsInfo.allmoney = allmoney
                 goodsInfo.hospitalid = hospitalid
                 //设置新属性后重新更新值
@@ -116,28 +114,13 @@ Page({
                     GoodsId: id,
                     Num: quantity
                 }
-                console.log(goodsInfo);
                 http("post", `/GoodsShopCar`, data).then(res => {
                     if (res.code === 0) {
                         Toast.success('添加成功');
                     }else{
                         Toast.success('添加失败');
                     }
-                })
-                // if (wx.getStorageSync('cart')) {
-                //     const s = wx.getStorageSync('cart');
-                //     console.log(s);
-                //     for (let i = 0; i < s.length; i++) {
-                //         if (s[i].id === goodsInfo.id) {
-                //             Toast.success('购物车中已包含此商品');
-                //             return;
-                //         }
-                //     }
-                //     console.log([...s, goodsInfo])
-                //     wx.setStorageSync('cart', [...s, goodsInfo]);
-                //     Toast.success('添加成功');
-                //     return;
-                // }
+                })               
                 Toast.success('添加成功');
             } else {
                 if (!cityname) {
@@ -329,7 +312,9 @@ Page({
         const {
             type,
             saleprice,
-            ismaterial
+            ismaterial,
+            ismember,
+            memberrankprice
         } = event.currentTarget.dataset
         let quantity = event.detail
         // type==1 判断是否为实物 如果是实物的话需要发货 总价计算的是销售价格x数量
@@ -340,7 +325,7 @@ Page({
             })
             if (saleprice) {
                 this.setData({
-                    totalPrice: (saleprice * goodsInfo.quantity).toFixed(2),
+                    totalPrice: ((ismember?memberrankprice:saleprice) * goodsInfo.quantity).toFixed(2),
                     goodsInfo
                 })
             }
@@ -439,7 +424,7 @@ Page({
                     goodsInfo
                 })
                 wx.navigateTo({
-                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney
+                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney+'&voucherId='+voucherId+'&voucherName='+vouchername+'&deductMoney='+deductmoney
                 })
             }
 
@@ -447,8 +432,11 @@ Page({
     },
     //获取用户拥有的抵用券
     getCustomerVoucher(){
+        //商品id
+        const {id}=this.data.goodsInfo;
         const data={
-            isUsed:false
+            isUsed:false,
+            goodsId:id
         };
         http("get", `/CustomerConsumptionVoucher/allList`, data).then(res => {
             if (res.code === 0) {
@@ -456,9 +444,14 @@ Page({
                     customerConsumptionVoucherList
                 } = res.data;       
                 if(customerConsumptionVoucherList.length>0){
-                    console.log("跳转");
                     wx.navigateTo({
                       url: '/pages/selectVoucher/selectVoucher?list='+JSON.stringify(res.data.customerConsumptionVoucherList),
+                    })
+                }else{
+                    wx.showToast({
+                      title: '没有可用于此商品的抵用券',
+                      icon:'none',
+                      duration:1000
                     })
                 }
             }

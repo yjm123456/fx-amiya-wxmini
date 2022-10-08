@@ -75,7 +75,7 @@ Component({
                     singleplatform,
                     apptype
                 } = e.currentTarget.dataset;
-                // singleplatform为1表示支付订单 为2表示积分订单
+                // singleplatform为1表示支付订单 为0表示积分订单,3表示余额支付
                 if (singleplatform == 1) {
                     // apptype为2表示在小程序下的单直接调起支付接口 不为2时在其他平台下的单 提示去下单平台支付
                     if (apptype === 2) {
@@ -126,33 +126,52 @@ Component({
                             duration: 2000
                         })
                     }
-                } else {
-                    wx.showToast({
-                      title: '余额或积分支付不支持重新支付,请取消重新下单',
-                      icon:'none',
-                      duration:1000
-                    })
+                } else if(singleplatform == 0){
+                    
                     // 积分支付
-                    // wx.showModal({
-                    //     title: '提示',
-                    //     content: '确认支付',
-                    //     success: (res) => {
-                    //         if (res.confirm) {
-                    //             http("post", `/Order/pay/${tradeid}`).then(res => {
-                    //                 if (res.code === 0) {
-                    //                     wx.showToast({
-                    //                         title: '支付成功',
-                    //                         icon: 'success',
-                    //                         duration: 2000,
-                    //                         success: () => {
-                    //                             this.triggerEvent("handleRefreshOrderList")
-                    //                         }
-                    //                     })
-                    //                 }
-                    //             })
-                    //         }
-                    //     }
-                    // })
+                    wx.showModal({
+                        title: '提示',
+                        content: '确认支付',
+                        success: (res) => {
+                            if (res.confirm) {
+                                http("post", `/Order/pay/${tradeid}`).then(res => {
+                                    if (res.code === 0) {
+                                        wx.showToast({
+                                            title: '支付成功',
+                                            icon: 'success',
+                                            duration: 2000,
+                                            success: () => {
+                                                this.triggerEvent("handleRefreshOrderList")
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }else if(singleplatform == 3){
+                    console.log("调用余额支付");
+                    //余额支付
+                    wx.showModal({
+                        title: '提示',
+                        content: '确认支付',
+                        success: (res) => {
+                            if (res.confirm) {
+                                http("post", `/Order/balancePay/${tradeid}`).then(res => {
+                                    if (res.code === 0) {
+                                        wx.showToast({
+                                            title: '支付成功',
+                                            icon: 'success',
+                                            duration: 2000,
+                                            success: () => {
+                                                this.triggerEvent("handleRefreshOrderList")
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        }
+                    })
                 }
             },
 
@@ -250,7 +269,6 @@ Component({
                     tradeid,
                     apptype
                 } = e.currentTarget.dataset;
-                console.log("apptype为" + apptype);
                 if (apptype === 2) {
                     wx.showModal({
                         title: '提示',

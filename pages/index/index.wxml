@@ -1,4 +1,3 @@
-
 <view class="container">
     <!-- 轮播图 -->
     <swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
@@ -33,15 +32,10 @@
       </block>
     </view>
   </view> -->
-   <!-- 公告 -->
-   <view class="notice">
-    <van-notice-bar
-  left-icon="volume-o"
-  scrollable="{{ true }}"
-  color="#DEC350" 
-  background="#262626" 
-  text="啊美雅MEIYA卡即将上线,敬请期待"/>
-   </view>
+    <!-- 公告 -->
+    <view class="notice">
+        <van-notice-bar left-icon="volume-o" scrollable="{{ true }}" color="#DEC350" background="#262626" text="啊美雅MEIYA卡即将上线,敬请期待" />
+    </view>
     <!-- 活动 -->
     <view class="activity">
         <view class="activity_item" bindtap="handleActivity" data-activity="{{1}}">
@@ -54,8 +48,8 @@
     <!-- 导航栏二 -->
     <view class="navigation_list">
         <view class="grid_item" data-url="/pages/meiYaCard/meiYaCard" bindtap="to"><text>MEIYA卡</text></view>
-    <view class="grid_item" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><text>MEIYA甄选</text></view>
-    <view class="grid_item" data-url="/pages/beautyDiary/beautyDiary" bindtap="to"><text>美学分享</text></view>
+        <view class="grid_item" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><text>MEIYA甄选</text></view>
+        <view class="grid_item" data-url="/pages/beautyDiary/beautyDiary" bindtap="to"><text>美学分享</text></view>
     </view>
 
     <!-- 商品列表 -->
@@ -86,13 +80,27 @@
 <van-dialog custom-class="van_dialog_action" use-slot id="van-dialog">
     <view class="share">
         <view class="share_by">{{nickname}}分享给您一张抵用券:</view>
-        <view class="content" >
-            <view class="item" >
-                <view class="item_top">
-                    <view class="item_name">{{vouchername}}</view>                   
-                    <view class="item_price">¥{{vouchermoney}}</view>
-                </view>
+        <view class="content">
+            <view class="item_left">
+                <text class="money">¥{{vouchermoney}}</text>
+                <text class="type">抵用券</text>
+            </view>
+            <view class="item_right">
+                <view class="item_name">{{vouchername}}</view>
             </view>
         </view>
     </view>
+</van-dialog>
+<!-- 领取抵用券弹窗 -->
+<van-dialog custom-class="van_dialog_action" use-slot id="recieve-voucher">
+    <view class="member_benefits">
+        <view class="benefits_content">
+            <view class="item_name">本月会员福利已到账</view>
+        </view>
+    </view>
+</van-dialog>
+
+<!-- 新客绑定提示弹窗 -->
+<van-dialog use-slot id="bind_tips">
+    <image class="tip_img" mode="widthFix" src="../../images/61ec5d3bd0e5c6bb865a266fcc1c188.png"></image>
 </van-dialog>

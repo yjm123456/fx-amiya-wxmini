@@ -16,21 +16,32 @@ page{
     border: 0;
 }
 .user_section{
-    height: 500rpx;
-    background-color: #262626;
-    border-radius: 0 0 20rpx 20rpx;
+    background-color: #313131;
+    border-radius: 0 0 50% 50% / 0 0 10% 10%;
+    position: relative;
+    overflow: hidden;
 }
+
 .user_info_box {
     height: 220rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    background-color: #262626;
     width: 100%;
     padding-left: 30rpx;
     align-items: center;
+    position: relative;
 }
-
+.bottom_image{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.bottom_image image{
+    width: 100%;
+    height: 100%;
+}
 .user_info_box .portrait {
     margin-right: 30rpx;
     width: 120rpx;
@@ -119,7 +130,7 @@ border-radius: 10rpx;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    background-color: #262626;
+    /* background-color: #313131; */
     color: #DEC350;
   }
   .grid_navigation{
@@ -175,7 +186,7 @@ border-radius: 10rpx;
 }
 
 .cover_container {
-    margin-top: -30rpx;
+    margin-top: 10rpx;
     padding: 0 20rpx;
     background: #000000;
     padding-bottom: 20rpx;
@@ -183,13 +194,18 @@ border-radius: 10rpx;
     overflow: hidden;
 }
 .card{
-    margin-top: -150rpx;
-    width: 710rpx;
-    padding: 20rpx;
+    width: 620rpx;
     z-index: 99;
+    margin: 0 auto;
+    position: relative;
+    bottom: -20rpx;
 }
 .card image{
     width: 100%;
+}
+.bottom{
+    height: 100rpx;
+    background-color: #000;
 }
 /* .cover_container .arc {
     position: absolute;

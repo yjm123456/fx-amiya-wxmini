@@ -34,7 +34,7 @@
                 <view class="name"><text>{{item.goodsName}}</text></view>
                 <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
                 <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
-                <view wx:if="{{item.exchangeType===1}}" class="pri_num"><text class="price">价格:{{item.singleprice*item.num}}</text><text class="num">x{{item.num}}</text></view>
+                <view wx:if="{{item.exchangeType===1}}" class="pri_num"><text class="price">价格:{{item.isMember?(item.memberPrice*item.num):(item.singleprice*item.num)}}</text><text class="num">x{{item.num}}</text></view>
                 <view wx:if="{{item.exchangeType===0}}" class="pri_num"><text class="price">积分:{{item.interGrationAccount*item.num}}</text><text class="num">x{{item.num}}</text></view>
             </view>
         </view>
@@ -42,7 +42,7 @@
     <view class="remark">
         <view class="label"><text>买家留言:</text></view>
         <view class="mark">
-            <van-field border="{{false}}"  input-class="field" value="{{ remark  }}" type="textarea" clearable placeholder="请输入留言" title-width="4em" bind:change="handleRemarkChange" maxlength="200" />
+            <van-field border="{{false}}" input-class="field" value="{{ remark  }}" type="textarea" clearable placeholder="请输入留言" title-width="4em" bind:change="handleRemarkChange" maxlength="200" />
         </view>
     </view>
 </view>

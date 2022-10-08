@@ -20,18 +20,18 @@ Page({
         // 授权
         controlAuth: false,
         //会员卡信息
-        memberCard:{},
+        memberCard: {},
         // 授权手机号
         controlAuthPhone: false,
-
         userInfo: {},
-
         coverTransform: 'translateY(0)',
-
         coveTransition: '',
-        totalBalance : 0
+        //储值
+        totalBalance: 0,
+        //抵用券弹窗
+        controlConsumptionVoucher: false
     },
-    toRechargeList(){
+    toRechargeList() {
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 wx.navigateTo({
@@ -49,25 +49,40 @@ Page({
     onShow() {
         checkUserTokenInfo().then(res => {
             this.isAuthorizationUserInfo();
-            this.getMemberCardInfo();
-            this.getIntegral();
-            this.getBalance();
+            // this.getMemberCardInfo();
+            // this.getIntegral();
+            // this.getBalance();
         })
+        this.isCustomer((isCustomer) => {
+            console.log("是否是客户");
+            if (isCustomer) {
+                this.getMemberCardInfo();
+                //this.getIntegral();
+                this.getBalance();
+            } else {
+                wx.showToast({
+                    title: '请绑定手机号',
+                    icon: 'none'
+                })
+                this.handleBindPhone();
+            }
+        })
+        
         this.getCode()
     },
-    getBalance(){
+    getBalance() {
         http("get", `/Recharge/balance`).then(res => {
             if (res.code === 0) {
                 const {
                     balance
                 } = res.data;
                 this.setData({
-                    totalBalance:balance
+                    totalBalance: balance
                 })
             }
         })
     },
-    disscro(){},
+    disscro() {},
     getCode() {
         const query = wx.createSelectorQuery()
         query.select('#myQrcode')
@@ -225,7 +240,7 @@ Page({
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 wx.navigateTo({
-                    url: e.currentTarget.dataset.url+'?nickname='+e.currentTarget.dataset.nickname,
+                    url: e.currentTarget.dataset.url + '?nickname=' + e.currentTarget.dataset.nickname,
                 })
             } else {
                 wx.showToast({
@@ -314,7 +329,9 @@ Page({
         this.setData({
             controlAuthPhone: false
         })
-        this.getIntegral();
+        this.setData({
+            controlConsumptionVoucher: true
+        })
     },
 
     // 取消绑定手机号
@@ -335,7 +352,7 @@ Page({
         })
     },
     //跳转到成长值明细页面
-    toGrowthList(){
+    toGrowthList() {
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 wx.navigateTo({
@@ -370,18 +387,18 @@ Page({
     },
 
     // 获取客户的积分余额   get
-    getIntegral() {
-        http("get", `/IntegrationAccount/balance`).then(res => {
-            if (res.code === 0) {
-                const {
-                    balance
-                } = res.data;
-                this.setData({
-                    balance
-                })
-            }
-        })
-    },
+    // getIntegral() {
+    //     http("get", `/IntegrationAccount/balance`).then(res => {
+    //         if (res.code === 0) {
+    //             const {
+    //                 balance
+    //             } = res.data;
+    //             this.setData({
+    //                 balance
+    //             })
+    //         }
+    //     })
+    // },
     concat() {
         wx.openCustomerServiceChat();
     },

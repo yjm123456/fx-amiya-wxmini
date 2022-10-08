@@ -33,7 +33,10 @@ Page({
         nickname:'',
         totalCount:0,
         qrCodeBase64:'',
-        writeOfCode:''
+        writeOfCode:'',
+        active:0,
+        type:1,
+        activeNames: [],
     },
 
     /**
@@ -44,6 +47,42 @@ Page({
         this.setData({nickname});
         this.getConsumptionVoucher();
     },
+    onClick(event){
+        console.log("激活选项"+event.detail.activeNames);
+        this.setData({
+            activeNames: event.detail,
+          });
+    },
+    onChange(event) {
+        this.setData({
+            active: event.detail.name,
+            list: [],
+            nextPage: true,
+            pageNum: 1,
+            pageSize: 10
+        });
+        const {
+            active
+        } = this.data;
+        if (active == 0) {
+            this.setData({
+                type: 1
+            })
+            this.getConsumptionVoucher();
+        }
+        if (active == 1) {
+            this.setData({
+                type: 2
+            })
+            this.getConsumptionVoucher();
+        }
+        if (active == 2) {
+            this.setData({
+                type: 3
+            })
+            this.getConsumptionVoucher();
+        }
+    },
     //点击使用跳转到商城
     toShop() {
         wx.switchTab({
@@ -53,7 +92,6 @@ Page({
     //面诊抵用券画核销码
     getQrcodeImage(e){
         var {code}=e.currentTarget.dataset;
-        console.log("核销码"+code);
         http("get", `/Order/qrcodeBase64/${code}`).then(res => {
            if (res.code === 0) {
             const { qrCodeBase64 } = res.data;
@@ -78,7 +116,6 @@ Page({
             id,
             vouchername,
             vouchermoney
-
         } = e.currentTarget.dataset;
 
         this.setData({
@@ -102,12 +139,14 @@ Page({
         const {
             pageNum,
             pageSize,
-            nextPage
+            nextPage,
+            type
         } = this.data;
         if (!nextPage) return;
         const data = {
             pageNum,
-            pageSize
+            pageSize,
+            type
         }
         http("get", `/CustomerConsumptionVoucher/list`, data).then(res => {
             if (res.code === 0) {
@@ -122,7 +161,6 @@ Page({
                     ]
                 })
                 this.data.pageNum++;
-                console.log("长度"+this.data.list.length);
                 if (this.data.list.length === totalCount) {
                     this.setData({
                         nextPage: false

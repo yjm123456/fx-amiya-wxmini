@@ -231,7 +231,6 @@ Page({
     onLoad(options) {
         this.getCartProduct()
         this.getGoodsList();
-
     },
     toShopMall() {
         wx.switchTab({
@@ -307,7 +306,12 @@ Page({
             for (let j = 0; j < this.data.list.length; j++) {
                 if (this.data.result[i] === this.data.list[j].id) {
                     if(this.data.list[j].exchangeType===1){
-                        sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
+                        if(this.data.list[j].isMember){
+                            sumMoney += this.data.list[j].memberPrice * this.data.list[j].num;
+                        }else{
+                            sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
+                        }
+                        
                     }else if(this.data.list[j].exchangeType===0){
                         sumPoint += this.data.list[j].singleprice * this.data.list[j].num;
                     }                    

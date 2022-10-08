@@ -21,6 +21,7 @@
         </scroll-view>
         <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">
             <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType>0}}">
+                <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                 <view>
                     <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
                     <!-- <image src='{{item.thumbPicUrl}}'></image> -->

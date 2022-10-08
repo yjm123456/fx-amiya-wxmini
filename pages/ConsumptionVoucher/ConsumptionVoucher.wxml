@@ -1,29 +1,158 @@
 <!--pages/ConsumptionVoucher/ConsumptionVoucher.wxml-->
-        <view wx:for="{{list}}" wx:key="index" class="content" >
-            <view class="item" catchtap="{{item.isShare&&!item.isUsed ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}'>
-                <view wx:if="{{item.isShare&&!item.isUsed&&item.source==0}}" class="share_tag" >点击分享</view>
-                <view class="item_top">
-                    <view class="item_name">{{item.consumptionVoucherName}}</view>
-                    <view wx:if="{{item.type==0}}" class="item_price {{item.isUsed ? 'used':''}}">¥{{item.deductMoney}}</view>
+<view class="tabs_content">
+    <van-tabs active="{{active}}" nav-class="tabs" custom-class="tabs" color="#DEC350" title-inactive-color="#fff" title-active-color="#DEC350" bind:change="onChange" id="tabs">
+        <van-tab title="未使用">
+            <view wx:for="{{list}}" wx:key="index" class="content">
+                <view wx:if="{{item.isShare&&!item.isUsed&&item.source!=1}}" class="share_tag">点击分享</view>
+                <view class="item" catchtap="{{item.isShare&&!item.isUsed ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0}}">
+                    <view class="item_left">
+                        <text class="money">¥{{item.deductMoney}}</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view class="item_right">
+                        <view class="right_top">
+                            <view class="descrip">
+                                <text wx:if="{{item.isSpecifyProduct&&item.type==0}}" class="">指定商品可用</text>
+                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
+                                <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
+                            </view>
+                            <view class="use" catchtap="toShop">去使用</view>
+                        </view>
+                        <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
+                        <view class="right_bottom">
+                            <text catchtap="show">使用说明</text>
+                        </view>
+                    </view>
                 </view>
-                <van-divider custom-class="custom_vandivider" borderColor="{{item.isUsed?'#e2e2e2':'#DEC350'}}" dashed />
-                <view class="item_bottom">
-                    <view wx:if="{{item.isSpecifyProduct&&item.type==0}}">指定商品可用</view>
-                    <view wx:else></view>
-                    <view wx:if="{{item.isUsed}}" class="used">已使用</view>
-                    <view wx:else class="use" data-code="{{item.wirteOfCode}}" catchtap="{{item.type===0 ? 'toShop':'getQrcodeImage'}}">去使用</view>
+                <view class="item" wx:else="{{item.type==1}}">
+                    <view class="item_left">
+                        <text class="money">面诊</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view class="item_right">
+                        <view class="right_top">
+                            <view class="descrip">
+                                <text>{{item.consumptionVoucherName}}</text>
+                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
+                                <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
+
+                            </view>
+                            <view class="use" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
+                        </view>
+                        <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
+                        <view class="right_bottom">
+                            <text catchtap="show">使用说明</text>
+                        </view>
+                    </view>
                 </view>
             </view>
-        </view>
+        </van-tab>
+
+        <van-tab title="已使用">
+            <view wx:for="{{list}}" wx:key="index" class="content expire">
+                <view class="item" wx:if="{{item.type==0}}">
+                    <view class="item_left">
+                        <text class="money used">¥{{item.deductMoney}}</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view class="item_right">
+                        <view class="right_top">
+                            <view class="descrip">
+                                <text wx:if="{{item.isSpecifyProduct&&item.type==0}}" class="">指定商品可用</text>
+                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
+                                <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
+
+                            </view>
+                            <view class="use border">已使用</view>
+                        </view>
+                        <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
+                        <view class="right_bottom">
+                            <text catchtap="show">使用说明</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="item" wx:else="{{item.type==1}}">
+                    <view class="item_left">
+                        <text class="money">面诊</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view class="item_right">
+                        <view class="right_top">
+                            <view class="descrip">
+                                <text>{{item.consumptionVoucherName}}</text>
+                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source" wx:else="{{item.source==1}}">用户分享</text>
+                            </view>
+                            <view class="use expire">已使用</view>
+                        </view>
+                        <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
+                        <view class="right_bottom">
+                            <text catchtap="show">使用说明</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="已过期">
+            <view wx:for="{{list}}" wx:key="index" class="content expire">
+                <view class="item" wx:if="{{item.type==0}}">
+                    <view class="item_left">
+                        <text class="money used">¥{{item.deductMoney}}</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view class="item_right">
+                        <view class="right_top">
+                            <view class="descrip">
+                                <text wx:if="{{item.isSpecifyProduct&&item.type==0}}" class="">指定商品可用</text>
+                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source" wx:else="{{item.source==1}}">用户分享</text>
+                            </view>
+                            <view class="use expire">去使用</view>
+                        </view>
+                        <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
+                        <view class="right_bottom">
+                            <text catchtap="show">使用说明</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="item" wx:else="{{item.type==1}}">
+                    <view class="item_left">
+                        <text class="money used">面诊</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view class="item_right">
+                        <view class="right_top">
+                            <view class="descrip">
+                                <text>{{item.consumptionVoucherName}}</text>
+                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source" wx:else="{{item.source==1}}">用户分享</text>
+                            </view>
+                            <view class="use border">已过期</view>
+                        </view>
+                        <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
+                        <view class="right_bottom">
+                            <text catchtap="show">使用说明</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
+
+
 <van-share-sheet show="{{ showShare }}" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />
 <!-- 分享弹窗 -->
 <van-dialog custom-class="van_dialog_action" use-slot id="van-dialog">
     <view class="share">
         <view>
-                <image src="{{qrCodeBase64}}" width="50" class="code"></image>
-                <view class="code_number">
-                    {{writeOfCode}}
-                </view>
+            <image src="{{qrCodeBase64}}" width="50" class="code"></image>
+            <view class="code_number">
+                {{writeOfCode}}
             </view>
+        </view>
     </view>
 </van-dialog>

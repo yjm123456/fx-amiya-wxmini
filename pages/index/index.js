@@ -74,7 +74,11 @@ Page({
         currentPageIndex: 1,
         vouchername: '',
         vouchermoney: 0,
-        nickname: ''
+        nickname: '',
+        //领取抵用券弹窗
+        controlRecieveVoucher: false,
+        //显示绑定赠送抵用券提示
+        showVoucherTip: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -84,12 +88,74 @@ Page({
         this.getGoodsList()
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
+                this.getRecieveVoucherInfo();
+                this.getShareInfo();
+            } else {
+                this.showVoucherTips()
+            }
+        })
 
+    },
+    //显示绑定赠送抵用券提示
+    showVoucherTips() {
+        Dialog.alert({
+            title: '新人福利',
+            theme: 'round-button',
+            confirmButtonText: '立即领取',
+            closeOnClickOverlay: true,
+            customStyle: 'display:flex;flex-direction:column;justify-content:center;align-items:center;background-color: transparent !important;',
+            selector: "#bind_tips"
+        }).then(() => {
+            this.handleBindPhone();
+        });
+    },
+    //领取抵用券
+    recieve() {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                http("get", `/CustomerConsumptionVoucher/reciveConsumptionVoucher`).then(res => {
+                    if (res.code === 0) {
+                        this.setData({
+                            controlRecieveVoucher: false
+                        })
+                        wx.showToast({
+                            title: '领取成功',
+                            icon: 'none',
+                            duration: 1000
+                        })
+                    }
+                })
             } else {
                 this.handleBindPhone();
             }
         })
-        this.getShareInfo();
+    },
+    //判断当前月是否已经领取抵用券
+    getRecieveVoucherInfo() {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                http("get", `/CustomerConsumptionVoucher/isReciveConsumptionVoucher`).then(res => {
+                    if (res.code === 0) {
+                        const isRecieve = res.data.recieve;
+                        if (!isRecieve) {
+                            Dialog.alert({
+                                title: '会员福利',
+                                theme: 'round-button',
+                                confirmButtonText: '立即领取',
+                                closeOnClickOverlay: true,
+                                customStyle: 'background-color:#000;color:#fff;border: 2rpx solid #DEC350;',
+                                className: 'van_dialog_action',
+                                selector: "#recieve-voucher"
+                            }).then(() => {
+                                this.recieve();
+                            });
+                        }
+                    }
+                })
+            } else {
+                this.handleBindPhone();
+            }
+        })
     },
     getShareInfo() {
         var page = getCurrentPages();
@@ -99,7 +165,7 @@ Page({
             customerconsumptionvoucherid,
             vouchername,
             vouchermoney,
-            nickname
+            nickname,
         } = currentPage.options;
         this.setData({
             vouchername,
@@ -116,6 +182,7 @@ Page({
                 customStyle: 'background-color:#000;color:#fff;border: 2rpx solid #DEC350;',
                 className: 'van_dialog_action'
             }).then(() => {
+                console.log("点击");
                 const data = {
                     shareBy: shareid,
                     consumerConsumptionVoucherId: customerconsumptionvoucherid

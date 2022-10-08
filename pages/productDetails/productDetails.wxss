@@ -25,9 +25,23 @@
   display: flex;
   align-items: flex-start;
 }
+.sale_price{
+    display: flex;
+    flex-direction: column;
+    border: #dec530 2rpx solid;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+.price_tag{
+    background-color: #dec530;
+    padding: 5rpx;
+    font-size: 22rpx;
+    color: #fff;
+}
 .present_price{
   font-size: 58rpx;
   margin-bottom: 10rpx;
+  color: #dec530;
 }
 .original_price{
   text-decoration:line-through;

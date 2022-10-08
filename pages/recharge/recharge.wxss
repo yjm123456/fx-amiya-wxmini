@@ -1,40 +1,49 @@
 /* pages/recharge.wxss */
-page{
+page {
     background-color: #000;
 }
-.title{
+
+.title {
     color: #fff;
     font-size: 32rpx;
     font-weight: 600;
     padding-left: 65rpx;
 }
-.recharge_block{
-    display: flex;
-    flex-direction: column;
-    padding: 20rpx 65rpx;
-}
-.block_line{
-    margin-bottom: 20rpx;
+
+.recharge_block {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    padding: 20rpx 65rpx;
+    flex-flow: wrap;
+    /* justify-content: space-around; */
+    width: 660rpx;
+    padding: 30rpx;
+    margin: 0 auto;
 }
-.block_item{
+
+.block_item {
     color: #dec530;
-    width: 280rpx;
-    height: 120rpx;
+    width: 180rpx;
+    height: 100rpx;
     background-color: #313131;
     border-radius: 20rpx;
     border: #dec530 2rpx solid;
-    line-height: 120rpx;
+    line-height: 100rpx;
     text-align: center;
     font-size: 32rpx;
+    margin-top: 30rpx;
 }
-.active{
+
+.block_item:not(:nth-child(3n)) {
+    margin-right: 55rpx;
+}
+
+.active {
     background-color: #dec530;
     color: #fff;
 }
-.recharge{
+
+.recharge {
     background-color: #dec530;
     width: 500rpx;
     height: 60rpx;
@@ -43,28 +52,33 @@ page{
     text-align: center;
     margin: 20rpx auto;
 }
-.record{
+
+.record {
     color: #fff;
     background-color: #313131;
     margin: 20rpx;
     border-radius: 20rpx;
     padding: 20rpx 10rpx;
 }
-.record_title{
+
+.record_title {
     text-align: center;
     font-size: 26rpx;
 }
-.item_content{
+
+.item_content {
     background-color: #262626;
     margin: 10rpx;
     border-radius: 20rpx;
     padding: 10rpx;
 }
-.time{
+
+.time {
     font-size: 25rpx;
     color: #e2e2e2;
 }
-.detail{
+
+.detail {
     font-size: 28rpx;
     margin-top: 10rpx;
     display: flex;
@@ -72,25 +86,48 @@ page{
     justify-content: space-between;
     align-items: center;
 }
-.control{
+
+.control {
     display: flex;
 }
-.cancel{
+
+.cancel {
     background-color: #313131;
     padding: 10rpx;
     border-radius: 10rpx;
 }
-.pay{
+
+.pay {
     margin-left: 20rpx;
     background-color: #dec530;
     padding: 10rpx;
     border-radius: 10rpx;
 }
-.more{
+
+.more {
     background-color: #dec350;
     border-radius: 20rpx;
     margin: 30rpx 80rpx;
     text-align: center;
     color: #000;
     padding: 10rpx;
+}
+.pay_list{
+    padding: 20rpx;
+    background-color: #262626;
+    margin: 30rpx;
+    border-radius: 20rpx;
+}
+.van-cell{
+    background-color: #313131 !important;
+    border-radius: 20rpx !important;
+    color: #fff !important;
+    margin-top: 20rpx;
+}
+.van-goods-action{
+    background-color: transparent !important;
+}
+.van-button{
+    background-color: transparent !important;
+    color: #fff !important;
 }

@@ -12,19 +12,66 @@ page{
     margin: 0 !important;
 }
 .content{
+    border: #DEC350 2rpx solid;
     background-color: #313131;
-    padding: 10rpx;
     border-radius: 20rpx;
     margin: 20rpx;
+    position: relative;
+    overflow: hidden;
 }
 .item{
     height:150rpx;
-    border-radius: 20rpx;
-    margin: 10rpx;
-    padding: 15rpx 15rpx 5rpx 15rpx;
+    display: flex;
+}
+.item_left{
+    width: 20%;
     background-color: #262626;
-    position: relative;
-    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.item_left>.money{
+    color: #DEC350;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+.item_left>.type{
+    color: #fff;
+}
+.item_right{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 10rpx;
+}
+.right_top{
+    color: #fff;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 75%;
+    align-items: center;
+}
+.right_top .descrip{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.right_top .source{
+    font-size: 18rpx;
+}
+.right_bottom{
+    height: 25%;
+    color: #e2e2e2;
+    font-size: 22rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.explanation{
+    width: 100% !important;
+    height: 100% !important;
 }
 .share_tag{
     color: #fff;
@@ -36,7 +83,7 @@ page{
     border-bottom-left-radius: 10rpx;
     padding: 5rpx;
 }
-.item_top{
+/* .item_top{
     color: #fff;
     display: flex;
     flex-direction: row;
@@ -60,16 +107,26 @@ page{
     height: 60rpx;
     color: #e2e2e2;
     font-size: 22rpx;
-}
+} */
 .use{
-    padding: 8rpx;
     font-size: 22rpx;
-    background-color: #DEC350;
+    border: #dec530 2rpx solid;
+    background-color: #313131;
     text-align: center;
-    border-radius: 20rpx;
+    margin-top: 10rpx;
+    border-radius: 10rpx;
+    padding: 5rpx;
+    height: 30rpx;
+    margin-right: 30rpx;
 }
 .used{
-    color: #e2e2e2;
+    color: #e2e2e2 !important;
+}
+.expire{
+    border: #e2e2e2 2rpx solid;
+}
+.border{
+    border: 0;
 }
 .code_number{
     text-align: center;
