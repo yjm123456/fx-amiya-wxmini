@@ -1,0 +1,32 @@
+/* pages/LiveAnchorDetail/LiveAnchorOrder/LiveAnchorOrder.wxss */
+page{
+    background-color: #000;
+    height: 100%;
+}
+.order_form{
+    border-radius: 20rpx;
+    overflow: hidden;
+    margin: 20rpx;
+    padding: 50rpx 20rpx;
+    background-color: #262626;
+}
+.field{
+    background-color: #313131 !important;
+    color: #fff !important;
+}
+.submit_btn{
+    margin: 30rpx 30rpx;
+    background:-webkit-linear-gradient(right ,#dec530,#e4c675);
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+.van-cell{
+    background-color: #262626 !important;
+}
+.van-cell__value{
+    background-color: #313131 !important;
+    padding: 20rpx;
+    border-radius: 15rpx;
+    color: #fff !important;
+}

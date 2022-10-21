@@ -4,7 +4,7 @@
         <van-tab title="未使用">
             <view wx:for="{{list}}" wx:key="index" class="content">
                 <view wx:if="{{item.isShare&&!item.isUsed&&item.source!=1}}" class="share_tag">点击分享</view>
-                <view class="item" catchtap="{{item.isShare&&!item.isUsed ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0}}">
+                <view class="item" catchtap="{{item.isShare&&!item.isUsed&&item.source!=1 ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0}}">
                     <view class="item_left">
                         <text class="money">¥{{item.deductMoney}}</text>
                         <text class="type">抵用券</text>

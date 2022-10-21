@@ -20,7 +20,8 @@
         <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="性别">
             <view slot="right-icon">
                 <!-- <van-field value="{{ value }}" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" /> -->
-                <text bindtap="chooseGender">{{isEditGender?genderList[gender-1]:'请选择'}}</text>
+                <!-- <text bindtap="chooseGender">{{isEditGender?genderList[gender-1]:'请选择'}}</text> -->
+                <text bindtap="chooseGender">{{isEditGender?(gender-1>=0?genderList[gender-1]:'请选择'):'请选择'}}</text>
             </view>
         </van-cell>
 

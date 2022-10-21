@@ -100,7 +100,10 @@ page {
 }
 
 .total_price {
-    color: #DEC350;
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+    font-weight: 600;
 }
 
 .btn {
@@ -131,7 +134,7 @@ page {
     position: absolute;
     top: 0rpx;
     right: 0rpx;
-    background-color: #DEC350;
+    background:-webkit-linear-gradient(right ,#efcd71,#efcf77) !important; 
     color: #fff;
     padding: 5rpx;
     border-bottom-left-radius: 10rpx;
@@ -191,20 +194,25 @@ page {
 }
 
 .price {
-    color: #DEC350;
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
 }
 
 .present_price {
     font-size: 38rpx;
     margin-bottom: 10rpx;
+        font-weight: 600;
 }
 
 .original_price {
     text-decoration: line-through;
     margin-left: 15rpx;
-    color: #818181;
+    color: #818181 !important;
     padding-top: 10rpx;
     box-sizing: border-box;
+    -webkit-text-fill-color:#fff !important;
+
 }
 
 .bottom {
@@ -219,7 +227,11 @@ page {
 .van-submit-bar__bar {
     background-color: #000 !important;
 }
-
+.van-button--round{
+    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important; 
+    /* -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important; */
+}
 .van-button {
     background-color: #DEC350 !important;
     border: 0 !important;
@@ -252,6 +264,10 @@ page {
 
 .van-submit-bar__price-integer {
     font-size: 35rpx !important;
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+    font-weight: 600;
 }
 
 .van-submit-bar__price-integer::after {
@@ -264,5 +280,8 @@ page {
 
 .van-submit-bar__suffix-label {
     font-size: 32rpx !important;
-    color: #DEC350;
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+    font-weight: 600;
 }

@@ -34,7 +34,7 @@
   </view> -->
     <!-- 公告 -->
     <view class="notice">
-        <van-notice-bar left-icon="volume-o" scrollable="{{ true }}" color="#DEC350" background="#262626" text="啊美雅MEIYA卡即将上线,敬请期待" />
+        <van-notice-bar custom-class="notice_bar"	bindtap="toCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
     </view>
     <!-- 活动 -->
     <view class="activity">

@@ -1,0 +1,13 @@
+<!--pages/LiveAnchorDetail/LiveAnchorOrder/LiveAnchorOrder.wxml-->
+<view>
+    <view class="order_form">
+        <view>
+            <van-field border="{{false}}" input-class="field" value="{{ nickName  }}" type="textarea" clearable placeholder="请输入姓名" title-width="4em" bind:change="handleNameChange" maxlength="200" />
+        <van-field border="{{false}}" input-class="field" value="{{ phone  }}" type="textarea" clearable placeholder="请输入手机号" title-width="4em" bind:change="handlePhoneChange" maxlength="200" />
+        </view>
+        <view>
+            <button class="submit_btn" catch:tap="purchase" >提交订单</button>
+        </view>
+    </view>
+    
+</view>

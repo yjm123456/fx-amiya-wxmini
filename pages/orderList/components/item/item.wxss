@@ -21,7 +21,9 @@ page{
 }
 
 .order_state {
-    color: #DEC350;
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
     font-size: 25rpx;
 }
 
@@ -97,7 +99,10 @@ page{
 }
 
 .content .info .price>text:first-of-type {
-    color: #DEC350;
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+    font-weight: 600;
 }
 
 .content .info .price>text:last-of-type {

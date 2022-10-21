@@ -232,6 +232,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "下单",
+                    "pathName": "pages/LiveAnchorOrder/LiveAnchorOrder",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

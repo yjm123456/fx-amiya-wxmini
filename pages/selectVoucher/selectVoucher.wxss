@@ -1,22 +1,29 @@
 /* pages/selectVoucher/selectVoucher.wxss */
-page{
+page {
     background-color: #000;
 }
-.container{
+
+.container {
     padding-bottom: 150rpx;
 }
 
-.radio-group{
+.radio-group {
     width: 100% !important;
-    border-radius: 20rpx !important; 
+    border-radius: 20rpx !important;
     overflow: hidden;
-    
+
 }
-.custom_vandivider{
+
+.custom_vandivider {
     margin: 0 !important;
 }
-.content{
-    border: #DEC350 2rpx solid;
+
+.content {
+    border: 4rpx solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #efcd71,#efcf77,#e4c675,#fff9c8);
     background-color: #313131;
     border-radius: 20rpx;
     margin: 20rpx;
@@ -24,11 +31,13 @@ page{
     overflow: hidden;
     padding-left: 30rpx;
 }
-.item{
-    height:150rpx;
+
+.item {
+    height: 150rpx;
     display: flex;
 }
-.item_left{
+
+.item_left {
     width: 20%;
     background-color: #262626;
     text-align: center;
@@ -36,21 +45,25 @@ page{
     flex-direction: column;
     justify-content: center;
 }
-.item_left>.money{
+
+.item_left>.money {
     color: #DEC350;
     font-size: 32rpx;
     font-weight: 600;
 }
-.item_left>.type{
+
+.item_left>.type {
     color: #fff;
 }
-.item_right{
+
+.item_right {
     display: flex;
     flex-direction: column;
     width: 80%;
     padding: 10rpx;
 }
-.right_top{
+
+.right_top {
     color: #fff;
     display: flex;
     width: 100%;
@@ -58,15 +71,18 @@ page{
     height: 75%;
     align-items: center;
 }
-.right_top .descrip{
+
+.right_top .descrip {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
-.right_top .source{
+
+.right_top .source {
     font-size: 18rpx;
 }
-.right_bottom{
+
+.right_bottom {
     height: 25%;
     color: #e2e2e2;
     font-size: 22rpx;
@@ -74,6 +90,7 @@ page{
     flex-direction: column;
     justify-content: center;
 }
-.button{
+
+.button {
     background-color: #DEC350;
 }

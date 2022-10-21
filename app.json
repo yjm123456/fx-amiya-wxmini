@@ -52,7 +52,11 @@
         "pages/ConsumptionVoucher/ConsumptionVoucher",
         "pages/recharge/recharge",
         "pages/rechargeRecord/rechargeRecord",
-        "pages/selectVoucher/selectVoucher"
+        "pages/selectVoucher/selectVoucher",
+        "pages/LiveAnchorDetail/LiveAnchorDetail",
+        "pages/LiveAnchorMessage/LiveAnchorMessage",
+        "pages/LiveAnchorOrder/LiveAnchorOrder",
+        "pages/showCode/showCode"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

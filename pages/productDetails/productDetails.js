@@ -379,7 +379,6 @@ Page({
             voucherId,
             deductmoney,
             vouchername,
-
         } = this.data
         let token = wx.getStorageSync("token")
         if (!token) {
@@ -412,7 +411,7 @@ Page({
                     })
                     wx.navigateTo({
                         // url: `/pages/confirmOrder/confirmOrder?goodsInfo=${JSON.stringify([goodsinfo])}`
-                        url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney+'&voucherId='+voucherId+'&voucherName='+vouchername+'&deductMoney='+deductmoney
+                        url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney+'&voucherId='+voucherId+'&voucherName='+vouchername+'&deductMoney='+deductmoney+'&isCard=false'
                     })
                 }
             } else {

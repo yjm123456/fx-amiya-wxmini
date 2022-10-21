@@ -28,7 +28,11 @@ page {
   color: #ff5000;
   font-size: 48rpx;
 }
-
+.price>text{
+    background-image: -webkit-linear-gradient(right, #efcd71, #e4c675);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .description {
   height: auto;
   margin-top: 4px;

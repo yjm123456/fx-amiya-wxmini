@@ -70,7 +70,10 @@
 }
 
 .price {
-    color: #ff1554;
+    background-image:-webkit-linear-gradient(right,#efcd71,#efcf77,#e4c675) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+    font-weight: 600;
 }
 
 .price_content {

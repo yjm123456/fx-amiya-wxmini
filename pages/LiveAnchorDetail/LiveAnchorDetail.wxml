@@ -1,0 +1,12 @@
+<!--pages/LiveAnchorDetail.wxml-->
+<view class="container">
+    <view class="liveanchor_des">
+        <view class="name">刀刀:</view>
+        <view class="description">啊美雅合伙人
+        </view>
+    </view>
+    <view class="livaechor_detail">
+        <view catch:tap="toDetail">详情</view>
+        <view catch:tap="toBuy">选择刀刀</view>
+    </view>
+</view>

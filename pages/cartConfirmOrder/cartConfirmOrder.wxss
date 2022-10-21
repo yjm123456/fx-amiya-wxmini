@@ -118,8 +118,14 @@ page{
     display: flex;
     justify-content: space-between;
 }
-
-.price {
+.pri_num>text:first-of-type{
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28rpx;
+    font-weight: 600;
+}
+.price{
     color: #dec350;
 }
 
@@ -137,11 +143,19 @@ page{
 }
 
 .money {
-    color: #dec350;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 32rpx;
+    font-weight: 600;
 }
 
 .point {
-    color: #dec350;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 32rpx;
+    font-weight: 600;
     margin-left: 20rpx;
 }
 

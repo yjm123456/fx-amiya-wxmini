@@ -65,8 +65,13 @@ page{
 
 .panel .panel_right view:last-child {
     margin-left: 21rpx;
-    color: #DEC350;
+    /* color: #DEC350; */
     font-size: 28rpx;
+    font-weight: 600;
+    /* color: #DEC350; */
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
 }
 
 /* 商品 */
@@ -122,7 +127,13 @@ page{
     background-color: #000;
     border-radius: 30rpx 0rpx 0rpx 30rpx;
 }
-
+.category_active>text{
+    font-weight: 600;
+    /* color: #DEC350; */
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+}
 /* 商品信息 */
 
 .goods_info {
@@ -150,9 +161,9 @@ page{
 }
 .tag{
     position: absolute;
-    padding: 5rpx;
+    padding: 10rpx;
     font-size: 22rpx;
-    background-color: #dec530;
+    background:-webkit-linear-gradient(right ,#efcd71,#efcf77) !important; 
     color: #fff;
     right: 0;
     border-bottom-left-radius: 20rpx;
@@ -214,7 +225,11 @@ page{
 
 .goods_item>view:last-child>view:nth-child(3) {
     margin-top: 10rpx;
-    color: #DEC350;
+    font-weight: 600;
+    /* color: #DEC350; */
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
     font-size: 30rpx;
     font-weight: bold;
 }

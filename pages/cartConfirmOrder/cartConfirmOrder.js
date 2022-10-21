@@ -181,6 +181,11 @@ Page({
                                                         paySign: payRequestInfo.paySign,
                                                         success (res) { 
                                                             wx.showToast({ title: '支付成功', icon: 'none', duration: 2000 })
+                                                            setTimeout(function () {
+                                                                wx.redirectTo({
+                                                                    url: '/pages/orderList/orderList',
+                                                                })
+                                                            }, 1000);
                                                         //   http("post", `/Order/pay/${tradeId}`).then(res => {
                                                         //     if (res.code === 0) {
                                                         //       wx.showToast({
@@ -217,9 +222,9 @@ Page({
                                                 success: function () {
                                                     setTimeout(function () {
                                                         wx.redirectTo({
-                                                            url: '/pages/shoppingCart/shoppingCart'
+                                                            url: '/pages/orderList/orderList',
                                                         })
-                                                    }, 2000);
+                                                    }, 1000);
                                                 }
                                             })
                                         }
@@ -235,8 +240,6 @@ Page({
         } else {
             if (moneyItemList.length > 0) {
                 const data = {
-                    // 地址编号
-                    addressId: address && address.id,
                     // 备注
                     remark,
                     orderItemList: moneyItemList.map(_item => {
@@ -250,12 +253,15 @@ Page({
                             actualPayment: _item.isMember ? (Number(_item.memberPrice * _item.num)) : (Number(_item.singleprice) ? Number(_item.singleprice * _item.num) : 0)
                         }
                     })
+                    
                 }
                 if (isMaterial) {
                     data.addressId = address && address.id
                 }
                 http("post", `/Order`, data).then(res => {
+                    console.log("调用");
                     if (res.code === 0) {
+                        console.log("调用");
                         this.deleteFormShopCart();
                         const {
                             tradeId,
@@ -273,23 +279,11 @@ Page({
                             paySign: payRequestInfo.paySign,
                             success (res) { 
                                 wx.showToast({ title: '支付成功', icon: 'none', duration: 2000 })
-                            //   http("post", `/Order/pay/${tradeId}`).then(res => {
-                            //     if (res.code === 0) {
-                            //       wx.showToast({
-                            //         title: '支付成功',
-                            //         icon: 'success',
-                            //         duration: 2000,
-                            //         success: function () {
-                            //           // http("post", `/Order/pay/${tradeId}`).then(res => {})
-                            //           setTimeout(function () {
-                            //             wx.redirectTo({
-                            //               url: '/pages/purchasedOrder/purchasedOrder',
-                            //             })
-                            //           }, 2000);
-                            //         }
-                            //       })
-                            //     }
-                            //   })
+                                setTimeout(function () {
+                                    wx.redirectTo({
+                                        url: '/pages/orderList/orderList',
+                                    })
+                                }, 1000);                           
                             },
                             fail (res) { 
                               wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })

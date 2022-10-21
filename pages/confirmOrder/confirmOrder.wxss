@@ -138,8 +138,10 @@ page {
     color: #fff;
 }
 .goods .item>view:first-of-type .price>text:first-of-type {
-  color: #dec530;
-  font-weight: bold;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
 }
 .goods .item>view:first-of-type .price>text:last-of-type {
     color: #fff;
@@ -187,7 +189,11 @@ page {
     background-color: #e2e2e2;
     height: 130rpx;
     border-radius: 30rpx;
-    border: #dec530 2rpx solid;
+    border: 4rpx solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #efcd71,#efcf77,#e4c675,#fff9c8);
     display: flex;
     flex-direction: row;
     overflow: hidden;
@@ -200,8 +206,11 @@ page {
     background-color: #262626;
     width: 25%;
 }
-.voucher_left:first-child{
-    color: #dec530;
+.voucher_left:first-child {
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
 }
 .voucher_left:last-child{
     color: #fff;
@@ -237,7 +246,9 @@ page {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-color: #fff;
+  background-color: #000;
+  color: #fff;
+  border-top: 2rpx solid #fff9c8;
 }
 
 .submit_order>view:first-of-type>text:first-of-type {
@@ -245,7 +256,10 @@ page {
 }
 
 .submit_order>view:first-of-type>text:last-of-type {
-  color: #EE0A24;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
 }
 
 .submit_order>view:last-of-type {

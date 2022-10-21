@@ -11,3 +11,30 @@ page{
     font-size: 38rpx;
     font-weight: 600
 }
+.img{
+    width: 750rpx;
+}
+.btn{
+    background-color: transparent;
+    position: absolute;
+    top: 750rpx;
+    z-index: 10;
+    width: 750rpx;
+    height: 250rpx;
+}
+.btn_1{
+    background-color: transparent;
+    position: absolute;
+    top: 1090rpx;
+    z-index: 10;
+    width: 750rpx;
+    height: 250rpx;
+}
+.btn_2{
+    background-color: transparent;
+    position: absolute;
+    top: 1410rpx;
+    z-index: 10;
+    width: 750rpx;
+    height: 250rpx;
+}

@@ -22,7 +22,10 @@ page {
 }
 
 .block_item {
-    color: #dec530;
+    font-weight: 600;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     width: 180rpx;
     height: 100rpx;
     background-color: #313131;
@@ -39,12 +42,13 @@ page {
 }
 
 .active {
-    background-color: #dec530;
-    color: #fff;
+    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important; 
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
 }
 
 .recharge {
-    background-color: #dec530;
+    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important; 
     width: 500rpx;
     height: 60rpx;
     border-radius: 20rpx;
@@ -99,13 +103,13 @@ page {
 
 .pay {
     margin-left: 20rpx;
-    background-color: #dec530;
+    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important; 
     padding: 10rpx;
     border-radius: 10rpx;
 }
 
 .more {
-    background-color: #dec350;
+    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important; 
     border-radius: 20rpx;
     margin: 30rpx 80rpx;
     text-align: center;

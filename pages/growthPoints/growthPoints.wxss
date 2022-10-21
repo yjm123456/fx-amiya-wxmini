@@ -68,7 +68,10 @@ page{
       color: #e2e2e2 !important;
   }
   .remark{
-      color: #DEC350;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
       height: 80rpx;
       display: flex;
       flex-direction: column;

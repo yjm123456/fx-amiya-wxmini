@@ -16,6 +16,21 @@ Page({
             activity:options.activityid
         })
     },
+    toDetail(event){
+        const{name}=event.currentTarget.dataset;
+        console.log(name);
+        if(name!='dd'){
+            wx.showToast({
+              title: '敬请期待',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        wx.navigateTo({
+            url: '/pages/LiveAnchorDetail/LiveAnchorDetail'
+        })
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成

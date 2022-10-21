@@ -87,6 +87,7 @@ Page({
         this.getCarouselImage()
         this.getGoodsList()
         this.isCustomer((isCustomer) => {
+            console.log("展示");
             if (isCustomer) {
                 this.getRecieveVoucherInfo();
                 this.getShareInfo();
@@ -94,7 +95,11 @@ Page({
                 this.showVoucherTips()
             }
         })
-
+    },
+    toCode(){
+        wx.redirectTo({
+          url: '/pages/showCode/showCode',
+        })
     },
     //显示绑定赠送抵用券提示
     showVoucherTips() {

@@ -1,0 +1,6 @@
+<!--pages/showCode/showCode.wxml-->
+
+<view class="container">
+    <image class="bc" src="/images/cbc.jpg" mode="widthFix"></image>
+    <image class="code" mode="widthFix" src="/images/code.png"></image>
+</view>

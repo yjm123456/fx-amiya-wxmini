@@ -11,9 +11,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        pay:1,
+        pay: 1,
         //充值方式
-        exchangeCode: "WECHAT",      
+        exchangeCode: "WECHAT",
         //充值金额
         amountId: '',
         selectIndex: -1,
@@ -84,7 +84,9 @@ Page({
         const {
             recordid
         } = e.currentTarget.dataset;
-        const {exchangeCode}=this.data;
+        const {
+            exchangeCode
+        } = this.data;
         http("post", `/Recharge/pay/` + recordid).then(res => {
             if (res.code === 0) {
                 const {
@@ -92,43 +94,51 @@ Page({
                     alipayUrl,
                     payRequestInfo
                 } = res.data.rechargeResult;
-                if(exchangeCode=="WECHAT"){
+                if (exchangeCode == "WECHAT") {
                     wx.requestPayment({
-                        timeStamp:  payRequestInfo.timeStamp,
-                        nonceStr:  payRequestInfo.nonceStr,
-                        package:  payRequestInfo.package,
-                        signType:  payRequestInfo.signType,
+                        timeStamp: payRequestInfo.timeStamp,
+                        nonceStr: payRequestInfo.nonceStr,
+                        package: payRequestInfo.package,
+                        signType: payRequestInfo.signType,
                         paySign: payRequestInfo.paySign,
-                        success (res) { 
-                          wx.showToast({ title: '支付成功', icon: 'none', duration: 2000 })
-                          // http("post", `/Order/pay/${tradeId}`).then(res => {
-                          //   if (res.code === 0) {
-                          //     wx.showToast({
-                          //       title: '支付成功',
-                          //       icon: 'success',
-                          //       duration: 2000,
-                          //       success: function () {
-                          //         // http("post", `/Order/pay/${tradeId}`).then(res => {})
-                          //         setTimeout(function () {
-                          //           wx.redirectTo({
-                          //             url: '/pages/purchasedOrder/purchasedOrder',
-                          //           })
-                          //         }, 2000);
-                          //       }
-                          //     })
-                          //   }
-                          // })
+                        success(res) {
+                            wx.showToast({
+                                title: '支付成功',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                            // http("post", `/Order/pay/${tradeId}`).then(res => {
+                            //   if (res.code === 0) {
+                            //     wx.showToast({
+                            //       title: '支付成功',
+                            //       icon: 'success',
+                            //       duration: 2000,
+                            //       success: function () {
+                            //         // http("post", `/Order/pay/${tradeId}`).then(res => {})
+                            //         setTimeout(function () {
+                            //           wx.redirectTo({
+                            //             url: '/pages/purchasedOrder/purchasedOrder',
+                            //           })
+                            //         }, 2000);
+                            //       }
+                            //     })
+                            //   }
+                            // })
                         },
-                        fail (res) { 
-                          wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })
+                        fail(res) {
+                            wx.showToast({
+                                title: '支付失败',
+                                icon: 'none',
+                                duration: 2000
+                            })
                         }
-                      })
-                }else{
+                    })
+                } else {
                     wx.redirectTo({
                         url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
                     })
                 }
-                
+
             } else {
                 wx.showToast({
                     title: res.msg,
@@ -175,8 +185,7 @@ Page({
         })
         this.getRechargeList();
     },
-    onChange(event) {
-    },
+    onChange(event) {},
     //选择支付方式
     onClick(event) {
         const {
@@ -185,92 +194,10 @@ Page({
         } = event.currentTarget.dataset;
         this.setData({
             exchangeCode: name,
-            pay:index
+            pay: index
         });
     },
     handlePay(e) {
-        // Dialog.confirm({
-        //     title: '充值方式',
-        //     confirmButtonText: '确认',
-        //     closeOnClickOverlay: true,
-        //     customStyle: 'background-color:#000;color:#fff;border: 2rpx solid #DEC350;',
-        //     className: 'van_dialog_action'
-        //     })
-        //     .then(() => {
-        //         // on confirm
-        //         var {
-        //             selectIndex,
-        //             exchangeCode,
-        //             amountId
-        //         } = this.data;
-        //         if (selectIndex == -1) {
-        //             wx.showToast({
-        //                 title: '请选择充值金额',
-        //                 icon: 'none',
-        //                 duration: 1000
-        //             })
-        //             return;
-        //         }
-        //         const data = {
-        //             exchangeCode,
-        //             amountId
-        //         };
-        //         // 生成订单
-        //         http("post", `/Recharge`, data).then(res => {
-        //             if (res.code === 0) {
-        //                 const {
-        //                     tradeId,
-        //                     payRequestInfo,
-        //                     alipayUrl
-        //                 } = res.data.rechargeResult;
-        //                 this.setData({
-        //                     tradeId
-        //                 })
-        //                 // type为2是积分兑换
-        //                 if (exchangeCode == "WECHAT") {
-        //                     //type为1 是商城支付
-        //                     wx.requestPayment({
-        //                       timeStamp:  payRequestInfo.timeStamp,
-        //                       nonceStr:  payRequestInfo.nonceStr,
-        //                       package:  payRequestInfo.package,
-        //                       signType:  payRequestInfo.signType,
-        //                       paySign: payRequestInfo.paySign,
-        //                       success (res) { 
-        //                         http("post", `/Order/pay/${tradeId}`).then(res => {
-        //                           if (res.code === 0) {
-        //                             wx.showToast({
-        //                               title: '支付成功',
-        //                               icon: 'success',
-        //                               duration: 2000,
-        //                               success: function () {
-        //                                 // http("post", `/Order/pay/${tradeId}`).then(res => {})
-        //                                 setTimeout(function () {
-        //                                   wx.redirectTo({
-        //                                     url: '/pages/purchasedOrder/purchasedOrder',
-        //                                   })
-        //                                 }, 2000);
-        //                               }
-        //                             })
-        //                           }
-        //                         })
-        //                       },
-        //                       fail (res) { 
-        //                         wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })
-        //                       }
-        //                     })
-        //                 } else if(exchangeCode=="ALIPAY"){
-        //                     wx.redirectTo({
-        //                         url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
-        //                     })
-        //                 }
-        //                 this.handleReset();
-        //             }
-        //         })
-        //     })
-        //     .catch(() => {
-        //         // on cancel
-        //         console.log("取消支付");
-        //     });
         var {
             selectIndex,
             exchangeCode,
@@ -300,39 +227,37 @@ Page({
                     tradeId
                 })
                 // type为2是积分兑换
-                if (exchangeCode == "WECHAT") {                  
+                if (exchangeCode == "WECHAT") {
                     //type为1 是商城支付
                     wx.requestPayment({
-                      timeStamp:  payRequestInfo.timeStamp,
-                      nonceStr:  payRequestInfo.nonceStr,
-                      package:  payRequestInfo.package,
-                      signType:  payRequestInfo.signType,
-                      paySign: payRequestInfo.paySign,
-                      success (res) { 
-                        wx.showToast({ title: '支付成功', icon: 'none', duration: 2000 })
-                        // http("post", `/Order/pay/${tradeId}`).then(res => {
-                        //   if (res.code === 0) {
-                        //     wx.showToast({
-                        //       title: '支付成功',
-                        //       icon: 'success',
-                        //       duration: 2000,
-                        //       success: function () {
-                        //         // http("post", `/Order/pay/${tradeId}`).then(res => {})
-                        //         setTimeout(function () {
-                        //           wx.redirectTo({
-                        //             url: '/pages/purchasedOrder/purchasedOrder',
-                        //           })
-                        //         }, 2000);
-                        //       }
-                        //     })
-                        //   }
-                        // })
-                      },
-                      fail (res) { 
-                        wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })
-                      }
+                        timeStamp: payRequestInfo.timeStamp,
+                        nonceStr: payRequestInfo.nonceStr,
+                        package: payRequestInfo.package,
+                        signType: payRequestInfo.signType,
+                        paySign: payRequestInfo.paySign,
+                        success(res) {
+                            wx.showToast({
+                                title: '支付成功',
+                                icon: 'none',
+                                duration: 2000
+                            })                           
+                            //成功跳转到支付记录界面
+                            setTimeout(function () {
+                                wx.redirectTo({
+                                    url: '/pages/rechargeRecord/rechargeRecord',
+                                })
+                            }, 2000);                           
+                        },
+                        fail(res) {
+                            wx.showToast({
+                                title: '支付失败',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
                     })
-                } else if(exchangeCode=="ALIPAY"){
+                    this.handleReset();
+                } else if (exchangeCode == "ALIPAY") {
                     wx.redirectTo({
                         url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
                     })

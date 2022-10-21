@@ -1,0 +1,32 @@
+
+page{
+    background-color: #000;
+    height: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.liveanchor_des{
+    display: flex;
+    flex-direction: row;
+    margin-left: 100rpx;
+}
+.name{
+    color: #fff;
+}
+.description{
+    margin-left: 30rpx;
+    color: #fff;
+}
+
+.livaechor_detail{
+    margin-top: 300rpx;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
