@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "van-share-sheet": "@vant/weapp/share-sheet/index"
+    },
+    "navigationBarTitleText": "美肤券"
+
+}

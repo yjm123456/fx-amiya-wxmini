@@ -1,5 +1,6 @@
 // pages/purchasedOrder/goodsDetail/goodsDetail.js
 import http from "./../../../utils/http";
+
 Page({
 
   /**

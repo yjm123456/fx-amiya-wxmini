@@ -4,10 +4,40 @@
         <view>
             <van-field border="{{false}}" input-class="field" value="{{ nickName  }}" type="textarea" clearable placeholder="请输入姓名" title-width="4em" bind:change="handleNameChange" maxlength="200" />
         <van-field border="{{false}}" input-class="field" value="{{ phone  }}" type="textarea" clearable placeholder="请输入手机号" title-width="4em" bind:change="handlePhoneChange" maxlength="200" />
+        <van-field wx:if="{{type=='mf'}}" border="{{false}}" disabled input-class="field" value="{{ appointmentCity  }}" type="textarea" clearable placeholder="请选择预约城市" title-width="4em" bindtap="switchCity" maxlength="200" />
+        <van-field wx:if="{{type=='mf'}}" border="{{false}}" input-class="field" value="{{ appointmentDate  }}" type="textarea" clearable placeholder="请选择预约时间" title-width="4em" disabled bindtap="selectDate"  maxlength="200" />
         </view>
         <view>
             <button class="submit_btn" catch:tap="purchase" >提交订单</button>
         </view>
     </view>
-    
+    <van-calendar show="{{ display }}" bind:close="onClose" bind:confirm="onConfirm" />
+      <!-- 切换城市弹窗 -->
+  <van-popup
+    show="{{ cityModel }}"
+    position="right"
+    bind:close="onCancel"
+    custom-style="height: 100%;width:78%"
+  >
+  <view class="popup_con">
+      <view class="pro_content">
+        <view class="popup_item">
+        <!-- 热门城市 -->
+         
+          <view class="item_type">
+            <block  wx:for="{{cityList}}" wx:key="index">
+              <view class='items'>
+                <!-- <view class="type_name">{{item.provinceName}}</view> -->
+                <view  class="name_com">
+                  <!-- <block wx:for="{{item}}" wx:key="index" wx:for-item="i"> -->
+                    <view class="popup_text {{i.id==currentIds?'actives':'popup_text'}}" bindtap="selectedCity" data-city="{{item}}"  data-type="2" >{{item}}</view>
+                  <!-- </block> -->
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
 </view>

@@ -283,7 +283,7 @@ border-radius: 10rpx;
    width: 120rpx;
    height: 130rpx;
     color: #fff;
-    font-size: 25rpx;
+    font-size: 22rpx;
 }
 .order_item image{
     width: 45rpx;

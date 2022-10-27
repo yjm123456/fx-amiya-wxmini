@@ -1,6 +1,7 @@
 <!--pages/shoppingMall/shoppingMall.wxml-->
-<view class="wrap">
-    <!-- search -->
+<view class="center">敬请期待...</view>
+ <!-- <view class="wrap">
+    
     <view class="search_wrap">
         <view class="panel">
             <view class="panel_left">
@@ -11,9 +12,9 @@
                 <view>搜索</view>
             </view>
         </view>
-    </view>
+    </view> -->
     <!-- goods -->
-    <view class="goods_wrap">
+    <!-- <view class="goods_wrap">
         <scroll-view class="menu_wrap" scroll-y>
             <view class="menu_item {{categoryActive === index ? 'category_active' : ''}}" wx:for="{{goodsCategorys}}" wx:key="id" bindtap="handleGoodsCategoryClick" data-categoryid="{{item.id}}" data-index="{{index}}" wx:if="{{item.showDirectionType==1}}">
                 <text>{{item.name}}</text>
@@ -24,7 +25,6 @@
                 <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                 <view>
                     <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
-                    <!-- <image src='{{item.thumbPicUrl}}'></image> -->
                     <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
                 </view>
                 <view>
@@ -37,5 +37,5 @@
                 <van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">我是有底线的</van-divider>
             </view>
         </scroll-view>
-    </view>
-</view>
+    </view> -->
+<!-- </view>  -->

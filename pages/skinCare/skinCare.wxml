@@ -1,0 +1,13 @@
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image wx:if="{{name=='dd'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/54e44bee1e094aa9ae3fededab82852d.jpg"></image>
+    <image wx:elif="{{name=='jn'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/fdb0ad5a88d941f5b0225b0020b20433.jpg"
+></image>
+<view class="btn">
+    <view class="buy" bindtap="toOrder" data-name="{{name}}">立即购买</view>
+    <view class="buy"  bindtap="share" data-name="{{name}}">点击分享</view>
+    
+</view>
+
+</scroll-view>
+<!-- 分享弹窗 -->
+<van-share-sheet show="{{ showShare }}" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />

@@ -6,7 +6,7 @@ page{
 .order_form{
     border-radius: 20rpx;
     overflow: hidden;
-    margin: 20rpx;
+    margin: 200rpx 20rpx;
     padding: 50rpx 20rpx;
     background-color: #262626;
 }
@@ -30,3 +30,46 @@ page{
     border-radius: 15rpx;
     color: #fff !important;
 }
+
+
+
+
+  
+.submite{
+    background-color: #ff1554;
+  }
+  .popup_con{
+   padding: 20rpx;
+   box-sizing: border-box;
+   position: relative;
+ }
+  .name_com{
+   display: flex;
+   flex-wrap: wrap;
+ }
+ .type_name{
+   margin: 10rpx 0;
+   font-weight: bold;
+   font-size: 28rpx;
+   padding-bottom: 20rpx;
+   box-sizing: border-box;
+   border-bottom: 1rpx solid #ccc;
+ }
+ .items{
+   margin-bottom: 50rpx;
+ }
+ .item_type{
+   /* margin-top: 20rpx; */
+ }
+  .popup_text{
+   font-size: 26rpx;
+   padding: 4rpx 30rpx;
+   box-sizing:border-box;
+   border:1rpx solid #ccc;
+   margin-right: 20rpx;
+   margin-top: 20rpx;
+   border-radius: 6rpx;
+   color: #333;
+ }
+
+

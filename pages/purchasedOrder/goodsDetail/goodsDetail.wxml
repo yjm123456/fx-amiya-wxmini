@@ -88,6 +88,14 @@
             <text class="titles_num">{{orderInfo.orderId}}</text>
             <text class="copy" bindtap="copyOrderNum" data-order="{{orderInfo.orderId}}">复制</text>
         </view>
+        <view wx:if="{{orderInfo.appointmentCity}}" class="goods_detail">
+            <text>预约城市：</text>
+            <text>{{orderInfo.appointmentCity}}</text>
+        </view>
+        <view wx:if="{{orderInfo.appointmentDate}}" class="goods_detail">
+            <text>预约时间：</text>
+            <text>{{orderInfo.appointmentDate}}</text>
+        </view>
         <view class="goods_detail">
             <text>配送方式：</text>
             <text>{{orderInfo.orderType == 0 ? '自提' : '快递'}}</text>

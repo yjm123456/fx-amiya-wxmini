@@ -1,6 +1,8 @@
 <!--pages/showCode/showCode.wxml-->
 
 <view class="container">
-    <image class="bc" src="/images/cbc.jpg" mode="widthFix"></image>
-    <image class="code" mode="widthFix" src="/images/code.png"></image>
+    <image class="bc" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/d170c24de7f843cf9f657b3a89f88d76.jpg"
+ mode="widthFix"></image>
+    <image class="code" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/620e5b47a6f94fb4996ec77f3f541c21.png"
+    show-menu-by-longpress="{{true}}"></image>
 </view>

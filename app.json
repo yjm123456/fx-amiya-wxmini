@@ -56,7 +56,8 @@
         "pages/LiveAnchorDetail/LiveAnchorDetail",
         "pages/LiveAnchorMessage/LiveAnchorMessage",
         "pages/LiveAnchorOrder/LiveAnchorOrder",
-        "pages/showCode/showCode"
+        "pages/showCode/showCode",
+        "pages/skinCare/skinCare"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

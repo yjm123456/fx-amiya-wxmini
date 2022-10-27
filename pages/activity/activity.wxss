@@ -5,6 +5,7 @@ page{
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding-top: 180rpx;
 }
 .center{
     color:#fff;
@@ -17,24 +18,53 @@ page{
 .btn{
     background-color: transparent;
     position: absolute;
-    top: 750rpx;
+    top: 1040rpx;
     z-index: 10;
-    width: 750rpx;
-    height: 250rpx;
+    width: 175rpx;
+    left: 105rpx;
+    height: 50rpx;
 }
 .btn_1{
     background-color: transparent;
     position: absolute;
-    top: 1090rpx;
+    top: 1485rpx;
     z-index: 10;
-    width: 750rpx;
-    height: 250rpx;
+    width: 175rpx;
+    left: 105rpx;
+    height: 50rpx;
 }
 .btn_2{
     background-color: transparent;
     position: absolute;
-    top: 1410rpx;
+    top: 765rpx;
     z-index: 10;
     width: 750rpx;
-    height: 250rpx;
+    height: 255rpx;
+}
+.btn_3{
+    background-color: transparent;
+    position: absolute;
+    top: 1210rpx;
+    z-index: 10;
+    width: 750rpx;
+    height: 255rpx;
+}
+
+.btn_order_1{
+    background-color: transparent;
+    position: absolute;
+    top: 1040rpx;
+    z-index: 10;
+    width: 175rpx;
+    left: 465rpx;
+    height: 50rpx;
+}
+.btn_order_2{
+    background-color: transparent;
+    position: absolute;
+    top: 1485rpx;
+    z-index: 10;
+    width: 175rpx;
+    left: 465rpx;
+    height: 50rpx;
 }

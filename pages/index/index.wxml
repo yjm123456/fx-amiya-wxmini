@@ -1,6 +1,6 @@
 <view class="container">
     <!-- 轮播图 -->
-    <swiper class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
+    <swiper circular='true' class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
         <swiper-item wx:for="{{carouselImage}}" wx:key="picUrl" bindtap="redirect" data-url="{{item.linkUrl}}">
             <image src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
         </swiper-item>
@@ -34,15 +34,15 @@
   </view> -->
     <!-- 公告 -->
     <view class="notice">
-        <van-notice-bar custom-class="notice_bar"	bindtap="toCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
+        <van-notice-bar custom-class="notice_bar" bindtap="toCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
     </view>
     <!-- 活动 -->
     <view class="activity">
-        <view class="activity_item" bindtap="handleActivity" data-activity="{{1}}">
-            <image src="../../images/hyfl.jpg" mode="heightFix"></image>
+        <view class="activity_item">
+            <image src="../../images/hyfl.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="heightFix"></image>
         </view>
-        <view class="activity_item" bindtap="handleActivity" data-activity="{{2}}">
-            <image src="../../images/yqxyh.jpg" mode="aspectFill"></image>
+        <view class="activity_item">
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/334dbece0a7a4fc6be6a6d6dceeaaa89.png" bindtap="handleActivity" data-activity="{{2}}" mode="aspectFill"></image>
         </view>
     </view>
     <!-- 导航栏二 -->
@@ -55,7 +55,7 @@
     <!-- 商品列表 -->
     <view class="product_list">
         <view class="h3 title">猜你喜欢</view>
-        <view class="product_warp">
+        <!-- <view class="product_warp">
             <view class="product" wx:for="{{goodsList}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                 <view>
@@ -71,7 +71,7 @@
                     </view>
                 </view>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>
 <!-- 授权手机号 -->
@@ -102,5 +102,5 @@
 
 <!-- 新客绑定提示弹窗 -->
 <van-dialog use-slot id="bind_tips">
-    <image class="tip_img" mode="widthFix" src="../../images/61ec5d3bd0e5c6bb865a266fcc1c188.png"></image>
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a29f756b262946c8ad44ba554cdb6d37.png"></image>
 </van-dialog>

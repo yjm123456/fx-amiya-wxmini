@@ -17,7 +17,8 @@ Page({
         //城市列表
         cityList: [],
         //热门城市列表
-        hosCityList: []
+        hosCityList: [],
+        sysheight:0
     },
 
     /**
@@ -27,6 +28,13 @@ Page({
         //this.getLocation()
         //this.getCityList()
         //this.getHotList()
+        wx.getSystemInfo({//获取设备屏幕真实高度
+            success: (result) => {
+              this.setData({
+                sysheight:result.windowHeight
+              })
+            },
+          })
     },
     // 根据所在城市获取医院列表
     getHospitalList(city) {

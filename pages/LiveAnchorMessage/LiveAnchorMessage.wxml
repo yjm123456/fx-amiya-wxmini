@@ -1,2 +1,4 @@
-<!--pages/LiveAnchorDetail/LiveAnchorMessage/LiveAnchorMessage.wxml-->
-<text>pages/LiveAnchorDetail/LiveAnchorMessage/LiveAnchorMessage.wxml</text>
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image  class="img" mode="widthFix" src="{{imgUrl}}"
+></image>
+</scroll-view>

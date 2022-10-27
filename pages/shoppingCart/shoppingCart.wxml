@@ -46,7 +46,7 @@
         <view wx:if="{{!nextPage}}" class="product_list">
             <!-- <van-divider contentPosition="center">更多精选商品</van-divider> -->
             <text class="title">更多精选商品</text>
-            <view class="product_warp">
+            <!-- <view class="product_warp">
                 <view class="product" wx:for="{{goodsList}}" data-exchangetype="{{item.exchangeType}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
                     <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                     <view>
@@ -62,7 +62,7 @@
                         </view>
                     </view>
                 </view>
-            </view>
+            </view> -->
         </view>
     </view>
     <view class="bottom">

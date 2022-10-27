@@ -218,7 +218,7 @@ Page({
         return {
             title: '分享给好友',
             path: '/pages/index/index?shareid=' + this.data.shareId + '&customerconsumptionvoucherid=' + this.data.customerConsumptionVoucherId+'&vouchername='+this.data.vouchername+'&vouchermoney='+this.data.vouchermoney+'&nickname='+this.data.nickname,
-            imageUrl:'/images/bg_1.jpg'
+            
         }
     }
 })

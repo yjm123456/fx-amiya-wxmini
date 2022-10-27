@@ -16,7 +16,7 @@ Page({
     },
     toDetail(){
         wx.navigateTo({
-          url: '/pages/LiveAnchorMessage/LiveAnchorMessage',
+          url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=dd',
         })
     },
     toBuy(){

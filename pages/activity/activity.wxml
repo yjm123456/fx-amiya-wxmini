@@ -1,8 +1,12 @@
 <!--pages/activity/activity.wxml-->
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
-    <image  class="img" mode="widthFix" src="../../images/ac.png"></image>
+    <image  class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/62373937c0ac4a328981f4db815ee319.jpg"
+
+></image>
     <view class="btn" catch:tap="toDetail" data-name='dd'></view>
     <view class="btn_1" catch:tap="toDetail" data-name='jn'></view>
-    <view class="btn_2" catch:tap="toDetail" data-name='zl'></view>
-
+    <view class="btn_2" catch:tap="toDetail" data-name='dd'></view>
+    <view class="btn_3" catch:tap="toDetail" data-name='jn'></view>
+    <view class="btn_order_1" catch:tap="toOrder" data-name='dd'></view>
+    <view class="btn_order_2" catch:tap="toOrder" data-name='jn'></view>
 </scroll-view>

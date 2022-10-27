@@ -1,6 +1,16 @@
 /* pages/shoppingMall/shoppingMall.wxss */
 page{
     background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.center{
+    color:#fff;
+    font-size: 38rpx;
+    font-weight: 600
 }
 .wrap {
     width: 100%;

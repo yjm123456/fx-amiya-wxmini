@@ -154,7 +154,7 @@ Page({
                 duration: 2000
             })
         } else {
-            wx.navigateTo({
+            wx.redirectTo({
                 url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods))
             })
             // 判断是否实物商品 false不是实物 false不需要发货

@@ -97,7 +97,7 @@ Page({
         })
     },
     toCode(){
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/showCode/showCode',
         })
     },
@@ -266,6 +266,11 @@ Page({
                     })
                 }
             }
+        })
+    },
+    handleActivity1(){
+        wx.navigateTo({
+            url: '/pages/memberbenefits/memberbenefits',
         })
     },
     handleActivity(e) {

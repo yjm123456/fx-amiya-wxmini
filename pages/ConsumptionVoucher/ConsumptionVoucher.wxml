@@ -3,8 +3,8 @@
     <van-tabs active="{{active}}" nav-class="tabs" custom-class="tabs" color="#DEC350" title-inactive-color="#fff" title-active-color="#DEC350" bind:change="onChange" id="tabs">
         <van-tab title="未使用">
             <view wx:for="{{list}}" wx:key="index" class="content">
-                <view wx:if="{{item.isShare&&!item.isUsed&&item.source!=1}}" class="share_tag">点击分享</view>
-                <view class="item" catchtap="{{item.isShare&&!item.isUsed&&item.source!=1 ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0}}">
+                <view wx:if="{{item.isShare&&!item.isUsed&&item.source!=1&&item.source!=3}}" class="share_tag">点击分享</view>
+                <view class="item" catchtap="{{item.isShare&&!item.isUsed&&item.source!=1&&item.source!=3 ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0}}">
                     <view class="item_left">
                         <text class="money">¥{{item.deductMoney}}</text>
                         <text class="type">抵用券</text>
@@ -16,6 +16,7 @@
                                 <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
                                 <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
                                 <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
+                                <text class="source" wx:elif="{{item.source==3}}">绑定奖励</text>
                             </view>
                             <view class="use" catchtap="toShop">去使用</view>
                         </view>
@@ -37,7 +38,7 @@
                                 <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
                                 <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
                                 <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
-
+                                <text class="source" wx:elif="{{item.source==2}}">绑定奖励</text>
                             </view>
                             <view class="use" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
                         </view>

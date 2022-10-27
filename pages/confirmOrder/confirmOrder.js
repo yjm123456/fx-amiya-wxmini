@@ -73,13 +73,12 @@ Page({
             }, 0).toFixed(2)
         })
         if (isCard=='true') {
-            console.log("card"+isCard);
             const {nickName,phone}=options;
             this.setData({
                 isMaterial: false,
                 nickName,
                 phone,
-                totalPrice: 4999,
+                totalPrice: 1999,
                 cardName:cardName,
                 thumbPicUrl,
                 isCard:true
@@ -182,7 +181,9 @@ Page({
                     // 购买数量
                     quantity: _item.quantity,
                     hospitalId: _item.hospitalid ? _item.hospitalid : 0,
-                    actualPayment: Number(_item.allmoney) ? Number(_item.allmoney) : 0
+                    actualPayment: Number(_item.allmoney) ? Number(_item.allmoney) : 0,
+                    appointmentCity:_item.appointmentCity ? _item.appointmentCity:null,
+                    appointmentDate:_item.appointmentDate ? _item.appointmentDate:null
                 }
             }),
             cardName,

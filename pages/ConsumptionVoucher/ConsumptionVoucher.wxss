@@ -89,31 +89,7 @@ page{
     border-bottom-left-radius: 10rpx;
     padding: 5rpx;
 }
-/* .item_top{
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90rpx;
 
-}
-.item_name{
-    font-size: 28rpx;
-}
-.item_price{
-    font-size: 32rpx;
-    color: #DEC350;
-}
-.item_bottom{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 60rpx;
-    color: #e2e2e2;
-    font-size: 22rpx;
-} */
 .use{
     font-size: 22rpx;
     border: 4rpx solid transparent;

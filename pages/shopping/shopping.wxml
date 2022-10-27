@@ -1,41 +1,5 @@
-<view class="wrap">
-    <!-- search -->
-    <!-- <view class="search_wrap">
-    <view class="panel">
-      <view class="panel_left">
-        <input placeholder='请输入商品名称' placeholder-class="placeholderStyle" bindinput='getSearchInputValue'></input>
-      </view>
-      <view class="panel_right" bindtap="handleGoodsSearch">
-        <view class="iconfont icon-sousuo1"></view>
-        <view>搜索</view>
-      </view>
-    </view>
-  </view> -->
-    <!-- goods -->
-    <!-- <view class="goods_wrap">
-    <scroll-view class="menu_wrap" scroll-y>
-      <view class="menu_item {{categoryActive === index ? 'category_active' : ''}}" wx:for="{{goodsCategorys}}"
-        wx:key="id" bindtap="handleGoodsCategoryClick" data-categoryid="{{item.id}}" data-index="{{index}}"   wx:if="{{item.showDirectionType == 0}}">
-        <text>{{item.name}}</text>
-      </view>
-    </scroll-view>
-    <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">
-      <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}"  wx:if="{{ item.exchangeType == 0 }}">
-        <view>
-          <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
-          <van-image width="80" height="80" src="{{item.thumbPicUrl}}"/>
-        </view>
-        <view>
-          <view>{{item.name}}</view>
-          <view>{{item.description}}</view>
-          <view>{{item.integrationQuantity}}积分</view>
-        </view>
-      </view>
-      <view wx:if="{{nextPage === false}}">
-        <van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">我是有底线的</van-divider>
-      </view>
-    </scroll-view>
-  </view> -->
+<view class="center">敬请期待...</view>
+<!-- <view class="wrap">
     <view class="integral_info">
     <view class="img">
         <image class="integral_img" src="../../images/integral.jpg"></image>
@@ -45,7 +9,6 @@
         <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
         </view>
     </view>
-    <!-- <view class="integral_detail"> -->
         <view class="integral_receive">
             <image mode="widthFix" class="to_shop" src="../../images/hwsxh.jpg" bindtap="handleToShop"></image>
         </view>
@@ -63,25 +26,9 @@
             </swiper>
         </view>
         <view class="integral_goods">
-            <view class="title">积分兑换好礼</view>
-            <view class="product_warp">
-                <view class="product" wx:for="{{goodsInfos}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
-                    <view>
-                        <view class="product_top">
-                            <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>
-                        </view>
-                        <view class="product_bottom">
-                            <view class="product_name">{{item.name}}</view>
-                            <view class="price">
-                                <text class="present_price">{{item.integrationQuantity}}积分</text>
-                                <!-- <text class="original_price">¥{{item.maxShowPrice}}</text> -->
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view>
+            <view class="title">积分兑换好礼</view>       
         </view>
-    <!-- </view> -->
-</view>
+
+</view> -->
 <!-- 授权手机号 -->
-<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<!-- <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone> -->

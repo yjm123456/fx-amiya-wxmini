@@ -1,4 +1,5 @@
 <!--pages/aboutAmeiya/aboutAmeiya.wxml-->
-<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+<view class="center">敬请期待...</view>
+<!-- <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
     <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/0b8956ef3799437abc273c48f9f117f6.jpg"></image>
-</scroll-view>
+</scroll-view> -->
