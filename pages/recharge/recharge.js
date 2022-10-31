@@ -11,9 +11,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        pay: 1,
+        pay: 0,
         //充值方式
-        exchangeCode: "WECHAT",
+        exchangeCode: "",
         //充值金额
         amountId: '',
         selectIndex: -1,
@@ -106,24 +106,7 @@ Page({
                                 title: '支付成功',
                                 icon: 'none',
                                 duration: 2000
-                            })
-                            // http("post", `/Order/pay/${tradeId}`).then(res => {
-                            //   if (res.code === 0) {
-                            //     wx.showToast({
-                            //       title: '支付成功',
-                            //       icon: 'success',
-                            //       duration: 2000,
-                            //       success: function () {
-                            //         // http("post", `/Order/pay/${tradeId}`).then(res => {})
-                            //         setTimeout(function () {
-                            //           wx.redirectTo({
-                            //             url: '/pages/purchasedOrder/purchasedOrder',
-                            //           })
-                            //         }, 2000);
-                            //       }
-                            //     })
-                            //   }
-                            // })
+                            })                          
                         },
                         fail(res) {
                             wx.showToast({
@@ -198,11 +181,12 @@ Page({
         });
     },
     handlePay(e) {
+        console.log("调用");
         var {
             selectIndex,
-            exchangeCode,
             amountId
         } = this.data;
+
         if (selectIndex == -1) {
             wx.showToast({
                 title: '请选择充值金额',
@@ -211,60 +195,94 @@ Page({
             })
             return;
         }
-        const data = {
-            exchangeCode,
-            amountId
-        };
-        // 生成订单
-        http("post", `/Recharge`, data).then(res => {
-            if (res.code === 0) {
-                const {
-                    tradeId,
-                    payRequestInfo,
-                    alipayUrl
-                } = res.data.rechargeResult;
-                this.setData({
-                    tradeId
+
+        Dialog.alert({
+            title: '支付方式',
+            theme: 'round-button',
+            confirmButtonText: '立即支付',
+            closeOnClickOverlay: true,
+            customStyle: 'display:flex;flex-direction:column;justify-content:center;align-items:center;background-color: transparent !important;',
+            selector: "#van-dialog"
+        }).then(() => {
+            const{pay,exchangeCode}=this.data;
+            if(pay==0){
+                wx.showToast({
+                    title: '请选择支付方式',
+                    icon: 'none',
+                    duration: 1000
                 })
-                // type为2是积分兑换
-                if (exchangeCode == "WECHAT") {
-                    //type为1 是商城支付
-                    wx.requestPayment({
-                        timeStamp: payRequestInfo.timeStamp,
-                        nonceStr: payRequestInfo.nonceStr,
-                        package: payRequestInfo.package,
-                        signType: payRequestInfo.signType,
-                        paySign: payRequestInfo.paySign,
-                        success(res) {
-                            wx.showToast({
-                                title: '支付成功',
-                                icon: 'none',
-                                duration: 2000
-                            })                           
-                            //成功跳转到支付记录界面
-                            setTimeout(function () {
-                                wx.redirectTo({
-                                    url: '/pages/rechargeRecord/rechargeRecord',
-                                })
-                            }, 2000);                           
-                        },
-                        fail(res) {
-                            wx.showToast({
-                                title: '支付失败',
-                                icon: 'none',
-                                duration: 2000
-                            })
-                        }
-                    })
-                    this.handleReset();
-                } else if (exchangeCode == "ALIPAY") {
-                    wx.redirectTo({
-                        url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
-                    })
-                }
-                this.handleReset();
+                return;
             }
-        })
+            if(!exchangeCode){
+                wx.showToast({
+                    title: '请选择支付方式',
+                    icon: 'none',
+                    duration: 1000
+                })
+                return;
+            }
+            const data = {
+                exchangeCode,
+                amountId
+            };
+            // 生成订单
+            http("post", `/Recharge`, data).then(res => {
+                if (res.code === 0) {
+                    const {
+                        tradeId,
+                        payRequestInfo,
+                        alipayUrl
+                    } = res.data.rechargeResult;
+                    this.setData({
+                        tradeId
+                    })
+                    // type为2是积分兑换
+                    if (exchangeCode == "WECHAT") {
+                        //type为1 是商城支付
+                        wx.requestPayment({
+                            timeStamp: payRequestInfo.timeStamp,
+                            nonceStr: payRequestInfo.nonceStr,
+                            package: payRequestInfo.package,
+                            signType: payRequestInfo.signType,
+                            paySign: payRequestInfo.paySign,
+                            success(res) {
+                                wx.showToast({
+                                    title: '支付成功',
+                                    icon: 'none',
+                                    duration: 2000
+                                })                           
+                                //成功跳转到支付记录界面
+                                setTimeout(function () {
+                                    wx.redirectTo({
+                                        url: '/pages/rechargeRecord/rechargeRecord',
+                                    })
+                                }, 2000);                           
+                            },
+                            fail(res) {
+                                wx.showToast({
+                                    title: '支付失败',
+                                    icon: 'none',
+                                    duration: 2000
+                                })
+                            }
+                        })
+                        this.handleReset();
+                    } else if (exchangeCode == "ALIPAY") {
+                        wx.redirectTo({
+                            url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
+                        })
+                    }
+                    this.handleReset();
+                }
+            })
+        }).catch((err)=>{
+            console.log("未选中");
+        });
+        
+        
+
+
+        
 
 
     },

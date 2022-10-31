@@ -68,3 +68,9 @@ page{
     left: 465rpx;
     height: 50rpx;
 }
+.tip_img {
+    width: 100%;
+}
+#skbind_tip .van-goods-action {
+    background-color: transparent !important;
+}

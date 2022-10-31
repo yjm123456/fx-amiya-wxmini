@@ -5,7 +5,7 @@
             <view class="tip big">我的成长值</view>
             <view class="growth big">{{growthBalanceInfo.balance}}</view>
             <view wx:if="{{growthBalanceInfo.upgradeGrowthPoints==0}}" class="diff big"></view>
-            <view wx:else class="diff big">还差<text>{{growthBalanceInfo.upgradeGrowthPoints}}</text>成长值升级{{growthBalanceInfo.nextLeaveText}}</view>
+            <view wx:else class="diff topmsg">还差<text>{{growthBalanceInfo.upgradeGrowthPoints}}</text>成长值升级{{growthBalanceInfo.nextLeaveText}}</view>
         </view>
     </view>
     <view class="content">

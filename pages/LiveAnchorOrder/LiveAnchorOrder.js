@@ -11,20 +11,88 @@ Page({
         liveAnchorName: '',
         type: '',
         appointmentCity: '',
+        appointmentHospital:'',
         appointmentDate: '',
         currentCity: '',
         cityModel: false,
         currentId: '',
         currentIds: '',
         cityList: [],
+        cityid:'',
+        hosCityList:[],
+        selectHospitalId:'',
+        selectCityHospital:[],
+        openHospital:[
+          {id:1,hospital:[{
+            id:187,
+            name:'北京丽合医疗美容医院',
+            address:'北京市朝阳区将台路18号',
+            phone:'16676767676677',
+            thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/15ef2da69ab5408b894c4bb7171948ce.jpg"
+        }]},
+          {id:11,hospital:[
+            {
+                id:17,
+                name:'上海伊莱美医疗美容医院',
+                address:'上海市静安区梅园路88号',
+                phone:'4009001591',
+                thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/aeebc2d8c8144892896b78b516e25316.jpg"
+            }
+          ]},
+        {id:14,hospital:[
+            {
+                id:37,
+                name:'杭州维多利亚医疗美容医院',
+                address:'浙江省杭州市下城区建国北路658号',
+                phone:'4009001591',
+                thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/97ca0a45638d46208ff18f85e340f4c1.jpg"
+            },
+            {
+                id:16,
+                name:'杭州连天美医疗美容医院',
+                address:'杭州市上城区秋涛路248号秋涛发展B座',
+                phone:'4009001591',
+                thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/f6a73ec7de5548f7b86ca5801353d477.jpg"
+            },
+        ]},
+        {id:15,hospital:[
+            {
+                id:185,
+                name:'南京美莱医疗美容',
+                address:'江苏省南京市鼓楼区广州路188号',
+                phone:'16710559539',
+                thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/14f9226de1f44c37975daff307926a64.png"
+            }
+        ]},
+        {id:16,hospital:[
+            {
+                id:24,
+                name:'武汉美基元医疗美容医院',
+                address:'湖北省武汉市江岸区解放大道1340号-10号',
+                phone:'16676767676677',
+                thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/dbbf41e74e4940dab144ea2aa6387eb9.jpg"
+            },
+            {
+                id:189,
+                name:'武汉顶吉医疗美容医院',
+                address:'湖北省武汉市江汉区新湾路9号',
+                phone:'16676767676677',
+                thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/9c1de9f95ecb4b38b9abd85a0e03be44.jpeg"
+            }
+        ]},
+        {id:45,hospital:[
+            {
+                id:140,
+                name:'西安米兰柏羽医疗美容医院',
+                address:'西安市莲湖区桃园南路21号',
+                phone:'16676767676677',
+                thumbPicUrl: "https://ameiya.oss-cn-hangzhou.aliyuncs.com/7afb6fba94ae4aa5b144949196bba3b7.png"
+            }
+        ]}
+        ],
+
         display: false,
-        cityList:[
-            '杭州',
-            '上海',
-            '南京',
-            '武汉',
-            '北京'
-        ]
+        goodsInfo:{}
     },
 
     /**
@@ -35,12 +103,16 @@ Page({
             name,
             type
         } = options
+        const goodsInfo = options.goodsInfo;
+        this.setData({
+            goodsInfo
+        });
         this.setData({
             liveAnchorName: name,
             type
         });
         this.getUserInfo();
-        this.getLocationAuth();
+        //this.getLocationAuth();
         this.getCityList()
         this.getHotList()
     },
@@ -53,6 +125,14 @@ Page({
         this.setData({
             display: false
         });
+    },
+    selectHospital(event){
+        const {name,hospitalid}=event.currentTarget.dataset;
+        console.log(hospitalid,name);
+        this.setData({
+            selectHospitalId:hospitalid,
+            appointmentHospital:name
+        })
     },
     formatDate(date) {
         date = new Date(date);
@@ -80,63 +160,85 @@ Page({
     },
     // 获取合作过的城市列表
     getCityList() {
-        http("get", `/CooperativeHospitalCity/provinceAndCityList`).then(res => {
-            if (res.code === 0) {
-                const {openCity}=this.data;
-                const {
-                    cityList
+        // http("get", `/CooperativeHospitalCity/provinceAndCityList`).then(res => {
+        //     if (res.code === 0) {
+        //         const {openCity}=this.data;
+        //         const {
+        //             cityList
                     
-                } = res.data
-                for(var item in cityList){
-                    if(item.city){}
-                }
-                var newCityList=[];
-                for (let index = 0; index < cityList.length; index++) {
-                    const element = cityList[index];
-                    for (let index1 = 0; index1 < openCity.length; index1++) {
-                        var city=openCity[index1];
-                        var name=element.city.name;
+        //         } = res.data
+        //         for(var item in cityList){
+        //             if(item.city){}
+        //         }
+        //         var newCityList=[];
+        //         for (let index = 0; index < cityList.length; index++) {
+        //             const element = cityList[index];
+        //             for (let index1 = 0; index1 < openCity.length; index1++) {
+        //                 var city=openCity[index1];
+        //                 var name=element.city.name;
                        
-                        console.log(name==undefined);
-                        if(name==undefined){
-                            name='未知'
-                        }
-                        console.log("名称"+name);
-                        if(name.indexOf(city)){
-                            newCityList.push(element);
-                        }                    
-                    }
-                }
+        //                 console.log(name==undefined);
+        //                 if(name==undefined){
+        //                     name='未知'
+        //                 }
+        //                 console.log("名称"+name);
+        //                 if(name.indexOf(city)){
+        //                     newCityList.push(element);
+        //                 }                    
+        //             }
+        //         }
                 
-                this.setData({
-                    cityList: newCityList
-                })
+        //         this.setData({
+        //             cityList: newCityList
+        //         })
                 
+        //     }
+        // })
+        http("get", `/CooperativeHospitalCity/provinceAndCityList`).then(res => {
+            if(res.code === 0){
+              const {cityList} = res.data
+              this.setData({
+                cityList:cityList
+              })
             }
-        })
+          })
     },
     // 获取热门城市
     getHotList() {
-        http("get", `/CooperativeHospitalCity/hotCity`).then(res => {
-            if (res.code === 0) {
-                const {
-                    cityList
-                } = res.data
+        // http("get", `/CooperativeHospitalCity/hotCity`).then(res => {
+        //     if (res.code === 0) {
+        //         const {
+        //             cityList
+        //         } = res.data
                 
-                this.setData({
-                    hosCityList: cityList
-                })
-            }
+        //         this.setData({
+        //             hosCityList: cityList
+        //         })
+        //     }
+        // })
+        var cityList=
+        [{id:1,name:'北京'},{id:11,name:'上海'},{id:14,name:'杭州'},{id:15,name:'南京'},{id:16,name:'武汉'},{id:45,name:'西安'}]
+        this.setData({
+            hosCityList: cityList
         })
     },
     selectedCity(event) {
         console.log("选择");
-        
-        const{city}=event.currentTarget.dataset
-        console.log(city);
+        let selecthospital=[];
+        const{openHospital}=this.data;      
+        const{cityid,item}=event.currentTarget.dataset
+        for (let index = 0; index < openHospital.length; index++) {
+            const element = openHospital[index];
+            if(element.id==cityid){
+                selecthospital=element.hospital;
+                break;
+            }
+        }
         this.setData({
-            appointmentCity:city,
-            cityModel:false
+            appointmentCity:item,
+            cityModel:false,
+            cityid,
+            selectCityHospital:selecthospital
         })
         
         // const {
@@ -281,7 +383,8 @@ Page({
             liveAnchorName,
             type,
             appointmentCity,
-            appointmentDate
+            appointmentDate,
+            selectHospitalId
         } = this.data
         let token = wx.getStorageSync("token")
         if (!token) {
@@ -324,6 +427,14 @@ Page({
                     })
                     return;
                 }
+                if(!selectHospitalId){
+                    wx.showToast({
+                        title: '请选择预约医院',
+                        icon: 'none',
+                        duration: 1000
+                    })
+                    return;
+                }
             }
             if (!(/^1[34578]\d{9}$/.test(phone))) {
                 wx.showToast({
@@ -337,10 +448,10 @@ Page({
                 let thumbPicUrl = 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/4b7148dcacb346c99a146804267f6e07.jpg';
                 if (liveAnchorName == 'dd') {
                     cardName = cardName + '-刀刀'
-                    thumbPicUrl = 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/4b7148dcacb346c99a146804267f6e07.jpg';
+                    thumbPicUrl = "https://ameiya.oss-cn-hangzhou.aliyuncs.com/19542824f5bb44a994cb6b300916e336.jpg";
                 } else if (liveAnchorName == 'jn') {
                     cardName = cardName + '-吉娜'
-                    thumbPicUrl = 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/4b7148dcacb346c99a146804267f6e07.jpg';
+                    thumbPicUrl = "https://ameiya.oss-cn-hangzhou.aliyuncs.com/19542824f5bb44a994cb6b300916e336.jpg";
                 }
                 
                 if (type == 'mf') {
@@ -377,7 +488,9 @@ Page({
                         id: '00000000',
                         name: cardName,
                         appointmentCity: appointmentCity,
-                        appointmentDate: appointmentDate
+                        appointmentDate: appointmentDate,
+                        hospitalid:selectHospitalId,
+                        isSkinCare:true
                     };
                     allmoney = 4999;
                 }

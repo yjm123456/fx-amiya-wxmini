@@ -134,9 +134,9 @@
     <view class="pay_list">
         <van-radio-group value="{{ pay }}" bind:change="onChange">
             <van-cell-group border="{{false}}">
-                <!-- <van-cell border="{{false}}" inset="{{true}}" title="支付宝" clickable data-name="1" bind:click="onClick">
+                <van-cell border="{{false}}" inset="{{true}}" title="支付宝" clickable data-name="1" bind:click="onClick">
                     <van-radio slot="right-icon" name="1" />
-                </van-cell> -->
+                </van-cell>
                 <van-cell border="{{false}}" inset="{{true}}" title="微信" clickable data-name="2" bind:click="onClick">
                     <van-radio slot="right-icon" name="2" />
                 </van-cell>

@@ -11,7 +11,7 @@
 .con {
     position: absolute;
     left: 50rpx;
-    top: 80rpx;
+    top: 100rpx;
     font-size: 28rpx;
     color: #fff;
 }
@@ -19,7 +19,9 @@
 .date {
     margin-top: 10rpx;
 }
-
+.hs{
+    
+}
 .goods {
     width: 100%;
     padding: 40rpx 20rpx 20rpx;

@@ -36,7 +36,7 @@ Page({
           })
         this.getIntegral();
       
-    // this.getIntegral();
+
   },
   toInternal(){
       console.log("调用");

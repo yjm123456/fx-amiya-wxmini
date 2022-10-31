@@ -43,3 +43,8 @@ page{
     font-size: 35rpx;
     color: #e2e2e2;
 }
+.no_content{
+    color: #fff;
+    text-align: center;
+    margin-top: 300rpx;
+}

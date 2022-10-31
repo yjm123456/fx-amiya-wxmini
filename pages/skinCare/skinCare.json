@@ -1,6 +1,8 @@
 {
     "usingComponents": {
-        "van-share-sheet": "@vant/weapp/share-sheet/index"
+        "van-share-sheet": "@vant/weapp/share-sheet/index",
+        "authPhone": "./../../components/authPhone/auth",
+        "van-dialog": "@vant/weapp/dialog/index"
     },
     "navigationBarTitleText": "美肤券"
 

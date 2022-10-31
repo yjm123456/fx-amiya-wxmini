@@ -117,6 +117,7 @@ page {
     padding: 10rpx;
 }
 .pay_list{
+    width: 500rpx;
     padding: 20rpx;
     background-color: #262626;
     margin: 30rpx;
@@ -134,4 +135,10 @@ page {
 .van-button{
     background-color: transparent !important;
     color: #fff !important;
+}
+.van-button--danger {
+    background: #DEC350 !important;
+    border: 0rpx !important;
+    border-radius: 20rpx !important;
+    width: 500rpx !important;
 }

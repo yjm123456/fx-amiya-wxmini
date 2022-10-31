@@ -10,3 +10,9 @@
     <view class="btn_order_1" catch:tap="toOrder" data-name='dd'></view>
     <view class="btn_order_2" catch:tap="toOrder" data-name='jn'></view>
 </scroll-view>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<!-- 新客绑定提示弹窗 -->
+<van-dialog use-slot id="skbind_tip">
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a29f756b262946c8ad44ba554cdb6d37.png"></image>
+</van-dialog>

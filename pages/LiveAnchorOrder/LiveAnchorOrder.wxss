@@ -55,12 +55,30 @@ page{
    box-sizing: border-box;
    border-bottom: 1rpx solid #ccc;
  }
+ .cwkt{
+    margin: 80rpx 0;
+    font-weight: bold;
+    font-size: 28rpx;
+    padding-bottom: 20rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #ccc;
+  }
  .items{
    margin-bottom: 50rpx;
  }
  .item_type{
    /* margin-top: 20rpx; */
  }
+ .hot_con>.name_com>.popup_text{
+    font-size: 26rpx;
+    padding: 4rpx 30rpx;
+    box-sizing:border-box;
+    border:1rpx solid #ccc;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    color: #000;
+  }
   .popup_text{
    font-size: 26rpx;
    padding: 4rpx 30rpx;
@@ -69,7 +87,152 @@ page{
    margin-right: 20rpx;
    margin-top: 20rpx;
    border-radius: 6rpx;
-   color: #333;
+   color: #ccc;
  }
 
+ ::-webkit-scrollbar {
+	/*隐藏滚轮*/
+	display: none;
+}
+.hospital_item{
+  width:  78%;
+  padding:20rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  /* box-shadow: #ccc 0px 0px 10px 3px; */
+  background-color: #fff;
+  flex-shrink: 0;
+  margin-right: 30rpx;
+}
 
+.hospital_top{
+  width: 100%;
+  display:flex;
+  margin-bottom: 20rpx;
+  align-items: center
+}
+.hospital_title_con{
+  flex:1;
+  margin-left: 10rpx;
+}
+.hospital_title{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.hospital_memo{
+  font-size: 22rpx;
+  background-color: #f4f4f4;
+  color: #bdbdbd;
+  width: 120rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+}
+.address{
+  font-size: 24rpx;
+  margin: 20rpx 0;
+}
+.nav{
+  font-size: 24rpx;
+  text-align: end;
+  margin-top: 20rpx;
+}
+.hospital_top,.hos_cen,.flex_bot{
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.switch_con{
+  width: 120rpx;
+  height: 47rpx;
+  border-radius: 10rpx;
+  background-color: #D1CEC7;
+  text-align: center;
+  line-height: 47rpx;
+  /* padding-right: 30rpx;
+  box-sizing: border-box; */
+  margin: 22rpx 30rpx 0 0;
+}
+.hos_cen{
+    margin: 28rpx 30rpx 0 0;
+  }
+  .cancel,.submite{
+    padding: 6rpx 30rpx;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+    color: #fff;
+    margin: 0 10rpx;
+    font-size: 26rpx;
+   }
+   .cancel{
+     background-color: #ccc;
+   }
+   .submite{
+     background-color: #ff1554;
+   }
+   .popup_con{
+    padding: 20rpx;
+    box-sizing: border-box;
+    position: relative;
+  }
+   .name_com{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .type_name{
+    margin: 10rpx 0;
+    font-weight: bold;
+    font-size: 28rpx;
+    padding-bottom: 20rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #ccc;
+  }
+  .items{
+    margin-bottom: 50rpx;
+  }
+  .item_type{
+    /* margin-top: 20rpx; */
+  }
+   .popup_text{
+    font-size: 26rpx;
+    padding: 4rpx 30rpx;
+    box-sizing:border-box;
+    border:1rpx solid #ccc;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    color: #ccc;
+  }
+  .buttons{
+    margin-top: 60rpx;
+  }
+  ._on,.active,.actives {
+    color: #ff1554;
+    border: 1rpx solid #ff1554;
+  }
+  .arrival_plan{
+    width: 120rpx;
+    height: 47rpx;
+    line-height: 47rpx;
+    background-color: #D1CEC7;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    text-align: center;
+    margin-left: 76% ;
+  }
+  .hospital_scroll{
+    display: flex;
+    padding:30rpx;
+    box-sizing: border-box;
+    overflow-x: scroll;
+    
+  }
+  .tip{
+      display: flex;
+      flex-direction: column;
+      font-size: 22rpx;
+      color: #fff;
+  }

@@ -18,6 +18,11 @@ page {
     color: #fff;
     font-weight: bold;
 }
+.topmsg{
+    font-size: 22rpx;
+    color: #fff;
+    font-weight: bold;
+}
 
 .title {
     font-size: 35rpx;

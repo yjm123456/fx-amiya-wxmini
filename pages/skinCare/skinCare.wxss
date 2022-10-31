@@ -1,36 +1,41 @@
 /* pages/activity/activity.wxss */
-page{
+page {
     background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
-.center{
-    color:#fff;
+
+.center {
+    color: #fff;
     font-size: 38rpx;
     font-weight: 600
 }
-.img{
+
+.img {
     width: 750rpx;
 }
-.btn{
+
+.btn {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     padding: 0rpx 30rpx;
 }
-.buy{
+
+.buy {
     width: 300rpx;
     height: 80rpx;
     border-radius: 20rpx;
     line-height: 80rpx;
     text-align: center;
     color: #fff;
-    
-    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important; 
+
+    background: -webkit-linear-gradient(right, #dec530, #e4c675) !important;
 }
-.share_btn{
+
+.share_btn {
     width: 60rpx;
     padding: 10rpx;
     height: 60rpx;
@@ -39,7 +44,52 @@ page{
     color: #fff;
     border: 2rpx solid #dec530;
 }
-.share_btn>image{
+
+.share_btn>image {
     width: 100%;
     height: 100%;
+}
+
+.tip_img {
+    width: 100%;
+}
+
+.van-button--danger {
+    background: #DEC350 !important;
+    border: 0rpx !important;
+    border-radius: 20rpx !important;
+}
+
+#skbind_tip .van-goods-action {
+    background-color: transparent !important;
+}
+
+.swiper_container {
+    height: 55rpx;
+    width: 80vw;
+}
+
+.swiper_item {
+    font-size: 25rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 2px;
+    line-height: 55rpx;
+    text-align: center;
+    color: #DEC350;
+    opacity: 1;
+}
+.sale{
+    color: #DEC350;
+}
+.scroll{
+    position: absolute;
+    margin: -120rpx 10vw;
+    background-color: rgb(85 0 0 / 46%);
+    border-radius: 30rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

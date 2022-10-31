@@ -3,7 +3,7 @@
 <view class="recharge_block">
     <view wx:for="{{rechargeAmountList}}" wx:key="index" class="block_item {{selectIndex==index ? 'active':''}}" data-id='{{item.id}}' data-index='{{index}}' catchtap="select">{{item.amount}}元</view>
 </view>
-<view class="recharge" catchtap="handlePay">立即充值</view>
+<view class="recharge" bind:tap="handlePay">立即充值</view>
 <view class="record">
     <view class="record_title">充值记录</view>
     <view class="record_content">

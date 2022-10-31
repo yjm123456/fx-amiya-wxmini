@@ -14,7 +14,7 @@
   <van-tab title="待评价">
     <waitEvaluation active="{{active}}" id="waitEvaluation"></waitEvaluation>
   </van-tab>
-  <van-tab title="退款/售后">
+  <van-tab title="售后">
     <afterSales active="{{active}}" id="afterSales"></afterSales>
   </van-tab>
 </van-tabs>

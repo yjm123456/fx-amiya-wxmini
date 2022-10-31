@@ -118,14 +118,7 @@ Page({
         const {
             pay
         } = this.data;
-        if(pay===0){
-            wx.showToast({
-              title: '请先选择支付方式',
-              icon:'none',
-              duration:1000
-            })
-            return;
-        }
+        
         const {
             ismaterial
         } = e.currentTarget.dataset
@@ -183,7 +176,8 @@ Page({
                     hospitalId: _item.hospitalid ? _item.hospitalid : 0,
                     actualPayment: Number(_item.allmoney) ? Number(_item.allmoney) : 0,
                     appointmentCity:_item.appointmentCity ? _item.appointmentCity:null,
-                    appointmentDate:_item.appointmentDate ? _item.appointmentDate:null
+                    appointmentDate:_item.appointmentDate ? _item.appointmentDate:null,
+                    isSkinCare:_item.isSkinCare?_item.isSkinCare:false
                 }
             }),
             cardName,
@@ -217,6 +211,14 @@ Page({
                         }
                     })
                 } else {
+                    if(pay===0){
+                        wx.showToast({
+                          title: '请先选择支付方式',
+                          icon:'none',
+                          duration:1000
+                        })
+                        return;
+                    }
                     if (pay == 1) {
                         wx.redirectTo({
                             url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),

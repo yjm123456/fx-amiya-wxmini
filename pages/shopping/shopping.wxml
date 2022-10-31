@@ -1,5 +1,5 @@
-<view class="center">敬请期待...</view>
-<!-- <view class="wrap">
+<!-- <view class="center">敬请期待...</view> -->
+<view class="wrap">
     <view class="integral_info">
     <view class="img">
         <image class="integral_img" src="../../images/integral.jpg"></image>
@@ -12,7 +12,7 @@
         <view class="integral_receive">
             <image mode="widthFix" class="to_shop" src="../../images/hwsxh.jpg" bindtap="handleToShop"></image>
         </view>
-        <view class="goods_swiper">
+        <!-- <view class="goods_swiper">
             <swiper class='banner' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">
                 <swiper-item>
                     <image mode="aspectFill" src="../../images/mz.jpg"></image>
@@ -24,11 +24,26 @@
                     <image mode="aspectFill" src="../../images/yylm.jpg"></image>
                 </swiper-item>
             </swiper>
-        </view>
+        </view> -->
         <view class="integral_goods">
             <view class="title">积分兑换好礼</view>       
         </view>
-
-</view> -->
+        <view class="product_warp">
+                <view class="product" wx:for="{{goodsInfos}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
+                    <view>
+                        <view class="product_top">
+                            <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>
+                        </view>
+                        <view class="product_bottom">
+                            <view class="product_name">{{item.name}}</view>
+                            <view class="price">
+                                <text class="present_price">{{item.integrationQuantity}}积分</text>
+                                <!-- <text class="original_price">¥{{item.maxShowPrice}}</text> -->
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+</view>
 <!-- 授权手机号 -->
-<!-- <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone> -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

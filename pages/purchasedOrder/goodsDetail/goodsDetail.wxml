@@ -4,6 +4,7 @@
         <view class="con">
             <view class="state">{{orderInfo.statusText}}</view>
             <view class="date">购买时间：{{orderInfo.createDate}}</view>
+            <view class="hs" wx:if="{{orderInfo.appointmentCity}}">客服将于24小时内与您联系，咨询热线：400-900-1591</view>
         </view>
         <image src="/images/bg_1.jpg" class="bg"></image>
     </view>
@@ -91,6 +92,10 @@
         <view wx:if="{{orderInfo.appointmentCity}}" class="goods_detail">
             <text>预约城市：</text>
             <text>{{orderInfo.appointmentCity}}</text>
+        </view>
+        <view wx:if="{{orderInfo.appointmentHospital}}" class="goods_detail">
+            <text>预约机构：</text>
+            <text>{{orderInfo.appointmentHospital}}</text>
         </view>
         <view wx:if="{{orderInfo.appointmentDate}}" class="goods_detail">
             <text>预约时间：</text>

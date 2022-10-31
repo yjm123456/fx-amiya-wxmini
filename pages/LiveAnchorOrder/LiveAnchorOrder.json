@@ -2,7 +2,8 @@
     "usingComponents": {
         "van-field": "@vant/weapp/field/index",
         "van-popup": "@vant/weapp/popup/index",
-        "van-calendar": "@vant/weapp/calendar/index"
+        "van-calendar": "@vant/weapp/calendar/index",
+        "van-image": "@vant/weapp/image/index"
     }
     
 }

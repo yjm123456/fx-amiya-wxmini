@@ -239,6 +239,20 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/skinCare/skinCare",
+                    "query": "name=dd",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/activity/activity",
+                    "query": "name=dd",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

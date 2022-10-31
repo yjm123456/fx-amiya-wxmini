@@ -67,7 +67,7 @@
         </view>
         <view wx:else>
             <view class="tool">
-                <view class="button" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}">积分退款</view>
+                <view class="button jftk" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}">积分退款</view>
             </view>
         </view>
     </view>

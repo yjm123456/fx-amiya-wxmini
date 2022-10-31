@@ -24,7 +24,7 @@ page{
     background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
-    font-size: 25rpx;
+    font-size: 21rpx;
 }
 
 .header .order_id {
@@ -174,7 +174,13 @@ page{
     justify-content: flex-end;
     padding-right: 30rpx;
 }
+.jftk{
+    background-color: #313131;
+    padding: 16rpx;
+    color: #fff;
+    font-size: 22rpx;
 
+}
 .button_both {
     display: flex;
     justify-content: space-around;

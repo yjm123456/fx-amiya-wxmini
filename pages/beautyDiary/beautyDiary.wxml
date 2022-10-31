@@ -14,4 +14,5 @@
             </view>
         </navigator>
     </view>
+    <view class="no_content" wx:if="{{!list.length}}">--暂无内容--</view>
 </view>

@@ -1,13 +1,28 @@
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
-    <image wx:if="{{name=='dd'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/54e44bee1e094aa9ae3fededab82852d.jpg"></image>
-    <image wx:elif="{{name=='jn'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/fdb0ad5a88d941f5b0225b0020b20433.jpg"
+    <image wx:if="{{name=='dd'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/93322b3bc66c4e97bde7612b471fbf88.jpg"></image>
+    <image wx:elif="{{name=='jn'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/29573a5dfe6e4d1f91ad2ee2c3205d6e.jpg"
 ></image>
-<view class="btn">
-    <view class="buy" bindtap="toOrder" data-name="{{name}}">立即购买</view>
-    <view class="buy"  bindtap="share" data-name="{{name}}">点击分享</view>
-    
-</view>
+    <view class="scroll">
+        <!-- <view class="sale">已售{{saleCount}}份</view> -->
+        <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000">
+            <block wx:for="{{numList}}">
+                    <swiper-item>
+                        <view class="swiper_item">{{item.title}}</view>
+                    </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="btn">
+        <view class="buy" bindtap="toOrder" data-name="{{name}}">立即购买</view>
+        <view class="buy" bindtap="share" data-name="{{name}}">点击分享</view>
+    </view>
 
 </scroll-view>
 <!-- 分享弹窗 -->
 <van-share-sheet show="{{ showShare }}" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<!-- 新客绑定提示弹窗 -->
+<van-dialog use-slot id="skbind_tip">
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a29f756b262946c8ad44ba554cdb6d37.png"></image>
+</van-dialog>
