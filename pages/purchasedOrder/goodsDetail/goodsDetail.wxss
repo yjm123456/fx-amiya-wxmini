@@ -11,7 +11,7 @@
 .con {
     position: absolute;
     left: 50rpx;
-    top: 100rpx;
+    top: 60rpx;
     font-size: 28rpx;
     color: #fff;
 }
@@ -19,8 +19,12 @@
 .date {
     margin-top: 10rpx;
 }
+.phone{
+    color: #000;
+}
 .hs{
-    
+    display: flex;
+    flex-direction: column;
 }
 .goods {
     width: 100%;

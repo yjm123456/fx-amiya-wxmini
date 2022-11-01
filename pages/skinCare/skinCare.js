@@ -66,7 +66,8 @@ Page({
                     goodsInfo,
                     goodsInfo: {
                         ...goodsInfo,
-                        quantity: 1
+                        quantity: 1,
+                        allmoney:goodsInfo.salePrice                       
                     }
                 })
             }

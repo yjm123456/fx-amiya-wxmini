@@ -10,7 +10,7 @@
                     <view class="name">
                         <view class="g_name">{{goods.goodsName}}</view>
                         <view class="order_state">
-                            {{item.statusText}}
+                            {{!item.statusText?goods.statusCodeText:item.statusText}}
                         </view>
                         <!-- <view class="order_id"><text>订单号：</text><text>{{item.tradeId}}</text></view> -->
                     </view>
@@ -67,7 +67,7 @@
         </view>
         <view wx:else>
             <view class="tool">
-                <view class="button jftk" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}">积分退款</view>
+                <view class="button jftk" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" >积分退款</view>
             </view>
         </view>
     </view>

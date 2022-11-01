@@ -4,7 +4,10 @@
         <view class="con">
             <view class="state">{{orderInfo.statusText}}</view>
             <view class="date">购买时间：{{orderInfo.createDate}}</view>
-            <view class="hs" wx:if="{{orderInfo.appointmentCity}}">客服将于24小时内与您联系，咨询热线：400-900-1591</view>
+            <view class="hs" wx:if="{{orderInfo.appointmentCity}}">
+                    <text>客服将于24小时内与您联系</text>
+                    <text>咨询热线：400-900-1591</text>
+            </view>
         </view>
         <image src="/images/bg_1.jpg" class="bg"></image>
     </view>
@@ -73,10 +76,9 @@
             <text>实付款：</text>
             <text class="price" wx:if="{{type==1  && orderInfo.orderType==0}}">￥{{orderInfo.actualPayment}}</text>
             <text class="price" wx:if="{{type==1  && orderInfo.orderType==1}}">￥{{orderInfo.actualPayment}}</text>
-            <text class="price" wx:if="{{type==1  && orderInfo.orderType==1 && orderInfo.appType==3}}">
-                <text wx:if="{{orderInfo.appType==3}}">￥{{orderInfo.actualPayment}}</text>
-                <text wx:else>￥{{orderInfo.integrationQuantity}}</text>
-            </text>
+            <!-- <text class="price" wx:if="{{type==1  && orderInfo.orderType==1 && orderInfo.appType==3}}">
+                <text>￥{{orderInfo.actualPayment}}</text>
+            </text> -->
             <text class="price" wx:if="{{type==2}}">{{orderInfo.integrationQuantity}}积分</text>
         </view>
     </view>

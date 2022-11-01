@@ -37,8 +37,8 @@ Page({
         isCard: false,
         nickName: '',
         phone: '',
-        cardName:'',
-        thumbPicUrl:''
+        cardName: '',
+        thumbPicUrl: ''
     },
 
     /**
@@ -72,19 +72,36 @@ Page({
                 return acc += cur.integrationQuantity * cur.quantity
             }, 0).toFixed(2)
         })
-        if (isCard=='true') {
-            const {nickName,phone}=options;
+        if (isCard == 'true') {
+            const {
+                nickName,
+                phone
+            } = options;
             this.setData({
                 isMaterial: false,
                 nickName,
                 phone,
                 totalPrice: 1999,
-                cardName:cardName,
+                cardName: cardName,
                 thumbPicUrl,
-                isCard:true
+                isCard: true
             })
-        } 
+        }
+        //商品化修改
+        // const {
+        //     nickName,
+        //     phone
+        // } = options;
+        // this.setData({
+        //     nickName,
+        //     phone,
+        //     isCard: true
+        // })
+        //商品化修改
     },
+
+
+
     onChange(event) {
         // this.setData({
         //     pay: event.detail,
@@ -118,7 +135,7 @@ Page({
         const {
             pay
         } = this.data;
-        
+
         const {
             ismaterial
         } = e.currentTarget.dataset
@@ -140,7 +157,6 @@ Page({
             cardName,
             thumbPicUrl
         } = this.data;
-        console.log("第二个"+isCard);
         if (tradeId && type == 2) {
             // 支付
             this.pay(tradeId)
@@ -166,7 +182,7 @@ Page({
             isCard,
             nickName,
             phone,
-            cardName:cardName,
+            cardName: cardName,
             orderItemList: goodsInfo.map(_item => {
                 return {
                     // 商品编号
@@ -175,9 +191,9 @@ Page({
                     quantity: _item.quantity,
                     hospitalId: _item.hospitalid ? _item.hospitalid : 0,
                     actualPayment: Number(_item.allmoney) ? Number(_item.allmoney) : 0,
-                    appointmentCity:_item.appointmentCity ? _item.appointmentCity:null,
-                    appointmentDate:_item.appointmentDate ? _item.appointmentDate:null,
-                    isSkinCare:_item.isSkinCare?_item.isSkinCare:false
+                    appointmentCity: _item.appointmentCity ? _item.appointmentCity : null,
+                    appointmentDate: _item.appointmentDate ? _item.appointmentDate : null,
+                    isSkinCare: _item.isSkinCare ? _item.isSkinCare : false
                 }
             }),
             cardName,
@@ -211,11 +227,11 @@ Page({
                         }
                     })
                 } else {
-                    if(pay===0){
+                    if (pay === 0) {
                         wx.showToast({
-                          title: '请先选择支付方式',
-                          icon:'none',
-                          duration:1000
+                            title: '请先选择支付方式',
+                            icon: 'none',
+                            duration: 1000
                         })
                         return;
                     }
@@ -250,7 +266,7 @@ Page({
                                 })
                             }
                         })
-                    }else if(pay==3){
+                    } else if (pay == 3) {
                         wx.showModal({
                             title: '提示',
                             content: '是否支付',

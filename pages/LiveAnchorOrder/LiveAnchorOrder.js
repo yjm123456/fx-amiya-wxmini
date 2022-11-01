@@ -90,9 +90,8 @@ Page({
             }
         ]}
         ],
-
-        display: false,
-        goodsInfo:{}
+        shopGoodsInfo:{},
+        display: false
     },
 
     /**
@@ -103,10 +102,16 @@ Page({
             name,
             type
         } = options
-        const goodsInfo = options.goodsInfo;
-        this.setData({
-            goodsInfo
-        });
+
+        //商品化修改
+        // const goodsInfo = options.goodsInfo;
+        // this.setData({
+        //     shopGoodsInfo:goodsInfo
+        // });
+
+        //商品化修改
+
+
         this.setData({
             liveAnchorName: name,
             type
@@ -136,7 +141,9 @@ Page({
     },
     formatDate(date) {
         date = new Date(date);
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+        var month=(date.getMonth() + 1)>=10?(date.getMonth() + 1):'0'+(date.getMonth() + 1);
+        var day=(date.getDate())>=10?(date.getDate()):'0'+(date.getDate())
+        return `${date.getFullYear()}-${month}-${day}`;
     },
     onConfirm(event) {
         this.setData({
@@ -384,7 +391,8 @@ Page({
             type,
             appointmentCity,
             appointmentDate,
-            selectHospitalId
+            selectHospitalId,
+            shopGoodsInfo
         } = this.data
         let token = wx.getStorageSync("token")
         if (!token) {
@@ -481,7 +489,7 @@ Page({
                 if (type == 'mf') {
                     goodsInfo = {
                         thumbPicUrl: thumbPicUrl,
-                         allmoney: 4999,                      
+                        allmoney: 4999,                      
                         cardName: cardName,
                         quantity: 1,
                         salePrice: 4999,
@@ -494,9 +502,23 @@ Page({
                     };
                     allmoney = 4999;
                 }
+                
+                //商品化修改
+
+                //goodsInfo=shopGoodsInfo;
+
+                //商品化修改
+
+
                 wx.redirectTo({
                     url: '/pages/confirmOrder/confirmOrder?nickName=' + nickName + '&phone=' + phone + '&isCard=true&goodsInfo=' + encodeURIComponent(JSON.stringify([goodsInfo])) + '&cardName=' + cardName + '&thumbPicUrl='+thumbPicUrl+'&allmoney=' + allmoney,
                 })
+
+                //商品化修改
+                // wx.redirectTo({
+                //     url: '/pages/confirmOrder/confirmOrder?nickName=' + nickName + '&phone=' + phone + '&isCard=true&goodsInfo=' + goodsInfo + '&cardName=' + cardName + '&thumbPicUrl='+thumbPicUrl+'&allmoney=' + allmoney,
+                // })
+                //商品化修改
             }
         }
     },
