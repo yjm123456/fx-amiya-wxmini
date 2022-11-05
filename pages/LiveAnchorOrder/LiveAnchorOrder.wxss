@@ -56,7 +56,7 @@ page{
    border-bottom: 1rpx solid #ccc;
  }
  .cwkt{
-    margin: 80rpx 0;
+    margin: 80rpx 0 30rpx;
     font-weight: bold;
     font-size: 28rpx;
     padding-bottom: 20rpx;
@@ -204,7 +204,7 @@ page{
     margin-right: 20rpx;
     margin-top: 20rpx;
     border-radius: 6rpx;
-    color: #ccc;
+    color: #000;
   }
   .buttons{
     margin-top: 60rpx;

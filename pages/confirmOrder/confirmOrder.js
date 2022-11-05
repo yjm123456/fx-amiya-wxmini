@@ -47,8 +47,6 @@ Page({
     onLoad: function (options) {
         const {
             isCard,
-            cardName,
-            thumbPicUrl
         } = options;
         const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
         const {
@@ -72,31 +70,36 @@ Page({
                 return acc += cur.integrationQuantity * cur.quantity
             }, 0).toFixed(2)
         })
+        //商品化修改之前
+        // if (isCard == 'true') {
+        //     const {
+        //         nickName,
+        //         phone
+        //     } = options;
+        //     this.setData({
+        //         isMaterial: false,
+        //         nickName,
+        //         phone,
+        //         totalPrice: 1999,
+        //         cardName: cardName,
+        //         thumbPicUrl,
+        //         isCard: true
+        //     })
+        // }
+        //商品化修改之前
+        
+        //商品化修改
         if (isCard == 'true') {
             const {
                 nickName,
                 phone
             } = options;
             this.setData({
-                isMaterial: false,
                 nickName,
                 phone,
-                totalPrice: 1999,
-                cardName: cardName,
-                thumbPicUrl,
                 isCard: true
             })
         }
-        //商品化修改
-        // const {
-        //     nickName,
-        //     phone
-        // } = options;
-        // this.setData({
-        //     nickName,
-        //     phone,
-        //     isCard: true
-        // })
         //商品化修改
     },
 
@@ -182,7 +185,6 @@ Page({
             isCard,
             nickName,
             phone,
-            cardName: cardName,
             orderItemList: goodsInfo.map(_item => {
                 return {
                     // 商品编号
@@ -193,11 +195,10 @@ Page({
                     actualPayment: Number(_item.allmoney) ? Number(_item.allmoney) : 0,
                     appointmentCity: _item.appointmentCity ? _item.appointmentCity : null,
                     appointmentDate: _item.appointmentDate ? _item.appointmentDate : null,
-                    isSkinCare: _item.isSkinCare ? _item.isSkinCare : false
+                    isSkinCare: _item.isSkinCare ? _item.isSkinCare : false,
+                    isFaceCard: _item.isFaceCard ? _item.isFaceCard : false
                 }
             }),
-            cardName,
-            thumbPicUrl
         }
         // 生成订单
         http("post", `/Order`, data).then(res => {

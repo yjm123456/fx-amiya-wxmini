@@ -7,23 +7,10 @@
             <van-field wx:if="{{type=='mf'}}" border="{{false}}" disabled input-class="field" value="{{ appointmentCity  }}" type="textarea" clearable placeholder="请选择预约城市" title-width="4em" bindtap="switchCity" maxlength="200" />
             <van-field wx:if="{{type=='mf'&&appointmentHospital}}" border="{{false}}" disabled input-class="field" value="{{ appointmentHospital  }}" type="textarea" clearable placeholder="请选择预约医院" title-width="4em" bindtap="switchHospital" maxlength="200" />
             <!-- 医院列表 -->
-            <view wx:if="{{type=='mf'&&appointmentCity}}" class="hospital_con">
-                <!-- <view class="hospital_top">
-                    <view class="title_h3">医院列表</view>
-                    <view class="flex_bot">
-                        <view class="hos_cen" wx:if="{{currentCity}}">
-                            <text class="iconfont icon-address" style="font-size:26rpx;margin:5rpx 5rpx  0 0;font-weight:bold"></text>
-                            <text>{{currentCity}}</text>
-                        </view>
-                        <view class="switch_con" bindtap="switchCity">
-                            <text class="iconfont icon-qiehuan" style="margin-right:8rpx"></text>
-                            <text>城市</text>
-                        </view>
-                    </view>
-                </view> -->
+            <!-- <view wx:if="{{type=='mf'&&appointmentCity}}" class="hospital_con">              
                 <view class="hospital_scroll">
                     <view class="hospital_item" wx:for="{{selectCityHospital}}" wx:key="index">
-                        <view data-item="{{item}}" bindtap="selectHospital" data-name="{{item.name}}" data-hospitalid="{{item.id}}">
+                        <view data-item="{{item}}" bindtap="selectHospital" data-name="{{item.name}}" data-hospitalid="{{item.id}}" data-money="{{item.hospitalSalePrice}}">
                             <view class="hospital_top">
                                 <van-image width="50" height="50" src="{{item.thumbPicUrl}}" />
                                 <view class="hospital_title_con">
@@ -31,16 +18,14 @@
                                 </view>
                             </view>
                             <view class="address_con">
-                                <view class="address" data-item="{{item}}">地址：{{item.address}}</view>
-                                <!-- <navigator class="arrival_plan" bindtap="arrivalPlan" data-item="{{item}}" hover-class="none">到店计划</navigator> -->
-                                <!-- <view class="arrival_plan">到店计划</view> -->
+                                <view class="address" data-item="{{item}}">地址：{{item.address}}</view>                               
                             </view>
                         </view>
                     </view>
                     <van-divider wx:if="{{!selectCityHospital.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 150%;width:100%">暂无医院</van-divider>
 
                 </view>
-            </view>
+            </view> -->
             <van-field wx:if="{{type=='mf'}}" border="{{false}}" input-class="field" value="{{ appointmentDate  }}" type="textarea" clearable placeholder="请选择预约时间" title-width="4em" disabled bindtap="selectDate" maxlength="200" />
         </view>
         <view>
@@ -62,7 +47,7 @@
                 <view class="popup_item">
                     <!-- 热门城市 -->
                     <view class="hot_con">
-                        <view class="type_name">开通城市</view>
+                        <view class="type_name">热门城市</view>
                         <view class="name_com">
                             <block wx:for="{{hosCityList}}" wx:key="index">
                                 <view class="popup_text  {{item.id==currentId?'active':'popup_text'}}" bindtap="selectedCity" data-cityid='{{item.id}}' data-item="{{item.name}}" data-type="1">{{item.name}}</view>
@@ -70,12 +55,7 @@
                         </view>
                     </view>
                     <view class="hot_con">
-                        <view class="cwkt">暂未开通,敬请期待</view>
-                        <!-- <view class="name_com" >
-              <block wx:for="{{hosCityList}}" wx:key="index">
-                <view class="popup_text  {{item.id==currentId?'active':'popup_text'}}" bindtap="selectedCity" data-item="{{item}}" data-type="1">{{item.name}}</view>
-              </block>
-            </view> -->
+                        <view class="cwkt">预约城市</view>
                     </view>
 
                     <view class="item_type">
@@ -84,9 +64,7 @@
                                 <view class="type_name" wx:if="{{item.city.length !=0}}">{{item.provinceName}}</view>
                                 <view class="name_com">
                                     <block wx:for="{{item.city}}" wx:key="index" wx:for-item="i">
-                                        <!-- <view class="popup_text {{i.id==currentIds?'actives':'popup_text'}}" bindtap="selectedCity" data-item="{{i}}"  
-                    data-type="2">{{i.name}}</view> -->
-                                        <view class="popup_text {{i.id==currentIds?'actives':'popup_text'}}" data-item="{{i}}" data-type="2">{{i.name}}</view>
+                                        <view class="popup_text {{i.id==currentIds?'actives':'popup_text'}}" data-item="{{i.name}}" data-type="2" bindtap="selectedCity">{{i.name}}</view>
                                     </block>
                                 </view>
                             </view>

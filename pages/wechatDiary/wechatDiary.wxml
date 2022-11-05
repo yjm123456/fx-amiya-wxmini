@@ -1,0 +1,2 @@
+<!--pages/wechatDiary/wechatDiary.wxml-->
+<web-view src="{{url}}"></web-view>

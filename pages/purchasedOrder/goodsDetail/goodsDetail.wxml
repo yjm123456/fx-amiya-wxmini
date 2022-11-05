@@ -56,10 +56,10 @@
         <text class="expense_title">费用明细</text>
         <view class="goods_total">
             <text class="titles">商品合计</text>
-            <text wx:if="{{type==1 && orderInfo.orderType==0 }}">￥{{orderInfo.actualPayment+orderInfo.deductMoney}}</text>
-            <text wx:elif="{{type==1 && orderInfo.orderType==1 }}">￥{{orderInfo.actualPayment+orderInfo.deductMoney}}</text>
+            <text wx:if="{{type==1 && orderInfo.orderType==0 }}">￥{{orderInfo.actualPayment}}</text>
+            <text wx:elif="{{type==1 && orderInfo.orderType==1 }}">￥{{orderInfo.actualPayment}}</text>
             <text wx:elif="{{type==1 && orderInfo.orderType==1 &&orderInfo.appType==3}}">
-                <text wx:if="{{orderInfo.appType==3}}">￥{{orderInfo.actualPayment+orderInfo.deductMoney}}</text>
+                <text wx:if="{{orderInfo.appType==3}}">￥{{orderInfo.actualPayment}}</text>
                 <text wx:else>￥{{orderInfo.integrationQuantity}}</text>
             </text>
             <text wx:if="{{type==2}}">{{orderInfo.integrationQuantity}}积分</text>

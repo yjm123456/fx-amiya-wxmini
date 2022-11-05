@@ -23,6 +23,7 @@ Page({
             activity: options.activityid
         })
     },
+    
     isCustomer(callback) {
         iscustomer().then(res => {
             if (res.code === 0) {

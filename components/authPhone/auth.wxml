@@ -3,7 +3,7 @@
 	<view class="wrap">
 		<view class="company_info">
 			<image src="./../../images/amylogo.png" class="logo"></image>
-			<text>阿美雅</text>
+			<text>啊美雅</text>
 		</view>
 		<view class="tip">
 			<text>获取您的手机号</text>

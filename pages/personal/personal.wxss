@@ -128,15 +128,15 @@ border-radius: 10rpx;
     line-height: 60rpx;
 }
 .navigation_list{
-    padding-left: 30rpx;
-    padding-right: 30rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
     padding-top: 10rpx;
     padding-bottom: 30rpx;
     height: 100rpx;
     line-height: 100rpx;
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* background-color: #313131; */
     color: #DEC350;
   }
@@ -150,7 +150,7 @@ border-radius: 10rpx;
   }
   .grid_item{
       background-color: #3C3C3C;
-      width: 220rpx;
+      width: 260rpx;
       height: 100%;
       border-radius: 20rpx;
       text-align: center;

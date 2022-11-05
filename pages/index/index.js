@@ -84,10 +84,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.getCarouselImage()
-        this.getGoodsList()
         this.isCustomer((isCustomer) => {
-            console.log("展示");
             if (isCustomer) {
                 this.getRecieveVoucherInfo();
                 this.getShareInfo();
@@ -96,9 +93,9 @@ Page({
             }
         })
     },
-    toCode(){
+    toCode() {
         wx.navigateTo({
-          url: '/pages/showCode/showCode',
+            url: '/pages/showCode/showCode',
         })
     },
     //显示绑定赠送抵用券提示
@@ -268,7 +265,7 @@ Page({
             }
         })
     },
-    handleActivity1(){
+    handleActivity1() {
         wx.navigateTo({
             url: '/pages/memberbenefits/memberbenefits',
         })
@@ -304,11 +301,16 @@ Page({
         this.getGoodsList()
     },
     onShow() {
-        // this.getLocationAuth();
-        // this.setData({
-        //     controlAuthPhone: false
-        // })
-
+        this.getCarouselImage();
+        this.setData({
+            pageNum: 1,
+            pageSize: 10,
+            nextPage: true,
+            currentPageIndex:1,           
+            goodsList:[]
+        });
+        console.log("展示");
+        this.getGoodsList();
     },
 
     // 获取轮播图

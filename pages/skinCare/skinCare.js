@@ -24,7 +24,6 @@ Page({
         numList:[],
         saleCount:78,
         goodsInfo:{}
-        // msgList: [    { url: "url", title: "131****9898已下单" },    { url: "url", title: "131****9898已下单" },    { url: "url", title: "131****9898已下单" }]
     },
 
     /**
@@ -92,7 +91,7 @@ Page({
             }
 
         }
-        console.log(numList);
+        numList=numList+'已下单';
         numList= numList.split(',').map(_item => {
             return {
                 title:_item
@@ -111,7 +110,7 @@ Page({
                     name
                 } = event.currentTarget.dataset;
                 wx.navigateTo({
-                    url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name=' + name + '&type=mf&goodsInfo='+encodeURIComponent(JSON.stringify([goodsInfo])),
+                    url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name=' + name + '&type=mf&goodsInfo='+encodeURIComponent(JSON.stringify(goodsInfo)),
                 })
             } else {
                 this.showVoucherTips()

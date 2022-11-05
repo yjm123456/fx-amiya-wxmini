@@ -49,6 +49,14 @@ Page({
             }
         })
     },
+    toDiary(event){
+        const{url}=event.currentTarget.dataset;
+        let link=url.replace("#rd","");
+        console.log(url);
+        wx.navigateTo({
+          url: '/pages/wechatDiary/wechatDiary?url='+encodeURIComponent(link),
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

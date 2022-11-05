@@ -10,7 +10,7 @@
         </view>
     </view>
         <view class="integral_receive">
-            <image mode="widthFix" class="to_shop" src="../../images/hwsxh.jpg" bindtap="handleToShop"></image>
+            <image mode="widthFix" class="to_shop" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8e0041207b4d4086a8fd8ea8b5078a0d.JPG" bindtap="handleToShop"></image>
         </view>
         <!-- <view class="goods_swiper">
             <swiper class='banner' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">

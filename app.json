@@ -57,7 +57,8 @@
         "pages/LiveAnchorMessage/LiveAnchorMessage",
         "pages/LiveAnchorOrder/LiveAnchorOrder",
         "pages/showCode/showCode",
-        "pages/skinCare/skinCare"
+        "pages/skinCare/skinCare",
+        "pages/wechatDiary/wechatDiary"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {
@@ -95,7 +96,7 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#000",
-        "navigationBarTitleText": "阿美雅",
+        "navigationBarTitleText": "啊美雅",
         "navigationBarTextStyle": "white"
     },
     "sitemapLocation": "sitemap.json",
