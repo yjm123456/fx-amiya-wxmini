@@ -36,8 +36,8 @@
         <!-- <van-radio-group value="{{ pay }}" bind:change="onChange"> -->
             <van-radio-group value="{{ pay }}" bind:change="onChange">
             <van-cell-group border="{{false}}">
-                <van-cell border="{{false}}" inset="{{true}}" data-index="1" title="微信" clickable data-name="WECHAT" bind:click="onClick">
-                    <van-radio slot="right-icon" name="1" />
+                <van-cell border="{{false}}" inset="{{true}}" data-index="4" title="微信" clickable data-name="HSQ" bind:click="onClick">
+                    <van-radio slot="right-icon" name="4" />
                 </van-cell>
                 <van-cell border="{{false}}" inset="{{true}}" data-index="2" title="支付宝" clickable data-name="ALIPAY" bind:click="onClick">
                     <van-radio slot="right-icon" name="2"  />

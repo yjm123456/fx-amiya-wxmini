@@ -240,7 +240,7 @@ Page({
                         wx.redirectTo({
                             url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
                         })
-                    } else if (pay == 2) {
+                    } else if (pay == 4) {
                         wx.requestPayment({
                             timeStamp: payRequestInfo.timeStamp,
                             nonceStr: payRequestInfo.nonceStr,

@@ -58,7 +58,11 @@
         "pages/LiveAnchorOrder/LiveAnchorOrder",
         "pages/showCode/showCode",
         "pages/skinCare/skinCare",
-        "pages/wechatDiary/wechatDiary"
+        "pages/wechatDiary/wechatDiary",
+        "pages/subordinate/subordinate",
+        "pages/businessCard/businessCard",
+        "pages/distributionDescription/distributionDescription",
+        "pages/subordinateOrder/subordinateOrder"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

@@ -9,7 +9,7 @@ Component({
       type: Number,
       value: "",
       observer(newVal, oldVal) {
-        if (newVal === 2) {
+        if (newVal === 3) {
             console.log("选中发货")
           this.setData({
             pageNum: 1,

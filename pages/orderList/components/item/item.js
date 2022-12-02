@@ -16,7 +16,8 @@ Component({
             tradeid: '',
             show: false,
             refundReason: '',
-            orderId: ''
+            orderId: '',
+            refundShow:false
         },
 
         /**
@@ -298,6 +299,45 @@ Component({
                     })
                 }
             },
+            //申请退款
+            // handleRefund(){
+            //     const {
+            //         tradeid,
+            //         apptype
+            //     } = e.currentTarget.dataset;
+            //     if (apptype === 2) {
+            //         const data={
+            //             tradeId:tradeid,
+            //             orderId:''
+            //         };
+            //         wx.showModal({
+            //             title: '提示',
+            //             content: '确认提交退款申请?',
+            //             success: (res) => {
+            //                 if (res.confirm) {
+            //                     http("post", `/Order/refund`,data).then(res => {
+            //                         if (res.code === 0) {
+            //                             wx.showToast({
+            //                                 title: '提交成功',
+            //                                 icon: 'success',
+            //                                 duration: 2000,
+            //                                 success: () => {
+            //                                     this.triggerEvent("handleRefreshOrderList")
+            //                                 }
+            //                             })
+            //                         }
+            //                     })
+            //                 }
+            //             }
+            //         })
+            //     } else {
+            //         wx.showToast({
+            //             title: '此订单不是小程序订单,请到下单提交退款.',
+            //             icon: "none",
+            //             duration: 2000
+            //         })
+            //     }
+            // },
             // 积分退款
             pointReund(e) {
                 this.setData({
@@ -306,10 +346,24 @@ Component({
                     tradeId:e.currentTarget.dataset.tradeid
                 });
             },
+            //订单
+            handleRefund(e) {
+                this.setData({
+                    refundShow: true,
+                    orderId: "",
+                    tradeId:e.currentTarget.dataset.tradeid
+                });
+            },
             // 取消
             onClose() {
                 this.setData({
                     show: false,
+                    refundReason: ''
+                });
+            },
+            onRefundClose(){
+                this.setData({
+                    refundShow: false,
                     refundReason: ''
                 });
             },
@@ -351,6 +405,43 @@ Component({
                     }
                 })
             },
+            onRefundConfirm(){
+                const {
+                    orderId,
+                    refundReason,
+                    tradeId
+                } = this.data
+                const data = {
+                    orderId,
+                    remark:refundReason,
+                    tradeId
+                }
+                http("post", `/order/refund`, data).then(res => {
+                    if (res.code === 0) {
+                        wx.showToast({
+                            title: '已提交退款申请',
+                            icon: 'success',
+                            duration: 2000,
+                            success: () => {
+                                this.setData({
+                                    refundShow: false,
+                                    refundReason: ''
+                                })
+                                setTimeout(() => {
+                                    this.triggerEvent("handleRefreshOrderList")
+                                }, 2000)
+                            }
+                        })
+                    } else {
+                        wx.showToast({
+                            title: '该订单已提交过退款申请，无法重复提交！',
+                            icon: 'none',
+                            duration: 2000
+                        })
+
+                    }
+                })
+            }
         },
 
     },

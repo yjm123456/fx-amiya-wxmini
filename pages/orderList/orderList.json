@@ -3,6 +3,7 @@
         "van-tab": "@vant/weapp/tab/index",
         "van-tabs": "@vant/weapp/tabs/index",
         "all": "./components/all/all",
+        "pay": "./components/pay/pay",
         "waitPay": "./components/waitPay/waitPay",
         "waitSendGoods": "./components/waitSendGoods/waitSendGoods",
         "waitConfirm": "./components/waitConfirm/waitConfirm",

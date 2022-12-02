@@ -45,7 +45,6 @@ Page({
   },
   getInterList(callback){
     const { pageNum, pageSize, nextPage } = this.data;
-    console.log(nextPage);
       if (!nextPage) return;
       const data = {
         pageNum, pageSize

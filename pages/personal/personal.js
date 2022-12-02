@@ -29,7 +29,8 @@ Page({
         //储值
         totalBalance: 0,
         //抵用券弹窗
-        controlConsumptionVoucher: false
+        controlConsumptionVoucher: false,
+        active:0
     },
     toRechargeList() {
         this.isCustomer((isCustomer) => {
@@ -70,6 +71,9 @@ Page({
         
         this.getCode()
     },
+    onChange(event) {
+        
+      },
     getBalance() {
         http("get", `/Recharge/balance`).then(res => {
             if (res.code === 0) {

@@ -1,6 +1,6 @@
 <view class="container">
     <view class="diary" wx:for="{{list}}" wx:key="index">
-        <navigator class="diary_con" url="/pages/index/diaryDetail/diaryDetail?id={{item.id}}&givingLikes={{item.givingLikes}}" hover-class="none">
+        <!-- <navigator class="diary_con" url="/pages/index/diaryDetail/diaryDetail?id={{item.id}}&givingLikes={{item.givingLikes}}" hover-class="none">
             <view>
                 <view class="img">
                     <image src="{{item.thumbPictureUrl}}" class="diary_img" mode="widthFix" />
@@ -12,9 +12,12 @@
                     </view>
                 </view>
             </view>
-        </navigator>
+        </navigator> -->
 
-        <!-- <view class="diary_con" data-url="{{item.url}}" bindtap="toDiary" hover-class="none">
+        <view class="diary_con" data-url="{{item.url}}" bindtap="toDiary" hover-class="none">
+            <view class="img">
+                    <image src="{{item.thumbPictureUrl}}" class="diary_img" mode="widthFix" />
+                </view>
             <view>
                 <view class="diary_bottom">
                     <view class="diary_title">{{item.coverTitle}}</view>
@@ -23,7 +26,7 @@
                     </view>
                 </view>
             </view>
-        </view> -->
+        </view>
     </view>
     <view class="no_content" wx:if="{{!list.length}}">--暂无内容--</view>
 </view>

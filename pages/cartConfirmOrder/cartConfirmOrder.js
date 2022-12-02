@@ -148,7 +148,7 @@ Page({
                                             
                                             const data = {
                                                 remark,
-                                                exchangeType:2,
+                                                exchangeType:4,
                                                 orderItemList: moneyItemList.map(_item => {
                                                     return {
                                                         // 商品编号
@@ -243,7 +243,7 @@ Page({
                 const data = {
                     // 备注
                     remark,
-                    exchangeType:2,
+                    exchangeType:4,
                     orderItemList: moneyItemList.map(_item => {
                         return {
                             // 商品编号

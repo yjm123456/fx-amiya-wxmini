@@ -1,4 +1,4 @@
-// pages/orderList/components/afterSales/afterSales.js
+// pages/orderList/components/pay/pay.js
 import http from "./../../../../utils/http";
 Component({
     /**
@@ -9,20 +9,20 @@ Component({
             type: Number,
             value: "",
             observer(newVal, oldVal) {
-                if (newVal === 6) {
-                    // console.log("请求待收货")
-                    this.handleReset();
-                    this.getOrderList();
-                }
+              if (newVal === 2) {
+                // console.log("请求待收货")
+                this.handleReset();
+                this.getOrderList();
+              }
             }
-        }
+          }
     },
 
     /**
      * 组件的初始数据
      */
     data: {
-        statusCode: "REFUNDING",
+        statusCode: "TRADE_BUYER_PAID",
         pageNum: 1,
         pageSize: 10,
         list: [],

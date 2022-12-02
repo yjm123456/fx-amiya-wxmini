@@ -78,18 +78,33 @@ Page({
         //领取抵用券弹窗
         controlRecieveVoucher: false,
         //显示绑定赠送抵用券提示
-        showVoucherTip: false
+        showVoucherTip: false,
+        scene:''
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        // const scene = decodeURIComponent(options.scene);
+        // if(scene != 'undefined'){           
+        //     this.setSuperior(scene);
+        // }
+
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
-                this.getRecieveVoucherInfo();
+                //暂时不显示领取优惠券
+                // this.getRecieveVoucherInfo();
                 this.getShareInfo();
             } else {
                 this.showVoucherTips()
+            }
+        })
+    },
+    //设置上级
+    setSuperior(scene){
+        http("put", `/user/setSuperior/`+scene).then(res => {
+            if (res.code === 0) {
+                
             }
         })
     },

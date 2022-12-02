@@ -1,69 +1,69 @@
-// pages/beautyDiary/beautyDiary.js
-import http from '../../utils/http';
+// pages/subordinateOrder/subordinateOrder.js
+import http from "./../../utils/http"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        list:[],
+        customerid:'',
         pageNum: 1,
         pageSize: 10,
         nextPage: true,
+        //当前商品展示列表页码
+        currentPageIndex: 1,
+        orderList:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getDiary()
+        const customerid=options.customerid
+        this.setData({
+            customerid
+        });
+        this.getSubordinatelist(customerid);
     },
-    //获取美丽日记
-    getDiary() {
+    //获取下级订单
+    getSubordinatelist(customerid){
         const {
-            pageNum,
+            currentPageIndex,
             pageSize,
             nextPage
         } = this.data;
         if (!nextPage) return;
+        const pageNum = currentPageIndex
         const data = {
             pageNum,
-            pageSize
+            pageSize,
+            customerId:customerid
         }
-        http("get", `/BeautyDiary/wechatlist`, data).then(res => {
+        http("get", `/order/subordinateList`,data).then(res => {
             if (res.code === 0) {
                 let {
                     list,
                     totalCount
-                } = res.data.beautyDiaryManages;
-                this.setData({
-                    list: [...this.data.list, ...list],
-                })
-                //callback && callback();
-                this.data.pageNum++;
-                if(list.length===0){
-                    this.setData({
-                        nextPage: false
-                    })
-                }
-                if (this.data.list.length === totalCount) {
-                    this.setData({
-                        nextPage: false
-                    })
-                }
-            }else{
-                this.setData({
-                    list:[]
+                } = res.data.orders;
+                list=list.map((item, index) => {
+ 
+                    var orderDate = item.orderDate.replace(/T/g, ' ')
+                    
+                    return {
+                        ...item,
+                        orderDate: orderDate
+                    };
                 });
+                this.setData({
+                    orderList:[...this.data.orderList,...list]
+                });
+                this.data.currentPageIndex++;
+                if (this.data.orderList.length === totalCount) {
+                    this.setData({
+                        nextPage: false
+                    })
+                }
             }
-        })
-    },
-    toDiary(event){
-        const{url}=event.currentTarget.dataset;
-        let link=url.replace("#rd","");
-        console.log(url);
-        wx.navigateTo({
-          url: '/pages/wechatDiary/wechatDiary?url='+encodeURIComponent(link),
         })
     },
     /**
@@ -77,7 +77,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        
+
     },
 
     /**
@@ -105,7 +105,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-        this.getDiary();
+        this.getSubordinatelist();
     },
 
     /**

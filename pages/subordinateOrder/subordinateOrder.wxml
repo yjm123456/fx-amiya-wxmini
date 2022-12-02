@@ -1,0 +1,16 @@
+<!--pages/subordinateOrder/subordinateOrder.wxml-->
+<view class="list">
+    <block wx:for="{{orderList}}">
+        <view class="item">
+        <view class="picture">
+            <image src="{{item.goodsImgUrl}}" mode="aspectFill"></image>
+        </view>
+        <view class="content">
+            <view class="name">{{item.goodsName}}</view>
+            <view class="pay">实付款: <text class="price">¥{{item.price}}</text></view>
+            <view class="time">下单时间:{{item.orderDate}}</view>
+           
+        </view>
+    </view>
+    </block>
+</view>

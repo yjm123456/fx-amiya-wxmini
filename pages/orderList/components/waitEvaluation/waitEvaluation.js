@@ -9,7 +9,7 @@ Component({
             type: Number,
             value: "",
             observer(newVal, oldVal) {
-                if (newVal === 4) {
+                if (newVal === 5) {
                     // console.log("请求待收货")
                     this.handleReset();
                     this.getOrderList();

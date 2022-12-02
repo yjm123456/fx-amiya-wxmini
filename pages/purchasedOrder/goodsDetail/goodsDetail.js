@@ -33,6 +33,14 @@ Page({
     }
     http("get", "/Order/getOrderInfoById",data).then(res => {
         if(res.code === 0){
+        //    let orderInfo=res.data.orderDetailResult;
+        //    if(orderInfo.statusCode=='CHECK_FAIL'){
+        //     http("get", "/Order/getUnCheckReason/"+orderId).then(res => {
+        //         if(res.code === 0){
+        //            orderInfo.unCheckReason=res.data.remark            
+        //         }
+        //     })
+        //    }
           this.setData({
             orderInfo:res.data.orderDetailResult
           })

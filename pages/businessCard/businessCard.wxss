@@ -1,0 +1,17 @@
+/* pages/businessCard/businessCard.wxss */
+Page{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.qrCode{
+    width: 350rpx;
+    margin: 0 auto;
+}

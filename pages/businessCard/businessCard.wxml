@@ -1,0 +1,4 @@
+<!--pages/businessCard/businessCard.wxml-->
+<view class="content">
+    <image class="qrCode" mode="widthFix" src="{{qrCode}}"></image>
+</view>

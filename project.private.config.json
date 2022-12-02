@@ -253,6 +253,34 @@
                     "query": "name=dd",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "下属",
+                    "pathName": "pages/subordinate/subordinate",
+                    "query": "nickname=undefined",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "名片",
+                    "pathName": "pages/businessCard/businessCard",
+                    "query": "nickname=ll",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "扫描二维码",
+                    "pathName": "pages/index/index",
+                    "query": "scene=0ab75e108b604fa3900b15070042b48e",
+                    "launchMode": "default",
+                    "scene": 1047
+                },
+                {
+                    "name": "下属",
+                    "pathName": "pages/subordinate/subordinate",
+                    "query": "nickname=undefined",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

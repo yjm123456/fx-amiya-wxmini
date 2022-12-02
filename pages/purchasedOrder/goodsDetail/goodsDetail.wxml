@@ -111,6 +111,10 @@
             <text>客户昵称：</text>
             <text>{{orderInfo.buyerNick}}</text>
         </view>
+        <view wx:if="{{orderInfo.unCheckReason}}" class="goods_detail">
+            <text>审核失败原因：</text>
+            <text>{{orderInfo.uncheckReason}}</text>
+        </view>
         <view class="goods_detail" wx:if="{{orderInfo.hospitalAddress}}">
             <text>配送门店：</text>
             <text>{{orderInfo.hospitalAddress}}</text>

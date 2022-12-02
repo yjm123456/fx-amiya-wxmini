@@ -1,71 +1,26 @@
-// pages/beautyDiary/beautyDiary.js
-import http from '../../utils/http';
+// pages/subordinate/subordinate.js
+import http from "./../../utils/http"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        list:[],
         pageNum: 1,
         pageSize: 10,
         nextPage: true,
+        //当前商品展示列表页码
+        currentPageIndex: 1,
+        userList:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getDiary()
+        this.getSubordinateUser();
     },
-    //获取美丽日记
-    getDiary() {
-        const {
-            pageNum,
-            pageSize,
-            nextPage
-        } = this.data;
-        if (!nextPage) return;
-        const data = {
-            pageNum,
-            pageSize
-        }
-        http("get", `/BeautyDiary/wechatlist`, data).then(res => {
-            if (res.code === 0) {
-                let {
-                    list,
-                    totalCount
-                } = res.data.beautyDiaryManages;
-                this.setData({
-                    list: [...this.data.list, ...list],
-                })
-                //callback && callback();
-                this.data.pageNum++;
-                if(list.length===0){
-                    this.setData({
-                        nextPage: false
-                    })
-                }
-                if (this.data.list.length === totalCount) {
-                    this.setData({
-                        nextPage: false
-                    })
-                }
-            }else{
-                this.setData({
-                    list:[]
-                });
-            }
-        })
-    },
-    toDiary(event){
-        const{url}=event.currentTarget.dataset;
-        let link=url.replace("#rd","");
-        console.log(url);
-        wx.navigateTo({
-          url: '/pages/wechatDiary/wechatDiary?url='+encodeURIComponent(link),
-        })
-    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -79,7 +34,51 @@ Page({
     onShow() {
         
     },
-
+    getSubordinateUser(){
+        const {
+            currentPageIndex,
+            pageSize,
+            nextPage
+        } = this.data;
+        if (!nextPage) return;
+        const pageNum = currentPageIndex
+        const data = {
+            pageNum,
+            pageSize
+        }
+        http("get", `/user/subordinateList`,data).then(res => {
+            if (res.code === 0) {
+                let {
+                    list,
+                    totalCount
+                } = res.data.subordinate;
+                list=list.map((item, index) => {
+ 
+                    var createDate = item.createDate.replace(/T/g, ' ')
+                    
+                    return {
+                        ...item,
+                        createDate: createDate
+                    };
+                });
+                this.setData({
+                    userList:[...this.data.userList,...list]
+                });
+                this.data.currentPageIndex++;
+                if (this.data.list.length === totalCount) {
+                    this.setData({
+                        nextPage: false
+                    })
+                }
+            }
+        })
+    },
+    toOrder(event){
+        const{customerid}=event.currentTarget.dataset
+        wx.navigateTo({
+          url: '/pages/subordinateOrder/subordinateOrder?customerid='+customerid,
+        })
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */
@@ -105,7 +104,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-        this.getDiary();
+        this.getSubordinateUser();
     },
 
     /**

@@ -94,7 +94,8 @@ Page({
                     alipayUrl,
                     payRequestInfo
                 } = res.data.rechargeResult;
-                if (exchangeCode == "WECHAT") {
+                if (exchangeCode == "HSQ") {
+                    console.log("调用");
                     wx.requestPayment({
                         timeStamp: payRequestInfo.timeStamp,
                         nonceStr: payRequestInfo.nonceStr,
@@ -237,7 +238,7 @@ Page({
                         tradeId
                     })
                     // type为2是积分兑换
-                    if (exchangeCode == "WECHAT") {
+                    if (exchangeCode == "HSQ") {
                         //type为1 是商城支付
                         wx.requestPayment({
                             timeStamp: payRequestInfo.timeStamp,

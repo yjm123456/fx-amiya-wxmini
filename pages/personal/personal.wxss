@@ -293,6 +293,7 @@ border-radius: 10rpx;
     border-radius: 20rpx;
     margin-top: 20rpx;
     overflow: hidden;
+    border-top: 2rpx solid #e2e2e2;
 }
 .cell_item{
     background-color: #262626 !important;
@@ -354,4 +355,22 @@ border-radius: 10rpx;
 
 .integral_item:last-child {
     border-right: none;
+}
+.van-tabs__scroll{
+    background-color: #000 !important;
+}
+.tabs{
+    background-color: #262626 !important;
+    top: 20rpx;
+    border-radius: 20rpx;
+}
+.van-tab--active>view{
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+    font-weight: 600 !important;
+}
+.van-tabs__line{
+    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    -webkit-text-fill-color:transparent !important;
 }

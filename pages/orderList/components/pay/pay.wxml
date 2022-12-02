@@ -1,0 +1,2 @@
+<!--pages/orderList/components/pay/pay.wxml-->
+<item list="{{list}}" bind:handleRefreshOrderList="handleRefreshOrderList"></item>

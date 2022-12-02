@@ -382,7 +382,7 @@ Page({
                 //     return;
                 // }
             }
-            if (!(/^1[34578]\d{9}$/.test(phone))) {
+            if (!(/^1[3456789]\d{9}$/.test(phone))) {
                 wx.showToast({
                     title: '手机号错误,请重新输入',
                     icon: 'none',
