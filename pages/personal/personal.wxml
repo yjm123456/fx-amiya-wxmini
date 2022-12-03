@@ -95,6 +95,7 @@
                     <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/recharge/recharge" bindtap="to" title="充值中心" />
                     <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/missionCenter/missionCenter" bindtap="to" title="任务中心" />
                     <van-cell custom-class="cell_item" is-link link-type="switchTab" data-url="/pages/shopping/shopping" bindtap="toIntegral" title="积分" />
+                    <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" bindtap="to" title="上传凭证" />
                     <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/writeoffGoodGift/writeoffGoodGift" bindtap="to" title="赠品" />
                     <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/orderList/orderList">
                         <view slot="title">

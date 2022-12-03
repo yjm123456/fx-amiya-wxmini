@@ -62,7 +62,10 @@
         "pages/subordinate/subordinate",
         "pages/businessCard/businessCard",
         "pages/distributionDescription/distributionDescription",
-        "pages/subordinateOrder/subordinateOrder"
+        "pages/subordinateOrder/subordinateOrder",
+        "pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials",
+        "pages/AddConsumptionCredential/AddConsumptionCredential",
+        "pages/UpdateCustomerConsumptionCredential/UpdateCustomerConsumptionCredential"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

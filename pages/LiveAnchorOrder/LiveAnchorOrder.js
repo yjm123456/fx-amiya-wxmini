@@ -132,11 +132,7 @@ Page({
             display: true
         });
     },
-    onClose() {
-        this.setData({
-            display: false
-        });
-    },
+    
     selectHospital(event) {
         const {
             name,
@@ -151,6 +147,11 @@ Page({
             appointmentHospital: name,
             shopGoodsInfo
         })
+    },
+    onClose() {
+        this.setData({
+            display: false
+        });
     },
     formatDate(date) {
         date = new Date(date);
