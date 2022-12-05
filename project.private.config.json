@@ -2,7 +2,18 @@
     "setting": {
         "compileHotReLoad": true
     },
+    "projectname": "fx-amiya-wxmini",
+    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
     "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
         "miniprogram": {
             "list": [
                 {
@@ -153,138 +164,129 @@
                     "name": "pages/memberbenefits/memberbenefits",
                     "pathName": "pages/memberbenefits/memberbenefits",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "积分",
                     "pathName": "pages/shopping/shopping",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "我的",
                     "pathName": "pages/personal/personal",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "订单",
                     "pathName": "pages/orderList/orderList",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "购物车",
                     "pathName": "pages/shoppingCart/shoppingCart",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "任务中心",
                     "pathName": "pages/missionCenter/missionCenter",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "个人信息",
                     "pathName": "pages/personalInfo/personalInfo",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "成长值",
                     "pathName": "pages/growthPoints/growthPoints",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "抵用券",
                     "pathName": "pages/ConsumptionVoucher/ConsumptionVoucher",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "充值中心",
                     "pathName": "pages/recharge/recharge",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "提交订单",
                     "pathName": "pages/confirmOrder/confirmOrder",
                     "query": "goodsInfo=%255B%257B%2522id%2522%253A%2522054b1c075c5547bfaa2118fdea16a93e%2522%252C%2522thumbPicUrl%2522%253A%2522https%253A%252F%252Fameiya.oss-cn-hangzhou.aliyuncs.com%252F4b7148dcacb346c99a146804267f6e07.jpg%2522%252C%2522name%2522%253A%2522%25E4%25BF%259D%25E6%25B9%25BF%25E6%25B4%2581%25E9%259D%25A2%25E9%259C%259C%25E7%25A6%258F%25E8%25A2%258B%2522%252C%2522simpleCode%2522%253A%2522bsjms%2522%252C%2522description%2522%253A%2522sd%2522%252C%2522standard%2522%253A%25225%25E7%2589%2587%2522%252C%2522unit%2522%253Anull%252C%2522salePrice%2522%253A1%252C%2522valid%2522%253Atrue%252C%2522inventoryQuantity%2522%253A151%252C%2522exchangeType%2522%253A1%252C%2522integrationQuantity%2522%253A0%252C%2522isMaterial%2522%253Afalse%252C%2522goodsType%2522%253A0%252C%2522isLimitBuy%2522%253Afalse%252C%2522limitBuyQuantity%2522%253Anull%252C%2522categoryId%2522%253A6%252C%2522goodsDetailId%2522%253A268%252C%2522carouselImageUrls%2522%253A%255B%257B%2522picUrl%2522%253A%2522https%253A%252F%252Fimg.alicdn.com%252Fbao%252Fuploaded%252Fi1%252F2209451176576%252FO1CN01trKEdi1yRrBpFNacA_!!0-item_pic.jpg%2522%252C%2522displayIndex%2522%253A0%257D%252C%257B%2522picUrl%2522%253A%2522https%253A%252F%252Fameiya.oss-cn-hangzhou.aliyuncs.com%252F4b7148dcacb346c99a146804267f6e07.jpg%2522%252C%2522displayIndex%2522%253A1%257D%255D%252C%2522goodsDetailHtml%2522%253A%2522sfsdfsHTML%253Cp%253E332%253Cimg%2520style%253D%255C%2522width%253A100%2525%253Bheight%253Aauto%253Bdisplay%253Ablock%255C%2522%2520src%253D%255C%2522https%253A%252F%252Fameiya.oss-cn-hangzhou.aliyuncs.com%252F87097d2eca774ba9aeab998e35435462.png%255C%2522%2520style%253D%255C%2522max-width%253A%2520100%2525%253B%255C%2522%253E%253C%252Fp%253E%2522%252C%2522detailsDescription%2522%253Anull%252C%2522maxShowPrice%2522%253A2000%252C%2522minShowPrice%2522%253A1800%252C%2522showSaleCount%2522%253A23%252C%2522visitCount%2522%253A344%252C%2522quantity%2522%253A1%252C%2522allmoney%2522%253A1%252C%2522hospitalid%2522%253A1%257D%255D&type=1&allmoney=1",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "首页",
                     "pathName": "pages/index/index",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "下单",
                     "pathName": "pages/LiveAnchorOrder/LiveAnchorOrder",
                     "query": "",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "",
                     "pathName": "pages/skinCare/skinCare",
                     "query": "name=dd",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "",
                     "pathName": "pages/activity/activity",
                     "query": "name=dd",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "下属",
                     "pathName": "pages/subordinate/subordinate",
                     "query": "nickname=undefined",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "名片",
                     "pathName": "pages/businessCard/businessCard",
                     "query": "nickname=ll",
-                    "launchMode": "default",
                     "scene": null
                 },
                 {
                     "name": "扫描二维码",
                     "pathName": "pages/index/index",
                     "query": "scene=0ab75e108b604fa3900b15070042b48e",
-                    "launchMode": "default",
                     "scene": 1047
                 },
                 {
                     "name": "下属",
                     "pathName": "pages/subordinate/subordinate",
                     "query": "nickname=undefined",
-                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/AddConsumptionCredential/AddConsumptionCredential",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/UpdateCustomerConsumptionCredential/UpdateCustomerConsumptionCredential",
+                    "query": "",
                     "scene": null
                 }
             ]
         }
-    },
-    "projectname": "fx-amiya-wxmini",
-    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+    }
 }

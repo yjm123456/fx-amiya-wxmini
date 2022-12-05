@@ -13,6 +13,8 @@ Page({
         consumeDate: "",
         payVoucherPicture1: "",
         payVoucherPicture2: "",
+        fileList:[],
+        fileList2:[],
         radio:0,
         display:false
     },
@@ -77,52 +79,70 @@ Page({
         }
 
     },
-    afterRead1(event) {
-        console.log(event.detail);
+    delete1(event) {
+        this.setData({
+          fileList: [],
+          payVoucherPicture1: ""
+        });
+      },
+      delete2(event) {
+        this.setData({
+          fileList2: [],
+          payVoucherPicture2: ""
+        });
+      },
+      afterRead1(event) {
         const {
-            file
+          file
         } = event.detail;
+        self = this;
+        var list = [];
+        list.push({
+          url: file.path,
+          deletable: true
+        });
+        this.setData({
+          fileList: list
+        });
         // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
         wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
-            filePath: file.path,
-            name: 'file',
-            formData: {
-                'file': file.path
-            },
-            success(res) {
-                console.log("成功");
-                var fileList = [];
-                fileList.push(res.data.url);
-                this.setData({
-                    payVoucherPicture1: fileList
-                });
-            },
-            fail(res) {
-                console.log("shibai");
-                console.log(res);
-            }
+          url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
+          filePath: file.path,
+          name: 'uploadfile',
+          success(res) {
+            var url = JSON.parse(res.data).data.url
+            self.setData({
+              payVoucherPicture1: url
+            });
+          },
         });
-    },
-    afterRead2(event) {
+      },
+      afterRead2(event) {
         const {
-            file
+          file
         } = event.detail;
+        self = this;
+        var list = [];
+        list.push({
+          url: file.path,
+          deletable: true
+        });
+        this.setData({
+          fileList2: list
+        });
         // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
         wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
-            filePath: file.url,
-            name: 'file',
-            formData: {
-                user: 'test'
-            },
-            success(res) {
-                this.setData({
-                    payVoucherPicture2: res.data.url
-                });
-            },
+          url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
+          filePath: file.path,
+          name: 'uploadfile',
+          success(res) {
+            var url = JSON.parse(res.data).data.url
+            self.setData({
+              payVoucherPicture2: url
+            });
+          },
         });
-    },
+      },
     updateConsumptionCredentials() {
         const data={
             id:this.data.id,
