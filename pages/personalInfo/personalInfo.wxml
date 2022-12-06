@@ -1,13 +1,17 @@
 <!--pages/personalInfo/personalInfo.wxml-->
 <view class="container">
     <van-cell-group border="{{fasle}}">
-        <van-cell custom-class='cell_item' value-class="cell_value" title="头像">
+        <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="头像">
             <view>
                 <image class="avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
             </view>
         </van-cell>
+        <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="头像">
+            <view>
+                <van-uploader preview-size="60rpx" max-count="1" deletable="{{true}}" bind:delete="delete" file-list="{{ fileList }}" bind:after-read="afterRead" />
+            </view>
+        </van-cell>
         <van-cell custom-class="cell_item" value-class="cell_value" title="手机号" value="{{userInfo.phone}} " is-link="{{!isEdit}}" bindtap="{{isEdit? '':'editPhone'}}" value="{{userInfo.phone}}" />
-        <van-cell custom-class='cell_item' value-class="cell_value" title="会员等级" value="vip1" />
 
         <van-cell wx:if="{{!isEdit}}" custom-class='cell_item' value-class="cell_value" title="昵称" value="{{userInfo.nickName}}" />
         <van-cell wx:else custom-class='cell_item' value-class="cell_value" title="昵称">

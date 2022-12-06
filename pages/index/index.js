@@ -108,9 +108,12 @@ Page({
             }
         })
     },
-    toCode() {
+    toCode(e) {
+
+        const {url}=e.currentTarget.dataset
+        console.log(url);
         wx.navigateTo({
-            url: '/pages/showCode/showCode',
+            url: url,
         })
     },
     //显示绑定赠送抵用券提示
@@ -282,19 +285,14 @@ Page({
     },
     handleActivity1() {
         wx.navigateTo({
-            url: '/pages/memberbenefits/memberbenefits',
+            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=dd'
         })
     },
-    handleActivity(e) {
-        if (e.currentTarget.dataset.activity === 1) {
-            wx.navigateTo({
-                url: '/pages/activity/activity?activityid=1',
-            })
-        } else {
-            wx.navigateTo({
-                url: '/pages/activity/activity?activityid=2',
-            })
-        }
+    handleActivity() {
+        wx.navigateTo({
+            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=jn'
+        })
+        
     },
     // 商品详情
     goodsDetails(e) {

@@ -1,3 +1,7 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "authPhone": "./../../components/authPhone/auth",
+        "van-dialog": "@vant/weapp/dialog/index"
+    },
+    "navigationBarTitleText": "形象设计"
 }

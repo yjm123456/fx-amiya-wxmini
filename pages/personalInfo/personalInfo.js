@@ -25,7 +25,8 @@ Page({
         timeNow: '',
         nickName: '',
         show: false,
-        newName:''
+        newName:'',
+        userAvatar:''
     },
 
     /**
@@ -52,29 +53,54 @@ Page({
         if(this.data.newName!==""){
             this.setData({show:false,isEditNickName:true})
         }
-    
-
     },
+    delete(event) {
+        this.setData({
+          fileList: [],
+          userAvatar: ""
+        });
+      },
+      afterRead(event) {
+        const {
+          file
+        } = event.detail;
+        self = this;
+        var list = [];
+        list.push({
+          url: file.path,
+          deletable: true
+        });
+        this.setData({
+          fileList: list
+        });
+        // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+        wx.uploadFile({
+          url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
+          filePath: file.path,
+          name: 'uploadfile',
+          success(res) {
+            var url = JSON.parse(res.data).data.url
+            self.setData({
+              userAvatar: url
+            });
+          },
+        });
+      },
     saveInfo() {
-        // if(!this.data.date){
-        //     wx.showToast({
-        //       title: '请输入生日',
-        //       icon:'none'
-        //     })
-        //     return
-        // }
         console.log("调用")
         let {
             gender,
             // date,
             province,
             city,
-            nickName,newName
+            nickName,newName,
+            userAvatar
         } = this.data
         if(newName!==""){
             nickName=newName
         }
         const data = {
+            userAvatar,
             gender,
             //date,
             province,
@@ -92,7 +118,11 @@ Page({
                 this.getUserInfo();
             }
 
-        })
+        });
+        this.setData({
+            userAvatr:"",
+            fileList:[]
+        });
     },
     showBirthPicker() {
         this.setData({

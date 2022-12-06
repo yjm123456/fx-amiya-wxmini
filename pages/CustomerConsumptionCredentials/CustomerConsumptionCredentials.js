@@ -11,22 +11,24 @@ Page({
         nextPage: true,
         //当前商品展示列表页码
         currentPageIndex: 1,
-        consumptionCredentialsList:[]
+        consumptionCredentialsList: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.CustomerConsumptionCredentials();
+        
     },
-    toDetail(e){
-        const {id}=e.currentTarget.dataset;
+    toDetail(e) {
+        const {
+            id
+        } = e.currentTarget.dataset;
         wx.navigateTo({
-            url: e.currentTarget.dataset.url+"?id="+id
+            url: e.currentTarget.dataset.url + "?id=" + id
         })
     },
-    CustomerConsumptionCredentials(){
+    CustomerConsumptionCredentials() {
         const {
             currentPageIndex,
             pageSize,
@@ -36,22 +38,22 @@ Page({
         const pageNum = currentPageIndex
         const data = {
             pageNum,
-            pageSize,         
+            pageSize,
         }
-        http("get", `/customerConsumptionCredentials/list`,data).then(res => {
+        http("get", `/customerConsumptionCredentials/list`, data).then(res => {
             if (res.code === 0) {
                 let {
                     list,
                     totalCount
                 } = res.data.customerConsumptionCredentials;
-                // list=list.map((item, index) => {                                     
-                //     return {
-                //         ...item,
-                //         CreateDate: orderDate
-                //     };
-                // });
+                list=list.map((item, index) => {                                     
+                    return {
+                        ...item,
+                        CreateDate1: item.consumeDate.split("T")[0]
+                    };
+                });
                 this.setData({
-                    consumptionCredentialsList:[...this.data.consumptionCredentialsList,...list]
+                    consumptionCredentialsList: [...this.data.consumptionCredentialsList, ...list]
                 });
                 this.data.currentPageIndex++;
                 if (this.data.consumptionCredentialsList.length === totalCount) {
@@ -62,7 +64,7 @@ Page({
             }
         })
     },
-    to(e){
+    to(e) {
         wx.navigateTo({
             url: e.currentTarget.dataset.url
         })
@@ -78,7 +80,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.setData({
+            pageNum: 1,
+            pageSize: 10,
+            nextPage: true,
+            //当前商品展示列表页码
+            currentPageIndex: 1,
+            consumptionCredentialsList: []
+        });
+        this.CustomerConsumptionCredentials();
     },
 
     /**
@@ -106,7 +116,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-
+        this.CustomerConsumptionCredentials();
     },
 
     /**

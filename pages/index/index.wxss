@@ -33,13 +33,15 @@ text {
 }
 
 .notice {
-    background-color: #313131 !important;
-    margin-top: 20rpx;
-    margin-bottom: 20rpx;
+    margin-top: 30rpx;
     border-radius: 20rpx;
+    height: 70rpx;
     overflow: hidden;
+    margin-bottom: 30rpx;
 }
-
+.notice_bar{
+    height: 100% !important;
+}
 .van-notice-bar__content {
     font-weight: 600;
     /* color: #DEC350; */

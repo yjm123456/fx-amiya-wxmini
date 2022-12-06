@@ -1,4 +1,11 @@
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
     <image  class="img" mode="widthFix" src="{{imgUrl}}"
 ></image>
+<view class="submit" catch:tap="toOrder" data-name="{{name}}" >选择{{liveAnchorName}}</view>
 </scroll-view>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<!-- 新客绑定提示弹窗 -->
+<van-dialog use-slot id="skbind_tip">
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a29f756b262946c8ad44ba554cdb6d37.png"></image>
+</van-dialog>

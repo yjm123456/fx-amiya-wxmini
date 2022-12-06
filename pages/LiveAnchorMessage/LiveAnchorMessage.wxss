@@ -9,3 +9,13 @@ page{
 .img{
     width: 750rpx;
 }
+.submit{
+    height: 80rpx;
+    background-color: #dec530;
+    border-radius: 20rpx;
+    margin: 20rpx 30rpx;
+    color: #fff;
+    font-size: 600;
+    line-height: 80rpx;
+    text-align: center;
+}

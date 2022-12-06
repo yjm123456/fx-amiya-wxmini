@@ -33,16 +33,21 @@
     </view>
   </view> -->
     <!-- 公告 -->
-    <view class="notice">
-        <van-notice-bar custom-class="notice_bar" bindtap="toCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
-    </view>
+        <swiper vertical='true' class="notice"	autoplay='true' circular='true' interval='5000' duration='1000' >
+            <swiper-item>
+                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/IntegralRule/IntegralRule" left-icon="volume-o" scrollable="{{ true }}" background="#262626" text="积分兑换有礼/积分规则~ MEIYA官方" />
+            </swiper-item>
+            <swiper-item>
+                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/showCode/showCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
+            </swiper-item>
+        </swiper>
     <!-- 活动 -->
     <view class="activity">
         <view class="activity_item">
-            <image src="../../images/hyfl.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="heightFix"></image>
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/38c06f303d1041e68c2054d2dba031f2.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="heightFix"></image>
         </view>
         <view class="activity_item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/334dbece0a7a4fc6be6a6d6dceeaaa89.png" bindtap="handleActivity" data-activity="{{2}}" mode="aspectFill"></image>
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7ad13c8c52ba4b98bbdf2ce2b7aaeea9.jpg" bindtap="handleActivity" data-activity="{{2}}" mode="aspectFill"></image>
         </view>
     </view>
     <!-- 导航栏二 -->
