@@ -23,6 +23,7 @@
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
 <!-- 新客绑定提示弹窗 -->
-<van-dialog use-slot id="skbind_tip">
-    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a29f756b262946c8ad44ba554cdb6d37.png"></image>
+<van-dialog use-slot showConfirmButton="{{false}}" show="{{show}}" id="skbind_tip">
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7cd41576dd504750a625f314b8ec3bc2.png"></image>
+    <view class="submit" catchtap="getVoucher">立即领取</view>
 </van-dialog>

@@ -79,7 +79,9 @@ Page({
         controlRecieveVoucher: false,
         //显示绑定赠送抵用券提示
         showVoucherTip: false,
-        scene:''
+        scene:'',
+        show:false,
+        voucherUrl:'https://ameiya.oss-cn-hangzhou.aliyuncs.com/05206138b16b44929a5751c21ca3e612.jpg'
     },
     /**
      * 生命周期函数--监听页面加载
@@ -89,7 +91,7 @@ Page({
         // if(scene != 'undefined'){           
         //     this.setSuperior(scene);
         // }
-
+        //this.showVoucherTips()
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 //暂时不显示领取优惠券
@@ -119,15 +121,18 @@ Page({
     //显示绑定赠送抵用券提示
     showVoucherTips() {
         Dialog.alert({
-            title: '新人福利',
             theme: 'round-button',
-            confirmButtonText: '立即领取',
+            confirmButtonText: "",
             closeOnClickOverlay: true,
-            customStyle: 'display:flex;flex-direction:column;justify-content:center;align-items:center;background-color: transparent !important;',
+            customStyle:"background-color:transparent !important;height:900rpx;margin-top:50rpx;postion:relative;width:550rpx;",
             selector: "#bind_tips"
         }).then(() => {
             this.handleBindPhone();
         });
+    },
+    getVoucher(){
+        this.setData({show:false})
+        this.handleBindPhone();
     },
     //领取抵用券
     recieve() {
@@ -311,7 +316,7 @@ Page({
         }
     },
     onReachBottom: function () {
-        this.getGoodsList()
+        // this.getGoodsList()
     },
     onShow() {
         this.getCarouselImage();
@@ -323,7 +328,7 @@ Page({
             goodsList:[]
         });
         console.log("展示");
-        this.getGoodsList();
+        // this.getGoodsList();
     },
 
     // 获取轮播图

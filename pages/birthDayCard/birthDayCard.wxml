@@ -1,0 +1,6 @@
+<!--pages/birthDayCard/birthDayCard.wxml-->
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <view class="content">
+        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7d554a429e1341698d3749b19e8bacbe.jpg"></image>
+    </view>
+</scroll-view>

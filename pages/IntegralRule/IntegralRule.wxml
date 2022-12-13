@@ -1,5 +1,12 @@
 <!--pages/IntegralRule/IntegralRule.wxml-->
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
-    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f7fe1b0ae9344158a803b294f0296ba5.jpg"></image>
+    <view class="content">
+        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/d6a80528af674faabe9448e0aa15724a.jpg"></image>
+        <image class="hands1" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
+        <image class="hands2" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
+        <image class="hands3" mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/0ca1283cf4f64e20b5bfa0354521581e.png"></image>  
+        <view class="redirect1" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" ></view>
+        <view class="redirect2" bindtap="toIntegral" data-url="/pages/shopping/shopping"></view>
+    </view>
 </scroll-view>
 

@@ -7,13 +7,12 @@ page{
     background-color: #000000;
 }
 
-text {
+/* text {
     font-weight: 600;
-    /* color: #DEC350; */
     background-image: -webkit-linear-gradient(right, #efcd71, #efcf77);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+} */
 
 /* 轮播图 */
 .banner {
@@ -31,13 +30,91 @@ text {
     width: 100%;
     height: 100%;
 }
-
-.notice {
+.mbanner{
+    margin-top: 20rpx;
+    box-sizing: border-box;
+    width: 710;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.mbanner-left{
+    display: flex;
+    flex-direction: row;
+    width: 320rpx;
+    justify-content: space-between
+}
+.mbanner-right{
+    display: flex;
+    flex-direction: row;
+    width: 320rpx;
+    justify-content: space-between;
+}
+.mbanner-item{
+    border-radius: 20rpx;
+    width: 150rpx;
+    height: 150rpx;
+    font-size: 28rpx;
+    background-color: #262626;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mbanner-item>view{
+    padding-bottom: 10rpx;
+}
+.mbanner-text{
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.mbanner-img{
+    width: 80%;
+    height: 80%;
+}
+.discount{
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.discount-item{
+    width: 340rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+    position: relative;
+}
+.discount-item>image{
+    width: 100%;
+}
+.join{
+    position: absolute;
+    width: 120rpx !important;
+    z-index: 5;
+    bottom: 70rpx;
+    left: 230rpx;
+}
+/* .notice {
     margin-top: 30rpx;
     border-radius: 20rpx;
     height: 70rpx;
     overflow: hidden;
     margin-bottom: 30rpx;
+} */
+.notice{
+    background-color: #262626;
+    border-radius: 20rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    height: 65rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.notice>image{
+
 }
 .notice_bar{
     height: 100% !important;
@@ -87,6 +164,7 @@ text {
 }
 
 .activity {
+    margin-top: 20rpx;
     display: flex;
     overflow: hidden;
     justify-content: space-between;
@@ -358,9 +436,12 @@ text {
 }
 
 .van-button--danger {
-    background: #DEC350 !important;
-    border: 0rpx !important;
-    border-radius: 20rpx !important;
+    background: transparent !important;
+    position: absolute;
+    top: -370rpx;
+    width: 300rpx !important;
+    height: 60rpx !important;
+    left: 120rpx;
 }
 
 .voucher_cotent {
@@ -383,20 +464,21 @@ text {
     color: #DEC350;
     font-weight: 600;
 }
-
-#bind_tip {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 300rpx;
-}
-
 #bind_tips .van-goods-action {
     background-color: transparent !important;
 }
 
 .tip_img {
     width: 100%;
+}
+.submit{
+    background-color: transparent;
+    color: transparent;
+    position: absolute;
+    margin-top: -116rpx;
+    left: 150rpx;
+    height: 60rpx !important;
+    width: 245rpx;
 }
 .van-notice-bar__left-icon{
     display: flex !important;

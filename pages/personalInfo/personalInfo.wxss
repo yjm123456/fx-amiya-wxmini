@@ -9,10 +9,61 @@ page{
     margin-right: 30rpx;
     margin-left: 30rpx;
 }
+.item_list{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+    background-color: #262626;
+}
+.item{
+    background-color: #262626;
+    height: 110rpx;
+    line-height: 110rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    border-bottom: 2rpx #e2e2e2 solid;
+}
+.avatar_item{
+    background-color: #262626;
+    height: 150rpx;
+    line-height: 150rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    border-bottom: 2rpx #e2e2e2 solid;
+}
 .avatar{
-    width: 45rpx;
+    width: 120rpx;
     height: 45rpx;
     border-radius: 5rpx;
+}
+.avatar_url{
+    width: 150rpx;
+    color: #e2e2e2;
+    font-size: 32rpx;
+}
+.info_text{
+    width: 500rpx;
+    margin-left: 50rpx;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.van-uploader{
+    top: 20rpx;
+}
+ .avatar_img{
+     margin-left: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rgroup{
+    display: flex;
+    justify-content: space-around;
 }
 .cell_item{
     background-color: #262626 !important;
@@ -28,4 +79,13 @@ page{
     left: 0;
     right: 0;
     z-index: 9;
+  }
+  .van-field__input{
+    color: #fff !important;
+  }
+  .van-cell__value{
+      color: #fff !important;
+  }
+  .van-radio__label{
+      color: #fff !important;
   }

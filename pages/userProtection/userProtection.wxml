@@ -1,6 +1,6 @@
 <!--pages/userProtection/userProtection.wxml-->
-<view class="center">敬请期待...</view>
-<!-- <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
-    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/196fcf70df514184a8a2a9d7c36308fb.jpg"></image>
-</scroll-view> -->
+<!-- <view class="center">敬请期待...</view> -->
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/d3804efe2b9c4e17b9592e265e41aca2.png"></image>
+</scroll-view>
 

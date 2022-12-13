@@ -30,7 +30,55 @@ Page({
         totalBalance: 0,
         //抵用券弹窗
         controlConsumptionVoucher: false,
-        active:0
+        active:0,
+        growthBalanceInfo:{},
+        percentage:0,
+        style:"",
+        voucherCount:0
+    },
+    //获取成长值信息
+    GetGrowthPoint() {
+        http("get", `/GrowthPointsAccount/balance`).then(res => {
+            if (res.code === 0) {
+                const {
+                    growthBalanceInfo
+                } = res.data;
+                console.log(growthBalanceInfo.balance/(growthBalanceInfo.balance+growthBalanceInfo.upgradeGrowthPoints)*100);
+                this.setData({
+                    growthBalanceInfo,
+                    percentage:(growthBalanceInfo.balance/(growthBalanceInfo.balance+growthBalanceInfo.upgradeGrowthPoints)*100).toFixed(2)
+                })
+            }
+        })
+    },
+    getConsumptionVoucher() {
+        // const {
+        //     pageNum,
+        //     pageSize,
+        //     nextPage,
+        //     type
+        // } = this.data;
+        // if (!nextPage) return;
+        const data = {
+            pageNum:1,
+            pageSize:1,
+            type:1
+        }
+        http("get", `/CustomerConsumptionVoucher/list`, data).then(res => {
+            if (res.code === 0) {
+                let {
+                    totalCount
+                } = res.data.customerConsumptionVoucherList;
+                this.setData({
+                    voucherCount:totalCount
+                })
+            }
+        })
+    },
+    toIntegralPage(){
+        wx.navigateTo({
+          url: '/pages/integral/integral',
+        })
     },
     toRechargeList() {
         this.isCustomer((isCustomer) => {
@@ -51,15 +99,17 @@ Page({
         checkUserTokenInfo().then(res => {
             this.isAuthorizationUserInfo();
             // this.getMemberCardInfo();
-            // this.getIntegral();
+            //this.getIntegral();
             // this.getBalance();
         })
         this.isCustomer((isCustomer) => {
             console.log("是否是客户");
             if (isCustomer) {
                 this.getMemberCardInfo();
-                //this.getIntegral();
+                this.getIntegral();
                 this.getBalance();
+                this.GetGrowthPoint();
+                this.getConsumptionVoucher();
             } else {
                 wx.showToast({
                     title: '请绑定手机号',
@@ -69,7 +119,7 @@ Page({
             }
         })
         
-        this.getCode()
+        //this.getCode()
     },
     onChange(event) {
         
@@ -349,6 +399,22 @@ Page({
     getMemberCardInfo() {
         http("get", `/MemberCard/cardinfo`).then(res => {
             if (res.code === 0) {
+                console.log("结果"+res.data.memberCard.memberRankName=='MEIYA铂金卡会员');
+                if(res.data.memberCard.memberRankName=='MEIYA时尚卡会员'){
+                    this.setData({style:"background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"})
+                }
+                if(res.data.memberCard.memberRankName=='MEIYA金卡会员'){
+                    this.setData({style:"background-image: -webkit-linear-gradient(right, #97461a, #d36326,#6c2e16,#e9833c);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"})
+                }
+                if(res.data.memberCard.memberRankName=='MEIYA铂金卡会员'){
+                    this.setData({style:"background-image: -webkit-linear-gradient(right, #d9bfa1, #ffffff,#e8cea4,#ffffff,#e8cfa4);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"})
+                }
+                if(res.data.memberCard.memberRankName=='MEIYA钻石卡会员'){
+                    this.setData({style:"background-image: -webkit-linear-gradient(right, #fff9c8, #e1ad7b,#fff9c8,#e2ae7c,#fff9c8,#e1ad7b);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"})
+                }
+                if(res.data.memberCard.memberRankName=='MEIYA黑卡会员'){
+                    this.setData({style:"background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"})
+                }
                 this.setData({
                     memberCard: res.data.memberCard
                 })
@@ -390,19 +456,19 @@ Page({
         })
     },
 
-    // 获取客户的积分余额   get
-    // getIntegral() {
-    //     http("get", `/IntegrationAccount/balance`).then(res => {
-    //         if (res.code === 0) {
-    //             const {
-    //                 balance
-    //             } = res.data;
-    //             this.setData({
-    //                 balance
-    //             })
-    //         }
-    //     })
-    // },
+    //获取客户的积分余额 
+    getIntegral() {
+        http("get", `/IntegrationAccount/balance`).then(res => {
+            if (res.code === 0) {
+                const {
+                    balance
+                } = res.data;
+                this.setData({
+                    balance
+                })
+            }
+        })
+    },
     concat() {
         wx.openCustomerServiceChat();
     },

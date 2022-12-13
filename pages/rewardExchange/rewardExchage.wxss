@@ -1,0 +1,11 @@
+/* pages/rewardExchange/rewardExchage.wxss */
+page{
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.img{
+    width: 750rpx;
+}

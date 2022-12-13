@@ -1,11 +1,11 @@
-// pages/IntegralRule/IntegralRule.js
+// pages/rewardExchange/rewardExchage.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        sysheight:0
+
     },
 
     /**
@@ -20,21 +20,7 @@ Page({
             },
           })
     },
-    redirect(e) {
-        if (e.currentTarget.dataset.url) {
-            wx.navigateTo({
-                url: e.currentTarget.dataset.url,
-            })
-        }
-    },
-    toIntegral(e) {
-        const {
-            url
-        } = e.currentTarget.dataset
-        wx.switchTab({
-            url: url,
-        })
-    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

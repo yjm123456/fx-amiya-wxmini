@@ -8,7 +8,8 @@
         "van-grid-item": "@vant/weapp/grid-item/index",
         "van-icon": "@vant/weapp/icon/index",
         "van-tab": "@vant/weapp/tab/index",
-        "van-tabs": "@vant/weapp/tabs/index"
+        "van-tabs": "@vant/weapp/tabs/index",
+        "van-progress": "@vant/weapp/progress/index"
     },
     "navigationBarTitleText": "我的"
 }

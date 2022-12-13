@@ -6,7 +6,9 @@
   padding: 0 30rpx;
   box-sizing: border-box;
 }
-
+.c-info{
+    color: #fff;
+}
 .authPopupWrapper>view:first-child {
   display: flex;
   flex-direction: column;

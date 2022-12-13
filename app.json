@@ -65,7 +65,12 @@
         "pages/subordinateOrder/subordinateOrder",
         "pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials",
         "pages/AddConsumptionCredential/AddConsumptionCredential",
-        "pages/UpdateCustomerConsumptionCredential/UpdateCustomerConsumptionCredential"
+        "pages/UpdateCustomerConsumptionCredential/UpdateCustomerConsumptionCredential",
+        "pages/rewardExchange/rewardExchage",
+        "pages/discount/discount",
+        "pages/liveOnLine/liveOnLine",
+        "pages/birthDayCard/birthDayCard",
+        "pages/festivalGift/festivalGift"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

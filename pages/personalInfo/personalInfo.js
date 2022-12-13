@@ -18,14 +18,19 @@ Page({
         area: [],
         province: '',
         city: '',
-        gender: '',
+        gender: "1",
         genderList: ['男', '女'],
         isEditArea: false,
         isEditGender: false,
-        timeNow: '',
+        timeNow: new Date(),
+        //昵称
         nickName: '',
+        //姓名
+        Name:'',
+        //个性签名
+        personalSignature:'',
         show: false,
-        newName:'',
+        newNickName:'',
         userAvatar:''
     },
 
@@ -49,10 +54,29 @@ Page({
         })
         this.getUserInfo();
     },
-    updateNickName(){
-        if(this.data.newName!==""){
-            this.setData({show:false,isEditNickName:true})
-        }
+    //编辑昵称
+    onNickNameChange(event){
+        var nickName=event.detail;
+        this.setData({
+            nickName
+        });
+    },
+    onNameChange(event){
+        var Name=event.detail;
+        this.setData({
+            Name
+        });
+    },
+    onPersonalSignatureChange(event){
+        var personalSignature=event.detail;
+        this.setData({
+            personalSignature
+        });
+    },
+    onGenderChange(event){
+        this.setData({
+            gender: event.detail,
+          });
     },
     delete(event) {
         this.setData({
@@ -90,22 +114,53 @@ Page({
         console.log("调用")
         let {
             gender,
-            // date,
+            //生日
+            date,
             province,
             city,
-            nickName,newName,
-            userAvatar
+            //昵称
+            nickName,
+            //真实姓名
+            Name,
+            //头像
+            userAvatar,
+            personalSignature,
+            area1
         } = this.data
-        if(newName!==""){
-            nickName=newName
+        if(!userAvatar){
+            wx.showToast({
+              title: '请选择头像',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!nickName){
+            wx.showToast({
+              title: '请输入昵称',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!Name){
+            wx.showToast({
+              title: '请输入姓名',
+              icon:'none',
+              duration:1000
+            })
+            return;
         }
         const data = {
             userAvatar,
             gender,
-            //date,
+            date,
             province,
             city,
-            nickName
+            area:area1,
+            nickName,
+            name:Name,
+            personalSignature
         }
         http("put", "/User/userEditInfo", data).then((res) => {
             if (res.code === 0) {
@@ -151,13 +206,12 @@ Page({
             province: '',
             city: '',
             gender: '',
-            newName:''
+            nickName:''
         })
     },
     bindChange: function (e) {
         this.setData({
             date: e.detail.value,
-            isEditBirth: true
         })
     },
     bindAreaChange: function (e) {
@@ -166,7 +220,8 @@ Page({
             area: area,
             isEditArea: true,
             province: area[0],
-            city: area[1]
+            city: area[1],
+            area1:area[2]
         })
     },
     chooseGender() {
@@ -247,14 +302,23 @@ Page({
     getUserInfo() {
         http("get", "/User/info").then(res => {
             if (res.code === 0) {
-                console.log(res.data.userInfo.sex === '男')
                 this.setData({
                     userInfo: res.data.userInfo,
-                    gender: res.data.userInfo.sex === '男' ? 1 : res.data.userInfo.sex === '女' ? 2 : 0,
+                    gender: (res.data.userInfo.gender+1).toString(),
                     city: res.data.userInfo.city,
+                    area1:res.data.userInfo.area,
                     province: res.data.userInfo.province,
-                    nickName:res.data.userInfo.nickName
+                    nickName:res.data.userInfo.nickName,
+                    Name:res.data.userInfo.name,
+                    personalSignature:res.data.userInfo.personalSignature,
+                    date:res.data.userInfo.birthDay.split("T")[0],                  
                 })
+                var list=[];
+                list.push({deletable:true,url:res.data.userInfo.avatarUrl})
+                this.setData({
+                    fileList:list,
+                    userAvatar:res.data.userInfo.avatarUrl
+                });
             }
         });
     },

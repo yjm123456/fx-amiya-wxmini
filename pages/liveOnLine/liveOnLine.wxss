@@ -1,0 +1,16 @@
+/* pages/liveOnLine/liveOnLine.wxss */
+page{
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.center{
+    color:#fff;
+    font-size: 38rpx;
+    font-weight: 600
+}
+.img{
+    width: 750rpx;
+}

@@ -75,6 +75,21 @@ Page({
             })
         })
     },
+    toIntegral(e) {
+        const {
+            url
+        } = e.currentTarget.dataset
+        wx.switchTab({
+            url: url,
+        })
+    },
+    redirect(e) {
+        if (e.currentTarget.dataset.url) {
+            wx.navigateTo({
+                url: e.currentTarget.dataset.url,
+            })
+        }
+    },
     // 判断是否需要授权微信用户信息
     isAuthorizationUserInfo() {
         isAuthorizationUserInfo().then(res => {

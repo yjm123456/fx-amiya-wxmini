@@ -10,12 +10,30 @@ page{
     width: 750rpx;
 }
 .submit{
-    height: 80rpx;
-    background-color: #dec530;
-    border-radius: 20rpx;
-    margin: 20rpx 30rpx;
-    color: #fff;
-    font-size: 600;
-    line-height: 80rpx;
-    text-align: center;
+    position: relative;
+    z-index: 2;
+    width: 220rpx;
+    top: -830rpx;
+    left: 60rpx;
+}
+.submit2{
+    background-color: transparent;
+    color: transparent;
+    position: absolute;
+    margin-top: -116rpx;
+    left: 150rpx;
+    height: 60rpx !important;
+    width: 245rpx;
+}
+.van-button--danger {
+    background: transparent !important;
+    border: 0rpx !important;
+    border-radius: 20rpx !important;
+}
+
+#skbind_tip .van-goods-action {
+    background-color: transparent !important;
+}
+.tip_img {
+    width: 100%;
 }

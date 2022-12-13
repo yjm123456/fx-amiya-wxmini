@@ -1,0 +1,4 @@
+<!--pages/rewardExchange/rewardExchage.wxml-->
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/eb7f4209ad304153832ea50bfe10fdf7.jpg"></image>
+</scroll-view>

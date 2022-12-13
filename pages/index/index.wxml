@@ -5,43 +5,7 @@
             <image src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
         </swiper-item>
     </swiper>
-    <!-- 咨询 -->
-    <!-- <view class="consulting_service">
-    <image class="img" src="/images/amy.png"></image>
-    <view class="consulting_center">
-      <view class="h3">客服咨询</view>
-      <view class="h4">美容整形医院项目咨询</view>
-    </view>
-    <view>
-      
-    </view>
-    <button class='customerService' hover-class="none" bindcontact="handleContact" openType="contact">
-      <view class="service">立即咨询</view>
-      
-		</button>
-  </view> -->
-    <!-- 项目分类 -->
-    <!-- <view class="project_con" wx:if="{{projectArr.length}}">
-    <view class="title_h3">项目分类</view>
-    <view class="con">
-      <block wx:for="{{projectArr}}" wx:key="index">
-        <view class="item" bindtap="projectClass">
-          <van-image width="30" height="30" src="{{item.img}}"/>
-          <view class="text">{{item.name}}</view>
-        </view>
-      </block>
-    </view>
-  </view> -->
-    <!-- 公告 -->
-        <swiper vertical='true' class="notice"	autoplay='true' circular='true' interval='5000' duration='1000' >
-            <swiper-item>
-                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/IntegralRule/IntegralRule" left-icon="volume-o" scrollable="{{ true }}" background="#262626" text="积分兑换有礼/积分规则~ MEIYA官方" />
-            </swiper-item>
-            <swiper-item>
-                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/showCode/showCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
-            </swiper-item>
-        </swiper>
-    <!-- 活动 -->
+
     <view class="activity">
         <view class="activity_item">
             <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/38c06f303d1041e68c2054d2dba031f2.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="heightFix"></image>
@@ -50,15 +14,67 @@
             <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7ad13c8c52ba4b98bbdf2ce2b7aaeea9.jpg" bindtap="handleActivity" data-activity="{{2}}" mode="aspectFill"></image>
         </view>
     </view>
+    <view class="mbanner">
+        <view class="mbanner-left">
+            <view class="mbanner-item">
+                <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
+                <text class="mbanner-text">消费领积分</text>
+            </view>
+            <view class="mbanner-item">
+                <image class="mbanner-img" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
+                <text class="mbanner-text">会员权益</text>
+            </view>
+        </view>
+
+        <view class="mbanner-right">
+            <view class="mbanner-item">
+                <image class="mbanner-img" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/365ac12f6c1c439589ec1916a24e6b5e.png"></image>
+                <text class="mbanner-text">美学分享</text>
+            </view>
+            <view class="mbanner-item">
+                <image class="mbanner-img" bindtap="redirect" data-url="/pages/liveOnLine/liveOnLine" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c315c3bfcd7e468dbb7b651e5fb3789d.png"></image>
+                <text class="mbanner-text">直播在线</text>
+            </view>
+        </view>
+    </view>
     <!-- 导航栏二 -->
-    <view class="navigation_list">
+    <!-- <view class="navigation_list">
         <view class="grid_item" data-url="/pages/meiYaCard/meiYaCard" bindtap="to"><text>MEIYA卡</text></view>
         <view class="grid_item" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><text>MEIYA甄选</text></view>
         <view class="grid_item" data-url="/pages/beautyDiary/beautyDiary" bindtap="to"><text>美学分享</text></view>
+    </view> -->
+    <!-- 优惠板块 -->
+    <view class="discount">
+        <view class="discount-item">
+            <image mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/72085ac6b4be4fc584c4c6215895b82e.jpg"></image>
+            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2ea04a3d18ed4fcc85e4b617928837a1.png"></image>
+        </view>
+        <view class="discount-item">
+            <image mode="widthFix" bindtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a6bf2ce4582f458a9937d578b140ef24.png"></image>
+            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/00aa4ab7630b4a87bb47d445bead3129.png"></image>
+        </view>
     </view>
-
+    <!-- 公告 -->
+    <!-- <swiper vertical='true' class="notice"	autoplay='true' circular='true' interval='5000' duration='1000' >
+            <swiper-item>
+                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" left-icon="volume-o" scrollable="{{ true }}" background="#262626" text="积分兑换有礼~ MEIYA官方" />
+            </swiper-item>
+            <swiper-item>
+                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/showCode/showCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
+            </swiper-item>
+        </swiper> -->
+    <!-- 4999美肤券 -->
+    <view class="notice" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><image mode="aspectFit" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/4432f39842504aebb1dd50455d066deb.png"></image></view>
+    <view class="discount">
+        <view class="discount-item">
+            <image mode="widthFix" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/662ec8f5c5b243e0bbbf186db4902381.jpg"></image>
+        </view>
+        <view class="discount-item">
+            <image mode="widthFix" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=jn" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/05b81b63d323482fa6df5fb249111d12.jpg"></image>
+        </view>
+    </view>
     <!-- 商品列表 -->
-    <view class="product_list">
+    <!-- <view class="product_list">
         <view class="h3 title">猜你喜欢</view>
         <view class="product_warp">
             <view class="product" wx:for="{{goodsList}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
@@ -72,6 +88,26 @@
                         <view class="price">
                             <text class="present_price">¥{{item.minShowPrice}}</text>
                             <text class="original_price">¥{{item.maxShowPrice}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+    <view class="product_list">
+        <view class="h3 title">推荐商品</view>
+        <view class="product_warp">
+            <view class="product" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd"  data-goodsid="{{item.id}}" wx:key="index">
+                <view wx:if="{{false}}" class="tag">会员专享</view>
+                <view>
+                    <view class="product_top">
+                        <image src="{{voucherUrl}}" mode="widthFix"></image>
+                    </view>
+                    <view class="product_bottom">
+                        <view class="product_name">{{"定制美肤券"}}</view>
+                        <view class="price">
+                            <text class="present_price">¥{{4999}}</text>
+                            <text class="original_price">¥{{16800}}</text>
                         </view>
                     </view>
                 </view>
@@ -106,6 +142,7 @@
 </van-dialog>
 
 <!-- 新客绑定提示弹窗 -->
-<van-dialog use-slot id="bind_tips">
-    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a29f756b262946c8ad44ba554cdb6d37.png"></image>
+<van-dialog showConfirmButton="{{false}}" show="{{show}}" use-slot id="bind_tips">
+    <image  class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7cd41576dd504750a625f314b8ec3bc2.png"></image>
+    <view class="submit" catchtap="getVoucher">立即领取</view>
 </van-dialog>

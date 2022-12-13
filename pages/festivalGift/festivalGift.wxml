@@ -1,0 +1,6 @@
+<!--pages/festivalGift/festivalGift.wxml-->
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <view class="content">
+        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c6f048f074414cd6b297347a2425329a.jpg"></image>
+    </view>
+</scroll-view>

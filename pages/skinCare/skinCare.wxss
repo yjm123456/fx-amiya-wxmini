@@ -55,7 +55,7 @@ page {
 }
 
 .van-button--danger {
-    background: #DEC350 !important;
+    background: transparent !important;
     border: 0rpx !important;
     border-radius: 20rpx !important;
 }
@@ -92,4 +92,13 @@ page {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.submit{
+    background-color: transparent;
+    color: transparent;
+    position: absolute;
+    margin-top: -116rpx;
+    left: 150rpx;
+    height: 60rpx !important;
+    width: 245rpx;
 }

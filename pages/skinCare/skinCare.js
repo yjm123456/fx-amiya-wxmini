@@ -23,7 +23,8 @@ Page({
         showVoucherTip: false,
         numList:[],
         saleCount:78,
-        goodsInfo:{}
+        goodsInfo:{},
+        show:false
     },
 
     /**
@@ -71,6 +72,10 @@ Page({
                 })
             }
         })
+    },
+    getVoucher(){
+        this.setData({show:false})
+        this.handleBindPhone();
     },
     getMoble(){
         var numArray = new Array("139","138","137","136","135","134","159","158","157","150","151","152","188","187","182","183","184","178","130","131","132","156","155","186","185","176","133","153","189","180","181","177");  //这是目前找到的除了数据卡外的手机卡前三位，类型是字符串数组
@@ -130,15 +135,15 @@ Page({
     //显示绑定赠送抵用券提示
     showVoucherTips() {
         Dialog.alert({
-            title: '新人福利',
             theme: 'round-button',
-            confirmButtonText: '立即领取',
+            confirmButtonText: "",
             closeOnClickOverlay: true,
-            customStyle: 'display:flex;flex-direction:column;justify-content:center;align-items:center;background-color: transparent !important;',
+            customStyle:"background-color:transparent !important;height:900rpx;margin-top:50rpx;postion:relative;width:550rpx;",
             selector: "#skbind_tip",
             context:this
         }).then(() => {
-            this.handleBindPhone();
+            return;
+            // this.handleBindPhone();
         });
     },
     // 绑定手机号

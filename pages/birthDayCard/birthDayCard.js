@@ -1,11 +1,13 @@
-// pages/IntegralRule/IntegralRule.js
+// pages/birthDayCard/birthDayCard.js
+import http from './../../utils/http';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        sysheight:0
+        sysheight:0,
+        birthDay:{}
     },
 
     /**
@@ -19,21 +21,17 @@ Page({
               })
             },
           })
+          this.getBirthCard();
     },
-    redirect(e) {
-        if (e.currentTarget.dataset.url) {
-            wx.navigateTo({
-                url: e.currentTarget.dataset.url,
-            })
-        }
-    },
-    toIntegral(e) {
-        const {
-            url
-        } = e.currentTarget.dataset
-        wx.switchTab({
-            url: url,
-        })
+    getBirthCard(){
+        http("get", "/User/birthDayCard").then(res => {
+            if (res.code === 0) {
+                var birthDay= res.data.birthDay;
+                this.setData({
+                    birthDay
+                })           
+            }
+        });
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

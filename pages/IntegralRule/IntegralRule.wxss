@@ -6,11 +6,49 @@ page{
     align-items: center;
     height: 100%;
 }
-.center{
-    color:#fff;
-    font-size: 38rpx;
-    font-weight: 600
+.content{
+    position: relative;
+    z-index: 1;
 }
 .img{
     width: 750rpx;
+}
+.hands1{
+    position: absolute;
+    width: 50rpx;
+    z-index: 999999;
+    top: 1540rpx;
+    left: 410rpx;
+}
+.hands2{
+    position: absolute;
+    width: 50rpx;
+    z-index: 999999;
+    top: 2060rpx;
+    left: 200rpx;
+}
+.hands3{
+    position: absolute;
+    width: 180rpx;
+    z-index: 999999;
+    top: 2270rpx;
+    left: 490rpx;
+}
+.redirect1{
+    background-color: transparent;
+    position: absolute;
+    z-index: 999999;
+    width: 120rpx;
+    height: 120rpx;
+    top: 1450rpx;
+    left: 320rpx;
+}
+.redirect2{
+    background-color: transparent;
+    position: absolute;
+    z-index: 999999;
+    width: 120rpx;
+    height: 120rpx;
+    top: 1970rpx;
+    left: 110rpx;
 }

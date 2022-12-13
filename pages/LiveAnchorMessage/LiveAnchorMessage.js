@@ -14,7 +14,10 @@ Page({
         sysheight:'',
         liveAnchorName:'',
         controlAuthPhone:false,
-        name:''
+        name:'',
+        gifName:'',
+        style:"",
+        show:false
     },
 
     /**
@@ -34,13 +37,17 @@ Page({
         });
         if(name=="dd"){
             this.setData({
-                imgUrl:"https://ameiya.oss-cn-hangzhou.aliyuncs.com/8bdb5fff0b98448981c84a20c2d5ecf1.jpg",
-                liveAnchorName:"刀刀"
+                imgUrl:"https://ameiya.oss-cn-hangzhou.aliyuncs.com/5eb69ef16d554614abe84cb69dc8365e.jpg",
+                liveAnchorName:"刀刀",
+                gifName:'https://ameiya.oss-cn-hangzhou.aliyuncs.com/ca60892b41d348d498cd77f4ee8e1026.png',
+                style:"top: -800rpx;"
             });
         }else if(name=="jn"){
             this.setData({
-                imgUrl:"https://ameiya.oss-cn-hangzhou.aliyuncs.com/fe480caf3af24e6e90d1d9c96a0f9555.jpg",
-                liveAnchorName:"吉娜"
+                imgUrl:"https://ameiya.oss-cn-hangzhou.aliyuncs.com/5a1745da57254910a1706278803e15e2.jpg",
+                liveAnchorName:"吉娜",
+                gifName:'https://ameiya.oss-cn-hangzhou.aliyuncs.com/28be25a1e68c4040b3590ad0f4e7a1d6.png',
+                style:"top: -820rpx;"
             });
         }
     },
@@ -58,6 +65,10 @@ Page({
             }
         })
     },
+    getVoucher(){
+        this.setData({show:false})
+        this.handleBindPhone();
+    },
     isCustomer(callback) {
         iscustomer().then(res => {
             if (res.code === 0) {
@@ -71,11 +82,10 @@ Page({
     //显示绑定赠送抵用券提示
     showVoucherTips() {
         Dialog.alert({
-            title: '新人福利',
             theme: 'round-button',
-            confirmButtonText: '立即领取',
+            confirmButtonText: "",
             closeOnClickOverlay: true,
-            customStyle: 'display:flex;flex-direction:column;justify-content:center;align-items:center;background-color: transparent !important;',
+            customStyle:"background-color:transparent !important;height:900rpx;margin-top:50rpx;postion:relative;width:550rpx;",
             selector: "#skbind_tip",
             context: this
         }).then(() => {

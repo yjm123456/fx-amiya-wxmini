@@ -3,15 +3,19 @@ Page{
     width: 100%;
     height: 100%;
     background-color: #000;
+    position: relative;
 }
 .content{
+    background-image: url("https://ameiya.oss-cn-hangzhou.aliyuncs.com/a8057b6d70c540c3908a9fad1ea0b1a4.jpg");
+    background-size: 100% 100%;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    position: relative;
 }
 .qrCode{
+    position: absolute;
     width: 350rpx;
-    margin: 0 auto;
+    margin-top: 40vh;
 }
