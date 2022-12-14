@@ -151,6 +151,14 @@ Page({
             })
             return;
         }
+        if(!date){
+            wx.showToast({
+              title: '请输入生日',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
         const data = {
             userAvatar,
             gender,
@@ -301,7 +309,10 @@ Page({
     },
     getUserInfo() {
         http("get", "/User/info").then(res => {
+            console.log("进入");
+            console.log("code"+res.code);
             if (res.code === 0) {
+                console.log("是否为空"+res.data.userInfo.name);
                 this.setData({
                     userInfo: res.data.userInfo,
                     gender: (res.data.userInfo.gender+1).toString(),
@@ -309,9 +320,9 @@ Page({
                     area1:res.data.userInfo.area,
                     province: res.data.userInfo.province,
                     nickName:res.data.userInfo.nickName,
-                    Name:res.data.userInfo.name,
-                    personalSignature:res.data.userInfo.personalSignature,
-                    date:res.data.userInfo.birthDay.split("T")[0],                  
+                    Name:!res.data.userInfo.name ?"":res.data.userInfo.name,
+                    personalSignature:!res.data.userInfo.personalSignature ?"":res.data.userInfo.personalSignature,
+                    date:res.data.userInfo.birthDay==null?"": res.data.userInfo.birthDay.split("T")[0],                  
                 })
                 var list=[];
                 list.push({deletable:true,url:res.data.userInfo.avatarUrl})

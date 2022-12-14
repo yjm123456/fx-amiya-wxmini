@@ -1,6 +1,6 @@
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
-    <image wx:if="{{name=='dd'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/93322b3bc66c4e97bde7612b471fbf88.jpg"></image>
-    <image wx:elif="{{name=='jn'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/29573a5dfe6e4d1f91ad2ee2c3205d6e.jpg"
+    <image wx:if="{{name=='dd'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/042e966eb3974c1584cd73a2913f7655.jpg"></image>
+    <image wx:elif="{{name=='jn'}}" class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/042e966eb3974c1584cd73a2913f7655.jpg"
 ></image>
     <view class="scroll">
         <!-- <view class="sale">已售{{saleCount}}份</view> -->

@@ -6,7 +6,7 @@
             <view wx:if="{{!isEdit}}" class="avatar_img">
                 <image class="avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
             </view>
-            <view wx:else class="info_text">
+            <view wx:else class="info_text edit_image">
                         <van-uploader preview-size="120rpx" max-count="1" deletable="{{true}}" bind:delete="delete" file-list="{{ fileList }}" bind:after-read="afterRead" />
             </view>
         </view>
@@ -22,7 +22,7 @@
         <view class="item">
             <view class="avatar_url">真实姓名</view>
             <view wx:if="{{!isEdit}}" class="info_text">
-                <text>{{userInfo.name}}</text>
+                <text>{{!userInfo.name?"":userInfo.name}}</text>
             </view>
             <view wx:else class="info_text">
                 <van-field value="{{ Name }}" placeholder="请输入姓名" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onNameChange" />
@@ -52,7 +52,7 @@
         <view class="item">
             <view class="avatar_url">个性签名</view>
             <view wx:if="{{!isEdit}}" class="info_text">
-                <text>{{userInfo.personalSignature}}</text>
+                <text>{{!userInfo.personalSignature?"":userInfo.personalSignature}}</text>
             </view>
             <view wx:else class="info_text">
                 <van-field value="{{ personalSignature }}" placeholder="请输入个性签名" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onPersonalSignatureChange" />
@@ -65,18 +65,18 @@
             </view>
             <view wx:else class="info_text" bindtap="cleander">
                 <picker mode="date" end='{{timeNow}}' bindchange="bindChange" value="{{date}}">
-                    <van-field value="{{ date }}" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" />
+                    <van-field value="{{ !date ? '请选择':date}}" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" />
                 </picker>
             </view>
         </view>
         <view class="item">
             <view class="avatar_url">所在城市</view>
             <view wx:if="{{!isEdit}}" class="info_text">
-                <text>{{city+"-"+area1}}</text>
+                <text>{{!area1?"": city+"-"+area1}}</text>
             </view>
             <view wx:else class="info_text">
                 <picker mode="region" bindchange="bindAreaChange" value="{{area}}">
-                    <text>{{ city+"-"+area1 }}</text>
+                    <text>{{ !area1?"请选择": city+"-"+area1 }}</text>
                 </picker>
             </view>
         </view>

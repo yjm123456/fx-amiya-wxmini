@@ -11,11 +11,11 @@
             <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/38c06f303d1041e68c2054d2dba031f2.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="heightFix"></image>
         </view>
         <view class="activity_item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7ad13c8c52ba4b98bbdf2ce2b7aaeea9.jpg" bindtap="handleActivity" data-activity="{{2}}" mode="aspectFill"></image>
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/54a6793de31e4f3da3667feb897f4fc7.jpg" bindtap="handleActivity" data-activity="{{2}}" mode="aspectFill"></image>
         </view>
     </view>
     <view class="mbanner">
-        <view class="mbanner-left">
+        <!-- <view class="mbanner-left"> -->
             <view class="mbanner-item">
                 <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
                 <text class="mbanner-text">消费领积分</text>
@@ -24,18 +24,18 @@
                 <image class="mbanner-img" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
                 <text class="mbanner-text">会员权益</text>
             </view>
-        </view>
+        <!-- </view> -->
 
-        <view class="mbanner-right">
+        <!-- <view class="mbanner-left"> -->
             <view class="mbanner-item">
                 <image class="mbanner-img" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/365ac12f6c1c439589ec1916a24e6b5e.png"></image>
                 <text class="mbanner-text">美学分享</text>
             </view>
             <view class="mbanner-item">
                 <image class="mbanner-img" bindtap="redirect" data-url="/pages/liveOnLine/liveOnLine" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c315c3bfcd7e468dbb7b651e5fb3789d.png"></image>
-                <text class="mbanner-text">直播在线</text>
+                <text class="mbanner-text">视频号</text>
             </view>
-        </view>
+        <!-- </view> -->
     </view>
     <!-- 导航栏二 -->
     <!-- <view class="navigation_list">
@@ -65,14 +65,14 @@
         </swiper> -->
     <!-- 4999美肤券 -->
     <view class="notice" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><image mode="aspectFit" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/4432f39842504aebb1dd50455d066deb.png"></image></view>
-    <view class="discount">
+    <!-- <view class="discount">
         <view class="discount-item">
             <image mode="widthFix" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/662ec8f5c5b243e0bbbf186db4902381.jpg"></image>
         </view>
         <view class="discount-item">
             <image mode="widthFix" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=jn" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/05b81b63d323482fa6df5fb249111d12.jpg"></image>
         </view>
-    </view>
+    </view> -->
     <!-- 商品列表 -->
     <!-- <view class="product_list">
         <view class="h3 title">猜你喜欢</view>
@@ -95,7 +95,7 @@
         </view>
     </view> -->
     <view class="product_list">
-        <view class="h3 title">推荐商品</view>
+        
         <view class="product_warp">
             <view class="product" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd"  data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>

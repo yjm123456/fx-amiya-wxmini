@@ -52,6 +52,12 @@ page{
     justify-content: start;
     align-items: center;
 }
+.edit_image{
+    position: absolute;
+    top: 20rpx;
+    left: 190rpx;
+    height: 150rpx;
+}
 .van-uploader{
     top: 20rpx;
 }
@@ -60,10 +66,13 @@ page{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    
 }
 .rgroup{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .cell_item{
     background-color: #262626 !important;

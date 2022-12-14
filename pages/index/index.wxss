@@ -51,6 +51,7 @@ page{
     justify-content: space-between;
 }
 .mbanner-item{
+    box-sizing: border-box;
     border-radius: 20rpx;
     width: 150rpx;
     height: 150rpx;
@@ -70,8 +71,8 @@ page{
     -webkit-text-fill-color: transparent;
 }
 .mbanner-img{
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 50%;
 }
 .discount{
     margin-top: 20rpx;
@@ -189,6 +190,7 @@ page{
 }
 
 .product_list {
+    margin-top: 30rpx;
     background-color: #262626;
     border-radius: 20rpx;
 }
@@ -249,6 +251,9 @@ page{
 .present_price {
     font-size: 32rpx;
     margin-bottom: 10rpx;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
 
 .original_price {
