@@ -1,0 +1,13 @@
+<!--pages/appointmentCar/appointmentCar.wxml-->
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <view class="content">
+        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/001bbaccecb24bed93be5356eee80021.png"></image>
+        <!-- <van-field class="name" maxlength='{{15}}' custom-style="background-color:transparent;" value="{{ name }}" border="{{ false }}" bind:change="onNameChange" />
+        <van-field class="phone"  maxlength='{{11}}' custom-style="background-color:transparent;" value="{{ phone }}" border="{{ false }}" bind:change="onPhoneChange" />
+        <van-field class="address" type="textarea" value="{{ adress }}" custom-style="background-color:red;width:335rpx;height:135rpx"  border="{{ false }}" bind:change="onAdressChange" />
+        <van-field class="hospital" value="{{ appointmentHospital }}" border="{{ false }}" bind:change="onChange" />
+        <van-field class="time" value="{{ appointmentDate }}" border="{{ false }}" bind:change="onChange" />
+        <van-field class="car-type" value="{{ appointmentCarType }}" border="{{ false }}" bind:change="onChange" /> -->
+    </view>
+
+</scroll-view>

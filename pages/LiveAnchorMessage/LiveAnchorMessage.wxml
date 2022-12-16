@@ -1,8 +1,6 @@
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
-    <image  class="img" mode="widthFix" src="{{imgUrl}}"
-></image>
-<!-- <view class="submit" catch:tap="toOrder" data-name="{{name}}" >选择{{liveAnchorName}}</view> -->
-<image class="submit" style="{{style}}" src="{{gifName}}" catch:tap="toOrder" data-name="{{name}}" mode="widthFix" alt=""/>
+    <image class="img" mode="widthFix" src="{{imgUrl}}"></image>
+    <!-- <image wx:if="{{isAmyLiveAnchor}}" class="submit" style="{{style}}" src="{{gifName}}" catch:tap="toOrder" data-name="{{name}}" mode="widthFix" alt="" /> -->
 </scroll-view>
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

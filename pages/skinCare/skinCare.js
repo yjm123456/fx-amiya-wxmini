@@ -115,7 +115,7 @@ Page({
                     name
                 } = event.currentTarget.dataset;
                 wx.navigateTo({
-                    url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name=' + name + '&type=mf&goodsInfo='+encodeURIComponent(JSON.stringify(goodsInfo)),
+                    url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name=' + name + '&type=mf',
                 })
             } else {
                 this.showVoucherTips()

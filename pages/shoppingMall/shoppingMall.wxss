@@ -79,7 +79,7 @@ page{
     font-size: 28rpx;
     font-weight: 600;
     /* color: #DEC350; */
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
 }
@@ -140,7 +140,7 @@ page{
 .category_active>text{
     font-weight: 600;
     /* color: #DEC350; */
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
 }
@@ -237,7 +237,7 @@ page{
     margin-top: 10rpx;
     font-weight: 600;
     /* color: #DEC350; */
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
+    background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
     font-size: 30rpx;

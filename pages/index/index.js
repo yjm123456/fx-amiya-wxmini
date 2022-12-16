@@ -290,14 +290,19 @@ Page({
     },
     handleActivity1() {
         wx.navigateTo({
-            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=dd'
+            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=dd&isAmyLiveAnchor=true'
         })
     },
     handleActivity() {
         wx.navigateTo({
-            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=jn'
+            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=jn&isAmyLiveAnchor=true'
         })
-        
+    },
+    handleRedirect(event){
+        const {name}=event.currentTarget.dataset;
+        wx.navigateTo({
+            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name='+name+'&isAmyLiveAnchor=false'
+        })
     },
     // 商品详情
     goodsDetails(e) {
@@ -308,12 +313,33 @@ Page({
             url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
         })
     },
+    toOrder(event) {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                const {
+                    name
+                } = event.currentTarget.dataset;
+                wx.navigateTo({
+                    url: '/pages/LiveAnchorOrder/LiveAnchorOrder'
+                })
+            } else {
+                this.showVoucherTips()
+            }
+        })
+    },
     redirect(e) {
-        if (e.currentTarget.dataset.url) {
-            wx.navigateTo({
-                url: e.currentTarget.dataset.url,
-            })
-        }
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                if (e.currentTarget.dataset.url) {
+                    wx.navigateTo({
+                        url: e.currentTarget.dataset.url,
+                    })
+                }
+            } else {
+                this.showVoucherTips()
+            }
+        })
+        
     },
     onReachBottom: function () {
         // this.getGoodsList()

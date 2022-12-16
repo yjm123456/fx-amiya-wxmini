@@ -2,5 +2,5 @@
     "usingComponents": {
         "van-field": "@vant/weapp/field/index"
     },
-    "navigationBarTitleText": "生日专享"
+    "navigationBarTitleText": "预约叫车"
 }

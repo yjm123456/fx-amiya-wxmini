@@ -1,12 +1,14 @@
 <!--pages/IntegralRule/IntegralRule.wxml-->
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
     <view class="content">
-        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/d6a80528af674faabe9448e0aa15724a.jpg"></image>
+        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/1b5a6003d2e8438eb8eabba1c1125105.jpg"></image>
         <image class="hands1" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
         <image class="hands2" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands3" mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/0ca1283cf4f64e20b5bfa0354521581e.png"></image>  
+        <image class="hands3" mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2834b809ef4a4af5960f6ff23d95e8f9.png"></image>  
+        <image class="hands4" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
         <view class="redirect1" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" ></view>
         <view class="redirect2" bindtap="toIntegral" data-url="/pages/shopping/shopping"></view>
+        <view class="redirect3" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar"></view>
     </view>
 </scroll-view>
 

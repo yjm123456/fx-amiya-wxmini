@@ -22,19 +22,19 @@
         <view class="account_info">
             <view class="memberbenefit" data-url="/pages/memberbenefits/memberbenefits" bindtap="to">
                 <view class="member"><image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/b53b9d1e4fba4961b177d39aadb3e998.png"></image></view>
-                <text>会员权益</text>
+                <view>会员权益</view>
             </view>
             <view class="info-item" catchtap="toIntegralPage">
                 <view><text>{{balance}}</text></view>
-                <view>积分</view>
+                <text>积分</text>
             </view>
             <view class="info-item" data-url="/pages/ConsumptionVoucher/ConsumptionVoucher" bindtap="to">
                 <view><text>{{voucherCount}}</text></view>
-                <view>券类卡包</view>
+                <text>券类卡包</text>
             </view>
             <view class="info-item" catchtap="toRechargeList">
                 <view><text>{{totalBalance}}</text></view>
-                <view>储值</view>
+                <text>储值</text>
             </view>
         </view>
         <view class="card" data-url="/pages/businessCard/businessCard" bindtap="to" data-nickname='{{userInfo.nickName}}'>
@@ -44,11 +44,11 @@
                     <view class="vprocess">
                         <van-progress color="#dec530" track-color="rgba(255,255,255,0.3)"  show-pivot="{{false}}" percentage="{{percentage}}" stroke-width="8" />
                     </view>
-                    <view>{{growthBalanceInfo.balance}}/{{growthBalanceInfo.balance+growthBalanceInfo.upgradeGrowthPoints}}</view>
+                    <view><text style="{{style}}">{{growthBalanceInfo.balance}}/{{growthBalanceInfo.balance+growthBalanceInfo.upgradeGrowthPoints}}</text></view>
                 </view>
-                <view class="upgrade" style="{{style}}">
-                    <view>成长值{{growthBalanceInfo.balance}}</view>
-                    <view>距离下一等级还需要{{growthBalanceInfo.upgradeGrowthPoints}}</view>
+                <view class="upgrade" >
+                    <view><text style="{{style}}">成长值{{growthBalanceInfo.balance}}</text></view>
+                    <view><text style="{{style}}">距离下一等级还需要{{growthBalanceInfo.upgradeGrowthPoints}}</text></view>
                 </view>
             </view>
         </view>

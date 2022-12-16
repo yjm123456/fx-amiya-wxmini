@@ -60,7 +60,7 @@ page{
     position: absolute;
     width: 50rpx;
     z-index: 999999;
-    top: 3150rpx;
+    top: 3160rpx;
     left: 200rpx;
 }
 .hands9{
@@ -69,6 +69,20 @@ page{
     z-index: 999999;
     top: 3330rpx;
     left: 480rpx;
+}
+.hands10{
+    position: absolute;
+    width: 50rpx;
+    z-index: 999999;
+    top: 2020rpx;
+    left: 410rpx;
+}
+.hands11{
+    position: absolute;
+    width: 50rpx;
+    z-index: 999999;
+    top: 3160rpx;
+    left: 410rpx;
 }
 .img{
     z-index: 1;
@@ -143,6 +157,24 @@ page{
     z-index: 999999;
     width: 120rpx;
     height: 118rpx;
-    top: 3055rpx;
+    top: 3075rpx;
     left: 110rpx;
+}
+.redirect9{
+    background-color: transparent;
+    position: absolute;
+    z-index: 999999;
+    width: 120rpx;
+    height: 118rpx;
+    top: 1925rpx;
+    left: 320rpx;
+}
+.redirect10{
+    background-color: transparent;
+    position: absolute;
+    z-index: 999999;
+    width: 120rpx;
+    height: 118rpx;
+    top: 3075rpx;
+    left: 310rpx;
 }

@@ -24,7 +24,9 @@ Page({
         selectCityHospital: [],
         shopGoodsInfo: {},
         goodsInfo: {},
-        display: false
+        display: false,
+        name: '',
+        names:0
     },
 
     /**
@@ -32,33 +34,10 @@ Page({
      */
     onLoad(options) {
         const {
-            name,
             type
         } = options
 
-        //商品化修改
-
-        if (type == 'mf') {
-            const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
-            this.setData({
-                shopGoodsInfo: goodsInfo
-            });
-            const {
-                shopGoodsInfo
-            } = this.data
-            this.getCooperativeHospitalCity(shopGoodsInfo.id);
-            this.getCityList()
-        } else {
-            //获取面诊卡信息
-            var code = name + 'mzk';
-            this.getFaceCardInfo(code);
-        }
-
-        //商品化修改
-
-
         this.setData({
-            liveAnchorName: name,
             type
         });
         this.getUserInfo();
@@ -67,6 +46,73 @@ Page({
         //this.getHotList()
         //商品化修改之前
     },
+    onClick(event) {
+        const {
+            names
+        } = event.currentTarget.dataset;
+        let name="";
+        if(names=="1"){
+            name='dd'
+        }else{
+            name='jn'
+        }
+        this.setData({
+            names
+        })
+        const {
+            type
+        } = this.data;
+        
+        if (type == 'mf') {
+            var code=name+'mfq';
+            this.getSkincareInfo(code);
+            // const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
+            
+        } else {
+            //获取面诊卡信息
+            var code = name + 'mzk';
+            this.getFaceCardInfo(code);
+        }
+        this.setData({
+            liveAnchorName: name,
+        });
+        // this.setData({
+        //     pay: name,
+        // });
+    },
+    getSkincareInfo(code) {
+        this.setData({
+            code
+        })
+        //获取的信息包含商品信息轮播图信息和对应的医院价格复制给goodsinfo同时添加一个默认购买数量quantity:1
+        http("get", `/Goods/infoBySimpleCode/${code}`, ).then(res => {
+            if (res.code === 0) {
+                const {
+                    goodsInfo
+                } = res.data;
+                if (goodsInfo.goodsDetailHtml) {
+                    goodsInfo.goodsDetailHtml = goodsInfo.goodsDetailHtml.replace(/\<img/g, '<img style="width:100%;height:auto;display:block"')
+                }
+                this.setData({
+                    goodsInfo,
+                    goodsInfo: {
+                        ...goodsInfo,
+                        quantity: 1,
+                        allmoney:goodsInfo.salePrice                       
+                    }
+                })
+                this.setData({
+                    shopGoodsInfo: this.data.goodsInfo
+                });
+                const {
+                    shopGoodsInfo
+                } = this.data
+                this.getCooperativeHospitalCity(shopGoodsInfo.id);
+                this.getCityList()
+            }
+        })
+    },
+    onChange() {},
     // 根据商品编号获取商品详情,同时添加一个quantity字段表示购买数量默认值为0
     getFaceCardInfo(code) {
         console.log('code值为' + code);
@@ -132,16 +178,18 @@ Page({
             display: true
         });
     },
-    
+
     selectHospital(event) {
         const {
             name,
             hospitalid,
             money
         } = event.currentTarget.dataset;
-        const {shopGoodsInfo}=this.data;
-        shopGoodsInfo.allmoney=shopGoodsInfo.quantity*money;
-        shopGoodsInfo.salePrice=shopGoodsInfo.allmoney;
+        const {
+            shopGoodsInfo
+        } = this.data;
+        shopGoodsInfo.allmoney = shopGoodsInfo.quantity * money;
+        shopGoodsInfo.salePrice = shopGoodsInfo.allmoney;
         this.setData({
             selectHospitalId: hospitalid,
             appointmentHospital: name,
@@ -212,6 +260,14 @@ Page({
         this.getStoreList(shopGoodsInfo.id, cityid);
     },
     switchCity() {
+        if(this.data.names==0){
+            wx.showToast({
+                title: '请先选择主播',
+                icon: 'none',
+                duration: 1000
+            })
+            return;
+        }
         this.setData({
             cityModel: true,
             currentId: "",
@@ -326,6 +382,7 @@ Page({
         const {
             nickName,
             phone,
+            names,
             liveAnchorName,
             type,
             appointmentCity,
@@ -352,6 +409,14 @@ Page({
             if (!phone) {
                 wx.showToast({
                     title: '请输入手机号',
+                    icon: 'none',
+                    duration: 1000
+                })
+                return;
+            }
+            if(names==0){
+                wx.showToast({
+                    title: '请选择主播',
                     icon: 'none',
                     duration: 1000
                 })

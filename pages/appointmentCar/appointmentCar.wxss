@@ -1,0 +1,31 @@
+/* pages/appointmentCar/appointmentCar.wxss */
+page{
+    background-color: #000;
+    height: 100%;
+}
+.content{
+    position: relative;
+    z-index: 1;
+}
+.img{
+    z-index: 1;
+    width: 750rpx;
+}
+.name{
+    position: absolute;
+    z-index: 2;
+    margin-top: 525rpx;
+    left: 330rpx;
+}
+.phone{
+    position: absolute;
+    z-index: 2;
+    margin-top: 635rpx;
+    left: 330rpx;
+}
+.address{
+    position: absolute;
+    z-index: 2;
+    margin-top: 755rpx;
+    left: 330rpx;
+}

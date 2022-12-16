@@ -70,7 +70,8 @@
         "pages/discount/discount",
         "pages/liveOnLine/liveOnLine",
         "pages/birthDayCard/birthDayCard",
-        "pages/festivalGift/festivalGift"
+        "pages/festivalGift/festivalGift",
+        "pages/appointmentCar/appointmentCar"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

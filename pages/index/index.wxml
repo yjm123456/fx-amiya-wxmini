@@ -1,40 +1,64 @@
 <view class="container">
     <!-- 轮播图 -->
     <swiper circular='true' class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
-        <swiper-item wx:for="{{carouselImage}}" wx:key="picUrl" bindtap="redirect" data-url="{{item.linkUrl}}">
+        <swiper-item wx:for="{{carouselImage}}" wx:key="picUrl"  data-url="{{item.linkUrl}}">
             <image src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
+        </swiper-item>
+        <!-- <swiper-item wx:for="{{carouselImage}}" wx:key="picUrl" bindtap="redirect" data-url="{{item.linkUrl}}">
+            <image src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
+        </swiper-item> -->
+    </swiper>
+
+    <swiper class="banner2" autoplay='true' circular="true" display-multiple-items='2' interval='5000' duration='1000'>
+        <swiper-item class="item">
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/38c06f303d1041e68c2054d2dba031f2.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="widthFix"></image>
+        </swiper-item>
+        <swiper-item class="item">
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/97d8ba0683514f0bbba95108d05c97c3.jpg" bindtap="handleActivity" data-activity="{{2}}" mode="widthFix"></image>
+        </swiper-item>
+        <swiper-item class="item">
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/db7b0d84c9a44263b444731d9e7c47e8.jpg" bindtap="handleRedirect" data-name="{{'kd'}}" mode="widthFix"></image>
+        </swiper-item>
+        <swiper-item class="item">
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/43c2bcae9c5d49bd8e1db86ce2fc0e29.jpg" bindtap="handleRedirect" data-name="{{'yls'}}" mode="widthFix"></image>
+        </swiper-item>
+        <swiper-item class="item">
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2e9bdc5d0f4847619964b4ab719b6258.jpg" bindtap="handleRedirect" data-name="{{'my'}}" mode="widthFix"></image>
+        </swiper-item>
+        <swiper-item class="item">
+            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/4a07c64e50654d88850903edf90b9882.jpg" bindtap="handleRedirect" data-name="{{'zz'}}" mode="widthFix"></image>
         </swiper-item>
     </swiper>
 
-    <view class="activity">
+    <!-- <view class="activity">
         <view class="activity_item">
             <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/38c06f303d1041e68c2054d2dba031f2.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="heightFix"></image>
         </view>
         <view class="activity_item">
             <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/54a6793de31e4f3da3667feb897f4fc7.jpg" bindtap="handleActivity" data-activity="{{2}}" mode="aspectFill"></image>
         </view>
-    </view>
+    </view> -->
     <view class="mbanner">
         <!-- <view class="mbanner-left"> -->
-            <view class="mbanner-item">
-                <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
-                <text class="mbanner-text">消费领积分</text>
-            </view>
-            <view class="mbanner-item">
-                <image class="mbanner-img" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
-                <text class="mbanner-text">会员权益</text>
-            </view>
+        <view class="mbanner-item">
+            <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
+            <text class="mbanner-text">消费领积分</text>
+        </view>
+        <view class="mbanner-item">
+            <image class="mbanner-img" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
+            <text class="mbanner-text">会员权益</text>
+        </view>
         <!-- </view> -->
 
         <!-- <view class="mbanner-left"> -->
-            <view class="mbanner-item">
-                <image class="mbanner-img" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/365ac12f6c1c439589ec1916a24e6b5e.png"></image>
-                <text class="mbanner-text">美学分享</text>
-            </view>
-            <view class="mbanner-item">
-                <image class="mbanner-img" bindtap="redirect" data-url="/pages/liveOnLine/liveOnLine" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c315c3bfcd7e468dbb7b651e5fb3789d.png"></image>
-                <text class="mbanner-text">视频号</text>
-            </view>
+        <view class="mbanner-item">
+            <image class="mbanner-img" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/365ac12f6c1c439589ec1916a24e6b5e.png"></image>
+            <text class="mbanner-text">美学分享</text>
+        </view>
+        <view class="mbanner-item">
+            <image class="mbanner-img" bindtap="redirect" data-url="/pages/liveOnLine/liveOnLine" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c315c3bfcd7e468dbb7b651e5fb3789d.png"></image>
+            <text class="mbanner-text">视频号</text>
+        </view>
         <!-- </view> -->
     </view>
     <!-- 导航栏二 -->
@@ -46,12 +70,12 @@
     <!-- 优惠板块 -->
     <view class="discount">
         <view class="discount-item">
-            <image mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/72085ac6b4be4fc584c4c6215895b82e.jpg"></image>
-            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2ea04a3d18ed4fcc85e4b617928837a1.png"></image>
+            <image mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
+            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
         </view>
         <view class="discount-item">
-            <image mode="widthFix" bindtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/a6bf2ce4582f458a9937d578b140ef24.png"></image>
-            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/00aa4ab7630b4a87bb47d445bead3129.png"></image>
+            <image mode="widthFix" bindtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ab7f92ab6ec84d98a556aa9db8158910.png"></image>
+            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
         </view>
     </view>
     <!-- 公告 -->
@@ -64,7 +88,9 @@
             </swiper-item>
         </swiper> -->
     <!-- 4999美肤券 -->
-    <view class="notice" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop"><image mode="aspectFit" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/4432f39842504aebb1dd50455d066deb.png"></image></view>
+    <view class="notice" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop">
+        <image mode="aspectFit" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/4432f39842504aebb1dd50455d066deb.png"></image>
+    </view>
     <!-- <view class="discount">
         <view class="discount-item">
             <image mode="widthFix" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/662ec8f5c5b243e0bbbf186db4902381.jpg"></image>
@@ -95,18 +121,33 @@
         </view>
     </view> -->
     <view class="product_list">
-        
+
         <view class="product_warp">
-            <view class="product" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd"  data-goodsid="{{item.id}}" wx:key="index">
+            <view class="product" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">
-                        <image src="{{voucherUrl}}" mode="widthFix"></image>
+                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/1170f421cbfe445e8fc818c1766c0f13.jpg'}}" mode="widthFix"></image>
                     </view>
                     <view class="product_bottom">
                         <view class="product_name">{{"定制美肤券"}}</view>
                         <view class="price">
                             <text class="present_price">¥{{4999}}</text>
+                            <text class="original_price">¥{{16800}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="product" bindtap="toOrder"  data-goodsid="{{item.id}}" wx:key="index">
+                <view wx:if="{{false}}" class="tag">会员专享</view>
+                <view>
+                    <view class="product_top">
+                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/7d3c58d426ce4fffb5fd0eac0c27c496.jpg'}}" mode="widthFix"></image>
+                    </view>
+                    <view class="product_bottom">
+                        <view class="product_name">{{"定制形象设计"}}</view>
+                        <view class="price">
+                            <text class="present_price">¥{{199}}</text>
                             <text class="original_price">¥{{16800}}</text>
                         </view>
                     </view>
@@ -143,6 +184,6 @@
 
 <!-- 新客绑定提示弹窗 -->
 <van-dialog showConfirmButton="{{false}}" show="{{show}}" use-slot id="bind_tips">
-    <image  class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7cd41576dd504750a625f314b8ec3bc2.png"></image>
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7cd41576dd504750a625f314b8ec3bc2.png"></image>
     <view class="submit" catchtap="getVoucher">立即领取</view>
 </van-dialog>

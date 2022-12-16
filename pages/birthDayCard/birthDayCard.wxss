@@ -11,3 +11,39 @@ page{
     z-index: 1;
     width: 750rpx;
 }
+.name{
+    position: absolute;
+    top: 770rpx;
+    left: 310rpx;
+    height: 60rpx;
+    width: 280rpx;
+}
+.birthday{
+    position: absolute;
+    top: 830rpx;
+    left: 310rpx;
+    height: 60rpx;
+    width: 280rpx;
+}
+.phone{
+    position: absolute;
+    top: 885rpx;
+    left: 310rpx;
+    height: 60rpx;
+    width: 280rpx;
+}
+.area{
+    position: absolute;
+    top: 960rpx;
+    left: 310rpx;
+    height: 60rpx;
+    width: 280rpx;
+}
+.detail_address{
+    position: absolute;
+    top: 1030rpx;
+    left: 310rpx;
+    height: 60rpx;
+    width: 280rpx;
+}
+

@@ -6,7 +6,7 @@ page{
 .order_form{
     border-radius: 20rpx;
     overflow: hidden;
-    margin: 200rpx 20rpx;
+    margin: 20rpx 20rpx;
     padding: 50rpx 20rpx;
     background-color: #262626;
 }
@@ -236,3 +236,25 @@ page{
       font-size: 22rpx;
       color: #fff;
   }
+  .pay_list{
+    padding: 20rpx;
+    background-color: #363636;
+    margin-top: 20rpx;
+    /* margin: 30rpx; */
+    border-radius: 20rpx;
+}
+.pay_item{
+    background-color: #e2e2e2;
+    border-radius: 20rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-left: 50rpx;
+    margin-top:50rpx;
+    width: 100%;
+}
+.van-cell{
+    background-color: #313131 !important;
+    border-radius: 20rpx !important;
+    color: #fff !important;
+    margin-top: 20rpx;
+}

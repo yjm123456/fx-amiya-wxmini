@@ -34,6 +34,13 @@ page{
     top: 2270rpx;
     left: 490rpx;
 }
+.hands4{
+    position: absolute;
+    width: 50rpx;
+    z-index: 999999;
+    top: 2070rpx;
+    left: 620rpx;
+}
 .redirect1{
     background-color: transparent;
     position: absolute;
@@ -51,4 +58,13 @@ page{
     height: 120rpx;
     top: 1970rpx;
     left: 110rpx;
+}
+.redirect3{
+    background-color: transparent;
+    position: absolute;
+    z-index: 999999;
+    width: 120rpx;
+    height: 120rpx;
+    top: 1980rpx;
+    left: 530rpx;
 }

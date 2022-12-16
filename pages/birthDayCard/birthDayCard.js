@@ -7,7 +7,14 @@ Page({
      */
     data: {
         sysheight:0,
-        birthDay:{}
+        birthDayCardInfo:{},
+        id:'',
+        phone:'',
+        name:'',
+        birthDay:'',
+        detailAddress:'',
+        city:'',
+        area:''
     },
 
     /**
@@ -26,9 +33,15 @@ Page({
     getBirthCard(){
         http("get", "/User/birthDayCard").then(res => {
             if (res.code === 0) {
-                var birthDay= res.data.birthDay;
+                var cardInfo= res.data.birthDay;
                 this.setData({
-                    birthDay
+                    id:cardInfo.id,
+                    phone:cardInfo.phone,
+                    name:cardInfo.name,
+                    birthDay:cardInfo.birthDay,
+                    detailAddress:cardInfo.detailAddress,
+                    city:cardInfo.city,
+                    area:cardInfo.area
                 })           
             }
         });

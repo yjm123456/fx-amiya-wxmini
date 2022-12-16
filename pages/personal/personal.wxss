@@ -112,11 +112,18 @@ page{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fff;
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 30rpx;
 }
+text{
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .info-item>view>text{
-    font-size: 30rpx;
+    font-size: 35rpx;
     font-weight: 600;
     background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
     -webkit-background-clip: text;
@@ -371,7 +378,11 @@ border-radius: 10rpx;
     color: #fff!important;
     font-size: 30rpx !important;
 }
-
+.van-cell__title{
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .custom_class{
     background-color: #262626 !important;
 }
