@@ -1,6 +1,6 @@
 import { login } from "./login"
-const BASEURL = 'https://app.ameiyes.com/amiyamini/amiya/wxmini';//线上
-//const BASEURL = 'https://www.amyk.cn/amiya/wxmini';//测试 
+//const BASEURL = 'https://app.ameiyes.com/amiyamini/amiya/wxmini';//线上
+const BASEURL = 'https://www.amyk.cn/amiya/wxmini';//测试 
 //const BASEURL = 'http://localhost:5621/amiya/wxmini';//本地
 let exeQueue = false;
 const requestArr = [];

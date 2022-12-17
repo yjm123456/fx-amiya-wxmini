@@ -65,7 +65,7 @@ Component({
     },
 
     display() {
-      let DATE = this.data.defaultValue ? new Date(this.data.defaultValue) : new Date(),
+      let DATE = this.data.defaultValue ? new Date(this.data.defaultValue) : new Date(new Date().getTime()+1000*3600*24),
         year = DATE.getFullYear(),
         month = DATE.getMonth() + 1,
         date = DATE.getDate(),

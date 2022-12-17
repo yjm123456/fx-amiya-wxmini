@@ -84,6 +84,13 @@ page{
     top: 3160rpx;
     left: 410rpx;
 }
+.hands12{
+    position: absolute;
+    width: 50rpx;
+    z-index: 999999;
+    top: 2015rpx;
+    left: 200rpx;
+}
 .img{
     z-index: 1;
     width: 750rpx;
@@ -177,4 +184,13 @@ page{
     height: 118rpx;
     top: 3075rpx;
     left: 310rpx;
+}
+.redirect11{
+    background-color: transparent;
+    position: absolute;
+    z-index: 999999;
+    width: 120rpx;
+    height: 118rpx;
+    top: 1925rpx;
+    left: 110rpx;
 }

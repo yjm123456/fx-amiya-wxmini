@@ -1,0 +1,30 @@
+<!--pages/appointmentHospital/appointment/appointment.wxml-->
+<view class="container">
+    <view class="select-city">
+        <view class="title">
+            <text>医院列表</text>
+        </view>
+        <view class="city">
+            <view class="current-city">
+                <image class="location_img" src="../../../images/accept_address.png"></image>
+                <text>{{currentCity}}</text>
+            </view>
+            <view class="change-city">
+                <text class="iconfont icon-qiehuan"></text>
+                <text>城市</text>
+            </view>
+
+        </view>
+    </view>
+    <view class="hospital-list" bindtap="arrivalPlan" data-item="{{item}}" wx:for="{{hospitalList}}" wx:key="index">
+        <view class="hospital-item">
+            <view class="item-img">
+                <image src="{{item.thumbPicUrl}}"></image>
+            </view>
+            <view class="item-info">
+                <text>{{item.name}}</text>
+                <text>{{item.address}}</text>
+            </view>
+        </view>
+    </view>
+</view>

@@ -10,7 +10,6 @@ Component({
       value: "",
       observer(newVal, oldVal) {
         if (newVal === 0) {
-          // console.log("请求全部")
           this.handleReset();
           this.getOrderList();
         }

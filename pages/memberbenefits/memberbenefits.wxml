@@ -11,6 +11,7 @@
         <image class="hands8" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
         <image class="hands10" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
         <image class="hands11" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
+        <image class="hands12" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
         <image class="hands9" mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2834b809ef4a4af5960f6ff23d95e8f9.png"></image>
         <view class="redirect1" bindtap="redirect" data-url="/pages/birthDayCard/birthDayCard" ></view>
         <view class="redirect2" bindtap="redirect" data-url="/pages/festivalGift/festivalGift"></view>
@@ -22,5 +23,6 @@
         <view class="redirect8" bindtap="toIntegral" data-url="/pages/shopping/shopping"></view>
         <view class="redirect9" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar"></view>
         <view class="redirect10" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar"></view>
+        <view class="redirect11" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital"></view>
     </view>
 </scroll-view>

@@ -7,22 +7,13 @@
             <view class="info_box">
                 <view class="info_box_top">
                     <text class="username">{{userInfo.nickName ? userInfo.nickName : '游客'}}</text>
-                    <!-- <text catchtap="toGrowthList" class="leave">{{memberCard.memberRankName ?memberCard.memberRankName :""}}</text> -->
                 </view>
-                <!-- <view class="balance">
-                    <text catchtap="toRechargeList">我的储值:{{totalBalance}}</text>
-                </view> -->
             </view>
-            <!-- <view class="member_no"> <canvas type="2d" style="width:128rpx ; height: 128rpx;margin-left: 8rpx;margin-top: 13rpx;" id="myQrcode"></canvas> </view> -->
         </view>
-        <!-- <view class="navigation_list">
-            <view class="grid_item" data-url="/pages/userProtection/userProtection" bindtap="to"><text>积分规则</text></view>
-            <view class="grid_item" data-url="/pages/memberbenefits/memberbenefits" bindtap="to"><text>会员权益</text></view>
-        </view> -->
         <view class="account_info">
             <view class="memberbenefit" data-url="/pages/memberbenefits/memberbenefits" bindtap="to">
                 <view class="member"><image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/b53b9d1e4fba4961b177d39aadb3e998.png"></image></view>
-                <view>会员权益</view>
+                <text>会员权益</text>
             </view>
             <view class="info-item" catchtap="toIntegralPage">
                 <view><text>{{balance}}</text></view>
@@ -121,6 +112,7 @@
             </van-tab>
         </van-tabs> -->
     <view class="cell">
+        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentHospital/appointmentHospital" bindtap="to" title="预约医院" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/shoppingCart/shoppingCart" bindtap="to" title="购物车" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/ConsumptionVoucher/ConsumptionVoucher" bindtap="to" data-nickname='{{userInfo.nickName}}' title="抵用券" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/recharge/recharge" bindtap="to" title="充值中心" />

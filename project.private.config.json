@@ -277,6 +277,13 @@
                     "pathName": "pages/UpdateCustomerConsumptionCredential/UpdateCustomerConsumptionCredential",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "预约计划",
+                    "pathName": "pages/appointmentHospital/appointmentHospital",
+                    "query": "nickname=undefined",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

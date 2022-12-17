@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index",
+        "appointment":"/pages/appointmentHospital/appointment/appointment",
+        "appointmentPlan":"/pages/appointmentHospital/appointmentPlan/appointmentPlan"
+    },
+    "navigationBarTitleText": "预约医院"
+}

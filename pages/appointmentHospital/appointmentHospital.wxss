@@ -1,0 +1,18 @@
+/* pages/appointmentHospital/appointmentHospital.wxss */
+page{
+    background-color: #000;
+    height: 100%;
+    width: 750rpx;
+    box-sizing: border-box;
+}
+/* Tab栏 */
+.van-tabs__nav{
+    background-color: #000;
+}
+.van-ellipsis{
+    color: #fff;
+}
+.van-tabs__line{
+    background-image:-webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
+    display: block;
+}

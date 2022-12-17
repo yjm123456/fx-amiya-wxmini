@@ -71,7 +71,8 @@
         "pages/liveOnLine/liveOnLine",
         "pages/birthDayCard/birthDayCard",
         "pages/festivalGift/festivalGift",
-        "pages/appointmentCar/appointmentCar"
+        "pages/appointmentCar/appointmentCar",
+        "pages/appointmentHospital/appointmentHospital"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {
