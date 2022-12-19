@@ -1,5 +1,9 @@
 .wrap {
-  margin: 0 50rpx;
+  margin: 0 25rpx;
+  background-color: #262626;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  color: #fff;
 }
 
 .wrap>view {
@@ -11,9 +15,17 @@
 }
 
 .morning {
-  border-bottom: 1rpx solid #BBBBBB;
+  
+  background-color: #313131;
+  border-radius: 20rpx;
+  padding: 20rpx !important;
 }
-
+.afternoon{
+  margin-top: 20rpx;
+  background-color: #313131;
+  border-radius: 20rpx;
+  padding: 20rpx !important;
+}
 /* 日期 */
 .morning>view:first-child>text:first-child,
 .afternoon>view:first-child>text:first-child {
@@ -29,8 +41,8 @@
 /* 按钮 */
 .morning>view:last-child,
 .afternoon>view:last-child {
-  background-color: #D1CEC7;
+  background-color: #262626;
   padding: 10rpx 30rpx;
-  border-radius: 30rpx;
+  border-radius: 10rpx;
   /* color: #fff; */
 }

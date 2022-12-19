@@ -28,12 +28,13 @@
 }
 
 .calendar {
+  color: #fff;
   text-align: center;
   font-size: 30rpx;
   box-sizing: border-box;
-  margin: 25rpx 50rpx;
+  margin: 25rpx 20rpx;
   padding: 10rpx 0 10rpx 0;
-  background-color: #fff;
+  background-color: #262626;
   border-radius: 10rpx;
 }
 

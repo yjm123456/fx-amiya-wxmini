@@ -72,3 +72,93 @@
     text-overflow: ellipsis;
 }
 
+.popup_con{
+    padding: 20rpx;
+    box-sizing: border-box;
+    position: relative;
+  }
+   .name_com{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .type_name{
+    margin: 10rpx 0;
+    font-weight: bold;
+    font-size: 28rpx;
+    padding-bottom: 20rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #ccc;
+  }
+  .items{
+    margin-bottom: 50rpx;
+  }
+  .item_type{
+    /* margin-top: 20rpx; */
+  }
+   .popup_text{
+    font-size: 26rpx;
+    padding: 4rpx 30rpx;
+    box-sizing:border-box;
+    border:1rpx solid #ccc;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    color: #333;
+  }
+  .buttons{
+    margin-top: 60rpx;
+  }
+  ._on,.active,.actives {
+    color: #ff1554;
+    border: 1rpx solid #ff1554;
+  }
+  .arrival_plan{
+    width: 120rpx;
+    height: 47rpx;
+    line-height: 47rpx;
+    background-color: #D1CEC7;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    text-align: center;
+    margin-left: 76% ;
+  }
+  .diary_con{
+    padding: 30rpx 30rpx 15rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin: 20rpx 0;
+  }
+  .diary_like_con{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .diary_img{
+    width: 100%;
+    border-radius: 10rpx;
+    margin: 10rpx 0;
+    width: 100%;
+    height: 400rpx;
+  }
+  .diary_title{
+    font-size: 28rpx;
+    font-weight: bold;
+  }
+  .diary_right{
+    font-weight: bold;
+    font-size: 30rpx;
+    position: relative;
+    bottom: 10rpx;
+  }
+  .diary_left{
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+  }
+  .dian{
+    margin: 0 20rpx;
+  }
+  .hot_con{
+    margin-bottom: 50rpx;
+  }
+

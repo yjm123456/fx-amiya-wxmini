@@ -1,6 +1,9 @@
 {
     "usingComponents": {
-        "van-field": "@vant/weapp/field/index"
+        "van-field": "@vant/weapp/field/index",
+        "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+        "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+        "date-time-picker": "/components/date-time-picker/index"
     },
     "navigationBarTitleText": "预约叫车"
 }

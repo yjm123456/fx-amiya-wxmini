@@ -1,18 +1,18 @@
 <!-- <view class="center">敬请期待...</view> -->
 <view class="wrap">
     <view class="integral_info">
-    <view class="img">
-        <image class="integral_img" src="../../images/integral.jpg"></image>
-    </view>
+        <view class="img">
+            <image class="integral_img" src="../../images/integral.jpg"></image>
+        </view>
         <view class="integral">
-            <view class="integral_value big"><text  class="middle">可用积分</text><text catchtap="toInternal" class="big strong color">{{balance}}</text></view>
-        <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
+            <view class="integral_value big"><text class="middle">可用积分</text><text catchtap="toInternal" class="big strong color">{{balance}}</text></view>
+            <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
         </view>
     </view>
-        <view class="integral_receive">
-            <image mode="widthFix" class="to_shop" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8e0041207b4d4086a8fd8ea8b5078a0d.JPG" bindtap="handleToShop"></image>
-        </view>
-        <!-- <view class="goods_swiper">
+    <view class="integral_receive">
+        <image mode="widthFix" class="to_shop" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8e0041207b4d4086a8fd8ea8b5078a0d.JPG" bindtap="handleToShop"></image>
+    </view>
+    <!-- <view class="goods_swiper">
             <swiper class='banner' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">
                 <swiper-item>
                     <image mode="aspectFill" src="../../images/mz.jpg"></image>
@@ -25,25 +25,34 @@
                 </swiper-item>
             </swiper>
         </view> -->
-        <view class="integral_goods">
-            <view class="title">积分兑换好礼</view>       
-        </view>
-        <view class="product_warp">
-                <view class="product" wx:for="{{goodsInfos}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
-                    <view>
-                        <view class="product_top">
-                            <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>
-                        </view>
-                        <view class="product_bottom">
-                            <view class="product_name">{{item.name}}</view>
-                            <view class="price">
-                                <text class="present_price">{{item.integrationQuantity}}积分</text>
-                                <!-- <text class="original_price">¥{{item.maxShowPrice}}</text> -->
-                            </view>
-                        </view>
-                    </view>
+    <view class="integral_goods">
+        <view class="title">积分兑换好礼</view>
+    </view>
+    
+    <view class="goods_wrap">
+        <scroll-view class="menu_wrap" scroll-y>
+            <view class="menu_item {{categoryActive === index ? 'category_active' : ''}}" wx:for="{{goodsCategorys}}" wx:key="id" bindtap="handleGoodsCategoryClick" data-categoryid="{{item.id}}" data-index="{{index}}" wx:if="{{item.showDirectionType==0}}">
+                <text>{{item.name}}</text>
+            </view>
+        </scroll-view>
+        <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">
+            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType>0}}">
+                <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
+                <view>
+                    <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
+                    <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
+                </view>
+                <view>
+                    <view class="middle">{{item.name}}</view>
+                    <view class="middle">{{item.description}}</view>
+                    <view>￥{{item.salePrice}}</view>
                 </view>
             </view>
+            <view wx:if="{{nextPage === false}}">
+                <van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">我是有底线的</van-divider>
+            </view>
+        </scroll-view>
+    </view>
 </view>
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

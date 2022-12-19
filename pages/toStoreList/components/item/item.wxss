@@ -1,13 +1,24 @@
 .item{
-  width: 100%;
-  background-color: #fff;
+  width: 700rpx;
+  background-color: #262626;
+  border-radius: 20rpx;
+  margin: 25rpx;
   padding: 20rpx;
   box-sizing: border-box;
   margin-top: 30rpx;
 }
+.content{
+  border-radius: 0 0 25rpx 25rpx;
+}
+.item_top{
+  border-radius: 25rpx 25rpx 0 0;
+}
 .item_top,.content{
   display: flex;
   justify-content: space-between;
+  background-color: #313131;
+  padding: 10rpx;
+  color: #fff;
 }
 .memo{
   flex:1;
@@ -35,13 +46,13 @@
   text-align: end;
 }
 .text2{
-  color: #ff1554;
+  color: #e2e2e2;
 }
 .text1{
-  color: #3B4879;
+  color: #dec530;
 }
 .text3{
-  color:#919090
+  color:#ff1554
 }
 .button_con{
   display: flex;
@@ -62,10 +73,13 @@
   color: #fff;
   margin-left: 10rpx;
   font-size: 24rpx;
+  border-radius: 5rpx;
+  background-color: #313131;
+  margin-top: 10rpx;
 }
 .cancel_button{
-  background-color: #919090;
+  background-color: #313131;
 }
 .submite_button{
-  background-color: #ff1554;
+  background-color: #313131;
 }

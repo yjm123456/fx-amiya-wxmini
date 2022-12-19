@@ -1,10 +1,14 @@
+page{
+  background-color: #000;
+}
 .hospital_item{
   width: 94%;
-  background-color: #fff;
+  background-color: #262626;
   border-radius: 10rpx;
   margin: 25rpx auto;
   padding: 30rpx;
   box-sizing: border-box;
+  color: #fff;
 }
 .hospital_top,.hospital_center,.tab_item{
   display: flex;
@@ -31,7 +35,7 @@
 .tab_item>text{
   padding: 4rpx 20rpx;
   box-sizing: border-box;
-  border:1rpx solid #D1cec7;
+  background-color: #313131;
   border-radius:10rpx ;
   margin-right: 20rpx;
   font-size: 24rpx;

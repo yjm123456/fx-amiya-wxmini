@@ -14,18 +14,156 @@ page{
 .name{
     position: absolute;
     z-index: 2;
-    margin-top: 525rpx;
+    margin-top: 435rpx;
     left: 330rpx;
+    
 }
 .phone{
     position: absolute;
     z-index: 2;
-    margin-top: 635rpx;
+    margin-top: 545rpx;
     left: 330rpx;
 }
 .address{
     position: absolute;
     z-index: 2;
-    margin-top: 755rpx;
+    margin-top: 665rpx;
     left: 330rpx;
 }
+.time{
+    position: absolute;
+    z-index: 2;
+    width: 280rpx;
+    margin-top: -588rpx;
+    left: 330rpx;
+    background-color: transparent;
+    padding: 10rpx 30rpx;
+    color: transparent;
+}
+.month{
+    background-color: transparent;
+    position: absolute;
+    top: 960rpx;
+    left: 343rpx;
+    color: #fff;
+    font-size: 30rpx;
+}
+.day{
+    background-color: transparent;
+    position: absolute;
+    top: 960rpx;
+    left: 433rpx;
+    color: #fff;
+    font-size: 30rpx;
+}
+.hour{
+    background-color: transparent;
+    position: absolute;
+    top: 960rpx;
+    left: 523rpx;
+    color: #fff;
+    font-size: 30rpx;
+}
+.car1{
+    width: 118rpx;
+    height: 118rpx;
+    position: absolute;
+    z-index: 2;
+    background-color: transparent;
+    top: 1164rpx;
+    left: 98rpx;
+}
+.car2{
+    width: 118rpx;
+    height: 118rpx;
+    position: absolute;
+    z-index: 2;
+    background-color: transparent;
+    top: 1164rpx;
+    left: 246rpx;
+}
+.car3{
+    width: 118rpx;
+    height: 118rpx;
+    position: absolute;
+    z-index: 2;
+    background-color: transparent;
+    top: 1164rpx;
+    left: 394rpx;
+}
+.car4{
+    width: 118rpx;
+    height: 118rpx;
+    position: absolute;
+    z-index: 2;
+    background-color: transparent;
+    top: 1164rpx;
+    left: 542rpx;
+}
+
+
+
+.car-type{
+    position: absolute;
+    z-index: 2;
+    margin-top: 665rpx;
+    left: 330rpx;
+}
+.submit{
+    width: 700rpx;
+    margin: 0 25rpx 25rpx 25rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 20rpx;
+    display: flex;
+    justify-content: center;
+    background-color: #dec530;
+    position: absolute; 
+    color: #fff;
+    z-index: 2;
+    margin-bottom: 20rpx;
+}
+
+/* 下拉框 */
+.origin_select {
+    width: 60rpx;
+    height: 60rpx;
+    font-size: 32rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: transparent;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent;
+  }
+   
+  .origin_picker {
+    align-items: center;
+    top: -700rpx;
+    left: 330rpx;
+    position: absolute;
+    font-size: 32rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    line-height: 58rpx;
+    color: #999999;
+    opacity: 1;
+    height: 64rpx;
+    width: 270rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 20rpx;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+  .origin_img {
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    right: 0rpx;
+    top: 17rpx;
+  }
+

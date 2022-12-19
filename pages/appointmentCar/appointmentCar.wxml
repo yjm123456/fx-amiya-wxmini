@@ -2,12 +2,27 @@
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
     <view class="content">
         <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/001bbaccecb24bed93be5356eee80021.png"></image>
-        <!-- <van-field class="name" maxlength='{{15}}' custom-style="background-color:transparent;" value="{{ name }}" border="{{ false }}" bind:change="onNameChange" />
-        <van-field class="phone"  maxlength='{{11}}' custom-style="background-color:transparent;" value="{{ phone }}" border="{{ false }}" bind:change="onPhoneChange" />
-        <van-field class="address" type="textarea" value="{{ adress }}" custom-style="background-color:red;width:335rpx;height:135rpx"  border="{{ false }}" bind:change="onAdressChange" />
-        <van-field class="hospital" value="{{ appointmentHospital }}" border="{{ false }}" bind:change="onChange" />
-        <van-field class="time" value="{{ appointmentDate }}" border="{{ false }}" bind:change="onChange" />
-        <van-field class="car-type" value="{{ appointmentCarType }}" border="{{ false }}" bind:change="onChange" /> -->
-    </view>
+        <van-field class="name" maxlength='{{15}}' placeholder="请输入用户名" custom-style="background-color:transparent;width:340rpx" value="{{ name }}" border="{{ false }}" bind:change="onNameChange" />
+        <van-field class="phone" maxlength='{{11}}' placeholder="请输入手机号" custom-style="background-color:transparent;width:340rpx" value="{{ phone }}" border="{{ false }}" bind:change="onPhoneChange" />
+        <van-field class="address" type="textarea" value="{{ address }}" placeholder="请输入地址" custom-style="background-color:transparent;width:335rpx;height:135rpx" border="{{ false }}" bind:change="onAdressChange" />
 
+        <view class="origin_picker">
+            <input disabled class="" type="text" value="{{hospital?hospital:''}}" placeholder="请选择医院" bindinput="handlerInput" style="width:300rpx;height: 100%;" />
+            <picker class="origin_select" catchchange="bindPickerBuyersName" range-key="name" range="{{Merchlist}}">
+                <view class="ar">123</view>
+            </picker>
+        </view>
+
+        <picker mode="multiSelector" range="{{rangeList}}" value="{{rangeValue}}" bindchange="selectChangeFn" bindcolumnchange="selectColumnChangeFn">
+            <view class="time">123</view>
+        </picker>
+        <view class="month">{{month}}</view>
+        <view class="day">{{day}}</view>
+        <view class="hour">{{hour+':'+minutes}}</view>
+        <view class="car1" bindtap="selectCar" data-type="1"></view>
+        <view class="car2" bindtap="selectCar" data-type="2"></view>
+        <view class="car3" bindtap="selectCar" data-type="3"></view>
+        <view class="car4" bindtap="selectCar" data-type="4"></view>
+        <view class="submit" bindtap="appointmentCar">提交</view>
+    </view>
 </scroll-view>

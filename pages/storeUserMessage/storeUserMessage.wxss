@@ -1,15 +1,26 @@
-page{
-  background-color: #fff;
+page {
+  background-color: #000;
 }
-.content{
+
+.container {
+  width: 100%;
+  margin-top: 100rpx;
+}
+
+.content {
   position: relative;
-  
+  background-color: #313131;
+  margin: 25rpx;
+  border-radius: 20rpx;
+  padding: 25rpx 0;
 }
-.img{
+
+.img {
   width: 100%;
   height: 250rpx;
 }
-.head_portrait_con{
+
+.head_portrait_con {
   width: 200rpx;
   height: 200rpx;
   display: flex;
@@ -19,16 +30,19 @@ page{
   margin: -15% auto 0;
   border-radius: 50%;
 }
-.head_portrait{
-  width:180rpx;
-  height:180rpx;
+
+.head_portrait {
+  width: 180rpx;
+  height: 180rpx;
   border-radius: 50%;
 }
-.user_message{
+
+.user_message {
   margin-top: 50rpx;
 }
-.item{
-  width: 70%;
+
+.item {
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,12 +50,18 @@ page{
   border-bottom: 1rpx solid #000;
   padding-bottom: 20rpx;
   box-sizing: border-box;
+  background-color: #262626;
+  padding: 20rpx;
+  border-radius: 20rpx;
 }
-.item_left{
+
+.item_left {
   display: flex;
   align-items: center;
+  color: #fff;
 }
-.item_icon{
+
+.item_icon {
   background-color: #D1cec7;
   width: 80rpx;
   height: 80rpx;
@@ -50,11 +70,13 @@ page{
   line-height: 80rpx;
   margin-right: 20rpx;
 }
-.selected_project{
+
+.selected_project {
   color: #D1cec7;
-  font-size:30rpx
+  font-size: 30rpx
 }
-.select_button{
+
+.select_button {
   padding: 10rpx 18rpx;
   box-sizing: border-box;
   border-radius: 10rpx;
@@ -62,30 +84,37 @@ page{
   color: #fff;
   font-size: 24rpx;
 }
-.cancel,.submite{
+
+.cancel,
+.submite {
   padding: 6rpx 30rpx;
   box-sizing: border-box;
   border-radius: 10rpx;
   color: #fff;
   margin: 0 10rpx;
   font-size: 26rpx;
- }
- .cancel{
-   background-color: #ccc;
- }
- .submite{
-   background-color: #ff1554;
- }
- .popup_con{
+}
+
+.cancel {
+  background-color: #ccc;
+}
+
+.submite {
+  background-color: #ff1554;
+}
+
+.popup_con {
   padding: 20rpx;
   box-sizing: border-box;
   position: relative;
 }
- .name_com{
+
+.name_com {
   display: flex;
   flex-wrap: wrap;
 }
-.type_name{
+
+.type_name {
   margin: 10rpx 0;
   font-weight: bold;
   font-size: 28rpx;
@@ -93,24 +122,28 @@ page{
   box-sizing: border-box;
   border-bottom: 1rpx solid #ccc;
 }
-.items{
+
+.items {
   margin-bottom: 50rpx;
 }
-.item_type{
+
+.item_type {
   margin-top: 20rpx;
 }
- .popup_text{
+
+.popup_text {
   font-size: 26rpx;
   padding: 4rpx 30rpx;
-  box-sizing:border-box;
-  border:1rpx solid #ccc;
+  box-sizing: border-box;
+  border: 1rpx solid #ccc;
   margin-right: 20rpx;
   margin-top: 20rpx;
   border-radius: 6rpx;
   color: #333;
 
 }
-.buttons{
+
+.buttons {
   margin-top: 60rpx;
   width: 100%;
   height: 80rpx;
@@ -118,19 +151,23 @@ page{
   line-height: 80rpx;
 
 }
-._on,.active {
+
+._on,
+.active {
   color: #ff1554;
   border: 1rpx solid #ff1554;
 }
-.select_text{
-  color: #000;
-  font-size:30rpx
+
+.select_text {
+  color: #fff;
+  font-size: 30rpx
 }
-.button_submit{
-  width: 70%;
-  height: 100rpx;
-  line-height: 100rpx;
-  border-radius: 50rpx;
+
+.button_submit {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 25rpx;
   text-align: center;
   color: #fff;
   background-color: #393939;

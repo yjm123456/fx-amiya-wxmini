@@ -20,7 +20,9 @@ Component({
         currentCity:"",
         pageNums:1,
         pageSizes:10,
-        hospitalList:[]
+        hospitalList:[],
+        hosCityList:[],
+        cityList:[],
     },
 
     /**
@@ -29,6 +31,8 @@ Component({
     methods: {
         // 授权位置
         getLocationAuth() {
+            this.getCityList();
+            this.getHotList();
             let ths = this;
             if (this.data.currentCity) return;
             wx.getSetting({

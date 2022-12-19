@@ -1,41 +1,41 @@
 <view class="container">
-    <image src="/images/bg_4.jpg" class="img"></image>
+    <!-- <image src="/images/bg_4.jpg" class="img"></image> -->
     <view class="content">
-      <view class="head_portrait_con">
+      <!-- <view class="head_portrait_con">
         <image src="/images/ameiy.jpg" class="head_portrait"></image>
-      </view>
+      </view> -->
       <view class="user_message">
         <view class="item">
           <view class="item_left">
-              <view class="item_icon">
+              <!-- <view class="item_icon">
                 <text class="iconfont icon-xiangmu" style="font-size:46rpx"></text>
-              </view>
-              <view class="selected_project" wx:if="{{!itemInfoName}}">项目</view>
+              </view> -->
+              <view class="selected_project" wx:if="{{!itemInfoName}}">请选择项目</view>
               <view class="select_text" wx:else>{{itemInfoName}}</view>
             </view>
           <view class="select_button" bindtap="selectProject">选择项目</view>
         </view>
         <view class="item">
           <view class="item_left">
-              <view class="item_icon">
+              <!-- <view class="item_icon">
                 <text class="iconfont icon-xingming"  style="font-size:46rpx"></text>
-              </view>
+              </view> -->
               <input type="text" placeholder="请输入姓名" style="font-size:30rpx" placeholder-style="color: #D1cec7;" bindinput="nameInput"/>
             </view>
         </view>
         <view class="item">
           <view class="item_left">
-              <view class="item_icon">
+              <!-- <view class="item_icon">
                 <text class="iconfont icon-tianchongxing-"  style="font-size:46rpx"></text>
-              </view>
+              </view> -->
               <input type="text" placeholder="请输入手机号" style="font-size:30rpx" placeholder-style="color: #D1cec7;"  bindinput="phoneInput" maxlength="11"  type="number"/>
           </view>
         </view>
         <view class="item">
           <view class="item_left">
-              <view class="item_icon">
+              <!-- <view class="item_icon">
                 <text class="iconfont icon-yanzhengma" style="font-size:46rpx"></text>
-              </view>
+              </view> -->
               <input type="text" placeholder="请输入验证码" style="font-size:30rpx;width:220rpx" placeholder-style="color: #D1cec7;"  bindinput="verificationCodeInput" maxlength="4" type="number"/>
           </view>
           <view class="select_button" wx:if="{{send}}" bindtap="sendCode">发送</view>

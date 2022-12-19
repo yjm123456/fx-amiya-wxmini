@@ -1,2 +1,11 @@
-<!--pages/appointmentHospital/appointmentPlan/appointmentPlan.wxml-->
-<text>pages/appointmentHospital/appointmentPlan/appointmentPlan.wxml</text>
+<van-tabs active="{{ active }}" bind:change="handleTabChange" sticky>
+  <van-tab title="计划中">
+    <planned active="{{active}}" id="planned"></planned>
+  </van-tab>
+  <van-tab title="已到店">
+    <completed active="{{active}}" id="completed"></completed>
+  </van-tab>
+  <van-tab title="已取消">
+    <cancel active="{{active}}" id="cancel"></cancel>
+  </van-tab>
+</van-tabs>

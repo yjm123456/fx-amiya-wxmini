@@ -8,12 +8,12 @@ Page({
    */
   data: {
     // 是否正在处理滚动事件，避免一次滚动多次触发
-    //isScrolling: false,
-    //categoryActive: 0,
+    isScrolling: false,
+    categoryActive: 0,
     // 商品分类
-    //goodsCategoryList: [],
+    goodsCategoryList: [],
     // 商品分类
-    categoryId: 5,
+    categoryId: "",
     // 商品名称
     keyword: "",
     pageNum: 1,
@@ -131,8 +131,8 @@ getIntegral() {
         const { goodsCategorys } = res.data;
         this.setData({
           goodsCategorys,
-          categoryActive: 0
-          //categoryId: goodsCategorys.length && goodsCategorys[0].id
+          categoryActive: 0,
+          categoryId: goodsCategorys.length && goodsCategorys[0].id
         })
         this.getGoodsInfo();
       }
@@ -158,10 +158,9 @@ getIntegral() {
   getGoodsInfo(callback) {
     const { categoryId, keyword, pageNum, pageSize } = this.data;
     const data = {
-      //categoryId, keyword, pageNum, pageSize,exchangeType:0
-      pageNum, pageSize
+      categoryId, keyword, pageNum, pageSize
     }
-    http("get", `/Goods/integralList`, data).then(res => {
+    http("get", `/Goods/infoList`, data).then(res => {
       if (res.code === 0) {
         let { list, totalCount } = res.data.goodsInfos;
         this.setData({

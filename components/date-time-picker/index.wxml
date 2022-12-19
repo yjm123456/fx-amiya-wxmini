@@ -1,0 +1,6 @@
+<!--components/date-time-picker/index.wxml-->
+<picker mode="multiSelector" range="{{rangeList}}" value="{{rangeValue}}"
+  bindchange="selectChangeFn" bindcolumnchange="selectColumnChangeFn">
+  <slot></slot>
+</picker>
+ 

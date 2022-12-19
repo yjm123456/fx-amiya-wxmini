@@ -7,7 +7,7 @@
       <view wx:elif="{{item.status==3}}"  class="text3">已取消</view>
     </view>
     <view class="content">
-      <van-image width="80" height="80" src="{{item.itemInfopicUrl}}" />
+      <van-image radius="20rpx" width="80" height="80" src="{{item.itemInfopicUrl}}" />
       <view class="memo">
         <view class="title">{{item.itemInfoName}}</view>
         <view class="hospital">{{item.hospitalInfo.hospitalName}}</view>

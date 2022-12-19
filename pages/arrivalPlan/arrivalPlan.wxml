@@ -1,7 +1,7 @@
 <view class="container">
   <view class="hospital_item">
     <view class="hospital_top">
-      <van-image width="50" height="50" src="{{hospitalItem.thumbPicUrl}}"/>
+      <van-image width="50" height="50" radius="10rpx" src="{{hospitalItem.thumbPicUrl}}"/>
       <text class="hospital_name">{{hospitalItem.name}}</text>
     </view>
     <view class="hospital_center">
