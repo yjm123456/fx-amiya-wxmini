@@ -113,6 +113,7 @@
         </van-tabs> -->
     <view class="cell">
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentHospital/appointmentHospital" bindtap="to" title="预约医院" />
+        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentCarList/appointmentCarList" bindtap="to" title="叫车信息" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/shoppingCart/shoppingCart" bindtap="to" title="购物车" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/ConsumptionVoucher/ConsumptionVoucher" bindtap="to" data-nickname='{{userInfo.nickName}}' title="抵用券" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/recharge/recharge" bindtap="to" title="充值中心" />

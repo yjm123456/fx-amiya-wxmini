@@ -7,7 +7,7 @@
         <van-field class="address" type="textarea" value="{{ address }}" placeholder="请输入地址" custom-style="background-color:transparent;width:335rpx;height:135rpx" border="{{ false }}" bind:change="onAdressChange" />
 
         <view class="origin_picker">
-            <input disabled class="" type="text" value="{{hospital?hospital:''}}" placeholder="请选择医院" bindinput="handlerInput" style="width:300rpx;height: 100%;" />
+            <input  class="" type="text" value="{{hospital?hospital:''}}" placeholder="请选择医院" bindinput="handlerInput" style="width:300rpx;height: 100%;" />
             <picker class="origin_select" catchchange="bindPickerBuyersName" range-key="name" range="{{Merchlist}}">
                 <view class="ar">123</view>
             </picker>

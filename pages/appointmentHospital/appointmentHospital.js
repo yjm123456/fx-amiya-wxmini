@@ -16,11 +16,15 @@ Page({
         
     },
     onChange(event) {
+        this.setData({
+            active:event.detail.name
+        })
         if(this.data.active==0){
             this.selectComponent("#appointment").getLocationAuth();
-        }else if(active==1){
+        }else if(this.data.active==1){
             this.selectComponent("#appointmentPlan");
         }
+        
       },
     /**
      * 生命周期函数--监听页面初次渲染完成

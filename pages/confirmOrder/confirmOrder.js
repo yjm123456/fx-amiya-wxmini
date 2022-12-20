@@ -55,7 +55,8 @@ Page({
             allmoney,
             voucherName,
             voucherId,
-            deductMoney
+            deductMoney,
+            selectStandard
         } = options
         this.setData({
             hospitalid,
@@ -65,6 +66,7 @@ Page({
             voucherId,
             voucherName,
             deductMoney,
+            selectStandard,
             isMaterial: goodsInfo.some(_item => _item.isMaterial),
             totalPrice: goodsInfo.reduce((acc, cur) => {
                 return acc += cur.integrationQuantity * cur.quantity
@@ -158,7 +160,8 @@ Page({
             nickName,
             phone,
             cardName,
-            thumbPicUrl
+            thumbPicUrl,
+            
         } = this.data;
         if (tradeId && type == 2) {
             // 支付
@@ -196,7 +199,8 @@ Page({
                     appointmentCity: _item.appointmentCity ? _item.appointmentCity : null,
                     appointmentDate: _item.appointmentDate ? _item.appointmentDate : null,
                     isSkinCare: _item.isSkinCare ? _item.isSkinCare : false,
-                    isFaceCard: _item.isFaceCard ? _item.isFaceCard : false
+                    isFaceCard: _item.isFaceCard ? _item.isFaceCard : false,
+                    selectStandard:_item.selectStandard
                 }
             }),
         }

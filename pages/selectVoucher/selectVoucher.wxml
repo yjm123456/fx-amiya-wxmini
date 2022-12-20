@@ -11,9 +11,11 @@
                         <view class="right_top">
                             <view class="descrip">
                                 <text wx:if="{{item.isSpecifyProduct&&item.type==0}}" class="">指定商品可用</text>
-                                <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
+                                <text class="source">{{item.consumptionVoucherName}} </text>
+                                <!-- <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
                                 <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
-                                <text class="source" wx:elif="{{item.source==2}}">每月领取</text>                              
+                                <text class="source" wx:elif="{{item.source==2}}">每月领取</text>  
+                                <text class="source" wx:elif="{{item.source==3}}">会员发放</text>                               -->
                             </view>
                         </view>
                         <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />

@@ -72,7 +72,8 @@
         "pages/birthDayCard/birthDayCard",
         "pages/festivalGift/festivalGift",
         "pages/appointmentCar/appointmentCar",
-        "pages/appointmentHospital/appointmentHospital"
+        "pages/appointmentHospital/appointmentHospital",
+        "pages/appointmentCarList/appointmentCarList"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

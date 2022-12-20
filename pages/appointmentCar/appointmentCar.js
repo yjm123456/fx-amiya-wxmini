@@ -64,7 +64,7 @@ Page({
         } = this.data;
         if (val) {
             // 如果用户输入内容了，将原始数组进行过滤，过滤出符合用户输入的数组
-            let a = Merchlist.filter(item => item.merchant_name.indexOf(val) != -1)
+            let a = Merchlist.filter(item => item.name.indexOf(val) != -1)
             this.setData({
                 Merchlist: a
             })

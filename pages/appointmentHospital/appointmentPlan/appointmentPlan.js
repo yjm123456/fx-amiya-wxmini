@@ -5,32 +5,41 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        pageNums:1,
-        pageSizes:10,
-        currentCity:''
+        
     },
 
     /**
      * 组件的初始数据
      */
     data: {
-        active:0
+        activeTabs:0
     },
-
+    ready: function() {
+        console.log("active值为"+this.data.activeTabs);
+        this.setData({
+            activeTabs:0
+        })
+     },
     /**
      * 组件的方法列表
      */
     methods: {
+        setActive(){
+            console.log('调用初始函数');
+            this.setData({
+                activeTabs:0
+            })
+        },
         handleTabChange(event) {
             const { name } = event.detail;
             this.setData({
-              active: name
+                activeTabs: name
             })
           },
         
           onReachBottom() {
-            const { active } = this.data;
-            switch (active) {
+            const { activeTabs } = this.data;
+            switch (activeTabs) {
               case 0:
                 this.selectComponent("#planned").getOrderList()
                 break;

@@ -107,7 +107,7 @@
                 </view>
                 <view class="price">
                     <text wx:if="{{item.isMember}}">{{item.memberRankPrice}}元</text>
-                    <text wx:else>{{item.salePrice}}元</text>
+                    <text wx:else>{{item.selectStandardPrice}}元</text>
                     <text class="num">x {{item.quantity}}</text>
                 </view>
             </view>

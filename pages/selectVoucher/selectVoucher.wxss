@@ -79,7 +79,7 @@ page {
 }
 
 .right_top .source {
-    font-size: 18rpx;
+    font-size: 28rpx;
 }
 
 .right_bottom {

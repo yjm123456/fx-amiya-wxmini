@@ -1,0 +1,14 @@
+/* pages/appointmentCarList/appointmentCarList.wxss */
+page{
+    background-color: #000;
+}
+.container{
+    padding: 25rpx;
+}
+.item{
+    color: #fff;
+    background-color: #262626;
+    padding: 20rpx;
+    border-radius: 20rpx;
+    font-size: 28rpx;
+}
