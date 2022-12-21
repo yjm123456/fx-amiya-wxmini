@@ -9,9 +9,7 @@
             <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
         </view>
     </view>
-    <view class="integral_receive">
-        <image mode="widthFix" class="to_shop" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8e0041207b4d4086a8fd8ea8b5078a0d.JPG" bindtap="handleToShop"></image>
-    </view>
+    
     <!-- <view class="goods_swiper">
             <swiper class='banner' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">
                 <swiper-item>
@@ -36,8 +34,7 @@
             </view>
         </scroll-view>
         <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">
-            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType>0}}">
-                <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
+            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType==0}}">
                 <view>
                     <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
                     <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
@@ -45,7 +42,7 @@
                 <view>
                     <view class="middle">{{item.name}}</view>
                     <view class="middle">{{item.description}}</view>
-                    <view>￥{{item.salePrice}}</view>
+                    <view>￥{{item.integrationQuantity}}</view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">

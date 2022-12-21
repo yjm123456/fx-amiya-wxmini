@@ -4,6 +4,7 @@ page{
 }
 .container{
     padding: 25rpx;
+    position: relative;
 }
 .item{
     color: #fff;
@@ -11,4 +12,12 @@ page{
     padding: 20rpx;
     border-radius: 20rpx;
     font-size: 28rpx;
+}
+.cancel{
+    position: absolute;
+    bottom: 40rpx;
+    right: 50rpx;
+    padding: 15rpx 20rpx;
+    background-color: #313131;
+    border-radius: 10rpx;
 }

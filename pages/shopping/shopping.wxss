@@ -155,7 +155,7 @@ page{
 .goods_wrap {
     width: 710rpx;
     position: absolute;
-    top: 550rpx;
+    top: 200rpx;
     bottom: 0;
     box-sizing: border-box;
     display: flex;

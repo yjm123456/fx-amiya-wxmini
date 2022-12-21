@@ -17,6 +17,7 @@
                                 <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
                                 <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
                                 <text class="source" wx:elif="{{item.source==3}}">绑定奖励</text>
+                                <text class="source" wx:elif="{{item.source==4}}">手动发放</text>
                             </view>
                             <view class="use" catchtap="toShop">去使用</view>
                         </view>
@@ -26,9 +27,17 @@
                         </view>
                     </view>
                 </view>
-                <view class="item" wx:else="{{item.type==1}}">
-                    <view class="item_left">
+                <view class="item" wx:else>
+                    <view wx:if="{{item.type==1}}" class="item_left">
                         <text class="money">面诊</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view wx:if="{{item.type!=1&&item.type!=3}}" class="item_left">
+                        <text class="money">¥{{item.deductMoney}}</text>
+                        <text class="type">抵用券</text>
+                    </view>
+                    <view wx:if="{{item.type==3}}" class="item_left">
+                        <text class="money">叫车</text>
                         <text class="type">抵用券</text>
                     </view>
                     <view class="item_right">
@@ -38,7 +47,8 @@
                                 <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
                                 <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
                                 <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
-                                <text class="source" wx:elif="{{item.source==2}}">绑定奖励</text>
+                                <text class="source" wx:elif="{{item.source==3}}">绑定奖励</text>
+                                <text class="source" wx:elif="{{item.source==4}}">手动发放</text>
                             </view>
                             <view class="use" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
                         </view>

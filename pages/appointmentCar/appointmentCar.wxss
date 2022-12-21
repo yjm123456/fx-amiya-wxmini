@@ -167,3 +167,8 @@ page{
     top: 17rpx;
   }
 
+  /* 优惠券 */
+  
+.van-field__input{
+    color: #fff !important;
+}

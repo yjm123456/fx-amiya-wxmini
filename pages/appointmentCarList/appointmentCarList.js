@@ -64,7 +64,24 @@ Page({
     onReady() {
 
     },
-
+    cancelAppointmentCar(event){
+        console.log(event.currentTarget.dataset);
+        const {id}=event.currentTarget.dataset;
+        console.log(id);
+        const data={
+            id:id,
+            status:2
+        }
+        http("put", `/appointmentCar/cancel`, data).then(res => {
+            if (res.code === 0) {
+                wx.showToast({
+                  title: '取消成功',
+                  icon:'none',
+                  duration:1000
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面显示
      */

@@ -168,6 +168,7 @@ getIntegral() {
         })
         callback && callback();
         this.data.pageNum++
+        console.log("参数为"+this.data.goodsInfos.length === totalCount);
         if (this.data.goodsInfos.length === totalCount) {
           this.setData({
             nextPage: false
@@ -200,16 +201,16 @@ getIntegral() {
   onReachBottom: function () {
   this.getGoodsInfo();
 },
-  // 上拉加载
-//   loadMore() {
-//     if (this.data.nextPage) {
-//       if (this.data.isScrolling === true) return;
-//       this.data.isScrolling = true;
-//       this.getGoodsInfo(() => {
-//         this.data.isScrolling = false;
-//       });
-//     }
-//   },
+  //上拉加载
+  loadMore() {
+    if (this.data.nextPage) {
+      if (this.data.isScrolling === true) return;
+      this.data.isScrolling = true;
+      this.getGoodsInfo(() => {
+        this.data.isScrolling = false;
+      });
+    }
+  },
 
   // 商品详情
   goodsDetails(e) {

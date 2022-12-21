@@ -25,7 +25,12 @@ Component({
     // 规格列表
     goodsInfos: [],
 
-    totalPrice: 0
+    totalPrice: 0,
+    //选择的规格对应的价格
+    selectPrice:0,
+    //选择的规格id
+    selectStandardId:'',
+    selectedIndex:-1
   },
 
   methods: {
@@ -33,7 +38,30 @@ Component({
     handleClose() {
       this.triggerEvent("resetControlStandard")
     },
+    selectStandard(event){
+        console.log(event.currentTarget.dataset);
+        const {id,price,index}=event.currentTarget.dataset;
+        console.log("id的值为"+id);
 
+        this.setData({
+            selectStandardId:id,
+            selectPrice:price,
+            selectedIndex:index
+        })
+        console.log("当前选择后选中的价格为"+this.data.selectPrice);
+        const {
+            goodsInfo
+          } = this.data;
+          goodsInfo.quantity = 1
+          goodsInfo.integrationQuantity=price
+          goodsInfo.selectStandard=id
+          this.setData({
+            goodsInfo
+          })
+          console.log(goodsInfo.quantity);
+          this.getTotalPrice();
+        console.log("是否相同"+this.data.selectedIndex===index);
+    },
     // 获取商品规格
     getGoodsInfoStandard(goodsInfo) {
       http("get", `/Goods/infoListForGoodsGroup/${goodsInfo.id}`,).then(res => {
@@ -53,7 +81,7 @@ Component({
     // 操作选择规格
     handleSelectStandard(e) {
       const {
-        standard
+        id
       } = e.currentTarget.dataset;
       this.setData({
         goodsInfo: standard
@@ -75,12 +103,21 @@ Component({
     // 计算价格
     getTotalPrice() {
       const { goodsInfo } = this.data;
+      console.log("当前选中的价格为"+this.data.selectPrice);
       this.setData({
-        totalPrice: (goodsInfo.integrationQuantity * goodsInfo.quantity).toFixed(2)
+        totalPrice: (this.data.selectPrice * goodsInfo.quantity).toFixed(2)
       })
     },
 
     handlePayment(e) {
+        if(this.data.selectPrice==0){
+            wx.showToast({
+              title: '"请选择规格"',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
       this.handleClose();
       let type = e.currentTarget.dataset.type
       const {
@@ -88,7 +125,7 @@ Component({
       } = this.data;
       wx.navigateTo({
         // url: `/pages/confirmOrder/confirmOrder?goodsInfo=${JSON.stringify([goodsInfo])}`
-        url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type
+        url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type+'&selectStandardId='+this.data.selectStandardId
       })
     }
   },

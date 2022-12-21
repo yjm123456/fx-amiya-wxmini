@@ -80,7 +80,19 @@
   display: inline-block;
   font-size: 25rpx;
 }
-
+.stand{
+    display: flex;
+    flex-direction: row;
+    padding: 15rpx;
+    justify-content: space-between;
+    background-color: #e2e2e2;
+    border-radius: 10rpx;
+    font-size: 32rpx;
+    margin-top: 20rpx;
+}
+.active{
+    background-color: #8b4efc;
+}
 .sku_info .wrap .item {
   background-color: rgba(139, 78, 252, 0.1);
   color: #8b4efc;
