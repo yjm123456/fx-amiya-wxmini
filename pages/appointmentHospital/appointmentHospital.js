@@ -22,7 +22,7 @@ Page({
         if(this.data.active==0){
             this.selectComponent("#appointment").getLocationAuth();
         }else if(this.data.active==1){
-            this.selectComponent("#appointmentPlan");
+            this.selectComponent("#appointmentPlan").setActive();
         }
         
       },

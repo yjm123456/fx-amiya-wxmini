@@ -1,21 +1,25 @@
-page{
+page {
     background-color: #000000;
 }
-.personal_container{
+
+.personal_container {
     background-color: #000000;
     margin-bottom: 0;
     height: 100%;
 }
-.con_btn{
+
+.con_btn {
     width: 200rpx;
     background-color: #fff;
     border: 0rpx #fff;
     width: 100%;
 }
-.con_btn::after{
+
+.con_btn::after {
     border: 0;
 }
-.user_section{
+
+.user_section {
     background-color: #313131;
     border-radius: 0 0 50% 50% / 0 0 10% 10%;
     position: relative;
@@ -32,16 +36,19 @@ page{
     align-items: center;
     position: relative;
 }
-.bottom_image{
+
+.bottom_image {
     width: 100%;
     position: absolute;
     left: 0;
     bottom: 0;
 }
-.bottom_image image{
+
+.bottom_image image {
     width: 100%;
     height: 100%;
 }
+
 .user_info_box .portrait {
     margin-right: 30rpx;
     width: 120rpx;
@@ -58,16 +65,18 @@ page{
     justify-content: space-around;
     overflow: hidden;
 }
-.info_box_top{
+
+.info_box_top {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
 }
+
 .user_info_box .info_box .username {
-   max-width: 80%;
-   overflow: hidden;
-   text-overflow: ellipsis;
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 28rpx;
     color: #fff;
     text-overflow: ellipsis;
@@ -84,20 +93,23 @@ page{
     flex-direction: row;
     justify-content: flex-start;
 }
-.account_info{
+
+.account_info {
     display: flex;
     justify-content: space-around;
 }
-.member{
+
+.member {
     width: 40rpx;
     height: 40rpx;
 }
-.member>image{
+
+.member>image {
     width: 100%;
     height: 100%;
 }
 
-.memberbenefit{
+.memberbenefit {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -106,30 +118,34 @@ page{
     font-size: 30rpx;
     color: #fff;
 }
-.info-item{
+
+.info-item {
     justify-content: space-between;
     height: 90rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 30rpx;
 }
-text{
-    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+
+text {
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.info-item>view>text{
+
+.info-item>view>text {
     font-size: 35rpx;
     font-weight: 600;
-    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.card_info{
+
+.card_info {
     height: 50rpx;
     width: 750rpx;
     position: absolute;
@@ -139,7 +155,8 @@ text{
     display: flex;
     flex-direction: column;
 }
-.process{
+
+.process {
     display: flex;
     justify-content: space-between;
     width: 500rpx;
@@ -149,10 +166,12 @@ text{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
 }
-.vprocess{
+
+.vprocess {
     width: 300rpx;
 }
-.upgrade{
+
+.upgrade {
     margin-top: 30rpx;
     display: flex;
     font-size: 28rpx;
@@ -162,50 +181,55 @@ text{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
 }
+
 .leave {
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     font-size: 28rpx;
     background-color: #000;
-    padding: 5rpx 10rpx; 
+    padding: 5rpx 10rpx;
     border-radius: 20rpx;
     margin-left: 20rpx;
 }
 
 .leave_img {
-width: 200rpx;
-height: 80rpx;
-border-radius: 10rpx;
+    width: 200rpx;
+    height: 80rpx;
+    border-radius: 10rpx;
 }
+
 /* .balance{
     font-size: 28rpx;
     color: #fff;
 } */
-.balance{
+.balance {
     background-color: #000;
     color: #dec350;
-    padding:0 10rpx;
+    padding: 0 10rpx;
     font-size: 28rpx;
     display: inline-block;
     width: max-content;
     border-radius: 20rpx;
 }
-.balance>text{
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+
+.balance>text {
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
-.balance_amount{
+
+.balance_amount {
     margin-left: 10rpx;
     color: #DEC350;
 }
+
 .bottom_left {
     height: 60rpx;
     line-height: 60rpx;
 }
 
-.navigation_list{
+.navigation_list {
     padding-left: 20rpx;
     padding-right: 20rpx;
     padding-top: 10rpx;
@@ -217,28 +241,32 @@ border-radius: 10rpx;
     justify-content: space-around;
     /* background-color: #313131; */
     color: #DEC350;
-  }
-  .grid_navigation{
+}
+
+.grid_navigation {
     width: 100%;
     height: 100%;
     border-radius: 10rpx;
     line-height: 100%;
     border: #f4f4f4;
     overflow: hidden;
-  }
-  .grid_item{
-      background-color: #3C3C3C;
-      width: 260rpx;
-      height: 100%;
-      border-radius: 20rpx;
-      text-align: center;
-  }
-  .grid_item>text{
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+}
+
+.grid_item {
+    background-color: #3C3C3C;
+    width: 260rpx;
+    height: 100%;
+    border-radius: 20rpx;
+    text-align: center;
+}
+
+.grid_item>text {
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     font-weight: 600;
-  }
+}
+
 .bottom_right {
     width: 180rpx;
     height: 60rpx;
@@ -250,11 +278,12 @@ border-radius: 10rpx;
     color: #fff;
     margin-left: 30rpx;
 } */
-.member_no{
+.member_no {
     width: 145rpx;
     height: 155rpx;
     justify-self: right;
 }
+
 /* vip-box */
 .vip_card_box {
     position: relative;
@@ -283,20 +312,24 @@ border-radius: 10rpx;
     border-radius: 20rpx;
     overflow: hidden;
 }
-.card{
+
+.card {
     width: 750rpx;
     z-index: 99;
     margin: 0 auto;
     position: relative;
     bottom: -20rpx;
 }
-.card image{
+
+.card image {
     width: 100%;
 }
-.bottom{
+
+.bottom {
     height: 100rpx;
     background-color: #000;
 }
+
 /* .cover_container .arc {
     position: absolute;
     left: 0;
@@ -331,61 +364,81 @@ border-radius: 10rpx;
 .info_list {
     padding: 20rpx 0;
 }
-.order{
+
+.order {
     border-radius: 20rpx;
     background-color: #262626;
     margin-top: 20rpx;
     padding: 20rpx;
 }
-.order_title{
+
+.order_title {
     color: #fff;
     display: flex;
     justify-content: space-between;
     margin-bottom: 20rpx;
 }
-.title_tip{
+
+.title_tip {
     font-size: 30rpx;
 }
-.all_order{
+
+.all_order {
     font-size: 28rpx;
 }
-.order_item{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 5rpx;
-   justify-content: center;
-   box-sizing: border-box;
-   border-radius: 20rpx;
-   background-color: #3C3C3C;
-   width: 120rpx;
-   height: 130rpx;
+
+.order_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rpx;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 20rpx;
+    background-color: #3C3C3C;
+    width: 120rpx;
+    height: 130rpx;
     color: #fff;
     font-size: 22rpx;
 }
-.order_item image{
+
+.appointment_item {
+    width: 330rpx;
+    background-color: #3c3c3c;
+    height: 130rpx;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 130rpx;
+}
+
+.order_item image {
     width: 45rpx;
     height: 45rpx;
 }
-.cell{
+
+.cell {
     border-radius: 20rpx;
     margin-top: 20rpx;
     overflow: hidden;
     border-top: 2rpx solid #e2e2e2;
 }
-.cell_item{
+
+.cell_item {
     background-color: #262626 !important;
-    color: #fff!important;
+    color: #fff !important;
     font-size: 30rpx !important;
 }
-.van-cell__title{
-    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb);
+
+.van-cell__title {
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.custom_class{
+
+.custom_class {
     background-color: #262626 !important;
 }
+
 .order_status {
     display: flex;
     flex-direction: row;
@@ -438,21 +491,25 @@ border-radius: 10rpx;
 .integral_item:last-child {
     border-right: none;
 }
-.van-tabs__scroll{
+
+.van-tabs__scroll {
     background-color: #000 !important;
 }
-.tabs{
+
+.tabs {
     background-color: #262626 !important;
     top: 20rpx;
     border-radius: 20rpx;
 }
-.van-tab--active>view{
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+
+.van-tab--active>view {
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     font-weight: 600 !important;
 }
-.van-tabs__line{
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-text-fill-color:transparent !important;
+
+.van-tabs__line {
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
+    -webkit-text-fill-color: transparent !important;
 }

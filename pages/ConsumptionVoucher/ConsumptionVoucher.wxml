@@ -12,7 +12,7 @@
                     <view class="item_right">
                         <view class="right_top">
                             <view class="descrip">
-                                <text wx:if="{{item.isSpecifyProduct&&item.type==0}}" class="">指定商品可用</text>
+                                <text  class="">{{item.consumptionVoucherName}}</text>
                                 <text class="source" wx:if="{{item.source==0}}">会员赠送</text>
                                 <text class="source" wx:elif="{{item.source==1}}">用户分享</text>
                                 <text class="source" wx:elif="{{item.source==2}}">每月领取</text>
@@ -50,7 +50,8 @@
                                 <text class="source" wx:elif="{{item.source==3}}">绑定奖励</text>
                                 <text class="source" wx:elif="{{item.source==4}}">手动发放</text>
                             </view>
-                            <view class="use" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
+                            <view class="use" wx:if="{{item.type==1}}" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
+                            <view class="use" wx:if="{{item.type==3}}" data-code="{{item.wirteOfCode}}" catchtap="toAppointCar">去使用</view>
                         </view>
                         <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
                         <view class="right_bottom">

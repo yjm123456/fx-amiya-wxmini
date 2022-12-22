@@ -8,6 +8,11 @@ page{
 /* Tab栏 */
 .van-tabs__nav{
     background-color: #000;
+    
+}
+
+.nav-class{
+    height: 80rpx;
 }
 .van-ellipsis{
     color: #fff;

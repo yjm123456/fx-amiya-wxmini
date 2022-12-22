@@ -45,7 +45,7 @@
             <view class="standard_title"><text>规格</text></view>
             <view class="standard_item {{index==selectStandardIndex?'standard_active':''}}" wx:for="{{goodsInfo.goodsStandardsPrice}}" bindtap="selectStandard" data-index="{{index}}" data-price='{{item.price}}' data-standard='{{item.id}}'>
                 <view class="standard_name"><text>{{item.standards}}</text></view>
-                <view class="standard_price"><text>{{item.price}}</text></view>
+                <view class="standard_price"><text>￥{{item.price}}</text></view>
             </view>
         </view>
         <view wx:if="{{goodsInfo.canUseVoucher}}" class="item_spe" bindtap="getCustomerVoucher">

@@ -12,6 +12,7 @@ page{
     padding: 20rpx;
     border-radius: 20rpx;
     font-size: 28rpx;
+    margin-top: 20rpx;
 }
 .cancel{
     position: absolute;

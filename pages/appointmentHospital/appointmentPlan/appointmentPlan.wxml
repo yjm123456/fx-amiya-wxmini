@@ -1,11 +1,11 @@
-<van-tabs active="{{ activeTabs }}" bind:change="handleTabChange" sticky>
-  <van-tab title="计划中">
+<van-tabs wx:if="{{show}}" active="{{ activeTabs }}" bind:change="handleTabChange">
+  <van-tab   name="0" title="计划中">
     <planned active="{{activeTabs}}" id="planned"></planned>
   </van-tab>
-  <van-tab title="已到店">
+  <van-tab  name="1" title="已到店">
     <completed active="{{activeTabs}}" id="completed"></completed>
   </van-tab>
-  <van-tab title="已取消">
+  <van-tab  name="2" title="已取消">
     <cancel active="{{activeTabs}}" id="cancel"></cancel>
   </van-tab>
 </van-tabs>

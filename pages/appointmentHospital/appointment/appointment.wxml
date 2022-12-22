@@ -29,7 +29,7 @@
     </view>
 </view>
 <!-- 切换城市 -->
-<van-popup show="{{ cityModel }}" position="right" bind:close="onCancel" custom-style="height: 100%;width:78%">
+<van-popup z-index="{{5}}" safe-area-inset-top='{{true}}' show="{{ cityModel }}" position="right" bind:close="onCancel" custom-style="height: 100%;width:78%;margin-top:80rpx;">
         <view class="popup_con">
             <view class="pro_content">
                 <view class="popup_item">

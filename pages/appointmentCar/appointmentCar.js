@@ -122,7 +122,7 @@ Page({
             const currentYear = showTimeValue.substring(0, showTimeValue.indexOf('-'))
             const currentMouth = showTimeValue.split(" ")[0].split('-')[1]
             const yearList = this._gotDateTimeList({
-                _start: Number(currentYear) - 100,
+                _start: Number(currentYear),
                 _end: Number(currentYear) + 100,
                 _type: 0
             })
@@ -176,7 +176,7 @@ Page({
      * @param {Number} _mode  选择器类型
      */
     _validateShowTime(_value, _mode) {
-        let currentTime = formatTime(new Date()).replace(/\//g, "-")
+        let currentTime = formatTime(new Date(new Date().getTime()+1000*3600*24)).replace(/\//g, "-")
         let showTimeValue = _value.trim() || currentTime
         const secondReg = /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/
         const munithReg = /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/
@@ -257,7 +257,7 @@ Page({
         selectValues.map((el, index) => {
             dateTime += rangeList[index][el].substring(0, rangeList[index][el].length - 1)
             if (index == 0 || index == 1) {
-                dateTime += '-'
+                dateTime += '/'
             } else if (index == 3 || (index == 4 && index != selectValues.length - 1)) {
                 dateTime += ':'
             } else if (index == 2 && index != selectValues.length - 1) {
@@ -425,12 +425,79 @@ Page({
             carType,
             voucherId
         } = this.data;
+        
+        var d= dateMinute.replace("/",'-');
+        var d2=d.replace("/",'-');
+        if(!name){
+            wx.showToast({
+              title: '请输入姓名',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!phone){
+            wx.showToast({
+              title: '请输入手机号',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!address){
+            wx.showToast({
+              title: '请输入预约地点',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!address){
+            wx.showToast({
+              title: '请输入预约地点',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!hospital){
+            wx.showToast({
+              title: '请输入预约医院',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!dateMinute){
+            wx.showToast({
+              title: '请输入预约时间',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!carType){
+            wx.showToast({
+              title: '请输入预约车型',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if (!(/^1[3456789]\d{9}$/.test(phone))) {
+            wx.showToast({
+                title: '手机号格式错误,请重新输入',
+                icon: 'none',
+                duration: 1000
+            })
+            return;
+        }
         const data = {
             name,
             phone,
             address,
             hospital,
-            appointmentDate:dateMinute.replace(" ",'T'),
+            appointmentDate:d2.replace(" ",'T'),
             carType,
             voucherId
         };
@@ -442,7 +509,7 @@ Page({
                   duration:1000
                 })
                 wx.redirectTo({
-                  url: '/pages/personal/personal',
+                  url: '/pages/appointmentCarList/appointmentCarList',
                 })
             }
         })

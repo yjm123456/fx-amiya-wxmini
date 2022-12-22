@@ -28,7 +28,7 @@
 				>{{item.standard}}</text>
 			</view> -->
             <view class="wrap" wx:for="{{goodsInfo.goodsStandardsPrice}}">
-                <view class="stand {{selectedIndex==index?'active':''}}"  bindtap="selectStandard" data-index='{{index}}' data-id='{{item.id}}' data-price='{{item.price}}'><text>{{item.standards}}</text><text>{{item.price}}</text></view>
+                <view class="stand {{selectedIndex==index?'active':''}}"  bindtap="selectStandard" data-index='{{index}}' data-id='{{item.id}}' data-price='{{item.price}}'><text>{{item.standards}}</text><text>{{item.price}}积分</text></view>
 
             </view>
         </view>

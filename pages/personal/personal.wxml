@@ -12,7 +12,9 @@
         </view>
         <view class="account_info">
             <view class="memberbenefit" data-url="/pages/memberbenefits/memberbenefits" bindtap="to">
-                <view class="member"><image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/b53b9d1e4fba4961b177d39aadb3e998.png"></image></view>
+                <view class="member">
+                    <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/b53b9d1e4fba4961b177d39aadb3e998.png"></image>
+                </view>
                 <text>会员权益</text>
             </view>
             <view class="info-item" catchtap="toIntegralPage">
@@ -33,11 +35,11 @@
             <view class="card_info">
                 <view class="process" style="{{style}}">
                     <view class="vprocess">
-                        <van-progress color="#dec530" track-color="rgba(255,255,255,0.3)"  show-pivot="{{false}}" percentage="{{percentage}}" stroke-width="8" />
+                        <van-progress color="#dec530" track-color="rgba(255,255,255,0.3)" show-pivot="{{false}}" percentage="{{percentage}}" stroke-width="8" />
                     </view>
                     <view><text style="{{style}}">{{growthBalanceInfo.balance}}/{{growthBalanceInfo.balance+growthBalanceInfo.upgradeGrowthPoints}}</text></view>
                 </view>
-                <view class="upgrade" >
+                <view class="upgrade">
                     <view><text style="{{style}}">成长值{{growthBalanceInfo.balance}}</text></view>
                     <view><text style="{{style}}">距离下一等级还需要{{growthBalanceInfo.upgradeGrowthPoints}}</text></view>
                 </view>
@@ -46,6 +48,20 @@
     </view>
 </view>
 <view class="cover_container">
+    <view class="order">
+        <view class="order_title">
+            <text class="title_tip">我的预约</text>
+        </view>
+        <view class="order_status">
+            <view class="appointment_item" catchtap="to" data-url="/pages/appointmentHospital/appointmentHospital">
+                <view><text>预约医院</text></view>
+            </view>
+            <view class="appointment_item" catchtap="to" data-url="/pages/appointmentCar/appointmentCar">
+                <view><text>预约叫车</text></view>
+            </view>
+        </view>
+    </view>
+
     <view class="order">
         <view class="order_title">
             <text class="title_tip">我的订单</text>
@@ -112,7 +128,6 @@
             </van-tab>
         </van-tabs> -->
     <view class="cell">
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentHospital/appointmentHospital" bindtap="to" title="预约医院" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentCarList/appointmentCarList" bindtap="to" title="叫车信息" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/shoppingCart/shoppingCart" bindtap="to" title="购物车" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/ConsumptionVoucher/ConsumptionVoucher" bindtap="to" data-nickname='{{userInfo.nickName}}' title="抵用券" />

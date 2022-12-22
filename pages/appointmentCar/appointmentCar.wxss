@@ -29,6 +29,7 @@ page{
     z-index: 2;
     margin-top: 665rpx;
     left: 330rpx;
+    font-size: 22rpx !important;
 }
 .time{
     position: absolute;

@@ -12,22 +12,23 @@ Component({
      * 组件的初始数据
      */
     data: {
-        activeTabs:0
+        activeTabs:0,
+        show:false,
     },
     ready: function() {
-        console.log("active值为"+this.data.activeTabs);
         this.setData({
             activeTabs:0
         })
+        console.log("active值之前为"+this.data.activeTabs);
+        this.selectComponent('#tabs').resize();
      },
     /**
      * 组件的方法列表
      */
     methods: {
         setActive(){
-            console.log('调用初始函数');
             this.setData({
-                activeTabs:0
+                show:true
             })
         },
         handleTabChange(event) {
@@ -42,12 +43,15 @@ Component({
             switch (activeTabs) {
               case 0:
                 this.selectComponent("#planned").getOrderList()
+                
                 break;
               case 1:
                 this.selectComponent("#completed").getOrderList()
+                this.selectComponent('#tabs').resize();
                 break;
               default:
                 this.selectComponent("#cancel").getOrderList()
+                this.selectComponent('#tabs').resize();
             }
           }
     }

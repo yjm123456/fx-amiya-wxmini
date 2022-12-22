@@ -7,6 +7,6 @@
         <view class="status">预约状态：{{item.statusText}}</view>
         <view class="time">预约时间：{{item.appointmentDate}}</view>
         <view class="hospital">预约医院：{{item.hospital}}</view>
-        <view class="cancel" bindtap="cancelAppointmentCar"  data-id="{{item.id}}" wx:if="{{item.status!=0}}">取消</view>
+        <!-- <view class="cancel" bindtap="cancelAppointmentCar"  data-id="{{item.id}}" wx:if="{{item.status!=0}}">取消</view> -->
     </view>
 </view>

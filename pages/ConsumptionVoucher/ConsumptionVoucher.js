@@ -89,6 +89,11 @@ Page({
             url: '/pages/shoppingMall/shoppingMall',
         })
     },
+    toAppointCar() {
+        wx.redirectTo({
+            url: '/pages/appointmentCar/appointmentCar',
+        })
+    },
     //面诊抵用券画核销码
     getQrcodeImage(e){
         var {code}=e.currentTarget.dataset;

@@ -1,1 +1,7 @@
 /* pages/appointmentHospital/appointmentPlan/appointmentPlan.wxss */
+.van-tabs{
+    width: 100% !important;
+}
+.van-tab__pane{
+    width: 100% !important;
+}
