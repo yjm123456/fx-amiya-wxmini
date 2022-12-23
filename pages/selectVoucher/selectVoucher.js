@@ -9,7 +9,8 @@ Page({
         radio:'',
         voucherId:'',
         deductmoney:'',
-        vouchername:''
+        vouchername:'',
+        voucherType:''
     },
 
     /**
@@ -29,7 +30,8 @@ Page({
         this.setData({
             voucherId:event.currentTarget.dataset.voucherid,
             deductmoney:event.currentTarget.dataset.deductmoney,
-            vouchername:event.currentTarget.dataset.vouchername
+            vouchername:event.currentTarget.dataset.vouchername,
+            voucherType:event.currentTarget.dataset.type
           });
       },
     /**
@@ -88,7 +90,8 @@ Page({
               //直接给上一个页面赋值
               voucherId: this.data.voucherId,
               deductmoney:this.data.deductmoney,
-              vouchername:this.data.vouchername
+              vouchername:this.data.vouchername,
+              voucherType:this.data.voucherType
         });
         wx.navigateBack({
             //返回

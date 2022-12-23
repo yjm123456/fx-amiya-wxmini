@@ -10,7 +10,8 @@ Page({
         pageNum: 1,
         currentPageIndex: 1,
         pageSize: 10,
-        goodsNextPage: true
+        goodsNextPage: true,
+        carTypeImg:["https://ameiya.oss-cn-hangzhou.aliyuncs.com/a559026f01ee42d7949fbda656ca5385.png","https://ameiya.oss-cn-hangzhou.aliyuncs.com/96549ab969bc47e18f7066d285094118.png","https://ameiya.oss-cn-hangzhou.aliyuncs.com/b5ad4278a6154b3d9a452563282cdbfb.png","https://ameiya.oss-cn-hangzhou.aliyuncs.com/b6e4665370084a8589c4d79f23f7fe3e.png"]
     },
 
     /**

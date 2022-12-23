@@ -19,10 +19,10 @@
         <view class="month">{{month}}</view>
         <view class="day">{{day}}</view>
         <view class="hour">{{hour+':'+minutes}}</view>
-        <view class="car1" bindtap="selectCar" data-type="0"></view>
-        <view class="car2" bindtap="selectCar" data-type="1"></view>
-        <view class="car3" bindtap="selectCar" data-type="2"></view>
-        <view class="car4" bindtap="selectCar" data-type="3"></view>
+        <view class="car1 {{active==0?'active':''}}" bindtap="selectCar" data-type="0"></view>
+        <view class="car2 {{active==1?'active':''}}"  bindtap="selectCar" data-type="1"></view>
+        <view class="car3 {{active==2?'active':''}}" bindtap="selectCar" data-type="2"></view>
+        <view class="car4 {{active==3?'active':''}}" bindtap="selectCar" data-type="3"></view>
         
         <view class="submit" bindtap="appointmentCar">提交</view>
     </view>

@@ -56,9 +56,13 @@ Page({
             voucherName,
             voucherId,
             deductMoney,
-            selectStandard
+            selectStandard,
+            discount,
+            voucherType
         } = options
         this.setData({
+            discount,
+            voucherType,
             hospitalid,
             goodsInfo,
             allmoney,

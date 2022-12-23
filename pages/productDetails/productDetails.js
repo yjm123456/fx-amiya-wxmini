@@ -59,6 +59,7 @@ Page({
         cityNames: "",
         voucherId: "",
         deductmoney: 0,
+        voucherType: '',
         vouchername: '',
         selectStandard: '',
         selectStandardIndex: -1,
@@ -88,8 +89,8 @@ Page({
         this.setData({
             selectStandardIndex: index,
             selectStandard: standard,
-            selectStandardPrice:price,
-            totalPrice:(this.data.goodsInfo.quantity)*price
+            selectStandardPrice: price,
+            totalPrice: (this.data.goodsInfo.quantity) * price
         })
     },
     toShoppingCart() {
@@ -428,7 +429,7 @@ Page({
                     goodsInfo.salePrice = hospitalsaleprice
                     goodsInfo.allmoney = allmoney
                     goodsInfo.hospitalid = hospitalid
-                    
+
                     this.setData({
                         goodsInfo
                     })
@@ -438,7 +439,7 @@ Page({
                     })
                 }
             } else {
-                if(this.data.selectStandardIndex==-1){
+                if (this.data.selectStandardIndex == -1) {
                     wx.showToast({
                         title: '请选择规格',
                         icon: 'none',
@@ -449,14 +450,27 @@ Page({
                 //对goodsInfo重新添加两个属性
                 goodsInfo.allmoney = allmoney
                 goodsInfo.hospitalid = hospitalid
-                goodsInfo.selectStandard=selectStandard
-                goodsInfo.selectStandardPrice=selectStandardPrice
+                goodsInfo.selectStandard = selectStandard
+                goodsInfo.selectStandardPrice = selectStandardPrice
                 //设置新属性后重新更新值
                 this.setData({
                     goodsInfo
                 })
+                var deductmoney2 = 0;
+                var voucherType=0;
+                console.log("类型" + this.data.voucherType);
+                console.log("金额" + Math.ceil(allmoney * deductmoney));
+                if (this.data.voucherType == 0) {
+                    deductmoney2 = this.data.deductmoney
+                } else if (this.data.voucherType == 4) {
+                    voucherType=4
+                    console.log("jru");
+                    deductmoney2 = Math.ceil(allmoney * deductmoney);
+                    deductmoney2 = allmoney - deductmoney2;
+                }
+                console.log("折扣金额" + deductmoney);
                 wx.navigateTo({
-                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney
+                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney2 + '&discount=' + this.data.deductmoney+'&voucherType='+voucherType
                 })
             }
 

@@ -5,5 +5,5 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-divider": "@vant/weapp/divider/index"
   },
-  "navigationBarTitleText": "到店计划"
+  "navigationBarTitleText": "预约医院"
 }

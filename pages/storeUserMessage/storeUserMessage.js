@@ -205,7 +205,7 @@ Page({
             },1000)
             setTimeout(()=>{
               wx.reLaunch({
-                url: '/pages/toStoreList/toStoreList',
+                url: '/pages/appointmentHospital/appointmentHospital?active=1',
               })
             },2000)
           }

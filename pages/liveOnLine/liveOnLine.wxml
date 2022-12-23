@@ -1,4 +1,4 @@
 <!--pages/liveOnLine/liveOnLine.wxml-->
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
-    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/eb7f4209ad304153832ea50bfe10fdf7.jpg"></image>
+    <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/5d5e43073b2f46c0ab59b29b3308b8c4.jpg"></image>
 </scroll-view>

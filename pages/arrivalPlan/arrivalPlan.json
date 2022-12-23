@@ -4,5 +4,5 @@
     "calendar": "./components/calendar/calendar",
     "footer": "./components/footer/footer"
   },
-  "navigationBarTitleText": "到店计划"
+  "navigationBarTitleText": "预约医院"
 }

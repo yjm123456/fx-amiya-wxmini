@@ -28,7 +28,8 @@ Page({
         Merchlist1: [], // 后台返回的数据数组
         list: [],
         voucherList:[],
-        voucherId:''
+        voucherId:'',
+
     },
     /**
      * 生命周期函数--监听页面加载
@@ -44,6 +45,7 @@ Page({
         this._initDateTimePickerFn();
         this.getMerchList();
         this.getConsumptionVoucher();
+        this.getMostRecentlyAppointmentHospitalName();
     },
     getConsumptionVoucher() {
         http("get", `/CustomerConsumptionVoucher/allCarList`).then(res => {
@@ -51,6 +53,16 @@ Page({
                 let list = res.data.customerConsumptionVoucherList;
                 this.setData({
                     voucherList: list
+                })
+            }
+        })
+    },
+    getMostRecentlyAppointmentHospitalName() {
+        http("get", `/appointment/getMostRecentlyAppointment`).then(res => {
+            if (res.code === 0) {
+                let appointmentInfo = res.data.name;
+                this.setData({
+                    hospital: appointmentInfo.hospitalName
                 })
             }
         })
@@ -342,6 +354,9 @@ Page({
     },
     selectCar(event) {
         var type = event.currentTarget.dataset.type;
+        this.setData({
+            active:type
+        })
         http("get", `/appointmentCar/getWheatherHaveCarVoucher?car=`+type).then(res => {
             if (res.code === 0) {
                 var voucherId=res.data.voucherId

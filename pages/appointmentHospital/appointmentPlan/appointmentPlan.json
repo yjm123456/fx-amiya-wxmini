@@ -1,7 +1,7 @@
 {
     "component": true,
     "usingComponents": {
-        "van-tab": "@vant/weapp/tab/index",
+    "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "planned":"../../toStoreList/components/planned/planned",
     "completed":"../../toStoreList/components/completed/completed",

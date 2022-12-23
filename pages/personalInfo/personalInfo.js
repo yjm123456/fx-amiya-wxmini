@@ -111,7 +111,6 @@ Page({
         });
       },
     saveInfo() {
-        console.log("调用")
         let {
             gender,
             //生日

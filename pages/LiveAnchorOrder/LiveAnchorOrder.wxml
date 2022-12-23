@@ -31,10 +31,10 @@
         <view class="pay_list">
             <van-radio-group value="{{ names }}" bind:change="onChange">
                 <van-cell-group border="{{false}}">
-                    <van-cell border="{{false}}" inset="{{true}}" title="刀刀" clickable data-names="1" bind:click="onClick">
+                    <van-cell border="{{false}}" inset="{{true}}" title="刀刀老师" clickable data-names="1" bind:click="onClick">
                         <van-radio slot="right-icon" name="1" />
                     </van-cell>
-                    <van-cell border="{{false}}" inset="{{true}}" title="吉娜" clickable data-names="2" bind:click="onClick">
+                    <van-cell border="{{false}}" inset="{{true}}" title="吉娜老师" clickable data-names="2" bind:click="onClick">
                         <van-radio slot="right-icon" name="2" />
                     </van-cell>
                 </van-cell-group>

@@ -119,8 +119,5 @@
         "scope.userLocation": {
             "desc": "你的位置信息将用于地图展示"
         }
-    },
-    "requiredPrivateInfos":[
-        "getLocation"
-    ]
+    }
 }

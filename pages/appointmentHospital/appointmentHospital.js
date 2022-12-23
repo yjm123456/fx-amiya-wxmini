@@ -13,7 +13,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
+        if(options.active){
+            this.setData({
+                active:1
+            })
+        }
     },
     onChange(event) {
         this.setData({

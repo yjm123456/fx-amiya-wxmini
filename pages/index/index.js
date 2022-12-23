@@ -91,11 +91,8 @@ Page({
         // if(scene != 'undefined'){           
         //     this.setSuperior(scene);
         // }
-        //this.showVoucherTips()
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
-                //暂时不显示领取优惠券
-                // this.getRecieveVoucherInfo();
                 this.getShareInfo();
             } else {
                 this.showVoucherTips()

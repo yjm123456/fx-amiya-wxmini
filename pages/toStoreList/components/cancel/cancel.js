@@ -37,7 +37,7 @@ Component({
       const { pageNum, pageSize, nextPage } = this.data;
       if (!nextPage) return;
       const data = {
-         pageNum, pageSize,status:3
+         pageNum, pageSize,status:2
       }
       http("get", `/Appointment/list`, data).then(res => {
         if (res.code === 0) {
