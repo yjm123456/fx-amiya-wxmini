@@ -14,3 +14,15 @@ page{
 .img{
     width: 750rpx;
 }
+.content{
+    position: relative;
+}
+.live1{
+    position: absolute;
+    width: 160rpx;
+    height: 160rpx;
+    background-color: red;
+    top: 75rpx;
+    border-radius: 50%;
+    left: 86rpx;
+}

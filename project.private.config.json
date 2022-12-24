@@ -284,6 +284,13 @@
                     "query": "nickname=undefined",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "生日",
+                    "pathName": "pages/birthDayCard/birthDayCard",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

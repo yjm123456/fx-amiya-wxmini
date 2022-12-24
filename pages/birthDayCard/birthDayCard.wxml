@@ -3,20 +3,31 @@
     <view class="content">
         <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7d554a429e1341698d3749b19e8bacbe.jpg"></image>
         <view class="name">
-            <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:28rpx;'	  value="{{ name }}"  border="{{ false }}" bind:change="onNameChange" />
+            <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;' value="{{ !name?'':name }}"  border="{{ false }}" bind:change="onNameChange" />
         </view>
         <view class="birthday">
-            <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:28rpx;' value="{{ birthDay }}"  border="{{ false }}" bind:change="onBirthDayChange" />
+            <picker mode="date" end='{{timeNow}}' bindchange="bindChange" value="{{birthDay}}">
+            <van-field disable custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;' value="{{ !birthDay?'':birthDay }}"  border="{{ false }}" bind:change="onBirthDayChange" />
+            </picker>
         </view>
         <view class="phone">
-            <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:28rpx;' value="{{ phone }}"  border="{{ false }}" bind:change="onPhoneChange" />
+            <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;' value="{{ !phone?'':phone }}"  border="{{ false }}" bind:change="onPhoneChange" />
         </view>
         <view class="area">
-            <van-field value="{{ city }}" custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:28rpx;'  border="{{ false }}" bind:change="onAreaChange" />
+            <picker mode="region" bindchange="bindAreaChange" value="{{area}}">
+            <van-field value="{{  city+'-'+area2 }}" custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;'  border="{{ false }}" bind:change="onAreaChange" />
+            </picker>
         </view>
         <view class="detail_address">
-            <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:28rpx;' value="{{ detailAddress }}"  border="{{ false }}" bind:change="onDetailAdressChange" />
+            <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;' value="{{ !detailAddress?'':detailAddress }}"  border="{{ false }}" bind:change="onDetailAdressChange" />
         </view>
-        <view class="submit">提交</view>
+        <view class="submit" bindtap="updateBirthCard">提交</view>
     </view>
 </scroll-view>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<!-- 新客绑定提示弹窗 -->
+<van-dialog showConfirmButton="{{false}}" show="{{show}}" use-slot id="bind_tips">
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7cd41576dd504750a625f314b8ec3bc2.png"></image>
+    <view class="submit2" catchtap="getVoucher">立即领取</view>
+</van-dialog>

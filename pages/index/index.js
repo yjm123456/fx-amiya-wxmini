@@ -91,6 +91,7 @@ Page({
         // if(scene != 'undefined'){           
         //     this.setSuperior(scene);
         // }
+        
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 this.getShareInfo();
@@ -328,9 +329,27 @@ Page({
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 if (e.currentTarget.dataset.url) {
-                    wx.navigateTo({
-                        url: e.currentTarget.dataset.url,
-                    })
+                    if(e.currentTarget.dataset.url=='/pages/personalInfo/personalInfo'){
+                            http("get", `/User/isComplete`).then(res => {
+                                if (res.code === 0) {
+                                    var isComplete=res.data.isComplete
+                                    if(isComplete){
+                                        wx.navigateTo({
+                                            url: '/pages/memberbenefits/memberbenefits'
+                                        })
+                                    }else{
+                                        wx.navigateTo({
+                                            url: e.currentTarget.dataset.url,
+                                        })
+                                    }
+                                }
+                            })
+                    }else{
+                        wx.navigateTo({
+                            url: e.currentTarget.dataset.url,
+                        })
+                    }
+                    
                 }
             } else {
                 this.showVoucherTips()

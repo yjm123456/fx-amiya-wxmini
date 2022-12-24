@@ -12,15 +12,31 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        wx.getSystemInfo({//获取设备屏幕真实高度
+        wx.getSystemInfo({ //获取设备屏幕真实高度
             success: (result) => {
-              this.setData({
-                sysheight:result.windowHeight
-              })
+                this.setData({
+                    sysheight: result.windowHeight
+                })
             },
-          })
+        })
     },
-
+    toLive() {
+        wx.openChannelsUserProfile({
+            finderUserName: 'sph3MDcC48Zbe3t',
+            success: (res) => {
+                console.log('success')
+                console.log(res)
+            },
+            fail: (err) => {
+                console.log('fail')
+                console.log(err)
+            },
+            complete:(info)=> {
+                console.log('complete')
+                console.log(info)
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

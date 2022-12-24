@@ -13,28 +13,28 @@ page{
 }
 .name{
     position: absolute;
-    top: 770rpx;
+    top: 778rpx;
     left: 310rpx;
     height: 60rpx;
     width: 280rpx;
 }
 .birthday{
     position: absolute;
-    top: 830rpx;
+    top: 839rpx;
     left: 310rpx;
     height: 60rpx;
     width: 280rpx;
 }
 .phone{
     position: absolute;
-    top: 885rpx;
+    top: 897rpx;
     left: 310rpx;
     height: 60rpx;
     width: 280rpx;
 }
 .area{
     position: absolute;
-    top: 960rpx;
+    top: 958rpx;
     left: 310rpx;
     height: 60rpx;
     width: 280rpx;
@@ -45,5 +45,43 @@ page{
     left: 310rpx;
     height: 60rpx;
     width: 280rpx;
+}
+.submit{
+    position: absolute;
+    background-color: #e4cfbb;
+    top: 1300rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 10rpx;
+    width: 450rpx;
+    text-align: center;
+    left: 150rpx;
+}
+.tip_img {
+    width: 100%;
+}
+.submit2{
+    background-color: transparent;
+    color: transparent;
+    position: absolute;
+    margin-top: -116rpx;
+    left: 150rpx;
+    height: 60rpx !important;
+    width: 245rpx;
+}
+.van-goods-action {
+    background-color: #000 !important;
+}
+
+.van-button--danger {
+    background: transparent !important;
+    position: absolute;
+    top: -370rpx;
+    width: 300rpx !important;
+    height: 60rpx !important;
+    left: 120rpx;
+}
+#bind_tips .van-goods-action {
+    background-color: transparent !important;
 }
 

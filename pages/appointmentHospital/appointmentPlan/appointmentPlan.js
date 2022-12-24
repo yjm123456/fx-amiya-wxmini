@@ -45,15 +45,14 @@ Component({
             const {
                 activeTabs
             } = this.data;
+            
             switch (activeTabs) {
-                case 0:
+                case 1:
                     this.selectComponent("#planned").getOrderList()
                     break;
-                case 1:
+                case 2:
                     this.selectComponent("#cancel").getOrderList()
                     break;
-                default:
-                    this.selectComponent("#planned").getOrderList()
             }
         }
     }

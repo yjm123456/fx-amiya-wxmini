@@ -42,7 +42,7 @@
                 <view>
                     <view class="middle">{{item.name}}</view>
                     <view class="middle">{{item.description}}</view>
-                    <view>￥{{item.integrationQuantity}}</view>
+                    <view>{{item.integrationQuantity}}积分</view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">
