@@ -5,7 +5,7 @@
                 <view class="item" catchtap="{{item.isShare&&!item.isUsed ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0||item.type==4}}">
                     <view class="item_left">
                         <text class="money" wx:if="{{item.type==0}}">¥{{item.deductMoney}}</text>
-                        <text class="money" wx:if="{{item.type==4}}">{{item.deductMoney}}折</text>
+                        <text class="money" wx:if="{{item.type==4}}">{{we.toFixed(item.deductMoney*10)}}折</text>
                         <text class="type">抵用券</text>
                     </view>
                     <view class="item_right">
@@ -30,3 +30,11 @@
 </van-radio-group>
 </view>
 <view class="button" bindtap="storeSubmit">确定</view>
+<wxs module="we">
+    var toFixed = function (value) {
+        return value.toFixed(1);
+    }
+    module.exports = {
+        toFixed: toFixed
+    }
+</wxs>

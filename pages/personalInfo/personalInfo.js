@@ -31,7 +31,9 @@ Page({
         personalSignature:'',
         show: false,
         newNickName:'',
-        userAvatar:''
+        userAvatar:'',
+        phone:'',
+        detailAddress:''
     },
 
     /**
@@ -66,6 +68,18 @@ Page({
         this.setData({
             Name
         });
+    },
+    onPhoneChange(event){
+        var phone=event.detail;
+        this.setData({
+            phone
+        })
+    },
+    onDetailAddressChange(event){
+        var detailAddress=event.detail;
+        this.setData({
+            detailAddress
+        })
     },
     onPersonalSignatureChange(event){
         var personalSignature=event.detail;
@@ -124,7 +138,9 @@ Page({
             //头像
             userAvatar,
             personalSignature,
-            area1
+            area1,
+            phone,
+            detailAddress
         } = this.data
         if(!userAvatar){
             wx.showToast({
@@ -134,14 +150,14 @@ Page({
             })
             return;
         }
-        if(!nickName){
-            wx.showToast({
-              title: '请输入昵称',
-              icon:'none',
-              duration:1000
-            })
-            return;
-        }
+        // if(!nickName){
+        //     wx.showToast({
+        //       title: '请输入昵称',
+        //       icon:'none',
+        //       duration:1000
+        //     })
+        //     return;
+        // }
         if(!Name){
             wx.showToast({
               title: '请输入姓名',
@@ -158,6 +174,30 @@ Page({
             })
             return;
         }
+        if(!city){
+            wx.showToast({
+              title: '请选择所在城市',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!phone){
+            wx.showToast({
+              title: '请输入手机号',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
+        if(!detailAddress){
+            wx.showToast({
+              title: '请输入详细地址',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
         const data = {
             userAvatar,
             gender,
@@ -167,7 +207,9 @@ Page({
             area:area1,
             nickName,
             name:Name,
-            personalSignature
+            personalSignature,
+            phone,
+            detailAddress
         }
         http("put", "/User/userEditInfo", data).then((res) => {
             if (res.code === 0) {
@@ -321,7 +363,9 @@ Page({
                     nickName:res.data.userInfo.nickName,
                     Name:!res.data.userInfo.name ?"":res.data.userInfo.name,
                     personalSignature:!res.data.userInfo.personalSignature ?"":res.data.userInfo.personalSignature,
-                    date:res.data.userInfo.birthDay==null?"": res.data.userInfo.birthDay.split("T")[0],                  
+                    date:res.data.userInfo.birthDay==null?"": res.data.userInfo.birthDay.split("T")[0],
+                    phone:res.data.userInfo.phone,
+                    detailAddress:res.data.userInfo.detailAddress        
                 })
                 var list=[];
                 list.push({deletable:true,url:res.data.userInfo.avatarUrl})

@@ -83,6 +83,16 @@ Page({
             this.getConsumptionVoucher();
         }
     },
+    toFixed(num,decimal) {
+        num = num.toString();
+        let index = num.indexOf('.');
+        if (index !== -1) {
+            num = num.substring(0, decimal + index + 1)
+        } else {
+            num = num.substring(0)
+        }
+        return parseFloat(num).toFixed(decimal)
+    },
     //点击使用跳转到商城
     toShop() {
         wx.switchTab({

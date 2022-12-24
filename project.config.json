@@ -49,6 +49,10 @@
     "projectname": "%E9%98%BF%E7%BE%8E%E9%9B%85",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
+    },
     "condition": {
         "plugin": {
             "list": []
@@ -87,9 +91,5 @@
                 }
             ]
         }
-    },
-    "editorSetting": {
-        "tabIndent": "insertSpaces",
-        "tabSize": 4
     }
 }

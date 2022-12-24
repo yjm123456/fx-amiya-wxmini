@@ -29,6 +29,15 @@
             </view>
         </view>
         <view class="item">
+            <view class="avatar_url">手机号</view>
+            <view wx:if="{{!isEdit}}" class="info_text">
+                <text>{{!userInfo.phone?"":userInfo.phone}}</text>
+            </view>
+            <view wx:else class="info_text">
+                <van-field value="{{ phone }}" placeholder="请输入姓名" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onPhoneChange" />
+            </view>
+        </view>
+        <view class="item">
             <view class="avatar_url">性别</view>
             <view wx:if="{{!isEdit}}" class="info_text">
                 <van-radio-group value="{{ gender }}" direction='horizontal' >
@@ -78,6 +87,15 @@
                 <picker mode="region" bindchange="bindAreaChange" value="{{area}}">
                     <text>{{ !area1?"请选择": city+"-"+area1 }}</text>
                 </picker>
+            </view>
+        </view>
+        <view class="item">
+            <view class="avatar_url">详细地址</view>
+            <view wx:if="{{!isEdit}}" class="info_text">
+                <text>{{!userInfo.detailAddress?"":userInfo.detailAddress}}</text>
+            </view>
+            <view wx:else class="info_text">
+                <van-field value="{{ detailAddress }}" placeholder="请输入个性签名" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onDetailAddressChange" />
             </view>
         </view>
     </view>

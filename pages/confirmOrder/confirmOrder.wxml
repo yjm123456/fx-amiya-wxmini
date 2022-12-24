@@ -124,7 +124,7 @@
         <view class="voucher-title">使用的抵用券</view>
         <view class="voucher">
             <view class="voucher_left">
-                <text>{{voucherType==4?discount:deductMoney}}</text>
+                <text>{{voucherType==4?we.toFixed(discount*10)+'折':deductMoney}}</text>
                 <text>抵用券</text>
             </view>
             <view class="voucher_right">{{voucherName}}</view>
@@ -156,3 +156,11 @@
         </view>
     </view>
 </view>
+<wxs module="we">
+    var toFixed = function (value) {
+        return value.toFixed(1);
+    }
+    module.exports = {
+        toFixed: toFixed
+    }
+</wxs>
