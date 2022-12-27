@@ -1,3 +1,14 @@
 <!--pages/discount/discount.wxml-->
 <!-- <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/96cbf6dcf4d74b9ca20d4b1ae9e7b2f6.png"></image> -->
-<view class="center">敬请期待...</view> 
+<view class="container">
+    <view wx:if="{{!canRecieve}}" class="empty_tips">--暂时没有可领取的抵用券--</view>
+    <view wx:else class="item">
+        <image class="voucher" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2b55cf2f57b14430a29d0be5835e75d9.png"></image>
+        <view class="voucher_info">
+            <view class="deduct"><text>{{deductMoney}}折</text></view>
+            <view class="detail"><text class="top">{{voucherName}}</text><text class="bottom">指定商品可用</text></view>
+
+        </view>
+        <view class="receive" bindtap="receiveVoucher"></view>
+    </view>
+</view>

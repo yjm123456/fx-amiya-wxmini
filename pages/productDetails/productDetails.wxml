@@ -21,6 +21,7 @@
             <text class="original_price">￥ {{goodsInfo.maxShowPrice}}</text>
         </view>
         <view class="detail ">{{goodsInfo.name}}</view>
+        <view class="recieve_voucher" wx:if="{{goodsInfo.canUseVoucher}}" bindtap="toRecieveVoucher">领取抵用券 ></view>
     </view>
     <!--  -->
     <view class="message">
@@ -43,12 +44,15 @@
         <!-- 实体商品规格 -->
         <view class="standard" wx:if="{{goodsInfo.isMaterial==true}}">
             <view class="standard_title"><text>规格</text></view>
-            <view class="standard_item {{index==selectStandardIndex?'standard_active':''}}" wx:for="{{goodsInfo.goodsStandardsPrice}}" bindtap="selectStandard" data-index="{{index}}" data-price='{{item.price}}' data-standard='{{item.id}}'>
+            <view wx:if="{{standardsImg}}" class="standards_img">
+                <image bindtap="showImg" data-img="{{standardsImg}}" src="{{standardsImg}}"></image>
+            </view>
+            <view class="standard_item {{index==selectStandardIndex?'standard_active':''}}" wx:for="{{goodsInfo.goodsStandardsPrice}}" bindtap="selectStandard" data-img="{{item.standardsImg}}" data-index="{{index}}" data-price='{{item.price}}' data-standard='{{item.id}}'>
                 <view class="standard_name"><text>{{item.standards}}</text></view>
                 <view class="standard_price"><text>￥{{item.price}}</text></view>
             </view>
         </view>
-        <view wx:if="{{goodsInfo.canUseVoucher}}" class="item_spe" bindtap="getCustomerVoucher">
+        <view class="item_spe" bindtap="getCustomerVoucher">
             <text>选择抵用券</text>
             <view class="city_con">
                 <text wx:if="{{voucherId}}" class="city_text">{{vouchername}}</text>

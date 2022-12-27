@@ -7,18 +7,71 @@
 /* .img{
     width: 750rpx;
 } */
-page{
+page {
     background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
-.center{
-    color:#fff;
-    font-size: 38rpx;
-    font-weight: 600
+
+.container {
+    margin: 25rpx 25rpx;
+    width: 700rpx;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
-.img{
-    width: 750rpx;
+
+.item {
+    position: relative;
+    z-index: 1;
+}
+
+.voucher {
+    width: 100%;
+    height: 280rpx;
+}
+
+.voucher_info {
+    top: 80rpx;
+    font-size: 35rpx;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    align-items: center;
+    left: 160rpx;
+}
+
+.receive {
+    position: absolute;
+    background-color: transparent;
+    z-index: 2;
+    width: 247rpx;
+    height: 50rpx;
+    top: 174rpx;
+    left: 250rpx;
+}
+
+.deduct {
+    font-size: 65rpx;
+    font-weight: 600;
+    color: #613722;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    font-size: 36rpx;
+}
+.bottom{
+    font-size: 28rpx;
+}
+.empty_tips {
+    color: #fff;
+    margin: 0 auto;
 }

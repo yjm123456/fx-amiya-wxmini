@@ -187,3 +187,15 @@ input {
   border: 1px solid #ff1554;
   color: #ff1554;
 }
+.recieve_voucher{
+    font-size: 25rpx;
+    text-align: end;
+}
+.standards_img{
+    width: 100rpx;
+    height: 100rpx;
+}
+.standards_img>image{
+    width: 100%;
+    height: 100%;
+}

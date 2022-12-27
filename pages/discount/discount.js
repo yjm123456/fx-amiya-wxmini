@@ -1,20 +1,49 @@
 // pages/discount/discount.js
+import http from "./../../utils/http"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        voucherName:'',
+        canRecieve:true,
+        deductMoney:0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.isRecieveConsumptionVoucher();
     },
-
+    receiveVoucher() {
+        http("post","/CustomerConsumptionVoucher/reciveConsumptionVoucherWeek").then(res => {
+            if (res.code === 0) {
+                wx.showToast({
+                  title: '领取成功',
+                  icon:'none',
+                  duration:1000
+                })
+                wx.switchTab({
+                  url: '/pages/shoppingMall/shoppingMall',
+                })
+            }
+        })
+    },
+    ///是否领取会员抵用券
+    isRecieveConsumptionVoucher() {
+        http("get", `/CustomerConsumptionVoucher/isReciveConsumptionVoucherThisWeek`).then(res => {
+            if (res.code === 0) {
+                const {canReceive,deductMoney,voucherName}=res.data.voucher
+                this.setData({
+                    canRecieve:canReceive,
+                    deductMoney:deductMoney,
+                    voucherName:voucherName
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

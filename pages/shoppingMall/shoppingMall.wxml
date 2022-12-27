@@ -39,3 +39,5 @@
         </scroll-view>
     </view>
 </view> 
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

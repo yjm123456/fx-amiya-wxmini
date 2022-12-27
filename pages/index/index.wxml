@@ -1,8 +1,8 @@
 <view class="container">
     <!-- 轮播图 -->
     <swiper circular='true' class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
-        <swiper-item wx:for="{{carouselImage}}" bindtap="redirect" wx:key="picUrl"  data-url="{{item.linkUrl}}">
-            <image src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
+        <swiper-item wx:for="{{carouselImage}}" bindtap="redirect" wx:key="picUrl" data-url="{{item.linkUrl}}">
+            <image style="border-radius: 20rpx;" src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
         </swiper-item>
     </swiper>
 
@@ -116,7 +116,7 @@
                     </view>
                 </view>
             </view>
-            <view class="product" bindtap="toOrder"  data-goodsid="{{item.id}}" wx:key="index">
+            <view class="product" bindtap="toOrder" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">

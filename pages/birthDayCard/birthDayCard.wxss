@@ -84,4 +84,7 @@ page{
 #bind_tips .van-goods-action {
     background-color: transparent !important;
 }
+.van-field__input--disabled{
+    color: #000 !important;
+}
 

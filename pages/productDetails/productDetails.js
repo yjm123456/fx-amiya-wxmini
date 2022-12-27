@@ -63,7 +63,8 @@ Page({
         vouchername: '',
         selectStandard: '',
         selectStandardIndex: -1,
-        selectStandardPrice: 0
+        selectStandardPrice: 0,
+        standardsImg:''
     },
 
     /**
@@ -79,17 +80,33 @@ Page({
             "isIphoneX": this.isIphoneX()
         })
     },
+    toRecieveVoucher(){
+        wx.redirectTo({
+          url: '/pages/discount/discount',
+        })
+    },
+    showImg(event){
+        const {
+            img
+        } = event.currentTarget.dataset;
+        wx.previewImage({
+            current: '', // 当前显示图片的 http 链接
+            urls: [img] // 需要预览的图片 http 链接列表
+          })
+    },
     //选择规格
     selectStandard(event) {
         const {
             index,
             standard,
-            price
+            price,
+            img
         } = event.currentTarget.dataset;
         this.setData({
             selectStandardIndex: index,
             selectStandard: standard,
             selectStandardPrice: price,
+            standardsImg:img,
             totalPrice: (this.data.goodsInfo.quantity) * price
         })
     },

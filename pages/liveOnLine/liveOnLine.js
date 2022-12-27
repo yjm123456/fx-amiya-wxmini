@@ -22,7 +22,7 @@ Page({
     },
     toLive() {
         wx.openChannelsUserProfile({
-            finderUserName: 'sph3MDcC48Zbe3t',
+            finderUserName: 'sphydmLiZOz33WT',
             success: (res) => {
                 console.log('success')
                 console.log(res)
