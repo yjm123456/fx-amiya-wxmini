@@ -325,6 +325,20 @@ Page({
             }
         })
     },
+    switchTab(e){
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                if (e.currentTarget.dataset.url) {
+                    wx.switchTab({
+                      url: e.currentTarget.dataset.url,
+                    })
+                    
+                }
+            } else {
+                this.showVoucherTips()
+            }
+        })
+    },
     redirect(e) {
         this.isCustomer((isCustomer) => {
             if (isCustomer) {

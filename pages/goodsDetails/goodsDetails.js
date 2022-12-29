@@ -20,6 +20,11 @@ Page({
             url: '/pages/shoppingCart/shoppingCart',
         })
     },
+    onSelectStandard(e){
+        this.setData({
+            selectStandardId: e.detail
+        })
+    },
     addToShoppingCart(e) {
         const {
             hospitalid,
@@ -28,7 +33,7 @@ Page({
             hospitalsaleprice,
             allmoney
         } = e.currentTarget.dataset
-        console.log(hospitalid);
+        
         const {
             goodsInfo
         } = this.data
@@ -54,7 +59,17 @@ Page({
                 } = this.data.goodsInfo
                 const data = {
                     GoodsId: id,
-                    Num: quantity
+                    Num: quantity,
+                    selectStandard:this.data.selectStandardId
+                }
+                console.log("选中的规格为"+this.data.selectStandardId);
+                if(!this.data.selectStandardId){
+                    wx.showToast({
+                      title: '请选择规格',
+                      icon:'none',
+                      duration:1000
+                    })
+                    return;
                 }
                 console.log(goodsInfo);
                 http("post", `/GoodsShopCar`, data).then(res => {

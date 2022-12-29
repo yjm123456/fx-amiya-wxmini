@@ -48,8 +48,8 @@
     <!-- 优惠板块 -->
     <view class="discount">
         <view class="discount-item">
-            <image mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
-            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
+            <image mode="widthFix" bindtap="switchTab" data-url="/pages/shopping/shopping" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
+            <image class="join" mode="widthFix" catchtap="switchTab" data-url="/pages/shopping/shopping" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
         </view>
         <view class="discount-item">
             <image mode="widthFix" bindtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ab7f92ab6ec84d98a556aa9db8158910.png"></image>

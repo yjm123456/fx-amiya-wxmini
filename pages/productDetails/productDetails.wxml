@@ -21,7 +21,7 @@
             <text class="original_price">￥ {{goodsInfo.maxShowPrice}}</text>
         </view>
         <view class="detail ">{{goodsInfo.name}}</view>
-        <view class="recieve_voucher" wx:if="{{goodsInfo.canUseVoucher}}" bindtap="toRecieveVoucher">领取抵用券 ></view>
+        <view class="recieve_voucher" wx:if="{{goodsInfo.canUseVoucher}}" bindtap="toRecieveVoucher"><text>领取抵用券 ></text></view>
     </view>
     <!--  -->
     <view class="message">

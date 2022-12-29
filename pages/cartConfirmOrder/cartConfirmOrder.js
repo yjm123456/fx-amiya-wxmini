@@ -117,7 +117,8 @@ Page({
                         // 购买数量
                         quantity: _item.num,
                         hospitalId: _item.hospitalId ? _item.hospitalid : 0,
-                        actualPayment: Number(_item.interGrationAccount * _item.num) ? Number(_item.interGrationAccount * _item.num) : 0
+                        actualPayment: Number(_item.interGrationAccount * _item.num) ? Number(_item.interGrationAccount * _item.num) : 0,
+                        selectStandard:_item.selectStandards
                     }
                 })
             }

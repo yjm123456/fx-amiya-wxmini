@@ -124,8 +124,17 @@ Page({
             allmoney
         } = e.currentTarget.dataset
         const {
-            goodsInfo
+            goodsInfo,
+            selectStandard
         } = this.data
+        if(!selectStandard){
+            wx.showToast({
+              title: '请选择规格',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
         let token = wx.getStorageSync("token")
         if (!token) {
             wx.showToast({
@@ -147,7 +156,8 @@ Page({
                 } = this.data.goodsInfo
                 const data = {
                     GoodsId: id,
-                    Num: quantity
+                    Num: quantity,
+                    selectStandard:this.data.selectStandard
                 }
                 http("post", `/GoodsShopCar`, data).then(res => {
                     if (res.code === 0) {
@@ -164,12 +174,14 @@ Page({
                         icon: 'none',
                         duration: 2000
                     })
+                    return;
                 } else if (!hospitalid) {
                     wx.showToast({
                         title: '请选择门店',
                         icon: 'none',
                         duration: 2000
                     })
+                    return;
                 } else {
                     goodsInfo.salePrice = hospitalsaleprice
                     goodsInfo.allmoney = allmoney

@@ -33,4 +33,4 @@
         </van-goods-action>
 </view>
 <van-toast id="van-toast" />
-<standard control="{{control}}" bindresetControlStandard="resetControlStandard" goods="{{goodsInfo}}" />
+<standard control="{{control}}" bindmyevent="onSelectStandard" bindresetControlStandard="resetControlStandard" goods="{{goodsInfo}}" />

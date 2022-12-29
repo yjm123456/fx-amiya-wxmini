@@ -26,6 +26,7 @@
                                         <view catchtap="stopPro" wx:if="{{!item.isMember}}" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{item.singleprice*item.num}}</text>
                                             <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
                                         </view>
+                                        
                                         <view catchtap="stopPro" wx:else class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{item.memberPrice*item.num}}</text>
                                             <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
                                         </view>
@@ -43,10 +44,10 @@
                 </van-cell-group>
             </van-checkbox-group>
         </view>
-        <view wx:if="{{!nextPage}}" class="product_list">
-            <!-- <van-divider contentPosition="center">更多精选商品</van-divider> -->
-            <text class="title">更多精选商品</text>
-            <!-- <view class="product_warp">
+        <!-- <view wx:if="{{!nextPage}}" class="product_list"> -->
+        <!-- <van-divider contentPosition="center">更多精选商品</van-divider> -->
+        <!-- <text class="title">更多精选商品</text> -->
+        <!-- <view class="product_warp">
                 <view class="product" wx:for="{{goodsList}}" data-exchangetype="{{item.exchangeType}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
                     <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                     <view>
@@ -63,7 +64,7 @@
                     </view>
                 </view>
             </view> -->
-        </view>
+        <!-- </view> -->
     </view>
     <view class="bottom">
         <van-submit-bar custom-class="bar_color" label="合计" suffix-label="{{sumPoint}}积分" price-class="total" price="{{ sum }}" button-text="提交订单" bind:submit="purchase" tip="{{ true }}">
