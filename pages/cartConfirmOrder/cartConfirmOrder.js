@@ -118,7 +118,7 @@ Page({
                         quantity: _item.num,
                         hospitalId: _item.hospitalId ? _item.hospitalid : 0,
                         actualPayment: Number(_item.interGrationAccount * _item.num) ? Number(_item.interGrationAccount * _item.num) : 0,
-                        selectStandard:_item.selectStandards
+                        selectStandard: _item.selectStandards
                     }
                 })
             }
@@ -146,10 +146,10 @@ Page({
                                     if (res.code === 0) {
                                         //判断包含三方支付订单
                                         if (moneyItemList.length > 0) {
-                                            
+
                                             const data = {
                                                 remark,
-                                                exchangeType:4,
+                                                exchangeType: 4,
                                                 orderItemList: moneyItemList.map(_item => {
                                                     return {
                                                         // 商品编号
@@ -157,12 +157,14 @@ Page({
                                                         // 购买数量
                                                         quantity: _item.num,
                                                         hospitalId: _item.hospitalId ? _item.hospitalId : 0,
-                                                        actualPayment: _item.isMember ? (Number(_item.memberPrice * _item.num)) : (Number(_item.singleprice) ? Number(_item.singleprice * _item.num) : 0)
+                                                        actualPayment: _item.isMember ? (Number(_item.memberPrice * _item.num)) : (Number(_item.singleprice) ? Number(_item.singleprice * _item.num) : 0),
+                                                        selectStandard: _item.selectStandards,
+                                                        voucherId: _item.voucherId
                                                     }
                                                 })
                                             }
                                             if (isMaterial) {
-                                                data.addressId= address && address.id
+                                                data.addressId = address && address.id
                                             }
                                             http("post", `/Order`, data).then(res => {
                                                 if (res.code === 0) {
@@ -176,43 +178,32 @@ Page({
                                                         moneyTradeId: tradeId
                                                     })
                                                     wx.requestPayment({
-                                                        timeStamp:  payRequestInfo.timeStamp,
-                                                        nonceStr:  payRequestInfo.nonceStr,
-                                                        package:  payRequestInfo.package,
-                                                        signType:  payRequestInfo.signType,
+                                                        timeStamp: payRequestInfo.timeStamp,
+                                                        nonceStr: payRequestInfo.nonceStr,
+                                                        package: payRequestInfo.package,
+                                                        signType: payRequestInfo.signType,
                                                         paySign: payRequestInfo.paySign,
-                                                        success (res) { 
-                                                            wx.showToast({ title: '支付成功', icon: 'none', duration: 2000 })
+                                                        success(res) {
+                                                            wx.showToast({
+                                                                title: '支付成功',
+                                                                icon: 'none',
+                                                                duration: 2000
+                                                            })
                                                             setTimeout(function () {
                                                                 wx.redirectTo({
                                                                     url: '/pages/orderList/orderList',
                                                                 })
                                                             }, 1000);
-                                                        //   http("post", `/Order/pay/${tradeId}`).then(res => {
-                                                        //     if (res.code === 0) {
-                                                        //       wx.showToast({
-                                                        //         title: '支付成功',
-                                                        //         icon: 'success',
-                                                        //         duration: 2000,
-                                                        //         success: function () {
-                                                        //           // http("post", `/Order/pay/${tradeId}`).then(res => {})
-                                                        //           setTimeout(function () {
-                                                        //             wx.redirectTo({
-                                                        //               url: '/pages/purchasedOrder/purchasedOrder',
-                                                        //             })
-                                                        //           }, 2000);
-                                                        //         }
-                                                        //       })
-                                                        //     }
-                                                        //   })
                                                         },
-                                                        fail (res) { 
-                                                          wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })
+                                                        fail(res) {
+                                                            wx.showToast({
+                                                                title: '支付失败',
+                                                                icon: 'none',
+                                                                duration: 2000
+                                                            })
                                                         }
-                                                      })
-                                                    // wx.redirectTo({
-                                                    //     url: '/pages/alipay/alipay?tradeId=' + this.data.moneyTradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
-                                                    // })
+                                                    })
+
                                                 }
                                             })
                                         } else {
@@ -244,7 +235,7 @@ Page({
                 const data = {
                     // 备注
                     remark,
-                    exchangeType:4,
+                    exchangeType: 4,
                     orderItemList: moneyItemList.map(_item => {
                         return {
                             // 商品编号
@@ -253,10 +244,11 @@ Page({
                             quantity: _item.num,
                             hospitalId: _item.hospitalId ? _item.hospitalId : 0,
                             //actualPayment: Number(_item.singleprice) ? Number(_item.singleprice*_item.num) : 0
-                            actualPayment: _item.isMember ? (Number(_item.memberPrice * _item.num)) : (Number(_item.singleprice) ? Number(_item.singleprice * _item.num) : 0)
+                            actualPayment: _item.isMember ? (Number(_item.memberPrice * _item.num)) : (Number(_item.singleprice) ? Number(_item.singleprice * _item.num) : 0),
+                            selectStandard: _item.selectStandards,
+                            voucherId: _item.voucherId
                         }
                     })
-                    
                 }
                 if (isMaterial) {
                     data.addressId = address && address.id
@@ -275,26 +267,32 @@ Page({
                             tradeId
                         })
                         wx.requestPayment({
-                            timeStamp:  payRequestInfo.timeStamp,
-                            nonceStr:  payRequestInfo.nonceStr,
-                            package:  payRequestInfo.package,
-                            signType:  payRequestInfo.signType,
+                            timeStamp: payRequestInfo.timeStamp,
+                            nonceStr: payRequestInfo.nonceStr,
+                            package: payRequestInfo.package,
+                            signType: payRequestInfo.signType,
                             paySign: payRequestInfo.paySign,
-                            success (res) { 
-                                wx.showToast({ title: '支付成功', icon: 'none', duration: 2000 })
+                            success(res) {
+                                wx.showToast({
+                                    title: '支付成功',
+                                    icon: 'none',
+                                    duration: 2000
+                                })
                                 setTimeout(function () {
                                     wx.redirectTo({
                                         url: '/pages/orderList/orderList',
                                     })
-                                }, 1000);                           
+                                }, 1000);
                             },
-                            fail (res) { 
-                              wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })
+                            fail(res) {
+                                wx.showToast({
+                                    title: '支付失败',
+                                    icon: 'none',
+                                    duration: 2000
+                                })
                             }
-                          })
-                        // wx.redirectTo({
-                        //     url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
-                        // })
+                        })
+
                     }
                 })
             }
@@ -515,14 +513,22 @@ Page({
         let sumMoney = 0;
         for (let i = 0; i < this.data.goodsInfo.length; i++) {
             if (this.data.goodsInfo[i].exchangeType === 1) {
-                if (this.data.goodsInfo[i].isMember) {
-                    sumMoney += this.data.goodsInfo[i].memberPrice * this.data.goodsInfo[i].num;
+                if (!this.data.goodsInfo[i].isMember) {
+                    if (this.data.goodsInfo[i].voucherId) {
+                        if (this.data.goodsInfo[i].voucherType === 0) {
+                            sumMoney += (this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num) - this.data.goodsInfo[i].deductMoney;
+                        } else {
+                            sumMoney += Math.ceil((this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num) * this.data.goodsInfo[i].deductMoney);
+                        }
+                    }else{
+                        sumMoney += this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num;
+                    }
                 } else {
                     sumMoney += this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num;
                 }
-
             }
         }
+        console.log("sum" + sumMoney);
         this.setData({
             allMoney: sumMoney
         })

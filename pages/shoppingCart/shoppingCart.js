@@ -38,7 +38,8 @@ Page({
         currentPageIndex: 1,
         goodsNextPage: true,
         //判断购物车是否为空
-        empty: true
+        empty: true,
+        voucherInfoList:[]
     },
     onChange(event) {
         this.setData({
@@ -54,6 +55,35 @@ Page({
             })
         }
         this.getAllMoney()
+    },
+    //获取用户拥有的抵用券
+    getCustomerVoucher(e) {
+        //商品id
+        const {
+            id
+        } = e.currentTarget.dataset;
+        const data = {
+            isUsed: false,
+            goodsId: id
+        };
+        http("get", `/CustomerConsumptionVoucher/allList`, data).then(res => {
+            if (res.code === 0) {
+                const {
+                    customerConsumptionVoucherList
+                } = res.data;
+                if (customerConsumptionVoucherList.length > 0) {
+                    wx.navigateTo({
+                        url: '/pages/selectVoucher/selectVoucher?list=' + JSON.stringify(res.data.customerConsumptionVoucherList)+'&type=shopcar'+'&goodsId='+id,
+                    })
+                } else {
+                    wx.showToast({
+                        title: '没有可用于此商品的抵用券',
+                        icon: 'none',
+                        duration: 1000
+                    })
+                }
+            }
+        })
     },
     refreshPage() {
         this.setData({
@@ -309,7 +339,17 @@ Page({
                         if(this.data.list[j].isMember){
                             sumMoney += this.data.list[j].memberPrice * this.data.list[j].num;
                         }else{
-                            sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
+                            if(this.data.list[j].voucherId){
+                                if(this.data.list[j].voucherType==0){
+                                    sumMoney += (this.data.list[j].singleprice * this.data.list[j].num)-this.data.list[j].deductMoney;
+                                }else{
+                                    sumMoney += Math.ceil((this.data.list[j].singleprice * this.data.list[j].num)*this.data.list[j].deductMoney);
+                                }
+                                
+                            }else{
+                                sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
+                            }
+                            
                         }
                         
                     }else if(this.data.list[j].exchangeType===0){

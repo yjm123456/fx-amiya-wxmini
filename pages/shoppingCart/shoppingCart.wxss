@@ -285,3 +285,6 @@ page {
     -webkit-text-fill-color:transparent !important;
     font-weight: 600;
 }
+.select_voucher{
+    font-size: 8rpx;
+}

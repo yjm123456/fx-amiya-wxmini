@@ -130,6 +130,17 @@
             <view class="voucher_right">{{voucherName}}</view>
         </view>
     </view>
+    <!-- 全局抵用券 -->
+    <view wx:if="{{overAllVoucher}}" class="voucher-list">
+        <view class="voucher-title">使用的抵用券</view>
+        <view wx:for="{{overAllVoucher}}" class="voucher">
+            <view class="voucher_left">
+                <text>{{item.type==4?we.toFixed(item.deductMoney*10)+'折':item.deductMoney+'元'}}</text>
+                <text>抵用券</text>
+            </view>
+            <view class="voucher_right">{{item.consumptionVoucherName}}</view>
+        </view>
+    </view>
     <!-- 支付方式 -->
     <view class="pay_list">
         <van-radio-group value="{{ pay }}" bind:change="onChange">

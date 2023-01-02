@@ -79,9 +79,9 @@ Page({
         controlRecieveVoucher: false,
         //显示绑定赠送抵用券提示
         showVoucherTip: false,
-        scene:'',
-        show:false,
-        voucherUrl:'https://ameiya.oss-cn-hangzhou.aliyuncs.com/05206138b16b44929a5751c21ca3e612.jpg'
+        scene: '',
+        show: false,
+        voucherUrl: 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/05206138b16b44929a5751c21ca3e612.jpg'
     },
     /**
      * 生命周期函数--监听页面加载
@@ -91,7 +91,7 @@ Page({
         // if(scene != 'undefined'){           
         //     this.setSuperior(scene);
         // }
-        
+
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 this.getShareInfo();
@@ -101,16 +101,18 @@ Page({
         })
     },
     //设置上级
-    setSuperior(scene){
-        http("put", `/user/setSuperior/`+scene).then(res => {
+    setSuperior(scene) {
+        http("put", `/user/setSuperior/` + scene).then(res => {
             if (res.code === 0) {
-                
+
             }
         })
     },
     toCode(e) {
 
-        const {url}=e.currentTarget.dataset
+        const {
+            url
+        } = e.currentTarget.dataset
         console.log(url);
         wx.navigateTo({
             url: url,
@@ -122,14 +124,16 @@ Page({
             theme: 'round-button',
             confirmButtonText: "",
             closeOnClickOverlay: true,
-            customStyle:"background-color:transparent !important;height:900rpx;margin-top:50rpx;postion:relative;width:550rpx;",
+            customStyle: "background-color:transparent !important;height:900rpx;margin-top:50rpx;postion:relative;width:550rpx;",
             selector: "#bind_tips"
         }).then(() => {
             this.handleBindPhone();
         });
     },
-    getVoucher(){
-        this.setData({show:false})
+    getVoucher() {
+        this.setData({
+            show: false
+        })
         this.handleBindPhone();
     },
     //领取抵用券
@@ -296,10 +300,12 @@ Page({
             url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=jn&isAmyLiveAnchor=true'
         })
     },
-    handleRedirect(event){
-        const {name}=event.currentTarget.dataset;
+    handleRedirect(event) {
+        const {
+            name
+        } = event.currentTarget.dataset;
         wx.navigateTo({
-            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name='+name+'&isAmyLiveAnchor=false'
+            url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=' + name + '&isAmyLiveAnchor=false'
         })
     },
     // 商品详情
@@ -325,14 +331,14 @@ Page({
             }
         })
     },
-    switchTab(e){
+    switchTab(e) {
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 if (e.currentTarget.dataset.url) {
                     wx.switchTab({
-                      url: e.currentTarget.dataset.url,
+                        url: e.currentTarget.dataset.url,
                     })
-                    
+
                 }
             } else {
                 this.showVoucherTips()
@@ -343,33 +349,33 @@ Page({
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 if (e.currentTarget.dataset.url) {
-                    if(e.currentTarget.dataset.url=='/pages/personalInfo/personalInfo'){
-                            http("get", `/User/isComplete`).then(res => {
-                                if (res.code === 0) {
-                                    var isComplete=res.data.isComplete
-                                    if(isComplete){
-                                        wx.navigateTo({
-                                            url: '/pages/memberbenefits/memberbenefits'
-                                        })
-                                    }else{
-                                        wx.navigateTo({
-                                            url: e.currentTarget.dataset.url,
-                                        })
-                                    }
+                    if (e.currentTarget.dataset.url == '/pages/personalInfo/personalInfo') {
+                        http("get", `/User/isComplete`).then(res => {
+                            if (res.code === 0) {
+                                var isComplete = res.data.isComplete
+                                if (isComplete) {
+                                    wx.navigateTo({
+                                        url: '/pages/memberbenefits/memberbenefits'
+                                    })
+                                } else {
+                                    wx.navigateTo({
+                                        url: e.currentTarget.dataset.url,
+                                    })
                                 }
-                            })
-                    }else{
+                            }
+                        })
+                    } else {
                         wx.navigateTo({
                             url: e.currentTarget.dataset.url,
                         })
                     }
-                    
+
                 }
             } else {
                 this.showVoucherTips()
             }
         })
-        
+
     },
     onReachBottom: function () {
         // this.getGoodsList()
@@ -380,8 +386,8 @@ Page({
             pageNum: 1,
             pageSize: 10,
             nextPage: true,
-            currentPageIndex:1,           
-            goodsList:[]
+            currentPageIndex: 1,
+            goodsList: []
         });
         console.log("展示");
         // this.getGoodsList();
@@ -399,6 +405,14 @@ Page({
                 })
             }
         })
+    },
+    onShareAppMessage() {
+        return {
+            //分享的标题
+            //缩略图
+            //分享页面的路径
+            path: "/pages/index/index",
+        }
     },
     // 项目介绍/项目分类
     projectClass() {

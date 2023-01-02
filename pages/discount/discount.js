@@ -8,7 +8,8 @@ Page({
     data: {
         voucherName:'',
         canRecieve:true,
-        deductMoney:0
+        deductMoney:0,
+        voucher:''
     },
 
     /**
@@ -17,8 +18,9 @@ Page({
     onLoad(options) {
         this.isRecieveConsumptionVoucher();
     },
-    receiveVoucher() {
-        http("post","/CustomerConsumptionVoucher/reciveConsumptionVoucherWeek").then(res => {
+    receiveVoucher(e) {
+        const {code}=e.currentTarget.dataset;
+        http("post","/CustomerConsumptionVoucher/reciveConsumptionVoucherWeek/"+code).then(res => {
             if (res.code === 0) {
                 wx.showToast({
                   title: '领取成功',
@@ -35,11 +37,9 @@ Page({
     isRecieveConsumptionVoucher() {
         http("get", `/CustomerConsumptionVoucher/isReciveConsumptionVoucherThisWeek`).then(res => {
             if (res.code === 0) {
-                const {canReceive,deductMoney,voucherName}=res.data.voucher
+                const {voucher}=res.data
                 this.setData({
-                    canRecieve:canReceive,
-                    deductMoney:deductMoney,
-                    voucherName:voucherName
+                    voucher
                 })
             }
         })

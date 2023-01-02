@@ -38,7 +38,8 @@ Page({
         nickName: '',
         phone: '',
         cardName: '',
-        thumbPicUrl: ''
+        thumbPicUrl: '',
+        overAllVoucher:''
     },
 
     /**
@@ -49,6 +50,7 @@ Page({
             isCard,
         } = options;
         const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
+        
         const {
             hospitalid,
             type,
@@ -106,11 +108,25 @@ Page({
                 isCard: true
             })
         }
+        //如果没有使用指定商品抵用券则判断用户是否拥有全局商品可使用的抵用券
+        if(!voucherId){
+            console.log("没有使用抵用券");
+            this.getOverAllVoucher();
+        }
         //商品化修改
     },
 
-
-
+    //获取用户拥有的全局使用的抵用券
+    getOverAllVoucher(){
+        http("get", `/customerConsumptionVoucher/overAllList`).then(res => {
+            if (res.code === 0) {
+                const voucher=res.data.customerOverAllConsumptionVoucher;
+                this.setData({
+                    overAllVoucher:voucher
+                })
+            }
+        })
+    },
     onChange(event) {
         // this.setData({
         //     pay: event.detail,
@@ -204,9 +220,18 @@ Page({
                     appointmentDate: _item.appointmentDate ? _item.appointmentDate : null,
                     isSkinCare: _item.isSkinCare ? _item.isSkinCare : false,
                     isFaceCard: _item.isFaceCard ? _item.isFaceCard : false,
-                    selectStandard:_item.selectStandard
+                    selectStandard:_item.selectStandard,
+                    voucherId:voucherId
                 }
             }),
+        }
+        if (type==1&&pay === 0) {
+            wx.showToast({
+                title: '请先选择支付方式',
+                icon: 'none',
+                duration: 1000
+            })
+            return;
         }
         // 生成订单
         http("post", `/Order`, data).then(res => {
@@ -236,14 +261,7 @@ Page({
                         }
                     })
                 } else {
-                    if (pay === 0) {
-                        wx.showToast({
-                            title: '请先选择支付方式',
-                            icon: 'none',
-                            duration: 1000
-                        })
-                        return;
-                    }
+                    
                     if (pay == 1) {
                         wx.redirectTo({
                             url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),

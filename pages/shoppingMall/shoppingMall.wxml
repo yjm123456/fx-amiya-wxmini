@@ -17,7 +17,7 @@
     <view class="goods_wrap">
         <scroll-view class="menu_wrap" scroll-y>
             <view class="menu_item {{categoryActive === index ? 'category_active' : ''}}" wx:for="{{goodsCategorys}}" wx:key="id" bindtap="handleGoodsCategoryClick" data-categoryid="{{item.id}}" data-index="{{index}}" wx:if="{{item.showDirectionType==1}}">
-                <text>{{item.name}}</text>
+                <text class="goods_name">{{item.name}}</text>
             </view>
         </scroll-view>
         <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">
@@ -28,8 +28,8 @@
                     <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
                 </view>
                 <view>
-                    <view class="middle">{{item.name}}</view>
-                    <view class="middle">{{item.description}}</view>
+                    <view class="middle goods_name">{{item.name}}</view>
+                    <view class="middle goods_name">{{item.description}}</view>
                     <view>￥{{item.salePrice}}</view>
                 </view>
             </view>

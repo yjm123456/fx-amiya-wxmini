@@ -180,6 +180,9 @@ page {
     background-color: #313131;
     margin: 30rpx 30rpx;
 }
+.overall_voucher{
+    
+}
 .voucher-title{
     font-size: 28rpx;
     margin-bottom: 10rpx;

@@ -60,7 +60,9 @@ page {
     font-weight: 600;
     color: #613722;
 }
-
+.discount_prefix{
+    
+}
 .detail {
     display: flex;
     flex-direction: column;

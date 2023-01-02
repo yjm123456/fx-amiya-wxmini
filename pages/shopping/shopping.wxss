@@ -309,3 +309,8 @@ page{
     font-size: 30rpx;
     font-weight: bold;
 }
+.goods_name{
+    background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+}

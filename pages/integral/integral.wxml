@@ -12,7 +12,7 @@
       <text class="memo_pro">来源/用途</text>
       <text  class="memo_se">积分变化</text>
     </view> -->
-  <view class="title_bottom">2022年度积分将在2022年12月31日清零，请及时兑换</view>
+  <view class="title_bottom">2023年度积分将在2023年12月31日清零，请及时兑换</view>
     <view class="content" >
       <view class="item" wx:for="{{list}}" wx:key="index">
         <view class="order_num">{{item.generateOrUsed}}</view>
