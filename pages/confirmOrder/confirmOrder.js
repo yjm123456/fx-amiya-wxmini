@@ -33,13 +33,15 @@ Page({
         active: 1,
         voucherName: '',
         voucherId: '',
-        deductMoney: '',
+        deductMoney: 0,
         isCard: false,
         nickName: '',
         phone: '',
         cardName: '',
         thumbPicUrl: '',
-        overAllVoucher:''
+        overAllVoucher:'',
+        selectVoucherIndex:-1,
+        selectOverAllVoucherId:''
     },
 
     /**
@@ -115,7 +117,16 @@ Page({
         }
         //商品化修改
     },
+    selectOverAllVoucher(e){
+        const {index,id,deduct}=e.currentTarget.dataset;
+        this.setData({
+            selectVoucherIndex:index,
+            selectOverAllVoucherId:id,
+            deductMoney:deduct
+        })
 
+        
+    },
     //获取用户拥有的全局使用的抵用券
     getOverAllVoucher(){
         http("get", `/customerConsumptionVoucher/overAllList`).then(res => {
@@ -181,7 +192,7 @@ Page({
             phone,
             cardName,
             thumbPicUrl,
-            
+            selectOverAllVoucherId
         } = this.data;
         if (tradeId && type == 2) {
             // 支付
@@ -204,7 +215,7 @@ Page({
             //支付方式
             exchangeType: pay,
             //使用的抵用券
-            voucherId,
+            voucherId:selectOverAllVoucherId,
             isCard,
             nickName,
             phone,
