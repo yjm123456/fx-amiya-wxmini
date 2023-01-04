@@ -31,7 +31,7 @@ Page({
         this.selectComponent("#notClaimed").getOrderList()
         break;
       default:
-        this.selectComponent("#received").getOrderList()
+        this.selectComponent("#received")
     }
   }
 })

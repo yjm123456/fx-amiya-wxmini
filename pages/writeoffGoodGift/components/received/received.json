@@ -2,6 +2,8 @@
   "component": true,
   "usingComponents": {
     "van-image": "@vant/weapp/image/index",
-    "van-divider": "@vant/weapp/divider/index"
+    "van-divider": "@vant/weapp/divider/index",
+    "van-tab": "@vant/weapp/tab/index",
+  "van-tabs": "@vant/weapp/tabs/index"
   }
 }

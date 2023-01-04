@@ -34,7 +34,7 @@
                 <text>{{!userInfo.phone?"":userInfo.phone}}</text>
             </view>
             <view wx:else class="info_text">
-                <van-field disabled value="{{ phone }}" placeholder="请输入姓名" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onPhoneChange" />
+                <van-field  value="{{ phone }}" placeholder="请输入姓名" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onPhoneChange" />
             </view>
         </view>
         <view class="item">
