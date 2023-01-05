@@ -40,7 +40,7 @@ Page({
   // 获取项目列表
   getItemInfo(callback = "") {
     const { pageNum, pageSize } = this.data;
-    http("get", `/Gift/infoList`, { pageNum, pageSize }).then(res => {
+    http("get", `/Gift/infoList`, { pageNum, pageSize,categoryId:'3c13b76275b944658a92f0dd1d01a08f' }).then(res => {
       if (res.code === 0) {
         let { list, totalCount } = res.data.giftInfo;
         list = list.map(item => {

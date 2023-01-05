@@ -8,9 +8,11 @@
   border-radius: 20rpx;
 }
 .item{
+    margin-top: 20rpx;
   position: relative;
   background-color: #313131;
   height: 200rpx;
+  padding: 10rpx 0rpx 10rpx 10rpx;
 }
 .item image{
     width: 200rpx;
@@ -39,13 +41,14 @@
 }
 .button{
   width: 124rpx;
-  padding: 6rpx 15rpx;
+  padding: 10rpx 15rpx;
   box-sizing: border-box;
   color: #fff;
   margin-left: 10rpx;
   font-size: 24rpx;
-  background-color: #ff1554;
+  background-color: #262626;
   position: absolute;
   bottom: 10rpx;
-  right: 0rpx;
+  right: 20rpx;
+  border-radius: 10rpx;
 }

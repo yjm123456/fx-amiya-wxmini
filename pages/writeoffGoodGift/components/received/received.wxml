@@ -1,6 +1,6 @@
 <!--pages/writeoffGoodGift/components/received.wxml-->
 <view class="container">
-    <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tabs color="#DEC350" title-inactive-color="#fff" title-active-color="#DEC350" wx:if="{{show}}" active="{{ active }}" bind:change="onChange">
         <block wx:for="{{categoryIdList}}">
             <van-tab name="{{item.id}}" title="{{item.name}}">
                 <view class="item_content" wx:for="{{list}}" wx:key="index">

@@ -20,6 +20,7 @@ Component({
     ready: function () {
         console.log("初始化函数");
         this.getGiftCategoryList();
+
     },
     /**
      * 组件的初始数据
@@ -32,7 +33,9 @@ Component({
         nextPage: true,
         ExchangeType: 1,
         categoryIdList: [],
-        selectCategoryId:''
+        selectCategoryId:'',
+        show:false,
+        active:'0'
     },
 
     /**
@@ -50,7 +53,7 @@ Component({
             const data = {
                 pageNum,
                 pageSize,
-                selectCategoryId
+                categoryId:selectCategoryId
             }
             http("get", `/Gift/receiveGift`, data).then(res => {
                 if (res.code === 0) {
@@ -62,16 +65,22 @@ Component({
                         list: [...this.data.list, ...list],
                     })
                     callback && callback();
+                    console.log("是否有下一页"+nextPage);
                     this.data.pageNum++;
+                    console.log("是否相等"+(this.data.list.length === totalCount));
                     if (this.data.list.length === totalCount) {
                         this.setData({
                             nextPage: false
                         })
                     }
+                    this.setData({
+                        show:true
+                    })
                 }
             })
         },
         onChange(event) {
+            this.handleReset();
             this.setData({
                 selectCategoryId:event.detail.name
             })
@@ -83,7 +92,11 @@ Component({
                 if (res.code === 0) {
                     this.setData({
                         categoryIdList: res.data.nameList
+                    })                  
+                    this.setData({
+                        selectCategoryId:(res.data.nameList[0]).id
                     })
+                    this.getOrderList();
                 }
             })
         },
