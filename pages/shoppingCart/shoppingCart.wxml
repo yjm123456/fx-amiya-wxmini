@@ -30,7 +30,7 @@
                                             <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
                                         </view>
                                         <!-- 暂时不选择使用抵用券 -->
-                                        <!-- <view wx:if="{{item.exchangeType!==0}}" data-id="{{item.goodsId}}" catchtap="getCustomerVoucher"   class="select_voucher"><text>选择抵用券 {{item.voucherName}}</text></view> -->
+                                        <view wx:if="{{item.exchangeType!==0}}" data-id="{{item.goodsId}}" catchtap="getCustomerVoucher"   class="select_voucher"><text>选择抵用券 {{item.voucherName}}</text></view>
                                     </view>
                                     <!-- <view class="btn">
                                     <button class="delete" data-goodsid='{{item.goodsId}}' data-id="{{item.id}}" catch:tap='deleteFromCart'>移除</button>

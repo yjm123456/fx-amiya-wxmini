@@ -194,3 +194,75 @@ page{
     border-radius: 20rpx !important;
     color: #fff;
 }
+
+.voucher-list{
+    border-radius: 30rpx;
+    padding: 30rpx;
+    background-color: #313131;
+    margin: 30rpx 30rpx;
+}
+.overall_voucher{
+    
+}
+.voucher-title{
+    font-size: 28rpx;
+    margin-bottom: 10rpx;
+    color: #fff;
+}
+.voucher{
+    background-color: #e2e2e2;
+    height: 130rpx;
+    border-radius: 30rpx;
+    border: 4rpx solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #efcd71,#efcf77,#e4c675,#efcd71);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-top: 10rpx;
+}
+.voucher_overall{
+    background-color: #e2e2e2;
+    height: 130rpx;
+    border-radius: 30rpx;
+    border: 4rpx solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #e2e2e2,#e2e2e2,#e2e2e2,#e2e2e2);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-top: 10rpx;
+}
+.active_voucher{
+    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #efcd71,#efcf77,#e4c675,#efcd71);
+}
+.voucher_left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #262626;
+    width: 25%;
+}
+.voucher_left:first-child {
+    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+.voucher_left:last-child{
+    color: #fff;
+}
+.voucher_right{
+    background-color: #313131;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    padding-left: 30rpx;
+}

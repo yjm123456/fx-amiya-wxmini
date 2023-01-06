@@ -16,7 +16,12 @@ Page({
         hospitalid: 0,
         remark: "",
         moneyTradeId: "",
-        removeList: []
+        removeList: [],
+        showOverAllVoucher: true,
+        overAllVoucher:[],
+        selectVoucherIndex:-1,
+        selectOverAllVoucherId:'',
+        deductMoney: 0
     },
 
     /**
@@ -31,6 +36,18 @@ Page({
                 })
                 break;
             }
+            
+        }
+        for (let i = 0; i < goodsinfo.length; i++) {
+            if (goodsinfo[i].voucherId) {
+                this.setData({
+                    showOverAllVoucher: false
+                })
+                break;
+            }
+        }
+        if(showOverAllVoucher){
+            this.getOverAllVoucher();
         }
         for (let i = 0; i < goodsinfo.length; i++) {
             this.setData({
@@ -42,6 +59,25 @@ Page({
         })
         this.getAllMoney();
         this.getAllPoint();
+    },
+    selectOverAllVoucher(e){
+        const {index,id,deduct}=e.currentTarget.dataset;
+        this.setData({
+            selectVoucherIndex:index,
+            selectOverAllVoucherId:id,
+            deductMoney:deduct
+        }) 
+    },
+    //获取用户拥有的全局使用的抵用券
+    getOverAllVoucher(){
+        http("get", `/customerConsumptionVoucher/overAllList`).then(res => {
+            if (res.code === 0) {
+                const voucher=res.data.customerOverAllConsumptionVoucher;
+                this.setData({
+                    overAllVoucher:voucher
+                })
+            }
+        })
     },
     handleRemarkChange(e) {
         const {
@@ -80,7 +116,8 @@ Page({
             goodsInfo,
             isMaterial,
             address,
-            remark
+            remark,
+            selectOverAllVoucherId,
         } = this.data
         if (isMaterial) {
             if (!address) {
@@ -150,6 +187,7 @@ Page({
                                             const data = {
                                                 remark,
                                                 exchangeType: 4,
+                                                voucherId:selectOverAllVoucherId,
                                                 orderItemList: moneyItemList.map(_item => {
                                                     return {
                                                         // 商品编号
@@ -236,6 +274,7 @@ Page({
                     // 备注
                     remark,
                     exchangeType: 4,
+                    voucherId:selectOverAllVoucherId,
                     orderItemList: moneyItemList.map(_item => {
                         return {
                             // 商品编号

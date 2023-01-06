@@ -46,11 +46,23 @@
             <van-field border="{{false}}" input-class="field" value="{{ remark  }}" type="textarea" clearable placeholder="请输入留言" title-width="4em" bind:change="handleRemarkChange" maxlength="200" />
         </view>
     </view>
+    <!-- 全局抵用券 -->
+<view wx:if="{{overAllVoucher}}" class="voucher-list">
+        <view class="voucher-title">可使用的抵用券</view>
+        <view data-index="{{index}}" data-deduct="{{item.deductMoney}}" bindtap="selectOverAllVoucher" data-id="{{item.id}}" wx:for="{{overAllVoucher}}" class="voucher_overall {{selectVoucherIndex==index ? 'active_voucher':''}}">
+            <view class="voucher_left">
+                <text>{{item.type==4?we.toFixed(item.deductMoney*10)+'折':item.deductMoney+'元'}}</text>
+                <text>抵用券</text>
+            </view>
+            <view class="voucher_right">{{item.consumptionVoucherName}}</view>
+        </view>
+    </view>
 </view>
+
 <view class="submit_order">
     <view>
         <text>合计：</text>
-        <text class="money">{{allMoney}}元</text>
+        <text class="money">{{allMoney-deductMoney}}元</text>
         <text class="point">{{allPoint}}积分</text>
     </view>
     <view catchtap="handlePay" data-isMaterial="{{isMaterial}}" data-allmoney="{{allmoney}}">
