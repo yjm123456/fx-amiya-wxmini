@@ -199,7 +199,8 @@ page{
     border-radius: 30rpx;
     padding: 30rpx;
     background-color: #313131;
-    margin: 30rpx 30rpx;
+    margin-top: 20rpx;
+    /* margin: 30rpx 30rpx; */
 }
 .overall_voucher{
     

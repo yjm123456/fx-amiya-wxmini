@@ -87,14 +87,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // const scene = decodeURIComponent(options.scene);
-        // if(scene != 'undefined'){           
-        //     this.setSuperior(scene);
-        // }
+        const scene = decodeURIComponent(options.scene);
+        
 
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 this.getShareInfo();
+                if(scene != 'undefined'){           
+                    this.setSuperior(scene);
+                }
             } else {
                 this.showVoucherTips()
             }
@@ -435,6 +436,9 @@ Page({
         })
         //绑定成功后获取分享信息
         this.getShareInfo();
+        if(scene != 'undefined'){           
+            this.setSuperior(scene);
+        }
     },
 
     // 取消绑定手机号

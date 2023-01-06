@@ -13,14 +13,13 @@ Component({
                 if (newVal === 1) {
                     this.handleReset();
                     this.getOrderList();
+                    this.setData({show:true})
                 }
             }
         },
     },
     ready: function () {
-        console.log("初始化函数");
         this.getGiftCategoryList();
-
     },
     /**
      * 组件的初始数据
@@ -35,7 +34,7 @@ Component({
         categoryIdList: [],
         selectCategoryId:'',
         show:false,
-        active:'0'
+        active1:0
     },
 
     /**
@@ -73,9 +72,10 @@ Component({
                             nextPage: false
                         })
                     }
-                    this.setData({
-                        show:true
-                    })
+                    // this.setData({
+                    //     show:true
+                    // })
+                    //this.selectComponent('#tabs').resize();
                 }
             })
         },
@@ -96,6 +96,9 @@ Component({
                     this.setData({
                         selectCategoryId:(res.data.nameList[0]).id
                     })
+                    // this.setData({
+                    //     show:true
+                    // })
                     this.getOrderList();
                 }
             })

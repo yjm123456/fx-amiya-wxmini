@@ -21,7 +21,8 @@ Page({
         overAllVoucher:[],
         selectVoucherIndex:-1,
         selectOverAllVoucherId:'',
-        deductMoney: 0
+        deductMoney: 0,
+        show:false
     },
 
     /**
@@ -36,7 +37,6 @@ Page({
                 })
                 break;
             }
-            
         }
         for (let i = 0; i < goodsinfo.length; i++) {
             if (goodsinfo[i].voucherId) {
@@ -46,7 +46,15 @@ Page({
                 break;
             }
         }
-        if(showOverAllVoucher){
+        for (let i = 0; i < goodsinfo.length; i++) {
+            if (goodsinfo[i].exchangeType!=0) {
+                this.setData({
+                    show:true
+                })
+                break;
+            }
+        }
+        if(this.data.showOverAllVoucher&&this.data.show){
             this.getOverAllVoucher();
         }
         for (let i = 0; i < goodsinfo.length; i++) {
