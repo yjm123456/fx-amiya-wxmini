@@ -8,9 +8,10 @@
             <view class="voucher_info">
                 <view wx:if="{{item.voucherType===4}}" class="deduct"><text>{{item.deductMoney}}折</text></view>
                 <view wx:if="{{item.voucherType===0}}" class="deduct"><text><text class="discount_prefix">¥</text>{{item.deductMoney}}</text></view>
-                <view class="detail"><text class="top">{{item.voucherName}}</text><text class="bottom">指定商品可用</text></view>
+                <view class="detail" catchtap="showUseDesc" data-remark="{{item.remark}}"><text class="top">{{item.voucherName}}</text><text class="bottom">使用说明</text></view>
             </view>
             <view class="receive" data-code="{{item.voucherCode}}" bindtap="receiveVoucher"></view>
         </view>
     </block>
 </view>
+<van-dialog id="van-dialog" />

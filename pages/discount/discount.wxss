@@ -7,12 +7,14 @@
 /* .img{
     width: 750rpx;
 } */
+
 page {
     background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    --dialog-background-color:#262626
 }
 
 .container {
@@ -62,6 +64,14 @@ page {
 }
 .discount_prefix{
     
+}
+.van-dialog__header{
+    color: #fff;
+}
+.van-dialog__message-text{
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .detail {
     display: flex;

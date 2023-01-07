@@ -1,5 +1,6 @@
 // pages/discount/discount.js
-import http from "./../../utils/http"
+import http from "./../../utils/http";
+import Dialog from '@vant/weapp/dialog/dialog';
 Page({
 
     /**
@@ -32,6 +33,17 @@ Page({
                 })
             }
         })
+    },
+    //展示使用说明
+    showUseDesc(){
+        Dialog.alert({
+            title: '使用说明',
+            message: '指定商品可用不可叠加',
+            showConfirmButton:false,
+            closeOnClickOverlay:true
+          }).then(() => {
+            // on close
+          });
     },
     ///是否领取会员抵用券
     isRecieveConsumptionVoucher() {

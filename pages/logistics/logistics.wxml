@@ -2,18 +2,20 @@
   <view class="title_con">
     <view class="item">
       <text class="logistics" wx:if="{{orderExpressInfoVo.expressName}}">物流公司：{{orderExpressInfoVo.expressName}}</text>
-      <view class="statue" wx:if="{{orderExpressInfoVo.state}}"><view class="circle"></view>{{orderExpressInfoVo.state}}</view>
+      <view class="statue" wx:if="{{orderExpressInfoVo.state}}"><view class="circle"></view><text>{{orderExpressInfoVo.state}}</text></view>
     </view>
     <view class="item"  wx:if="{{orderExpressInfoVo.expressNo}}">
       <text class="logistics">快递单号：{{orderExpressInfoVo.expressNo}}</text>
       <text class="statue" bindtap="copy" data-expressNo="{{orderExpressInfoVo.expressNo}}">复制</text>
     </view>
   </view>
-  <van-steps
+  <van-steps 
     steps="{{ expressDetailList }}"
     active="{{ active }}"
     direction="vertical"
-    active-color="#ee0a24"
+    active-color="#dec530"
+    custom-class="steps"
+    inactive-color="#e2e2e2"
   />
 </view> 
 <van-divider wx:if="{{!expressDetailList.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无物流信息</van-divider>
