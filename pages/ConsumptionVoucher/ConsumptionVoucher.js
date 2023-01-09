@@ -104,6 +104,18 @@ Page({
             url: '/pages/appointmentCar/appointmentCar',
         })
     },
+    showVoucherDesc(e){
+        const {remark}=e.currentTarget.dataset
+        Dialog.alert({
+            title: '使用说明',
+            message: remark,
+            showConfirmButton:false,
+            closeOnClickOverlay:true,
+            selector:'#van-dialog-tip'
+          }).then(() => {
+             
+          });
+    },
     //面诊抵用券画核销码
     getQrcodeImage(e){
         var {code}=e.currentTarget.dataset;

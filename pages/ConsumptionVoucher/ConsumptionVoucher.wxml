@@ -24,7 +24,7 @@
                         </view>
                         <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
                         <view class="right_bottom">
-                            <text catchtap="show">使用说明</text>
+                            <text data-remark="{{item.remark}}" catchtap="showVoucherDesc">使用说明</text>
                         </view>
                     </view>
                 </view>
@@ -85,7 +85,7 @@
                         </view>
                         <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
                         <view class="right_bottom">
-                            <text catchtap="show">使用说明</text>
+                            <text data-remark="{{item.remark}}"  catchtap="show">使用说明</text>
                         </view>
                     </view>
                 </view>
@@ -180,3 +180,4 @@
         toFixed: toFixed
     }
 </wxs>
+<van-dialog id="van-dialog-tip" />

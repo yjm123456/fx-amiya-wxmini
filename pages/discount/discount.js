@@ -35,14 +35,15 @@ Page({
         })
     },
     //展示使用说明
-    showUseDesc(){
+    showUseDesc(e){
+        const {remark}=e.currentTarget.dataset
         Dialog.alert({
             title: '使用说明',
-            message: '指定商品可用不可叠加',
+            message: remark,
             showConfirmButton:false,
             closeOnClickOverlay:true
           }).then(() => {
-            // on close
+             
           });
     },
     ///是否领取会员抵用券

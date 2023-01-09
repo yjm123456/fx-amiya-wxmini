@@ -1,6 +1,7 @@
 /* pages/ConsumptionVoucher/ConsumptionVoucher.wxss */
 page{
     background-color: #000;
+    --popup-background-color:#262626
 }
 .van-tabs__scroll{
     background-color: #000 !important;
@@ -127,4 +128,15 @@ page{
 .van-tabs__line{
     background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
     -webkit-text-fill-color:transparent !important;
+}
+.van-dialog__header{
+    color: #fff;
+}
+.van-dialog__header--isolated{
+    color: #fff;
+}
+.van-dialog__message-text{
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

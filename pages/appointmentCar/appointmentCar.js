@@ -357,78 +357,79 @@ Page({
         this.setData({
             active:type
         })
-        http("get", `/appointmentCar/getWheatherHaveCarVoucher?car=`+type).then(res => {
-            if (res.code === 0) {
-                var voucherId=res.data.voucherId
-                if(!voucherId){
-                    
-                    if(type==0){
-                        wx.showToast({
-                          title: '已选择经济型车型,将消耗1000积分',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                    if(type==1){
-                        wx.showToast({
-                          title: '已选择舒适型车型,,将消耗1500积分',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                    if(type==2){
-                        wx.showToast({
-                          title: '已选择商务型车型,将消耗3000积分',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                    if(type==3){
-                        wx.showToast({
-                          title: '已选择豪华型车型,将消耗4500积分',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                }else{
-                    this.setData({
-                        voucherId:res.data.voucherId
-                    })
-                    if(type==0){
-                        wx.showToast({
-                          title: '消耗一张经济型车型抵用券',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                    if(type==1){
-                        wx.showToast({
-                          title: '消耗一张舒适型车型抵用券',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                    if(type==2){
-                        wx.showToast({
-                          title: '消耗一张商务型车型抵用券',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                    if(type==3){
-                        wx.showToast({
-                          title: '消耗一张豪华型车型抵用券',
-                          icon:'none',
-                          duration:1000
-                        })
-                    }
-                }
-            }
-        })
-        
         this.setData({
             carType: type
         })
+        // http("get", `/appointmentCar/getWheatherHaveCarVoucher?car=`+type).then(res => {
+        //     if (res.code === 0) {
+        //         var voucherId=res.data.voucherId
+        //         if(!voucherId){
+                    
+        //             if(type==0){
+        //                 wx.showToast({
+        //                   title: '已选择经济型车型,将消耗1000积分',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //             if(type==1){
+        //                 wx.showToast({
+        //                   title: '已选择舒适型车型,,将消耗1500积分',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //             if(type==2){
+        //                 wx.showToast({
+        //                   title: '已选择商务型车型,将消耗3000积分',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //             if(type==3){
+        //                 wx.showToast({
+        //                   title: '已选择豪华型车型,将消耗4500积分',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //         }else{
+        //             this.setData({
+        //                 voucherId:res.data.voucherId
+        //             })
+        //             if(type==0){
+        //                 wx.showToast({
+        //                   title: '消耗一张经济型车型抵用券',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //             if(type==1){
+        //                 wx.showToast({
+        //                   title: '消耗一张舒适型车型抵用券',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //             if(type==2){
+        //                 wx.showToast({
+        //                   title: '消耗一张商务型车型抵用券',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //             if(type==3){
+        //                 wx.showToast({
+        //                   title: '消耗一张豪华型车型抵用券',
+        //                   icon:'none',
+        //                   duration:1000
+        //                 })
+        //             }
+        //         }
+        //     }
+        // })
+        
+        
     },
     appointmentCar() {
         const {
@@ -437,8 +438,7 @@ Page({
             address,
             hospital,
             dateMinute,
-            carType,
-            voucherId
+            carType
         } = this.data;
         
         var d= dateMinute.replace("/",'-');
@@ -513,8 +513,7 @@ Page({
             address,
             hospital,
             appointmentDate:d2.replace(" ",'T'),
-            carType,
-            voucherId
+            carType
         };
         http("post", `/appointmentCar`, data).then(res => {
             if (res.code === 0) {
