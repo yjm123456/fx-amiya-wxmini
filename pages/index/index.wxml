@@ -28,7 +28,11 @@
     </swiper>
     <view class="mbanner">
         <!-- <view class="mbanner-left"> -->
-            <view class="mbanner-item">
+        <view class="mbanner-item">
+            <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
+            <text class="mbanner-text">消费领积分</text>
+        </view>
+        <view class="mbanner-item">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
             <text class="mbanner-text">预约医院</text>
         </view>
@@ -36,10 +40,7 @@
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
             <text class="mbanner-text">预约叫车</text>
         </view>
-        <view class="mbanner-item">
-            <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
-            <text class="mbanner-text">消费领积分</text>
-        </view>
+
         <view class="mbanner-item">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
             <text class="mbanner-text">会员权益</text>
@@ -48,7 +49,7 @@
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/365ac12f6c1c439589ec1916a24e6b5e.png"></image>
             <text class="mbanner-text">美学分享</text>
         </view>
-        
+
         <!-- <view class="mbanner-item">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/liveOnLine/liveOnLine" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c315c3bfcd7e468dbb7b651e5fb3789d.png"></image>
             <text class="mbanner-text">视频号</text>

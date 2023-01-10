@@ -278,7 +278,9 @@ Page({
         })
         // ====触发父组件把值传递给父组件====
         var date = new Date(dateTime + ":00");
-        var month = (date.getMonth() + 1)<10?('0'+date.getMonth() + 1):(date.getMonth() + 1);
+        console.log(date);
+        console.log(date.getMonth()+1);
+        var month = (date.getMonth() + 1)<10?('0'+(date.getMonth() + 1)):(date.getMonth() + 1);
         var day = date.getDate()<10?('0'+date.getDate()):date.getDate();
         var hour = date.getHours()<10?('0'+date.getHours()):date.getHours();
         var minutes = date.getMinutes()<10?('0'+date.getMinutes()):date.getMinutes();

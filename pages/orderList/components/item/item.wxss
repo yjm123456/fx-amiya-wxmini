@@ -137,7 +137,7 @@ page{
     align-items: center;
 }
 .logistics{
-    margin-right: 20rpx;
+    /* margin-right: 20rpx; */
     margin-left: 20rpx;
 }
 .tool .order_source {
