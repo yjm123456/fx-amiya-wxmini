@@ -47,7 +47,7 @@
         </view>
     </view>
     <!-- 全局抵用券 -->
-<view wx:if="{{overAllVoucher&&show}}" class="voucher-list">
+<view wx:if="{{showOverAllVoucher&&show}}" class="voucher-list">
         <view class="voucher-title">可使用的抵用券</view>
         <view data-index="{{index}}" data-deduct="{{item.deductMoney}}" bindtap="selectOverAllVoucher" data-id="{{item.id}}" wx:for="{{overAllVoucher}}" class="voucher_overall {{selectVoucherIndex==index ? 'active_voucher':''}}">
             <view class="voucher_left">
@@ -62,7 +62,7 @@
 <view class="submit_order">
     <view>
         <text>合计：</text>
-        <text class="money">{{allMoney-deductMoney}}元</text>
+        <text class="money">{{(allMoney-deductMoney)>0 ? (allMoney-deductMoney):0.01}}元</text>
         <text class="point">{{allPoint}}积分</text>
     </view>
     <view catchtap="handlePay" data-isMaterial="{{isMaterial}}" data-allmoney="{{allmoney}}">
