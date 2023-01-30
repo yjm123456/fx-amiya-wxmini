@@ -57,6 +57,27 @@ Page({
             }
         })
     },
+    authorizeNotice (){
+        const tmplIds = ["bbzpcTSDNUnsYCUQeeFz5u5-aRoVRDNUSffS1rNa_wE","WydLHA5a_FERDk3Re-vF4lc-ORsngx9fjZVmZhCztdI","yzI4ph707G_OiyTArLzPB2MHDcrZUhdoG42G7XW0zQ8"];
+        wx.requestSubscribeMessage({
+            tmplIds,
+            success: res => {
+                tmplIds.forEach(item => {
+                    if (res[item] === 'reject') {
+                        wx.showToast({
+                            title: '此次操作会导致您接收不到通知',
+                            icon: 'none',
+                            duration: 2000,
+                        })
+                    }
+                })
+                this.appointmentCar();
+            },
+            fail: err => {
+                this.appointmentCar();
+            },
+        })
+    },
     getMostRecentlyAppointmentHospitalName() {
         http("get", `/appointment/getMostRecentlyAppointment`).then(res => {
             if (res.code === 0) {

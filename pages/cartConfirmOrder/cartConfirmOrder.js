@@ -17,7 +17,7 @@ Page({
         remark: "",
         moneyTradeId: "",
         removeList: [],
-        showOverAllVoucher: true,
+        // showOverAllVoucher: true,
         overAllVoucher:[],
         selectVoucherIndex:-1,
         selectOverAllVoucherId:'',
@@ -38,14 +38,14 @@ Page({
                 break;
             }
         }
-        for (let i = 0; i < goodsinfo.length; i++) {
-            if (goodsinfo[i].voucherId) {
-                this.setData({
-                    showOverAllVoucher: false
-                })
-                break;
-            }
-        }
+        // for (let i = 0; i < goodsinfo.length; i++) {
+        //     if (goodsinfo[i].voucherId) {
+        //         this.setData({
+        //             showOverAllVoucher: false
+        //         })
+        //         break;
+        //     }
+        // }
         for (let i = 0; i < goodsinfo.length; i++) {
             if (goodsinfo[i].exchangeType!=0) {
                 this.setData({
@@ -54,9 +54,9 @@ Page({
                 break;
             }
         }
-        if(this.data.showOverAllVoucher&&this.data.show){
-            this.getOverAllVoucher();
-        }
+        // if(this.data.showOverAllVoucher&&this.data.show){
+        //     this.getOverAllVoucher();
+        // }
         for (let i = 0; i < goodsinfo.length; i++) {
             this.setData({
                 removeList: [...this.data.removeList, goodsinfo[i].id]

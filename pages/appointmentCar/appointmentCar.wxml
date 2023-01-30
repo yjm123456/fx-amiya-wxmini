@@ -24,6 +24,6 @@
         <view class="car3 {{active==2?'active':''}}" bindtap="selectCar" data-type="2"></view>
         <view class="car4 {{active==3?'active':''}}" bindtap="selectCar" data-type="3"></view>
         
-        <view class="submit" bindtap="appointmentCar">提交</view>
+        <view class="submit" bindtap="authorizeNotice">提交</view>
     </view>
 </scroll-view>

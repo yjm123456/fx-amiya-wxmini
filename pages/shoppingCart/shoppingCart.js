@@ -26,7 +26,7 @@ Page({
         //选中的商品列表
         result: [],
         sum: 0,
-        sumPoint:0,
+        sumPoint: 0,
         //商品列表
         goodsList: [],
         pageNum: 1,
@@ -39,7 +39,13 @@ Page({
         goodsNextPage: true,
         //判断购物车是否为空
         empty: true,
-        voucherInfoList:[]
+        //选中的优惠券id
+        selectedVoucher: '0',
+        //全部有效的优惠券列表
+        voucherList: [{
+            text: '选择优惠券',
+            value: '0'
+        }]
     },
     onChange(event) {
         this.setData({
@@ -73,13 +79,57 @@ Page({
                 } = res.data;
                 if (customerConsumptionVoucherList.length > 0) {
                     wx.navigateTo({
-                        url: '/pages/selectVoucher/selectVoucher?list=' + JSON.stringify(res.data.customerConsumptionVoucherList)+'&type=shopcar'+'&goodsId='+id,
+                        url: '/pages/selectVoucher/selectVoucher?list=' + JSON.stringify(res.data.customerConsumptionVoucherList) + '&type=shopcar' + '&goodsId=' + id,
                     })
                 } else {
                     wx.showToast({
                         title: '没有可用于此商品的抵用券',
                         icon: 'none',
                         duration: 1000
+                    })
+                }
+            }
+        })
+    },
+    //选择抵用券
+    selectVoucher(event){
+        this.setData({
+            selectedVoucher:event.detail
+        })
+        //获取选中的商品
+        const {result}=this.data;
+        if(result.length!=0){
+            
+        }
+    },
+    //获取用户所有的抵用券
+    getCustomerAllVoucher(e) {
+        http("get", `/CustomerConsumptionVoucher/getAllValidVoucher`).then(res => {
+            if (res.code === 0) {
+                const {
+                    voucherList
+                } = res.data;
+                var list= voucherList.map(_item => {
+                    return {
+                        text: _item.voucherName,
+                        value: _item.customerVoucherId,
+                        isNeedMinFee: _item.isNeedMinFee,
+                        isSpecifyProduct: _item.isSpecifyProduct,
+                        minPrice: _item.minPrice,
+                        type: _item.type
+                    }
+                });
+                console.log(list);
+                if (list.length > 0) {
+                    this.setData({
+                        voucherList: [...this.data.voucherList, ...list]
+                    })
+                } else {
+                    this.setData({
+                        voucherList: new [{
+                            text: '暂无可用抵用券',
+                            value: '0'
+                        }]
                     })
                 }
             }
@@ -107,7 +157,8 @@ Page({
             empty: true
         })
         this.getCartProduct()
-        this.getGoodsList();
+        //获取商品列表(暂时不使用)
+        //this.getGoodsList();
     },
     onNumChange(e) {
         const {
@@ -164,7 +215,6 @@ Page({
         }
         let goods = [];
         for (let i = 0; i < this.data.result.length; i++) {
-            //const element = this.data.result[i];
             for (let j = 0; j < this.data.list.length; j++) {
                 if (this.data.result[i] === this.data.list[j].id) {
                     if (!this.data.list[j].isMaterial) {
@@ -187,45 +237,6 @@ Page({
             wx.redirectTo({
                 url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods))
             })
-            // 判断是否实物商品 false不是实物 false不需要发货
-            // if (goodsInfo.isMaterial === false) {
-            //     if (!cityname) {
-            //         wx.showToast({
-            //             title: '请选择城市',
-            //             icon: 'none',
-            //             duration: 2000
-            //         })
-            //     } else if (!hospitalid) {
-            //         wx.showToast({
-            //             title: '请选择门店',
-            //             icon: 'none',
-            //             duration: 2000
-            //         })
-            //     } else {
-            //         goodsInfo.salePrice = hospitalsaleprice
-            //         goodsInfo.allmoney = allmoney
-            //         goodsInfo.hospitalid = hospitalid
-            //         this.setData({
-            //             goodsInfo
-            //         })
-            //         wx.navigateTo({
-            //             // url: `/pages/confirmOrder/confirmOrder?goodsInfo=${JSON.stringify([goodsinfo])}`
-            //             url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney
-            //         })
-            //     }
-            // } else {
-            //     //对goodsInfo重新添加两个属性
-            //     goodsInfo.allmoney = allmoney
-            //     goodsInfo.hospitalid = hospitalid
-            //     //设置新属性后重新更新值
-            //     this.setData({
-            //         goodsInfo
-            //     })
-            //     wx.navigateTo({
-            //         url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney
-            //     })
-            // }
-
         }
     },
     //阻止事件冒泡
@@ -260,7 +271,8 @@ Page({
      */
     onLoad(options) {
         this.getCartProduct()
-        this.getGoodsList();
+        //this.getGoodsList();
+        this.getCustomerAllVoucher()
     },
     toShopMall() {
         wx.switchTab({
@@ -331,36 +343,36 @@ Page({
     },
     getAllMoney() {
         let sumMoney = 0;
-        let sumPoint=0;
+        let sumPoint = 0;
         for (let i = 0; i < this.data.result.length; i++) {
             for (let j = 0; j < this.data.list.length; j++) {
                 if (this.data.result[i] === this.data.list[j].id) {
-                    if(this.data.list[j].exchangeType===1){
-                        if(this.data.list[j].isMember){
+                    if (this.data.list[j].exchangeType === 1) {
+                        if (this.data.list[j].isMember) {
                             sumMoney += this.data.list[j].memberPrice * this.data.list[j].num;
-                        }else{
-                            if(this.data.list[j].voucherId){
-                                if(this.data.list[j].voucherType==0){
-                                    sumMoney += (this.data.list[j].singleprice * this.data.list[j].num)-this.data.list[j].deductMoney;
-                                }else{
-                                    sumMoney += Math.ceil((this.data.list[j].singleprice * this.data.list[j].num)*this.data.list[j].deductMoney);
+                        } else {
+                            if (this.data.list[j].voucherId) {
+                                if (this.data.list[j].voucherType == 0) {
+                                    sumMoney += (this.data.list[j].singleprice * this.data.list[j].num) - this.data.list[j].deductMoney;
+                                } else {
+                                    sumMoney += Math.ceil((this.data.list[j].singleprice * this.data.list[j].num) * this.data.list[j].deductMoney);
                                 }
-                                
-                            }else{
+
+                            } else {
                                 sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
                             }
-                            
+
                         }
-                        
-                    }else if(this.data.list[j].exchangeType===0){
+
+                    } else if (this.data.list[j].exchangeType === 0) {
                         sumPoint += this.data.list[j].singleprice * this.data.list[j].num;
-                    }                    
+                    }
                 }
             }
         }
         this.setData({
             sum: sumMoney * 100,
-            sumPoint:sumPoint
+            sumPoint: sumPoint
         })
     },
     getGoodsList() {

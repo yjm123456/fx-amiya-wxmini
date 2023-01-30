@@ -42,7 +42,7 @@
           <view class="select_button" wx:else>{{seconds}}s后重新发送</view>
 
         </view>
-        <view class="button_submit" bindtap="submitUserMessage">确定</view>
+        <view class="button_submit" bindtap="authorizeNotice">确定</view>
       </view>
     </view>
     <!-- 切换城市弹窗 -->

@@ -285,6 +285,23 @@ page {
     -webkit-text-fill-color:transparent !important;
     font-weight: 600;
 }
-.select_voucher{
-    font-size: 8rpx;
+.voucher_list{
+    background-color: #000;
+    color: #fff;
 }
+.van-submit-bar__tip{
+    background-color: #000 !important;
+}
+.van-dropdown-menu{
+    height: 40rpx !important;
+    padding: 5rpx;
+    background-color: #000 !important;
+}
+.van-ellipsis{
+    font-size: 22rpx !important;
+}
+.dropmenu_class{
+    height: 500rpx !important;
+    overflow: auto;
+}
+
