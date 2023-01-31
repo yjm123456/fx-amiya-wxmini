@@ -45,7 +45,8 @@ Page({
         voucherList: [{
             text: '选择优惠券',
             value: '0'
-        }]
+        }],
+        originVoucherList: []
     },
     onChange(event) {
         this.setData({
@@ -60,7 +61,8 @@ Page({
                 selectAll: false
             })
         }
-        this.getAllMoney()
+        this.getAllMoney();
+        this.handleVoucherPrice();
     },
     //获取用户拥有的抵用券
     getCustomerVoucher(e) {
@@ -92,14 +94,102 @@ Page({
         })
     },
     //选择抵用券
-    selectVoucher(event){
+    selectVoucher(event) {
         this.setData({
-            selectedVoucher:event.detail
+            selectedVoucher: event.detail
+        });
+        this.changeSelectGoods();
+        this.handleVoucherPrice();
+    },
+    // 选中抵用券后重新调整商品选中项
+    changeSelectGoods(){
+        const {selectedVoucher,result,originVoucherList,list}=this.data;
+        var voucher=originVoucherList.find(e=>e.customerVoucherId==selectedVoucher);
+        const {vioucherId}=voucher;
+        var selectGoodIdArr=[];
+        for(let index=0;index<list.length;index++){
+            if(list[index].voucherIdList.indexOf(vioucherId)>-1){
+                selectGoodIdArr.push(list[index].id);
+            }
+        }
+        this.setData({
+            result:selectGoodIdArr
         })
+    },
+    // 计算使用抵用券后的价格
+    handleVoucherPrice() {
         //获取选中的商品
-        const {result}=this.data;
-        if(result.length!=0){
-            
+        const {
+            result,
+            list,
+            selectedVoucher,
+            voucherList,
+            sum,
+            originVoucherList
+        } = this.data;
+        if (!selectedVoucher) {
+            return;
+        }
+        const currentVoucher = originVoucherList.find(i => i.customerVoucherId == selectedVoucher);
+        if (!currentVoucher) {
+            return;
+        } else {
+            if (!currentVoucher.isSpecifyProduct) {
+                if (currentVoucher.isNeedMinFee) {
+                    if (voucher.minPrice * 100 > sum) {
+                        wx.showToast({
+                            title: '支付总金额小于抵用券要求,不能使用!',
+                            icon: 'none',
+                            duration: 1000
+                        })
+                    }
+                    return;
+                }
+                let newSum = sum - (currentVoucher.deductMoney * 100) > 0 ? (sum - (currentVoucher.deductMoney * 100)) : 10
+                this.setData({
+                    sum: newSum
+                })
+            } else {
+                if (result.length != 0) {
+                    for (let i = 0; i < result.length; i++) {
+                        for (let j = 0; j < list.length; j++) {
+                            var currentGoodsVoucher = list[j];
+                            if (currentGoodsVoucher.id == result[i] && currentGoodsVoucher.exchangeType != 0) {
+                                var selectVoucherId = originVoucherList.find(e => e.customerVoucherId == selectedVoucher);
+                                if (currentGoodsVoucher.voucherIdList.length != 0 && currentGoodsVoucher.voucherIdList.indexOf(selectVoucherId.vioucherId) > -1) {
+                                    var voucher = voucherList.find(i => i.value == selectedVoucher);
+                                    if (voucher) {
+                                        if (voucher.isNeedMinFee) {
+                                            if (voucher.minPrice * 100 > sum) {
+                                                wx.showToast({
+                                                    title: '支付总金额小于抵用券要求,不能使用!',
+                                                    icon: 'none',
+                                                    duration: 1000
+                                                })
+                                            }
+                                            return;
+                                        } else {
+                                            if (voucher.isSpecifyProduct) {
+                                                if (voucher.type == 0) {
+                                                    // 金额抵用券
+                                                    currentGoodsVoucher.voucherPrice = currentGoodsVoucher.singleprice - voucher.deductMoney > 0 ? (currentGoodsVoucher.singleprice - voucher.deductMoney) : 0.1;
+                                                } else if (voucher.type == 4) {
+                                                    // 折扣抵用券
+                                                    currentGoodsVoucher.voucherPrice = Math.ceil(currentGoodsVoucher.singleprice * voucher.deductMoney);
+                                                }
+                                                this.setData({
+                                                    list
+                                                })
+                                                this.getAllMoney();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     //获取用户所有的抵用券
@@ -109,17 +199,17 @@ Page({
                 const {
                     voucherList
                 } = res.data;
-                var list= voucherList.map(_item => {
+                var list = voucherList.map(_item => {
                     return {
                         text: _item.voucherName,
                         value: _item.customerVoucherId,
                         isNeedMinFee: _item.isNeedMinFee,
                         isSpecifyProduct: _item.isSpecifyProduct,
                         minPrice: _item.minPrice,
-                        type: _item.type
+                        type: _item.type,
+                        deductMoney: _item.deductMoney
                     }
                 });
-                console.log(list);
                 if (list.length > 0) {
                     this.setData({
                         voucherList: [...this.data.voucherList, ...list]
@@ -132,6 +222,10 @@ Page({
                         }]
                     })
                 }
+                // 保存返回的原始抵用券数据
+                this.setData({
+                    originVoucherList: voucherList
+                })
             }
         })
     },
@@ -176,6 +270,7 @@ Page({
         this.isEmpty();
         throttle(this.updateNum(id, goodsid, index, cityid, hospitalid), 1000)
         this.getAllMoney();
+        this.handleVoucherPrice();
     },
     updateNum(id, goodsid, index, cityid, hospitalid) {
         const data = {
@@ -209,6 +304,9 @@ Page({
     },
     // 购买
     purchase(e) {
+        const {
+            selectedVoucher
+        } = this.data;
         if (this.data.result.length <= 0) {
             Toast("请先选择商品");
             return;
@@ -235,10 +333,11 @@ Page({
             })
         } else {
             wx.redirectTo({
-                url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods))
+                url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods)) + "&selectedvoucher=" + selectedVoucher
             })
         }
     },
+    
     //阻止事件冒泡
     stopPro() {},
     deleteFromCart() {
@@ -296,15 +395,18 @@ Page({
                     totalCount
                 } = res.data.goodsShopCarInfos;
                 for (let index = 0; index < list.length; index++) {
+
                     if (list[index].exchangeType === 0) {
 
                         list[index].singleprice = list[index].interGrationAccount
-
+                        list[index].voucherPrice = list[index].interGrationAccount;
                     } else {
                         if (list[index].isMaterial) {
-                            list[index].singleprice = list[index].price / list[index].num
+                            list[index].singleprice = list[index].price / list[index].num;
+                            list[index].voucherPrice = list[index].singleprice;
                         } else {
                             list[index].singleprice = list[index].hospitalSalePrice / list[index].num
+                            list[index].voucherPrice = list[index].singleprice;
                         }
 
                     }
@@ -353,17 +455,14 @@ Page({
                         } else {
                             if (this.data.list[j].voucherId) {
                                 if (this.data.list[j].voucherType == 0) {
-                                    sumMoney += (this.data.list[j].singleprice * this.data.list[j].num) - this.data.list[j].deductMoney;
-                                } else {
-                                    sumMoney += Math.ceil((this.data.list[j].singleprice * this.data.list[j].num) * this.data.list[j].deductMoney);
+                                    sumMoney += (this.data.list[j].voucherPrice * this.data.list[j].num) - this.data.list[j].deductMoney;
+                                } else if (this.data.list[j].voucherType == 4) {
+                                    sumMoney += Math.ceil((this.data.list[j].voucherPrice * this.data.list[j].num) * this.data.list[j].deductMoney);
                                 }
-
                             } else {
-                                sumMoney += this.data.list[j].singleprice * this.data.list[j].num;
+                                sumMoney += this.data.list[j].voucherPrice * this.data.list[j].num;
                             }
-
                         }
-
                     } else if (this.data.list[j].exchangeType === 0) {
                         sumPoint += this.data.list[j].singleprice * this.data.list[j].num;
                     }

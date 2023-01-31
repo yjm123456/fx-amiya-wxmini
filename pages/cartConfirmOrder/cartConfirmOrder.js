@@ -29,6 +29,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log(decodeURIComponent(options.goodsInfo));
         const goodsinfo = JSON.parse(decodeURIComponent(options.goodsInfo));
         for (let i = 0; i < goodsinfo.length; i++) {
             if (goodsinfo[i].isMaterial) {
@@ -568,10 +569,10 @@ Page({
                             sumMoney += Math.ceil((this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num) * this.data.goodsInfo[i].deductMoney);
                         }
                     }else{
-                        sumMoney += this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num;
+                        sumMoney += this.data.goodsInfo[i].voucherPrice * this.data.goodsInfo[i].num;
                     }
                 } else {
-                    sumMoney += this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num;
+                    sumMoney += this.data.goodsInfo[i].voucherPrice * this.data.goodsInfo[i].num;
                 }
             }
         }
