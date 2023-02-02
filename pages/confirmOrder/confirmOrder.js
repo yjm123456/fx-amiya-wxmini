@@ -41,7 +41,6 @@ Page({
         thumbPicUrl: '',
         overAllVoucher:'',
         selectVoucherIndex:-1,
-        selectOverAllVoucherId:''
     },
 
     /**
@@ -80,24 +79,6 @@ Page({
                 return acc += cur.integrationQuantity * cur.quantity
             }, 0).toFixed(2)
         })
-        //商品化修改之前
-        // if (isCard == 'true') {
-        //     const {
-        //         nickName,
-        //         phone
-        //     } = options;
-        //     this.setData({
-        //         isMaterial: false,
-        //         nickName,
-        //         phone,
-        //         totalPrice: 1999,
-        //         cardName: cardName,
-        //         thumbPicUrl,
-        //         isCard: true
-        //     })
-        // }
-        //商品化修改之前
-        
         //商品化修改
         if (isCard == 'true') {
             const {
@@ -121,7 +102,7 @@ Page({
         const {index,id,deduct}=e.currentTarget.dataset;
         this.setData({
             selectVoucherIndex:index,
-            selectOverAllVoucherId:id,
+            voucherId:id,
             deductMoney:deduct
         })
 
@@ -181,21 +162,14 @@ Page({
             remark,
             isMaterial,
             tradeId,
-            allmoney,
-            hospitalid,
             type,
-            voucherName,
             voucherId,
-            deductMoney,
             isCard,
             nickName,
-            phone,
-            cardName,
-            thumbPicUrl,
-            selectOverAllVoucherId
+            phone
         } = this.data;
         if (tradeId && type == 2) {
-            // 支付
+            // 积分支付
             this.pay(tradeId)
             return;
         }
@@ -215,7 +189,7 @@ Page({
             //支付方式
             exchangeType: pay,
             //使用的抵用券
-            voucherId:selectOverAllVoucherId,
+            voucherId:voucherId,
             isCard,
             nickName,
             phone,
@@ -232,7 +206,7 @@ Page({
                     isSkinCare: _item.isSkinCare ? _item.isSkinCare : false,
                     isFaceCard: _item.isFaceCard ? _item.isFaceCard : false,
                     selectStandard:_item.selectStandard,
-                    voucherId:voucherId
+                    // voucherId:voucherId
                 }
             }),
         }

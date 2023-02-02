@@ -56,6 +56,7 @@ App({
   globalData: {
     userInfo: null,
     appId: "",
+    tmplIds:['yzI4ph707G_OiyTArLzPB2MHDcrZUhdoG42G7XW0zQ8','IhE-E2gYbsAE_M-1RTTYC7xIxGrLtQuKca5ayeYDpxg','bbzpcTSDNUnsYCUQeeFz5u5-aRoVRDNUSffS1rNa_wE']
   }
 })
 

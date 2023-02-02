@@ -12,7 +12,7 @@
                         </view>
                     </view>
                     <view class="price">
-                        <text wx:if="{{goods.exchangeType>=1}}">{{goods.singlePrice}}元</text>
+                        <text wx:if="{{goods.exchangeType>=1}}">{{we.toCeil(goods.singlePrice)}}元</text>
                         <text wx:else>{{goods.singleIntegrationQuantity}}积分</text>
                         <text>数量: {{goods.quantity}}</text>
                     </view>
@@ -97,3 +97,11 @@
         </view>
     </van-popup>
 </view>
+<wxs module="we">
+    var toCeil = function (value) {
+        return Math.ceil(value)
+    }
+    module.exports = {
+        toCeil: toCeil
+    }
+</wxs>

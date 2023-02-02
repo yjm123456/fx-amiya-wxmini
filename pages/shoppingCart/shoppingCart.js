@@ -41,6 +41,10 @@ Page({
         empty: true,
         //选中的优惠券id
         selectedVoucher: '0',
+        //选中的抵用券类型
+        voucherType:0,
+        //全局抵用券的折扣价格
+        deductMoney:0,
         //全部有效的优惠券列表
         voucherList: [{
             text: '选择优惠券',
@@ -102,22 +106,84 @@ Page({
         this.handleVoucherPrice();
     },
     // 选中抵用券后重新调整商品选中项
-    changeSelectGoods(){
-        const {selectedVoucher,result,originVoucherList,list}=this.data;
-        var voucher=originVoucherList.find(e=>e.customerVoucherId==selectedVoucher);
-        const {vioucherId}=voucher;
-        var selectGoodIdArr=[];
-        for(let index=0;index<list.length;index++){
-            if(list[index].voucherIdList.indexOf(vioucherId)>-1){
+    changeSelectGoods() {
+        const {
+            selectedVoucher,
+            result,
+            originVoucherList,
+            list
+        } = this.data;
+        var voucher = originVoucherList.find(e => e.customerVoucherId == selectedVoucher);
+        const {
+            vioucherId
+        } = voucher;
+        var selectGoodIdArr = [];
+        let haveMatchGoods = false;
+        
+        if (voucher.isSpecifyProduct) {
+            for (let index = 0; index < list.length; index++) {
+                if (list[index].voucherIdList.indexOf(vioucherId) > -1) {
+                    haveMatchGoods = true;
+                    selectGoodIdArr.push(list[index].id);
+                }
+            }
+            if (!haveMatchGoods) {
+                wx.showToast({
+                    title: '购物车内没有符合使用条件的商品!',
+                    icon: 'none',
+                    duration: 1000
+                });
+                this.setData({
+                    selectedVoucher: '0'
+                })
+                return;
+            }
+            this.setData({
+                voucherType:voucher.type
+                
+            });
+        } else {
+            //全局抵用券选中全局商品
+            let haveMatchGoods = false;
+            for (let index = 0; index < list.length; index++) {
+                if (list[index].exchangeType == 1) {
+                    haveMatchGoods = true;
+                }
+            }
+            if (!haveMatchGoods) {
+                selectGoodIdArr = result;
+                wx.showToast({
+                    title: '购物车内没有符合使用条件的商品!',
+                    icon: 'none',
+                    duration: 1000
+                });
+                return;
+            }
+            this.setData({
+                voucherType:voucher.type,
+                deductMoney:voucher.deductMoney
+            });
+            for (let index = 0; index < list.length; index++) {
                 selectGoodIdArr.push(list[index].id);
             }
         }
         this.setData({
-            result:selectGoodIdArr
+            result: selectGoodIdArr
         })
+        if (this.data.result.length === this.data.list.length) {
+            this.setData({
+                selectAll: true
+            })
+        } else {
+            this.setData({
+                selectAll: false
+            })
+        }
+        this.getAllMoney();
     },
     // 计算使用抵用券后的价格
     handleVoucherPrice() {
+        console.log("抵用券价格修改");
         //获取选中的商品
         const {
             result,
@@ -136,16 +202,22 @@ Page({
         } else {
             if (!currentVoucher.isSpecifyProduct) {
                 if (currentVoucher.isNeedMinFee) {
-                    if (voucher.minPrice * 100 > sum) {
+                    if (currentVoucher.minPrice * 100 > sum) {
                         wx.showToast({
                             title: '支付总金额小于抵用券要求,不能使用!',
                             icon: 'none',
                             duration: 1000
                         })
+                        this.setData({
+                            selectedVoucher: '0'
+                        });
+                        return;
                     }
-                    return;
+                    
                 }
+                this.getAllMoney();
                 let newSum = sum - (currentVoucher.deductMoney * 100) > 0 ? (sum - (currentVoucher.deductMoney * 100)) : 10
+                console.log("新的值为"+newSum);
                 this.setData({
                     sum: newSum
                 })
@@ -165,6 +237,9 @@ Page({
                                                     title: '支付总金额小于抵用券要求,不能使用!',
                                                     icon: 'none',
                                                     duration: 1000
+                                                })
+                                                this.setData({
+                                                    selectedVoucher: '0'
                                                 })
                                             }
                                             return;
@@ -305,7 +380,9 @@ Page({
     // 购买
     purchase(e) {
         const {
-            selectedVoucher
+            selectedVoucher,
+            voucherType,
+            deductMoney
         } = this.data;
         if (this.data.result.length <= 0) {
             Toast("请先选择商品");
@@ -333,11 +410,11 @@ Page({
             })
         } else {
             wx.redirectTo({
-                url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods)) + "&selectedvoucher=" + selectedVoucher
+                url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods)) + "&selectedvoucher=" + selectedVoucher+"&vouchertype="+voucherType+"&deductmoney="+deductMoney
             })
         }
     },
-    
+
     //阻止事件冒泡
     stopPro() {},
     deleteFromCart() {

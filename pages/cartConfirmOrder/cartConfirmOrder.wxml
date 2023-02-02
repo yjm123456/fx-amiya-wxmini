@@ -34,8 +34,8 @@
                 <view class="name"><text>{{item.goodsName}}</text></view>
                 <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
                 <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
-                <view wx:if="{{item.exchangeType===1}}" class="pri_num"><text class="price">总价:{{item.isMember?(item.memberPrice*item.num):(!item.voucherId?item.voucherPrice*item.num:(item.voucherType===4?(we.toCeil(item.voucherPrice*item.num*item.deductMoney)):(item.voucherPrice*item.num-item.deductMoney)))}}</text><text class="num">x{{item.num}}</text></view>
-                <view wx:if="{{item.exchangeType===0}}" class="pri_num"><text class="price">积分:{{item.interGrationAccount*item.num}}</text><text class="num">x{{item.num}}</text></view>
+                <view wx:if="{{item.exchangeType===1}}" class="pri_num"><text class="price">支付金额:{{item.isMember?(item.memberPrice*item.num):(!item.voucherId?item.voucherPrice*item.num:(item.voucherType===4?(we.toCeil(item.voucherPrice*item.num*item.deductMoney)):(item.voucherPrice*item.num-item.deductMoney)))}}</text><text class="num">x{{item.num}}</text></view>
+                <view wx:if="{{item.exchangeType===0}}" class="pri_num"><text class="price">抵扣积分:{{item.interGrationAccount*item.num}}</text><text class="num">x{{item.num}}</text></view>
                 <view wx:if="{{item.voucherName}}"><text>{{item.voucherName}}</text></view>
             </view>
         </view>
@@ -62,7 +62,7 @@
 <view class="submit_order">
     <view>
         <text>合计：</text>
-        <text class="money">{{(allMoney-deductMoney)>0 ? (allMoney-deductMoney):0.01}}元</text>
+        <text class="money">{{(allMoney)>0 ? allMoney:0.01}}元</text>
         <text class="point">{{allPoint}}积分</text>
     </view>
     <view catchtap="handlePay" data-isMaterial="{{isMaterial}}" data-allmoney="{{allmoney}}">

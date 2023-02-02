@@ -1,6 +1,7 @@
 /* pages/shoppingCart/shoppingCart.wxss */
 page {
     background-color: #000;
+    --submit-bar-price-font-size:22rpx;
 }
 
 .content {
@@ -263,7 +264,7 @@ page {
 }
 
 .van-submit-bar__price-integer {
-    font-size: 35rpx !important;
+    font-size: 25rpx !important;
     background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
@@ -279,7 +280,7 @@ page {
 }
 
 .van-submit-bar__suffix-label {
-    font-size: 32rpx !important;
+    font-size: 25rpx !important;
     background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
@@ -304,4 +305,5 @@ page {
     height: 500rpx !important;
     overflow: auto;
 }
+
 

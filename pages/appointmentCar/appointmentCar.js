@@ -58,9 +58,10 @@ Page({
         })
     },
     authorizeNotice (){
-        const tmplIds = ["bbzpcTSDNUnsYCUQeeFz5u5-aRoVRDNUSffS1rNa_wE","WydLHA5a_FERDk3Re-vF4lc-ORsngx9fjZVmZhCztdI","yzI4ph707G_OiyTArLzPB2MHDcrZUhdoG42G7XW0zQ8"];
+        var app=getApp();
+        const tmplIds = app.globalData.tmplIds;
         wx.requestSubscribeMessage({
-            tmplIds,
+            tmplIds:tmplIds,
             success: res => {
                 tmplIds.forEach(item => {
                     if (res[item] === 'reject') {
@@ -71,9 +72,11 @@ Page({
                         })
                     }
                 })
+                console.log("授权成功");
                 this.appointmentCar();
             },
             fail: err => {
+                console.log("授权失败");
                 this.appointmentCar();
             },
         })
