@@ -40,6 +40,7 @@ Page({
             display: false
         });
     },
+    
     formatDate(date) {
         date = new Date(date);
         var month = (date.getMonth() + 1) >= 10 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
@@ -51,6 +52,30 @@ Page({
             display: false,
             consumeDate: this.formatDate(event.detail),
         });
+    },
+    authorizeNotice() {
+        var app = getApp();
+        const tmplIds = app.globalData.tmplIds;
+        wx.requestSubscribeMessage({
+            tmplIds: tmplIds,
+            success: res => {
+                tmplIds.forEach(item => {
+                    if (res[item] === 'reject') {
+                        wx.showToast({
+                            title: '此次操作会导致您接收不到通知',
+                            icon: 'none',
+                            duration: 2000,
+                        })
+                    }
+                })
+                console.log("授权成功");
+                this.updateConsumptionCredentials();
+            },
+            fail: err => {
+                console.log("授权失败");
+                this.updateConsumptionCredentials();
+            },
+        })
     },
     selectDate(){
         this.setData({

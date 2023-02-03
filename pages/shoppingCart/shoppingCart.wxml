@@ -24,7 +24,7 @@
                                         <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
                                         <view><text>{{item.description}}</text></view>
                                         <view catchtap="stopPro" wx:if="{{!item.isMember}}" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{!item.voucherId? (item.singleprice*item.num):(item.voucherType===4 ?(we.toCeil((item.singleprice*item.num)*item.deductMoney)):((item.singleprice*item.num)-item.deductMoney))}}</text>
-                                            <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
+                                            <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" data-selectstandards="{{item.selectStandards}}" catch:change="onNumChange" />
                                         </view>
                                         <view catchtap="stopPro" wx:else class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{item.memberPrice*item.num}}</text>
                                             <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" catch:change="onNumChange" />
@@ -77,7 +77,7 @@
             </van-tag>
             <view class="voucher">
                 <van-dropdown-menu active-color="#DEC350" custom-class="dropmenu_class" direction="up">
-                    <van-dropdown-item bind:change="selectVoucher" value="{{ selectedVoucher }}" options="{{ voucherList }}" />
+                    <van-dropdown-item  bind:change="selectVoucher" value="{{ selectedVoucher }}" options="{{ voucherList }}" />
                 </van-dropdown-menu>
             </view>
         </van-submit-bar>

@@ -40,7 +40,8 @@ Page({
             })
         }
         this.setData({
-            deductMoney:deductmoney
+            deductMoney:deductmoney,
+            voucherType:vouchertype
         })
         for (let i = 0; i < goodsinfo.length; i++) {
             if (goodsinfo[i].isMaterial) {
@@ -68,6 +69,30 @@ Page({
         })
         this.getAllMoney();
         this.getAllPoint();
+    },
+    authorizeNotice (){
+        var app=getApp();
+        const tmplIds = app.globalData.tmplIds;
+        wx.requestSubscribeMessage({
+            tmplIds:tmplIds,
+            success: res => {
+                tmplIds.forEach(item => {
+                    if (res[item] === 'reject') {
+                        wx.showToast({
+                            title: '此次操作会导致您接收不到通知',
+                            icon: 'none',
+                            duration: 2000,
+                        })
+                    }
+                })
+                console.log("授权成功");
+                
+            },
+            fail: err => {
+                console.log("授权失败");
+                
+            },
+        })
     },
     handleRemarkChange(e) {
         const {
@@ -102,6 +127,7 @@ Page({
         })
     },
     handlePay(e) {
+        this.authorizeNotice();
         const {
             goodsInfo,
             isMaterial,
@@ -389,17 +415,23 @@ Page({
                             sumMoney += Math.ceil((this.data.goodsInfo[i].singleprice * this.data.goodsInfo[i].num) * this.data.goodsInfo[i].deductMoney);
                         }
                     } else {
-                        sumMoney += this.data.goodsInfo[i].voucherPrice * this.data.goodsInfo[i].num;
+                        sumMoney += this.data.goodsInfo[i].voucherPrice;
                     }
                 } else {
-                    sumMoney += this.data.goodsInfo[i].voucherPrice * this.data.goodsInfo[i].num;
+                    sumMoney += this.data.goodsInfo[i].voucherPrice;
                 }
             }
         }
-        console.log("sum"+sumMoney);
-        this.setData({
-            allMoney: sumMoney-this.data.deductMoney
-        })
+        if(this.data.voucherType==0){
+            this.setData({
+                allMoney: sumMoney-this.data.deductMoney
+            })
+        }else{
+            this.setData({
+                allMoney: sumMoney
+            })
+        }
+        
     },
     //获取总计积分
     getAllPoint() {

@@ -34,7 +34,7 @@
                 <view class="name"><text>{{item.goodsName}}</text></view>
                 <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
                 <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
-                <view wx:if="{{item.exchangeType===1}}" class="pri_num"><text class="price">支付金额:{{item.isMember?(item.memberPrice*item.num):(!item.voucherId?item.voucherPrice*item.num:(item.voucherType===4?(we.toCeil(item.voucherPrice*item.num*item.deductMoney)):(item.voucherPrice*item.num-item.deductMoney)))}}</text><text class="num">x{{item.num}}</text></view>
+                <view wx:if="{{item.exchangeType===1}}" class="pri_num"><text class="price">支付金额:{{item.isMember?(item.memberPrice*item.num):(!item.voucherId?item.voucherPrice:(item.voucherType===4?(we.toCeil(item.voucherPrice*item.deductMoney)):(item.voucherPrice-item.deductMoney)))}}</text><text class="num">x{{item.num}}</text></view>
                 <view wx:if="{{item.exchangeType===0}}" class="pri_num"><text class="price">抵扣积分:{{item.interGrationAccount*item.num}}</text><text class="num">x{{item.num}}</text></view>
                 <view wx:if="{{item.voucherName}}"><text>{{item.voucherName}}</text></view>
             </view>

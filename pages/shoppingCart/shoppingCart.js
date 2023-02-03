@@ -42,9 +42,9 @@ Page({
         //选中的优惠券id
         selectedVoucher: '0',
         //选中的抵用券类型
-        voucherType:0,
+        voucherType: 0,
         //全局抵用券的折扣价格
-        deductMoney:0,
+        deductMoney: 0,
         //全部有效的优惠券列表
         voucherList: [{
             text: '选择优惠券',
@@ -119,7 +119,7 @@ Page({
         } = voucher;
         var selectGoodIdArr = [];
         let haveMatchGoods = false;
-        
+
         if (voucher.isSpecifyProduct) {
             for (let index = 0; index < list.length; index++) {
                 if (list[index].voucherIdList.indexOf(vioucherId) > -1) {
@@ -139,8 +139,8 @@ Page({
                 return;
             }
             this.setData({
-                voucherType:voucher.type
-                
+                voucherType: voucher.type
+
             });
         } else {
             //全局抵用券选中全局商品
@@ -160,8 +160,8 @@ Page({
                 return;
             }
             this.setData({
-                voucherType:voucher.type,
-                deductMoney:voucher.deductMoney
+                voucherType: voucher.type,
+                deductMoney: voucher.deductMoney
             });
             for (let index = 0; index < list.length; index++) {
                 selectGoodIdArr.push(list[index].id);
@@ -183,7 +183,6 @@ Page({
     },
     // 计算使用抵用券后的价格
     handleVoucherPrice() {
-        console.log("抵用券价格修改");
         //获取选中的商品
         const {
             result,
@@ -194,6 +193,18 @@ Page({
             originVoucherList
         } = this.data;
         if (!selectedVoucher) {
+            return;
+        }
+        if (selectedVoucher == "0") {
+            for (let j = 0; j < list.length; j++) {
+                var currentGoodsVoucher = list[j];
+                if (currentGoodsVoucher.exchangeType != 0) {
+                    currentGoodsVoucher.voucherPrice = currentGoodsVoucher.singleprice * currentGoodsVoucher.num;
+                }
+            }
+            this.setData({
+                list
+            })
             return;
         }
         const currentVoucher = originVoucherList.find(i => i.customerVoucherId == selectedVoucher);
@@ -209,15 +220,14 @@ Page({
                             duration: 1000
                         })
                         this.setData({
-                            selectedVoucher: '0'
+                            selectedVoucher: '0',
+                            deductMoney:0
                         });
                         return;
                     }
-                    
                 }
                 this.getAllMoney();
-                let newSum = sum - (currentVoucher.deductMoney * 100) > 0 ? (sum - (currentVoucher.deductMoney * 100)) : 10
-                console.log("新的值为"+newSum);
+                let newSum = this.data.sum - (currentVoucher.deductMoney * 100) > 0 ? (this.data.sum - (currentVoucher.deductMoney * 100)) : 10
                 this.setData({
                     sum: newSum
                 })
@@ -243,22 +253,27 @@ Page({
                                                 })
                                             }
                                             return;
-                                        } else {
-                                            if (voucher.isSpecifyProduct) {
-                                                if (voucher.type == 0) {
-                                                    // 金额抵用券
-                                                    currentGoodsVoucher.voucherPrice = currentGoodsVoucher.singleprice - voucher.deductMoney > 0 ? (currentGoodsVoucher.singleprice - voucher.deductMoney) : 0.1;
-                                                } else if (voucher.type == 4) {
-                                                    // 折扣抵用券
-                                                    currentGoodsVoucher.voucherPrice = Math.ceil(currentGoodsVoucher.singleprice * voucher.deductMoney);
-                                                }
-                                                this.setData({
-                                                    list
-                                                })
-                                                this.getAllMoney();
+                                        }
+                                        if (voucher.isSpecifyProduct) {
+                                            if (voucher.type == 0) {
+                                                // 金额抵用券
+                                                currentGoodsVoucher.voucherPrice = currentGoodsVoucher.singleprice * currentGoodsVoucher.num - voucher.deductMoney > 0 ? (currentGoodsVoucher.singleprice * currentGoodsVoucher.num - voucher.deductMoney) : 0.1;
+                                            } else if (voucher.type == 4) {
+                                                // 折扣抵用券
+                                                currentGoodsVoucher.voucherPrice = Math.ceil(currentGoodsVoucher.singleprice * currentGoodsVoucher.num * voucher.deductMoney);
                                             }
+                                            this.setData({
+                                                list
+                                            })
+                                            this.getAllMoney();
                                         }
                                     }
+                                } else {
+                                    currentGoodsVoucher.voucherPrice = currentGoodsVoucher.singleprice * currentGoodsVoucher.num;
+                                    this.setData({
+                                        list
+                                    })
+                                    this.getAllMoney();
                                 }
                             }
                         }
@@ -335,7 +350,8 @@ Page({
             id,
             goodsid,
             cityid,
-            hospitalid
+            hospitalid,
+            selectstandards
         } = e.currentTarget.dataset
         const num = e.detail;
         this.data.list[index].num = num
@@ -343,17 +359,18 @@ Page({
             ["list[" + index + "]"]: this.data.list[index]
         });
         this.isEmpty();
-        throttle(this.updateNum(id, goodsid, index, cityid, hospitalid), 1000)
-        this.getAllMoney();
+        throttle(this.updateNum(id, goodsid, index, cityid, hospitalid, selectstandards), 1000)
         this.handleVoucherPrice();
+        this.getAllMoney();
     },
-    updateNum(id, goodsid, index, cityid, hospitalid) {
+    updateNum(id, goodsid, index, cityid, hospitalid, selectstandards) {
         const data = {
             Id: id,
             GoodsId: goodsid,
             Num: this.data.list[index].num,
             CityId: cityid,
-            HospitalId: hospitalid
+            HospitalId: hospitalid,
+            SelectStandards: selectstandards
         }
         http("put", "/GoodsShopCar", data).then(res => {
             if (res.code == 0) {
@@ -410,28 +427,13 @@ Page({
             })
         } else {
             wx.redirectTo({
-                url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods)) + "&selectedvoucher=" + selectedVoucher+"&vouchertype="+voucherType+"&deductmoney="+deductMoney
+                url: "/pages/cartConfirmOrder/cartConfirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify(goods)) + "&selectedvoucher=" + selectedVoucher + "&vouchertype=" + voucherType + "&deductmoney=" + deductMoney
             })
         }
     },
 
     //阻止事件冒泡
     stopPro() {},
-    deleteFromCart() {
-        const {
-            goodsis,
-            id
-        } = e.currentTarget.dataset;
-        const data = {
-            Id: id,
-            status: 0
-        }
-        http("put", "/GoodsShopCar", data).then(res => {
-            if (res.code === 0) {
-                this.getCartProduct();
-            }
-        });
-    },
     //单元格触发复选框点击事件
     toggle(event) {
         const {
@@ -480,7 +482,7 @@ Page({
                     } else {
                         if (list[index].isMaterial) {
                             list[index].singleprice = list[index].price / list[index].num;
-                            list[index].voucherPrice = list[index].singleprice;
+                            list[index].voucherPrice = list[index].singleprice * list[index].num;
                         } else {
                             list[index].singleprice = list[index].hospitalSalePrice / list[index].num
                             list[index].voucherPrice = list[index].singleprice;
@@ -510,6 +512,7 @@ Page({
                 result: []
             })
             this.getAllMoney()
+
         } else {
             this.setData({
                 selectAll: true,
@@ -518,6 +521,7 @@ Page({
                 })
             })
             this.getAllMoney();
+            this.handleVoucherPrice();
         }
     },
     getAllMoney() {
@@ -537,7 +541,7 @@ Page({
                                     sumMoney += Math.ceil((this.data.list[j].voucherPrice * this.data.list[j].num) * this.data.list[j].deductMoney);
                                 }
                             } else {
-                                sumMoney += this.data.list[j].voucherPrice * this.data.list[j].num;
+                                sumMoney += this.data.list[j].voucherPrice;
                             }
                         }
                     } else if (this.data.list[j].exchangeType === 0) {

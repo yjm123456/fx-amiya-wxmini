@@ -230,8 +230,7 @@ page {
 }
 .van-button--round{
     background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important; 
-    /* -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important; */
+   padding: 5rpx 10rpx 5rpx 10rpx !important;
 }
 .van-button {
     background-color: #DEC350 !important;
@@ -287,7 +286,7 @@ page {
     font-weight: 600;
 }
 .voucher_list{
-    background-color: #000;
+    background-color: #262626;
     color: #fff;
 }
 .van-submit-bar__tip{
@@ -304,6 +303,12 @@ page {
 .dropmenu_class{
     height: 500rpx !important;
     overflow: auto;
+}
+.van-popup--bottom{
+    padding-bottom:0rpx !important;
+}
+.van-dropdown-item__option .van-cell{
+    background-color: #262626 !important;
 }
 
 
