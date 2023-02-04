@@ -74,9 +74,9 @@
                 <view>
                     <radio color="#DEC350" catchtap="radioChange" checked="{{selectAll}}" />全选
                 </view>
-            </van-tag>
+            </van-tag>   
             <view class="voucher">
-                <van-dropdown-menu active-color="#DEC350" custom-class="dropmenu_class" direction="up">
+                <van-dropdown-menu  active-color="#DEC350"  direction="up">
                     <van-dropdown-item  bind:change="selectVoucher" value="{{ selectedVoucher }}" options="{{ voucherList }}" />
                 </van-dropdown-menu>
             </view>

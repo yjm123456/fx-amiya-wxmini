@@ -10,6 +10,7 @@ page {
 
 .van-cell {
     background-color: #000 !important;
+    color: #fff !important;
 }
 
 .cart_content text {
@@ -302,13 +303,18 @@ page {
 }
 .dropmenu_class{
     height: 500rpx !important;
-    overflow: auto;
+    overflow: hidden;
+    border-radius: 20rpx !important;
 }
 .van-popup--bottom{
     padding-bottom:0rpx !important;
 }
 .van-dropdown-item__option .van-cell{
     background-color: #262626 !important;
+}
+.van-bottom-enter-active{
+    border-radius: 20rpx !important;
+    overflow: hidden;
 }
 
 
