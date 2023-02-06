@@ -56,7 +56,8 @@ App({
   globalData: {
     userInfo: null,
     appId: "",
-    tmplIds:['yzI4ph707G_OiyTArLzPB2MHDcrZUhdoG42G7XW0zQ8','IhE-E2gYbsAE_M-1RTTYC7xIxGrLtQuKca5ayeYDpxg','bbzpcTSDNUnsYCUQeeFz5u5-aRoVRDNUSffS1rNa_wE']
+    tmplIds:['vayFjnf7gU8-qukpUbLno8Da78Ze2cjUtip1xW0Sqik','XLGnCrVBU40eZ38_7mTrLxMFVck5dfTgjT2-U3FD9i8','wrtg5gf5s_6j6nCF6-AUl6xDiIS_g9vtGONp-hqbFH8'],
+    giftTmpId:['0-67gP8KEM8YPI6I8I3r01BxH080Gi1ZLO8XKT4Us4c']
   }
 })
 

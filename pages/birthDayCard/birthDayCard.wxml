@@ -21,7 +21,7 @@
         <view class="detail_address">
             <van-field custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;' value="{{ !detailAddress?'':detailAddress }}"  border="{{ false }}" bind:change="onDetailAdressChange" />
         </view>
-        <view class="submit" bindtap="updateBirthCard">提交</view>
+        <view class="submit" bindtap="authorizeNotice">提交</view>
     </view>
 </scroll-view>
 <!-- 授权手机号 -->

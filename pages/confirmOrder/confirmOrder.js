@@ -39,8 +39,8 @@ Page({
         phone: '',
         cardName: '',
         thumbPicUrl: '',
-        overAllVoucher:'',
-        selectVoucherIndex:-1,
+        overAllVoucher: '',
+        selectVoucherIndex: -1,
     },
 
     /**
@@ -51,7 +51,7 @@ Page({
             isCard,
         } = options;
         const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
-        
+
         const {
             hospitalid,
             type,
@@ -92,29 +92,36 @@ Page({
             })
         }
         //如果没有使用指定商品抵用券则判断用户是否拥有全局商品可使用的抵用券
-        if(!voucherId){
+        if (!voucherId) {
             console.log("没有使用抵用券");
             this.getOverAllVoucher();
         }
         //商品化修改
     },
-    selectOverAllVoucher(e){
-        const {index,id,deduct}=e.currentTarget.dataset;
+    selectOverAllVoucher(e) {
+        const {
+            index,
+            id,
+            deduct,
+            name
+        } = e.currentTarget.dataset;
+        console.log("全局名称为" + name);
         this.setData({
-            selectVoucherIndex:index,
-            voucherId:id,
-            deductMoney:deduct
+            selectVoucherIndex: index,
+            voucherId: id,
+            deductMoney: deduct,
+            voucherName: name
         })
 
-        
+
     },
     //获取用户拥有的全局使用的抵用券
-    getOverAllVoucher(){
+    getOverAllVoucher() {
         http("get", `/customerConsumptionVoucher/overAllList`).then(res => {
             if (res.code === 0) {
-                const voucher=res.data.customerOverAllConsumptionVoucher;
+                const voucher = res.data.customerOverAllConsumptionVoucher;
                 this.setData({
-                    overAllVoucher:voucher
+                    overAllVoucher: voucher
                 })
             }
         })
@@ -189,7 +196,7 @@ Page({
             //支付方式
             exchangeType: pay,
             //使用的抵用券
-            voucherId:voucherId,
+            voucherId: voucherId,
             isCard,
             nickName,
             phone,
@@ -205,12 +212,12 @@ Page({
                     appointmentDate: _item.appointmentDate ? _item.appointmentDate : null,
                     isSkinCare: _item.isSkinCare ? _item.isSkinCare : false,
                     isFaceCard: _item.isFaceCard ? _item.isFaceCard : false,
-                    selectStandard:_item.selectStandard,
+                    selectStandard: _item.selectStandard,
                     // voucherId:voucherId
                 }
             }),
         }
-        if (type==1&&pay === 0) {
+        if (type == 1 && pay === 0) {
             wx.showToast({
                 title: '请先选择支付方式',
                 icon: 'none',
@@ -246,7 +253,7 @@ Page({
                         }
                     })
                 } else {
-                    
+
                     if (pay == 1) {
                         wx.redirectTo({
                             url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
@@ -264,11 +271,41 @@ Page({
                                     icon: 'none',
                                     duration: 2000
                                 })
-                                setTimeout(function () {
-                                    wx.redirectTo({
-                                        url: '/pages/orderList/orderList',
-                                    })
-                                }, 1000);
+                                var app = getApp();
+                                const tmplIds = app.globalData.tmplIds;
+                                wx.requestSubscribeMessage({
+                                    tmplIds: tmplIds,
+                                    success: res => {
+                                        tmplIds.forEach(item => {
+                                            if (res[item] === 'reject') {
+                                                wx.showToast({
+                                                    title: '此次操作会导致您接收不到通知',
+                                                    icon: 'none',
+                                                    duration: 2000,
+                                                })
+                                            }
+                                        })
+                                        console.log("授权成功");
+                                        setTimeout(function () {
+                                            wx.redirectTo({
+                                                url: '/pages/orderList/orderList'
+                                            })
+                                        }, 1000);
+                                    },
+                                    fail: err => {
+                                        console.log("授权失败");
+                                        setTimeout(function () {
+                                            wx.redirectTo({
+                                                url: '/pages/orderList/orderList'
+                                            })
+                                        }, 1000);
+                                    },
+                                })
+                                // setTimeout(function () {
+                                //     wx.redirectTo({
+                                //         url: '/pages/orderList/orderList',
+                                //     })
+                                // }, 1000);
                             },
                             fail(res) {
                                 wx.showToast({
@@ -313,6 +350,38 @@ Page({
             }
         })
     },
+    authorizeNotice() {
+        var app = getApp();
+        const tmplIds = app.globalData.tmplIds;
+        wx.requestSubscribeMessage({
+            tmplIds: tmplIds,
+            success: res => {
+                tmplIds.forEach(item => {
+                    if (res[item] === 'reject') {
+                        wx.showToast({
+                            title: '此次操作会导致您接收不到通知',
+                            icon: 'none',
+                            duration: 2000,
+                        })
+                    }
+                })
+                console.log("授权成功");
+                setTimeout(function () {
+                    wx.redirectTo({
+                        url: '/pages/orderList/orderList'
+                    })
+                }, 1000);
+            },
+            fail: err => {
+                console.log("授权失败");
+                setTimeout(function () {
+                    wx.redirectTo({
+                        url: '/pages/orderList/orderList'
+                    })
+                }, 1000);
+            },
+        })
+    },
     pay(tradeId) {
         http("post", `/Order/pay/${tradeId}`).then(res => {
             if (res.code === 0) {
@@ -321,11 +390,41 @@ Page({
                     icon: 'success',
                     duration: 2000,
                     success: function () {
-                        setTimeout(function () {
-                            wx.redirectTo({
-                                url: '/pages/orderList/orderList'
-                            })
-                        }, 2000);
+                        var app = getApp();
+                        const tmplIds = app.globalData.tmplIds;
+                        wx.requestSubscribeMessage({
+                            tmplIds: tmplIds,
+                            success: res => {
+                                tmplIds.forEach(item => {
+                                    if (res[item] === 'reject') {
+                                        wx.showToast({
+                                            title: '此次操作会导致您接收不到通知',
+                                            icon: 'none',
+                                            duration: 2000,
+                                        })
+                                    }
+                                })
+                                console.log("授权成功");
+                                setTimeout(function () {
+                                    wx.redirectTo({
+                                        url: '/pages/orderList/orderList'
+                                    })
+                                }, 1000);
+                            },
+                            fail: err => {
+                                console.log("授权失败");
+                                setTimeout(function () {
+                                    wx.redirectTo({
+                                        url: '/pages/orderList/orderList'
+                                    })
+                                }, 1000);
+                            },
+                        })
+                        // setTimeout(function () {
+                        //     wx.redirectTo({
+                        //         url: '/pages/orderList/orderList'
+                        //     })
+                        // }, 2000);
                     }
                 })
             }

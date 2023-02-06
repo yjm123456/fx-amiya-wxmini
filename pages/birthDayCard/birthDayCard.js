@@ -126,6 +126,30 @@ Page({
             }
         });
     },
+    authorizeNotice (){
+        var app=getApp();
+        const tmplIds = app.globalData.giftTmpId;
+        wx.requestSubscribeMessage({
+            tmplIds:tmplIds,
+            success: res => {
+                tmplIds.forEach(item => {
+                    if (res[item] === 'reject') {
+                        wx.showToast({
+                            title: '此次操作会导致您接收不到通知',
+                            icon: 'none',
+                            duration: 2000,
+                        })
+                    }
+                })
+                console.log("授权成功");
+                this.updateBirthCard();
+            },
+            fail: err => {
+                console.log("授权失败");
+                this.updateBirthCard();
+            },
+        })
+    },
     updateBirthCard(){
         const{
             name,

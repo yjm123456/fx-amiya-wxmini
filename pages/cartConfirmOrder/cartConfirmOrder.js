@@ -25,23 +25,24 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        const {vouchertype,deductmoney}=options;
+        const {
+            vouchertype,
+            deductmoney
+        } = options;
         const goodsinfo = JSON.parse(decodeURIComponent(options.goodsInfo));
         const voucher = options.selectedvoucher;
         if (!voucher) {
-            this.setData(
-                {
-                    voucher:null
-                }
-            )
+            this.setData({
+                voucher: null
+            })
         } else {
             this.setData({
                 voucher
             })
         }
         this.setData({
-            deductMoney:deductmoney,
-            voucherType:vouchertype
+            deductMoney: deductmoney,
+            voucherType: vouchertype
         })
         for (let i = 0; i < goodsinfo.length; i++) {
             if (goodsinfo[i].isMaterial) {
@@ -70,11 +71,11 @@ Page({
         this.getAllMoney();
         this.getAllPoint();
     },
-    authorizeNotice (){
-        var app=getApp();
+    authorizeNotice() {
+        var app = getApp();
         const tmplIds = app.globalData.tmplIds;
         wx.requestSubscribeMessage({
-            tmplIds:tmplIds,
+            tmplIds: tmplIds,
             success: res => {
                 tmplIds.forEach(item => {
                     if (res[item] === 'reject') {
@@ -86,11 +87,11 @@ Page({
                     }
                 })
                 console.log("授权成功");
-                
+
             },
             fail: err => {
                 console.log("授权失败");
-                
+
             },
         })
     },
@@ -116,6 +117,36 @@ Page({
                     icon: 'success',
                     duration: 2000,
                     success: function () {
+                        var app = getApp();
+                        const tmplIds = app.globalData.tmplIds;
+                        wx.requestSubscribeMessage({
+                            tmplIds: tmplIds,
+                            success: res => {
+                                tmplIds.forEach(item => {
+                                    if (res[item] === 'reject') {
+                                        wx.showToast({
+                                            title: '此次操作会导致您接收不到通知',
+                                            icon: 'none',
+                                            duration: 2000,
+                                        })
+                                    }
+                                })
+                                console.log("授权成功");
+                                setTimeout(function () {
+                                    wx.switchTab({
+                                        url: '/pages/orderList/orderList?active=0'
+                                    })
+                                }, 2000);
+                            },
+                            fail: err => {
+                                console.log("授权失败");
+                                setTimeout(function () {
+                                    wx.switchTab({
+                                        url: '/pages/orderList/orderList?active=0'
+                                    })
+                                }, 2000);
+                            },
+                        })
                         setTimeout(function () {
                             wx.switchTab({
                                 url: '/pages/orderList/orderList?active=0'
@@ -127,7 +158,7 @@ Page({
         })
     },
     handlePay(e) {
-        this.authorizeNotice();
+        // this.authorizeNotice();
         const {
             goodsInfo,
             isMaterial,
@@ -326,16 +357,47 @@ Page({
                             signType: payRequestInfo.signType,
                             paySign: payRequestInfo.paySign,
                             success(res) {
-                                wx.showToast({
-                                    title: '支付成功',
-                                    icon: 'none',
-                                    duration: 2000
+                                var app = getApp();
+                                const tmplIds = app.globalData.tmplIds;
+                                wx.requestSubscribeMessage({
+                                    tmplIds: tmplIds,
+                                    success: res => {
+                                        tmplIds.forEach(item => {
+                                            if (res[item] === 'reject') {
+                                                wx.showToast({
+                                                    title: '此次操作会导致您接收不到通知',
+                                                    icon: 'none',
+                                                    duration: 2000,
+                                                })
+                                            }
+                                        })
+                                        console.log("授权成功");
+                                        wx.showToast({
+                                            title: '支付成功',
+                                            icon: 'none',
+                                            duration: 2000
+                                        })
+                                        setTimeout(function () {
+                                            wx.redirectTo({
+                                                url: '/pages/orderList/orderList',
+                                            })
+                                        }, 1000);
+                                    },
+                                    fail: err => {
+                                        console.log("授权失败");
+                                        wx.showToast({
+                                            title: '支付成功',
+                                            icon: 'none',
+                                            duration: 2000
+                                        })
+                                        setTimeout(function () {
+                                            wx.redirectTo({
+                                                url: '/pages/orderList/orderList',
+                                            })
+                                        }, 1000);
+                                    },
                                 })
-                                setTimeout(function () {
-                                    wx.redirectTo({
-                                        url: '/pages/orderList/orderList',
-                                    })
-                                }, 1000);
+
                             },
                             fail(res) {
                                 wx.showToast({
@@ -422,16 +484,16 @@ Page({
                 }
             }
         }
-        if(this.data.voucherType==0){
+        if (this.data.voucherType == 0) {
             this.setData({
-                allMoney: sumMoney-this.data.deductMoney
+                allMoney: sumMoney - this.data.deductMoney
             })
-        }else{
+        } else {
             this.setData({
                 allMoney: sumMoney
             })
         }
-        
+
     },
     //获取总计积分
     getAllPoint() {
