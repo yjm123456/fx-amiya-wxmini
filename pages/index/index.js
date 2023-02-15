@@ -9,6 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        
         // 轮播图
         carouselImage: [],
         projectArr: [{
@@ -81,12 +82,14 @@ Page({
         showVoucherTip: false,
         scene: '',
         show: false,
-        voucherUrl: 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/05206138b16b44929a5751c21ca3e612.jpg'
+        voucherUrl: 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/05206138b16b44929a5751c21ca3e612.jpg',
+        showAppoint:false
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.visit();
         const scene = decodeURIComponent(options.scene);
         
 
@@ -106,6 +109,16 @@ Page({
         http("put", `/user/setSuperior/` + scene).then(res => {
             if (res.code === 0) {
 
+            }
+        })
+    },
+    visit() {
+        http("get", `/ControlPageShow`).then(res => {
+            if (res.code === 0) {
+                const isShowAppoint=res.data.visit
+                this.setData({
+                    showAppoint:isShowAppoint
+                });
             }
         })
     },

@@ -1,6 +1,6 @@
 <!--pages/appointmentHospital/appointmentHospital.wxml-->
 <van-tabs active="{{ active }}" bind:change="onChange" lazy-render="{{false}}">
-  <van-tab title="预约医院">
+  <van-tab title="预约">
     <appointment id="appointment"></appointment>
   </van-tab>
   <van-tab title="预约计划">

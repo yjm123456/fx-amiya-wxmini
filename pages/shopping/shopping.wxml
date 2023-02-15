@@ -30,7 +30,9 @@
     <view class="goods_wrap">
         <scroll-view class="menu_wrap" scroll-y>
             <view class="menu_item {{categoryActive === index ? 'category_active' : ''}}" wx:for="{{goodsCategorys}}" wx:key="id" bindtap="handleGoodsCategoryClick" data-categoryid="{{item.id}}" data-index="{{index}}" wx:if="{{item.showDirectionType==0}}">
-                <text class="goods_name">{{item.name}}</text>
+                <!-- <text class="goods_name">{{item.name}}</text> -->
+                <text wx:if="{{!item.categoryImg}}" class="goods_name">{{item.name}}</text>
+                <image class="category_img" mode="widthFix" wx:else src="{{item.categoryImg}}"></image>
             </view>
         </scroll-view>
         <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">

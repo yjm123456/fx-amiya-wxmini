@@ -267,3 +267,10 @@ page{
     color: #fff;
     padding-left: 30rpx;
 }
+.sum_amount{
+    display: flex;
+}
+.amount{
+    display: flex;
+    flex-direction: column;
+}

@@ -32,11 +32,11 @@
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
             <text class="mbanner-text">消费领积分</text>
         </view>
-        <view class="mbanner-item">
+        <view class="mbanner-item" wx:if="{{showAppoint}}">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
-            <text class="mbanner-text">预约医院</text>
+            <text class="mbanner-text">预约计划</text>
         </view>
-        <view class="mbanner-item">
+        <view class="mbanner-item" wx:if="{{showAppoint}}">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
             <text class="mbanner-text">预约叫车</text>
         </view>
@@ -58,8 +58,8 @@
     <!-- 优惠板块 -->
     <view class="discount">
         <view class="discount-item">
-            <image mode="widthFix" bindtap="switchTab" data-url="/pages/shopping/shopping" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
-            <image class="join" mode="widthFix" catchtap="switchTab" data-url="/pages/shopping/shopping" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
+            <image mode="widthFix" bindtap="to" data-url="/pages/pointAndMoney/pointAndMoney" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
+            <image class="join" mode="widthFix" catchtap="to" data-url="/pages/pointAndMoney/pointAndMoney" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
         </view>
         <view class="discount-item">
             <image mode="widthFix" bindtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ab7f92ab6ec84d98a556aa9db8158910.png"></image>

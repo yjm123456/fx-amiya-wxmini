@@ -1,7 +1,7 @@
 <!--pages/appointmentCar/appointmentCar.wxml-->
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
     <view class="content">
-        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/001bbaccecb24bed93be5356eee80021.png"></image>
+        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/998122ce26cc448aaf47c5512c21c032.png"></image>
         <van-field class="name" maxlength='{{15}}' placeholder="请输入用户名" custom-style="background-color:transparent;width:340rpx" value="{{ name }}" border="{{ false }}" bind:change="onNameChange" />
         <van-field class="phone" maxlength='{{11}}' placeholder="请输入手机号" custom-style="background-color:transparent;width:340rpx" value="{{ phone }}" border="{{ false }}" bind:change="onPhoneChange" />
         <van-field class="address" type="textarea" autosize="{ maxHeight: 330rpx, minHeight: 330rpx}" value="{{ address }}" placeholder="请输入地址" custom-style="background-color:transparent;width:335rpx;height:135rpx" border="{{ false }}" bind:change="onAdressChange" />

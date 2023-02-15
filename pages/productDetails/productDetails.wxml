@@ -16,8 +16,9 @@
                 <text class="price_tag">{{goodsInfo.memberName}}专享价</text>
                 <text class="present_price">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.memberRankPrice}}</text>
             </view>
-            <view wx:else=""><text class="present_price">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text></view>
-            <!-- <text class="present_price font_color">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:goodsInfo.salePrice)}}</text> -->
+            <view wx:else><text wx:if="{{goodsInfo.exchangeType!=7}}" class="present_price">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text>
+                <text wx:if="{{goodsInfo.exchangeType==7}}" class="present_price">{{goodsInfo.integrationQuantity}}积分+￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text>
+            </view>
             <text class="original_price">￥ {{goodsInfo.maxShowPrice}}</text>
         </view>
         <view class="detail ">{{goodsInfo.name}}</view>
@@ -47,9 +48,10 @@
             <view wx:if="{{standardsImg}}" class="standards_img">
                 <image bindtap="showImg" data-img="{{standardsImg}}" src="{{standardsImg}}"></image>
             </view>
-            <view class="standard_item {{index==selectStandardIndex?'standard_active':''}}" wx:for="{{goodsInfo.goodsStandardsPrice}}" bindtap="selectStandard" data-img="{{item.standardsImg}}" data-index="{{index}}" data-price='{{item.price}}' data-standard='{{item.id}}'>
+            <view class="standard_item {{index==selectStandardIndex?'standard_active':''}}" wx:for="{{goodsInfo.goodsStandardsPrice}}" bindtap="selectStandard" data-exchangetype="{{goodsInfo.exchangeType}}" data-integration="{{item.integralAmount}}" data-img="{{item.standardsImg}}" data-index="{{index}}" data-price='{{item.price}}' data-standard='{{item.id}}'>
                 <view class="standard_name"><text>{{item.standards}}</text></view>
-                <view class="standard_price"><text>￥{{item.price}}</text></view>
+
+                <view class="standard_price"><text wx:if="{{goodsInfo.exchangeType!=7}}">￥{{item.price}}</text><text wx:else>{{item.integralAmount}}积分+￥{{item.price}}</text></view>
             </view>
         </view>
         <view class="item_spe" bindtap="getCustomerVoucher">
@@ -66,7 +68,7 @@
             <!-- type==0 没有选择门店的情况下数量是禁用状态 -->
             <van-stepper min="1" integer disabled bindtap="disabledNum" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==false}}" />
             <!-- type==1 判断是否为实物 如果是实物的话需要发货 销售价格x数量 -->
-            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-salePrice="{{selectStandardPrice}}" data-ismember="{{goodsInfo.isMember}}" data-memberrankprice="{{goodsInfo.memberRankPrice}}"  wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
+            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-integration="{{selectIntegrationPrice}}" data-salePrice="{{selectStandardPrice}}" data-ismember="{{goodsInfo.isMember}}" data-memberrankprice="{{goodsInfo.memberRankPrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
         </view>
     </view>
     <view wx:if="{{goodsInfo.goodsDetailHtml!==null}}" class="desc">
@@ -95,12 +97,13 @@
     <view class="total_price">
         <text class="present_price font_color">￥{{ goodsInfo.quantity==1 ? (storeInfo.name ? storeInfo.hospitalSalePrice : selectStandardPrice) : totalPrice}}</text>
     </view>
-    <!-- <view class="but" bindtap="purchase"  data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice= "{{storeInfo.hospitalSalePrice}}" data-allmoney= "{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice) : totalPrice}}" >立即购买</view> -->
+
     <van-goods-action>
         <van-goods-action-icon icon="chat-o" text="客服" open-type='contact' />
         <van-goods-action-icon icon="cart-o" text="购物车" bind:click="toShoppingCart" />
-        <van-goods-action-button data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : selectStandardPrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
-        <van-goods-action-button text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" />
+        <!-- 加入购物车(当支付方式为积分加钱时不显示) -->
+        <van-goods-action-button wx:if="{{goodsInfo.exchangeType!=7}}" data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : selectStandardPrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
+        <van-goods-action-button text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
     </van-goods-action>
 
 

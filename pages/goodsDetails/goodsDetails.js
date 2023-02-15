@@ -71,30 +71,13 @@ Page({
                     })
                     return;
                 }
-                console.log(goodsInfo);
                 http("post", `/GoodsShopCar`, data).then(res => {
                     if (res.code === 0) {
-                        Toast.success('添加成功');
+                        Toast('添加成功');
                     } else {
-                        Toast.success('添加失败');
+                        Toast('添加失败,请稍后重试');
                     }
                 })
-                // if (wx.getStorageSync('cart')) {
-                //     const s = wx.getStorageSync('cart');
-                //     console.log(s);
-                //     for (let i = 0; i < s.length; i++) {
-                //         if (s[i].id === goodsInfo.id) {
-                //             Toast.success('购物车中已包含此商品');
-                //             return;
-                //         }
-                //     }
-                //     console.log([...s, goodsInfo])
-                //     wx.setStorageSync('cart', [...s, goodsInfo]);
-                //     Toast.success('添加成功');
-                //     return;
-                // }
-                wx.setStorageSync('cart', [goodsInfo]);
-                Toast.success('添加成功');
             } else {
                 if (!cityname) {
                     wx.showToast({
@@ -115,21 +98,6 @@ Page({
                     this.setData({
                         goodsInfo
                     })
-                    if (wx.getStorageSync('cart')) {
-                        const s = wx.getStorageSync('cart');
-                        console.log(s);
-                        for (let i = 0; i < s.length; i++) {
-                            if (s[i].id === goodsInfo.id) {
-                                Toast.success('购物车中已包含此商品');
-                                return;
-                            }
-                        }
-                        wx.setStorageSync('cart', [...s, goodsInfo]);
-                        Toast.success('添加成功');
-                        return;
-                    }
-                    wx.setStorageSync('cart', [goodsInfo]);
-                    Toast.success('添加成功');
                 }
             }
         }

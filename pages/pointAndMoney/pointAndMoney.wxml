@@ -1,0 +1,16 @@
+<!--pages/pointAndMoney/pointAndMoney.wxml-->
+<view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType>0}}">
+    <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
+    <view>
+        <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
+        <image mode="aspectFill" class="goods_img" src="{{item.thumbPicUrl}}" />
+    </view>
+    <view>
+        <view class="middle goods_name">{{item.name}}</view>
+        <view class="middle goods_name">{{item.description}}</view>
+        <view>￥{{item.salePrice}}</view>
+    </view>
+</view>
+<view wx:if="{{nextPage === false}}">
+    <van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">我是有底线的</van-divider>
+</view>

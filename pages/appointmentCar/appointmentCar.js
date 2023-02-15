@@ -463,8 +463,7 @@ Page({
             phone,
             address,
             hospital,
-            dateMinute,
-            carType
+            dateMinute
         } = this.data;
         
         var d= dateMinute.replace("/",'-');
@@ -517,14 +516,6 @@ Page({
             })
             return;
         }
-        if(!carType){
-            wx.showToast({
-              title: '请输入预约车型',
-              icon:'none',
-              duration:1000
-            })
-            return;
-        }
         if (!(/^1[3456789]\d{9}$/.test(phone))) {
             wx.showToast({
                 title: '手机号格式错误,请重新输入',
@@ -539,7 +530,7 @@ Page({
             address,
             hospital,
             appointmentDate:d2.replace(" ",'T'),
-            carType
+            carType:0
         };
         http("post", `/appointmentCar`, data).then(res => {
             if (res.code === 0) {

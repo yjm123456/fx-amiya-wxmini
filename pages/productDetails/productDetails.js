@@ -63,8 +63,16 @@ Page({
         vouchername: '',
         selectStandard: '',
         selectStandardIndex: -1,
+        //选中规格的价格
         selectStandardPrice: 0,
-        standardsImg:''
+        //选中规格的图片
+        standardsImg:'',
+        //选中规格的支付方式
+        selectExchangetype:0,
+        //选中规格的积分单价(用于积分加钱购订单)
+        selectIntegrationPrice:0,
+        //总积分
+        totalIntegrationPrice:0
     },
 
     /**
@@ -100,14 +108,19 @@ Page({
             index,
             standard,
             price,
-            img
+            img,
+            exchangetype,
+            integration
         } = event.currentTarget.dataset;
         this.setData({
             selectStandardIndex: index,
             selectStandard: standard,
             selectStandardPrice: price,
             standardsImg:img,
-            totalPrice: (this.data.goodsInfo.quantity) * price
+            totalPrice: (this.data.goodsInfo.quantity) * price,
+            selectIntegrationPrice:integration,
+            selectExchangetype:exchangetype,
+            totalIntegrationPrice:(this.data.goodsInfo.quantity) * integration
         })
     },
     toShoppingCart() {
@@ -161,12 +174,12 @@ Page({
                 }
                 http("post", `/GoodsShopCar`, data).then(res => {
                     if (res.code === 0) {
-                        Toast.success('添加成功');
+                        Toast('添加成功');
                     } else {
-                        Toast.success('添加失败');
+                        Toast('添加失败');
                     }
                 })
-                Toast.success('添加成功');
+                
             } else {
                 if (!cityname) {
                     wx.showToast({
@@ -200,12 +213,11 @@ Page({
                         CityId: this.data.cityId,
                         HospitalId: hospitalid
                     }
-                    console.log(goodsInfo);
                     http("post", `/GoodsShopCar`, data).then(res => {
                         if (res.code === 0) {
-                            Toast.success('添加成功');
+                            Toast('添加成功');
                         } else {
-                            Toast.success('添加失败');
+                            Toast('添加失败,请稍后重试!');
                         }
                     })
                 }
@@ -361,7 +373,8 @@ Page({
             saleprice,
             ismaterial,
             ismember,
-            memberrankprice
+            memberrankprice,
+            integration
         } = event.currentTarget.dataset
         let quantity = event.detail
         // type==1 判断是否为实物 如果是实物的话需要发货 总价计算的是销售价格x数量
@@ -373,6 +386,7 @@ Page({
             if (saleprice) {
                 this.setData({
                     totalPrice: ((ismember ? memberrankprice : saleprice) * goodsInfo.quantity).toFixed(2),
+                    totalIntegrationPrice:(integration*goodsInfo.quantity).toFixed(2),
                     goodsInfo
                 })
             }
@@ -419,7 +433,8 @@ Page({
             cityname,
             type,
             hospitalsaleprice,
-            allmoney
+            allmoney,
+            allintegration
         } = e.currentTarget.dataset
         const {
             goodsInfo,
@@ -493,13 +508,12 @@ Page({
                     deductmoney2 = this.data.deductmoney
                 } else if (this.data.voucherType == 4) {
                     voucherType=4
-                    console.log("jru");
                     deductmoney2 = Math.ceil(allmoney * deductmoney);
                     deductmoney2 = allmoney - deductmoney2;
                 }
                 console.log("折扣金额" + deductmoney);
                 wx.navigateTo({
-                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney2 + '&discount=' + this.data.deductmoney+'&voucherType='+voucherType
+                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney2 + '&discount=' + this.data.deductmoney+'&voucherType='+voucherType+'&allintegration='+allintegration
                 })
             }
 

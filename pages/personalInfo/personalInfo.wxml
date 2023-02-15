@@ -74,7 +74,7 @@
             </view>
             <view wx:else class="info_text" bindtap="cleander">
                 <picker mode="date" end='{{timeNow}}' bindchange="bindChange" value="{{date}}">
-                    <van-field value="{{ !date ? '请选择':date}}" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" />
+                    <van-field disabled value="{{ !date ? '请选择':date}}" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" />
                 </picker>
             </view>
         </view>

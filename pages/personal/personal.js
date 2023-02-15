@@ -17,6 +17,7 @@ let moveDistance = 0;
 Page({
 
     data: {
+        showAppoint:false,
         // 授权
         controlAuth: false,
         //会员卡信息
@@ -35,6 +36,16 @@ Page({
         percentage:0,
         style:"",
         voucherCount:0
+    },
+    visit() {
+        http("get", `/ControlPageShow`).then(res => {
+            if (res.code === 0) {
+                const isShowAppoint=res.data.visit
+                this.setData({
+                    showAppoint:isShowAppoint
+                });
+            }
+        })
     },
     //获取成长值信息
     GetGrowthPoint() {
@@ -96,6 +107,7 @@ Page({
         })
     },
     onShow() {
+        this.visit();
         checkUserTokenInfo().then(res => {
             this.isAuthorizationUserInfo();
             // this.getMemberCardInfo();

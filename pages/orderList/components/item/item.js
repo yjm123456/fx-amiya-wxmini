@@ -77,49 +77,81 @@ Component({
                     apptype
                 } = e.currentTarget.dataset;
                 // singleplatform为1表示支付订单 为0表示积分订单,3表示余额支付
-                if (singleplatform == 1) {
+                if (singleplatform == 6) {
                     // apptype为2表示在小程序下的单直接调起支付接口 不为2时在其他平台下的单 提示去下单平台支付
                     if (apptype === 2) {
                         http("post", `/Order/wechatPay/${tradeid}`).then(res => {
+                            // const {
+                            //     alipayUrl
+                            // } = res.data.orderPayGetResult
+                            // wx.redirectTo({
+                            //     url: '/pages/alipay/alipay?alipayUrl=' + encodeURIComponent(alipayUrl),
+                            // })
                             const {
+                                tradeId,
+                                payRequestInfo,
                                 alipayUrl
-                            } = res.data.orderPayGetResult
-                            wx.redirectTo({
-                                url: '/pages/alipay/alipay?alipayUrl=' + encodeURIComponent(alipayUrl),
+                            } = res.data.orderPayGetResult;
+                            this.setData({
+                                moneyTradeId: tradeId
                             })
-                        })
-                        // http("post", `/Order/wechatPay/${tradeid}`).then(res => {
-                        //   const { orderPayGetResult } = res.data
-                        //   wx.requestPayment({
-                        //     timeStamp:  orderPayGetResult.timeStamp,
-                        //     nonceStr:  orderPayGetResult.nonceStr,
-                        //     package:  orderPayGetResult.package,
-                        //     signType:  orderPayGetResult.signType,
-                        //     paySign: orderPayGetResult.paySign,
-                        //     success (res) { 
-                        //       http("post", `/Order/pay/${tradeid}`).then(res => {
-                        //         if (res.code === 0) {
-                        //           wx.showToast({
-                        //             title: '支付成功',
-                        //             icon: 'success',
-                        //             duration: 2000,
-                        //             success: function () {
-                        //               // http("post", `/Order/pay/${tradeid}`).then(res => {})
-                        //               setTimeout(function () {
-                        //                 wx.redirectTo({
-                        //                   url: '/pages/purchasedOrder/purchasedOrder',
-                        //                 })
-                        //               }, 2000);
-                        //             }
-                        //           })
-                        //         }
-                        //       })
-                        //     },
-                        //     fail (res) { 
-                        //       wx.showToast({ title: '支付失败', icon: 'none', duration: 2000 })
-                        //     }
-                        //   })
-                        // })
+                            wx.requestPayment({
+                                timeStamp: payRequestInfo.timeStamp,
+                                nonceStr: payRequestInfo.nonceStr,
+                                package: payRequestInfo.package,
+                                signType: payRequestInfo.signType,
+                                paySign: payRequestInfo.paySign,
+                                success(res) {
+                                    wx.showToast({
+                                        title: '支付成功',
+                                        icon: 'none',
+                                        duration: 2000
+                                    })
+                                    var app = getApp();
+                                    const tmplIds = app.globalData.tmplIds;
+                                    wx.requestSubscribeMessage({
+                                        tmplIds: tmplIds,
+                                        success: res => {
+                                            tmplIds.forEach(item => {
+                                                if (res[item] === 'reject') {
+                                                    wx.showToast({
+                                                        title: '此次操作会导致您接收不到通知',
+                                                        icon: 'none',
+                                                        duration: 2000,
+                                                    })
+                                                }
+                                            })
+                                            console.log("授权成功");
+                                            setTimeout(function () {
+                                                wx.redirectTo({
+                                                    url: '/pages/orderList/orderList'
+                                                })
+                                            }, 1000);
+                                        },
+                                        fail: err => {
+                                            console.log("授权失败");
+                                            setTimeout(function () {
+                                                wx.redirectTo({
+                                                    url: '/pages/orderList/orderList'
+                                                })
+                                            }, 1000);
+                                        },
+                                    })
+                                    // setTimeout(function () {
+                                    //     wx.redirectTo({
+                                    //         url: '/pages/orderList/orderList',
+                                    //     })
+                                    // }, 1000);
+                                },
+                                fail(res) {
+                                    wx.showToast({
+                                        title: '支付失败',
+                                        icon: 'none',
+                                        duration: 2000
+                                    })
+                                }
+                            })
+                        })                      
                     } else {
                         wx.showToast({
                             title: '此订单不在小程序下单 请去下单平台进行支付',

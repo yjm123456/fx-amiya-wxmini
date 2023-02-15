@@ -1,0 +1,94 @@
+/* pages/pointAndMoney/pointAndMoney.wxss */
+page{
+ background-color: #000;   
+}
+.goods_item {
+    display: flex;
+    flex-direction: row;
+    background-color: #262626;
+    margin:  20rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+    height: 240rpx;
+    position: relative;
+    
+}
+.tag{
+    position: absolute;
+    padding: 10rpx;
+    font-size: 22rpx;
+    background:-webkit-linear-gradient(right ,#efcd71,#efcf77) !important; 
+    color: #fff;
+    right: 0;
+    border-bottom-left-radius: 20rpx;
+}
+/* 图片 */
+
+
+.goods_img{
+    width: 240rpx;
+    height: 240rpx;
+    border-radius: 20rpx;
+}
+
+/* .goods_item>view:first-child .iconfont {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 80rpx;
+    color: red;
+} */
+
+/* .goods_item>view:first-child image {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 20rpx;
+} */
+
+/* text */
+
+.goods_item>view:last-child {
+    flex: 1;
+    margin-left: 25rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.goods_item>view:last-child>view:nth-child(1),
+.goods_item>view:last-child>view:nth-child(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    font-size: 25rpx;
+}
+
+.goods_item>view:last-child>view:nth-child(1) {
+    color: #fff;
+    font-size: 28rpx;
+}
+
+.goods_item>view:last-child>view:nth-child(2) {
+    color: #fff;
+    font-size: 25rpx;
+    margin-top: 10rpx;
+}
+
+.goods_item>view:last-child>view:nth-child(3) {
+    margin-top: 10rpx;
+    font-weight: 600;
+    /* color: #DEC350; */
+    background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+.goods_name{
+    background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
+    -webkit-background-clip:text !important; 
+    -webkit-text-fill-color:transparent !important;
+}

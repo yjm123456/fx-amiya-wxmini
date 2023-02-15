@@ -48,13 +48,13 @@
     </view>
 </view>
 <view class="cover_container">
-    <view class="order">
+    <view class="order" wx:if="{{showAppoint}}">
         <view class="order_title">
             <text class="title_tip">我的预约</text>
         </view>
         <view class="order_status">
             <view class="appointment_item" catchtap="to" data-url="/pages/appointmentHospital/appointmentHospital">
-                <view><text>预约医院</text></view>
+                <view><text>预约计划</text></view>
             </view>
             <view class="appointment_item" catchtap="to" data-url="/pages/appointmentCar/appointmentCar">
                 <view><text>预约叫车</text></view>

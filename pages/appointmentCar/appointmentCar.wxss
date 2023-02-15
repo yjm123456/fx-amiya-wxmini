@@ -14,20 +14,20 @@ page{
 .name{
     position: absolute;
     z-index: 2;
-    margin-top: 442rpx;
+    margin-top: 458rpx;
     left: 330rpx;
     
 }
 .phone{
     position: absolute;
     z-index: 2;
-    margin-top: 551rpx;
+    margin-top: 572rpx;
     left: 330rpx;
 }
 .address{
     position: absolute;
     z-index: 2;
-    margin-top: 665rpx;
+    margin-top: 680rpx;
     left: 330rpx;
     font-size: 22rpx !important;
 }
@@ -35,7 +35,7 @@ page{
     position: absolute;
     z-index: 2;
     width: 280rpx;
-    margin-top: -648rpx;
+    margin-top: -424rpx;
     left: 330rpx;
     background-color: transparent;
     padding: 10rpx 30rpx;
@@ -44,7 +44,7 @@ page{
 .month{
     background-color: transparent;
     position: absolute;
-    top: 957rpx;
+    top: 997rpx;
     left: 343rpx;
     color: #fff;
     font-size: 30rpx;
@@ -52,7 +52,7 @@ page{
 .day{
     background-color: transparent;
     position: absolute;
-    top: 957rpx;
+    top: 997rpx;
     left: 433rpx;
     color: #fff;
     font-size: 30rpx;
@@ -60,7 +60,7 @@ page{
 .hour{
     background-color: transparent;
     position: absolute;
-    top: 957rpx;
+    top: 997rpx;
     left: 523rpx;
     color: #fff;
     font-size: 30rpx;
@@ -148,7 +148,7 @@ page{
    
   .origin_picker {
     align-items: center;
-    top: -702rpx;
+    top: -480rpx;
     left: 330rpx;
     position: absolute;
     font-size: 32rpx;

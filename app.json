@@ -73,7 +73,8 @@
         "pages/festivalGift/festivalGift",
         "pages/appointmentCar/appointmentCar",
         "pages/appointmentHospital/appointmentHospital",
-        "pages/appointmentCarList/appointmentCarList"
+        "pages/appointmentCarList/appointmentCarList",
+        "pages/pointAndMoney/pointAndMoney"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

@@ -316,5 +316,8 @@ page {
     border-radius: 20rpx !important;
     overflow: hidden;
 }
+.van-ellipsis{
+    color: #fff;
+}
 
 
