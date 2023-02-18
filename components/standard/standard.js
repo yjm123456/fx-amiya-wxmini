@@ -39,6 +39,15 @@ Component({
         handleClose() {
             this.triggerEvent("resetControlStandard")
         },
+        showImg(event){
+            const {
+                img
+            } = event.currentTarget.dataset;
+            wx.previewImage({
+                current: '', // 当前显示图片的 http 链接
+                urls: [img] // 需要预览的图片 http 链接列表
+              })
+        },
         selectStandard(event) {
             console.log(event.currentTarget.dataset);
             const {

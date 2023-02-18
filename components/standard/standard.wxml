@@ -2,7 +2,7 @@
     <view class="wrap">
         <view class="sku_pro">
             <view class="sku_pro_picture">
-                <image src="{{goodsInfo.thumbPicUrl}}"></image>
+                <image  src="{{goodsInfo.thumbPicUrl}}"></image>
             </view>
             <view class="sku_pro_info">
                 <view class="price">
@@ -28,7 +28,7 @@
 				>{{item.standard}}</text>
 			</view> -->
             <view wx:if="{{standardImg}}" class="standard_img">
-                    <image src="{{standardImg}}"></image>
+                    <image catchtap="showImg" data-img="{{standardImg}}" src="{{standardImg}}"></image>
                 </view>
             <view class="wrap" wx:for="{{goodsInfo.goodsStandardsPrice}}">
                 

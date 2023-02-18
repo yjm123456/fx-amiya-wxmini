@@ -29,7 +29,8 @@ Page({
         nextPage: true,
         //积分
         balance: 0,
-        controlAuthPhone: false
+        controlAuthPhone: false,
+        goodsCategorys:''
     },
     onLoad() {
         this.isCustomer((isCustomer) => {
@@ -40,7 +41,11 @@ Page({
             }
         })
         this.getIntegral();
-
+        // if(!this.data.goodsCategorys){
+        //     this.getGoodsCategory();
+        // }
+        
+        
 
     },
     toInternal() {
@@ -73,7 +78,9 @@ Page({
         //绑定成功后获取分享信息
         //this.getShareInfo();
     },
-
+    // onPullDownRefresh(){
+    //     this.refresh();
+    // },
     // 取消绑定手机号
     cancelBindPhone() {
         this.setData({
@@ -82,7 +89,7 @@ Page({
     },
     onShow() {
         this.getIntegral();
-        this.refresh();
+        this.getGoodsCategory();
     },
     isCustomer(callback) {
         iscustomer().then(res => {
@@ -156,12 +163,49 @@ Page({
                 const {
                     goodsCategorys
                 } = res.data;
-                this.setData({
-                    goodsCategorys,
-                    categoryActive: 0,
-                    categoryId: goodsCategorys.length && goodsCategorys[0].id
-                })
-                this.getGoodsInfo();
+                //判断是否有已存在的类别
+                if(!this.data.goodsCategorys){
+                    this.setData({
+                        goodsCategorys,
+                        categoryActive: 0,
+                        categoryId: goodsCategorys.length && goodsCategorys[0].id
+                    })
+                    this.getGoodsInfo();
+                }else{
+                    if(this.data.goodsCategorys.length!=goodsCategorys.length){
+                        this.setData({
+                            pageNum: 1,
+                            goodsInfos: [],
+                            nextPage: true
+                        })
+                        this.setData({
+                            goodsCategorys,
+                            categoryActive: 0,
+                            categoryId: goodsCategorys.length && goodsCategorys[0].id
+                        })
+                        this.getGoodsInfo();
+                        return;
+                    }
+                    for (let index = 0; index < goodsCategorys.length; index++) {
+                        var exist= this.data.goodsCategorys.findIndex(item=>item.name==goodsCategorys[index].name);
+                        if(exist<0){
+                            this.setData({
+                                pageNum: 1,
+                                goodsInfos: [],
+                                nextPage: true
+                            })
+                            this.setData({
+                                goodsCategorys,
+                                categoryActive: 0,
+                                categoryId: goodsCategorys.length && goodsCategorys[0].id
+                            })
+                            this.getGoodsInfo();
+                        }
+                    }
+                }
+
+
+                
             }
         })
     },

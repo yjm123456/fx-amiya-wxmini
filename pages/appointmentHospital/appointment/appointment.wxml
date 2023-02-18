@@ -2,7 +2,7 @@
 <view class="container">
     <view class="select-city">
         <view class="title">
-            <text>医院列表</text>
+            <text>预约城市</text>
         </view>
         <view class="city">
             <view class="current-city">
@@ -62,3 +62,7 @@
             </view>
         </view>
     </van-popup>
+    <!-- 日历 -->
+  <calendar bind:select="select" bind:toggleYearMonth="toggleYearMonth" defaultValue="{{currentDate}}" dateList="{{dateList}}" />
+  <!-- 底部 -->
+  <footer defaultValue="{{currentDate}}"  hospitalId="{{hospitalItem.id}}" itemInfoId="{{itemInfoId}}" surplusQuantity="{{surplusQuantity}}" />

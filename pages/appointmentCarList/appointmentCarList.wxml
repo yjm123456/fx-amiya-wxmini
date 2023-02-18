@@ -2,12 +2,12 @@
 <view class="container">
     <view class="item" wx:for="{{appointCarList}}">
         <view class="appointment_info">
-            <view class="address">预约车型：{{item.carTypeText}}</view>
+            <!-- <view class="address">预约车型：{{item.carTypeText}}</view> -->
             <!-- <view class="car_type">支付方式：{{item.exchageTypeText}}</view> -->
-            <view class="car_text">预约车型：{{item.carTypeText}}</view>
+            <!-- <view class="car_text">预约车型：{{item.carTypeText}}</view> -->
             <view class="status">预约状态：{{item.statusText}}</view>
             <view class="time">预约时间：{{item.appointmentDate}}</view>
-            <view class="hospital">预约医院：{{item.hospital}}</view>
+            <view class="hospital">预约计划：{{item.hospital}}</view>
         </view>
         <view class="car_image">
             <image src="{{carTypeImg[item.carType]}}"></image>

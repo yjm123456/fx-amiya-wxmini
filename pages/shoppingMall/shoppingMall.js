@@ -33,12 +33,14 @@ Page({
 
         // 是否存在下一页
         nextPage: true,
-        controlAuthPhone:false
+        controlAuthPhone:false,
+        goodsCategorys:''
 
     },
 
     onShow() {
-        this.refresh();
+        //this.refresh();
+        this.getGoodsCategory();
     },
 
     refresh() {
@@ -86,16 +88,57 @@ Page({
                 const {
                     goodsCategorys
                 } = res.data;
-                this.setData({
-                    goodsCategorys,
-                    categoryActive: 0,
-                    categoryId: goodsCategorys.length && goodsCategorys[0].id
-                })
-                this.getGoodsInfo();
+                //判断是否有已存在的类别
+                if(!this.data.goodsCategorys){
+                    this.setData({
+                        goodsCategorys,
+                        categoryActive: 0,
+                        categoryId: goodsCategorys.length && goodsCategorys[0].id
+                    })
+                    this.getGoodsInfo();
+                }else{
+                    console.log("类别已存在");
+                    if(this.data.goodsCategorys.length!=goodsCategorys.length){
+                        this.setData({
+                            pageNum: 1,
+                            goodsInfos: [],
+                            nextPage: true
+                        })
+                        this.setData({
+                            goodsCategorys,
+                            categoryActive: 0,
+                            categoryId: goodsCategorys.length && goodsCategorys[0].id
+                        })
+                        this.getGoodsInfo();
+                        return;
+                    }
+                    for (let index = 0; index < goodsCategorys.length; index++) {
+                        var exist= this.data.goodsCategorys.findIndex(item=>item.name==goodsCategorys[index].name);
+                        if(exist<0){
+                            this.setData({
+                                pageNum: 1,
+                                goodsInfos: [],
+                                nextPage: true
+                            })
+                            this.setData({
+                                goodsCategorys,
+                                categoryActive: 0,
+                                categoryId: goodsCategorys.length && goodsCategorys[0].id
+                            })
+                            this.getGoodsInfo();
+                        }
+                    }
+                }
+
+
+                
             }
         })
     },
-
+    // onPullDownRefresh(){
+    //     console.log("下拉刷新");
+    //     this.refresh();
+    // },
     // 点击商品分类
     handleGoodsCategoryClick(e) {
         const {

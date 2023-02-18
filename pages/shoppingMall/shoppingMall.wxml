@@ -31,7 +31,7 @@
                 <view>
                     <view class="middle goods_name">{{item.name}}</view>
                     <view class="middle goods_name">{{item.description}}</view>
-                    <view>￥{{item.salePrice}}</view>
+                    <view> ￥{{item.salePrice}}</view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">

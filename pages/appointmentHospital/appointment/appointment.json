@@ -3,6 +3,8 @@
     "usingComponents": {
         "van-image": "@vant/weapp/image/index",
         "van-popup": "@vant/weapp/popup/index",
-        "van-divider": "@vant/weapp/divider/index"
+        "van-divider": "@vant/weapp/divider/index",
+        "calendar": "../../arrivalPlan/components/calendar/calendar",
+        "footer": "../../arrivalPlan/components/footer/footer"
     }
 }
