@@ -55,7 +55,7 @@
         <text class="line">|</text>
         <text class="expense_title">费用明细</text>
         <view class="goods_total">
-            <text class="titles">商品合计</text>
+            <text class="titles">金额合计</text>
             <text wx:if="{{type==1 && orderInfo.orderType==0 }}">￥{{orderInfo.actualPayment}}</text>
             <text wx:elif="{{type==1 && orderInfo.orderType==1 }}">￥{{orderInfo.actualPayment}}</text>
             <text wx:elif="{{type==1 && orderInfo.orderType==1 &&orderInfo.appType==3}}">
@@ -63,6 +63,10 @@
                 <text wx:else>￥{{orderInfo.integrationQuantity}}</text>
             </text>
             <text wx:if="{{type==2}}">{{orderInfo.integrationQuantity}}积分</text>
+        </view>
+        <view wx:if="{{orderInfo.exchangeType==7}}" class="goods_total">
+            <text>积分合计</text>
+            <text>{{orderInfo.integrationQuantity}}积分</text>
         </view>
         <view class="goods_total">
             <text>抵用券</text>
@@ -75,7 +79,7 @@
         <view class="actual_payment">
             <text>实付款：</text>
             <text class="price" wx:if="{{type==1  && orderInfo.orderType==0}}">￥{{orderInfo.actualPayment}}</text>
-            <text class="price" wx:if="{{type==1  && orderInfo.orderType==1}}">￥{{orderInfo.actualPayment}}</text>
+            <text class="price" wx:if="{{type==1  && orderInfo.orderType==1}}"> <text wx:if="{{orderInfo.exchangeType==7}}">{{orderInfo.integrationQuantity}}积分</text>￥{{orderInfo.actualPayment}}</text>
             <!-- <text class="price" wx:if="{{type==1  && orderInfo.orderType==1 && orderInfo.appType==3}}">
                 <text>￥{{orderInfo.actualPayment}}</text>
             </text> -->

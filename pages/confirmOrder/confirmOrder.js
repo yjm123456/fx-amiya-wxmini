@@ -159,7 +159,7 @@ Page({
     },
 
     handlePay(e) {
-        const {
+        let {
             pay
         } = this.data;
 
@@ -178,10 +178,15 @@ Page({
             nickName,
             phone
         } = this.data;
+        
+        console.log("支付类型"+type);
         if (tradeId && type == 2) {
             // 积分支付
             this.pay(tradeId)
             return;
+        }
+        if (type == 1 && pay == 0) {
+            pay=4;
         }
         if (isMaterial && !address) {
             wx.showToast({
@@ -191,6 +196,7 @@ Page({
             })
             return;
         }
+        console.log("支付方式");
         const data = {
             // 地址编号
             addressId: address && address.id,
@@ -237,14 +243,7 @@ Page({
                 }
             }),
         }
-        if (type == 1 && pay === 0) {
-            wx.showToast({
-                title: '请先选择支付方式',
-                icon: 'none',
-                duration: 1000
-            })
-            return;
-        }
+        
         // 生成订单
         if(goodsInfo[0].exchangeType==7){
             http("post", `/Order/pointAndMoneyOrder`, PointAndMoneyData).then(res => {

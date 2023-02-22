@@ -1,8 +1,9 @@
 /* pages/appointmentHospital/appointment/appointment.wxss */
 .container{
-    margin: 30rpx;
+    margin: 20rpx;
     background-color: #313131;
     border-radius: 20rpx;
+    padding: 1rpx;
 }
 .select-city{
     color: #fff;
@@ -38,6 +39,20 @@
     border-radius: 10rpx;
 }
 
+/* 预约地区 */
+.appoint-area{
+    background-color: #262626;
+    color: #fff;
+    border-radius: 10rpx;
+    margin: 20rpx;
+    padding: 10rpx;
+}
+.select-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 .hospital-list{
     background-color: #262626;
     margin: 10rpx;

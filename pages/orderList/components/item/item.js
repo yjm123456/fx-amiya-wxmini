@@ -69,6 +69,41 @@ Component({
                     })
                 }
             },
+            handleCancelPointAnMoneyOrder(e){
+                const {
+                    tradeid,
+                    type
+                } = e.currentTarget.dataset;
+
+                if (type === 2) {
+                    wx.showModal({
+                        title: '提示',
+                        content: '确认取消订单',
+                        success: (res) => {
+                            if (res.confirm) {
+                                http("post", `/Order/canclePointAndMoneyOrder/${tradeid}`).then(res => {
+                                    if (res.code === 0) {
+                                        wx.showToast({
+                                            title: '取消成功',
+                                            icon: 'success',
+                                            duration: 2000,
+                                            success: () => {
+                                                this.triggerEvent("handleRefreshOrderList")
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    wx.showToast({
+                        title: '此订单不在小程序下单,请到下单平台取消订单.',
+                        icon: "none",
+                        duration: 2000
+                    })
+                }
+            },
 
             handlePay2(e) {
                 const {

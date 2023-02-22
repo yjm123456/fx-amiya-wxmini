@@ -12,6 +12,7 @@
                 <view>搜索</view>
             </view>
         </view>
+        <view class="cart" data-page="/pages/shoppingCart/shoppingCart" bindtap="to"><image src="/images/card.png"></image></view>
     </view>
     <!-- goods -->
     <view class="goods_wrap">
@@ -31,7 +32,7 @@
                 <view>
                     <view class="middle goods_name">{{item.name}}</view>
                     <view class="middle goods_name">{{item.description}}</view>
-                    <view> ￥{{item.salePrice}}</view>
+                    <view> <text wx:if="{{item.exchangeType==7}}">{{item.integrationQuantity}}积分+</text> ￥{{item.salePrice}}</view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">

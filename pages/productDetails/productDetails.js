@@ -442,7 +442,8 @@ Page({
             deductmoney,
             vouchername,
             selectStandard,
-            selectStandardPrice
+            selectStandardPrice,
+            selectIntegrationPrice,
         } = this.data
         let token = wx.getStorageSync("token")
         if (!token) {
@@ -495,7 +496,8 @@ Page({
                 goodsInfo.allmoney = allmoney
                 goodsInfo.hospitalid = hospitalid
                 goodsInfo.selectStandard = selectStandard
-                goodsInfo.selectStandardPrice = selectStandardPrice
+                goodsInfo.selectStandardPrice = selectStandardPrice,
+                goodsInfo.selectIntegrationPrice=selectIntegrationPrice
                 //设置新属性后重新更新值
                 this.setData({
                     goodsInfo

@@ -17,7 +17,7 @@
                 <text class="present_price">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.memberRankPrice}}</text>
             </view>
             <view wx:else><text wx:if="{{goodsInfo.exchangeType!=7}}" class="present_price">￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text>
-                <text wx:if="{{goodsInfo.exchangeType==7}}" class="present_price">{{goodsInfo.integrationQuantity}}积分+￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text>
+                <text wx:if="{{goodsInfo.exchangeType==7}}" class="present_price">{{goodsInfo.integrationQuantity>0?goodsInfo.integrationQuantity+'积分+':''}}￥{{storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : goodsInfo.salePrice}}</text>
             </view>
             <text class="original_price">￥ {{goodsInfo.maxShowPrice}}</text>
         </view>
@@ -50,8 +50,7 @@
             </view>
             <view class="standard_item {{index==selectStandardIndex?'standard_active':''}}" wx:for="{{goodsInfo.goodsStandardsPrice}}" bindtap="selectStandard" data-exchangetype="{{goodsInfo.exchangeType}}" data-integration="{{item.integralAmount}}" data-img="{{item.standardsImg}}" data-index="{{index}}" data-price='{{item.price}}' data-standard='{{item.id}}'>
                 <view class="standard_name"><text>{{item.standards}}</text></view>
-
-                <view class="standard_price"><text wx:if="{{goodsInfo.exchangeType!=7}}">￥{{item.price}}</text><text wx:else>{{item.integralAmount}}积分+￥{{item.price}}</text></view>
+                <view class="standard_price"><text wx:if="{{goodsInfo.exchangeType!=7}}">￥{{item.price}}</text><text wx:else>{{item.integralAmount>0 ?item.integralAmount+'积分+':''}}￥{{item.price}}</text></view>
             </view>
         </view>
         <view class="item_spe" bindtap="getCustomerVoucher">

@@ -9,7 +9,7 @@ Component({
     },
     options: {
         addGlobalClass: true
-      },
+    },
     /**
      * 组件的初始数据
      */
@@ -17,12 +17,18 @@ Component({
         cityModel: false,
         currentId: "",
         currentIds: "",
-        currentCity:"",
-        pageNums:1,
-        pageSizes:10,
-        hospitalList:[],
-        hosCityList:[],
-        cityList:[],
+        currentCity: "",
+        pageNums: 1,
+        pageSizes: 10,
+        hospitalList: [],
+        hosCityList: [],
+        cityList: [],
+        area: [],
+        province: '',
+        city: '',
+        district: '',
+        selectedCity: false,
+        currentDate:''
     },
 
     /**
@@ -31,8 +37,6 @@ Component({
     methods: {
         // 授权位置
         getLocationAuth() {
-            this.getCityList();
-            this.getHotList();
             let ths = this;
             if (this.data.currentCity) return;
             wx.getSetting({
@@ -88,14 +92,17 @@ Component({
                 longitude,
                 latitude
             }
-            http("get", `/Location/city`, data).then(res => {
+            http("get", `/Location/provinceCityAndDistrict`, data).then(res => {
                 if (res.code === 0) {
                     const {
-                        city
-                    } = res.data;
-                    this.getHospitalList(city)
+                        provice,
+                        city,
+                        district
+                    } = res.data.city;
                     this.setData({
-                        currentCity: city
+                        province: provice,
+                        city: city,
+                        district: district
                     });
                     wx.setStorageSync('currentCity', city)
                 }
@@ -160,7 +167,7 @@ Component({
                 cityModel: false,
             })
         },
-        
+
         // 获取合作过的城市列表
         getCityList() {
             http("get", `/CooperativeHospitalCity/provinceAndCityList`).then(res => {
@@ -231,6 +238,25 @@ Component({
                         this.handleBindPhone();
                     }
                 }
+            })
+        },
+        bindAreaChange: function (e) {
+            const area = e.detail.value
+            this.setData({
+                area: area,
+                province: area[0],
+                city: area[1],
+                district: area[2],
+                selectedCity:true
+            })
+        },
+        // 组件监听日期选择
+        select(e) {
+            const {
+                detail
+            } = e;
+            this.setData({
+                currentDate: detail
             })
         },
     }

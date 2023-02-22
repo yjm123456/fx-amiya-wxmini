@@ -28,8 +28,7 @@ Page({
         Merchlist1: [], // 后台返回的数据数组
         list: [],
         voucherList:[],
-        voucherId:'',
-
+        voucherId:''
     },
     /**
      * 生命周期函数--监听页面加载
@@ -45,7 +44,7 @@ Page({
         this._initDateTimePickerFn();
         this.getMerchList();
         this.getConsumptionVoucher();
-        this.getMostRecentlyAppointmentHospitalName();
+        //this.getMostRecentlyAppointmentHospitalName();
     },
     getConsumptionVoucher() {
         http("get", `/CustomerConsumptionVoucher/allCarList`).then(res => {

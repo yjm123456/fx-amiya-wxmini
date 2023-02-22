@@ -7,7 +7,7 @@
         </view>
         <view class="birthday">
             <picker mode="date" end='{{timeNow}}' bindchange="bindChange" value="{{birthDay}}">
-            <van-field disabled custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;' value="{{ !birthDay?'':birthDay }}"  border="{{ false }}" bind:change="onBirthDayChange" />
+            <van-field disabled custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;' value="{{ !birthDay?'':birthDay }}"  border="{{ false }}" />
             </picker>
         </view>
         <view class="phone">
@@ -15,7 +15,7 @@
         </view>
         <view class="area">
             <picker mode="region" bindchange="bindAreaChange" value="{{area}}">
-            <van-field value="{{  city+'-'+area2 }}" custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;'  border="{{ false }}" bind:change="onAreaChange" />
+            <van-field disabled value="{{  city+'-'+area2 }}" custom-style='width:100%;height:60rpx;line-height:60rpx;display:flex;justify-content:center;align-items:center;background-color:transparent;font-size:24rpx;'  border="{{ false }}" />
             </picker>
         </view>
         <view class="detail_address">

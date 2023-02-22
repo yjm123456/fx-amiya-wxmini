@@ -10,7 +10,8 @@
       <van-image radius="20rpx" width="80" height="80" src="{{item.itemInfopicUrl}}" />
       <view class="memo">
         <view class="title">{{item.itemInfoName}}</view>
-        <view class="hospital">{{item.hospitalInfo.hospitalName}}</view>
+        <!-- <view class="hospital">{{item.hospitalInfo.hospitalName}}</view> -->
+        <view class="hospital">{{item.appointArea}}</view>
       </view>
     </view>
     <view class="button_con">

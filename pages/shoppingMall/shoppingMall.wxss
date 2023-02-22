@@ -21,16 +21,19 @@ page{
     padding-bottom: 17rpx;
     padding-top: 20rpx;
     background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .panel {
-    width: 710rpx;
+    width: 640rpx;
     display: flex;
     align-items: center;
     border-radius: 32rpx;
     height: 64rpx;
     background-color: #262626;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .panel .panel_left {
@@ -82,6 +85,14 @@ page{
     background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
+}
+.cart{
+    width: 60rpx;
+    height: 60rpx;
+}
+.cart>image{
+    width: 100%;
+    height: 100%;
 }
 
 /* 商品 */

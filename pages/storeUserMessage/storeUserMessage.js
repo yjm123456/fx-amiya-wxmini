@@ -30,7 +30,8 @@ Page({
         seconds: "",
         // 总秒数
         max_seconds: 59,
-        AmiyaGoodsDemandList: []
+        AmiyaGoodsDemandList: [],
+        appointArea:''
     },
 
     /**
@@ -41,13 +42,15 @@ Page({
             appointmentDate,
             week,
             time,
-            hospitalId
+            hospitalId,
+            appointarea
         } = options
         this.setData({
             appointmentDate: appointmentDate,
             week: week,
             time: time,
-            hospitalId: Number(hospitalId)
+            hospitalId: Number(hospitalId),
+            appointArea:appointarea
         })
         this.getProject()
     },
@@ -170,6 +173,7 @@ Page({
             appointmentDate,
             time,
             hospitalId,
+            appointArea,
             customerName,
             phone,
             itemInfoName,
@@ -180,6 +184,7 @@ Page({
             appointmentDate,
             time,
             hospitalId,
+            appointArea,
             customerName,
             phone,
             remark: "",
@@ -264,6 +269,7 @@ Page({
             phone: e.phone,
             appointmentDate: e.appointmentDate,
             hospitalId: e.hospitalId,
+            appointArea:e.appointArea,
             itemInfoName: e.itemInfoName,
             remark: e.remark,
             time: e.time,

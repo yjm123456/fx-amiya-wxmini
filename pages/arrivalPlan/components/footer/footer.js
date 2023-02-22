@@ -32,7 +32,12 @@ Component({
     // 项目编号
     itemInfoId: {
       type: String
+    },
+    //预约地区
+    appointArea:{
+        type:String
     }
+
   },
 
   /**
@@ -77,23 +82,18 @@ Component({
     },
 
     handleReserve(e) {
-      const {currentdate , time , week ,hospitalid} = e.currentTarget.dataset
-      // let a = new Date().getTime();
-      // const date = new Date(a);
-      // const Y = date.getFullYear() + '-';
-      // const M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-      // const D = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate()) + '  ';
-      // const h = (date.getHours() < 10 ? '0'+date.getHours() : date.getHours()) + ':';
-      // const m = (date.getMinutes() <10 ? '0'+date.getMinutes() : date.getMinutes()) ;
-      // const dateString = Y + M + D ;
-      // if(currentdate>dateString){
+      const {currentdate , time , week ,hospitalid,appointarea} = e.currentTarget.dataset
+        if(!appointarea&&appointarea.length==2){
+            wx.showToast({
+              title: '请先选择想要预约的地区',
+              icon:'none',
+              duration:1000
+            })
+            return;
+        }
         wx.navigateTo({
-          url: '/pages/storeUserMessage/storeUserMessage?appointmentDate=' + currentdate + '&week=星期' + week + '&time=' + time + '&hospitalId=' + hospitalid,
+          url: '/pages/storeUserMessage/storeUserMessage?appointmentDate=' + currentdate + '&week=星期' + week + '&time=' + time + '&hospitalId=' + hospitalid+'&appointarea='+appointarea,
         })
-      // }else{
-      //   wx.showToast({ title: '预约日期必须大于今天', icon: 'none', duration: 2000 })
-      //   return
-      // }
     },
 
 

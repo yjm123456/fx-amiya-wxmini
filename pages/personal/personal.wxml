@@ -54,7 +54,7 @@
         </view>
         <view class="order_status">
             <view class="appointment_item" catchtap="to" data-url="/pages/appointmentHospital/appointmentHospital">
-                <view><text>预约计划</text></view>
+                <view><text>预约到院</text></view>
             </view>
             <view class="appointment_item" catchtap="to" data-url="/pages/appointmentCar/appointmentCar">
                 <view><text>预约叫车</text></view>

@@ -475,7 +475,7 @@ Page({
                     };
                 }
                 wx.redirectTo({
-                    url: '/pages/confirmOrder/confirmOrder?nickName=' + nickName + '&phone=' + phone + '&isCard=true&goodsInfo=' + encodeURIComponent(JSON.stringify([goodsInfo])) + '&allmoney=' + goodsInfo.allmoney,
+                    url: '/pages/confirmOrder/confirmOrder?nickName=' + nickName + '&phone=' + phone + '&isCard=true&goodsInfo=' + encodeURIComponent(JSON.stringify([goodsInfo])) + '&allmoney=' + goodsInfo.allmoney+'&type=1',
                 })
             }
         }

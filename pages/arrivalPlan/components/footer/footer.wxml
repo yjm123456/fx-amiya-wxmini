@@ -6,7 +6,7 @@
 			<text>星期{{week}}</text>
 			<text>上午</text>
 		</view>
-		<view  bindtap="handleReserve" data-time="上午" data-currentDate="{{currentDate}}" data-week="{{week}}"  data-hospitalId="{{hospitalId}}">预约</view>
+		<view  bindtap="handleReserve" data-time="上午" data-currentDate="{{currentDate}}" data-week="{{week}}"  data-hospitalId="{{hospitalId}}" data-appointarea="{{appointArea}}">预约</view>
 	</view>
 	<!-- 下午 -->
 	<view class="afternoon">
@@ -15,6 +15,6 @@
 			<text>星期{{week}}</text>
 			<text>下午</text>
 		</view>
-		<view  bindtap="handleReserve" data-time="下午"   data-currentDate="{{currentDate}}" data-week="{{week}}" data-hospitalId="{{hospitalId}}" >预约</view>
+		<view  bindtap="handleReserve" data-time="下午"   data-currentDate="{{currentDate}}" data-week="{{week}}" data-hospitalId="{{hospitalId}}"  >预约</view>
 	</view>
 </view>

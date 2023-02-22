@@ -224,7 +224,18 @@ Page({
             });
         }
     },
-
+    to(e){
+        const {page}=e.currentTarget.dataset;
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                wx.navigateTo({
+                    url: page
+                })
+            } else {
+                this.handleBindPhone();
+            }
+        })
+    },
     // 商品详情
     goodsDetails(e) {
         this.isCustomer((isCustomer) => {

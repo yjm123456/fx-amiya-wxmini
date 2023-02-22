@@ -107,7 +107,9 @@
                 </view>
                 <view class="price">
                     <text wx:if="{{item.isFaceCard || item.isSkinCare}}">{{item.salePrice}}元</text>
-                    <text wx:else>{{item.selectStandardPrice}}元</text>
+                    <text wx:if="{{item.exchangeType!=7&&!(item.isFaceCard || item.isSkinCare)}}">{{item.selectStandardPrice}}元</text>
+                    <text wx:if="{{item.exchangeType==7}}">{{item.selectIntegrationPrice}}积分+{{item.selectStandardPrice}}元</text>
+                    
                     <text class="num">x {{item.quantity}}</text>
                 </view>
             </view>
@@ -131,7 +133,7 @@
         </view>
     </view>
     <!-- 全局抵用券 -->
-    <view wx:if="{{overAllVoucher}}" class="voucher-list">
+    <view wx:if="{{overAllVoucher&&!isCard}}" class="voucher-list">
         <view class="voucher-title">可使用的抵用券</view>
         <view data-index="{{index}}" data-name="{{item.consumptionVoucherName}}" data-deduct="{{item.deductMoney}}" bindtap="selectOverAllVoucher" data-id="{{item.id}}" wx:for="{{overAllVoucher}}" class="voucher_overall {{selectVoucherIndex==index ? 'active_voucher':''}}">
             <view class="voucher_left">
@@ -142,7 +144,7 @@
         </view>
     </view>
     <!-- 支付方式 -->
-    <view class="pay_list">
+    <!-- <view class="pay_list">
         <van-radio-group value="{{ pay }}" bind:change="onChange">
             <van-cell-group border="{{false}}">
                 <van-cell border="{{false}}" inset="{{true}}" title="微信" clickable data-name="4" bind:click="onClick">
@@ -150,7 +152,7 @@
                 </van-cell>
             </van-cell-group>
         </van-radio-group>
-    </view>
+    </view> -->
     <view class="submit_order">
         <view>
             <text>合计：</text>

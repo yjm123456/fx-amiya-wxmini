@@ -5,5 +5,5 @@
         "appointment":"/pages/appointmentHospital/appointment/appointment",
         "appointmentPlan":"/pages/appointmentHospital/appointmentPlan/appointmentPlan"
     },
-    "navigationBarTitleText": "预约医院"
+    "navigationBarTitleText": "预约到院"
 }
