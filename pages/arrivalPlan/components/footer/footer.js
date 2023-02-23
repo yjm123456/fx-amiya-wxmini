@@ -83,7 +83,8 @@ Component({
 
     handleReserve(e) {
       const {currentdate , time , week ,hospitalid,appointarea} = e.currentTarget.dataset
-        if(!appointarea&&appointarea.length==2){
+       console.log("内容长度为"+appointarea.length);
+        if(appointarea.length<=5){
             wx.showToast({
               title: '请先选择想要预约的地区',
               icon:'none',

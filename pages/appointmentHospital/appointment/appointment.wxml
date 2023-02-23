@@ -24,7 +24,7 @@
             <text wx:if="{{selectedCity}}">已选地区</text>
         </view>
         <view class="select-area">
-            <view class="current-area">{{province+'-'+city+'-'+district}}</view>
+            <view class="current-area"><text class="local">{{province+'-'+city+'-'+district}}</text></view>
             <view class="change-city">
                 <text class="iconfont icon-qiehuan"></text>
                 <picker mode="region" bindchange="bindAreaChange" value="{{area}}">

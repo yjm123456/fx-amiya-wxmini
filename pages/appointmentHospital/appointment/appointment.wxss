@@ -176,4 +176,10 @@
   .hot_con{
     margin-bottom: 50rpx;
   }
+  .local{
+    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
 

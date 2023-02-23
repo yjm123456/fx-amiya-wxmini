@@ -1,5 +1,9 @@
 import http from '../../utils/http.js';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import {
+    iscustomer,
+    isAuthorizationUserInfo
+} from "./../../api/user";
 Page({
     data: {
         control: false,
@@ -13,7 +17,36 @@ Page({
         const {
             goodsId
         } = e;
-        this.getGoodsDetails(goodsId);
+        
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.getGoodsDetails(goodsId);
+            } else {
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
+            }
+        })
+    },
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage() {
+        return {
+            title: this.data.goodsInfo.name,
+            path: '/pages/productDetails/productDetails?goodsId=' + this.data.goodsId,
+            imageUrl: this.data.goodsInfo.thumbPicUrl
+        }
+    },
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
     },
     toShoppingCart() {
         wx.navigateTo({

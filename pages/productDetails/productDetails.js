@@ -1,6 +1,10 @@
 // pages/productDetails/productDetails.js
 import http from '../../utils/http.js';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import {
+    iscustomer,
+    isAuthorizationUserInfo
+} from "./../../api/user";
 let app = getApp()
 Page({
     /**
@@ -79,14 +83,43 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const {
-            goodsId
-        } = options;
-        this.getGoodsDetails(goodsId);
-        this.getCooperativeHospitalCity(goodsId)
-        this.setData({
-            "isIphoneX": this.isIphoneX()
+        
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                const {
+                    goodsId
+                } = options;
+                this.getGoodsDetails(goodsId);
+                this.getCooperativeHospitalCity(goodsId)
+                this.setData({
+                    "isIphoneX": this.isIphoneX()
+                })
+            } else {
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
+            }
         })
+    },
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
+    },
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage() {
+        return {
+            title: this.data.goodsInfo.name,
+            path: '/pages/productDetails/productDetails?goodsId=' + this.data.goodsId,
+            imageUrl: this.data.goodsInfo.thumbPicUrl
+        }
     },
     toRecieveVoucher(){
         wx.redirectTo({
