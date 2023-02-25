@@ -1,0 +1,57 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+    <view class="search_warp">
+        <input class="search_input" type="text" />
+        <view class="search_icon iconfont icon-sousuo1">
+        </view>
+    </view>
+    <view class="tag_warp">
+        <view class="search_history_tags">
+            <view class="tag_title"><text>搜索历史</text> <text class="clear">清除</text></view>
+            <view class="tags">
+                <view class="tag">
+                    <text>搜索历史1</text>
+                </view>
+                <view class="tag">
+                    <text>12历史1</text>
+                </view>
+                <view class="tag">
+                    <text>搜历史1</text>
+                </view>
+                <view class="tag hot_tag">
+                    <text>历史1</text>
+                </view>
+            </view>
+        </view>
+        <view class="hot_tags">
+            <view class="tag_title"><text>大家都在搜</text></view>
+            <view class="tags">
+                <view class="tag">热门1</view>
+                <view class="tag">热门标签1</view>
+                <view class="tag">热门123</view>
+                <view class="tag">热门1</view>
+                <view class="tag">热门1</view>
+            </view>
+        </view>
+    </view>
+    <view class="goods_list">
+        <view class="top">
+           <view class="condition">
+            <text>销量</text>
+            <text>价格</text>
+           </view>
+            <view class="category">
+                <text>分类</text>
+            </view>
+        </view>
+        <view class="goods">
+            <view class="goods_image">
+            <image src="/images/card.png"></image>
+            </view>
+            <view class="goods_info">
+                <view class="goods_name">占位商品</view>
+                <view class="goods_price">199</view>
+            </view>
+        </view>
+    </view>
+</view>
