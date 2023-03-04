@@ -75,7 +75,8 @@
         "pages/appointmentHospital/appointmentHospital",
         "pages/appointmentCarList/appointmentCarList",
         "pages/pointAndMoney/pointAndMoney",
-        "pages/search/search"
+        "pages/search/search",
+        "pages/pointLottery/pointLottery"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

@@ -198,9 +198,16 @@ Page({
         startY = event.touches[0].clientY;
     },
     tpPersonalInfo() {
-        wx.navigateTo({
-            url: '/pages/personalInfo/personalInfo',
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                wx.navigateTo({
+                    url: '/pages/personalInfo/personalInfo',
+                })
+            } else {
+                this.handleBindPhone();
+            }
         })
+        
     },
     handleTouchMove(event) {
         moveY = event.touches[0].clientY;

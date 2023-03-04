@@ -1,57 +1,68 @@
 <!--pages/search/search.wxml-->
 <view class="container">
     <view class="search_warp">
-        <input class="search_input" type="text" />
-        <view class="search_icon iconfont icon-sousuo1">
+        <input class="search_input" value="{{keyword}}" placeholder="请输入想要输入的内容" bindinput="onKeywordChange" type="text" />
+        <view bindtap="search" class="search_icon iconfont icon-sousuo1">
         </view>
     </view>
-    <view class="tag_warp">
+    <view wx:if="{{tagShow}}" class="tag_warp">
         <view class="search_history_tags">
-            <view class="tag_title"><text>搜索历史</text> <text class="clear">清除</text></view>
+            <view class="tag_title"><text>搜索历史</text> <text class="clear" bindtap="clearHistory">清除</text></view>
             <view class="tags">
-                <view class="tag">
-                    <text>搜索历史1</text>
-                </view>
-                <view class="tag">
-                    <text>12历史1</text>
-                </view>
-                <view class="tag">
-                    <text>搜历史1</text>
-                </view>
-                <view class="tag hot_tag">
-                    <text>历史1</text>
+                <view bindtap="tagSearch" data-name="{{item}}"  wx:for="{{histories}}" class="tag">   
+                        <text>{{item}}</text>
                 </view>
             </view>
         </view>
         <view class="hot_tags">
             <view class="tag_title"><text>大家都在搜</text></view>
-            <view class="tags">
-                <view class="tag">热门1</view>
-                <view class="tag">热门标签1</view>
-                <view class="tag">热门123</view>
-                <view class="tag">热门1</view>
-                <view class="tag">热门1</view>
+            <view wx:for="{{tags}}" class="tags">
+                <view bindtap="tagSearch" data-tagid="{{item.id}}" data-name="{{item.name}}" class="tag"><text>{{item.name}}</text></view>
             </view>
         </view>
     </view>
-    <view class="goods_list">
+    <view class="goods" wx:if="{{goodsShow}}">
         <view class="top">
-           <view class="condition">
-            <text>销量</text>
-            <text>价格</text>
-           </view>
-            <view class="category">
-                <text>分类</text>
+            <view class="condition">
+                <text class="{{saleCountSelected?'active':''}}" bindtap="saleCountSelect">销量</text>
+                <text class="{{priceSelected?'active':''}}" bindtap="priceSelect">价格</text>
+            </view>
+            <view class="category" bindtap="showPopup">
+                <text>类别</text>
             </view>
         </view>
-        <view class="goods">
-            <view class="goods_image">
-            <image src="/images/card.png"></image>
-            </view>
-            <view class="goods_info">
-                <view class="goods_name">占位商品</view>
-                <view class="goods_price">199</view>
+        <view class="good_list">
+            <view wx:for="{{goodsList}}" bindtap="goodsDetails" data-goodsid="{{item.goodsId}}" class="good_item">
+                <image mode="widthFix" src="{{item.goodsPicture}}"></image>
+                <view class="goods_info">
+                    <view class="goods_name">{{item.goodsName}}</view>
+                    <view class="goods_price">
+                        <text wx:if="{{item.exchageType==0}}">{{item.integralPrice}}积分</text>
+                        <text wx:if="{{item.exchageType==1}}">¥{{item.price}}</text>
+                        <text wx:if="{{item.exchageType==7}}">{{item.integralPrice}}积分+¥{{item.price}}</text>
+                    </view>
+                </view>
             </view>
         </view>
+        <view wx:if="{{!nextPage}}" class="bottom_line">-----没有更多-----</view>
     </view>
 </view>
+<!-- 分类弹出窗 -->
+<van-popup show="{{ show }}" position="right" custom-style="height: 100%;width:70%;background-color:#262626;color:#fff;" bind:close="onClose">
+    <view>
+        <text class="category_title">类别</text>
+        <view class="category_list"><text>商城</text>
+            <view class="category_item">
+                <text wx:for="{{exchageCategory}}" data-id="{{item.id}}" bindtap="selectCategory">{{item.name}}</text>
+            </view>
+        </view>
+        <view class="category_list"><text>积分</text>
+            <view class="category_item">
+                <text wx:for="{{pointCategory}}" data-id="{{item.id}}" bindtap="selectCategory">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="confirm_btn">确认</view>
+</van-popup>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

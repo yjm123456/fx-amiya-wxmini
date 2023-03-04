@@ -224,7 +224,7 @@ Page({
 
         });
         this.setData({
-            userAvatr:"",
+            userAvatar:"",
             fileList:[]
         });
     },
