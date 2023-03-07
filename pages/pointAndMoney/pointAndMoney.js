@@ -25,7 +25,7 @@ Page({
             pageSize
         } = this.data;
         const data = {
-            exchangeType:7,
+            exchangeType:0,
             pageNum,
             pageSize
         }
@@ -54,7 +54,7 @@ Page({
             goodsid
         } = e.currentTarget.dataset;
         wx.navigateTo({
-            url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
+            url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
         })
     },
     /**

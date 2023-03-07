@@ -52,11 +52,19 @@ Page({
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 const {
-                    goodsid
+                    goodsid,
+                    exchagetype
                 } = e.currentTarget.dataset;
-                wx.navigateTo({
-                    url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
-                })
+                if(exchagetype==0){
+                    wx.navigateTo({
+                        url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
+                    })
+                }else{
+                    wx.navigateTo({
+                        url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
+                    })
+                }
+                
             } else {
                 this.handleBindPhone();
             }

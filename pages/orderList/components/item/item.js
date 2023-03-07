@@ -46,7 +46,7 @@ Component({
                         content: '确认取消订单',
                         success: (res) => {
                             if (res.confirm) {
-                                http("get", `/Order/cancel/${tradeid}`).then(res => {
+                                http("post", `/Order/canclePointAndMoneyOrder/${tradeid}`).then(res => {
                                     if (res.code === 0) {
                                         wx.showToast({
                                             title: '取消成功',
@@ -112,7 +112,7 @@ Component({
                     apptype
                 } = e.currentTarget.dataset;
                 // singleplatform为1表示支付订单 为0表示积分订单,3表示余额支付
-                if (singleplatform == 6) {
+                if (singleplatform == 6||singleplatform == 7) {
                     // apptype为2表示在小程序下的单直接调起支付接口 不为2时在其他平台下的单 提示去下单平台支付
                     if (apptype === 2) {
                         http("post", `/Order/wechatPay/${tradeid}`).then(res => {

@@ -53,7 +53,7 @@
                 </van-button>
                 <!-- 三方订单重新付款 -->
 
-                <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&item.orderInfoList[0].exchangeType===6}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
+                <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&(item.orderInfoList[0].exchangeType===6||item.orderInfoList[0].exchangeType===7)}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
                 </van-button>
 
                 <!-- 待收货 -->

@@ -449,7 +449,6 @@ Page({
      */
     onLoad(options) {
         this.getCartProduct()
-        //this.getGoodsList();
         this.getCustomerAllVoucher()
     },
     toShopMall() {
@@ -474,9 +473,7 @@ Page({
                     totalCount
                 } = res.data.goodsShopCarInfos;
                 for (let index = 0; index < list.length; index++) {
-
                     if (list[index].exchangeType === 0) {
-
                         list[index].singleprice = list[index].interGrationAccount
                         list[index].voucherPrice = list[index].interGrationAccount;
                     } else {
@@ -530,7 +527,7 @@ Page({
         for (let i = 0; i < this.data.result.length; i++) {
             for (let j = 0; j < this.data.list.length; j++) {
                 if (this.data.result[i] === this.data.list[j].id) {
-                    if (this.data.list[j].exchangeType === 1) {
+                    if (this.data.list[j].exchangeType === 1|| this.data.list[j].exchangeType===7) {
                         if (this.data.list[j].isMember) {
                             sumMoney += this.data.list[j].memberPrice * this.data.list[j].num;
                         } else {
@@ -540,9 +537,11 @@ Page({
                                 } else if (this.data.list[j].voucherType == 4) {
                                     sumMoney += Math.ceil((this.data.list[j].voucherPrice * this.data.list[j].num) * this.data.list[j].deductMoney);
                                 }
+
                             } else {
                                 sumMoney += this.data.list[j].voucherPrice;
                             }
+                            sumPoint+=this.data.list[j].interGrationPrice*this.data.list[j].num;
                         }
                     } else if (this.data.list[j].exchangeType === 0) {
                         sumPoint += this.data.list[j].singleprice * this.data.list[j].num;

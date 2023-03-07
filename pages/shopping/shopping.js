@@ -307,7 +307,7 @@ Page({
                     goodsid
                 } = e.currentTarget.dataset;
                 wx.navigateTo({
-                    url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
+                    url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
                 })
             } else {
                 this.handleBindPhone();

@@ -1,5 +1,5 @@
 <!--pages/pointAndMoney/pointAndMoney.wxml-->
-<view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType>0}}">
+<view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType===0}}">
     <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
     <view>
         <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
@@ -8,7 +8,7 @@
     <view>
         <view class="middle goods_name">{{item.name}}</view>
         <view class="middle goods_name">{{item.description}}</view>
-        <view>{{item.integrationQuantity}}积分+￥{{item.salePrice}}</view>
+        <view>{{item.integrationQuantity}}积分</view>
     </view>
 </view>
 <view wx:if="{{nextPage === false}}">
