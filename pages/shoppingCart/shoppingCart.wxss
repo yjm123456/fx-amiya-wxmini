@@ -3,7 +3,9 @@ page {
     background-color: #000;
     --submit-bar-price-font-size:22rpx;
 }
-
+.container{
+    padding-bottom: 200rpx;
+}
 .content {
     background-color: #000;
 }

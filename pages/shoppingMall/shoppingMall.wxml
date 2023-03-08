@@ -4,13 +4,6 @@
     
     <view class="search_wrap">
         <view class="panel" data-page="/pages/search/search" bindtap="to">
-            <!-- <view class="panel_left">
-                <input placeholder='请输入商品名称' placeholder-class="placeholderStyle" bindinput='getSearchInputValue'></input>
-            </view>
-            <view class="panel_right" bindtap="handleGoodsSearch">
-                <view class="iconfont icon-sousuo1"></view>
-                <view>搜索</view>
-            </view> -->
             <view class="panel_left">
                 <input disabled="true" placeholder='请输入商品名称' placeholder-class="placeholderStyle" bindinput='getSearchInputValue'></input>
             </view>

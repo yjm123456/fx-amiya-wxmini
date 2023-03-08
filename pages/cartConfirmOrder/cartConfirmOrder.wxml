@@ -65,7 +65,7 @@
     <view class="sum_amount">
         <view><text>合计：</text></view>
         <view class="amount">
-            <text class="money">{{(allMoney)>0 ? allMoney:0.01}}元</text>
+            <text class="money">{{(allMoney)>=0 ? allMoney:0.01}}元</text>
             <text class="point">{{allPoint}}积分</text>
         </view>
     </view>

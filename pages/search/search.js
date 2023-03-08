@@ -37,7 +37,8 @@ Page({
         saleCountSelected: false,
         //是否选中价格排序
         priceSelected: false,
-        controlAuthPhone:false
+        controlAuthPhone:false,
+        showHistory:false
     },
 
     /**
@@ -83,6 +84,14 @@ Page({
     },
     //搜索
     search() {
+        if (!keyword) {
+            wx.showToast({
+                title: '请输入搜索的内容',
+                icon: 'none',
+                duration: 1000
+            })
+            return;
+        }
         this.setData({
             goodsShow: true,
             tagShow: false,
@@ -97,14 +106,7 @@ Page({
         const {
             keyword
         } = this.data;
-        if (!keyword) {
-            wx.showToast({
-                title: '请输入搜索的内容',
-                icon: 'none',
-                duration: 1000
-            })
-            return;
-        }
+        
         var history = wx.getStorageSync("search_history");
         if (!history) {
             wx.setStorageSync('search_history', keyword)
@@ -234,11 +236,13 @@ Page({
         if (history) {
             var histories = history.split(',');
             this.setData({
-                histories
+                histories,
+                showHistory:true
             })
         }else{
             this.setData({
-                histories:[]
+                histories:[],
+                showHistory:false
             })
         }
     },

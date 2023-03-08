@@ -45,27 +45,6 @@
                 </van-cell-group>
             </van-checkbox-group>
         </view>
-        <!-- <view wx:if="{{!nextPage}}" class="product_list"> -->
-        <!-- <van-divider contentPosition="center">更多精选商品</van-divider> -->
-        <!-- <text class="title">更多精选商品</text> -->
-        <!-- <view class="product_warp">
-                <view class="product" wx:for="{{goodsList}}" data-exchangetype="{{item.exchangeType}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
-                    <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
-                    <view>
-                        <view class="product_top">
-                            <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>
-                        </view>
-                        <view class="product_bottom">
-                            <view class="product_name">{{item.name}}</view>
-                            <view class="price">
-                                <text class="present_price">¥{{item.minShowPrice}}</text>
-                                <text class="original_price">¥{{item.maxShowPrice}}</text>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view> -->
-        <!-- </view> -->
     </view>
     <view class="bottom">
 

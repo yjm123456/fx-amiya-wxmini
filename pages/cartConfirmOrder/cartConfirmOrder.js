@@ -306,7 +306,7 @@ Page({
         }
         if (this.data.voucherType == 0) {
             this.setData({
-                allMoney: sumMoney - this.data.deductMoney,
+                allMoney: (sumMoney - this.data.deductMoney).toFixed(2),
                 allPoint: sumPoint
             })
         } else {

@@ -9,23 +9,9 @@
             <view class="integral_rule middle" bindtap="handleRuleTap"><text>积分规则</text></view>
         </view>
     </view>
-    
-    <!-- <view class="goods_swiper">
-            <swiper class='banner' autoplay='true' interval='5000' duration='1000' indicator-active-color="#fff">
-                <swiper-item>
-                    <image mode="aspectFill" src="../../images/mz.jpg"></image>
-                </swiper-item>
-                <swiper-item>
-                    <image mode="aspectFill" src="../../images/jryx.jpg"></image>
-                </swiper-item>
-                <swiper-item>
-                    <image mode="aspectFill" src="../../images/yylm.jpg"></image>
-                </swiper-item>
-            </swiper>
-        </view> -->
-    <view class="integral_goods">
+    <!-- <view class="integral_goods">
         <view class="title">积分兑换好礼</view>
-    </view>
+    </view> -->
     
     <view class="goods_wrap">
         <scroll-view class="menu_wrap" scroll-y>
@@ -36,7 +22,7 @@
             </view>
         </scroll-view>
         <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">
-            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType==0}}">
+            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType==7}}">
                 <view>
                     <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
                     <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
@@ -44,7 +30,7 @@
                 <view>
                     <view class="middle goods_name">{{item.name}}</view>
                     <view class="middle goods_name">{{item.description}}</view>
-                    <view>{{item.integrationQuantity}}积分</view>
+                    <view>{{item.integrationQuantity}}积分+￥{{item.salePrice}}</view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">
