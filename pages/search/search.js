@@ -84,6 +84,9 @@ Page({
     },
     //搜索
     search() {
+        const {
+            keyword
+        } = this.data;
         if (!keyword) {
             wx.showToast({
                 title: '请输入搜索的内容',
@@ -103,9 +106,7 @@ Page({
             priceSelected: false
         })
 
-        const {
-            keyword
-        } = this.data;
+        
         
         var history = wx.getStorageSync("search_history");
         if (!history) {

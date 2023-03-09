@@ -28,7 +28,7 @@
             </view>
             <!-- 支付订单 实物订单-->
             <view class="price_number" wx:elif="{{type== 1 && orderInfo.orderType==1}}">
-                <text class="price">￥{{orderInfo.singlePrice}}</text>
+                <text class="price">￥{{we.toFixed(orderInfo.singlePrice)}}</text>
                 <text class="goods_number">x {{orderInfo.quantity}}</text>
             </view>
             <!--  type=1 支付订单 真实订单 orderType=1是快递 取得是积分单价-->
@@ -155,3 +155,15 @@
     </view>
 
 </view>
+<wxs module="we">
+    var toCeil = function (value) {
+        return Math.ceil(value)
+    }
+    var toFixed=function(value){
+        return value.toFixed(2)
+    }
+    module.exports = {
+        toCeil: toCeil,
+        toFixed:toFixed
+    }
+</wxs>

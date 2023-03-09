@@ -51,7 +51,7 @@
 <!-- 分类弹出窗 -->
 <van-popup show="{{ show }}" position="right" custom-style="height: 100%;width:70%;background-color:#262626;color:#fff;" bind:close="onClose">
     <view>
-        <text class="category_title">类别</text>
+        
         <view class="category_list"><text>商城</text>
             <view class="category_item">
                 <text wx:for="{{exchageCategory}}" data-id="{{item.id}}" bindtap="selectCategory">{{item.name}}</text>

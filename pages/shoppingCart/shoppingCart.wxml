@@ -23,7 +23,7 @@
                                         <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
                                         <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
                                         <view><text>{{item.description}}</text></view>
-                                        <view catchtap="stopPro" wx:if="{{!item.isMember}}" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{!item.voucherId? (item.singleprice*item.num):(item.voucherType===4 ?(we.toCeil((item.singleprice*item.num)*item.deductMoney)):((item.singleprice*item.num)-item.deductMoney))}}</text>
+                                        <view catchtap="stopPro" wx:if="{{!item.isMember}}" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{!item.voucherId? (we.toFixed(item.singleprice*item.num)):(item.voucherType===4 ?(we.toCeil((item.singleprice*item.num)*item.deductMoney)):((item.singleprice*item.num)-item.deductMoney))}}</text>
                                             <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" data-selectstandards="{{item.selectStandards}}" catch:change="onNumChange" />
                                         </view>
                                         <view catchtap="stopPro" wx:else class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{item.memberPrice*item.num}}</text>
@@ -69,7 +69,11 @@
     var toCeil = function (value) {
         return Math.ceil(value)
     }
+    var toFixed=function(value){
+        return value.toFixed(2)
+    }
     module.exports = {
-        toCeil: toCeil
+        toCeil: toCeil,
+        toFixed:toFixed
     }
 </wxs>

@@ -11,6 +11,24 @@ Page({
         goodsId: "",
 
         goodsInfo: null,
+
+        cityList:[],
+
+        cityLists:[],
+
+        cityShow:false,
+
+        cityid:'',
+
+        cityname:'',
+
+        storeInfo: '',
+
+        cityIds: [],
+
+        cityNames: [],
+
+        storeShow:false
     },
 
     onLoad(e) {
@@ -21,6 +39,7 @@ Page({
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 this.getGoodsDetails(goodsId);
+                this.getCooperativeHospitalCity(goodsId);
             } else {
                 wx.switchTab({
                   url: '/pages/index/index',
@@ -46,6 +65,71 @@ Page({
                 } = res.data;
                 callback && callback(isCustomer)
             }
+        })
+    },
+    // 根据商品id获取该商品绑定的合作医院城市列表
+    getCooperativeHospitalCity(goodsId) {
+        const data = {
+            goodsId: goodsId
+        }
+        //请求返回结果只包含城市的id和name
+        http("get", `/CooperativeHospitalCity/getListByGoodsId`, data).then(res => {
+            if (res.code === 0) {
+                const cityList = []
+                res.data.cityList.map((item, index) => {
+                    cityList.push(item.name)
+                })
+                this.setData({
+                    //只包含城市名称
+                    cityList,
+                    //包含城市名称和id
+                    cityLists: res.data.cityList
+                })
+            }
+        })
+    },
+    // 城市选择
+    cityChoice: function (e) {
+        this.setData({
+            cityShow: true
+        })
+    },
+    cityConfirms(e) {
+        const {
+            cityid,
+            cityname
+        } = e.currentTarget.dataset
+        this.setData({
+            storeInfo: {},
+            cityShow: false,
+            cityIds: cityid ? cityid : this.data.cityLists[0].id,
+            cityNames: cityname ? cityname : this.data.cityLists[0].name,
+        })
+    },
+    // 城市选择 取消
+    cityCancel: function (e) {
+        this.setData({
+            cityShow: false
+        })
+    },
+    // 城市选择 弹出层
+    onClose: function (params) {
+        this.setData({
+            cityShow: false
+        })
+    },
+    citysName(e) {
+        const {
+            index
+        } = e.currentTarget.dataset
+        const {
+            id,
+            name
+        } = e.currentTarget.dataset.cityinfo
+        this.setData({
+            current: index,
+            cityId: id,
+            cityName: name
         })
     },
     toShoppingCart() {
@@ -134,7 +218,6 @@ Page({
                 }
             }
         }
-
     },
     // 根据商品编号获取商品详情
     getGoodsDetails(goodsId) {

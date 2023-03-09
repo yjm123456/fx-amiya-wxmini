@@ -140,6 +140,7 @@ page {
 }
 .category_list{
     margin-top: 30rpx;
+    font-size: 32rpx;
 }
 .category_item{
     display: flex;
