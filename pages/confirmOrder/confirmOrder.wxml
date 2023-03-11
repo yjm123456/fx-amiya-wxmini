@@ -36,8 +36,10 @@
                 <view class="description">
                     {{item.description}}
                 </view>
+                <view class="description" wx:if="{{!item.isMaterial}}">预约门店:{{storeInfo.name}}</view>
                 <view class="price">
-                    <text>{{item.integrationQuantity}}积分</text>
+                    <text wx:if="{{item.isMaterial}}">{{item.integrationQuantity}}积分</text>
+                    <text wx:if="{{!item.isMaterial}}">{{storeInfo.hospitalSalePrice}}积分</text>
                     <text>x {{item.quantity}}</text>
                 </view>
             </view>

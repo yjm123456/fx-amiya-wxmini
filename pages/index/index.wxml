@@ -58,7 +58,7 @@
     <!-- 优惠板块 -->
     <view class="discount">
         <view class="discount-item">
-            <image mode="widthFix" bindtap="to" data-url="/pages/pointAndMoney/pointAndMoney" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
+            <image mode="widthFix" bindtap="to" data-url="/pages/pointAndMoney/pointAndMoney" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/19ed0989031e49318cc1efc709a104b8.jpg"></image>
             <image class="join" mode="widthFix" catchtap="to" data-url="/pages/pointAndMoney/pointAndMoney" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
             <!-- <image mode="widthFix" bindtap="to" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
             <image class="join" mode="widthFix" catchtap="to" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image> -->

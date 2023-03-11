@@ -4,6 +4,6 @@
     "van-divider": "@vant/weapp/divider/index",
     "van-image": "@vant/weapp/image/index"
   },
-  "navigationBarTitleText": "积分兑换"
+  "navigationBarTitleText": "积分加钱购"
   
 }

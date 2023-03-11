@@ -41,7 +41,8 @@ Page({
         thumbPicUrl: '',
         overAllVoucher: '',
         selectVoucherIndex: -1,
-        allintegration:0
+        allintegration: 0,
+        storeInfo: {}
     },
 
     /**
@@ -52,7 +53,13 @@ Page({
             isCard,
         } = options;
         const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
-
+        if(options.storeInfo){
+            const storeInfo=JSON.parse(decodeURIComponent(options.storeInfo));
+            this.setData({
+                storeInfo
+            })
+        }
+        
         const {
             hospitalid,
             type,
@@ -63,8 +70,9 @@ Page({
             selectStandard,
             discount,
             voucherType,
-            allintegration,
+            allintegration
         } = options
+        const {storeInfo}=this.data
         this.setData({
             discount,
             voucherType,
@@ -79,7 +87,7 @@ Page({
             selectStandard,
             isMaterial: goodsInfo.some(_item => _item.isMaterial),
             totalPrice: goodsInfo.reduce((acc, cur) => {
-                return acc += cur.integrationQuantity * cur.quantity
+                return acc += cur.isMaterial?( cur.integrationQuantity * cur.quantity):(storeInfo.hospitalSalePrice* cur.quantity)
             }, 0).toFixed(2)
         })
         //商品化修改
@@ -159,6 +167,7 @@ Page({
     },
 
     handlePay(e) {
+
         let {
             pay
         } = this.data;
@@ -178,15 +187,12 @@ Page({
             nickName,
             phone
         } = this.data;
-        
-        console.log("支付类型"+type);
         if (tradeId && type == 2) {
-            // 积分支付
             this.pay(tradeId)
-            return;
         }
+
         if (type == 1 && pay == 0) {
-            pay=4;
+            pay = 4;
         }
         if (isMaterial && !address) {
             wx.showToast({
@@ -196,7 +202,6 @@ Page({
             })
             return;
         }
-        console.log("支付方式");
         const data = {
             // 地址编号
             addressId: address && address.id,
@@ -243,42 +248,104 @@ Page({
                 }
             }),
         }
-        
+
         // 生成订单
-        if(goodsInfo[0].exchangeType==7){
+        if (goodsInfo[0].exchangeType == 7) {
             http("post", `/Order/pointAndMoneyOrder`, PointAndMoneyData).then(res => {
                 if (res.code === 0) {
                     const {
                         tradeId,
                         payRequestInfo,
-                        alipayUrl,
-                        voucherId,
                     } = res.data.orderAddResult;
                     this.setData({
                         tradeId
                     })
-                    // type为2是积分兑换
-                    if (type == 2) {
-                        wx.showModal({
-                            title: '提示',
-                            content: '是否支付',
-                            success: (res) => {
-                                if (res.confirm) {
-                                    console.log("确认")
-                                    console.log(tradeId);
-                                    this.pay(tradeId)
-                                } else if (res.cancel) {
-                                    // 取消支付
-                                }
-                            }
-                        })
-                    } else {
-    
-                        if (pay == 1) {
-                            wx.redirectTo({
-                                url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
+                    wx.requestPayment({
+                        timeStamp: payRequestInfo.timeStamp,
+                        nonceStr: payRequestInfo.nonceStr,
+                        package: payRequestInfo.package,
+                        signType: payRequestInfo.signType,
+                        paySign: payRequestInfo.paySign,
+                        success(res) {
+                            wx.showToast({
+                                title: '支付成功',
+                                icon: 'none',
+                                duration: 2000
                             })
-                        } else if (pay == 4) {
+                            var app = getApp();
+                            const tmplIds = app.globalData.tmplIds;
+                            wx.requestSubscribeMessage({
+                                tmplIds: tmplIds,
+                                success: res => {
+                                    tmplIds.forEach(item => {
+                                        if (res[item] === 'reject') {
+                                            wx.showToast({
+                                                title: '此次操作会导致您接收不到通知',
+                                                icon: 'none',
+                                                duration: 2000,
+                                            })
+                                        }
+                                    })
+
+                                    setTimeout(function () {
+                                        wx.redirectTo({
+                                            url: '/pages/orderList/orderList'
+                                        })
+                                    }, 1000);
+                                },
+                                fail: err => {
+
+                                    setTimeout(function () {
+                                        wx.redirectTo({
+                                            url: '/pages/orderList/orderList'
+                                        })
+                                    }, 1000);
+                                },
+                            })
+                        },
+                        fail(res) {
+                            wx.showToast({
+                                title: '支付失败',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
+                    })
+                    
+                }
+            })
+        } else {
+            if(type==2&&!isMaterial){
+                this.virtualPay();
+                return;
+            }else{
+                http("post", `/Order`, data).then(res => {
+                    if (res.code === 0) {
+                        const {
+                            tradeId,
+                            payRequestInfo,
+                            alipayUrl,
+                            voucherId,
+                        } = res.data.orderAddResult;
+                        this.setData({
+                            tradeId
+                        })
+                        // type为2是积分兑换
+                        if (type == 2) {
+                            wx.showModal({
+                                title: '提示',
+                                content: '是否支付',
+                                success: (res) => {
+                                    if (res.confirm) {
+                                        console.log("确认")
+                                        console.log(tradeId);
+                                        this.pay(tradeId)
+                                    } else if (res.cancel) {
+                                        // 取消支付
+                                    }
+                                }
+                            })
+                        } else {
                             wx.requestPayment({
                                 timeStamp: payRequestInfo.timeStamp,
                                 nonceStr: payRequestInfo.nonceStr,
@@ -305,108 +372,7 @@ Page({
                                                     })
                                                 }
                                             })
-                                            
-                                            setTimeout(function () {
-                                                wx.redirectTo({
-                                                    url: '/pages/orderList/orderList'
-                                                })
-                                            }, 1000);
-                                        },
-                                        fail: err => {
-                                            
-                                            setTimeout(function () {
-                                                wx.redirectTo({
-                                                    url: '/pages/orderList/orderList'
-                                                })
-                                            }, 1000);
-                                        },
-                                    })
-                                },
-                                fail(res) {
-                                    wx.showToast({
-                                        title: '支付失败',
-                                        icon: 'none',
-                                        duration: 2000
-                                    })
-                                }
-                            })
-                        } else if (pay == 3) {
-                            wx.showModal({
-                                title: '提示',
-                                content: '是否支付',
-                                success: (res) => {
-                                    if (res.confirm) {
-                                        this.balancePay(tradeId)
-                                    } else if (res.cancel) {
-                                        // 取消支付
-                                    }
-                                }
-                            })
-                        }
-                    }
-                }
-            })
-        }else{
-            http("post", `/Order`, data).then(res => {
-                if (res.code === 0) {
-                    const {
-                        tradeId,
-                        payRequestInfo,
-                        alipayUrl,
-                        voucherId,
-                    } = res.data.orderAddResult;
-                    this.setData({
-                        tradeId
-                    })
-                    // type为2是积分兑换
-                    if (type == 2) {
-                        wx.showModal({
-                            title: '提示',
-                            content: '是否支付',
-                            success: (res) => {
-                                if (res.confirm) {
-                                    console.log("确认")
-                                    console.log(tradeId);
-                                    this.pay(tradeId)
-                                } else if (res.cancel) {
-                                    // 取消支付
-                                }
-                            }
-                        })
-                    } else {
     
-                        if (pay == 1) {
-                            wx.redirectTo({
-                                url: '/pages/alipay/alipay?tradeId=' + tradeId + '&alipayUrl=' + encodeURIComponent(alipayUrl),
-                            })
-                        } else if (pay == 4) {
-                            wx.requestPayment({
-                                timeStamp: payRequestInfo.timeStamp,
-                                nonceStr: payRequestInfo.nonceStr,
-                                package: payRequestInfo.package,
-                                signType: payRequestInfo.signType,
-                                paySign: payRequestInfo.paySign,
-                                success(res) {
-                                    wx.showToast({
-                                        title: '支付成功',
-                                        icon: 'none',
-                                        duration: 2000
-                                    })
-                                    var app = getApp();
-                                    const tmplIds = app.globalData.tmplIds;
-                                    wx.requestSubscribeMessage({
-                                        tmplIds: tmplIds,
-                                        success: res => {
-                                            tmplIds.forEach(item => {
-                                                if (res[item] === 'reject') {
-                                                    wx.showToast({
-                                                        title: '此次操作会导致您接收不到通知',
-                                                        icon: 'none',
-                                                        duration: 2000,
-                                                    })
-                                                }
-                                            })
-                                            
                                             setTimeout(function () {
                                                 wx.redirectTo({
                                                     url: '/pages/orderList/orderList'
@@ -414,7 +380,7 @@ Page({
                                             }, 1000);
                                         },
                                         fail: err => {
-                                            
+    
                                             setTimeout(function () {
                                                 wx.redirectTo({
                                                     url: '/pages/orderList/orderList'
@@ -431,24 +397,13 @@ Page({
                                     })
                                 }
                             })
-                        } else if (pay == 3) {
-                            wx.showModal({
-                                title: '提示',
-                                content: '是否支付',
-                                success: (res) => {
-                                    if (res.confirm) {
-                                        this.balancePay(tradeId)
-                                    } else if (res.cancel) {
-                                        // 取消支付
-                                    }
-                                }
-                            })
                         }
                     }
-                }
-            })
+                })
+            }
+            
         }
-        
+
     },
     balancePay(tradeId) {
         http("post", `/Order/balancePay/${tradeId}`).then(res => {
@@ -483,7 +438,6 @@ Page({
                         })
                     }
                 })
-                console.log("授权成功");
                 setTimeout(function () {
                     wx.redirectTo({
                         url: '/pages/orderList/orderList'
@@ -491,7 +445,6 @@ Page({
                 }, 1000);
             },
             fail: err => {
-                console.log("授权失败");
                 setTimeout(function () {
                     wx.redirectTo({
                         url: '/pages/orderList/orderList'
@@ -522,7 +475,6 @@ Page({
                                         })
                                     }
                                 })
-                                console.log("授权成功");
                                 setTimeout(function () {
                                     wx.redirectTo({
                                         url: '/pages/orderList/orderList'
@@ -530,7 +482,6 @@ Page({
                                 }, 1000);
                             },
                             fail: err => {
-                                console.log("授权失败");
                                 setTimeout(function () {
                                     wx.redirectTo({
                                         url: '/pages/orderList/orderList'
@@ -538,11 +489,35 @@ Page({
                                 }, 1000);
                             },
                         })
-                        // setTimeout(function () {
-                        //     wx.redirectTo({
-                        //         url: '/pages/orderList/orderList'
-                        //     })
-                        // }, 2000);
+                    }
+                })
+            }
+        })
+    },
+    //积分虚拟商品下单
+    virtualPay() {
+        const {remark,goodsInfo,storeInfo}=this.data
+        const data={
+            remark,
+            goodsId:goodsInfo[0].id,
+            hospitalId:storeInfo.id,
+            quantity:goodsInfo[0].quantity
+        }
+        http("post", `/Order/newIntegralVirtualOrder`,data).then(res => {
+            if (res.code === 0) {
+                const {tradeId}=res.data;
+                this.setData({
+                    tradeId
+                })
+                wx.showModal({
+                    title: '提示',
+                    content: '是否支付',
+                    success: (res) => {
+                        if (res.confirm) {
+                            this.pay(tradeId)
+                        } else if (res.cancel) {
+                            // 取消支付
+                        }
                     }
                 })
             }

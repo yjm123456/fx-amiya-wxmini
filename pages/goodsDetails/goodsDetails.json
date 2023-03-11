@@ -6,7 +6,8 @@
     "van-goods-action-button": "@vant/weapp/goods-action-button/index",
     "standard": "/components/standard/standard",
     "van-toast": "@vant/weapp/toast/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-stepper": "@vant/weapp/stepper/index"
   },
   "navigationBarTitleText": "商品详情"
 }

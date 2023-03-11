@@ -178,8 +178,8 @@ page{
     background-color: #313131;
     padding: 16rpx;
     color: #fff;
-    font-size: 22rpx;
-
+    font-size: var(--button-small-font-size,12px);
+    height: var(--button-small-height);
 }
 .button_both {
     display: flex;

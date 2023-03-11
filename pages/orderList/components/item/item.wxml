@@ -61,7 +61,7 @@
                     确认收货
                 </van-button>
                 <!-- 待收货提交退款 -->
-                <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'|| item.statusCode==='TRADE_BUYER_PAID' || item.statusCode=='WAIT_SELLER_SEND_GOODS' }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
+                <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'|| item.statusCode==='TRADE_BUYER_PAID' || item.statusCode=='WAIT_SELLER_SEND_GOODS') }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
                     申请退款
                 </van-button>
                 <!-- 查看物流 -->
@@ -69,7 +69,7 @@
                     查看物流
                 </van-button>
                 <!-- 积分退款 -->
-                <van-button color="#313131" custom-class="logistics" type="default" size="small" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0 && item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'}}" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" bind:click="pointReund">
+                <van-button color="#313131" custom-class="logistics" type="default" size="small" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0 && (item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'||item.statusCode==='TRADE_BUYER_PAID')}}" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" bind:click="pointReund">
                     积分退款
                 </van-button>
             </view>

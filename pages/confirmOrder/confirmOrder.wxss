@@ -121,6 +121,7 @@ page {
 }
 
 .goods .item>view:first-of-type .description {
+    margin-top: 10rpx;
   color: #fff;
   font-size: 25rpx;
 }

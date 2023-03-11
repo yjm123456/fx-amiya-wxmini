@@ -12,37 +12,30 @@ Page({
 
         goodsInfo: null,
 
-        cityList:[],
+        cityList: [],
 
-        cityLists:[],
+        cityShow: false,
 
-        cityShow:false,
+        cityId: '',
 
-        cityid:'',
-
-        cityname:'',
+        cityName: '',
 
         storeInfo: '',
 
-        cityIds: [],
-
-        cityNames: [],
-
-        storeShow:false
+        storeShow: false
     },
 
     onLoad(e) {
         const {
             goodsId
         } = e;
-        
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 this.getGoodsDetails(goodsId);
-                this.getCooperativeHospitalCity(goodsId);
+
             } else {
                 wx.switchTab({
-                  url: '/pages/index/index',
+                    url: '/pages/index/index',
                 })
             }
         })
@@ -75,15 +68,13 @@ Page({
         //请求返回结果只包含城市的id和name
         http("get", `/CooperativeHospitalCity/getListByGoodsId`, data).then(res => {
             if (res.code === 0) {
-                const cityList = []
+                const cityList = [];
                 res.data.cityList.map((item, index) => {
                     cityList.push(item.name)
                 })
                 this.setData({
-                    //只包含城市名称
-                    cityList,
                     //包含城市名称和id
-                    cityLists: res.data.cityList
+                    cityList: res.data.cityList
                 })
             }
         })
@@ -94,16 +85,23 @@ Page({
             cityShow: true
         })
     },
+    //确认选择门店
     cityConfirms(e) {
         const {
             cityid,
             cityname
         } = e.currentTarget.dataset
+        if (!cityid) {
+            wx.showToast({
+                title: '请选择城市',
+                icon: 'none',
+                duration: 1000
+            })
+            return;
+        }
         this.setData({
             storeInfo: {},
             cityShow: false,
-            cityIds: cityid ? cityid : this.data.cityLists[0].id,
-            cityNames: cityname ? cityname : this.data.cityLists[0].name,
         })
     },
     // 城市选择 取消
@@ -118,6 +116,7 @@ Page({
             cityShow: false
         })
     },
+    //选择城市
     citysName(e) {
         const {
             index
@@ -132,12 +131,144 @@ Page({
             cityName: name
         })
     },
+    //选择门店
+    selectStore(e) {
+        const goodsId = this.data.goodsInfo.id
+        const {
+            cityName
+        } = this.data;
+        if (cityName) {
+            this.data.cityList.find(item => {
+                if (item.name == cityName) {
+                    this.setData({
+                        cityId: item.id
+                    })
+                    wx.navigateTo({
+                        //跳转参数city城市id,goodsId商品id
+                        url: '/pages/store/store?city=' + item.id + '&goodsId=' + goodsId,
+                    })
+                }
+            })
+        } else {
+            wx.showToast({
+                title: '请先选择城市',
+                icon: 'none',
+                duration: 1000
+            })
+        }
+    },
+    // 获取门店列表
+    getStoreList(goodsId, city) {
+        const data = {
+            goodsId,
+            city
+        }
+        http("get", `/HospitalInfo/GoodsOfflineDoor`, data).then(res => {
+            if (res.code === 0) {
+                const {
+                    hospitalInfoList
+                } = res.data
+                this.setData({
+                    hospitalInfoList
+                })
+            } else {
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        })
+    },
+     // 购买数量
+     handleNumChange(event) {
+        const {
+            goodsInfo
+        } = this.data;
+        const {
+            type,
+            saleprice,
+            ismaterial,
+            ismember,
+            memberrankprice,
+            integration
+        } = event.currentTarget.dataset
+        let quantity = event.detail
+        // type==1 判断是否为实物 如果是实物的话需要发货 总价计算的是销售价格x数量
+        if (ismaterial == true) {
+            goodsInfo.quantity = quantity
+            this.setData({
+                goodsInfo
+            })
+            if (saleprice) {
+                this.setData({
+                    totalPrice: ((ismember ? memberrankprice : saleprice) * goodsInfo.quantity).toFixed(2),
+                    totalIntegrationPrice:(integration*goodsInfo.quantity).toFixed(2),
+                    goodsInfo
+                })
+            }
+        } else {
+            // type==0是虚拟商品 总价计算的是门店价格x数量
+            let hospitalSalePrice = this.data.storeInfo.hospitalSalePrice
+            goodsInfo.salePrice = hospitalSalePrice
+            goodsInfo.quantity = quantity
+            this.setData({
+                goodsInfo
+            })
+            if (hospitalSalePrice) {
+                this.setData({
+                    totalPrice: (hospitalSalePrice * goodsInfo.quantity).toFixed(2),
+                })
+            } else {
+                wx.showToast({
+                    title: '请选择门店在添加购买数量',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        }
+    },
+    // 没有选择门店不让它选择购买数量
+    disabledNum() {
+        wx.showToast({
+            title: '请先选择城市和门店',
+            icon: 'none',
+            duration: 2000
+        })
+    },
+    handlePayment(e) {
+        const {cityId,storeInfo}=this.data;
+        if(!cityId){
+            wx.showToast({
+                title: '"请选择城市"',
+                icon: 'none',
+                duration: 1000
+            })
+            return;
+        }
+        if (!this.data.storeInfo.id) {
+            wx.showToast({
+                title: '"请选择门店"',
+                icon: 'none',
+                duration: 1000
+            })
+            return;
+        }
+        // 2为积分支付商品
+        let type = 2;
+        const {
+            goodsInfo
+        } = this.data;
+        wx.navigateTo({
+            url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&storeInfo='+encodeURIComponent(JSON.stringify(storeInfo))
+        })
+    },
     toShoppingCart() {
         wx.navigateTo({
             url: '/pages/shoppingCart/shoppingCart',
         })
     },
-    onSelectStandard(e){
+    onSelectStandard(e) {
         this.setData({
             selectStandardId: e.detail
         })
@@ -150,7 +281,7 @@ Page({
             hospitalsaleprice,
             allmoney
         } = e.currentTarget.dataset
-        
+
         const {
             goodsInfo
         } = this.data
@@ -177,14 +308,14 @@ Page({
                 const data = {
                     GoodsId: id,
                     Num: quantity,
-                    selectStandard:this.data.selectStandardId
+                    selectStandard: this.data.selectStandardId
                 }
-                console.log("选中的规格为"+this.data.selectStandardId);
-                if(!this.data.selectStandardId){
+                console.log("选中的规格为" + this.data.selectStandardId);
+                if (!this.data.selectStandardId) {
                     wx.showToast({
-                      title: '请选择规格',
-                      icon:'none',
-                      duration:1000
+                        title: '请选择规格',
+                        icon: 'none',
+                        duration: 1000
                     })
                     return;
                 }
@@ -232,8 +363,14 @@ Page({
                 if (goodsInfo.goodsDetailHtml) {
                     goodsInfo.goodsDetailHtml = goodsInfo.goodsDetailHtml.replace(/\<img/g, '<img style="width:100%;height:auto;display:block"')
                 }
+                const {
+                    isMaterial
+                } = goodsInfo;
+                if (!isMaterial) {
+                    this.getCooperativeHospitalCity(goodsId);
+                }
                 this.setData({
-                    goodsInfo:{
+                    goodsInfo: {
                         ...goodsInfo,
                         quantity: 1
                     }
@@ -243,9 +380,15 @@ Page({
     },
 
     purchase() {
-        this.setData({
-            control: true,
-        })
+        const {isMaterial}=this.data.goodsInfo
+        if(isMaterial){
+            this.setData({
+                control: true,
+            })
+        }else{
+            this.handlePayment();
+        }
+        
     },
 
     resetControlStandard() {
