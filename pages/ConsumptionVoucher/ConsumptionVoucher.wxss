@@ -10,7 +10,7 @@ page{
     background-color: #000 !important;
 }
 .custom_vandivider{
-    margin: 0 !important;
+    margin: 5rpx !important;
 }
 .content{
     border: 4rpx solid transparent;
@@ -25,7 +25,7 @@ page{
     overflow: hidden;
 }
 .item{
-    height:150rpx;
+    padding: 10rpx;
     display: flex;
 }
 .item_left{
@@ -52,6 +52,11 @@ page{
     width: 80%;
     padding: 10rpx;
 }
+.name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
 .right_top{
     color: #fff;
     display: flex;
@@ -64,12 +69,15 @@ page{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    font-size: 28rpx;
+    overflow: hidden;
+    width: 80%;
 }
 .right_top .source{
     font-size: 18rpx;
 }
 .right_bottom{
-    height: 25%;
+    
     color: #e2e2e2;
     font-size: 22rpx;
     display: flex;
@@ -92,7 +100,7 @@ page{
 }
 
 .use{
-    font-size: 22rpx;
+    font-size: 20rpx;
     border: 4rpx solid transparent;
     border-radius: 16px;
     background-clip: padding-box, border-box;

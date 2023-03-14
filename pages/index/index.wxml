@@ -115,7 +115,7 @@
     <view class="product_list">
 
         <view class="product_warp">
-            <view class="product" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd" data-goodsid="{{item.id}}" wx:key="index">
+            <!-- <view class="product" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">
@@ -129,12 +129,12 @@
                         </view>
                     </view>
                 </view>
-            </view>
+            </view> -->
             <view class="product" bindtap="toOrder" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">
-                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/7d3c58d426ce4fffb5fd0eac0c27c496.jpg'}}" mode="widthFix"></image>
+                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/fba5b77ac9344ef2bbeafc226f61c1bb.jpg'}}" mode="widthFix"></image>
                     </view>
                     <view class="product_bottom">
                         <view class="product_name">{{"定制形象设计"}}</view>

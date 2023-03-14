@@ -9,11 +9,12 @@
     <view class="goods_info">
         <view class="price">
             <text>{{goodsInfo.integrationQuantity}}积分</text>
+            <text class="limit">{{goodsInfo.isLimitBuy?"(每人限购"+goodsInfo.limitBuyQuantity+"件)":""}}</text>
         </view>
         <view class="description">{{goodsInfo.name }}</view>
     </view>
     <!-- 虚拟商品到店信息 -->
-    <view class="item_spe" wx:if="{{!goodsInfo.isMaterial}}" bindtap="cityChoice" >
+    <view class="item_spe" wx:if="{{!goodsInfo.isMaterial}}" bindtap="cityChoice">
         <text>所在城市</text>
         <view class="city_con">
             <text class="city_text">{{cityName}}</text>
@@ -29,14 +30,14 @@
         </view>
     </view>
     <view wx:if="{{!goodsInfo.isMaterial}}" class="item_spe item_spe_num">
-            <text>数量</text>
-            <!-- type==0 计算的是 门店价格x数量 -->
-            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" wx:if="{{storeInfo.name}}" data-type="0" data-isMaterial="{{goodsInfo.isMaterial}}" />
-            <!-- type==0 没有选择门店的情况下数量是禁用状态 -->
-            <van-stepper min="1" integer disabled bindtap="disabledNum" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==false}}" />
-            <!-- type==1 判断是否为实物 如果是实物的话需要发货 销售价格x数量 -->
-            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-integration="{{selectIntegrationPrice}}" data-salePrice="{{selectStandardPrice}}" data-ismember="{{goodsInfo.isMember}}" data-memberrankprice="{{goodsInfo.memberRankPrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
-        </view>
+        <text>数量</text>
+        <!-- type==0 计算的是 门店价格x数量 -->
+        <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" wx:if="{{storeInfo.name}}" data-type="0" data-isMaterial="{{goodsInfo.isMaterial}}" />
+        <!-- type==0 没有选择门店的情况下数量是禁用状态 -->
+        <van-stepper min="1" integer disabled bindtap="disabledNum" max="{{goodsInfo.isLimitBuy? goodsInfo.limitBuyQuantity: goodsInfo.inventoryQuantity}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==false}}" />
+        <!-- type==1 判断是否为实物 如果是实物的话需要发货 销售价格x数量 -->
+        <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.isLimitBuy? goodsInfo.limitBuyQuantity: goodsInfo.inventoryQuantity}}" data-integration="{{selectIntegrationPrice}}" data-salePrice="{{selectStandardPrice}}" data-ismember="{{goodsInfo.isMember}}" data-memberrankprice="{{goodsInfo.memberRankPrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
+    </view>
     <view class="details">
         <view>
             <van-divider contentPosition="center" customStyle="padding:0 200rpx">
@@ -61,14 +62,14 @@
 <standard control="{{control}}" bindmyevent="onSelectStandard" bindresetControlStandard="resetControlStandard" goods="{{goodsInfo}}" />
 <!-- 城市选择 弹出层 -->
 <van-popup show="{{ cityShow }}" position="bottom" bind:close="onClose">
-        <view class="canCal_submit">
-            <text bind:close="onClose">取消</text>
-            <text bindtap="cityConfirms" data-cityName="{{cityName}}" data-cityId="{{cityId}}">确定</text>
-        </view>
-        <view class="citys">
-            <!-- cityLists(包含合作城市id和name) -->
-            <block wx:for="{{cityList}}" wx:key="index">
-                <view class="city_name {{current == index ? 'checked_name' : ''}}" bindtap="citysName" data-index="{{index}}" data-cityinfo="{{item}}">{{item.name}}</view>
-            </block>
-        </view>
-    </van-popup>
+    <view class="canCal_submit">
+        <text bind:close="onClose">取消</text>
+        <text bindtap="cityConfirms" data-cityName="{{cityName}}" data-cityId="{{cityId}}">确定</text>
+    </view>
+    <view class="citys">
+        <!-- cityLists(包含合作城市id和name) -->
+        <block wx:for="{{cityList}}" wx:key="index">
+            <view class="city_name {{current == index ? 'checked_name' : ''}}" bindtap="citysName" data-index="{{index}}" data-cityinfo="{{item}}">{{item.name}}</view>
+        </block>
+    </view>
+</van-popup>

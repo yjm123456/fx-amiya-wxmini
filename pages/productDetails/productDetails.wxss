@@ -23,7 +23,7 @@
 }
 .price{
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 .sale_price{
     display: flex;
@@ -46,12 +46,17 @@
     -webkit-text-fill-color:transparent !important;
     font-weight: 600;
 }
+.limit{
+    color: #000;
+    font-size: 28rpx;
+}
 .original_price{
   text-decoration:line-through;
   margin-left: 15rpx;
   color: #818181;
   padding-top: 10rpx;
   box-sizing: border-box;
+  align-self: start;
 }
 /* 数量  所在城市 选择门店  */
 .item_spe{

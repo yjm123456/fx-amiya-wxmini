@@ -28,11 +28,16 @@ page {
 }
 .price {
   display: flex;
-  align-items: center;
-  color: #ff5000;
+  align-items: flex-end;
+  color: #dec530;
   font-size: 48rpx;
+  
 }
-.price>text{
+.limit{
+    color: #000 !important;
+    font-size: 28rpx;
+}
+.price>text:nth-child(0){
     background-image: -webkit-linear-gradient(right, #efcd71, #e4c675);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -158,7 +158,7 @@ Page({
 
     // 获取商品分类
     getGoodsCategory() {
-        http("get", `/Goods/categoryList?showDirectionType=0`).then(res => {
+        http("get", `/Goods/categoryList?showDirectionType=2`).then(res => {
             if (res.code === 0) {
                 const {
                     goodsCategorys

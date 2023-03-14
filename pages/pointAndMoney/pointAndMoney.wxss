@@ -82,7 +82,7 @@ page{
 }
 
 .goods_wrap {
-    width: 710rpx;
+    width: 750rpx;
     position: absolute;
     top: 100rpx;
     bottom: 0;
@@ -242,4 +242,11 @@ page{
     background-image:-webkit-linear-gradient(right,#e7cdc4, #fffaf3,#eacdbe,#fbeee5,#e4cfbb) !important; 
     -webkit-background-clip:text !important; 
     -webkit-text-fill-color:transparent !important;
+    font-weight: 500 !important;
+}
+.price{
+    font-weight: 600 !important;
+}
+.count{
+    font-size: 22rpx !important;
 }

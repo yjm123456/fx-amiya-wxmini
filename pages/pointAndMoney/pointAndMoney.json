@@ -4,5 +4,5 @@
         "van-image": "@vant/weapp/image/index",
         "authPhone": "./../../components/authPhone/auth"
     },
-    "navigationBarTitleText": "超值兑"
+    "navigationBarTitleText": "全额兑"
 }

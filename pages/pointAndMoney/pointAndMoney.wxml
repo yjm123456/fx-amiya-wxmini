@@ -27,7 +27,8 @@
                 <view>
                     <view class="middle goods_name">{{item.name}}</view>
                     <view class="middle goods_name">{{item.description}}</view>
-                    <view>{{item.integrationQuantity}}积分</view>
+                    <view class="middle goods_name count">剩余数量:{{item.inventoryQuantity}}</view>
+                    <view class="price goods_name">{{item.integrationQuantity}}积分</view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">

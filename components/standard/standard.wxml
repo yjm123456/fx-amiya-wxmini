@@ -47,10 +47,10 @@
             <view class="sku_quantity">
                 <view>
                     <text>购买数量</text>
-                    <text wx:if="{{goodsInfo.isLimitBuy}}">(限购{{goodsInfo.canBuyQuantity}}{{goodsInfo.unit}})</text>
+                    <text wx:if="{{goodsInfo.isLimitBuy}}">(限购{{goodsInfo.limitBuyQuantity}}件)</text>
                 </view>
                 <view>
-                    <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" />
+                    <van-stepper min="1" max="{{goodsInfo.isLimitBuy? goodsInfo.limitBuyQuantity: goodsInfo.inventoryQuantity}}" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" />
                 </view>
             </view>
             <view class="sku_btns">

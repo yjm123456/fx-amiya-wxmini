@@ -228,7 +228,7 @@ page{
 }
 
 .product {
-    width: 45%;
+    width: 100%;
     padding-bottom: 20rpx;
     background-color: #313131;
     overflow: hidden;
@@ -256,6 +256,7 @@ page{
     display: flex;
     flex-direction: column;
     align-content: flex-start;
+    align-items: center;
     padding-left: 20rpx;
 }
 
