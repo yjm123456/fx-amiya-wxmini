@@ -110,8 +110,9 @@ page{
     background-color: #262626;
     border-radius: 20rpx;
     text-align: center;
-    margin-top: 20rpx;
     height: 65rpx;
+    margin-top: 20rpx;
+    /* height: 65rpx; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -210,8 +211,7 @@ page{
 
 .product_list {
     margin-top: 30rpx;
-    background-color: #262626;
-    border-radius: 20rpx;
+
 }
 
 .product_list .title {
@@ -221,18 +221,18 @@ page{
 }
 
 .product_warp {
-    padding: 10rpx;
+    padding: 0rpx;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .product {
-    width: 100%;
-    padding-bottom: 20rpx;
+    width: 48%;
+    padding-bottom: 0rpx;
     background-color: #313131;
     overflow: hidden;
-    margin-top: 20rpx;
+    margin-top: 0rpx;
     border-radius: 20rpx;
     position: relative;
 }

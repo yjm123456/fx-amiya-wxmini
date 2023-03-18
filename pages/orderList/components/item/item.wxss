@@ -140,6 +140,9 @@ page{
     /* margin-right: 20rpx; */
     margin-left: 20rpx;
 }
+.detail_btn{
+    margin-left: 20rpx;
+}
 .tool .order_source {
     font-size: 28rpx;
     color: #fff;

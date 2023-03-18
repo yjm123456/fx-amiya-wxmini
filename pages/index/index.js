@@ -345,6 +345,20 @@ Page({
             }
         })
     },
+    toReport(event) {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                const {
+                    name
+                } = event.currentTarget.dataset;
+                wx.navigateTo({
+                    url: '/pages/aestheticsDesignReport/aestheticsDesignReport'
+                })
+            } else {
+                this.showVoucherTips()
+            }
+        })
+    },
     switchTab(e) {
         this.isCustomer((isCustomer) => {
             if (isCustomer) {

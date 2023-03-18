@@ -1,0 +1,41 @@
+/* pages/aestheticsDesignReport/aestheticsDesignReport.wxss */
+.header{
+    position: relative;
+}
+.header>image{
+    width: 100%;
+}
+.no{
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 20rpx;
+    transform: translateX(-50%);
+    color: #8878f5;
+}
+.title{
+    width: fit-content;
+    background-color: #8b77f3;
+    padding: 10rpx;
+    color: 28rpx;
+    border-radius: 24rpx;
+    color: #fff;
+}
+.content{
+    position: relative;
+    top: -10rpx;
+    background: url('https://ameiya.oss-cn-hangzhou.aliyuncs.com/065e69df55114abe9a92302216641419.jpg');
+    background-size: cover;
+    overflow: hidden;
+}
+.content_form{
+    margin: 20rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+}
+.describe{
+    text-decoration: underline #E9E6FC;
+    text-decoration-thickness: 5rpx;
+    color: #b1b2f7;
+}

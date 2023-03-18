@@ -202,14 +202,10 @@ Page({
                             this.getGoodsInfo();
                         }
                     }
-                }
-
-
-                
+                }              
             }
         })
     },
-
     // 点击商品分类
     handleGoodsCategoryClick(e) {
         const {

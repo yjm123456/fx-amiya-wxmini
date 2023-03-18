@@ -1,119 +1,121 @@
 <view class="warp">
 
-    <view class="item" wx:for="{{list}}" wx:key="id">
-        <block wx:for="{{item.orderInfoList}}" wx:key="id" wx:for-item="goods">
-            <view class="content">
-                <van-image width="100" height="100" src="{{goods.thumbPicUrl}}" style="margin-right:20rpx" image-class="goods_pic" />
-                <view class="info">
-                    <view class="name">
-                        <view class="g_name">{{goods.goodsName}}</view>
-                        <view class="order_state">
-                            {{!item.statusText?goods.statusCodeText:item.statusText}}
-                        </view>
-                    </view>
-                    <view class="price">
-                        <text wx:if="{{goods.exchangeType>=1&&goods.exchangeType!=7}}">{{we.toCeil(goods.singlePrice)}}元</text>
-                        <text wx:if="{{goods.exchangeType==7}}">{{goods.singleIntegrationQuantity}}积分+{{we.toCeil(goods.singlePrice)}}元</text>
-                        <text wx:if="{{goods.exchangeType==0}}">{{goods.singleIntegrationQuantity}}积分</text>
-                        <text>数量: {{goods.quantity}}</text>
+<view class="item" wx:for="{{list}}" wx:key="id">
+    <block wx:for="{{item.orderInfoList}}" wx:key="id" wx:for-item="goods">
+        <view class="content">
+            <van-image width="100" height="100" src="{{goods.thumbPicUrl}}" style="margin-right:20rpx" image-class="goods_pic" />
+            <view class="info">
+                <view class="name">
+                    <view class="g_name">{{goods.goodsName}}</view>
+                    <view class="order_state">
+                        {{!goods.statusCodeText?item.statusText:goods.statusCodeText}}
+                        <!-- {{!item.statusText?goods.statusCodeText:item.statusText}} -->
                     </view>
                 </view>
-            </view>
-            <view class="footer">
-                <view class="order_source">订单来源: <text class="source">{{goods.exchangeType===0 ? '积分兑换':goods.exchangeType===3?'余额支付': goods.appTypeText}}</text></view>
-                <view>
-                    <text>{{item.statusCode === 'WAIT_BUYER_PAY'||item.statusCode==='TRADE_CLOSED_BY_TAOBAO' ? '需付款：' : '实付款：'}}</text>
-                    <text wx:if="{{goods.exchangeType>=1&&goods.exchangeType!=7}}">{{goods.actualPayment}}元</text>
-                    <text wx:if="{{goods.exchangeType==0}}">{{goods.integrationQuantity}}积分</text>
-                    <text wx:if="{{goods.exchangeType==7}}">{{goods.integrationQuantity}}积分+{{goods.actualPayment}}元</text>
+                <view class="price">
+                    <text wx:if="{{goods.exchangeType>=1&&goods.exchangeType!=7}}">{{we.toCeil(goods.singlePrice)}}元</text>
+                    <text wx:if="{{goods.exchangeType==7}}">{{goods.singleIntegrationQuantity}}积分+{{we.toCeil(goods.singlePrice)}}元</text>
+                    <text wx:if="{{goods.exchangeType==0}}">{{goods.singleIntegrationQuantity}}积分</text>
+                    <text>数量: {{goods.quantity}}</text>
                 </view>
-            </view>
-
-            <view class="order_detail">
-                <van-button color="#313131" type="default" size="small" data-orderid="{{goods.id}}" data-type="{{goods.exchangeType==0 ? 2:1}}" bind:click="toDetail">
-                    订单详情
-                </van-button>
-            </view>
-
-        </block>
-
-        <!-- 待发货不显示tool -->
-        <view class="tool" wx:if="{{item.statusCode !== 'WAIT_SELLER_SEND_GOODS'}}">
-            <!-- 待付款 -->
-            <view class="tool_btn">
-                <!-- 积分或微信支付订单取消 -->
-                <van-button wx:if="{{item.orderInfoList[0].exchangeType!=7&&item.statusCode === 'WAIT_BUYER_PAY'}}" color="#313131" type="default" size="small" class="cancel" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelOrder">取消
-                </van-button>
-                <!-- 积分加钱购订单取消 -->
-                <van-button wx:if="{{item.orderInfoList[0].exchangeType==7&&item.statusCode === 'WAIT_BUYER_PAY'}}" color="#313131" type="default" size="small" class="cancel"  data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelPointAnMoneyOrder">取消
-                </van-button>
-
-                <!-- 积分订单重新付款 -->
-                <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&item.orderInfoList[0].exchangeType===0}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
-                </van-button>
-                <!-- 三方订单重新付款 -->
-
-                <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&(item.orderInfoList[0].exchangeType===6||item.orderInfoList[0].exchangeType===7)}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
-                </van-button>
-
-                <!-- 待收货 -->
-                <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' || item.statusCode==='WAIT_SELLER_SEND_GOODS'}}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleConfirm">
-                    确认收货
-                </van-button>
-                <!-- 待收货提交退款 -->
-                <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'|| item.statusCode==='TRADE_BUYER_PAID' || item.statusCode=='WAIT_SELLER_SEND_GOODS') }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
-                    申请退款
-                </van-button>
-                <!-- 查看物流 -->
-                <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' && item.orderInfoList[0].orderType===1}}" data-tradeid="{{item.tradeId}}" data-type="{{item.orderInfoList[0].orderType}}" bind:click="toLogistics">
-                    查看物流
-                </van-button>
-                <!-- 积分退款 -->
-                <van-button color="#313131" custom-class="logistics" type="default" size="small" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0 && (item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'||item.statusCode==='TRADE_BUYER_PAID')}}" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" bind:click="pointReund">
-                    积分退款
-                </van-button>
             </view>
         </view>
-        <view wx:else>
-            <view class="tool">
-                <view class="button jftk" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" >积分退款</view>
-                <van-button color="#313131" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode=='WAIT_SELLER_SEND_GOODS') }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
-                    申请退款
-                </van-button>
+        <view class="footer">
+            <view class="order_source">订单来源: <text class="source">{{goods.exchangeType===0 ? '积分兑换':goods.exchangeType===3?'余额支付': goods.appTypeText}}</text></view>
+            <view>
+                <text>{{item.statusCode === 'WAIT_BUYER_PAY'||item.statusCode==='TRADE_CLOSED_BY_TAOBAO' ? '需付款：' : '实付款：'}}</text>
+                <text wx:if="{{goods.exchangeType>=1&&goods.exchangeType!=7}}">{{goods.actualPayment}}元</text>
+                <text wx:if="{{goods.exchangeType==0}}">{{goods.integrationQuantity}}积分</text>
+                <text wx:if="{{goods.exchangeType==7}}">{{goods.integrationQuantity}}积分+{{goods.actualPayment}}元</text>
             </view>
+        </view>
 
+        <view class="order_detail">
+        <!-- 查看物流 -->
+        <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{goods.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' && goods.orderType===1}}" data-tradeid="{{goods.tradeId}}" data-orderid="{{goods.id}}" data-type="{{goods.orderType}}" bind:click="toLogistics">
+                查看物流
+            </van-button>
+            <van-button custom-class="detail_btn" color="#313131" type="default" size="small" data-orderid="{{goods.id}}" data-type="{{goods.exchangeType==0 ? 2:1}}" bind:click="toDetail">
+                订单详情
+            </van-button>
+        </view>
+
+    </block>
+
+    <!-- 待发货不显示tool -->
+    <view class="tool" wx:if="{{item.statusCode !== 'WAIT_SELLER_SEND_GOODS'}}">
+        <!-- 待付款 -->
+        <view class="tool_btn">
+            <!-- 积分或微信支付订单取消 -->
+            <van-button wx:if="{{item.orderInfoList[0].exchangeType!=7&&item.statusCode === 'WAIT_BUYER_PAY'}}" color="#313131" type="default" size="small" class="cancel" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelOrder">取消
+            </van-button>
+            <!-- 积分加钱购订单取消 -->
+            <van-button wx:if="{{item.orderInfoList[0].exchangeType==7&&item.statusCode === 'WAIT_BUYER_PAY'}}" color="#313131" type="default" size="small" class="cancel"  data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelPointAnMoneyOrder">取消
+            </van-button>
+
+            <!-- 积分订单重新付款 -->
+            <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&item.orderInfoList[0].exchangeType===0}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
+            </van-button>
+            <!-- 三方订单重新付款 -->
+
+            <van-button color="#DEC350" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&(item.orderInfoList[0].exchangeType===6||item.orderInfoList[0].exchangeType===7)}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
+            </van-button>
+
+            <!-- 待收货 -->
+            <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS' || item.statusCode==='WAIT_SELLER_SEND_GOODS'}}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleConfirm">
+                确认收货
+            </van-button>
+            <!-- 待收货提交退款 -->
+            <van-button custom-class="logistics" color="#313131" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode === 'WAIT_BUYER_CONFIRM_GOODS'|| item.statusCode==='TRADE_BUYER_PAID' || item.statusCode=='WAIT_SELLER_SEND_GOODS') }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
+                申请退款
+            </van-button>
+            
+            <!-- 积分退款 -->
+            <van-button color="#313131" custom-class="logistics" type="default" size="small" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0 && (item.statusCode==='WAIT_BUYER_CONFIRM_GOODS'||item.statusCode==='TRADE_BUYER_PAID')}}" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" bind:click="pointReund">
+                积分退款
+            </van-button>
         </view>
     </view>
-    <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
-    </van-divider>
-    <van-popup show="{{ show }}" custom-style="border-radius:20rpx;width:80%">
-        <view class="confrim">确认要退款吗?</view>
-        <van-divider customStyle="font-size: 18px;margin-top:10rpx;margin-bottom:20rpx" />
-        <view class="pointReundClass">
-            <textarea placeholder-style="color:#ccc" placeholder="退款原因:" value="{{refundReason}}" style="width:100%;height:70px;border:1rpx solid #ccc;padding:20rpx;box-sizing:border-box;border-radius:10rpx;font-size:24rpx" bindinput="refundReasonChange" placeholder-style="font-size:24rpx"></textarea>
+    <view wx:else>
+        <view class="tool">
+            <view class="button jftk" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" >积分退款</view>
+            <van-button color="#313131" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode=='WAIT_SELLER_SEND_GOODS') }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
+                申请退款
+            </van-button>
         </view>
-        <view class="button_both">
-            <view class="cancel_but" bindtap="onClose">取消</view>|
-            <view class="confrim_but" bindtap="onConfirm">确认</view>
-        </view>
-    </van-popup>
-    <van-popup show="{{ refundShow }}" custom-style="border-radius:20rpx;width:80%">
-        <view class="confrim">确认要提交退款申请吗?</view>
-        <van-divider customStyle="font-size: 18px;margin-top:10rpx;margin-bottom:20rpx" />
-        <view class="pointReundClass">
-            <textarea placeholder-style="color:#ccc" placeholder="退款原因:" value="{{refundReason}}" style="width:100%;height:70px;border:1rpx solid #ccc;padding:20rpx;box-sizing:border-box;border-radius:10rpx;font-size:24rpx" bindinput="refundReasonChange" placeholder-style="font-size:24rpx"></textarea>
-        </view>
-        <view class="button_both">
-            <view class="cancel_but" bindtap="onRefundClose">取消</view>|
-            <view class="confrim_but" bindtap="onRefundConfirm">确认</view>
-        </view>
-    </van-popup>
+
+    </view>
+</view>
+<van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
+</van-divider>
+<van-popup show="{{ show }}" custom-style="border-radius:20rpx;width:80%">
+    <view class="confrim">确认要退款吗?</view>
+    <van-divider customStyle="font-size: 18px;margin-top:10rpx;margin-bottom:20rpx" />
+    <view class="pointReundClass">
+        <textarea placeholder-style="color:#ccc" placeholder="退款原因:" value="{{refundReason}}" style="width:100%;height:70px;border:1rpx solid #ccc;padding:20rpx;box-sizing:border-box;border-radius:10rpx;font-size:24rpx" bindinput="refundReasonChange" placeholder-style="font-size:24rpx"></textarea>
+    </view>
+    <view class="button_both">
+        <view class="cancel_but" bindtap="onClose">取消</view>|
+        <view class="confrim_but" bindtap="onConfirm">确认</view>
+    </view>
+</van-popup>
+<van-popup show="{{ refundShow }}" custom-style="border-radius:20rpx;width:80%">
+    <view class="confrim">确认要提交退款申请吗?</view>
+    <van-divider customStyle="font-size: 18px;margin-top:10rpx;margin-bottom:20rpx" />
+    <view class="pointReundClass">
+        <textarea placeholder-style="color:#ccc" placeholder="退款原因:" value="{{refundReason}}" style="width:100%;height:70px;border:1rpx solid #ccc;padding:20rpx;box-sizing:border-box;border-radius:10rpx;font-size:24rpx" bindinput="refundReasonChange" placeholder-style="font-size:24rpx"></textarea>
+    </view>
+    <view class="button_both">
+        <view class="cancel_but" bindtap="onRefundClose">取消</view>|
+        <view class="confrim_but" bindtap="onRefundConfirm">确认</view>
+    </view>
+</van-popup>
 </view>
 <wxs module="we">
-    var toCeil = function (value) {
-        return value.toFixed(2)
-    }
-    module.exports = {
-        toCeil: toCeil
-    }
+var toCeil = function (value) {
+    return value.toFixed(2)
+}
+module.exports = {
+    toCeil: toCeil
+}
 </wxs>

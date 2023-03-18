@@ -7,6 +7,7 @@ Page({
   data: {
     // 
     tradeId:"",
+    orderId:"",
     expressDetailList:[],
     orderExpressInfoVo:{},
     // 
@@ -17,20 +18,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const {tradeid,type,courierNumber,expressId,receiverPhone} = options
+    const {tradeid,orderid,type,courierNumber,expressId,receiverPhone} = options
     this.setData({
       tradeId:tradeid,
+      orderId:orderid
     })
     // type为1 判断是点击核销好礼页面 还是积分订单页面 如果是核销好礼页面调用核销好礼接口 
     if(type==1){
       this.getGiftLogistics(courierNumber,expressId,receiverPhone)
     }else{
-      this.getLogistics(tradeid)
+      this.getLogistics(tradeid,orderid)
     }
   },
   // 获取积分订单物流信息
-  getLogistics(tradeId){
-    http("get", `/Order/expressInfo/${tradeId}`).then(res => {
+  getLogistics(tradeId,orderId){
+    http("get", `/Order/expressInfo/${tradeId}/${orderId}`).then(res => {
       if(res.code === 0){
         const {orderExpressInfoVo} = res.data
         const { expressDetailList } = res.data.orderExpressInfoVo

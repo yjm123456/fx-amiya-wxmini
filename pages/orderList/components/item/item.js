@@ -325,10 +325,11 @@ Component({
             toLogistics(e) {
                 const {
                     tradeid,
+                    orderid,
                     type
                 } = e.currentTarget.dataset;
                 wx.navigateTo({
-                    url: '/pages/logistics/logistics?tradeid=' + tradeid,
+                    url: '/pages/logistics/logistics?tradeid=' + tradeid+'&orderid='+orderid,
                 })
             },
             // 确认收货

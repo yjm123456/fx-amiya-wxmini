@@ -1,0 +1,102 @@
+<!--pages/aestheticsDesignReport/aestheticsDesignReport.wxml-->
+<view class="container">
+    <view class="header">
+        <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/1081bbc3b07a47a9b58826f1004c8a29.jpg"></image>
+        <text class="no">编号:000001</text>
+    </view>
+    <view class="content">
+        <view class="content_form">
+            <view>
+                <view class="title">基础信息</view>
+                <view class="block">
+                    <view><text>姓名</text><input type="text" /></view>
+                    <view><text>年龄</text><input type="text" /></view>
+                    <view><text>联系方式</text><input type="text" /></view>
+                    <view><text>城市</text><input type="text" /></view>
+                </view>
+            </view>
+            <view>
+                <view class="title">做过的医美项目:</view>
+                <view>
+                    <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8732c14998274048b1193ab835e44adf.png"></image>
+                </view>
+                <view>
+                    <van-radio-group value="{{ radio }}" bind:change="onChange">
+                        <view>
+                            <view>
+                                <van-radio name="1" shape='squre' checked-color="#8b77f4" label-disabled>有</van-radio>
+                                <text>请描述过往做过的医美项目</text>
+                            </view>
+                            <view class="describe">微创调整的部位以及所用材料:{{'123444444444'}}</view>
+                            <view class="describe">整形调整的部位:{{123333344444444445677}}</view>
+                            <view class="describe">皮肤做过的仪器或项目:{{1234667}}</view>
+                        </view>
+                        <view>
+                            <van-radio name="2" shape='squre' checked-color="##8b77f4" label-disabled>无</van-radio>
+                        </view>
+                    </van-radio-group>
+                </view>
+            </view>
+            <view>
+                <view>是否接受手术(如:眼,鼻)</view>
+                <van-radio-group value="{{ radio }}" bind:change="onChange">
+                    <van-radio name="1">单选框 1</van-radio>
+                    <van-radio name="2">单选框 2</van-radio>
+                </van-radio-group>
+            </view>
+            <view>
+                <view>是否有药物过敏史或其他疾病:</view>
+                <view>
+                    <van-radio-group value="{{ radio }}" bind:change="onChange">
+                        <van-radio name="1">单选框 1</van-radio>
+                        <van-radio name="2">单选框 2</van-radio>
+                    </van-radio-group>
+                </view>
+            </view>
+            <view>
+                <view class="title">变美需求:</view>
+                <view class="describe">请描述:{{'1234556'}}</view>
+            </view>
+            <view>
+                <view class="title">变美预算(根据你的预算来做全案设计方案) <text class="describe">{{100}}</text>元</view>
+            </view>
+            <view>
+                <view class="title">两张平面照片:</view>
+                <view>
+                    <view>为了不影响美学设计判断,请上传1张正面照和1张侧面照</view>
+                    <view>照片要求:无美颜,无刘海遮挡的素颜照片</view>
+                    <view>
+                        <view><image></image></view>
+                        <view><image></image></view>
+                        <view><image></image></view>
+                        <view><image></image></view>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <view class="title">美学设计:</view>
+                <view>
+                    <view>
+                        <image></image>
+                    </view>
+                    <view>
+                        <image></image>
+                    </view>
+                    <view>
+                        <image></image>
+                    </view>
+                </view>
+            </view>
+            <view>设计方案:</view>
+            <view class="describe"></view>
+            <view>
+                <view>推荐医院: <input type="text"/> </view>
+                <view>推荐医生: <input type="text"/> </view>
+            </view>
+            <view>说明:因照片与实际会存在误差,具体执行方案由医生进行确认</view>
+        </view>
+    </view>
+    <view class="footer">
+        <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f275266ee70949b48abe5f564c6037e9.png"></image>
+    </view>
+</view>

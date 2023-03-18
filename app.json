@@ -76,7 +76,8 @@
         "pages/appointmentCarList/appointmentCarList",
         "pages/pointAndMoney/pointAndMoney",
         "pages/search/search",
-        "pages/pointLottery/pointLottery"
+        "pages/pointLottery/pointLottery",
+        "pages/aestheticsDesignReport/aestheticsDesignReport"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {
