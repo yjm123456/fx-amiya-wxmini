@@ -291,6 +291,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "面诊卡下单",
+                    "pathName": "pages/LiveAnchorOrder/LiveAnchorOrder",
+                    "query": "q=app.ameiyes.com/amiyabackground/media?id=jn",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

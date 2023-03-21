@@ -1,5 +1,13 @@
 // pages/LiveAnchorDetail/LiveAnchorOrder/LiveAnchorOrder.js
 import http from '../../utils/http';
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import {
+    iscustomer,
+    isAuthorizationUserInfo
+} from "./../../api/user";
+import {
+    checkUserTokenInfo
+} from "../../utils/login";
 Page({
 
     /**
@@ -26,35 +34,152 @@ Page({
         goodsInfo: {},
         display: false,
         name: '',
-        names:0
+        names: 0,
+        controlAuthPhone: false,
+        controlAuth: false,
+        q: '',
+        userInfo: '',
+        trueName: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        const {
-            type
-        } = options
 
+        let {
+            name,
+            q
+        } = options;
+        if (q) {
+            q=decodeURIComponent(q);
+            name = q.split("?")[1].split("=")[1];
+        }
+        console.log(name);
         this.setData({
-            type
-        });
-        this.getUserInfo();
+            name
+        })
+        checkUserTokenInfo().then(res => {
+            this.isAuthorizationUserInfo();
+        })
 
-        //商品化修改之前
-        //this.getHotList()
-        //商品化修改之前
+    },
+    getCardInfo() {
+        const {
+            name
+        } = this.data;
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.getUserInfo();
+                var code = name + 'mzk';
+                this.getFaceCardInfo(code);
+            } else {
+                this.showVoucherTips()
+            }
+        })
+    },
+    // 判断是否需要授权微信用户信息
+    isAuthorizationUserInfo() {
+        isAuthorizationUserInfo().then(res => {
+            if (res.code === 0) {
+                const {
+                    userInfo
+                } = res.data
+                const {
+                    isAuthorizationUserInfo
+                } = userInfo;
+                if (isAuthorizationUserInfo) {
+                    this.setData({
+                        controlAuth: true,
+                    })
+                } else {
+                    getApp().globalData.userInfo = userInfo;
+                    this.setData({
+                        userInfo: userInfo
+                    })
+                    this.getCardInfo();
+                }
+            }
+        })
+    },
+
+    //显示绑定赠送抵用券提示
+    showVoucherTips() {
+        Dialog.alert({
+            theme: 'round-button',
+            confirmButtonText: "",
+            closeOnClickOverlay: true,
+            customStyle: "background-color:transparent !important;height:900rpx;margin-top:50rpx;postion:relative;width:550rpx;",
+            selector: "#bind_tips"
+        }).then(() => {
+            this.handleBindPhone();
+        });
+    },
+    getVoucher() {
+        this.setData({
+            show: false
+        })
+        this.handleBindPhone();
+    },
+    // 成功获取用户信息
+    getUserInfoSuccess() {
+        this.setData({
+            userInfo: getApp().globalData.userInfo,
+            controlAuth: false
+        })
+        this.getCardInfo();
+    },
+
+    // 取消获取用户信息
+    cancelGetUserInfo() {
+        this.setData({
+            controlAuth: false
+        })
+    },
+    // 绑定手机号
+    handleBindPhone() {
+        this.setData({
+            controlAuthPhone: true
+        })
+    },
+    // 成功绑定手机号
+    successBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        });
+        const {
+            name
+        } = this.data;
+        this.getUserInfo();
+        var code = name + 'mzk';
+        this.getFaceCardInfo(code);
+    },
+
+    // 取消绑定手机号
+    cancelBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+    },
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
     },
     onClick(event) {
         const {
             names
         } = event.currentTarget.dataset;
-        let name="";
-        if(names=="1"){
-            name='dd'
-        }else{
-            name='jn'
+        let name = "";
+        if (names == "1") {
+            name = 'dd'
+        } else {
+            name = 'jn'
         }
         this.setData({
             names
@@ -62,12 +187,12 @@ Page({
         const {
             type
         } = this.data;
-        
+
         if (type == 'mf') {
-            var code=name+'mfq';
+            var code = name + 'mfq';
             this.getSkincareInfo(code);
             // const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
-            
+
         } else {
             //获取面诊卡信息
             var code = name + 'mzk';
@@ -98,7 +223,7 @@ Page({
                     goodsInfo: {
                         ...goodsInfo,
                         quantity: 1,
-                        allmoney:goodsInfo.salePrice                       
+                        allmoney: goodsInfo.salePrice
                     }
                 })
                 this.setData({
@@ -115,7 +240,6 @@ Page({
     onChange() {},
     // 根据商品编号获取商品详情,同时添加一个quantity字段表示购买数量默认值为0
     getFaceCardInfo(code) {
-        console.log('code值为' + code);
         //获取的信息包含商品信息轮播图信息和对应的医院价格复制给goodsinfo同时添加一个默认购买数量quantity:1
         http("get", `/Goods/infoBySimpleCode/${code}`, ).then(res => {
             if (res.code === 0) {
@@ -218,11 +342,13 @@ Page({
             if (res.code === 0) {
                 const {
                     phone,
-                    nickName
+                    nickName,
+                    name
                 } = res.data.userInfo;
                 this.setData({
                     phone: phone,
-                    nickName: nickName
+                    nickName: nickName,
+                    trueName: name
                 })
             }
         });
@@ -260,7 +386,7 @@ Page({
         this.getStoreList(shopGoodsInfo.id, cityid);
     },
     switchCity() {
-        if(this.data.names==0){
+        if (this.data.names == 0) {
             wx.showToast({
                 title: '请先选择主播',
                 icon: 'none',
@@ -367,7 +493,7 @@ Page({
             detail
         } = e;
         this.setData({
-            nickName: detail
+            trueName: detail
         })
     },
     handlePhoneChange(e) {
@@ -379,106 +505,106 @@ Page({
         })
     },
     purchase() {
-        const {
-            nickName,
-            phone,
-            names,
-            liveAnchorName,
-            type,
-            appointmentCity,
-            appointmentDate,
-            selectHospitalId,
-            shopGoodsInfo
-        } = this.data
-        let token = wx.getStorageSync("token")
-        if (!token) {
-            wx.showToast({
-                title: '请先登录',
-                icon: 'none',
-                duration: 2000
-            })
-        } else {
-            if (!nickName) {
-                wx.showToast({
-                    title: '请输入姓名',
-                    icon: 'none',
-                    duration: 1000
-                })
-                return;
-            }
-            if (!phone) {
-                wx.showToast({
-                    title: '请输入手机号',
-                    icon: 'none',
-                    duration: 1000
-                })
-                return;
-            }
-            if(names==0){
-                wx.showToast({
-                    title: '请选择主播',
-                    icon: 'none',
-                    duration: 1000
-                })
-                return;
-            }
-            if (type == 'mf') {
-                if (!appointmentCity) {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                const {
+                    nickName,
+                    phone,
+                    names,
+                    name,
+                    trueName,
+                    liveAnchorName,
+                    type,
+                    appointmentCity,
+                    appointmentDate,
+                    selectHospitalId,
+                    shopGoodsInfo
+                } = this.data
+                let token = wx.getStorageSync("token")
+                if (!token) {
                     wx.showToast({
-                        title: '请选择预约城市',
+                        title: '请先登录',
                         icon: 'none',
-                        duration: 1000
+                        duration: 2000
                     })
-                    return;
-                }
-                if (!appointmentDate) {
-                    wx.showToast({
-                        title: '请选择预约时间',
-                        icon: 'none',
-                        duration: 1000
-                    })
-                    return;
-                }
-                // if (!selectHospitalId) {
-                //     wx.showToast({
-                //         title: '请选择预约医院',
-                //         icon: 'none',
-                //         duration: 1000
-                //     })
-                //     return;
-                // }
-            }
-            if (!(/^1[3456789]\d{9}$/.test(phone))) {
-                wx.showToast({
-                    title: '手机号错误,请重新输入',
-                    icon: 'none',
-                    duration: 1000
-                })
-                return;
-            } else {
-                let goodsInfo = {};
-                //改为使用从后台查询的数据
-                if (type == 'mf') {
-                    goodsInfo = {
-                        ...shopGoodsInfo,
-                        appointmentCity: appointmentCity,
-                        appointmentDate: appointmentDate,
-                        // hospitalid: selectHospitalId,
-                        isSkinCare: true
-                    };
                 } else {
-                    goodsInfo = {
-                        ...shopGoodsInfo,
-                        appointmentCity: '',
-                        appointmentDate: '',
-                        isFaceCard: true
-                    };
+                    if (!trueName) {
+                        wx.showToast({
+                            title: '请输入姓名',
+                            icon: 'none',
+                            duration: 1000
+                        })
+                        return;
+                    }
+                    if (!phone) {
+                        wx.showToast({
+                            title: '请输入手机号',
+                            icon: 'none',
+                            duration: 1000
+                        })
+                        return;
+                    }
+                    if (!name) {
+                        wx.showToast({
+                            title: '请选择主播',
+                            icon: 'none',
+                            duration: 1000
+                        })
+                        return;
+                    }
+                    if (type == 'mf') {
+                        if (!appointmentCity) {
+                            wx.showToast({
+                                title: '请选择预约城市',
+                                icon: 'none',
+                                duration: 1000
+                            })
+                            return;
+                        }
+                        if (!appointmentDate) {
+                            wx.showToast({
+                                title: '请选择预约时间',
+                                icon: 'none',
+                                duration: 1000
+                            })
+                            return;
+                        }
+                    }
+                    if (!(/^1[3456789]\d{9}$/.test(phone))) {
+                        wx.showToast({
+                            title: '手机号错误,请重新输入',
+                            icon: 'none',
+                            duration: 1000
+                        })
+                        return;
+                    } else {
+                        let goodsInfo = {};
+                        //改为使用从后台查询的数据
+                        if (type == 'mf') {
+                            goodsInfo = {
+                                ...shopGoodsInfo,
+                                appointmentCity: appointmentCity,
+                                appointmentDate: appointmentDate,
+                                // hospitalid: selectHospitalId,
+                                isSkinCare: true
+                            };
+                        } else {
+                            goodsInfo = {
+                                ...shopGoodsInfo,
+                                appointmentCity: '',
+                                appointmentDate: '',
+                                isFaceCard: true
+                            };
+                        }
+                        wx.redirectTo({
+                            url: '/pages/confirmOrder/confirmOrder?nickName=' + nickName + '&phone=' + phone + '&isCard=true&goodsInfo=' + encodeURIComponent(JSON.stringify([goodsInfo])) + '&allmoney=' + goodsInfo.allmoney + '&type=1',
+                        })
+                    }
                 }
-                wx.redirectTo({
-                    url: '/pages/confirmOrder/confirmOrder?nickName=' + nickName + '&phone=' + phone + '&isCard=true&goodsInfo=' + encodeURIComponent(JSON.stringify([goodsInfo])) + '&allmoney=' + goodsInfo.allmoney+'&type=1',
-                })
+            } else {
+                this.showVoucherTips()
             }
-        }
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

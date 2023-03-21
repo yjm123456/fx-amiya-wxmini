@@ -110,11 +110,7 @@ Page({
         this.visit();
         checkUserTokenInfo().then(res => {
             this.isAuthorizationUserInfo();
-            // this.getMemberCardInfo();
-            //this.getIntegral();
-            // this.getBalance();
         })
-        console.log("进入");
         this.isCustomer((isCustomer) => {
             console.log("是否是客户");
             if (isCustomer) {

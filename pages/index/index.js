@@ -338,7 +338,7 @@ Page({
                     name
                 } = event.currentTarget.dataset;
                 wx.navigateTo({
-                    url: '/pages/LiveAnchorOrder/LiveAnchorOrder'
+                    url: '/pages/activity/activity'
                 })
             } else {
                 this.showVoucherTips()

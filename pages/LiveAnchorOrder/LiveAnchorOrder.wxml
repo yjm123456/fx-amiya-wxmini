@@ -1,8 +1,9 @@
 <!--pages/LiveAnchorDetail/LiveAnchorOrder/LiveAnchorOrder.wxml-->
 <view>
+    
     <view class="order_form">
         <view>
-            <van-field border="{{false}}" input-class="field" value="{{ nickName  }}" type="textarea" clearable placeholder="请输入姓名" title-width="4em" bind:change="handleNameChange" maxlength="200" />
+            <van-field border="{{false}}" input-class="field" value="{{ trueName  }}" type="textarea" clearable placeholder="请输入姓名" title-width="4em" bind:change="handleNameChange" maxlength="200" />
             <van-field border="{{false}}" input-class="field" value="{{ phone  }}" type="textarea" clearable placeholder="请输入手机号" title-width="4em" bind:change="handlePhoneChange" maxlength="200" />
             <van-field wx:if="{{type=='mf'}}" border="{{false}}" disabled input-class="field" value="{{ appointmentCity  }}" type="textarea" clearable placeholder="请选择预约城市" title-width="4em" bindtap="switchCity" maxlength="200" />
             <van-field wx:if="{{type=='mf'&&appointmentHospital}}" border="{{false}}" disabled input-class="field" value="{{ appointmentHospital  }}" type="textarea" clearable placeholder="请选择预约医院" title-width="4em" bindtap="switchHospital" maxlength="200" />
@@ -29,13 +30,13 @@
             <van-field wx:if="{{type=='mf'}}" border="{{false}}" input-class="field" value="{{ appointmentDate  }}" type="textarea" clearable placeholder="请选择预约时间" title-width="4em" disabled bindtap="selectDate" maxlength="200" />
         </view>
         <view class="pay_list">
-            <van-radio-group value="{{ names }}" bind:change="onChange">
+            <van-radio-group value="{{ name === 'dd' ? '1' : '2' }}" bind:change="onChange">
                 <van-cell-group border="{{false}}">
-                    <van-cell border="{{false}}" inset="{{true}}" title="刀刀老师" clickable data-names="1" bind:click="onClick">
-                        <van-radio slot="right-icon" name="1" />
+                    <van-cell wx:if="{{name==='dd'}}" border="{{false}}" inset="{{true}}" title="刀刀老师" clickable data-names="1">
+                        <van-radio checked-color="#DEC350" slot="right-icon" name="1" />
                     </van-cell>
-                    <van-cell border="{{false}}" inset="{{true}}" title="吉娜老师" clickable data-names="2" bind:click="onClick">
-                        <van-radio slot="right-icon" name="2" />
+                    <van-cell wx:if="{{name==='jn'}}" border="{{false}}" inset="{{true}}" title="吉娜老师" clickable data-names="2">
+                        <van-radio checked-color="#DEC350" slot="right-icon" name="2" />
                     </van-cell>
                 </van-cell-group>
             </van-radio-group>
@@ -47,11 +48,11 @@
         <view wx:if="{{type=='mf'}}" class="tip">
             <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f45a8df2131947a1884a2443f9abf37c.png" mode="widthFix"></image>
         </view>
-        
+
         <view wx:else class="tip">
             <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/60105e1a07c443b59951069b8dde1e09.png" mode="widthFix"></image>
         </view>
-        
+
     </view>
     <van-calendar show="{{ display }}" bind:close="onClose" bind:confirm="onConfirm" />
     <!-- 切换城市弹窗 -->
@@ -89,3 +90,11 @@
         </view>
     </van-popup>
 </view>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<auth control="{{controlAuth}}" bind:getUserInfoSuccess='getUserInfoSuccess' bind:cancelGetUserInfo="cancelGetUserInfo" />
+<!-- 新客绑定提示弹窗 -->
+<van-dialog showConfirmButton="{{false}}" show="{{show}}" use-slot id="bind_tips">
+    <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7cd41576dd504750a625f314b8ec3bc2.png"></image>
+    <view class="submit" catchtap="getVoucher">立即领取</view>
+</van-dialog>

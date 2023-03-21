@@ -7,7 +7,7 @@
     </swiper>
     <view class="product_list">
         <view class="product_warp">
-            <view class="product" bindtap="toReport" data-goodsid="{{item.id}}" wx:key="index">
+            <!-- <view class="product" bindtap="toReport" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">
@@ -21,7 +21,7 @@
                         </view>
                     </view>
                 </view>
-            </view>
+            </view> -->
             <view class="product" bindtap="toOrder" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
@@ -172,6 +172,7 @@
         </view>
     </view>
 </van-dialog>
+
 
 <!-- 新客绑定提示弹窗 -->
 <van-dialog showConfirmButton="{{false}}" show="{{show}}" use-slot id="bind_tips">
