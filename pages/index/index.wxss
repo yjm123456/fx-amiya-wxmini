@@ -228,7 +228,7 @@ page{
 }
 
 .product {
-    width: 100%;
+    width: 48%;
     padding-bottom: 0rpx;
     background-color: #313131;
     overflow: hidden;

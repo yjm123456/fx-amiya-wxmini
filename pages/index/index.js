@@ -352,7 +352,7 @@ Page({
                     name
                 } = event.currentTarget.dataset;
                 wx.navigateTo({
-                    url: '/pages/aestheticsDesignReport/aestheticsDesignReport'
+                    url: '/pages/aestheticsDesignReportList/aestheticsDesignReportList'
                 })
             } else {
                 this.showVoucherTips()

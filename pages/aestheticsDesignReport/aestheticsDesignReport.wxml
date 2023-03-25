@@ -2,101 +2,207 @@
 <view class="container">
     <view class="header">
         <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/1081bbc3b07a47a9b58826f1004c8a29.jpg"></image>
-        <text class="no">编号:000001</text>
+        <view class="code">
+            <text wx:if="{{status!='add'}}" class="no">编号:{{reportId}}</text>
+            <text wx:if="{{status=='design'}}" bindtap="ToPageLocation">查看美学设计</text>
+        </view>
     </view>
     <view class="content">
         <view class="content_form">
             <view>
                 <view class="title">基础信息</view>
-                <view class="block">
-                    <view><text>姓名</text><input type="text" /></view>
-                    <view><text>年龄</text><input type="text" /></view>
-                    <view><text>联系方式</text><input type="text" /></view>
-                    <view><text>城市</text><input type="text" /></view>
+                <view class="person_block">
+                    <view class="person_info">
+                        <image src="/images/report/icon-user.png"></image><text class="label">姓名</text>:<input    disabled="{{status=='design'? true:false}}" bindinput="handleNameChange" class="base_info" value="{{name}}" type="text" />
+                    </view>
+                    <view class="person_info">
+                        <image src="/images/report/age.png"></image><text class="label">生日</text>:
+                        <picker disabled="{{status=='design'? true:false}}" mode="date" end='{{timeNow}}' bindchange="handleAgeChange">
+                            <input  class="base_info" disabled value="{{birthDay}}" type="text" />
+                        </picker>
+                    </view>
+                    <view class="person_info">
+                        <image src="/images/report/phone.png"></image>
+                        <text class="label">联系方式</text>:<input class="base_info" bindinput="handlePhoneChange" value="{{phone}}" disabled="{{status=='design'? true:false}}" type="text" />
+                    </view>
+                    <view class="person_info">
+                        <image src="/images/report/city.png"></image>
+                        <text class="label">城市</text>:
+                        <picker disabled="{{status=='design'? true:false}}" mode="region" bindchange="handleCityChange">
+                            <input disabled class="base_info" value="{{simpleCity}}" type="text" />
+                        </picker>
+                    </view>
                 </view>
             </view>
-            <view>
+            <view class="history_block">
                 <view class="title">做过的医美项目:</view>
-                <view>
+                <view class="etc_img">
                     <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8732c14998274048b1193ab835e44adf.png"></image>
+                    <view wx:if="{{we.indexOf(design.pictureTags,'c8af8ea4-3682-4978-98fa-da4d8233207e')>=0}}" style="margin-top: {{-513}}rpx;" class="left_tag">额部</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'3007d7aa-bf0a-465c-b03a-e029cdcb39e0')>=0 }}" style="margin-top: {{-513+40}}rpx;" class="left_tag">太阳穴</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'9b9141ec-6096-46b6-ae63-5122e00eb469')>=0 }}" style="margin-top: {{-513+82}}rpx;" class="left_tag">上眼皮</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'736f4012-d1d2-4caf-a1ea-c9641b0f3e68')>=0 }}" style="margin-top: {{-513+124}}rpx;" class="left_tag">卧蚕</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'acc080a3-b64d-494e-8a21-602e0badc074')>=0}}" style="margin-top: {{-513+168}}rpx;" class="left_tag">泪沟</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'6b301791-9b8d-4a8c-95b7-1d4b8ecd7fc5')>=0 }}" style="margin-top: {{-513+210}}rpx;" class="left_tag">印第安纹</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'838891b2-ea4e-472c-a3fe-e5a6f33a19de')>=0 }}" style="margin-top: {{-513+252}}rpx;" class="left_tag">鼻基底</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'e7ca8a97-40e7-4a93-8cb9-2144752ff53a')>=0 }}" style="margin-top: {{-513+294}}rpx;" class="left_tag">颊凹</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'9d77741b-5503-4df1-9a8e-166decd47c64')>=0 }}" style="margin-top: {{-513+336}}rpx;" class="left_tag">木偶纹</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'75155a7e-d15f-409a-a879-c54de034d3fa')>=0}}" style="margin-top: {{-513+380}}rpx;" class="left_tag">下巴</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'8f7b3b69-5415-4236-9c35-085ed0d3644b')>=0 }}" style="margin-top: {{-657}}rpx;" class="right_tag">颅顶</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'07d58f1a-3eab-4c6b-91d1-9d2bbda16d5a')>=0 }}" style="margin-top: {{-592}}rpx;" class="right_tag">发际线</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'6268d5ac-09c4-4962-b388-c439bd27f776')>=0}}" style="margin-top: {{-592+42}}rpx;" class="right_tag">印堂</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'1a4db523-f2e0-4a0e-9cde-3352b035b879')>=0 }}" style="margin-top: {{-592+84}}rpx;" class="right_tag">眉弓</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'1342a856-4315-496d-bed3-939f2072eede')>=0 }}" style="margin-top: {{-592+126}}rpx;" class="right_tag">精灵耳</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'195f2891-4e92-4822-9902-b67e03b36d6b')>=0 }}" style="margin-top: {{-592+168}}rpx;" class="right_tag">眉部</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'bc7bbae7-b9bf-4049-b08e-8a97d1626b71')>=0 }}" style="margin-top: {{-592+210}}rpx;" class="right_tag">鼻部</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'97350806-b016-4709-97c0-fe7ef4b8f9fa')>=0 }}" style="margin-top: {{-592+252}}rpx;" class="right_tag">苹果肌</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'831d15d4-64c1-48e2-98ff-bd564d2738d7')>=0 }}" style="margin-top: {{-592+296}}rpx;" class="right_tag">法令纹</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'ed609e60-7b31-4376-894d-94fa142db1d5')>=0 }}" style="margin-top: {{-592+338}}rpx;" class="right_tag">唇部</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'4d3bead4-3ea4-41c4-9f73-70174754a751')>=0}}" style="margin-top: {{-592+380}}rpx;" class="right_tag">下颌缘</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'cacdbad9-d0a2-424a-96ec-27e72ed183ae')>=0 }}" style="margin-top: {{-592+424}}rpx;" class="right_tag">颈纹</view>
+                    <view wx:if="{{ we.indexOf(design.pictureTags,'efef981b-04f6-4c2c-aa9b-f78e9f3bbb78')>=0 }}" style="margin-top: {{-592+466}}rpx;" class="right_tag">肩颈</view>
                 </view>
                 <view>
-                    <van-radio-group value="{{ radio }}" bind:change="onChange">
+                    <van-radio-group value="{{ hasAestheticMedicineHistory? '1':hasAestheticMedicineHistory===false?'2':''}}" bind:change="onHistoryChange">
                         <view>
-                            <view>
-                                <van-radio name="1" shape='squre' checked-color="#8b77f4" label-disabled>有</van-radio>
-                                <text>请描述过往做过的医美项目</text>
+                            <view class="inline">
+                                <text>有</text>
+                                <van-radio disabled="{{status=='design'? true:false}}" icon-size='28rpx' name="1" shape='squre' custom-class="radio_style" checked-color="#8b77f4" label-disabled></van-radio><text>请描述过往做过的医美项目</text>
                             </view>
-                            <view class="describe">微创调整的部位以及所用材料:{{'123444444444'}}</view>
-                            <view class="describe">整形调整的部位:{{123333344444444445677}}</view>
-                            <view class="describe">皮肤做过的仪器或项目:{{1234667}}</view>
+                            <view class="describe"><textarea value="{{historyDescribe1}}" placeholder-style="color:#e2e2e2" disabled="{{status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handleMinimallyInvasive" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height="autoHeight" placeholder="微创调整的部位以及所用材料:"></textarea></view>
+                            <view class="describe"><textarea value="{{historyDescribe2}}" placeholder-style="color:#e2e2e2" disabled="{{ status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handlePlastic" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height placeholder="整形调整的部位:"></textarea></view>
+                            <view class="describe"><textarea value="{{historyDescribe3}}" placeholder-style="color:#e2e2e2" disabled="{{status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handleSkin" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height placeholder="皮肤做过的仪器或项目:"></textarea></view>
                         </view>
-                        <view>
-                            <van-radio name="2" shape='squre' checked-color="##8b77f4" label-disabled>无</van-radio>
+                        <view class="inline">
+                            <text>无</text>
+                            <van-radio disabled="{{status=='design'? true:false}}" name="2" icon-size='28rpx' shape='squre' checked-color="#8b77f4" label-disabled></van-radio>
                         </view>
                     </van-radio-group>
                 </view>
             </view>
-            <view>
-                <view>是否接受手术(如:眼,鼻)</view>
-                <van-radio-group value="{{ radio }}" bind:change="onChange">
-                    <van-radio name="1">单选框 1</van-radio>
-                    <van-radio name="2">单选框 2</van-radio>
+            <view class="operation_block">
+                <view class="title">是否接受手术(如:眼,鼻)</view>
+                <van-radio-group value="{{ whetherAcceptOperation? '1':whetherAcceptOperation===false?'2':'' }}" bind:change="onOperationChange">
+                    <view class="inline">
+                        <text>是</text>
+                        <van-radio disabled="{{status=='design'? true:false}}" icon-size='28rpx' shape='squre' checked-color="#8b77f4" name="1"></van-radio>
+                    </view>
+                    <view class="inline">
+                        <text>否</text>
+                        <van-radio disabled="{{status=='design'? true:false}}" icon-size='28rpx' shape='squre' checked-color="#8b77f4" name="2"></van-radio>
+                    </view>
                 </van-radio-group>
             </view>
-            <view>
-                <view>是否有药物过敏史或其他疾病:</view>
+            <view class="allergy_block">
+                <view class="title">是否有药物过敏史或其他疾病:</view>
                 <view>
-                    <van-radio-group value="{{ radio }}" bind:change="onChange">
-                        <van-radio name="1">单选框 1</van-radio>
-                        <van-radio name="2">单选框 2</van-radio>
+                    <van-radio-group value="{{  whetherAllergyOrOtherDisease? '1':whetherAllergyOrOtherDisease===false?'2':'' }}" bind:change="onAllergyOrOtherDiseaseChange">
+                        <view class="inline">
+                            <text>是</text>
+                            <van-radio disabled="{{status=='design'? true:false}}" icon-size='28rpx' checked-color="#8b77f4" shape='squre' name="1"></van-radio>
+                        </view>
+                        <textarea checked-color="#8b77f4" value="{{allergyOrOtherDiseaseDescribe}}" placeholder-style="color:#e2e2e2" disabled="{{ status=='design'? true:(whetherAllergyOrOtherDisease ? false : true ) }}" class="history" maxlength="1200" bindinput="handleAllergyOrOtherDisease" style="{{whetherAllergyOrOtherDisease ? '' : 'border-color:#e2e2e2;'}}" auto-height placeholder="请描述:"></textarea>
+                        <view class="inline">
+                            <text>否</text>
+                            <van-radio disabled="{{status=='design'? true:false}}" icon-size='28rpx' checked-color="#8b77f4" shape='squre' name="2"></van-radio>
+                        </view>
                     </van-radio-group>
                 </view>
             </view>
-            <view>
+            <view class="demand_block">
                 <view class="title">变美需求:</view>
-                <view class="describe">请描述:{{'1234556'}}</view>
+                <view class="describe"><textarea disabled="{{status=='design'? true:false}}" placeholder-style="color:#e2e2e2" class="history" maxlength="1200" bindinput="handleDemand" value="{{beautyDemand}}" auto-height="autoHeight" placeholder="微创调整的部位以及所用材料:"></textarea></view>
             </view>
-            <view>
-                <view class="title">变美预算(根据你的预算来做全案设计方案) <text class="describe">{{100}}</text>元</view>
+            <view class="budget_block">
+                <view class="budget"><text>变美预算<text class="small">(根据你的预算来做全案设计方案)</text> </text><input type="number" disabled="{{status=='design'? true:false}}" value="{{budget}}" bindinput="handleBudget" /> 元</view>
             </view>
-            <view>
+            <view class="img_block">
                 <view class="title">两张平面照片:</view>
                 <view>
-                    <view>为了不影响美学设计判断,请上传1张正面照和1张侧面照</view>
-                    <view>照片要求:无美颜,无刘海遮挡的素颜照片</view>
-                    <view>
-                        <view><image></image></view>
-                        <view><image></image></view>
-                        <view><image></image></view>
-                        <view><image></image></view>
+                    <view class="tip">为了不影响美学设计判断,请上传1张正面照和1张侧面照</view>
+                    <view class="tip">照片要求:无美颜,无刘海遮挡的素颜照片</view>
+                    <view class="img_list">
+                        <view class="img">
+                            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/86ed89500eb4476f98c97d922a626b7f.png"></image>
+                        </view>
+                        <view class="img">
+                            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/75bd32f415fb483ea84e6ca2897f74d4.png"></image>
+                        </view>
+                        <view class="img">
+                            <van-uploader disabled="{{status=='design'? true:false}}"  preview-size="40vw" image-fit="widthFix" accept="image" max-count="1" bind:after-read="afterfrontPictureRead" bind:delete="{{status=='design'? '':'deleteFrontPicture'}}" file-list="{{ frontPictureList }}">
+                                <view class="occupancy"><text>请上传正面图片</text></view>
+                            </van-uploader>
+                        </view>
+                        <view class="img">
+                            <van-uploader disabled="{{status=='design'? true:false}}" preview-size="40vw" image-fit="widthFix" accept="image" max-count="1" bind:after-read="afterSidePictureRead" bind:delete="{{status=='design'? '':'deleteSidePicture'}}" file-list="{{ sidePictureList }}">
+                                <view class="occupancy"><text>请上传侧面图片</text></view>
+                            </van-uploader>
+                        </view>
+
                     </view>
                 </view>
             </view>
-            <view>
-                <view class="title">美学设计:</view>
+            <view wx:if="{{status=='add'}}">
+                <view class="submit" bindtap="AddReport">提交</view>
+            </view>
+            <view wx:elif="{{status=='commit'}}">
+                <view class="submit" bindtap="updateReport">提交修改</view>
+            </view>
+            <block wx:else>
+                <view id="designblock" class="design_block">
+                    <view class="title">美学设计:</view>
+                    <view class="design_img_list">
+                        <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8732c14998274048b1193ab835e44adf.png"></image>
+                        <view wx:if="{{we.indexOf(design.pictureTags,'c8af8ea4-3682-4978-98fa-da4d8233207e')>=0}}" style="margin-top: {{173}}rpx;" class="left_tag">额部</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'3007d7aa-bf0a-465c-b03a-e029cdcb39e0')>=0 }}" style="margin-top: {{173+42}}rpx;" class="left_tag">太阳穴</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'9b9141ec-6096-46b6-ae63-5122e00eb469')>=0 }}" style="margin-top: {{173+83}}rpx;" class="left_tag">上眼皮</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'736f4012-d1d2-4caf-a1ea-c9641b0f3e68')>=0 }}" style="margin-top: {{173+126}}rpx;" class="left_tag">卧蚕</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'acc080a3-b64d-494e-8a21-602e0badc074')>=0}}" style="margin-top: {{173+170}}rpx;" class="left_tag">泪沟</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'6b301791-9b8d-4a8c-95b7-1d4b8ecd7fc5')>=0 }}" style="margin-top: {{173+212}}rpx;" class="left_tag">印第安纹</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'838891b2-ea4e-472c-a3fe-e5a6f33a19de')>=0 }}" style="margin-top: {{173+254}}rpx;" class="left_tag">鼻基底</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'e7ca8a97-40e7-4a93-8cb9-2144752ff53a')>=0 }}" style="margin-top: {{173+296}}rpx;" class="left_tag">颊凹</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'9d77741b-5503-4df1-9a8e-166decd47c64')>=0 }}" style="margin-top: {{173+338}}rpx;" class="left_tag">木偶纹</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'75155a7e-d15f-409a-a879-c54de034d3fa')>=0}}" style="margin-top: {{173+382}}rpx;" class="left_tag">下巴</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'8f7b3b69-5415-4236-9c35-085ed0d3644b')>=0 }}" style="margin-top: {{30}}rpx;" class="right_tag">颅顶</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'07d58f1a-3eab-4c6b-91d1-9d2bbda16d5a')>=0 }}" style="margin-top: {{97}}rpx;" class="right_tag">发际线</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'6268d5ac-09c4-4962-b388-c439bd27f776')>=0}}" style="margin-top: {{97+42}}rpx;" class="right_tag">印堂</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'1a4db523-f2e0-4a0e-9cde-3352b035b879')>=0 }}" style="margin-top: {{97+84}}rpx;" class="right_tag">眉弓</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'1342a856-4315-496d-bed3-939f2072eede')>=0 }}" style="margin-top: {{97+126}}rpx;" class="right_tag">精灵耳</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'195f2891-4e92-4822-9902-b67e03b36d6b')>=0 }}" style="margin-top: {{97+168}}rpx;" class="right_tag">眉部</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'bc7bbae7-b9bf-4049-b08e-8a97d1626b71')>=0 }}" style="margin-top: {{97+210}}rpx;" class="right_tag">鼻部</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'97350806-b016-4709-97c0-fe7ef4b8f9fa')>=0 }}" style="margin-top: {{97+252}}rpx;" class="right_tag">苹果肌</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'831d15d4-64c1-48e2-98ff-bd564d2738d7')>=0 }}" style="margin-top: {{97+296}}rpx;" class="right_tag">法令纹</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'ed609e60-7b31-4376-894d-94fa142db1d5')>=0 }}" style="margin-top: {{97+338}}rpx;" class="right_tag">唇部</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'4d3bead4-3ea4-41c4-9f73-70174754a751')>=0}}" style="margin-top: {{97+380}}rpx;" class="right_tag">下颌缘</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'cacdbad9-d0a2-424a-96ec-27e72ed183ae')>=0 }}" style="margin-top: {{97+424}}rpx;" class="right_tag">颈纹</view>
+                        <view wx:if="{{ we.indexOf(design.pictureTags,'efef981b-04f6-4c2c-aa9b-f78e9f3bbb78')>=0 }}" style="margin-top: {{97+466}}rpx;" class="right_tag">肩颈</view>
+                        <view class="design_img">
+                            <image data-src="{{design.frontPicture}}" mode="widthFix" bindtap="previewImage" src="{{design.frontPicture}}"></image>
+                            <image data-src="{{design.sidePicture}}" mode="widthFix" bindtap="previewImage" src="{{design.sidePicture}}"></image>
+                        </view>
+                    </view>
+                </view>
                 <view>
-                    <view>
-                        <image></image>
-                    </view>
-                    <view>
-                        <image></image>
-                    </view>
-                    <view>
-                        <image></image>
-                    </view>
+                    <view class="title">设计方案:</view>
+                    <view class="design_describe">{{design.design}}</view>
                 </view>
-            </view>
-            <view>设计方案:</view>
-            <view class="describe"></view>
-            <view>
-                <view>推荐医院: <input type="text"/> </view>
-                <view>推荐医生: <input type="text"/> </view>
-            </view>
-            <view>说明:因照片与实际会存在误差,具体执行方案由医生进行确认</view>
+                <view class="recomand">
+                    <view>推荐医院: <text>{{design.simpleHospitalName}}</text> </view>
+                    <view>推荐医生: <text>{{design.recommendDoctor}}</text> </view>
+                </view>
+                <view class="tips">说明:因照片与实际会存在误差,具体执行方案由医生进行确认</view>
+            </block>
         </view>
     </view>
     <view class="footer">
         <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f275266ee70949b48abe5f564c6037e9.png"></image>
     </view>
 </view>
+<wxs module="we">
+    var indexOf = function (arr, value) {
+        return arr.indexOf(value)
+    }
+    module.exports = {
+        indexOf: indexOf
+    }
+</wxs>

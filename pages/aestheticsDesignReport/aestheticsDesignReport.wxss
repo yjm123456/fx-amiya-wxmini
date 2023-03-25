@@ -1,41 +1,349 @@
 /* pages/aestheticsDesignReport/aestheticsDesignReport.wxss */
-.header{
+.header {
     position: relative;
 }
-.header>image{
-    width: 100%;
-}
-.no{
+.code{
+    display: flex;
+    justify-content: space-around;
     position: absolute;
     z-index: 2;
-    left: 50%;
-    bottom: 20rpx;
-    transform: translateX(-50%);
+    width: 100%;
+    margin-top: -60rpx;
+    font-size: 32rpx;
     color: #8878f5;
 }
-.title{
+/* .van-radio__icon--disabled {
+    color: #fff !important;
+    background-color: #8878f5 !important;
+} */
+.van-radio{
+    border: #8878f5 5rpx solid;
+    width: 28rpx;
+    height: 28rpx;
+    box-sizing: content-box;
+    border-radius: 10rpx;
+}
+.small {
+    font-size: 25rpx;
+}
+
+.header>image {
+    width: 100%;
+}
+.radio__icon--disabled{
+    
+}
+
+.van-radio__icon--checked{
+    background-color: #8878f5 !important;
+}
+.van-radio__label--disabled{
+    background-color: #8878f5 !important;
+}
+.title {
     width: fit-content;
     background-color: #8b77f3;
-    padding: 10rpx;
+    padding: 5rpx 25rpx;
     color: 28rpx;
     border-radius: 24rpx;
     color: #fff;
 }
-.content{
+.content {
     position: relative;
     top: -10rpx;
     background: url('https://ameiya.oss-cn-hangzhou.aliyuncs.com/065e69df55114abe9a92302216641419.jpg');
     background-size: cover;
     overflow: hidden;
 }
-.content_form{
+
+.content_form {
     margin: 20rpx;
     background-color: #fff;
     border-radius: 20rpx;
     padding: 20rpx;
 }
-.describe{
-    text-decoration: underline #E9E6FC;
-    text-decoration-thickness: 5rpx;
-    color: #b1b2f7;
+
+.person_block {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+    justify-content: space-between;
+}
+
+.person_info input {
+    border-bottom: 2rpx solid #8b77f3;
+    font-size: 25rpx;
+    color: #8b77f3;
+}
+
+.person_info {
+    margin-top: 15rpx;
+    font-size: 25rpx;
+    display: flex;
+    flex-direction: row;
+    width: 48%;
+    align-items: center;
+
+}
+input{
+    text-align: center;
+}
+textarea{
+    color: #8878f5;
+}
+.label{
+    text-align-last: justify;
+    text-align: justify;
+    color: #8878f5;
+}
+
+
+
+.person_info>image {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.person_info>text {
+    flex: 3.5;
+    /* height: 28rpx; */
+}
+
+.person_info>input {
+    flex: 6.5;
+}
+
+.person_info>picker {
+    flex: 6;
+}
+
+.history_block {
+    margin-top: 30rpx;
+    color: #8878f5;
+}
+
+.left_tag{
+    position: absolute;
+    background-color: #8878f5;
+    z-index: 2;
+    width: 90rpx;
+    height: 36rpx;
+    margin-left: 13rpx;
+    border-radius: 4rpx;
+    color: #fff;
+    font-size: 22rpx;
+    line-height: 36rpx;
+    text-align: center;
+}
+.right_tag{
+    position: absolute;
+    background-color: #8878f5;
+    z-index: 2;
+    width: 90rpx;
+    height: 36rpx;
+    margin-left: 505rpx;
+    border-radius: 4rpx;
+    color: #fff;
+    font-size: 22rpx;
+    line-height: 36rpx;
+    text-align: center;
+}
+
+.inline {
+    display: flex;
+    color: #8878f5;
+    font-size: 28rpx;
+    align-items: center;
+    margin-bottom: 20rpx;
+    margin-top: 20rpx;
+}
+.inline>text:first-child{
+    margin-right: 10rpx;
+}
+.inline>text:last-child{
+    margin-left: 15rpx;
+}
+
+.etc_img {
+    padding: 30rpx;
+    position: relative;
+    width: 610rpx;
+}
+
+.etc_img>image {
+    width: 100%;
+}
+
+.history {
+    margin-top: 20rpx;
+    border: solid 5rpx #8878f5;
+    border-radius: 20rpx;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15rpx;
+    min-height: 148rpx !important;
+    line-height: 35rpx;
+    font-size: 28rpx;
+
+}
+
+.operation_block {
+    margin-top: 30rpx;
+}
+
+
+.allergy_block {
+    margin-top: 30rpx;
+}
+
+
+.demand_block {
+    margin-top: 30rpx;
+}
+
+.budget_block {
+    margin-top: 30rpx;
+}
+
+.budget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20rpx;
+    background-color: #8b77f3;
+    color: #fff;
+    font-size: 32rpx;
+    padding: 10rpx;
+}
+
+.budget>input {
+    width: 99rpx;
+    flex: 2;
+    border-bottom: 2rpx solid #fff;
+}
+
+.budget>text {
+    flex: 8;
+}
+
+
+.img_block {
+    margin-top: 30rpx;
+}
+
+.tip {
+    font-size: 26rpx;
+    margin-top: 20rpx;
+    color: #8878f5;
+}
+
+.img_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20rpx;
+    justify-content: space-between;
+    padding: 20rpx;
+}
+
+.img {
+    width: 40vw;
+    height: 45vw;
+    margin-top: 20rpx;
+}
+
+.img>image {
+    width: 100%;
+}
+
+.van-uploader {
+    width: 100% !important;
+    border-radius: 20rpx;
+    overflow: hidden;
+    height: 45vw;
+}
+.van-uploader__preview-image{
+    height: 45vw !important;
+}
+.van-uploader__preview{
+    margin: 0;
+}
+.van-uploader__slot {
+    width: 100% !important;
+}
+
+.occupancy {
+    background-color: #8b77f3;
+    height: 100%;
+    border-radius: 20rpx;
+    text-align: center;
+    color: #fff;
+    line-height: 45vw;
+    width: 100%;
+}
+.submit{
+    margin: 20rpx;
+    background-color: #8878f5;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+    padding: 10rpx 0;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+}
+.design_block {}
+
+.design_img_list {
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+    position: relative;
+}
+.design_img_list>image{
+    width: 610rpx;
+}
+.design_img{
+    margin-top: 20rpx;
+    display: flex; 
+    justify-content: space-between;
+}
+.design_img>image{
+    width: 48%;
+    border-radius: 20rpx;
+}
+.recomand{
+    margin-top: 50rpx;
+    display: flex;
+    font-size: 28rpx;
+    justify-content: space-between;
+    color: #8878f5;
+}
+.recomand text{
+    text-decoration: underline;
+    padding: 0 10rpx;
+}
+
+.design_describe {
+    margin-top: 30rpx;
+    text-decoration: underline solid #8878f5;
+    color: #8878f5;
+    white-space:normal;
+     word-break:break-all;
+     overflow:hidden;
+}
+
+.recomand {
+    display: flex;
+}
+.tips{
+    font-size: 20rpx;
+    text-align: center;
+    line-height: 80rpx;
+    color: #8878f5;
+}
+.footer>image{
+    width: 100%;
+    margin-top: -10rpx;
 }

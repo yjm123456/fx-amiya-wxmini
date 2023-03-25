@@ -77,7 +77,8 @@
         "pages/pointAndMoney/pointAndMoney",
         "pages/search/search",
         "pages/pointLottery/pointLottery",
-        "pages/aestheticsDesignReport/aestheticsDesignReport"
+        "pages/aestheticsDesignReport/aestheticsDesignReport",
+        "pages/aestheticsDesignReportList/aestheticsDesignReportList"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

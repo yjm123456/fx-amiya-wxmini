@@ -298,6 +298,13 @@
                     "query": "q=app.ameiyes.com/amiyabackground/media?id=jn",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "美学设计报告",
+                    "pathName": "pages/aestheticsDesignReport/aestheticsDesignReport",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

@@ -7,34 +7,34 @@
     </swiper>
     <view class="product_list">
         <view class="product_warp">
-            <!-- <view class="product" bindtap="toReport" data-goodsid="{{item.id}}" wx:key="index">
+            <view class="product" bindtap="toReport" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">
-                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/fba5b77ac9344ef2bbeafc226f61c1bb.jpg'}}" mode="widthFix"></image>
+                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/08a5021d01df4e2d87a5986789f307e1.jpg'}}" mode="widthFix"></image>
                     </view>
-                    <view class="product_bottom">
+                    <!-- <view class="product_bottom">
                         <view class="product_name">{{"定制形象设计"}}</view>
                         <view class="price">
                             <text class="present_price">¥{{199}}</text>
                             <text class="original_price">¥{{299}}</text>
                         </view>
-                    </view>
+                    </view> -->
                 </view>
-            </view> -->
+            </view>
             <view class="product" bindtap="toOrder" data-goodsid="{{item.id}}" wx:key="index">
                 <view wx:if="{{false}}" class="tag">会员专享</view>
                 <view>
                     <view class="product_top">
-                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/fba5b77ac9344ef2bbeafc226f61c1bb.jpg'}}" mode="widthFix"></image>
+                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/08b04ae77ebf46d6ad341c42eeec0d4f.jpg'}}" mode="widthFix"></image>
                     </view>
-                    <view class="product_bottom">
+                    <!-- <view class="product_bottom">
                         <view class="product_name">{{"定制形象设计"}}</view>
                         <view class="price">
                             <text class="present_price">¥{{199}}</text>
                             <text class="original_price">¥{{299}}</text>
                         </view>
-                    </view>
+                    </view> -->
                 </view>
             </view>
         </view>

@@ -1,0 +1,20 @@
+<!--pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials.wxml-->
+<!--pages/subordinateOrder/subordinateOrder.wxml-->
+<view class="content">
+    <view wx:for="{{reportList}}" class="item" data-status="{{item.status}}" data-id="{{item.id}}" data-url="/pages/aestheticsDesignReport/aestheticsDesignReport" bindtap="toDetail">
+            <view class="cell_left">
+                <view>编号:{{item.id}}</view>
+                <view>
+                    <view>状态:{{item.statusText}}</view>
+                    <view>提交时间:{{item.CreateDate1}}</view>
+                    
+                </view>
+            </view>
+            <view class="cell_right">
+                <image mode="aspectFill" src="{{item.frontPicture}}"></image>
+                <image mode="aspectFill" src="{{item.sidePicture}}"></image>
+            </view>
+    </view>
+</view>
+<view wx:if="{{!reportList.length}}" class="submit2" catchtap="to" data-url="/pages/aestheticsDesignReport/aestheticsDesignReport">添加美学设计报告</view>
+<view wx:else class="submit" catchtap="to" data-url="/pages/aestheticsDesignReport/aestheticsDesignReport">添加美学设计报告</view>
