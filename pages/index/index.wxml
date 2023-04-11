@@ -60,7 +60,7 @@
         </swiper-item>
     </swiper> -->
     <view class="mbanner">
-        <!-- <view class="mbanner-left"> -->
+        
         <view class="mbanner-item">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
             <text class="mbanner-text">消费领积分</text>
@@ -82,11 +82,6 @@
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/365ac12f6c1c439589ec1916a24e6b5e.png"></image>
             <text class="mbanner-text">美学分享</text>
         </view>
-
-        <!-- <view class="mbanner-item">
-            <image class="mbanner-img" bindtap="redirect" data-url="/pages/liveOnLine/liveOnLine" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c315c3bfcd7e468dbb7b651e5fb3789d.png"></image>
-            <text class="mbanner-text">视频号</text>
-        </view> -->
     </view>
     <!-- 优惠板块 -->
     <view class="discount">
@@ -99,8 +94,8 @@
             <image class="join" mode="widthFix" catchtap="switchTab" data-url="/pages/shopping/shopping" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image> -->
         </view>
         <view class="discount-item">
-            <image mode="widthFix" bindtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ab7f92ab6ec84d98a556aa9db8158910.png"></image>
-            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/discount/discount" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
+            <image mode="widthFix" bindtap="redirect" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ab7f92ab6ec84d98a556aa9db8158910.png"></image>
+            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
         </view>
     </view>
     <!-- 公告 -->

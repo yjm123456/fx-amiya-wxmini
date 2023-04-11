@@ -2,9 +2,16 @@
 .header {
     position: relative;
 }
+.btn{
+    background-color: #8878f5;
+    color: #fff;
+    padding: 10rpx;
+    border-radius: 10rpx;
+}
 .code{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     position: absolute;
     z-index: 2;
     width: 100%;

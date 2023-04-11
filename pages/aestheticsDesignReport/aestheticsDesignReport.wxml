@@ -4,7 +4,7 @@
         <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/1081bbc3b07a47a9b58826f1004c8a29.jpg"></image>
         <view class="code">
             <text wx:if="{{status!='add'}}" class="no">编号:{{reportId}}</text>
-            <text wx:if="{{status=='design'}}" bindtap="ToPageLocation">查看美学设计</text>
+            <text wx:if="{{status=='design'}}" class="btn" bindtap="ToPageLocation">查看美学设计</text>
         </view>
     </view>
     <view class="content">
@@ -35,7 +35,7 @@
                 </view>
             </view>
             <view class="history_block">
-                <view class="title">做过的医美项目:</view>
+                
                 <view class="etc_img">
                     <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8732c14998274048b1193ab835e44adf.png"></image>
                     <view wx:if="{{we.indexOf(design.pictureTags,'c8af8ea4-3682-4978-98fa-da4d8233207e')>=0}}" style="margin-top: {{-513}}rpx;" class="left_tag">额部</view>
@@ -62,6 +62,7 @@
                     <view wx:if="{{ we.indexOf(design.pictureTags,'cacdbad9-d0a2-424a-96ec-27e72ed183ae')>=0 }}" style="margin-top: {{-592+424}}rpx;" class="right_tag">颈纹</view>
                     <view wx:if="{{ we.indexOf(design.pictureTags,'efef981b-04f6-4c2c-aa9b-f78e9f3bbb78')>=0 }}" style="margin-top: {{-592+466}}rpx;" class="right_tag">肩颈</view>
                 </view>
+                <view class="title">做过的医美项目:</view>
                 <view>
                     <van-radio-group value="{{ hasAestheticMedicineHistory? '1':hasAestheticMedicineHistory===false?'2':''}}" bind:change="onHistoryChange">
                         <view>
@@ -69,9 +70,9 @@
                                 <text>有</text>
                                 <van-radio disabled="{{status=='design'? true:false}}" icon-size='28rpx' name="1" shape='squre' custom-class="radio_style" checked-color="#8b77f4" label-disabled></van-radio><text>请描述过往做过的医美项目</text>
                             </view>
-                            <view class="describe"><textarea value="{{historyDescribe1}}" placeholder-style="color:#e2e2e2" disabled="{{status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handleMinimallyInvasive" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height="autoHeight" placeholder="微创调整的部位以及所用材料:"></textarea></view>
-                            <view class="describe"><textarea value="{{historyDescribe2}}" placeholder-style="color:#e2e2e2" disabled="{{ status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handlePlastic" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height placeholder="整形调整的部位:"></textarea></view>
-                            <view class="describe"><textarea value="{{historyDescribe3}}" placeholder-style="color:#e2e2e2" disabled="{{status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handleSkin" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height placeholder="皮肤做过的仪器或项目:"></textarea></view>
+                            <view class="describe"><textarea value="{{historyDescribe1}}" placeholder-style="color:#e2e2e2" disabled="{{status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handleMinimallyInvasive" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height="autoHeight" placeholder="微创调整的部位以及所用材料(若没有请填写无):"></textarea></view>
+                            <view class="describe"><textarea value="{{historyDescribe2}}" placeholder-style="color:#e2e2e2" disabled="{{ status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handlePlastic" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height placeholder="整形调整的部位(若没有请填写无):"></textarea></view>
+                            <view class="describe"><textarea value="{{historyDescribe3}}" placeholder-style="color:#e2e2e2" disabled="{{status=='design'? true: (hasAestheticMedicineHistory ? false : true) }}" class="history" maxlength="1200" bindinput="handleSkin" style="{{hasAestheticMedicineHistory ? '' : 'border-color:#e2e2e2;'}}" auto-height placeholder="皮肤做过的仪器或项目(若没有请填写无):"></textarea></view>
                         </view>
                         <view class="inline">
                             <text>无</text>

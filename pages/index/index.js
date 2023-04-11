@@ -9,7 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        
+        appId:'',
         // 轮播图
         carouselImage: [],
         projectArr: [{
@@ -91,18 +91,24 @@ Page({
     onLoad: function (options) {
         this.visit();
         const scene = decodeURIComponent(options.scene);
-        
+        this.getAppId(options);
 
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                this.getShareInfo();
-                if(scene != 'undefined'){           
-                    this.setSuperior(scene);
-                }
-            } else {
-                this.showVoucherTips()
-            }
-        })
+        // this.isCustomer((isCustomer) => {
+        //     if (isCustomer) {
+        //         this.getShareInfo();
+        //         if(scene != 'undefined'){           
+        //             this.setSuperior(scene);
+        //         }
+        //     } else {
+        //         this.showVoucherTips()
+        //     }
+        // })
+    },
+    getAppId(options){
+        const appid=options.appid;
+        if(appid){
+            this.setData({appId:appid})
+        }
     },
     //设置上级
     setSuperior(scene) {
@@ -127,7 +133,6 @@ Page({
         const {
             url
         } = e.currentTarget.dataset
-        console.log(url);
         wx.navigateTo({
             url: url,
         })
@@ -143,6 +148,21 @@ Page({
         }).then(() => {
             this.handleBindPhone();
         });
+    },
+    toMini(){
+        var app = getApp();
+        const appId = app.globalData.appId;
+        wx.navigateToMiniProgram({
+            appId: 'wx8747b7f34c0047eb',
+            path: 'pages/index/index?appid='+appId,
+            extraData: {
+              foo: 'bar'
+            },
+            envVersion: 'trial',
+            success(res) {
+              // 打开成功
+            }
+          })
     },
     getVoucher() {
         this.setData({
@@ -223,7 +243,6 @@ Page({
                 customStyle: 'background-color:#000;color:#fff;border: 2rpx solid #DEC350;',
                 className: 'van_dialog_action'
             }).then(() => {
-                console.log("点击");
                 const data = {
                     shareBy: shareid,
                     consumerConsumptionVoucherId: customerconsumptionvoucherid
@@ -409,6 +428,7 @@ Page({
         // this.getGoodsList()
     },
     onShow() {
+        
         this.getCarouselImage();
         this.setData({
             pageNum: 1,
@@ -417,8 +437,8 @@ Page({
             currentPageIndex: 1,
             goodsList: []
         });
-        console.log("展示");
         // this.getGoodsList();
+        
     },
 
     // 获取轮播图

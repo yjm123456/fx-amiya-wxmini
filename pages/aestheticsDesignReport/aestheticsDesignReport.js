@@ -46,7 +46,10 @@ Page({
                 reportId
             });
             this.GetReport(reportId);
+        } else {
+            this.GetUserInfo();
         }
+
     },
     handleNameChange(e) {
         this.setData({
@@ -134,7 +137,7 @@ Page({
             file
         } = event.detail;
         wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
+            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone',
             filePath: file.path,
             name: 'uploadfile',
             success(res) {
@@ -177,7 +180,7 @@ Page({
             file
         } = event.detail;
         wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
+            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', 
             filePath: file.path,
             name: 'uploadfile',
             success(res) {
@@ -224,7 +227,7 @@ Page({
     },
     // 添加美学设计报告
     AddReport() {
-        const {
+        let {
             name,
             birthDay,
             phone,
@@ -401,7 +404,7 @@ Page({
         http('post', '/aestheticsDesignReport/add', data).then(res => {
             if (res.code == 0) {
                 wx.showToast({
-                    title: '成功提交报告!',
+                    title: '您的美学设计信息已提交，请耐心等待啊美雅管家为您提供专属的设计报告!',
                     icon: 'none',
                     duration: 1000
                 })
@@ -432,6 +435,28 @@ Page({
 
             }
         })
+    },
+    GetUserInfo() {
+        http('get', '/user/birthDayCard').then(res => {
+            if (res.code == 0) {
+                let {
+                    name,
+                    phone,
+                    birthDay,
+                    province,
+                    city,
+                    area
+                } = res.data.birthDay
+                birthDay=res.data.birthDay.birthDay.split('T')[0];
+                this.setData({
+                    name: name,
+                    birthDay: birthDay,
+                    phone: phone,
+                    city: province + '-' + city + '-' + area,
+                    simpleCity: city
+                })
+            }
+        });
     },
     GetReport(reportId) {
         http('get', '/AestheticsDesignReport/getByid/' + reportId).then(
@@ -470,8 +495,6 @@ Page({
                         }],
                         design: info.design,
                     })
-                    console.log("索引为" + info.design.pictureTags.indexOf('07d58f1a-3eab-4c6b-91d1-9d2bbda16d5a'));
-                    console.log("索引为" + ((info.design.pictureTags.indexOf('07d58f1a-3eab-4c6b-91d1-9d2bbda16d5a')) >= 0));
                     if (status == 'design') {
                         this.setData({
                             pictures: [info.design.frontPicture, info.design.sidePicture]
@@ -482,7 +505,7 @@ Page({
             });
     },
     updateReport() {
-        const {
+        let {
             reportId,
             name,
             birthDay,

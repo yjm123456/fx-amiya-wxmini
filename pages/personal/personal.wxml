@@ -19,29 +19,36 @@
             </view>
             <view class="info-item" catchtap="toIntegralPage">
                 <view><text>{{balance}}</text></view>
+                <!-- <view><text>{{0}}</text></view>  -->
                 <text>积分</text>
             </view>
             <view class="info-item" data-url="/pages/ConsumptionVoucher/ConsumptionVoucher" bindtap="to">
                 <view><text>{{voucherCount}}</text></view>
+                <!-- <view><text>{{0}}</text></view> -->
                 <text>券类卡包</text>
             </view>
             <view class="info-item" catchtap="toRechargeList">
                 <view><text>{{totalBalance}}</text></view>
+                <!-- <view><text>{{0}}</text></view> -->
                 <text>储值</text>
             </view>
         </view>
         <view class="card" data-url="/pages/businessCard/businessCard" bindtap="to" data-nickname='{{userInfo.nickName}}'>
             <image src="{{memberCard.imageUrl}}" mode="widthFix"></image>
+            <!-- <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/69c7bd526bad40d990d2adad2c556583.png" mode="widthFix"></image> -->
             <view class="card_info">
                 <view class="process" style="{{style}}">
                     <view class="vprocess">
                         <van-progress color="#dec530" track-color="rgba(255,255,255,0.3)" show-pivot="{{false}}" percentage="{{percentage}}" stroke-width="8" />
                     </view>
                     <view><text style="{{style}}">{{growthBalanceInfo.balance}}/{{growthBalanceInfo.balance+growthBalanceInfo.upgradeGrowthPoints}}</text></view>
+                    <!-- <view><text style="{{style}}">{{100}}/{{1000}}</text></view> -->
                 </view>
                 <view class="upgrade">
                     <view><text style="{{style}}">成长值{{growthBalanceInfo.balance}}</text></view>
                     <view><text style="{{style}}">距离下一等级还需要{{growthBalanceInfo.upgradeGrowthPoints}}</text></view>
+                    <!-- <view><text style="{{style}}">成长值{{10}}</text></view>
+                    <view><text style="{{style}}">距离下一等级还需要{{90}}</text></view> -->
                 </view>
             </view>
         </view>

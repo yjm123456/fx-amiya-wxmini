@@ -58,7 +58,7 @@ App({
     appId: "",
     tmplIds:['vayFjnf7gU8-qukpUbLno8Da78Ze2cjUtip1xW0Sqik','XLGnCrVBU40eZ38_7mTrLxMFVck5dfTgjT2-U3FD9i8','wrtg5gf5s_6j6nCF6-AUl6xDiIS_g9vtGONp-hqbFH8'],
     giftTmpId:['0-67gP8KEM8YPI6I8I3r01BxH080Gi1ZLO8XKT4Us4c'],
-    designTmpId:['w3bUsxEikpEvrp7_MN9WGSNyc-NVGtC9zVh0k7dWEbw']
+    designTmpId:['xd76aOnROJDA1gZciQ3eK1ZowQo1V3w08TL96_UkeMw']
   }
 })
 

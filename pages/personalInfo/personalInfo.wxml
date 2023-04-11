@@ -95,7 +95,7 @@
                 <text>{{!userInfo.detailAddress?"":userInfo.detailAddress}}</text>
             </view>
             <view wx:else class="info_text">
-                <van-field value="{{ detailAddress }}" placeholder="请输入个性签名" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onDetailAddressChange" />
+                <van-field value="{{ detailAddress }}" placeholder="请输入详细地址" custom-style="background-color:transparent;padding:0;color:#fff;" border="{{ false }}" bind:change="onDetailAddressChange" />
             </view>
         </view>
     </view>

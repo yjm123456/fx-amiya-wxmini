@@ -28,56 +28,56 @@ Page({
       onLoad: function () {
         var _this = this;
         //圆点设置
-        var leftCircle = 7.5;
-        var topCircle = 7.5;
-        var circleList = [];
-        for (var i = 0; i < 24; i++) {
-          if (i == 0) {
-            topCircle = 15;
-            leftCircle = 15;
-          } else if (i < 6) {
-            topCircle = 7.5;
-            leftCircle = leftCircle + 102.5;
-          } else if (i == 6) {
-            topCircle = 15
-            leftCircle = 620;
-          } else if (i < 12) {
-            topCircle = topCircle + 94;
-            leftCircle = 620;
-          } else if (i == 12) {
-            topCircle = 565;
-            leftCircle = 620;
-          } else if (i < 18) {
-            topCircle = 570;
-            leftCircle = leftCircle - 102.5;
-          } else if (i == 18) {
-            topCircle = 565;
-            leftCircle = 15;
-          } else if (i < 24) {
-            topCircle = topCircle - 94;
-            leftCircle = 7.5;
-          } else {
-            return
-          }
-          circleList.push({ topCircle: topCircle, leftCircle: leftCircle });
-        }
-        this.setData({
-          circleList: circleList
-        })
-        //圆点闪烁
-        setInterval(function () {
-          if (_this.data.colorCircleFirst == '#FFDF2F') {
-            _this.setData({
-              colorCircleFirst: '#FE4D32',
-              colorCircleSecond: '#FFDF2F',
-            })
-          } else {
-            _this.setData({
-              colorCircleFirst: '#FFDF2F',
-              colorCircleSecond: '#FE4D32',
-            })
-          }
-        }, 500)
+        // var leftCircle = 7.5;
+        // var topCircle = 7.5;
+        // var circleList = [];
+        // for (var i = 0; i < 24; i++) {
+        //   if (i == 0) {
+        //     topCircle = 15;
+        //     leftCircle = 15;
+        //   } else if (i < 6) {
+        //     topCircle = 7.5;
+        //     leftCircle = leftCircle + 102.5;
+        //   } else if (i == 6) {
+        //     topCircle = 15
+        //     leftCircle = 620;
+        //   } else if (i < 12) {
+        //     topCircle = topCircle + 94;
+        //     leftCircle = 620;
+        //   } else if (i == 12) {
+        //     topCircle = 565;
+        //     leftCircle = 620;
+        //   } else if (i < 18) {
+        //     topCircle = 570;
+        //     leftCircle = leftCircle - 102.5;
+        //   } else if (i == 18) {
+        //     topCircle = 565;
+        //     leftCircle = 15;
+        //   } else if (i < 24) {
+        //     topCircle = topCircle - 94;
+        //     leftCircle = 7.5;
+        //   } else {
+        //     return
+        //   }
+        //   circleList.push({ topCircle: topCircle, leftCircle: leftCircle });
+        // }
+        // this.setData({
+        //   circleList: circleList
+        // })
+        // //圆点闪烁
+        // setInterval(function () {
+        //   if (_this.data.colorCircleFirst == '#FFDF2F') {
+        //     _this.setData({
+        //       colorCircleFirst: '#FE4D32',
+        //       colorCircleSecond: '#FFDF2F',
+        //     })
+        //   } else {
+        //     _this.setData({
+        //       colorCircleFirst: '#FFDF2F',
+        //       colorCircleSecond: '#FE4D32',
+        //     })
+        //   }
+        // }, 500)
         //奖品item设置
         var awardList = [];
         //间距,怎么顺眼怎么设置吧.
@@ -122,7 +122,7 @@ Page({
           indexSelect++;
           //这里我只是简单粗暴用y=30*x+200函数做的处理.可根据自己的需求改变转盘速度
           i += 30;
-          if (i > 1000) {
+          if (i > 100) {
             //去除循环
             clearInterval(timer)
             //获奖提示
