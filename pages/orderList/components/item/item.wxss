@@ -1,14 +1,14 @@
 page{
-    background-color: #000;
+    background-color: #fff;
 }
 .warp {
     padding: 20rpx;
 }
 
 .item {
-    background-color: #262626;
+    background-color: #fff;
     border-radius: 20rpx;
-    /* box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2; */
+    box-shadow: 2rpx 2rpx 5rpx 5rpx #e2e2e2;
     overflow: hidden;
     margin-bottom: 20rpx;
 }
@@ -21,9 +21,7 @@ page{
 }
 
 .order_state {
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+    color: #8878f5;
     font-size: 21rpx;
 }
 
@@ -43,7 +41,7 @@ page{
     margin-left: 20rpx;
     border-radius: 20rpx;
     display: flex;
-    background-color: #313131;
+    background-color: #fff;
 }
 .content .goods_pic{
     border-radius: 20rpx;
@@ -72,7 +70,7 @@ page{
 
 .g_name {
     width: 240rpx;
-    color: #fff;
+    color: #000;
     overflow: hidden;
     /* 内容末尾追加省略号。 */
     text-overflow: ellipsis;
@@ -88,10 +86,14 @@ page{
     font-size: 25rpx;
     color: #333333;
 }
-
+.price{
+    color: #8878f5;
+    font-weight: 600;
+    
+}
 .content .info .price {
     width: 100%;
-    color: #DEC350;
+    color: #8878f5;
     bottom: 0;
     display: flex;
     align-items: center;
@@ -99,21 +101,20 @@ page{
 }
 
 .content .info .price>text:first-of-type {
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+    color: #000;
     font-weight: 600;
+    font-size: 28rpx;
 }
 
 .content .info .price>text:last-of-type {
-    color: #fff;
+    color: #000;
     font-size: 28rpx;
 }
 
 .footer {
     padding: 20rpx 30rpx;
-    color: #fff;
-    background-color: #262626;
+    color: #000;
+    background-color: #fff;
     text-align: right;
     display: flex;
     justify-content: space-between;
@@ -129,7 +130,7 @@ page{
 
 .tool {
     padding: 20rpx 30rpx;
-    background-color: #262626;
+    background-color: #fff;
     text-align: right;
     margin-top: 1rpx;
     display: flex;
@@ -139,13 +140,18 @@ page{
 .logistics{
     /* margin-right: 20rpx; */
     margin-left: 20rpx;
+    color: #000 !important;
 }
 .detail_btn{
     margin-left: 20rpx;
+    color: #000 !important;
+}
+.order_source{
+    font-size: 28rpx;
 }
 .tool .order_source {
     font-size: 28rpx;
-    color: #fff;
+    color: #000;
 }
 
 .source {
@@ -178,9 +184,9 @@ page{
     padding-right: 30rpx;
 }
 .jftk{
-    background-color: #313131;
-    padding: 16rpx;
-    color: #fff;
+    background-color: #f1f1f1;
+    padding: 15rpx 22rpx;
+    color: #000;
     font-size: var(--button-small-font-size,12px);
     height: var(--button-small-height);
 }

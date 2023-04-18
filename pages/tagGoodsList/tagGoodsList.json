@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "authPhone": "./../../components/authPhone/auth"
+    }
+}

@@ -12,6 +12,6 @@
 		<input class="input" password placeholder="- - - -" bindinput="codeInput" type="number"/>
 	</view>
 	<view class="login">
-		<button type="primary" class="btn" bindtap="login">提交</button>
+		<button  type="primary" class="btn" bindtap="login">提交</button>
   </view>
 </view>

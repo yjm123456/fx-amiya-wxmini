@@ -54,6 +54,8 @@ Component({
 
     // 中午|下午
     time: "",
+    noon:true,
+    afternoon:true
   },
 
   ready() {
@@ -82,19 +84,23 @@ Component({
     },
 
     handleReserve(e) {
-      const {currentdate , time , week ,hospitalid,appointarea} = e.currentTarget.dataset
-       console.log("内容长度为"+appointarea.length);
-        if(appointarea.length<=5){
-            wx.showToast({
-              title: '请先选择想要预约的地区',
-              icon:'none',
-              duration:1000
+      const {currentdate , time , week ,hospitalid,appointarea} = e.currentTarget.dataset;
+        this.triggerEvent("AppointChange",{currentDate:currentdate,time,week})
+        if(time=='上午'){
+            this.setData({
+                noon:false,
+                afternooon:true
             })
-            return;
+        }else{
+            this.setData({
+                noon:true,
+                afternoon:false
+            })
         }
-        wx.navigateTo({
-          url: '/pages/storeUserMessage/storeUserMessage?appointmentDate=' + currentdate + '&week=星期' + week + '&time=' + time + '&hospitalId=' + hospitalid+'&appointarea='+appointarea,
-        })
+        
+        // wx.navigateTo({
+        //   url: '/pages/storeUserMessage/storeUserMessage?appointmentDate=' + currentdate + '&week=星期' + week + '&time=' + time + '&hospitalId=' + hospitalid+'&appointarea='+appointarea,
+        // })
     },
 
 

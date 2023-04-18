@@ -3,7 +3,7 @@ page{
 }
 .hospital_item{
   width: 94%;
-  background-color: #262626;
+  background-color: #f1f1f1;
   border-radius: 10rpx;
   margin: 25rpx auto;
   padding: 30rpx;
@@ -35,7 +35,7 @@ page{
 .tab_item>text{
   padding: 4rpx 20rpx;
   box-sizing: border-box;
-  background-color: #313131;
+  background-color: #f1f1f1;
   border-radius:10rpx ;
   margin-right: 20rpx;
   font-size: 24rpx;

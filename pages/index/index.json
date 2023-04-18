@@ -12,6 +12,6 @@
         "van-dialog": "@vant/weapp/dialog/index"
     },
     "navigationBarTitleText": "啊美雅AMEIYA甄选",
-    "navigationBarBackgroundColor": "#000000"
+    "navigationBarBackgroundColor": "#8878f5"
     
 }

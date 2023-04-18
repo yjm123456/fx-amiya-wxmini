@@ -1,5 +1,6 @@
 <view class="personal_container">
-    <view class="user_section" style="background-image: url(../../images/bc.png);background-size: 100% 100%;">
+<!-- style="background-image: url(../../images/bc.png);background-size: 100% 100%;" -->
+    <view class="user_section" style="background-color: #8878f5;background-size: 100% 100%;">
         <view class="user_info_box">
             <view class="portrait_box" bindtap="tpPersonalInfo">
                 <image class="portrait" src='{{userInfo.avatarUrl}}'></image>
@@ -13,7 +14,7 @@
         <view class="account_info">
             <view class="memberbenefit" data-url="/pages/memberbenefits/memberbenefits" bindtap="to">
                 <view class="member">
-                    <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/b53b9d1e4fba4961b177d39aadb3e998.png"></image>
+                    <image src="/images/wg.png"></image>
                 </view>
                 <text>会员权益</text>
             </view>
@@ -27,10 +28,11 @@
                 <!-- <view><text>{{0}}</text></view> -->
                 <text>券类卡包</text>
             </view>
-            <view class="info-item" catchtap="toRechargeList">
-                <view><text>{{totalBalance}}</text></view>
-                <!-- <view><text>{{0}}</text></view> -->
-                <text>储值</text>
+            <view class="info-item" catchtap="toShoppingCart">
+                <view class="member">
+                    <image src="/images/shopcart.png"></image>
+                </view>
+                <text>购物车</text>
             </view>
         </view>
         <view class="card" data-url="/pages/businessCard/businessCard" bindtap="to" data-nickname='{{userInfo.nickName}}'>
@@ -55,7 +57,7 @@
     </view>
 </view>
 <view class="cover_container">
-    <view class="order" wx:if="{{showAppoint}}">
+    <!-- <view class="order" wx:if="{{showAppoint}}">
         <view class="order_title">
             <text class="title_tip">我的预约</text>
         </view>
@@ -67,14 +69,16 @@
                 <view><text>预约叫车</text></view>
             </view>
         </view>
-    </view>
+    </view> -->
 
     <view class="order">
-        <view class="order_title">
-            <text class="title_tip">我的订单</text>
-            <text catchtap="to" data-url="/pages/orderList/orderList" class="all_order">查看全部订单</text>
-        </view>
         <view class="order_status">
+            <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=0">
+                <view>
+                    <image src="../../images/qb.png"></image>
+                </view>
+                <view><text>全部</text></view>
+            </view>
             <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=1">
                 <view>
                     <image src="../../images/dfk.png"></image>
@@ -99,12 +103,7 @@
                 </view>
                 <view><text>待评价</text></view>
             </view>
-            <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=6">
-                <view>
-                    <image src="../../images/thsh.png"></image>
-                </view>
-                <view><text>退货/售后</text></view>
-            </view>
+            
         </view>
     </view>
     <!-- <van-tabs active="{{ active }}" bind:change="onChange" nav-class="tabs" custom-class="tabs" color="#DEC350" title-inactive-color="#fff" title-active-color="#DEC350">
@@ -135,17 +134,13 @@
             </van-tab>
         </van-tabs> -->
     <view class="cell">
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentCarList/appointmentCarList" bindtap="to" title="叫车信息" />
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/shoppingCart/shoppingCart" bindtap="to" title="购物车" />
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/ConsumptionVoucher/ConsumptionVoucher" bindtap="to" data-nickname='{{userInfo.nickName}}' title="抵用券" />
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/recharge/recharge" bindtap="to" title="充值中心" />
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/missionCenter/missionCenter" bindtap="to" title="任务中心" />
-        <van-cell custom-class="cell_item" is-link link-type="switchTab" data-url="/pages/shopping/shopping" bindtap="toIntegral" title="积分" />
+        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentHospital/appointmentHospital?" bindtap="to" title="预约信息" />
+        
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" bindtap="to" title="消费领积分" />
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/writeoffGoodGift/writeoffGoodGift" bindtap="to" title="赠品" />
+        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/writeoffGoodGift/writeoffGoodGift" bindtap="to" title="生日礼遇,节日礼遇" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/orderList/orderList">
             <view slot="title">
-                <text style="color: #fff;">联系客服</text>
+                <text style="color: #000;">联系客服</text>
                 <button open-type="contact" hover-class="none" class="contact"></button>
             </view>
         </van-cell>

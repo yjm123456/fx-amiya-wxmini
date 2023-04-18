@@ -1,146 +1,104 @@
-<view class="container">
-    <!-- 轮播图 -->
-    <swiper circular='true' class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
+<!-- 轮播图 -->
+<swiper circular='true' class='banner' indicator-dots='true' autoplay='true' interval='5000' duration='1000' indicator-active-color="#DEC350">
         <swiper-item wx:for="{{carouselImage}}" bindtap="redirect" wx:key="picUrl" data-url="{{item.linkUrl}}">
-            <image style="border-radius: 20rpx;" src='{{item.picUrl}}' class='slide' mode='aspectFill'></image>
+            <image  src='{{item.picUrl}}' class='slide' mode='widthFix'></image>
         </swiper-item>
     </swiper>
-    <view class="product_list">
-        <view class="product_warp">
-            <view class="product" bindtap="toReport" data-goodsid="{{item.id}}" wx:key="index">
-                <view wx:if="{{false}}" class="tag">会员专享</view>
-                <view>
-                    <view class="product_top">
-                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/08a5021d01df4e2d87a5986789f307e1.jpg'}}" mode="widthFix"></image>
-                    </view>
-                    <!-- <view class="product_bottom">
-                        <view class="product_name">{{"定制形象设计"}}</view>
-                        <view class="price">
-                            <text class="present_price">¥{{199}}</text>
-                            <text class="original_price">¥{{299}}</text>
-                        </view>
-                    </view> -->
-                </view>
+<view class="container">
+    
+    <!-- 变美计划 -->
+    <view class="warp">
+        <view class="title"><text>变美计划</text></view>
+        <view class="mbanner">
+            <view class="mbanner-item">
+                <image mode="widthFix" class="mbanner-img" bindtap="redirect" data-url="/pages/aestheticDesign/aestheticDesign" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
+                <text class="mbanner-text">美学设计</text>
             </view>
-            <view class="product" bindtap="toOrder" data-goodsid="{{item.id}}" wx:key="index">
-                <view wx:if="{{false}}" class="tag">会员专享</view>
-                <view>
-                    <view class="product_top">
-                        <image src="{{'https://ameiya.oss-cn-hangzhou.aliyuncs.com/08b04ae77ebf46d6ad341c42eeec0d4f.jpg'}}" mode="widthFix"></image>
-                    </view>
-                    <!-- <view class="product_bottom">
-                        <view class="product_name">{{"定制形象设计"}}</view>
-                        <view class="price">
-                            <text class="present_price">¥{{199}}</text>
-                            <text class="original_price">¥{{299}}</text>
-                        </view>
-                    </view> -->
-                </view>
+            <view class="mbanner-item"  wx:if="{{showAppoint}}">
+                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
+                <text class="mbanner-text">免费叫车</text>
+            </view>
+            <view class="mbanner-item">
+                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
+                <text class="mbanner-text">消费领积分</text>
+            </view>
+
+            <view class="mbanner-item">
+                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
+                <text class="mbanner-text">会员权益</text>
             </view>
         </view>
     </view>
-    <!-- <swiper class="banner2" autoplay='true' circular="true" display-multiple-items='2' interval='5000' duration='1000'>
-        <swiper-item class="item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/38c06f303d1041e68c2054d2dba031f2.jpg" bindtap="handleActivity1" data-activity="{{1}}" mode="widthFix"></image>
-        </swiper-item>
-        <swiper-item class="item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/97d8ba0683514f0bbba95108d05c97c3.jpg" bindtap="handleActivity" data-activity="{{2}}" mode="widthFix"></image>
-        </swiper-item>
-        <swiper-item class="item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/db7b0d84c9a44263b444731d9e7c47e8.jpg" bindtap="handleRedirect" data-name="{{'kd'}}" mode="widthFix"></image>
-        </swiper-item>
-        <swiper-item class="item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/43c2bcae9c5d49bd8e1db86ce2fc0e29.jpg" bindtap="handleRedirect" data-name="{{'yls'}}" mode="widthFix"></image>
-        </swiper-item>
-        <swiper-item class="item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2e9bdc5d0f4847619964b4ab719b6258.jpg" bindtap="handleRedirect" data-name="{{'my'}}" mode="widthFix"></image>
-        </swiper-item>
-        <swiper-item class="item">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/4a07c64e50654d88850903edf90b9882.jpg" bindtap="handleRedirect" data-name="{{'zz'}}" mode="widthFix"></image>
-        </swiper-item>
-    </swiper> -->
+
+    <!-- 爆品分类 -->
+    <view class="warp">
+        <view class="title"><text>爆品分类</text></view>
     <view class="mbanner">
-        
-        <view class="mbanner-item">
-            <image class="mbanner-img" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
-            <text class="mbanner-text">消费领积分</text>
+        <view wx:for="{{hotNotBrandCategoryList}}" class="mbanner-item">
+            <view class="mbanner-img-warp">
+                <image class="mbanner-img-ca" bindtap="switchTab" data-id="{{item.id}}" data-url="/pages/shop/shop" src="{{item.CategoryImg}}"></image>
+            </view>
+            <text class="mbanner-text">{{item.name}}</text>
         </view>
-        <view class="mbanner-item" wx:if="{{showAppoint}}">
+        <!-- <view class="mbanner-item">
+            <view class="mbanner-img-warp">
+                <image class="mbanner-img-ca" bindtap="redirect" data-id="{{'hfid'}}" data-url="/pages/tagGoodsList/tagGoodsList" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
+            </view>
+            <text class="mbanner-text">护肤</text>
+        </view>
+        <view class="mbanner-item">
+           <view class="mbanner-img-warp">
+            <image class="mbanner-img-ca" bindtap="redirect" data-id="{{'8dd5b4e7-ab20-42c9-9371-18349cd047df'}}" data-url="/pages/tagGoodsList/tagGoodsList" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
+           </view>
+            <text class="mbanner-text">饰品</text>
+        </view>
+
+        <view class="mbanner-item">
+            <view class="mbanner-img-warp">
+                <image class="mbanner-img-ca" bindtap="redirect" data-id="{{'shid'}}" data-url="/pages/tagGoodsList/tagGoodsList" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
+            </view>
+            <text class="mbanner-text">生活</text>
+        </view> -->
+    </view>
+    </view>
+    <!-- 热卖大牌 -->
+    <view class="warp">
+        <view class="title"><text>热卖大牌</text></view>
+    <view class="mbanner">
+        <view wx:for="{{hotCategoryList}}" class="mbanner-item">
+            <view class="brand">
+                <image  bindtap="redirect" data-id="{{item.id}}" data-url="/pages/goodsList/goodsList" src="{{item.categoryImg}}"></image>
+            </view>
+            <text class="mbanner-text">{{item.name}}</text>
+        </view>
+        <!-- <view class="mbanner-item" wx:if="{{showAppoint}}">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
-            <text class="mbanner-text">预约到院</text>
+            <text class="mbanner-text">免费叫车</text>
         </view>
         <view class="mbanner-item" wx:if="{{showAppoint}}">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
-            <text class="mbanner-text">预约叫车</text>
+            <text class="mbanner-text">消费领积分</text>
         </view>
 
         <view class="mbanner-item">
             <image class="mbanner-img" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
             <text class="mbanner-text">会员权益</text>
-        </view>
-        <view class="mbanner-item">
-            <image class="mbanner-img" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/365ac12f6c1c439589ec1916a24e6b5e.png"></image>
-            <text class="mbanner-text">美学分享</text>
-        </view>
+        </view> -->
     </view>
-    <!-- 优惠板块 -->
-    <view class="discount">
-        <view class="discount-item">
-            <image mode="widthFix" bindtap="to" data-url="/pages/pointAndMoney/pointAndMoney" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/19ed0989031e49318cc1efc709a104b8.jpg"></image>
-            <image class="join" mode="widthFix" catchtap="to" data-url="/pages/pointAndMoney/pointAndMoney" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
-            <!-- <image mode="widthFix" bindtap="to" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
-            <image class="join" mode="widthFix" catchtap="to" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image> -->
-            <!-- <image mode="widthFix" bindtap="switchTab" data-url="/pages/shopping/shopping" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/34aac01c2e19432185f3df6697a28ffb.jpg"></image>
-            <image class="join" mode="widthFix" catchtap="switchTab" data-url="/pages/shopping/shopping" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image> -->
-        </view>
-        <view class="discount-item">
-            <image mode="widthFix" bindtap="redirect" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ab7f92ab6ec84d98a556aa9db8158910.png"></image>
-            <image class="join" mode="widthFix" catchtap="redirect" data-url="/pages/pointLottery/pointLottery" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/e3449421d5f243ac952ca70c25961cb8.png"></image>
-        </view>
     </view>
-    <!-- 公告 -->
-    <!-- <swiper vertical='true' class="notice"	autoplay='true' circular='true' interval='5000' duration='1000' >
-            <swiper-item>
-                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" left-icon="volume-o" scrollable="{{ true }}" background="#262626" text="积分兑换有礼~ MEIYA官方" />
-            </swiper-item>
-            <swiper-item>
-                <van-notice-bar custom-class="notice_bar" catchtap="toCode" data-url="/pages/showCode/showCode" left-icon="/images/LOGO.png" scrollable="{{ true }}" background="#262626" text="来和最美的自己打个招呼~ MEIYA官方" />
-            </swiper-item>
-        </swiper> -->
-    <!-- 4999美肤券 -->
-    <view class="notice" data-url="/pages/shoppingMall/shoppingMall" bindtap="toShop">
-        <image mode="aspectFit" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/4432f39842504aebb1dd50455d066deb.png"></image>
-    </view>
-    <!-- <view class="discount">
-        <view class="discount-item">
-            <image mode="widthFix" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=dd" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/662ec8f5c5b243e0bbbf186db4902381.jpg"></image>
-        </view>
-        <view class="discount-item">
-            <image mode="widthFix" bindtap="redirect" data-url="/pages/skinCare/skinCare?name=jn" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/05b81b63d323482fa6df5fb249111d12.jpg"></image>
-        </view>
-    </view> -->
-    <!-- 商品列表 -->
-    <!-- <view class="product_list">
-        <view class="h3 title">猜你喜欢</view>
-        <view class="product_warp">
-            <view class="product" wx:for="{{goodsList}}" bindtap="goodsDetails" data-goodsid="{{item.id}}" wx:key="index">
-                <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
-                <view>
-                    <view class="product_top">
-                        <image src="{{item.thumbPicUrl}}" mode="widthFix"></image>
-                    </view>
-                    <view class="product_bottom">
-                        <view class="product_name">{{item.name}}</view>
-                        <view class="price">
-                            <text class="present_price">¥{{item.minShowPrice}}</text>
-                            <text class="original_price">¥{{item.maxShowPrice}}</text>
-                        </view>
-                    </view>
-                </view>
+    <!-- 热卖商品 -->
+    
+    <view class="hot_product">
+        <view wx:for="{{goodsList}}" bindtap="goodsDetails" data-exchagetype="{{item.exchangeType}}" data-goodsid="{{item.id}}" class="product">
+            <image mode="aspectFill" src="{{item.thumbPicUrl}}"></image>
+            <view class="product_desc">
+                <text class="name">{{item.name}}</text>
+                <text class="desc">{{item.description}}</text>
+                <text wx:if="{{item.exchangeType==7}}" class="p_tag">可参与积分加钱购</text>
+                <view class="price"><text class="min_price">¥{{item.salePrice}}{{item.unit?'/'+item.unit:''}}</text><text class="origin_price">¥{{item.maxShowPrice}}</text></view>
             </view>
         </view>
-    </view> -->
-
+    </view>
 </view>
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

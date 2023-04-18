@@ -96,7 +96,7 @@ Page({
     //点击使用跳转到商城
     toShop() {
         wx.switchTab({
-            url: '/pages/shoppingMall/shoppingMall',
+            url: '/pages/shop/shop',
         })
     },
     toAppointCar() {

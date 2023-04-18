@@ -3,7 +3,8 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "received":"./components/received/received",
-    "notClaimed":"./components/notClaimed/notClaimed"
+    "notClaimed":"./components/notClaimed/notClaimed",
+    "van-divider": "@vant/weapp/divider/index"
   },
   "navigationBarTitleText": "赠品"
 }

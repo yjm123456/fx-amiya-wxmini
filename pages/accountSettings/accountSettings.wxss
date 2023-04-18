@@ -5,11 +5,11 @@
     margin: 50rpx 20rpx;
 }
 page{
-    background-color: #000;
+    background-color: #fff;
 }
 .cell_item{
-    background-color: #262626 !important;
-    color: #fff!important;
+    background-color: #fff !important;
+    color: #000!important;
     font-size: 30rpx !important;
 }
 .cell_value{

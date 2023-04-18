@@ -7,7 +7,7 @@
 		<van-switch checked="{{ isDefault }}" size="24px" bind:change="handleIsDefaultChange" />
 	</van-cell>
 	<van-cell>
-		<van-button type="primary" block round bind:click="submit">保存</van-button>
+		<van-button color="#8878f5" type="primary" block round bind:click="submit">保存</van-button>
 	</van-cell>
 </van-cell-group>
 

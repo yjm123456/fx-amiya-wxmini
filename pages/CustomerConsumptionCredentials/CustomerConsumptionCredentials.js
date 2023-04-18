@@ -11,14 +11,31 @@ Page({
         nextPage: true,
         //当前商品展示列表页码
         currentPageIndex: 1,
-        consumptionCredentialsList: []
+        consumptionCredentialsList: [],
+        liveAnchor:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
+        var app=getApp();
+        const {assisteAppId}=app.globalData;
+        if(assisteAppId=="ddappid"){
+            this.setData({
+                liveAnchor:'dd'
+            })
+        }
+        if(assisteAppId=="jnappid"){
+            this.setData({
+                liveAnchor:'jn'
+            })
+        }
+        if(assisteAppId=="wx695942e4818de445"){
+            this.setData({
+                liveAnchor:'mr'
+            })
+        }
     },
     toDetail(e) {
         const {

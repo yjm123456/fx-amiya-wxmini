@@ -1,6 +1,6 @@
 /* pages/LiveAnchorDetail/LiveAnchorOrder/LiveAnchorOrder.wxss */
 page{
-    background-color: #000;
+    background-color: #f1f1f1;
     height: 100%;
 }
 .order_form{
@@ -8,27 +8,27 @@ page{
     overflow: hidden;
     margin: 20rpx 20rpx;
     padding: 50rpx 20rpx;
-    background-color: #262626;
+    background-color: #f1f1f1;
 }
 .field{
-    background-color: #313131 !important;
-    color: #fff !important;
+    background-color: #fff !important;
+    color: #000 !important;
 }
 .submit_btn{
-    margin: 30rpx 30rpx;
-    background:-webkit-linear-gradient(right ,#dec530,#e4c675);
+    margin: 30rpx 0rpx;
+    background-color: #8878f5;
     color: #fff;
     font-size: 32rpx;
     font-weight: 600;
 }
 .van-cell{
-    background-color: #262626 !important;
+    background-color: #fff !important;
 }
 .van-cell__value{
-    background-color: #313131 !important;
+    background-color: #fff !important;
     padding: 20rpx;
     border-radius: 15rpx;
-    color: #fff !important;
+    color: #000 !important;
 }
 
 
@@ -234,11 +234,11 @@ page{
       display: flex;
       flex-direction: column;
       font-size: 22rpx;
-      color: #fff;
+      color: #000;
   }
   .pay_list{
-    padding: 20rpx;
-    background-color: #363636;
+    padding: 20rpx 0;
+    background-color: #f1f1f1;
     margin-top: 20rpx;
     /* margin: 30rpx; */
     border-radius: 20rpx;
@@ -253,9 +253,9 @@ page{
     width: 100%;
 }
 .van-cell{
-    background-color: #313131 !important;
+    background-color: #fff !important;
     border-radius: 20rpx !important;
-    color: #fff !important;
+    color: #000 !important;
     margin-top: 20rpx;
 }
 #bind_tips .van-goods-action {
@@ -274,7 +274,7 @@ page{
     width: 245rpx;
 }
 .van-goods-action {
-    background-color: #000 !important;
+    background-color: #8878f5 !important;
 }
 
 .van-button--danger {

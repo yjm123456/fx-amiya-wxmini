@@ -91,11 +91,11 @@ Page({
           url: '/pages/integral/integral',
         })
     },
-    toRechargeList() {
+    toShoppingCart() {
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 wx.navigateTo({
-                    url: '/pages/rechargeRecord/rechargeRecord',
+                    url: '/pages/shoppingCart/shoppingCart',
                 })
             } else {
                 wx.showToast({

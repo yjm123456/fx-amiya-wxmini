@@ -1,9 +1,9 @@
 /* pages/writeoffGoodGift/writeoffGoodGift.wxss */
 page{
-    background-color: #000;
+    background-color: #fff;
 }
 .van-tabs__scroll{
-    background-color: #000 !important;
+    background-color: #fff !important;
 }
 .tabs{
     background-color: #000 !important;

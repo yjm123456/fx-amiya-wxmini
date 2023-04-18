@@ -38,7 +38,8 @@ Page({
         //是否选中价格排序
         priceSelected: false,
         controlAuthPhone:false,
-        showHistory:false
+        showHistory:false,
+        
     },
 
     /**

@@ -1,12 +1,59 @@
 /* pages/appointmentHospital/appointment/appointment.wxss */
+.info{
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+    background-color: #f1f1f1;
+    margin: 20rpx;
+    border-radius: 20rpx;
+}
+input{
+    background-color: #fff;
+    margin-top: 20rpx;
+    font-size: 30rpx;
+    border-radius: 10rpx;
+    padding: 10rpx;
+}
+.input_group{
+    position: relative;
+}
+.item_btn{
+    position: absolute;
+    top: 15rpx;
+    right: 10rpx;
+    background-color: #8878f5;
+    width: 80rpx;
+    height: 40rpx;
+    font-size: 30rpx;
+    color: #fff;
+    padding: 0;
+    border-radius: 5rpx;
+    line-height: 40rpx;
+    text-align: center;
+}
+.code_btn{
+    position: absolute;
+    right: 10rpx;
+    top: 290rpx;
+    background-color: #8878f5;
+    height: 40rpx;
+    font-size: 30rpx;
+    color: #fff;
+    padding: 0rpx 5rpx;
+    border-radius: 5rpx;
+    line-height: 40rpx;
+    text-align: center;
+    z-index: 3;
+}
 .container{
     margin: 20rpx;
-    background-color: #313131;
+    background-color: #f1f1f1;
     border-radius: 20rpx;
     padding: 1rpx;
+    color: #000;
 }
+
 .select-city{
-    color: #fff;
+    color: #000;
     padding: 20rpx;
     display: flex;
     flex-direction: row;
@@ -34,15 +81,16 @@
     margin-left: 20rpx;
     display: flex;
     align-items: center;
-    background-color: #262626;
+    background-color: #8878f5;
     padding: 10rpx;
     border-radius: 10rpx;
+    color: #fff;
 }
 
 /* 预约地区 */
 .appoint-area{
-    background-color: #262626;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border-radius: 10rpx;
     margin: 20rpx;
     padding: 10rpx;
@@ -86,7 +134,51 @@
 .item-info>text{
     text-overflow: ellipsis;
 }
-
+/* 预约叫车 */
+.appointment_car{
+    padding: 20rpx;
+    background-color: #f1f1f1;
+    margin: 20rpx;
+    border-radius: 20rpx;
+    position: relative;
+}
+.address{
+    background-color: #fff;
+    border-radius: 20rpx;
+    width: 650rpx;
+    height: 200rpx;
+    font-size: 30rpx;
+    padding: 10rpx;
+}
+.origin_picker{
+    color: #000;
+    position: relative;
+}
+.ar{
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    background-color: #8878f5;
+    border-radius: 5rpx;
+    padding: 1rpx 10rpx;
+    color:#fff;
+    font-size: 30rpx;
+    z-index: 2;
+}
+.hospital_btn{
+    position: absolute;
+    top: 350rpx;
+    right: 30rpx;
+    background-color: #8878f5;
+    width: 140rpx;
+    height: 40rpx;
+    font-size: 30rpx;
+    color: #fff;
+    padding: 0;
+    border-radius: 5rpx;
+    line-height: 40rpx;
+    text-align: center;
+}
 .popup_con{
     padding: 20rpx;
     box-sizing: border-box;
@@ -124,8 +216,8 @@
     margin-top: 60rpx;
   }
   ._on,.active,.actives {
-    color: #ff1554;
-    border: 1rpx solid #ff1554;
+    color: #8878f5;
+    border: 1rpx solid #8878f5;
   }
   .arrival_plan{
     width: 120rpx;
@@ -177,9 +269,16 @@
     margin-bottom: 50rpx;
   }
   .local{
-    background-image: -webkit-linear-gradient(right, #e7cdc4, #fffaf3, #eacdbe, #fbeee5, #e4cfbb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #8878f5;
     font-weight: 600;
+  }
+  .submit{
+      color: #fff;
+      background-color: #8878f5;
+      font-size: 35rpx;
+      margin: 20rpx 20rpx 80rpx 20rpx;
+      border-radius: 15rpx;
+      padding: 10rpx;
+      text-align: center;
   }
 

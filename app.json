@@ -78,14 +78,19 @@
         "pages/search/search",
         "pages/pointLottery/pointLottery",
         "pages/aestheticsDesignReport/aestheticsDesignReport",
-        "pages/aestheticsDesignReportList/aestheticsDesignReportList"
+        "pages/aestheticsDesignReportList/aestheticsDesignReportList",
+        "pages/goodsList/goodsList",
+        "pages/tagGoodsList/tagGoodsList",
+        "pages/shop/shop",
+        "pages/integralShop/integraShop",
+        "pages/aestheticDesign/aestheticDesign"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {
-        "color": "#fff",
-        "selectedColor": "#DEC350",
+        "color": "#000",
+        "selectedColor": "#8878f5",
         "borderStyle": "white",
-        "backgroundColor": "#000000",
+        "backgroundColor": "#fff",
         "list": [
             {
                 "selectedIconPath": "images/tabbarImg/indexsel.png",
@@ -96,14 +101,14 @@
             {
                 "selectedIconPath": "images/tabbarImg/shopsel.png",
                 "iconPath": "images/tabbarImg/shop.png",
-                "pagePath": "pages/shoppingMall/shoppingMall",
-                "text": "商城"
+                "pagePath": "pages/shop/shop",
+                "text": "产品商城"
             },
             {
                 "selectedIconPath": "images/tabbarImg/internalsel.png",
                 "iconPath": "images/tabbarImg/internal.png",
-                "pagePath": "pages/shopping/shopping",
-                "text": "积分加钱购"
+                "pagePath": "pages/integralShop/integraShop",
+                "text": "积分商城"
             },
             {
                 "selectedIconPath": "images/tabbarImg/minesel.png",
@@ -115,7 +120,7 @@
     },
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#000",
+        "navigationBarBackgroundColor": "#8878f5",
         "navigationBarTitleText": "啊美雅",
         "navigationBarTextStyle": "white"
     },

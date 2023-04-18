@@ -1,0 +1,16 @@
+/* pages/aestheticDesign/aestheticDesign.wxss */
+.content{
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-around;
+}
+.item{
+    width: 330rpx;
+    height: 330rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+.item>image{
+    width: 100%;
+    
+}

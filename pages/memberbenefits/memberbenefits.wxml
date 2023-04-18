@@ -1,28 +1,11 @@
 <scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
     <view class="content">
-        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/729ad3cc36dd4e418a2f7fe4f2727fb3.jpg"></image>
-        <image class="hands1" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands2" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands3" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands4" mode="widthFix" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands5" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands6" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands7" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands8" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands10" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands11" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands12" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/6f0976961f464d8496677621a74fc9cc.png"></image>
-        <image class="hands9" mode="widthFix" bindtap="redirect" data-url="/pages/rewardExchange/rewardExchage" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/2834b809ef4a4af5960f6ff23d95e8f9.png"></image>
+        <image class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/64274787dde34ea586df76f08a01e252.jpg"></image>
         <view class="redirect1" bindtap="redirect" data-url="/pages/birthDayCard/birthDayCard" ></view>
-        <view class="redirect2" bindtap="redirect" data-url="/pages/festivalGift/festivalGift"></view>
-        <view class="redirect3" bindtap="redirect" data-url="/pages/businessCard/businessCard"></view>
-        <view class="redirect4" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" ></view>
-        <view class="redirect5" bindtap="toIntegral" data-url="/pages/shoppingMall/shoppingMall"></view>
-        <view class="redirect6" bindtap="redirect" data-url="/pages/beautyDiary/beautyDiary"></view>
-        <view class="redirect7" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials"></view>
-        <view class="redirect8" bindtap="toIntegral" data-url="/pages/shopping/shopping"></view>
-        <view class="redirect9" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar"></view>
-        <view class="redirect10" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar"></view>
-        <view class="redirect11" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital"></view>
+        <view class="redirect2" bindtap="redirect" data-url="/pages/birthDayCard/birthDayCard" ></view>
+        <view class="redirect3"  data-url="/pages/birthDayCard/birthDayCard" ></view>
+        <view class="redirect4" bindtap="redirect"  data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" ></view>
+        <view class="redirect5" bindtap="redirect"  data-url="/pages/appointmentHospital/appointmentHospital" ></view>
+        <view class="redirect6" bindtap="redirect"  data-url="/pages/appointmentHospital/appointmentHospital" ></view>
     </view>
 </scroll-view>

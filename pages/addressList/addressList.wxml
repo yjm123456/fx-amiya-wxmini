@@ -30,5 +30,5 @@
 <van-dialog id="van-dialog" />
 
 <view class="addAddress">
-	<van-button type="primary" block bind:click="handleAddAddress">添加新地址</van-button>
+	<van-button color="#8878f5" type="primary" block bind:click="handleAddAddress">添加新地址</van-button>
 </view>

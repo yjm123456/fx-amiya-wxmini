@@ -1,6 +1,6 @@
 /* pages/appointmentCarList/appointmentCarList.wxss */
 page{
-    background-color: #000;
+    background-color: #f1f1f1;
 }
 .container{
     padding: 25rpx;

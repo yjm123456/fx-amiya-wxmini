@@ -1,20 +1,18 @@
 /* pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials.wxss */
 page{
-    background-color: #000;
+    background-color: #f1f1f1;
     width: 100%;
     height: 100%;
 }
 .content{
-    width: 710rpx;
-    margin: 20rpx;
+    width: 750rpx;
     display: flex;
     flex-direction: column;
-    color: #fff;
+    color: #000;
     padding-bottom: 200rpx;
 }
 .item{
-    background-color: #202020;
-    border-radius: 20rpx;
+    background-color: #fff;
     padding: 15rpx;
     margin-top: 20rpx;
     display: flex;
@@ -46,7 +44,7 @@ page{
     color: #fff;
     position: fixed;
     bottom: 50rpx;
-    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important;
+    background-color: #8878f5;
     width: 600rpx;
     margin: 0rpx 75rpx;
     height: 80rpx;
@@ -58,7 +56,7 @@ page{
     color: #fff;
     position: fixed;
     top: 50rpx;
-    background:-webkit-linear-gradient(right ,#dec530,#e4c675) !important;
+    background-color: #8878f5;
     width: 600rpx;
     margin: 0rpx 75rpx;
     height: 80rpx;

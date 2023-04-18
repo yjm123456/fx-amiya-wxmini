@@ -1,21 +1,24 @@
 <!--pages/appointmentHospital/appointment/appointment.wxml-->
+<view class="info">
+        <view class="title">
+            <text>预约信息</text>
+        </view>
+        <view class="input_group">
+            <input type="text" disabled="{{true}}" value="{{itemInfoName}}" bindtap="selectProject" placeholder="请选择项目"/>
+            <input type="text" bindinput="handleNameChange" placeholder="请输入姓名"/>
+            <input type="text" bindinput="handlePhoneChange" placeholder="请输入手机号"/>
+            <input type="text" bindinput="handleCodeChange" placeholder="请输入验证码"/>
+            <view class="item_btn">项目</view>
+            <view class="code_btn" wx:if="{{send}}" catchtap="sendCode">获取验证码</view>
+            <view wx:else  class="code_btn">{{seconds}}秒后重新发送</view>
+        </view>
+    </view>
 <view class="container">
     <view class="select-city">
         <view class="title">
             <text>预约城市</text>
         </view>
         <view class="city">
-            <!-- <view class="current-city">
-                <image class="location_img" src="../../../images/accept_address.png"></image>
-                <text>{{currentCity}}</text>
-            </view> -->
-            <!-- <view class="change-city" bindtap="switchCity"></view> -->
-            <!-- <view class="change-city">
-                <text class="iconfont icon-qiehuan"></text>
-                <picker mode="region" bindchange="bindAreaChange" value="{{area}}">
-                    <text>城市</text>
-                </picker>
-            </view> -->
         </view>
     </view>
     <view class="appoint-area">
@@ -33,18 +36,22 @@
             </view>
         </view>
     </view>
-    <!-- <view class="hospital-list" bindtap="arrivalPlan" data-item="{{item}}" wx:for="{{hospitalList}}" wx:key="index">
-        <view class="hospital-item">
-            <view class="item-img">
-                <image src="{{item.thumbPicUrl}}"></image>
-            </view>
-            <view class="item-info">
-                <text>{{item.name}}</text>
-                <text>{{item.address}}</text>
-            </view>
-        </view>
-    </view> -->
 </view>
+<view class="appointment_car">
+    <view class="select-city">
+        <view class="title">
+            <text>预约叫车</text>
+        </view>
+    </view>
+    <textarea class="address" bindinput="handleAddress" placeholder="请输入上车地址"></textarea>
+    <view class="origin_picker">
+            <input  class="" type="text" value="{{hospital?hospital:''}}" placeholder="请选择" bindinput="handlerHospitalChange" style="width:650rpx;height: 100%;color:#000;" />
+            <picker class="origin_select" catchchange="bindPickerBuyersName" range-key="name" range="{{Merchlist}}">
+                <view class="ar">选择</view>
+            </picker>
+    </view>
+</view>
+
 <!-- 切换城市 -->
 <van-popup z-index="{{5}}" safe-area-inset-top='{{true}}' show="{{ cityModel }}" position="right" bind:close="onCancel" custom-style="height: 100%;width:78%;margin-top:80rpx;">
     <view class="popup_con">
@@ -82,4 +89,31 @@
 <!-- 日历 -->
 <calendar bind:select="select" bind:toggleYearMonth="toggleYearMonth" defaultValue="{{currentDate}}" dateList="{{dateList}}" />
 <!-- 底部 -->
-<footer defaultValue="{{currentDate}}" hospitalId="{{hospitalItem.id}}" itemInfoId="{{itemInfoId}}" appointArea="{{province+'-'+city+'-'+district}}" surplusQuantity="{{surplusQuantity}}" />
+<footer defaultValue="{{currentDate}}" hospitalId="{{hospitalItem.id}}" bindAppointChange="appointmentChange" itemInfoId="{{itemInfoId}}" appointArea="{{province+'-'+city+'-'+district}}" surplusQuantity="{{surplusQuantity}}" />
+<view class="submit" bindtap="submit">提交</view>
+<!-- 切换城市弹窗 -->
+<van-popup
+      show="{{ projectModel }}"
+      position="right"
+      bind:close="onCancel"
+      custom-style="height: 100%;width:78%"
+    >
+    <view class="popup_con">
+      <view class="pro_content">
+        <view class="popup_item">
+          <view class="item_type">
+            <block  wx:for="{{AmiyaGoodsDemandList}}" wx:key="index">
+              <view class="items">
+                <view class="type_name" wx:if="{{item.goodsDemandList.length !=0}}">{{item.departmentName}}</view>
+                <view  class="name_com">
+                  <block wx:for="{{item.goodsDemandList}}" wx:key="index" wx:for-item="i">
+                    <view class="popup_text {{i.id==currentId?'active':'popup_text'}}" bindtap="selected" data-item="{{i}}">{{i.projectName}}</view>
+                  </block>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>  
+      </view>
+    </view>
+    </van-popup>

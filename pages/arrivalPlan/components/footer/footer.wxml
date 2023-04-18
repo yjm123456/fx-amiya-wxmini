@@ -1,20 +1,20 @@
 <view class="wrap">
 	<!-- 上午 -->
-	<view class="morning">
+	<view class="morning {{!noon?'active':''}}">
 		<view>
 			<text>{{currentDate}}</text>
 			<text>星期{{week}}</text>
 			<text>上午</text>
 		</view>
-		<view  bindtap="handleReserve" data-time="上午" data-currentDate="{{currentDate}}" data-week="{{week}}"  data-hospitalId="{{hospitalId}}" data-appointarea="{{appointArea}}">预约</view>
+		<view  bindtap="handleReserve" class="appoint_btn" wx:if="{{noon}}" data-time="上午" data-currentDate="{{currentDate}}" data-week="{{week}}"  data-hospitalId="{{hospitalId}}" data-appointarea="{{appointArea}}">预约</view>
 	</view>
 	<!-- 下午 -->
-	<view class="afternoon">
+	<view class="afternoon {{!afternoon?'active':''}}">
 		<view>
 			<text>{{currentDate}}</text>
 			<text>星期{{week}}</text>
 			<text>下午</text>
 		</view>
-		<view  bindtap="handleReserve" data-time="下午"   data-currentDate="{{currentDate}}" data-week="{{week}}" data-hospitalId="{{hospitalId}}"  >预约</view>
+		<view  bindtap="handleReserve" wx:if="{{afternoon}}" class="appoint_btn" data-time="下午"   data-currentDate="{{currentDate}}" data-week="{{week}}" data-hospitalId="{{hospitalId}}"  >预约</view>
 	</view>
 </view>

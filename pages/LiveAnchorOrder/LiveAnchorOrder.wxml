@@ -7,26 +7,6 @@
             <van-field border="{{false}}" input-class="field" value="{{ phone  }}" type="textarea" clearable placeholder="请输入手机号" title-width="4em" bind:change="handlePhoneChange" maxlength="200" />
             <van-field wx:if="{{type=='mf'}}" border="{{false}}" disabled input-class="field" value="{{ appointmentCity  }}" type="textarea" clearable placeholder="请选择预约城市" title-width="4em" bindtap="switchCity" maxlength="200" />
             <van-field wx:if="{{type=='mf'&&appointmentHospital}}" border="{{false}}" disabled input-class="field" value="{{ appointmentHospital  }}" type="textarea" clearable placeholder="请选择预约医院" title-width="4em" bindtap="switchHospital" maxlength="200" />
-            <!-- 医院列表 -->
-            <!-- <view wx:if="{{type=='mf'&&appointmentCity}}" class="hospital_con">              
-                <view class="hospital_scroll">
-                    <view class="hospital_item" wx:for="{{selectCityHospital}}" wx:key="index">
-                        <view data-item="{{item}}" bindtap="selectHospital" data-name="{{item.name}}" data-hospitalid="{{item.id}}" data-money="{{item.hospitalSalePrice}}">
-                            <view class="hospital_top">
-                                <van-image width="50" height="50" src="{{item.thumbPicUrl}}" />
-                                <view class="hospital_title_con">
-                                    <view class="hospital_title">{{item.name}}</view>
-                                </view>
-                            </view>
-                            <view class="address_con">
-                                <view class="address" data-item="{{item}}">地址：{{item.address}}</view>                               
-                            </view>
-                        </view>
-                    </view>
-                    <van-divider wx:if="{{!selectCityHospital.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 150%;width:100%">暂无医院</van-divider>
-
-                </view>
-            </view> -->
             <van-field wx:if="{{type=='mf'}}" border="{{false}}" input-class="field" value="{{ appointmentDate  }}" type="textarea" clearable placeholder="请选择预约时间" title-width="4em" disabled bindtap="selectDate" maxlength="200" />
         </view>
         <view class="pay_list">
@@ -50,7 +30,13 @@
         </view>
 
         <view wx:else class="tip">
-            <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/60105e1a07c443b59951069b8dde1e09.png" mode="widthFix"></image>
+            <!-- <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/60105e1a07c443b59951069b8dde1e09.png" mode="widthFix"></image> -->
+            <text>使用说明</text>
+            <text>1.支付完成后,客服人员最晚于24小时内与您联系,安排预约事项</text>
+            <text>2.非实物</text>
+            <text>3.不支持七天无理由</text>
+            <text>4.正品保障</text>
+            <text>5.官方咨询热线:400-900-1591</text>
         </view>
 
     </view>

@@ -1,0 +1,26 @@
+<view class="goods">
+        <view class="top">
+            <view class="condition">
+                <text class="{{saleCountSelected?'active':''}}" bindtap="saleCountSelect">销量</text>
+                <text class="{{priceSelected?'active':''}}" bindtap="priceSelect">价格</text>
+            </view>
+        </view>
+        <view class="good_list">
+            <view wx:for="{{goodsInfos}}" bindtap="goodsDetails" data-exchagetype="{{item.exchangeType}}" data-goodsid="{{item.id}}" class="good_item">
+                <image mode="widthFix" src="{{item.thumbPicUrl}}"></image>
+                <view class="goods_info">
+                    <view class="goods_name">{{item.name}}</view>
+                    <view class="goods_descrip">{{item.description}}</view>
+                    <view class="{{item.exchangeType==7?'exchange_tag2':'exchange_tag1'}}">{{item.exchangeType==7?'可参与积分加钱购':''}}</view>
+                    <view class="goods_price">
+                        <text wx:if="{{item.exchangeType==0}}">{{item.integrationQuantity}}积分</text>
+                        <text wx:if="{{item.exchangeType==1}}">¥{{item.salePrice}}</text>
+                        <text wx:if="{{item.exchangeType==7}}">{{item.integrationQuantity}}积分+¥{{item.salePrice}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{!nextPage}}" class="bottom_line">-----没有更多-----</view>
+    </view>
+    <!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

@@ -42,18 +42,18 @@
             <view wx:if="{{!isEdit}}" class="info_text">
                 <van-radio-group value="{{ gender }}" direction='horizontal' >
                     <view class="rgroup">
-                        <van-radio style="margin-left: 20rpx;" checked-color="#DEC350" name="1">保密</van-radio>
-                        <van-radio style="margin-left: 20rpx;" checked-color="#DEC350" name="2">男</van-radio>
-                        <van-radio style="margin-left: 20rpx;" checked-color="#DEC350" name="3">女</van-radio>
+                        <van-radio style="margin-left: 20rpx;" checked-color="#8878f5" name="1">保密</van-radio>
+                        <van-radio style="margin-left: 20rpx;" checked-color="#8878f5" name="2">男</van-radio>
+                        <van-radio style="margin-left: 20rpx;" checked-color="#8878f5" name="3">女</van-radio>
                     </view>
                 </van-radio-group>
             </view>
             <view wx:else class="info_text">
                 <van-radio-group  value="{{ gender }}" bind:change="onGenderChange">
                     <view class="rgroup">
-                        <van-radio  checked-color="#DEC350" name="1">保密</van-radio>
-                        <van-radio style="margin-left: 20rpx;" checked-color="#DEC350" name="2">男</van-radio>
-                        <van-radio style="margin-left: 20rpx;" checked-color="#DEC350" name="3">女</van-radio>
+                        <van-radio  checked-color="#8878f5" name="1">保密</van-radio>
+                        <van-radio style="margin-left: 20rpx;" checked-color="#8878f5" name="2">男</van-radio>
+                        <van-radio style="margin-left: 20rpx;" checked-color="#8878f5" name="3">女</van-radio>
                     </view>
                 </van-radio-group>
             </view>
@@ -103,12 +103,12 @@
 
 </view>
 <view wx:if="{{!isEdit}}" class="confirm" bindtap="edit">
-    <van-button color="#DEC350" custom-style="width:100%;border:none;">
+    <van-button color="#8878f5" custom-style="width:100%;border:none;">
         <view>编辑</view>
     </van-button>
 </view>
 <view wx:if="{{isEdit}}" class="confirm">
-    <van-button bind:click="saveInfo" color="#DEC350" custom-style="width:100%;border:none;">
+    <van-button bind:click="saveInfo" color="#8878f5" custom-style="width:100%;border:none;">
         <view>保存</view>
     </van-button>
 </view>

@@ -1,17 +1,14 @@
 
 .van-tabs__scroll{
-    background-color: #000 !important;
+    background-color: #f1f1f1 !important;
 }
 .tabs{
-    background-color: #000 !important;
+    background-color: #f1f1f1 !important;
 }
 .van-tab--active>view{
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+    color: #8878f5;
     font-weight: 600 !important;
 }
 .van-tabs__line{
-    background-image:-webkit-linear-gradient(right,#efcd71,#fff9c8,#efcf77,#fff9c8,#e4c675,#fff9c8) !important; 
-    -webkit-text-fill-color:transparent !important;
+    color: #8878f5;
 }

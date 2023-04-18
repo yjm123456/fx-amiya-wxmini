@@ -3,5 +3,5 @@
         "van-tab": "@vant/weapp/tab/index",
         "van-tabs": "@vant/weapp/tabs/index"
     },
-    "navigationBarTitleText": "叫车信息"
+    "navigationBarTitleText": "预约信息"
 }

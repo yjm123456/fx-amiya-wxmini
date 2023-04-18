@@ -10,7 +10,7 @@
                     <van-cell custom-class="cart_content" custom-class="cell" border="{{false}}" wx:if="{{list[index].num!==0}}" wx:for="{{ list }}" wx:key="index" link-type="navigateTo" url="{{item.exchangeType===0?'/pages/goodsDetails/goodsDetails?goodsId='+item.goodsId : '/pages/productDetails/productDetails?goodsId='+item.goodsId}}" value-class="value-class" clickable data-index="{{ index }}">
                         <view slot="title" class="cell_title">
                             <view>
-                                <van-checkbox checked-color="#DEC350" catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
+                                <van-checkbox checked-color="#8878f5" catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" />
                             </view>
                             <view class="goods_content">
                                 <view class="product_img">
@@ -47,18 +47,19 @@
         </view>
     </view>
     <view class="bottom">
-
-        <van-submit-bar custom-class="bar_color" label="合计" suffix-label="{{sumPoint}}积分" price-class="total" price="{{ sum }}" button-text="提交订单" bind:submit="purchase" tip="{{ true }}">
+        <van-submit-bar custom-class="bar_color" button-text="提交订单" bind:submit="purchase" tip="{{ true }}">
             <van-tag>
-                <view>
-                    <radio color="#DEC350" catchtap="radioChange" checked="{{selectAll}}" />全选
+                <view class="group">
+                    <view class="price">合计:{{sumPoint}}积分+{{sum}}元</view>
+                    <view class="bottom_group">
+                        <radio color="#8878f5" catchtap="radioChange" checked="{{selectAll}}" />
+                        <text>全选</text>
+                        <van-dropdown-menu active-color="#8878f5" direction="up">
+                            <van-dropdown-item bind:change="selectVoucher" value="{{ selectedVoucher }}" options="{{ voucherList }}" />
+                        </van-dropdown-menu>
+                    </view>
                 </view>
-            </van-tag>   
-            <view class="voucher">
-                <van-dropdown-menu  active-color="#DEC350"  direction="up">
-                    <van-dropdown-item  bind:change="selectVoucher" value="{{ selectedVoucher }}" options="{{ voucherList }}" />
-                </van-dropdown-menu>
-            </view>
+            </van-tag>
         </van-submit-bar>
     </view>
 </view>
@@ -69,11 +70,11 @@
     var toCeil = function (value) {
         return Math.ceil(value)
     }
-    var toFixed=function(value){
+    var toFixed = function (value) {
         return value.toFixed(2)
     }
     module.exports = {
         toCeil: toCeil,
-        toFixed:toFixed
+        toFixed: toFixed
     }
 </wxs>

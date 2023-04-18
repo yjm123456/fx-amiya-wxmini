@@ -1,6 +1,6 @@
 .item{
   width: 700rpx;
-  background-color: #262626;
+  background-color: #f1f1f1;
   border-radius: 20rpx;
   margin: 25rpx;
   padding: 20rpx;
@@ -16,9 +16,9 @@
 .item_top,.content{
   display: flex;
   justify-content: space-between;
-  background-color: #313131;
+  background-color: #fff;
   padding: 10rpx;
-  color: #fff;
+  color: #000;
 }
 .memo{
   flex:1;
@@ -49,7 +49,7 @@
   color: #e2e2e2;
 }
 .text1{
-  color: #dec530;
+  color: #8878f5;
 }
 .text3{
   color:#ff1554
@@ -78,8 +78,8 @@
   margin-top: 10rpx;
 }
 .cancel_button{
-  background-color: #313131;
+  background-color: #8878f5;
 }
 .submite_button{
-  background-color: #313131;
+  background-color: #8878f5;
 }

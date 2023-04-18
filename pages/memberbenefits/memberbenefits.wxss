@@ -99,98 +99,53 @@ page{
     background-color: transparent;
     position: absolute;
     z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1470rpx;
-    left: 110rpx;
+    width: 100rpx;
+    height: 100rpx;
+    top: 1040rpx;
+    left: 55rpx;
 }
 .redirect2{
     background-color: transparent;
     position: absolute;
     z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1470rpx;
-    left: 320rpx;
+    width: 100rpx;
+    height: 100rpx;
+    top: 1040rpx;
+    left: 235rpx;
 }
 .redirect3{
     background-color: transparent;
     position: absolute;
     z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1470rpx;
-    left: 530rpx;
+    width: 100rpx;
+    height: 100rpx;
+    top: 1040rpx;
+    left: 415rpx;
 }
 .redirect4{
     background-color: transparent;
     position: absolute;
     z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1700rpx;
-    left: 110rpx;
+    width: 100rpx;
+    height: 100rpx;
+    top: 1040rpx;
+    left: 600rpx;
 }
 .redirect5{
     background-color: transparent;
     position: absolute;
     z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1700rpx;
-    left: 320rpx;
+    width: 100rpx;
+    height: 100rpx;
+    top: 1230rpx;
+    left: 55rpx;
 }
 .redirect6{
     background-color: transparent;
     position: absolute;
     z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1700rpx;
-    left: 530rpx;
-}
-.redirect7{
-    background-color: transparent;
-    position: absolute;
-    z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 2620rpx;
-    left: 320rpx;
-}
-.redirect8{
-    background-color: transparent;
-    position: absolute;
-    z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 3075rpx;
-    left: 110rpx;
-}
-.redirect9{
-    background-color: transparent;
-    position: absolute;
-    z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1925rpx;
-    left: 320rpx;
-}
-.redirect10{
-    background-color: transparent;
-    position: absolute;
-    z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 3075rpx;
-    left: 310rpx;
-}
-.redirect11{
-    background-color: transparent;
-    position: absolute;
-    z-index: 999999;
-    width: 120rpx;
-    height: 118rpx;
-    top: 1925rpx;
-    left: 110rpx;
+    width: 100rpx;
+    height: 100rpx;
+    top: 1230rpx;
+    left: 235rpx;
 }

@@ -1,9 +1,9 @@
 .wrap {
   margin: 0 25rpx;
-  background-color: #262626;
+  background-color: #f1f1f1;
   border-radius: 20rpx;
   padding: 30rpx;
-  color: #fff;
+  color: #000;
 }
 
 .wrap>view {
@@ -16,13 +16,13 @@
 
 .morning {
   
-  background-color: #313131;
+  background-color: #fff;
   border-radius: 20rpx;
   padding: 20rpx !important;
 }
 .afternoon{
   margin-top: 20rpx;
-  background-color: #313131;
+  background-color: #fff;
   border-radius: 20rpx;
   padding: 20rpx !important;
 }
@@ -39,10 +39,13 @@
 }
 
 /* 按钮 */
-.morning>view:last-child,
-.afternoon>view:last-child {
-  background-color: #262626;
+.appoint_btn{
+  background-color: #8878f5;
   padding: 10rpx 30rpx;
   border-radius: 10rpx;
-  /* color: #fff; */
+  color: #fff;
+}
+.active{
+    border: 3rpx solid #8878f5;
+    color: #8878f5;
 }

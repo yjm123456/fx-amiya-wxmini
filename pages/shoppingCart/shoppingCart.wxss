@@ -1,6 +1,6 @@
 /* pages/shoppingCart/shoppingCart.wxss */
 page {
-    background-color: #000;
+    background-color: #fff;
     --submit-bar-price-font-size: 22rpx;
 }
 
@@ -9,11 +9,11 @@ page {
 }
 
 .content {
-    background-color: #000;
+    background-color: #fff;
 }
 
 .van-cell {
-    background-color: #000 !important;
+    background-color: #fff !important;
     color: #fff !important;
 }
 
@@ -28,7 +28,7 @@ page {
 
 .cell_title:first-child {
     margin-top: 10rpx;
-    background-color: #262626;
+    background-color: #fff;
 }
 
 .cell_title {
@@ -45,7 +45,7 @@ page {
 .goods_content {
     display: flex;
     height: 220rpx;
-    background-color: #313131;
+    background-color: #fff;
     border-radius: 20rpx;
     align-items: center;
     width: 610rpx;
@@ -85,7 +85,7 @@ page {
 
 .des {
     /* height: 200rpx; */
-    color: #fff;
+    color: #000;
     height: 100%;
     margin-left: 20rpx;
     display: flex;
@@ -95,7 +95,7 @@ page {
 }
 
 .tip {
-    color: #fff;
+    color: #000;
     display: -webkit-box;
     word-break: break-all;
     text-overflow: ellipsis;
@@ -106,9 +106,7 @@ page {
 }
 
 .total_price {
-    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    color: #8878f5;
     font-weight: 600;
 }
 
@@ -121,7 +119,15 @@ page {
 .bottom {
     bottom: 0;
 }
-
+.group{
+    font-size: 28rpx;
+    color: #8878f5;
+    width: 450rpx;
+}
+.bottom_group{
+    display: flex;
+    align-content: center;
+}
 .delete {
     background-color: #fff;
     border-radius: 20rpx;
@@ -202,9 +208,9 @@ page {
 }
 
 .price {
-    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    color: #8878f5;
+    font-size: 32rpx;
+    font-weight: 600;
 }
 
 .present_price {
@@ -229,25 +235,25 @@ page {
 }
 
 .van-submit-bar {
-    background-color: #000 !important;
+    background-color: #f1f1f1 !important;
 }
 
 .van-submit-bar__bar {
-    background-color: #000 !important;
+    background-color: #f1f1f1 !important;
 }
 
 .van-button--round {
-    background: -webkit-linear-gradient(right, #dec530, #e4c675) !important;
+    background-color: #8878f5;
     padding: 5rpx 10rpx 5rpx 10rpx !important;
 }
 
 .van-button {
-    background-color: #DEC350 !important;
+    background-color: #8878f5 !important;
     border: 0 !important;
 }
 
 .total {
-    color: #DEC350 !important;
+    color: #8878f5 !important;
 }
 
 .goods_name {
@@ -265,8 +271,8 @@ page {
 }
 
 .minus {
-    background-color: #212121 !important;
-    color: #fff !important;
+    background-color: #f1f1f1 !important;
+    color: #000 !important;
 }
 
 .bar_price {
@@ -275,9 +281,7 @@ page {
 
 .van-submit-bar__price-integer {
     font-size: 25rpx !important;
-    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    color: #fff;
     font-weight: 600;
 }
 
@@ -304,18 +308,20 @@ page {
 }
 
 .voucher_list {
-    background-color: #262626;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
 }
 
 .van-submit-bar__tip {
     background-color: #000 !important;
+    
 }
 
 .van-dropdown-menu {
     height: 40rpx !important;
     padding: 5rpx;
-    background-color: #000 !important;
+    background-color: #f1f1f1 !important;
+    color: #000 !important;
 }
 
 .van-ellipsis {
@@ -326,21 +332,25 @@ page {
     height: 500rpx !important;
     overflow: hidden;
     border-radius: 20rpx !important;
+    
 }
 
 .van-popup--bottom {
     padding-bottom: 0rpx !important;
+    
 }
 
 .van-dropdown-item__option .van-cell {
-    background-color: #262626 !important;
+    background-color: #f1f1f1 !important;
+    color: #000 !important;
 }
 
 .van-bottom-enter-active {
     border-radius: 20rpx !important;
     overflow: hidden;
+    
 }
 
 .van-ellipsis {
-    color: #fff;
+    color: #000;
 }

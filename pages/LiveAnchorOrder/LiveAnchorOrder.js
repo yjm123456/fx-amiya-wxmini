@@ -55,7 +55,6 @@ Page({
             q=decodeURIComponent(q);
             name = q.split("?")[1].split("=")[1];
         }
-        console.log(name);
         this.setData({
             name
         })

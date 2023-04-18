@@ -1,0 +1,91 @@
+/* pages/goodsList/goodsList.wxss */
+
+.goods {
+    color: #fff;
+    margin: 30rpx;
+}
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #999797;
+}
+
+.top text {
+    margin-right: 20rpx;
+}
+.active{
+    color: #8878f5;
+    font-weight: 600;
+}
+.good_list{ 
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: #000;
+}
+.good_item{
+    box-shadow: 5rpx 5rpx 5rpx #e2e2e2;
+    margin-top: 20rpx;
+    width: 48%;
+    background-color: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+.good_item>image{
+    width: 100%;
+}
+.goods_info{
+    background-color: #fff;
+    padding: 10rpx 20rpx;
+
+}
+.goods_name{
+    text-overflow: ellipsis;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    font-size: 30rpx;
+}
+.goods_descrip{
+    text-overflow: ellipsis;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    font-size: 25rpx;
+    margin-top: 5rpx;
+    height: 25rpx;
+    line-height: 25rpx;
+}
+.exchange_tag2{
+    color:#fff;
+    font-size: 25rpx;
+    margin-top: 5rpx;
+    height: 25rpx;
+    line-height: 25rpx;
+    background-color: #aa9cf2;
+    padding: 3rpx 10rpx;
+    border-radius: 15rpx;
+    width: fit-content;
+
+}
+.exchange_tag1{
+    
+    margin-top: 5rpx;
+    height: 25rpx;
+    line-height: 25rpx;
+    padding: 3rpx 10rpx;
+}
+.goods_price{
+    color: #8878f5;
+    font-weight: 600;
+    font-size: 30rpx;
+    margin-top: 5rpx;
+}
+
+.bottom_line{
+    color: #999797;
+    margin: 20rpx 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}

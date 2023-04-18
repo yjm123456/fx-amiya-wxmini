@@ -9,7 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        appId:'',
+        appId: '',
         // 轮播图
         carouselImage: [],
         projectArr: [{
@@ -83,7 +83,9 @@ Page({
         scene: '',
         show: false,
         voucherUrl: 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/05206138b16b44929a5751c21ca3e612.jpg',
-        showAppoint:false
+        showAppoint: false,
+        hotCategoryList: [],
+        hotNotBrandCategoryList:[]
     },
     /**
      * 生命周期函数--监听页面加载
@@ -92,23 +94,77 @@ Page({
         this.visit();
         const scene = decodeURIComponent(options.scene);
         this.getAppId(options);
-
-        // this.isCustomer((isCustomer) => {
-        //     if (isCustomer) {
-        //         this.getShareInfo();
-        //         if(scene != 'undefined'){           
-        //             this.setSuperior(scene);
-        //         }
-        //     } else {
-        //         this.showVoucherTips()
-        //     }
-        // })
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.getShareInfo();
+                if (scene != 'undefined') {
+                    this.setSuperior(scene);
+                }
+            } else {
+                this.showVoucherTips()
+            }
+        })
     },
-    getAppId(options){
-        const appid=options.appid;
-        if(appid){
-            this.setData({appId:appid})
-        }
+    //获取用于获取信息获取的appid
+    //步骤1,判断是否已绑定小程序若已绑定直接设置
+    //步骤2,如果没有绑定,判断是否有最近登录的小程序记录如果有则设置为最近登录的appid
+    //步骤3,如果也没有最近的登录记录,判断首页初始化时参数中是否有appid,如果有则设置为参数中的appid
+    //步骤4,如果以上的值都没有则设置为当前小程序的appid
+    getAppId(options) {
+        http('get', '/customer/isBind').then(res => {
+            var assisteAppId = res.data.assisteAppId;
+            if (assisteAppId) {
+                this.setData({
+                    appId: assisteAppId
+                })
+                this.getCarouselImage();
+                const {
+                    appId
+                } = this.data;
+                var app = getApp()
+                app.globalData.assisteAppId = appId;
+            } else {
+                http('get', '/user/lastLoginAppId').then(res => {
+                    var lastAppId = res.data.appId;
+                    if (lastAppId) {
+                        this.setData({
+                            appId: lastAppId
+                        })
+                        this.getCarouselImage();
+                        const {
+                            appId
+                        } = this.data;
+                        var app = getApp()
+                        app.globalData.assisteAppId = appId;
+                    } else {
+                        const {
+                            appId
+                        } = options;
+                        if (appId) {
+                            this.setData({
+                                appId: appId
+                            });
+                            this.getCarouselImage();
+                            var id = this.data.appId;
+                            var app = getApp()
+                            app.globalData.assisteAppId = id;
+                        } else {
+                            var app = getApp();
+                            var miniAppId = app.globalData.appId;
+                            this.setData({
+                                appId: miniAppId
+                            })
+                        }
+                        this.getCarouselImage();
+                        var id = this.data.appId;
+                        var app = getApp()
+                        app.globalData.assisteAppId = id;
+                    }
+                })
+            }
+
+        })
+
     },
     //设置上级
     setSuperior(scene) {
@@ -118,18 +174,49 @@ Page({
             }
         })
     },
+    getHotCategory() {
+        const {
+            appId
+        } = this.data;
+        const data = {
+            appId,
+            showDirectionType: 0
+        };
+        http('get', '/goods/hotCategoryList', data).then(res => {
+            if (res.code === 0) {
+                this.setData({
+                    hotCategoryList: res.data.hotGoodsCategorys
+                })
+            }
+        })
+    },
+    getHotNotBrandCategory() {
+        const {
+            appId
+        } = this.data;
+        const data = {
+            appId,
+            showDirectionType: 0
+        };
+        http('get', '/goods/hotNotBrandCategoryList', data).then(res => {
+            if (res.code === 0) {
+                this.setData({
+                    hotNotBrandCategoryList: res.data.hotGoodsCategorys
+                })
+            }
+        })
+    },
     visit() {
         http("get", `/ControlPageShow`).then(res => {
             if (res.code === 0) {
-                const isShowAppoint=res.data.visit
+                const isShowAppoint = res.data.visit
                 this.setData({
-                    showAppoint:isShowAppoint
+                    showAppoint: isShowAppoint
                 });
             }
         })
     },
     toCode(e) {
-
         const {
             url
         } = e.currentTarget.dataset
@@ -149,21 +236,21 @@ Page({
             this.handleBindPhone();
         });
     },
-    toMini(){
-        var app = getApp();
-        const appId = app.globalData.appId;
-        wx.navigateToMiniProgram({
-            appId: 'wx8747b7f34c0047eb',
-            path: 'pages/index/index?appid='+appId,
-            extraData: {
-              foo: 'bar'
-            },
-            envVersion: 'trial',
-            success(res) {
-              // 打开成功
-            }
-          })
-    },
+    // toMini(){
+    //     var app = getApp();
+    //     const appId = app.globalData.appId;
+    //     wx.navigateToMiniProgram({
+    //         appId: 'wx8747b7f34c0047eb',
+    //         path: 'pages/index/index?appid='+appId,
+    //         extraData: {
+    //           foo: 'bar'
+    //         },
+    //         envVersion: 'trial',
+    //         success(res) {
+    //           // 打开成功
+    //         }
+    //       })
+    // },
     getVoucher() {
         this.setData({
             show: false
@@ -296,15 +383,17 @@ Page({
         const {
             currentPageIndex,
             pageSize,
-            nextPage
+            nextPage,
+            appId
         } = this.data;
         if (!nextPage) return;
         const pageNum = currentPageIndex
         const data = {
+            appId,
             pageNum,
             pageSize
         }
-        http("get", `/Goods/likeInfoList`, data).then(res => {
+        http("get", `/Goods/hotGoodsList`, data).then(res => {
             if (res.code === 0) {
                 let {
                     list,
@@ -323,6 +412,7 @@ Page({
             }
         })
     },
+
     handleActivity1() {
         wx.navigateTo({
             url: '/pages/LiveAnchorMessage/LiveAnchorMessage?name=dd&isAmyLiveAnchor=true'
@@ -343,12 +433,27 @@ Page({
     },
     // 商品详情
     goodsDetails(e) {
-        const {
-            goodsid
-        } = e.currentTarget.dataset;
-        wx.navigateTo({
-            url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                const {
+                    goodsid,
+                    exchagetype
+                } = e.currentTarget.dataset;
+                if (exchagetype == 0) {
+                    wx.navigateTo({
+                        url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
+                    })
+                } else {
+                    wx.navigateTo({
+                        url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
+                    })
+                }
+
+            } else {
+                this.handleBindPhone();
+            }
         })
+
     },
     toOrder(event) {
         this.isCustomer((isCustomer) => {
@@ -413,7 +518,40 @@ Page({
                         })
                     } else {
                         wx.navigateTo({
-                            url: e.currentTarget.dataset.url,
+                            url: e.currentTarget.dataset.url + '?id=' + e.currentTarget.dataset.id,
+                        })
+                    }
+
+                }
+            } else {
+                this.showVoucherTips()
+            }
+        })
+
+    },
+    switchTab(e) {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                if (e.currentTarget.dataset.url) {
+                    if (e.currentTarget.dataset.url == '/pages/personalInfo/personalInfo') {
+                        http("get", `/User/isComplete`).then(res => {
+                            if (res.code === 0) {
+                                var isComplete = res.data.isComplete
+                                if (isComplete) {
+                                    wx.navigateTo({
+                                        url: '/pages/memberbenefits/memberbenefits'
+                                    })
+                                } else {
+                                    wx.navigateTo({
+                                        url: e.currentTarget.dataset.url,
+                                    })
+                                }
+                            }
+                        })
+                    } else {
+                        
+                        wx.switchTab({
+                            url: e.currentTarget.dataset.url + '?id=' + e.currentTarget.dataset.id,
                         })
                     }
 
@@ -425,11 +563,9 @@ Page({
 
     },
     onReachBottom: function () {
-        // this.getGoodsList()
+        this.getGoodsList()
     },
     onShow() {
-        
-        this.getCarouselImage();
         this.setData({
             pageNum: 1,
             pageSize: 10,
@@ -437,13 +573,17 @@ Page({
             currentPageIndex: 1,
             goodsList: []
         });
-        // this.getGoodsList();
-        
+        this.getGoodsList();
+        this.getHotCategory();
+        this.getHotNotBrandCategory();
     },
 
     // 获取轮播图
     getCarouselImage() {
-        http("get", `/CarouselImage/list`).then(res => {
+        const {
+            appId
+        } = this.data;
+        http("get", '/CarouselImage/list/' + appId).then(res => {
             if (res.code === 0) {
                 const {
                     carouselImage
@@ -483,7 +623,7 @@ Page({
         })
         //绑定成功后获取分享信息
         this.getShareInfo();
-        if(scene != 'undefined'){           
+        if (scene != 'undefined') {
             this.setSuperior(scene);
         }
     },

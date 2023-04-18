@@ -213,7 +213,7 @@ Page({
         } else {
             if (!currentVoucher.isSpecifyProduct) {
                 if (currentVoucher.isNeedMinFee) {
-                    if (currentVoucher.minPrice * 100 > sum) {
+                    if (currentVoucher.minPrice > sum) {
                         wx.showToast({
                             title: '支付总金额小于抵用券要求,不能使用!',
                             icon: 'none',
@@ -227,7 +227,7 @@ Page({
                     }
                 }
                 this.getAllMoney();
-                let newSum = this.data.sum - (currentVoucher.deductMoney * 100) > 0 ? (this.data.sum - (currentVoucher.deductMoney * 100)) : 10
+                let newSum = this.data.sum - (currentVoucher.deductMoney) > 0 ? (this.data.sum - (currentVoucher.deductMoney)) : 10
                 this.setData({
                     sum: newSum
                 })
@@ -242,7 +242,7 @@ Page({
                                     var voucher = voucherList.find(i => i.value == selectedVoucher);
                                     if (voucher) {
                                         if (voucher.isNeedMinFee) {
-                                            if (voucher.minPrice * 100 > sum) {
+                                            if (voucher.minPrice > sum) {
                                                 wx.showToast({
                                                     title: '支付总金额小于抵用券要求,不能使用!',
                                                     icon: 'none',
@@ -550,7 +550,7 @@ Page({
             }
         }
         this.setData({
-            sum: sumMoney * 100,
+            sum: sumMoney,
             sumPoint: sumPoint
         })
     },

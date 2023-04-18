@@ -1,0 +1,55 @@
+<view class="integral">
+    <text class="balance">{{balance}}</text>
+    <view class="bottom">
+        <text bindtap="handleRuleTap" data-url="/pages/integral/integral">积分记录</text>
+        <text bindtap="handleRuleTap" data-url="/pages/IntegralRule/IntegralRule">积分规则</text>
+    </view>
+</view>
+<view class="wrap">
+<!-- 搜索框 -->
+    <!-- <view class="search_wrap">
+        <view class="panel" data-page="/pages/search/search" bindtap="to">
+            <view class="panel_left">
+                <input disabled="true" placeholder='请输入商品名称' placeholder-class="placeholderStyle" bindinput='getSearchInputValue'></input>
+            </view>
+            <view class="panel_right" >
+                <view class="iconfont icon-sousuo1"></view>
+                <view>搜索</view>
+            </view>
+        </view>
+        <view class="cart" data-page="/pages/shoppingCart/shoppingCart" bindtap="to"><image src="/images/card.png"></image></view>
+    </view> -->
+    <!-- goods -->
+    <view class="goods_wrap">
+        <scroll-view class="menu_wrap" scroll-y>
+            <view class="menu_item {{categoryActive === index ? 'category_active' : ''}}" wx:for="{{goodsCategorys}}" wx:key="id" bindtap="handleGoodsCategoryClick" data-categoryid="{{item.id}}" data-index="{{index}}" wx:if="{{item.showDirectionType==1}}">
+                <text  class="goods_name">{{item.name}}</text>
+                <!-- <image class="category_img" mode="widthFix" wx:else src="{{item.categoryImg}}"></image> -->
+            </view>
+        </scroll-view>
+        <scroll-view class="goods_info" lower-threshold="100" scroll-y bindscrolltolower="loadMore">
+            <view class="sort">
+                <text class="{{saleCountSelected?'active':''}}" bindtap="saleCountSelect">销量</text>
+                <text class="{{priceSelected?'active':''}}" bindtap="priceSelect">价格</text>
+            </view>
+            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType>0}}">
+                <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
+                <view>
+                    <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
+                    <image mode="aspectFill"  class="goods_img" src="{{item.thumbPicUrl}}" />
+                </view>
+                <view>
+                    <view class="middle goods_name">{{item.name}}</view>
+                    <view class="middle goods_name">{{item.description}}</view>
+                    <view wx:if="{{item.exchangeType==7}}" class="exchange_tag"><text>可参与积分加钱购</text></view>
+                    <view class="price"> <text wx:if="{{item.exchangeType==7}}">{{item.integrationQuantity}}积分+</text>￥{{item.salePrice}}</view>
+                </view>
+            </view>
+            <view wx:if="{{nextPage === false}}">
+                <van-divider contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">我是有底线的</van-divider>
+            </view>
+        </scroll-view>
+    </view>
+</view> 
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

@@ -32,7 +32,7 @@ page {
 }
 
 .code .title text:last-child {
-  color: #1aad19;
+  color: #8878f5;
 }
 
 .login .btn {
@@ -42,4 +42,5 @@ page {
   align-items: center;
   justify-content: center;
   font-size: 28rpx;
+  background-color: #8878f5;
 }
