@@ -157,9 +157,12 @@ page{
 .source {
     font-size: 28rpx;
 }
-
+.cancel{
+    color: #000 !important;
+}
 .tool .cancel {
     margin-right: 10rpx;
+    color: #000;
 }
 
 .pointReundClass {
@@ -202,6 +205,7 @@ page{
 .confrim_but {
     width: 50%;
     text-align: center;
+    color: #000 !important;
 }
 
 .confrim_but {

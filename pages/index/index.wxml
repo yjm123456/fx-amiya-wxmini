@@ -40,25 +40,6 @@
             </view>
             <text class="mbanner-text">{{item.name}}</text>
         </view>
-        <!-- <view class="mbanner-item">
-            <view class="mbanner-img-warp">
-                <image class="mbanner-img-ca" bindtap="redirect" data-id="{{'hfid'}}" data-url="/pages/tagGoodsList/tagGoodsList" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
-            </view>
-            <text class="mbanner-text">护肤</text>
-        </view>
-        <view class="mbanner-item">
-           <view class="mbanner-img-warp">
-            <image class="mbanner-img-ca" bindtap="redirect" data-id="{{'8dd5b4e7-ab20-42c9-9371-18349cd047df'}}" data-url="/pages/tagGoodsList/tagGoodsList" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
-           </view>
-            <text class="mbanner-text">饰品</text>
-        </view>
-
-        <view class="mbanner-item">
-            <view class="mbanner-img-warp">
-                <image class="mbanner-img-ca" bindtap="redirect" data-id="{{'shid'}}" data-url="/pages/tagGoodsList/tagGoodsList" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
-            </view>
-            <text class="mbanner-text">生活</text>
-        </view> -->
     </view>
     </view>
     <!-- 热卖大牌 -->
@@ -71,19 +52,6 @@
             </view>
             <text class="mbanner-text">{{item.name}}</text>
         </view>
-        <!-- <view class="mbanner-item" wx:if="{{showAppoint}}">
-            <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
-            <text class="mbanner-text">免费叫车</text>
-        </view>
-        <view class="mbanner-item" wx:if="{{showAppoint}}">
-            <image class="mbanner-img" bindtap="redirect" data-url="/pages/appointmentCar/appointmentCar" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
-            <text class="mbanner-text">消费领积分</text>
-        </view>
-
-        <view class="mbanner-item">
-            <image class="mbanner-img" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
-            <text class="mbanner-text">会员权益</text>
-        </view> -->
     </view>
     </view>
     <!-- 热卖商品 -->

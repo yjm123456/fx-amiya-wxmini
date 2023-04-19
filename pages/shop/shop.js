@@ -10,6 +10,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        categoryParam:'',
         appId:'',
         // 是否正在处理滚动事件，避免一次滚动多次触发
         isScrolling: false,
@@ -41,7 +42,14 @@ Page({
         saleCountSelected:false,
         priceSelected:false
     },
-
+    onLoad(options){
+        const {categoryid}=options
+        if(categoryid){
+            this.setData({
+                categoryParam:categoryid
+            })
+        }
+    },
     onShow() {
         const {assisteAppId}=getApp().globalData;
         this.setData({appId:assisteAppId})
@@ -141,7 +149,7 @@ Page({
     },
     // 获取商品分类
     getGoodsCategory() {
-        const {appId}=this.data;
+        const {appId,categoryParam}=this.data;
         http("get", `/Goods/categoryList?showDirectionType=1&appId=`+appId).then(res => {
             if (res.code === 0) {
                 const {
@@ -156,7 +164,6 @@ Page({
                     })
                     this.getGoodsInfo();
                 }else{
-                    console.log("类别已存在");
                     if(this.data.goodsCategorys.length!=goodsCategorys.length){
                         this.setData({
                             pageNum: 1,

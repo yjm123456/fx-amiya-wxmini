@@ -1,24 +1,25 @@
 page {
   padding-bottom: 100rpx;
-  background-color: #000;
+  background-color: #f1f1f1;
 }
 
 .address {
-    background-color: #262626;
+    background-color: #fff;
     padding: 20rpx 30rpx;
     border-radius: 20rpx;
     margin: 20rpx;
+    color: #000;
 }
 
 .select_address {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #383839;
+    color: #000;
 }
 
 .place{
-    color: #fff !important;
+    color: #000 !important;
 }
 .select_address>view:first-of-type {
     display: flex;
@@ -31,7 +32,7 @@ page {
 }
 
 .select_address>view:first-of-type>text:last-of-type {
-    color: #383839;
+    color: #000;
     padding-left: 10rpx;
 }
 
@@ -52,7 +53,7 @@ page {
 .address_info .text {
     flex: 1;
     padding-left: 20rpx;
-    color: #fff;
+    color: #000;
 }
 
 .address_info .text>view:first-of-type {
@@ -65,16 +66,16 @@ page {
 
 .address_info .text>view:last-of-type {
     font-size: 28rpx;
-    color: #fff;
+    color: #000;
     padding-top: 10rpx;
 }
 .address_title{
-    color: #fff !important;
+    color: #000 !important;
 }
 /* 商品信息 */
 .goods {
 
-  background-color: #000;
+  background-color: #f1f1f1;
 }
 
 .goods::before,
@@ -82,7 +83,7 @@ page {
   content: '';
   display: block;
   height: 10rpx;
-  background-color: #000;
+  background-color: #f1f1f1;
   width: 100%;
 }
 
@@ -97,7 +98,7 @@ page {
 .goods .item {
   padding: 20rpx 30rpx;
   display: flex;
-  background-color: #313131;
+  background-color: #fff;
   border-radius: 20rpx;
   margin: 20rpx;
 }
@@ -117,12 +118,12 @@ page {
 .goods .item>view:first-of-type .name {
   font-size: 28rpx;
   font-weight: bold;
-  color: #fff;
+  color: #000;
 }
 
 .goods .item>view:first-of-type .description {
     margin-top: 10rpx;
-  color: #fff;
+  color: #000;
   font-size: 25rpx;
 }
 
@@ -136,40 +137,38 @@ page {
   bottom: 0;
 }
 .num{
-    color: #fff;
+    color: #000;
 }
 .goods .item>view:first-of-type .price>text:first-of-type {
-    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #8878f5;
     font-weight: 600;
 }
 .goods .item>view:first-of-type .price>text:last-of-type {
-    color: #fff;
+    color: #000;
   }
 
 .remark{
     /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
-    background-color: #262626;
+    background-color: #fff;
     margin: 20rpx;
     border-radius: 20rpx;
     padding: 20rpx;
 }
 .mark{
-    background-color: #313131;
+    background-color: #f1f1f1;
     border-radius: 20rpx;
     margin-top: 20rpx;
 }
 .field{
-    background-color: #313131 !important;
-    color: #fff !important;
+    background-color: #f1f1f1 !important;
+    color: #000 !important;
 }
 .label{
     font-size: 30rpx;
-    color: #fff;
+    color: #000;
 }
 .van-cell{
-    background-color: #313131 !important;
+    background-color: #f1f1f1 !important;
     border-radius: 20rpx !important;
     color: #fff !important;
     margin-top: 20rpx;
@@ -178,7 +177,7 @@ page {
 .voucher-list{
     border-radius: 30rpx;
     padding: 30rpx;
-    background-color: #313131;
+    background-color: #fff;
     margin: 30rpx 30rpx;
 }
 .overall_voucher{
@@ -187,7 +186,7 @@ page {
 .voucher-title{
     font-size: 28rpx;
     margin-bottom: 10rpx;
-    color: #fff;
+    color: #000;
 }
 .voucher{
     background-color: #e2e2e2;
@@ -197,25 +196,34 @@ page {
     border-radius: 16px;
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
-    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #efcd71,#efcf77,#e4c675,#efcd71);
+   color: #fff;
     display: flex;
     flex-direction: row;
     overflow: hidden;
     margin-top: 10rpx;
 }
 .voucher_overall{
+    position: relative;
     background-color: #e2e2e2;
     height: 130rpx;
-    border-radius: 30rpx;
+    border-radius: 10rpx;
     border: 4rpx solid transparent;
-    border-radius: 16px;
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
-    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #e2e2e2,#e2e2e2,#e2e2e2,#e2e2e2);
+    color: #fff;
     display: flex;
     flex-direction: row;
     overflow: hidden;
     margin-top: 10rpx;
+}
+.voucher_overall::before{
+    position: absolute;
+    width: 60rpx;
+    border-radius: 0 30rpx 30rpx 0;
+    content: '';
+    background-color: red;
+    z-index: 2;
+    left: 0;
 }
 .active_voucher{
     background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #efcd71,#efcf77,#e4c675,#efcd71);
@@ -225,25 +233,23 @@ page {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #262626;
+    background-color: #8878f5;
     width: 25%;
 }
 .voucher_left:first-child {
-    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
     font-weight: 600;
 }
 .voucher_left:last-child{
     color: #fff;
 }
 .voucher_right{
-    background-color: #313131;
+    background-color: #f1f1f1;
     width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #fff;
+    color: #000;
     padding-left: 30rpx;
 }
 .pay_list{
@@ -268,8 +274,8 @@ page {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   border-top: 2rpx solid #fff9c8;
 }
 
@@ -278,9 +284,7 @@ page {
 }
 
 .submit_order>view:first-of-type>text:last-of-type {
-    background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #8878f5;
     font-weight: 600;
 }
 
@@ -291,6 +295,6 @@ page {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #dec530;
+  background-color: #8878f5;
   color: #fff;
 }

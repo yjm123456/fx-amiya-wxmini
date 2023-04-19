@@ -168,7 +168,7 @@ Page({
     // 获取商品分类
     getGoodsCategory() {
         const {appId}=this.data;
-        http("get", `/Goods/categoryList?showDirectionType=1&appId=`+appId).then(res => {
+        http("get", `/Goods/categoryList?showDirectionType=0&appId=`+appId).then(res => {
             if (res.code === 0) {
                 const {
                     goodsCategorys

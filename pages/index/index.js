@@ -85,7 +85,7 @@ Page({
         voucherUrl: 'https://ameiya.oss-cn-hangzhou.aliyuncs.com/05206138b16b44929a5751c21ca3e612.jpg',
         showAppoint: false,
         hotCategoryList: [],
-        hotNotBrandCategoryList:[]
+        hotNotBrandCategoryList: []
     },
     /**
      * 生命周期函数--监听页面加载
@@ -93,7 +93,6 @@ Page({
     onLoad: function (options) {
         this.visit();
         const scene = decodeURIComponent(options.scene);
-        this.getAppId(options);
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 this.getShareInfo();
@@ -111,31 +110,47 @@ Page({
     //步骤3,如果也没有最近的登录记录,判断首页初始化时参数中是否有appid,如果有则设置为参数中的appid
     //步骤4,如果以上的值都没有则设置为当前小程序的appid
     getAppId(options) {
+        let app=getApp();
+        app.getUserTokenSuccessCallback=res=>{
+            const {appId}=options;
+            if(appId){
+                http('get','/user/recordAppId/'+appId).then(res=>{
+                    if(res.code==0){
+                        this.getBindApp()
+                    }
+                })
+            }else{
+                this.getBindApp();
+            }
+            
+        }
+    },
+    getBindApp(options){
         http('get', '/customer/isBind').then(res => {
             var assisteAppId = res.data.assisteAppId;
             if (assisteAppId) {
                 this.setData({
                     appId: assisteAppId
                 })
-                this.getCarouselImage();
                 const {
                     appId
                 } = this.data;
                 var app = getApp()
                 app.globalData.assisteAppId = appId;
+                this.getIndexData()
             } else {
                 http('get', '/user/lastLoginAppId').then(res => {
                     var lastAppId = res.data.appId;
                     if (lastAppId) {
                         this.setData({
                             appId: lastAppId
-                        })
-                        this.getCarouselImage();
+                        })    
                         const {
                             appId
                         } = this.data;
                         var app = getApp()
                         app.globalData.assisteAppId = appId;
+                        this.getIndexData()
                     } else {
                         const {
                             appId
@@ -144,10 +159,11 @@ Page({
                             this.setData({
                                 appId: appId
                             });
-                            this.getCarouselImage();
+                            
                             var id = this.data.appId;
                             var app = getApp()
                             app.globalData.assisteAppId = id;
+                            this.getIndexData()
                         } else {
                             var app = getApp();
                             var miniAppId = app.globalData.appId;
@@ -155,16 +171,14 @@ Page({
                                 appId: miniAppId
                             })
                         }
-                        this.getCarouselImage();
                         var id = this.data.appId;
                         var app = getApp()
                         app.globalData.assisteAppId = id;
+                        this.getIndexData()
                     }
                 })
             }
-
         })
-
     },
     //设置上级
     setSuperior(scene) {
@@ -549,7 +563,7 @@ Page({
                             }
                         })
                     } else {
-                        
+
                         wx.switchTab({
                             url: e.currentTarget.dataset.url + '?id=' + e.currentTarget.dataset.id,
                         })
@@ -566,6 +580,17 @@ Page({
         this.getGoodsList()
     },
     onShow() {
+        // 获取当前小程序的页面栈  
+        let pages = getCurrentPages();
+        // 数组中索引最大的页面--当前页面  
+        let currentPage = pages[pages.length - 1];
+        // 打印出当前页面中的 options  
+        const {options}=currentPage;
+        this.getAppId(options);
+        
+    },
+    //获取首页数据
+    getIndexData(){
         this.setData({
             pageNum: 1,
             pageSize: 10,
@@ -573,11 +598,11 @@ Page({
             currentPageIndex: 1,
             goodsList: []
         });
+        this.getCarouselImage();
         this.getGoodsList();
         this.getHotCategory();
         this.getHotNotBrandCategory();
     },
-
     // 获取轮播图
     getCarouselImage() {
         const {

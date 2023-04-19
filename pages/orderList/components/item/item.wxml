@@ -47,7 +47,7 @@
         <!-- 待付款 -->
         <view class="tool_btn">
             <!-- 积分或微信支付订单取消 -->
-            <van-button wx:if="{{item.orderInfoList[0].exchangeType!=7&&item.statusCode === 'WAIT_BUYER_PAY'}}" color="#f1f1f1" type="default" size="small" class="cancel" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelOrder">取消
+            <van-button wx:if="{{item.orderInfoList[0].exchangeType!=7&&item.statusCode === 'WAIT_BUYER_PAY'}}" color="#f1f1f1" type="default" size="small" custom-class="cancel" data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelOrder">取消
             </van-button>
             <!-- 积分加钱购订单取消 -->
             <van-button wx:if="{{item.orderInfoList[0].exchangeType==7&&item.statusCode === 'WAIT_BUYER_PAY'}}" color="#f1f1f1" type="default" size="small" class="cancel"  data-tradeId="{{item.tradeId}}" data-type="{{item.orderInfoList[0].appType}}" bind:click="handleCancelPointAnMoneyOrder">取消
