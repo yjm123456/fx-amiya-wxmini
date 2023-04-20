@@ -84,21 +84,21 @@ page {
     -webkit-text-fill-color: transparent;
 } */
 .mbanner-img {
-    width: 90rpx;
-    height: 90rpx;
+    width: 80rpx;
+    height: 80rpx;
 }
 .mbanner-img-warp{
     width: 110rpx;
     height: 110rpx;
-    background-color: #8878f5;
+    
     border-radius: 20rpx;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .mbanner-img-ca{
-    width: 60rpx;
-    height: 60rpx;
+    width: 100%;
+    z-index:2;
 }
 .mbanner-text{
     margin-top: 20rpx;
@@ -114,8 +114,8 @@ page {
     align-items: center;
 }
 .brand>image{
-    width: 90rpx;
-    height: 90rpx;
+    width: 110rpx;
+    height: 110rpx;
 }
 /* ================================================================ */
 
@@ -130,10 +130,18 @@ page {
     display: flex;
     margin-bottom: 30rpx;
 }
-
-.product>image {
+.product>.img_warp{
+   
     width: 180rpx;
     height: 180rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.img_warp>image {
+    width: 160rpx;
+    height: 160rpx;
     border-radius: 20rpx;
     flex: 2;
 }
@@ -168,7 +176,7 @@ page {
 
 .price>.origin_price {
     margin-left: 10rpx;
-    color: #e2e2e2;
+    color: #949494;
     text-decoration: line-through;
 }
 .p_tag{

@@ -57,8 +57,8 @@
                                 <text class="source" wx:elif="{{item.source==3}}">绑定奖励</text>
                                 <text class="source" wx:elif="{{item.source==4}}">手动发放</text>
                             </view>
-                            <view class="use" wx:if="{{item.type==1}}" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
-                            <view class="use" wx:if="{{item.type==3}}" data-code="{{item.wirteOfCode}}" catchtap="toAppointCar">去使用</view>
+                            <!-- <view class="use" wx:if="{{item.type==1}}" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
+                            <view class="use" wx:if="{{item.type==3}}" data-code="{{item.wirteOfCode}}" catchtap="toAppointCar">去使用</view> -->
                         </view>
                         <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
                         <view class="right_bottom">
@@ -111,7 +111,7 @@
                         <text wx:if="{{item.type==2}}" class="money">¥{{item.deductMoney}}</text>
                         <text class="type">抵用券</text>
                     </view>
-                    <view wx:if="{{item.type==3}}" class="item_left">
+                    <view style="background-color: #949494;" wx:if="{{item.type==3}}" class="item_left">
                         <text class="money">叫车</text>
                         <text class="type">抵用券</text>
                     </view>
@@ -125,8 +125,8 @@
                                 <text class="source" wx:elif="{{item.source==3}}">绑定奖励</text>
                                 <text class="source" wx:elif="{{item.source==4}}">手动发放</text>
                             </view>
-                            <view class="use" wx:if="{{item.type==1}}" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
-                            <view class="use" wx:if="{{item.type==3}}" data-code="{{item.wirteOfCode}}" catchtap="toAppointCar">去使用</view>
+                            <!-- <view class="use" wx:if="{{item.type==1}}" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
+                            <view class="use" wx:if="{{item.type==3}}" data-code="{{item.wirteOfCode}}" catchtap="toAppointCar">去使用</view> -->
                         </view>
                         <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
                         <view class="right_bottom">
@@ -138,7 +138,7 @@
         </van-tab>
         <van-tab title="已过期">
             <view wx:for="{{list}}" wx:key="index" class="content">
-                <view wx:if="{{item.isShare&&!item.isUsed&&item.source!=1&&item.source!=3}}" class="share_tag">点击分享</view>
+                <!-- <view wx:if="{{item.isShare&&!item.isUsed&&item.source!=1&&item.source!=3}}" class="share_tag">点击分享</view> -->
                 <view class="item"  catchtap="{{item.isShare&&!item.isUsed&&item.source!=1&&item.source!=3 ?'share':''}}" data-shareid='{{item.customerId}}' data-id='{{item.id}}' data-consumptionvoucherid='{{item.consumptionVoucherId}}' data-vouchername='{{item.consumptionVoucherName}}' data-vouchermoney='{{item.deductMoney}}' wx:if="{{item.type==0||item.type==4}}">
                     <view style="background-color: #949494;" class="item_left">
                         <text wx:if="{{item.type==0}}" class="money">¥{{item.deductMoney}}</text>
@@ -178,7 +178,7 @@
                         <text wx:if="{{item.type==2}}" class="money">¥{{item.deductMoney}}</text>
                         <text class="type">抵用券</text>
                     </view>
-                    <view wx:if="{{item.type==3}}" class="item_left">
+                    <view style="background-color: #949494;" wx:if="{{item.type==3}}" class="item_left">
                         <text class="money">叫车</text>
                         <text class="type">抵用券</text>
                     </view>
@@ -192,8 +192,8 @@
                                 <text class="source" wx:elif="{{item.source==3}}">绑定奖励</text>
                                 <text class="source" wx:elif="{{item.source==4}}">手动发放</text>
                             </view>
-                            <view class="use" wx:if="{{item.type==1}}" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
-                            <view class="use" wx:if="{{item.type==3}}" data-code="{{item.wirteOfCode}}" catchtap="toAppointCar">去使用</view>
+                            <!-- <view class="use" wx:if="{{item.type==1}}" data-code="{{item.wirteOfCode}}" catchtap="getQrcodeImage">去使用</view>
+                            <view class="use" wx:if="{{item.type==3}}" data-code="{{item.wirteOfCode}}" catchtap="toAppointCar">去使用</view> -->
                         </view>
                         <van-divider hairline custom-class="custom_vandivider" borderColor="e3e3e3" />
                         <view class="right_bottom">

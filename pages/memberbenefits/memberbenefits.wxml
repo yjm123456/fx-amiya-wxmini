@@ -6,6 +6,6 @@
         <view class="redirect3"  data-url="/pages/birthDayCard/birthDayCard" ></view>
         <view class="redirect4" bindtap="redirect"  data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" ></view>
         <view class="redirect5" bindtap="redirect"  data-url="/pages/appointmentHospital/appointmentHospital" ></view>
-        <view class="redirect6" bindtap="redirect"  data-url="/pages/appointmentHospital/appointmentHospital" ></view>
+        <view class="redirect6" bindtap="redirect"  data-url="/pages/pointAndMoneyShop/pointAndMoneyShop" ></view>
     </view>
 </scroll-view>

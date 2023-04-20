@@ -41,9 +41,7 @@
 .present_price{
   font-size: 58rpx;
   margin-bottom: 10rpx;
-  background-image:-webkit-linear-gradient(right,#efcd71,#efcf77,#e4c675,#fff9c8) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+  color: #fc4e01 !important;
     font-weight: 600;
 }
 .limit{

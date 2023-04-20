@@ -193,7 +193,7 @@ page {
     height: 130rpx;
     border-radius: 30rpx;
     border: 4rpx solid transparent;
-    border-radius: 16px;
+    border-radius: 10rpx;
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
    color: #fff;
@@ -226,7 +226,7 @@ page {
     left: 0;
 }
 .active_voucher{
-    background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #efcd71,#efcf77,#e4c675,#efcd71);
+    border: 5rpx solid #8878f5;
 }
 .voucher_left{
     display: flex;

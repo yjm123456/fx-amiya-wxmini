@@ -3,7 +3,7 @@ page{
     background-color: #f1f1f1;
 }
 .integral{
-    height: 200rpx;
+    height: 180rpx;
     width: 100%;
     background-color: #8878f5;
     text-align: center;
@@ -15,7 +15,7 @@ page{
 .bottom{
     display: flex;
     justify-content: space-around;
-    padding: 0 200rpx;
+    padding: 0 180rpx;
 
 }
 .bottom>text{
@@ -124,7 +124,7 @@ page{
     width: 100%;
     position: absolute;
     /* top: 100rpx; */
-    top: 205rpx;
+    top: 185rpx;
     bottom: 0;
     box-sizing: border-box;
     display: flex;
@@ -188,7 +188,7 @@ page{
     margin-left: 27rpx;
 }
 .goods_info:nth-child(2){
-    margin-top: 50rpx;
+    margin-top: 80rpx;
 }
 .goods_info view:nth-child(1) {
     padding-top: 0;
@@ -265,7 +265,7 @@ page{
     line-height: 25rpx;
 }
 .price{
-    color: #8878f5;
+    color: #fc4e01 !important;
     font-weight: 600;
     font-size: 30rpx;
 }

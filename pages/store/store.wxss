@@ -44,5 +44,5 @@
   left: 35rpx;
 }
 .button{
-    background-color: #dec530;
+    background-color: #8878f5;
 }

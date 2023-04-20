@@ -1,0 +1,26 @@
+
+page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.service{
+    width: 550rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+.service>image{
+    width: 100%;
+}
+.vip{
+    margin-top: 30rpx;
+    font-size: 55rpx;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 200rpx;
+}

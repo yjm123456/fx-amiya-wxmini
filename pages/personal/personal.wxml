@@ -97,11 +97,11 @@
                 </view>
                 <view><text>待收货</text></view>
             </view>
-            <view class="order_item" catchtap="to" data-url="/pages/orderList/orderList?active=5">
+            <view class="order_item" catchtap="to" data-url="/pages/vipCusomerService/vipCusomerService">
                 <view>
-                    <image src="../../images/dpj.png"></image>
+                    <image src="../../images/kf.png"></image>
                 </view>
-                <view><text>待评价</text></view>
+                <view><text>VIP客服</text></view>
             </view>
             
         </view>

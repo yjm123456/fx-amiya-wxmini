@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+      "authPhone": "./../../components/authPhone/auth",
+      "van-divider": "@vant/weapp/divider/index",
+      "van-image": "@vant/weapp/image/index"
+    },
+    "navigationBarTitleText": "积分加钱购"
+  }

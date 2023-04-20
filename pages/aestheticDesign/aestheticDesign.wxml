@@ -7,9 +7,15 @@
         <image data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/dba518256f074ffd8100f5b6c83939fa.jpg"></image>
     </view>
     <view class="item" wx:if="{{liveAnchor=='jn'}}">
-        <image src="" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
+        <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8b9d87791eed47dfaadb7fa35600e6ce.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
     </view>
     <view class="item" wx:if="{{liveAnchor=='mr'}}">
-        <image src="" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
+        <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/3aee2b1b8d1e4b12aa927dfc9454879d.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
+    </view>
+    <view class="item" wx:if="{{liveAnchor=='sh'}}">
+        <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/3aee2b1b8d1e4b12aa927dfc9454879d.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
+    </view>
+    <view class="item" wx:if="{{liveAnchor=='cs'}}">
+        <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/3aee2b1b8d1e4b12aa927dfc9454879d.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
     </view>
 </view>

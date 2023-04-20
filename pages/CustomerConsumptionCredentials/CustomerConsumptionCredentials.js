@@ -31,9 +31,19 @@ Page({
                 liveAnchor:'jn'
             })
         }
-        if(assisteAppId=="wx695942e4818de445"){
+        if(assisteAppId=="wx8747b7f34c0047eb"){
             this.setData({
                 liveAnchor:'mr'
+            })
+        }
+        if(assisteAppId=="wx695942e4818de445"){
+            this.setData({
+                liveAnchor:'sh'
+            })
+        }
+        if(assisteAppId=="wxd96a3c2c6ce482f9"){
+            this.setData({
+                liveAnchor:'cs'
             })
         }
     },

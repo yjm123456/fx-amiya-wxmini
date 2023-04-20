@@ -1,12 +1,11 @@
-// pages/aestheticDesign/aestheticDesign.js
-import http from './../../utils/http';
+// pages/vipCusomerService/vipCusomerService.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        liveAnchor:'mr'
+        liveAnchor:''
     },
 
     /**
@@ -35,32 +34,8 @@ Page({
                 liveAnchor:'mr'
             })
         }
-        if(assisteAppId=="wxd96a3c2c6ce482f9"){
-            this.setData({
-                liveAnchor:'cs'
-            })
-        }
     },
-    //跳转美学设计界面
-    toDesign(){
-        wx.navigateTo({
-          url: '/pages/aestheticsDesignReportList/aestheticsDesignReportList',
-        })
-    },
-    //跳转到形象设计卡页面
-    toCard(){
-        const {liveAnchor}=this.data;
-        if(liveAnchor=='mr'){
-            wx.navigateTo({
-              url: '/pages/activity/activity',
-            })
-        }else{
-            wx.navigateTo({
-              url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name='+liveAnchor,
-            })
-        }
-        
-    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

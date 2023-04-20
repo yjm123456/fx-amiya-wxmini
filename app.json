@@ -83,7 +83,9 @@
         "pages/tagGoodsList/tagGoodsList",
         "pages/shop/shop",
         "pages/integralShop/integraShop",
-        "pages/aestheticDesign/aestheticDesign"
+        "pages/aestheticDesign/aestheticDesign",
+        "pages/pointAndMoneyShop/pointAndMoneyShop",
+        "pages/vipCusomerService/vipCusomerService"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

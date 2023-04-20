@@ -110,6 +110,7 @@ Page({
     //步骤3,如果也没有最近的登录记录,判断首页初始化时参数中是否有appid,如果有则设置为参数中的appid
     //步骤4,如果以上的值都没有则设置为当前小程序的appid
     getAppId(options) {
+        console.log('开始');
         let app=getApp();
         app.getUserTokenSuccessCallback=res=>{
             const {appId}=options;
@@ -129,6 +130,7 @@ Page({
         http('get', '/customer/isBind').then(res => {
             var assisteAppId = res.data.assisteAppId;
             if (assisteAppId) {
+
                 this.setData({
                     appId: assisteAppId
                 })
@@ -142,6 +144,7 @@ Page({
                 http('get', '/user/lastLoginAppId').then(res => {
                     var lastAppId = res.data.appId;
                     if (lastAppId) {
+                        console.log('有记录');
                         this.setData({
                             appId: lastAppId
                         })    
@@ -151,11 +154,9 @@ Page({
                         var app = getApp()
                         app.globalData.assisteAppId = appId;
                         this.getIndexData()
-                    } else {
-                        const {
-                            appId
-                        } = options;
-                        if (appId) {
+                    } else {                       
+                        if (options) {
+                            const {appId}=options;
                             this.setData({
                                 appId: appId
                             });

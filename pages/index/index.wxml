@@ -11,20 +11,20 @@
         <view class="title"><text>变美计划</text></view>
         <view class="mbanner">
             <view class="mbanner-item">
-                <image mode="widthFix" class="mbanner-img" bindtap="redirect" data-url="/pages/aestheticDesign/aestheticDesign" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/766cf2e5baba4385bf0aa9a4c90ab5a2.png"></image>
+                <image mode="widthFix" class="mbanner-img" bindtap="redirect" data-url="/pages/aestheticDesign/aestheticDesign" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c73f469bd4164a23ad87a63852262b24.png"></image>
                 <text class="mbanner-text">美学设计</text>
             </view>
             <view class="mbanner-item"  wx:if="{{showAppoint}}">
-                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f1ed26c9339248a4841045f1c46016bb.png"></image>
+                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/appointmentHospital/appointmentHospital" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/64ed034e353b45b687f9ac8f5acd5bf8.png"></image>
                 <text class="mbanner-text">免费叫车</text>
             </view>
             <view class="mbanner-item">
-                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c0b9b31eb2384ffbb06d18648d6f5b1e.png"></image>
+                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/1717555079be48cf8b28c0ea17cfc848.png"></image>
                 <text class="mbanner-text">消费领积分</text>
             </view>
 
             <view class="mbanner-item">
-                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/ae5929c0fece4760a8bebe1a6f19cf47.png"></image>
+                <image class="mbanner-img" mode="widthFix" bindtap="redirect" data-url="/pages/memberbenefits/memberbenefits" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/c85e7d76b44f46b095b3be8a23e926dd.png"></image>
                 <text class="mbanner-text">会员权益</text>
             </view>
         </view>
@@ -36,7 +36,7 @@
     <view class="mbanner">
         <view wx:for="{{hotNotBrandCategoryList}}" class="mbanner-item">
             <view class="mbanner-img-warp">
-                <image class="mbanner-img-ca" bindtap="switchTab" data-id="{{item.id}}" data-url="/pages/shop/shop" src="{{item.CategoryImg}}"></image>
+                <image mode="widthFix" class="mbanner-img-ca" bindtap="switchTab" data-id="{{item.id}}" data-url="/pages/shop/shop" src="{{item.categoryImg}}"></image>
             </view>
             <text class="mbanner-text">{{item.name}}</text>
         </view>
@@ -58,7 +58,10 @@
     
     <view class="hot_product">
         <view wx:for="{{goodsList}}" bindtap="goodsDetails" data-exchagetype="{{item.exchangeType}}" data-goodsid="{{item.id}}" class="product">
-            <image mode="aspectFill" src="{{item.thumbPicUrl}}"></image>
+            <view class="img_warp">
+                <image mode="aspectFill" src="{{item.thumbPicUrl}}"></image>
+                <image style="position: absolute;z-index: 2;left: 0;top: 0;height: 180rpx;width: 180rpx;" mode="aspectFill" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/37b4541aba344e5f9fffe4a68c2da539.png"></image>
+            </view>
             <view class="product_desc">
                 <text class="name">{{item.name}}</text>
                 <text class="desc">{{item.description}}</text>
