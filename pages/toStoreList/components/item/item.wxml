@@ -12,6 +12,8 @@
         <view class="title">{{item.itemInfoName}}</view>
         <!-- <view class="hospital">{{item.hospitalInfo.hospitalName}}</view> -->
         <view class="hospital">{{item.appointArea}}</view>
+        <view class="hospital">{{item.hospitalInfo.hospitalName}}</view>
+        <view class="hospital">{{item.address}}</view>
       </view>
     </view>
     <view class="button_con">

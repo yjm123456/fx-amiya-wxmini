@@ -140,7 +140,7 @@ page {
     color: #000;
 }
 .goods .item>view:first-of-type .price>text:first-of-type {
-    color: #8878f5;
+    color: #fc4e01;
     font-weight: 600;
 }
 .goods .item>view:first-of-type .price>text:last-of-type {
@@ -284,7 +284,7 @@ page {
 }
 
 .submit_order>view:first-of-type>text:last-of-type {
-    color: #8878f5;
+    color: #fc4e01;
     font-weight: 600;
 }
 

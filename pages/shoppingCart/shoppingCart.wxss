@@ -106,7 +106,7 @@ page {
 }
 
 .total_price {
-    color: #8878f5;
+    color: #fc4e01;
     font-weight: 600;
 }
 
@@ -208,7 +208,7 @@ page {
 }
 
 .price {
-    color: #8878f5;
+    color: #fc4e01;
     font-size: 32rpx;
     font-weight: 600;
 }

@@ -42,7 +42,7 @@
                     <view class="middle goods_name">{{item.name}}</view>
                     <view class="middle goods_name">{{item.description}}</view>
                     <view wx:if="{{item.exchangeType==7}}" class="exchange_tag"><text>可参与积分加钱购</text></view>
-                    <view class="price"> <text wx:if="{{item.exchangeType==7}}">{{item.integrationQuantity}}积分+</text>￥{{item.salePrice}}</view>
+                    <view class="price"> <text>{{item.integrationQuantity}}积分</text></view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">

@@ -30,10 +30,13 @@ input{
     line-height: 40rpx;
     text-align: center;
 }
+.code_warp{
+  position: relative;
+}
 .code_btn{
     position: absolute;
     right: 10rpx;
-    top: 290rpx;
+    top: 15rpx;
     background-color: #8878f5;
     height: 40rpx;
     font-size: 30rpx;
@@ -149,6 +152,16 @@ input{
     height: 200rpx;
     font-size: 30rpx;
     padding: 10rpx;
+    
+}
+.address2{
+  background-color: #fff;
+  border-radius: 20rpx;
+  width: 650rpx;
+  height: 200rpx;
+  font-size: 30rpx;
+  padding: 10rpx;
+  color: #949494;
 }
 .origin_picker{
     color: #000;
