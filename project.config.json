@@ -32,16 +32,15 @@
             "outputPath": ""
         },
         "enableEngineNative": false,
-        "useIsolateContext": true,
+        "useIsolateContext": false,
         "userConfirmedBundleSwitch": false,
         "packNpmManually": false,
         "packNpmRelationList": [],
         "minifyWXSS": true,
         "disableUseStrict": false,
-        "showES6CompileOption": false,
-        "useCompilerPlugins": false,
         "minifyWXML": true,
-        "useStaticServer": true
+        "showES6CompileOption": false,
+        "useCompilerPlugins": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.18.1",

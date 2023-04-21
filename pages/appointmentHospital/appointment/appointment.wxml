@@ -7,10 +7,13 @@
             <input type="text" disabled="{{true}}" value="{{itemInfoName}}" bindtap="selectProject" placeholder="请选择项目"/>
             <input type="text" bindinput="handleNameChange" placeholder="请输入姓名"/>
             <input type="text" bindinput="handlePhoneChange" placeholder="请输入手机号"/>
-            <input type="text" bindinput="handleCodeChange" placeholder="请输入验证码"/>
-            <view class="item_btn">项目</view>
+            <view class="code_warp">
+                <input type="text" bindinput="handleCodeChange" placeholder="请输入验证码"/>
             <view class="code_btn" wx:if="{{send}}" catchtap="sendCode">获取验证码</view>
             <view wx:else  class="code_btn">{{seconds}}秒后重新发送</view>
+            </view>
+            <view class="item_btn">项目</view>
+            
         </view>
     </view>
 <view class="container">
@@ -43,9 +46,9 @@
             <text>预约叫车</text>
         </view>
     </view>
-    <textarea class="address" bindinput="handleAddress" placeholder="请输入上车地址"></textarea>
+    <textarea class="address" bindinput="handleAddress" placeholder-class="address2" placeholder="请输入上车地址"></textarea>
     <view class="origin_picker">
-            <input  class="" type="text" value="{{hospital?hospital:''}}" placeholder="请选择" bindinput="handlerHospitalChange" style="width:650rpx;height: 100%;color:#000;" />
+            <input  class="" type="text" value="{{hospital?hospital:''}}" placeholder="请选择预约医院" bindinput="handlerHospitalChange" style="width:650rpx;height: 100%;color:#000;" />
             <picker class="origin_select" catchchange="bindPickerBuyersName" range-key="name" range="{{Merchlist}}">
                 <view class="ar">选择</view>
             </picker>

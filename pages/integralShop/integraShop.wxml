@@ -32,7 +32,7 @@
                 <text class="{{saleCountSelected?'active':''}}" bindtap="saleCountSelect">销量</text>
                 <text class="{{priceSelected?'active':''}}" bindtap="priceSelect">价格</text>
             </view>
-            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType>0}}">
+            <view class="goods_item" wx:for="{{goodsInfos}}" wx:key="id" bindtap="goodsDetails" data-goodsId="{{item.id}}" wx:if="{{item.exchangeType==0}}">
                 <view wx:if="{{item.isMember}}" class="tag">会员专享</view>
                 <view>
                     <text class="iconfont icon-xiangou" wx:if="{{item.isLimitBuy}}"></text>
@@ -42,7 +42,7 @@
                     <view class="middle goods_name">{{item.name}}</view>
                     <view class="middle goods_name">{{item.description}}</view>
                     <view wx:if="{{item.exchangeType==7}}" class="exchange_tag"><text>可参与积分加钱购</text></view>
-                    <view class="price"> <text wx:if="{{item.exchangeType==7}}">{{item.integrationQuantity}}积分+</text>￥{{item.salePrice}}</view>
+                    <view class="price"> <text>{{item.integrationQuantity}}积分</text></view>
                 </view>
             </view>
             <view wx:if="{{nextPage === false}}">

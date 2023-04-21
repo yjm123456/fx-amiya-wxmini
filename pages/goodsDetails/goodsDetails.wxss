@@ -29,7 +29,7 @@ page {
 .price {
   display: flex;
   align-items: flex-end;
-  color: #dec530;
+  color: #fc4e01;
   font-size: 48rpx;
   
 }
