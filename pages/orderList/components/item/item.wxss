@@ -88,7 +88,7 @@ page{
     color: #333333;
 }
 .price{
-    color: #8878f5;
+    color: #fc4e01;
     font-weight: 600;
     
 }

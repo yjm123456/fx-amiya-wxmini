@@ -13,7 +13,7 @@
         <!-- <view class="hospital">{{item.hospitalInfo.hospitalName}}</view> -->
         <view class="hospital">{{item.appointArea}}</view>
         <view class="hospital">{{item.hospitalInfo.hospitalName}}</view>
-        <view class="hospital">{{item.address}}</view>
+        <view class="hospital">{{item.address?item.address:''}}</view>
       </view>
     </view>
     <view class="button_con">

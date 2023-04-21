@@ -137,7 +137,7 @@
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/appointmentHospital/appointmentHospital?active=1" bindtap="to" title="预约信息" />
         
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" bindtap="to" title="消费领积分" />
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/writeoffGoodGift/writeoffGoodGift" bindtap="to" title="生日礼遇,节日礼遇" />
+        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/writeoffGoodGift/writeoffGoodGift" bindtap="to" title="生日/节日礼遇" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/orderList/orderList">
             <view slot="title">
                 <text style="color: #000;">联系客服</text>

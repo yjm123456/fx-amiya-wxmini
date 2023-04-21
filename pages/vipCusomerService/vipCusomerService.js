@@ -34,6 +34,11 @@ Page({
                 liveAnchor:'mr'
             })
         }
+        if(assisteAppId=="wxd96a3c2c6ce482f9"){
+            this.setData({
+                liveAnchor:'cs'
+            })
+        }
     },
 
     /**

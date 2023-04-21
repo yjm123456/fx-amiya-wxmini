@@ -49,7 +49,9 @@
 .memo{
   width: 120rpx;
 }
-
+.integral_num{
+   color: #fc4e01;
+}
 
 .order_num{
   flex: 1;

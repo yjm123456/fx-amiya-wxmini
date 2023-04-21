@@ -498,14 +498,15 @@ Page({
             }
         })
     },
-    switchTab(e) {
+    switchShopTab(e) {
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 if (e.currentTarget.dataset.url) {
                     wx.switchTab({
                         url: e.currentTarget.dataset.url,
                     })
-
+                    let app=getApp();
+                    app.category=e.currentTarget.dataset.id
                 }
             } else {
                 this.showVoucherTips()

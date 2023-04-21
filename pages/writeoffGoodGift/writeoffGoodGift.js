@@ -19,9 +19,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({
-            show: true
-        });
+     
         this.getGiftCategoryList();
     },
     //获取所有的礼品分类
@@ -34,9 +32,33 @@ Page({
                 this.setData({
                     selectCategoryId: (res.data.nameList[0]).id
                 })
+                this.setData({
+                    active:0,
+                    show: true
+                })
                 this.getOrderList();
             }
         })
+    },
+    //查看物流信息
+    lookLogistics(e) {
+        const {
+            courierNumber,
+            receiverPhone,
+            expressId
+        } = e.currentTarget.dataset.item
+        // courierNumber={{item.courierNumber}}&expressId={{item.expressId}}&receiverPhone={{item.receiverPhone
+        if (expressId) {
+            wx.navigateTo({
+                url: '/pages/logistics/logistics?courierNumber=' + courierNumber + '&receiverPhone=' + receiverPhone + '&expressId=' + expressId + '&type=1',
+            })
+        } else {
+            wx.showToast({
+                title: '暂无物流信息',
+                icon: 'none',
+                duration: 2000
+            })
+        }
     },
     getOrderList(callback) {
         const {

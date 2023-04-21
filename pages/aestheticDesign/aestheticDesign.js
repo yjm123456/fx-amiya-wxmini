@@ -50,14 +50,25 @@ Page({
     //跳转到形象设计卡页面
     toCard(){
         const {liveAnchor}=this.data;
+        if(liveAnchor=='sh'){
+            wx.navigateTo({
+              url: '/pages/activity/activity',
+            })
+        }
+        if(liveAnchor=='cs'){
+            wx.navigateTo({
+              url: '/pages/activity/activity',
+            })
+        }
         if(liveAnchor=='mr'){
             wx.navigateTo({
               url: '/pages/activity/activity',
             })
-        }else{
+        }
+        if(liveAnchor=='jn'||liveAnchor=='dd'){
             wx.navigateTo({
-              url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name='+liveAnchor,
-            })
+                url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name='+liveAnchor,
+              })
         }
         
     },

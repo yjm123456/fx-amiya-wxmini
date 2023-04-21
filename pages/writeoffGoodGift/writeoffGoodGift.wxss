@@ -8,3 +8,58 @@ page{
 .tabs{
     background-color: #000 !important;
 }
+.container{
+    padding: 20rpx;
+}
+.item,.item_content{
+  width: 100%;
+  background-color: #f1f1f1;
+  border-radius: 20rpx;
+}
+.item{
+    margin-top: 20rpx;
+  position: relative;
+  background-color: #fff;
+  height: 200rpx;
+  padding: 10rpx 0rpx 10rpx 10rpx;
+}
+.item image{
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 20rpx;
+}
+.item_content{
+  margin-top: 30rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.state{
+  font-size: 26rpx;
+  color: #8878f5;
+  text-align: end;
+}
+.item_con{
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+.name{
+  flex:1;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  color: #000;
+}
+.button1{
+  width: 124rpx;
+  padding: 5rpx 10rpx;
+  box-sizing: border-box;
+  color: #fff;
+  margin-right: 10rpx;
+  font-size: 24rpx;
+  background-color: #8878f5;
+  position: absolute;
+  bottom: 10rpx;
+  right: 20rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}

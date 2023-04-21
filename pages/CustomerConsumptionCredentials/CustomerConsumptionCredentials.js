@@ -12,7 +12,8 @@ Page({
         //当前商品展示列表页码
         currentPageIndex: 1,
         consumptionCredentialsList: [],
-        liveAnchor:''
+        liveAnchor:'',
+        
     },
 
     /**

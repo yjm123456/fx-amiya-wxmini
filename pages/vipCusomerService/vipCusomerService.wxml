@@ -1,7 +1,52 @@
-<view class="service" wx:if="{{liveAnchor=='jn'}}"><image mode="widthFix" src=""></image></view>
-<view class="service" wx:if="{{liveAnchor=='dd'}}"><image mode="widthFix" src=""></image></view>
-<view class="service" wx:if="{{liveAnchor=='sh'}}"><image mode="widthFix" src=""></image></view>
-<view class="service" wx:if="{{liveAnchor=='mr'}}"><image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/dba518256f074ffd8100f5b6c83939fa.jpg"></image></view>
+<view class="service2" wx:if="{{liveAnchor=='jn'}}">
+    <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7da3b35a10a5488da8363dd0705349cc.png"></image>
+</view>
+<view class="service2" wx:if="{{liveAnchor=='dd'}}">
+    <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/aa8600e3a2934d839db90a7d3d71b0bd.png"></image>
+</view>
+<view class="group" wx:if="{{liveAnchor=='sh'}}">
+    <view class="warp">
+        <view class="service2" wx:if="{{liveAnchor=='sh'}}">
+            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/aa8600e3a2934d839db90a7d3d71b0bd.png"></image>
+        </view>
+        <view class="center">刀刀VIP客服</view>
+    </view>
+    <view class="warp">
+        <view class="service2" wx:if="{{liveAnchor=='sh'}}">
+            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7da3b35a10a5488da8363dd0705349cc.png"></image>
+        </view>
+        <view class="center">吉娜VIP客服</view>
+    </view>
+</view>
+<view class="group" wx:if="{{liveAnchor=='mr'}}">
+    <view class="warp">
+        <view class="service2" wx:if="{{liveAnchor=='mr'}}">
+            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/aa8600e3a2934d839db90a7d3d71b0bd.png"></image>
+        </view>
+        <view class="center">刀刀VIP客服</view>
+    </view>
+    <view class="warp">
+        <view class="service2" wx:if="{{liveAnchor=='mr'}}">
+            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7da3b35a10a5488da8363dd0705349cc.png"></image>
+        </view>
+        <view class="center">吉娜VIP客服</view>
+    </view>
+
+</view>
+<view class="group" wx:if="{{liveAnchor=='cs'}}">
+    <view class="warp">
+        <view class="service2" wx:if="{{liveAnchor=='cs'}}">
+            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/aa8600e3a2934d839db90a7d3d71b0bd.png"></image>
+        </view>
+        <view class="center">刀刀VIP客服</view>
+    </view>
+    <view class="warp">
+        <view class="service2" wx:if="{{liveAnchor=='cs'}}">
+            <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7da3b35a10a5488da8363dd0705349cc.png"></image>
+        </view>
+        <view class="center">吉娜VIP客服</view>
+    </view>
+</view>
 <view class="vip">
     <text>添加VIP客服</text>
     <text>辅助兑换好礼</text>

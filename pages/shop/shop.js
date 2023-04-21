@@ -10,8 +10,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        categoryParam:'',
-        appId:'',
+        categoryParam: '',
+        appId: '',
         // 是否正在处理滚动事件，避免一次滚动多次触发
         isScrolling: false,
 
@@ -35,24 +35,29 @@ Page({
 
         // 是否存在下一页
         nextPage: true,
-        controlAuthPhone:false,
-        goodsCategorys:'',
+        controlAuthPhone: false,
+        goodsCategorys: '',
         //排序
-        sort:0,
-        saleCountSelected:false,
-        priceSelected:false
+        sort: 0,
+        saleCountSelected: false,
+        priceSelected: false
     },
-    onLoad(options){
-        const {categoryid}=options
-        if(categoryid){
-            this.setData({
-                categoryParam:categoryid
-            })
-        }
+    onLoad(options) {
+        
     },
     onShow() {
-        const {assisteAppId}=getApp().globalData;
-        this.setData({appId:assisteAppId})
+        let app = getApp();
+        if (app.category) {
+            this.setData({
+                categoryParam: app.category
+            })
+        }
+        const {
+            assisteAppId
+        } = getApp().globalData;
+        this.setData({
+            appId: assisteAppId
+        })
         this.getGoodsCategory();
     },
 
@@ -70,13 +75,13 @@ Page({
             saleCountSelected,
             priceSelected
         } = this.data;
-        if(saleCountSelected){
+        if (saleCountSelected) {
             this.setData({
-                sort:0
+                sort: 0
             })
-        }else{
+        } else {
             this.setData({
-                sort:1
+                sort: 1
             })
         }
         this.setData({
@@ -96,13 +101,13 @@ Page({
             priceSelected,
             saleCountSelected
         } = this.data;
-        if(priceSelected){
+        if (priceSelected) {
             this.setData({
-                sort:0
+                sort: 0
             })
-        }else{
+        } else {
             this.setData({
-                sort:2
+                sort: 2
             })
         }
         this.setData({
@@ -113,7 +118,7 @@ Page({
             pageNum: 1,
             goodsInfos: [],
             nextPage: true,
-            
+
         })
         this.getGoodsInfo();
     },
@@ -149,22 +154,38 @@ Page({
     },
     // 获取商品分类
     getGoodsCategory() {
-        const {appId,categoryParam}=this.data;
-        http("get", `/Goods/categoryList?showDirectionType=1&appId=`+appId).then(res => {
+        const {
+            appId,
+            categoryParam
+        } = this.data;
+        http("get", `/Goods/categoryList?showDirectionType=1&appId=` + appId).then(res => {
             if (res.code === 0) {
+                let index = 0;
                 const {
                     goodsCategorys
                 } = res.data;
+                if (categoryParam) {
+                    for (let index1 = 0; index1 < goodsCategorys.length; index1++) {
+                        console.log(goodsCategorys[index1].id);
+                        if (goodsCategorys[index1].id == categoryParam) {
+                            index = index1;
+                            break;
+                        }
+
+                    }
+                }
+
                 //判断是否有已存在的类别
-                if(!this.data.goodsCategorys){
+                if (!this.data.goodsCategorys) {
                     this.setData({
                         goodsCategorys,
-                        categoryActive: 0,
-                        categoryId: goodsCategorys.length && goodsCategorys[0].id
+                        categoryActive: index,
+                        categoryId: goodsCategorys.length && goodsCategorys[index].id,
+                        categoryParam: ''
                     })
                     this.getGoodsInfo();
-                }else{
-                    if(this.data.goodsCategorys.length!=goodsCategorys.length){
+                } else {
+                    if (this.data.goodsCategorys.length != goodsCategorys.length) {
                         this.setData({
                             pageNum: 1,
                             goodsInfos: [],
@@ -179,8 +200,8 @@ Page({
                         return;
                     }
                     for (let index = 0; index < goodsCategorys.length; index++) {
-                        var exist= this.data.goodsCategorys.findIndex(item=>item.name==goodsCategorys[index].name);
-                        if(exist<0){
+                        var exist = this.data.goodsCategorys.findIndex(item => item.name == goodsCategorys[index].name);
+                        if (exist < 0) {
                             this.setData({
                                 pageNum: 1,
                                 goodsInfos: [],
@@ -194,8 +215,21 @@ Page({
                             this.getGoodsInfo();
                         }
                     }
-                }               
+                    if(categoryParam){
+                        this.setData({
+                            categoryActive:index,
+                            categoryId:categoryParam
+                        })
+                        this.getGoodsInfo()
+                    }
+                }
+                let app = getApp();            
+                app.category = ''
+                this.setData({
+                    categoryParam:''
+                })
             }
+
         })
     },
     // 点击商品分类
@@ -211,9 +245,9 @@ Page({
                 pageNum: 1,
                 goodsInfos: [],
                 nextPage: true,
-                sort:0,
-                saleCountSelected:false,
-                priceSelected:false
+                sort: 0,
+                saleCountSelected: false,
+                priceSelected: false
             })
             this.getGoodsInfo();
         }
@@ -290,8 +324,10 @@ Page({
             });
         }
     },
-    to(e){
-        const {page}=e.currentTarget.dataset;
+    to(e) {
+        const {
+            page
+        } = e.currentTarget.dataset;
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 wx.navigateTo({

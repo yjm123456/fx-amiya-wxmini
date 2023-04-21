@@ -36,7 +36,7 @@
     <view class="mbanner">
         <view wx:for="{{hotNotBrandCategoryList}}" class="mbanner-item">
             <view class="mbanner-img-warp">
-                <image mode="widthFix" class="mbanner-img-ca" bindtap="switchTab" data-id="{{item.id}}" data-url="/pages/shop/shop" src="{{item.categoryImg}}"></image>
+                <image mode="widthFix" class="mbanner-img-ca" bindtap="switchShopTab" data-id="{{item.id}}" data-url="/pages/shop/shop" src="{{item.categoryImg}}"></image>
             </view>
             <text class="mbanner-text">{{item.name}}</text>
         </view>

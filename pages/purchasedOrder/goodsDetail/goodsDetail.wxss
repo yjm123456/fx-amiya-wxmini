@@ -76,9 +76,7 @@
 }
 
 .price {
-    background-image:-webkit-linear-gradient(right,#efcd71,#efcf77,#e4c675) !important; 
-    -webkit-background-clip:text !important; 
-    -webkit-text-fill-color:transparent !important;
+    color: #fc4e01;
     font-weight: 600;
 }
 

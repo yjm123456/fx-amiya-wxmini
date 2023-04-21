@@ -10,7 +10,7 @@
                             <image src="{{i.thumbPicUrl}}" />
                             <view class="name">{{i.giftName}}</view>
                         </view>
-                        <view class="button" bindtap="lookLogistics" wx:if="{{item.deliveryStatus == '已发货'}}" data-item="{{item}}">查看物流</view>
+                        <view class="button1" bindtap="lookLogistics" wx:if="{{item.deliveryStatus == '已发货'}}" data-item="{{item}}">查看物流</view>
                     </view>
                 </view>
                 <van-divider wx:if="{{!list.length}}" contentPosition="center" customStyle="font-size: 28rpx;padding:0 20%">暂无数据
