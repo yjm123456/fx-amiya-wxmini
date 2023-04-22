@@ -217,9 +217,15 @@ Page({
                     }
                     if(categoryParam){
                         this.setData({
+                            pageNum: 1,
+                            goodsInfos: [],
+                            nextPage: true
+                        })
+                        this.setData({
                             categoryActive:index,
                             categoryId:categoryParam
                         })
+                        console.log("类别韦"+categoryParam);
                         this.getGoodsInfo()
                     }
                 }
