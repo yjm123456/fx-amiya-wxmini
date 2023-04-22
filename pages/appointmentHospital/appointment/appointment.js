@@ -554,7 +554,7 @@ Component({
                                 })
                             }, 1000)
                             setTimeout(() => {
-                                wx.reLaunch({
+                                wx.navigateTo({
                                     url: '/pages/appointmentHospital/appointmentHospital?active=1',
                                 })
                             }, 2000)
