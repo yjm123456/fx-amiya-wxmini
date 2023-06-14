@@ -541,7 +541,11 @@ Page({
                             } else {
                                 sumMoney += this.data.list[j].voucherPrice;
                             }
-                            sumPoint+=this.data.list[j].interGrationPrice*this.data.list[j].num;
+                            if(this.data.list[j].exchangeType === 1){
+                                sumPoint+= 0;
+                            }else{
+                                sumPoint+= this.data.list[j].interGrationPrice*this.data.list[j].num;
+                            }
                         }
                     } else if (this.data.list[j].exchangeType === 0) {
                         sumPoint += this.data.list[j].singleprice * this.data.list[j].num;

@@ -295,7 +295,7 @@
                 {
                     "name": "面诊卡下单",
                     "pathName": "pages/LiveAnchorOrder/LiveAnchorOrder",
-                    "query": "q=app.ameiyes.com/amiyabackground/media?id=jn",
+                    "query": "q=1?id=jn",
                     "launchMode": "default",
                     "scene": null
                 },

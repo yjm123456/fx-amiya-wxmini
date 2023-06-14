@@ -4,6 +4,7 @@ App({
   onLaunch() {
     const accountInfo = wx.getAccountInfoSync();
     this.globalData.appId = accountInfo.miniProgram.appId;
+    this.globalData.isLogin = false;
     this.getUserTokenInfo();
   },
 

@@ -51,6 +51,7 @@ Page({
             name,
             q
         } = options;
+        console.log(q);
         if (q) {
             q=decodeURIComponent(q);
             name = q.split("?")[1].split("=")[1];

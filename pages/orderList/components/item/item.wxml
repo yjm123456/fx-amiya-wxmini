@@ -58,7 +58,7 @@
             </van-button>
             <!-- 三方订单重新付款 -->
 
-            <van-button color="#8878f5" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&(item.orderInfoList[0].exchangeType===6||item.orderInfoList[0].exchangeType===7)}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
+            <van-button color="#8878f5" type="danger" size="small" wx:if="{{item.statusCode === 'WAIT_BUYER_PAY'&&(item.orderInfoList[0].exchangeType===6||item.orderInfoList[0].exchangeType===7||item.orderInfoList[0].exchangeType===4)}}" data-tradeId="{{item.tradeId}}" bind:click="handlePay2" data-singlePlatform="{{item.orderInfoList[0].exchangeType}}" data-appType="{{item.orderInfoList[0].appType}}" data-orderIfon="{{item.orderInfoList}}">付款
             </van-button>
 
             <!-- 待收货 -->
@@ -79,7 +79,7 @@
     <view wx:else>
         <view class="tool">
             <view class="button jftk" wx:if="{{item.orderInfoList[0].appType===2 && item.orderInfoList[0].exchangeType===0}}" bindtap="pointReund" data-orderid="{{item.orderInfoList[0].id}}" data-tradeid="{{item.tradeId}}" >积分退款</view>
-            <van-button color="#f1f1f1" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode=='WAIT_SELLER_SEND_GOODS') }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
+            <van-button custom-class="logistics" color="#f1f1f1" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode=='WAIT_SELLER_SEND_GOODS') }}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
                 申请退款
             </van-button>
         </view>

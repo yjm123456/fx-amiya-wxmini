@@ -3,11 +3,51 @@ page{
     background-color: #f1f1f1;
     height: 100%;
 }
+.card_info{
+    display: flex;
+    flex-direction: row;
+    height: 200rpx;
+    align-items: center;
+    padding: 10rpx 10rpx;
+    background-color: #fff;
+    margin: 30rpx 30rpx;
+    border-radius: 20rpx;
+}
+.card_info>image{
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 20rpx;
+}
+.info_warp{
+    height: 100%;
+    width: 460rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.goods_name{
+    font-size: 30rpx;
+    padding-top: 10rpx;
+    padding-left: 20rpx;
+}
+.goods_info{
+    padding-bottom: 10rpx;
+    
+    display: flex;
+    padding-left: 20rpx;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 30rpx;
+}
+.price{
+    color: #fc4e01;
+}
 .order_form{
     border-radius: 20rpx;
     overflow: hidden;
     margin: 20rpx 20rpx;
-    padding: 50rpx 20rpx;
+    padding: 10rpx 20rpx;
     background-color: #f1f1f1;
 }
 .field{
@@ -237,9 +277,9 @@ page{
       color: #000;
   }
   .pay_list{
-    padding: 20rpx 0;
+    padding: 10rpx 0;
     background-color: #f1f1f1;
-    margin-top: 20rpx;
+    margin-top: 10rpx;
     /* margin: 30rpx; */
     border-radius: 20rpx;
 }

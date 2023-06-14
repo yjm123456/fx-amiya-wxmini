@@ -20,6 +20,7 @@ export const login = () => {
             const { token } = res.data;
             wx.setStorageSync('token', token);
             resolve(token)
+            getApp().globalData.isLogin=true
           }
         })
       }

@@ -1,6 +1,9 @@
 <!--pages/LiveAnchorDetail/LiveAnchorOrder/LiveAnchorOrder.wxml-->
 <view>
-    
+    <view class="card_info"><image src="{{shopGoodsInfo.thumbPicUrl}}"></image><view class="info_warp">
+        <view class="goods_name"><text>{{shopGoodsInfo.name}}</text></view>
+        <view class="goods_info"><text>数量:1张</text><text class="price">¥{{shopGoodsInfo.salePrice}}</text></view>
+    </view></view>
     <view class="order_form">
         <view>
             <van-field border="{{false}}" input-class="field" value="{{ trueName  }}" type="textarea" clearable placeholder="请输入姓名" title-width="4em" bind:change="handleNameChange" maxlength="200" />
@@ -13,10 +16,10 @@
             <van-radio-group value="{{ name === 'dd' ? '1' : '2' }}" bind:change="onChange">
                 <van-cell-group border="{{false}}">
                     <van-cell wx:if="{{name==='dd'}}" border="{{false}}" inset="{{true}}" title="刀刀老师" clickable data-names="1">
-                        <van-radio checked-color="#DEC350" slot="right-icon" name="1" />
+                        <van-radio checked-color="#8878f5" slot="right-icon" name="1" />
                     </van-cell>
                     <van-cell wx:if="{{name==='jn'}}" border="{{false}}" inset="{{true}}" title="吉娜老师" clickable data-names="2">
-                        <van-radio checked-color="#DEC350" slot="right-icon" name="2" />
+                        <van-radio checked-color="#8878f5" slot="right-icon" name="2" />
                     </van-cell>
                 </van-cell-group>
             </van-radio-group>

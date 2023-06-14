@@ -298,7 +298,12 @@ Page({
                     } else {
                         sumMoney += this.data.goodsInfo[i].voucherPrice;
                     }
-                    sumPoint += this.data.goodsInfo[i].interGrationPrice * this.data.goodsInfo[i].num;
+                    if(this.data.goodsInfo[i].exchangeType === 1){
+                        sumPoint+= 0;
+                    }else{
+                        sumPoint += this.data.goodsInfo[i].interGrationPrice * this.data.goodsInfo[i].num;
+                    }
+                    
                 } else {
                     sumMoney += this.data.goodsInfo[i].voucherPrice;
                 }

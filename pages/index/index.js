@@ -12,39 +12,6 @@ Page({
         appId: '',
         // 轮播图
         carouselImage: [],
-        projectArr: [{
-                name: "水光补水",
-                img: "/images/icon_1.png"
-            },
-            {
-                name: "光子嫩肤",
-                img: "/images/icon_2.png"
-            },
-            {
-                name: "热玛吉",
-                img: "/images/icon_3.png"
-            },
-            {
-                name: "欧洲之星",
-                img: "/images/icon_4.png"
-            },
-            {
-                name: "玻尿酸",
-                img: "/images/icon_5.png"
-            },
-            {
-                name: "瘦脸瘦腿",
-                img: "/images/icon_6.png"
-            },
-            {
-                name: "注射除皱",
-                img: "/images/icon_7.png"
-            },
-            {
-                name: "整形手术",
-                img: "/images/icon_8.png"
-            }
-        ],
         // 当前地址
         currentCity: '',
 
@@ -104,27 +71,49 @@ Page({
             }
         })
     },
+    sleep(NumMillis) {
+        var nowTime = new Date();
+        var exitTime = nowTime .getTime() + NumMillis;
+        while (true) {
+            now = new Date();
+            if (now.getTime() > exitTime)
+                return;
+        }
+    },
     //获取用于获取信息获取的appid
     //步骤1,判断是否已绑定小程序若已绑定直接设置
     //步骤2,如果没有绑定,判断是否有最近登录的小程序记录如果有则设置为最近登录的appid
     //步骤3,如果也没有最近的登录记录,判断首页初始化时参数中是否有appid,如果有则设置为参数中的appid
     //步骤4,如果以上的值都没有则设置为当前小程序的appid
     getAppId(options) {
-        console.log('开始');
         let app=getApp();
-        app.getUserTokenSuccessCallback=res=>{
+        if(getApp().globalData.isLogin){
             const {appId}=options;
-            if(appId){
-                http('get','/user/recordAppId/'+appId).then(res=>{
-                    if(res.code==0){
-                        this.getBindApp()
-                    }
-                })
-            }else{
-                this.getBindApp();
+                if(appId){
+                    http('get','/user/recordAppId/'+appId).then(res=>{
+                        if(res.code==0){
+                            this.getBindApp()
+                        }
+                    })
+                }else{
+                    this.getBindApp();
+                }
+        }else{
+            app.getUserTokenSuccessCallback=res=>{
+                const {appId}=options;
+                if(appId){
+                    http('get','/user/recordAppId/'+appId).then(res=>{
+                        if(res.code==0){
+                            this.getBindApp()
+                        }
+                    })
+                }else{
+                    this.getBindApp();
+                }
+                
             }
-            
         }
+        
     },
     getBindApp(options){
         http('get', '/customer/isBind').then(res => {

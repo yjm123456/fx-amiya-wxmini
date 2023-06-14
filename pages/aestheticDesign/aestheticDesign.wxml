@@ -13,7 +13,7 @@
         <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/3aee2b1b8d1e4b12aa927dfc9454879d.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
     </view>
     <view class="item" wx:if="{{liveAnchor=='sh'}}">
-        <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/3aee2b1b8d1e4b12aa927dfc9454879d.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
+        <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/8d62fd6d89ef490fb937c755bcd31fdc.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>
     </view>
     <view class="item" wx:if="{{liveAnchor=='cs'}}">
         <image src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/3aee2b1b8d1e4b12aa927dfc9454879d.jpg" data-liveanchor="{{liveAnchor}}" bindtap="toCard" mode="widthFix"></image>

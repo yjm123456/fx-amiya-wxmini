@@ -23,7 +23,11 @@
                                         <view><text class="tip" wx:if="{{!item.isMaterial}}">城市:{{item.city}}</text></view>
                                         <view><text class="tip" wx:if="{{!item.isMaterial}}">医院:{{item.hospital}}</text></view>
                                         <view><text>{{item.description}}</text></view>
-                                        <view catchtap="stopPro" wx:if="{{!item.isMember}}" class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{!item.voucherId? (we.toFixed(item.singleprice*item.num)):(item.voucherType===4 ?(we.toCeil((item.singleprice*item.num)*item.deductMoney)):((item.singleprice*item.num)-item.deductMoney))}}</text>
+                                        <view catchtap="stopPro" wx:if="{{!item.isMember}}" class="des_bottom">
+                                        <view style="display: flex;flex-direction: column;">
+                                            <text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{!item.voucherId? (we.toFixed(item.singleprice*item.num)):(item.voucherType===4 ?(we.toCeil((item.singleprice*item.num)*item.deductMoney)):((item.singleprice*item.num)-item.deductMoney))}}元</text>
+                                            <text wx:if="{{item.exchangeType===7}}" class="total_price">积分:{{item.interGrationPrice*item.num}}</text>
+                                        </view>
                                             <van-stepper minus-class="minus" plus-class="minus" input-class="minus" min="0" input-width="20px" button-size="20px" data-index="{{index}}" data-id="{{item.id}}" data-goodsid="{{item.goodsId}}" value="{{ item.num }}" data-cityid="{{item.cityId}}" data-hospitalid="{{item.hospitalId}}" data-selectstandards="{{item.selectStandards}}" catch:change="onNumChange" />
                                         </view>
                                         <view catchtap="stopPro" wx:else class="des_bottom"><text class="total_price">{{item.exchangeType===0 ? '积分':'总价'}}:{{item.memberPrice*item.num}}</text>
