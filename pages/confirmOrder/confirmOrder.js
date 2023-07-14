@@ -53,13 +53,13 @@ Page({
             isCard,
         } = options;
         const goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo));
-        if(options.storeInfo){
-            const storeInfo=JSON.parse(decodeURIComponent(options.storeInfo));
+        if (options.storeInfo) {
+            const storeInfo = JSON.parse(decodeURIComponent(options.storeInfo));
             this.setData({
                 storeInfo
             })
         }
-        
+
         const {
             hospitalid,
             type,
@@ -72,7 +72,9 @@ Page({
             voucherType,
             allintegration
         } = options
-        const {storeInfo}=this.data
+        const {
+            storeInfo
+        } = this.data
         this.setData({
             discount,
             voucherType,
@@ -87,7 +89,7 @@ Page({
             selectStandard,
             isMaterial: goodsInfo.some(_item => _item.isMaterial),
             totalPrice: goodsInfo.reduce((acc, cur) => {
-                return acc += cur.isMaterial?( cur.integrationQuantity * cur.quantity):(storeInfo.hospitalSalePrice* cur.quantity)
+                return acc += cur.isMaterial ? (cur.integrationQuantity * cur.quantity) : (storeInfo.hospitalSalePrice * cur.quantity)
             }, 0).toFixed(2)
         })
         //商品化修改
@@ -192,7 +194,18 @@ Page({
         }
 
         if (type == 1 && pay == 0) {
-            pay = 4;
+            let app=getApp();
+            const {
+                assisteAppId
+            } = app.globalData;
+
+            if (assisteAppId == "wx695942e4818de445") {
+                pay = 4;
+            }
+            if (assisteAppId == "wx8747b7f34c0047eb") {
+                pay = 2;
+            }
+
         }
         if (isMaterial && !address) {
             wx.showToast({
@@ -311,14 +324,14 @@ Page({
                             })
                         }
                     })
-                    
+
                 }
             })
         } else {
-            if(type==2&&!isMaterial){
+            if (type == 2 && !isMaterial) {
                 this.virtualPay();
                 return;
-            }else{
+            } else {
                 http("post", `/Order`, data).then(res => {
                     if (res.code === 0) {
                         const {
@@ -372,7 +385,7 @@ Page({
                                                     })
                                                 }
                                             })
-    
+
                                             setTimeout(function () {
                                                 wx.redirectTo({
                                                     url: '/pages/orderList/orderList'
@@ -380,7 +393,7 @@ Page({
                                             }, 1000);
                                         },
                                         fail: err => {
-    
+
                                             setTimeout(function () {
                                                 wx.redirectTo({
                                                     url: '/pages/orderList/orderList'
@@ -401,7 +414,7 @@ Page({
                     }
                 })
             }
-            
+
         }
 
     },
@@ -496,16 +509,22 @@ Page({
     },
     //积分虚拟商品下单
     virtualPay() {
-        const {remark,goodsInfo,storeInfo}=this.data
-        const data={
+        const {
             remark,
-            goodsId:goodsInfo[0].id,
-            hospitalId:storeInfo.id,
-            quantity:goodsInfo[0].quantity
+            goodsInfo,
+            storeInfo
+        } = this.data
+        const data = {
+            remark,
+            goodsId: goodsInfo[0].id,
+            hospitalId: storeInfo.id,
+            quantity: goodsInfo[0].quantity
         }
-        http("post", `/Order/newIntegralVirtualOrder`,data).then(res => {
+        http("post", `/Order/newIntegralVirtualOrder`, data).then(res => {
             if (res.code === 0) {
-                const {tradeId}=res.data;
+                const {
+                    tradeId
+                } = res.data;
                 this.setData({
                     tradeId
                 })

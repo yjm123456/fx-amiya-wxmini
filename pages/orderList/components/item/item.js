@@ -112,7 +112,7 @@ Component({
                     apptype
                 } = e.currentTarget.dataset;
                 // singleplatform为1表示支付订单 为0表示积分订单,3表示余额支付,7慧收钱支付,4微信支付
-                if (singleplatform == 6||singleplatform == 7||singleplatform == 4) {
+                if (singleplatform == 6||singleplatform == 7||singleplatform == 4||singleplatform==8) {
                     // apptype为2表示在小程序下的单直接调起支付接口 不为2时在其他平台下的单 提示去下单平台支付
                     if (apptype === 2) {
                         http("post", `/Order/wechatPay/${tradeid}`).then(res => {

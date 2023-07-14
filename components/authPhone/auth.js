@@ -42,6 +42,7 @@ Component({
 
     // 解密手机号
     decryptPhoneNumber(iv, encryptedData) {
+        console.log("值为"+iv);
       decryptPhoneNumber({
         iv,
         encryptedData
