@@ -537,8 +537,7 @@ Page({
                 })
                 var deductmoney2 = 0;
                 var voucherType=0;
-                console.log("类型" + this.data.voucherType);
-                console.log("金额" + Math.ceil(allmoney * deductmoney));
+                
                 if (this.data.voucherType == 0) {
                     deductmoney2 = this.data.deductmoney
                 } else if (this.data.voucherType == 4) {

@@ -418,7 +418,7 @@ Component({
             handleRefund(e) {
                 this.setData({
                     refundShow: true,
-                    orderId: "",
+                    orderId: e.currentTarget.dataset.orderid,
                     tradeId:e.currentTarget.dataset.tradeid
                 });
             },
