@@ -38,7 +38,7 @@
             <van-button custom-class="detail_btn" color="#f1f1f1" type="default" size="small" data-orderid="{{goods.id}}" data-type="{{goods.exchangeType==0 ? 2:1}}" bind:click="toDetail">
                 订单详情
             </van-button>
-            <van-button custom-class="logistics" color="#f1f1f1" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(item.statusCode=='WAIT_SELLER_SEND_GOODS'||item.statusCode=='WAIT_BUYER_CONFIRM_GOODS') &&(item.orderInfoList.length>1)}}" data-orderid="{{goods.id}}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
+            <van-button custom-class="logistics" color="#f1f1f1" type="default" size="small" wx:if="{{(item.orderInfoList[0].exchangeType!==0)&&(goods.statusCode=='WAIT_SELLER_SEND_GOODS'||goods.statusCode=='WAIT_BUYER_CONFIRM_GOODS') &&(item.orderInfoList.length>1)}}" data-orderid="{{goods.id}}" data-tradeid="{{item.tradeId}}" data-apptype="{{item.orderInfoList[0].appType}}" bind:click="handleRefund">
                 申请退款
             </van-button>
         </view>
