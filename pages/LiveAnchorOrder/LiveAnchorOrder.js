@@ -446,15 +446,8 @@ Page({
     },
     // 获取经纬度
     getLocation() {
-        wx.getLocation({
-            type: 'wgs84',
-            success: (res) => {
-                const longitude = res.longitude
-                const latitude = res.latitude
-                this.loadCity(longitude, latitude)
-            },
-            fail: (err) => {},
-        })
+        
+        
     },
     // 获取地区信息
     loadCity(longitude, latitude) {

@@ -10,7 +10,7 @@
 			<text>获取您的手机号方便您使用全部功能</text>
 		</view>
 		<view class="auth">
-			<button class="submit" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权手机号</button>
+			<button class="submit" type="primary" open-type="getPhoneNumber|agreePrivacyAuthorization" bindgetphonenumber="getPhoneNumber" bindagreeprivacyauthorization="handleAgreePrivacyAuthorization">授权手机号</button>
 		</view>
 	</view>
 </van-popup>

@@ -345,15 +345,39 @@ Component({
                         success: (res) => {
                             if (res.confirm) {
                                 http("get", `/Order/confirmReceive/${tradeid}`).then(res => {
-                                    if (res.code === 0) {
-                                        wx.showToast({
-                                            title: '确认成功',
-                                            icon: 'success',
-                                            duration: 2000,
-                                            success: () => {
-                                                this.triggerEvent("handleRefreshOrderList")
-                                            }
-                                        })
+                                    if (res.code === 0) {                                      
+                                        var orderCreateDate=new Date(res.data.result.createDate);
+                                        var startDate=new Date('2023-09-12T03:24:00')                                       
+                                        //调用
+                                        if(orderCreateDate > startDate){
+                                            const {tradeId,mchId,transactionId}=res.data.result
+                                            if (wx.openBusinessView) {
+                                                wx.openBusinessView({
+                                                  businessType: 'weappOrderConfirm',
+                                                  extraData: {
+                                                    transaction_id: transactionId
+                                                  },
+                                                  success() {
+                                                    wx.showToast({
+                                                        title: '确认成功',
+                                                        icon: 'success',
+                                                        duration: 2000,
+                                                        success: () => {
+                                                            this.triggerEvent("handleRefreshOrderList")
+                                                        }
+                                                    })
+                                                  },
+                                                  fail(res) {
+                                                    console.log(JSON.stringify(res));
+                                                  },
+                                                  complete(res) {
+                                                    console.log(JSON.stringify(res));
+                                                  }
+                                                });
+                                              } else {
+                                                //引导用户升级微信版本
+                                              }
+                                        }
                                     }
                                 })
                             }

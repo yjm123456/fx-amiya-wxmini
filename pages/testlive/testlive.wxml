@@ -1,0 +1,3 @@
+<!--pages/testlive/testlive.wxml-->
+<text></text>
+<button capture-bind:tap="openLive">打开视频号直播</button>

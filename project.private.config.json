@@ -305,8 +305,23 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "直播跳转",
+                    "pathName": "pages/testlive/testlive",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "消费配置",
+                    "pathName": "pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials",
+                    "query": "id=undefined",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
-    }
+    },
+    "libVersion": "2.32.3"
 }

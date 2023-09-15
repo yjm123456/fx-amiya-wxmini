@@ -39,7 +39,14 @@ Component({
         this.decryptPhoneNumber(iv, encryptedData)
       }
     },
-
+    handleAgreePrivacyAuthorization() {
+        // 用户同意隐私协议事件回调
+        // 用户点击了同意，之后所有已声明过的隐私接口和组件都可以调用了
+        // wx.getUserProfile()
+        // wx.chooseMedia()
+        // wx.getClipboardData()
+        // wx.startRecord()
+      },
     // 解密手机号
     decryptPhoneNumber(iv, encryptedData) {
         console.log("值为"+iv);

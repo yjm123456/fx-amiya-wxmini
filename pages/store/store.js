@@ -108,18 +108,29 @@ Page({
   },
   // 导航
   navAddress(e){
-    const { latitude , longitude ,address} = e.currentTarget.dataset.storeinfo
-    wx.getLocation({
-      type:'wgs84', 
-      success: function (res) {
-        wx.openLocation({
-          latitude: latitude, // 纬度，范围为-90~90，负数表示南纬
-          longitude: longitude, // 经度，范围为-180~180，负数表示西经
-          scale: 8, // 缩放比例
-          address:address,
-        })
-      }
-    })
+    // const { latitude , longitude ,address} = e.currentTarget.dataset.storeinfo
+    // wx.getPrivacySetting({
+    //     success: res => {
+    //       if (res.needAuthorization) {
+    //         // 需要弹出隐私协议
+    //         this.setData({
+    //           showPrivacy: true
+    //         })
+    //       } else {
+    //         wx.getLocation({
+    //             type: 'wgs84',
+    //             success: (res) => {
+    //                 const longitude = res.longitude
+    //                 const latitude = res.latitude
+    //                 this.loadCity(longitude, latitude)
+    //             },
+    //             fail: (err) => {},
+    //         })
+    //       }
+    //     },
+    //     fail: () => {},
+    //     complete: () => {}
+    //   })
   },
   // 拨打
   phone(e){

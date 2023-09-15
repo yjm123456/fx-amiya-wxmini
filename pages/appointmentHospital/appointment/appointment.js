@@ -46,7 +46,9 @@ Component({
         time: '',
         week: '',
         address: '',
-        merch_id:''
+        merch_id:'',
+        showPrivacy:false,
+        info:''
     },
     ready() {
         this.getProject(),
@@ -259,16 +261,41 @@ Component({
         },
         // 获取经纬度
         getLocation() {
-            wx.getLocation({
-                type: 'wgs84',
-                success: (res) => {
-                    const longitude = res.longitude
-                    const latitude = res.latitude
-                    this.loadCity(longitude, latitude)
-                },
-                fail: (err) => {},
-            })
-        },
+            // wx.showToast({
+            //   title: '接入',
+            // })
+            
+            // wx.getPrivacySetting({
+            //     success: res => {
+            //         wx.showToast({
+            //             title: '接入1',
+            //           })
+            //       if (res.needAuthorization) {
+            //           console.log(res);
+            //         // 需要弹出隐私协议
+            //         this.setData({
+            //           showPrivacy: true
+            //         })
+            //       } else {
+            //         wx.showToast({
+            //             title: '接入2',
+            //           })
+            //         wx.getLocation({
+            //             type: 'wgs84',
+            //             success: (res) => {
+            //                 const longitude = res.longitude
+            //                 const latitude = res.latitude
+            //                 this.loadCity(longitude, latitude)
+            //             },
+            //             fail: (err) => {},
+            //         })
+            //       }
+            //     },
+            //     fail: () => {console.log("失败了");},
+            //     complete: (res) => {this.setData({info:"失败了1"+JSON.stringify(res)})}
+            //   })
+            },
+        
         // 获取地区信息
         loadCity(longitude, latitude) {
             const data = {
@@ -319,22 +346,22 @@ Component({
         },
         // 导航
         navAddress(e) {
-            const {
-                latitude,
-                longitude,
-                address
-            } = e.currentTarget.dataset.item
-            wx.getLocation({
-                type: 'wgs84',
-                success: function (res) {
-                    wx.openLocation({
-                        latitude: latitude, // 纬度，范围为-90~90，负数表示南纬
-                        longitude: longitude, // 经度，范围为-180~180，负数表示西经
-                        scale: 8, // 缩放比例
-                        address: address,
-                    })
-                }
-            })
+            // const {
+            //     latitude,
+            //     longitude,
+            //     address
+            // } = e.currentTarget.dataset.item
+            // wx.getLocation({
+            //     type: 'wgs84',
+            //     success: function (res) {
+            //         wx.openLocation({
+            //             latitude: latitude, // 纬度，范围为-90~90，负数表示南纬
+            //             longitude: longitude, // 经度，范围为-180~180，负数表示西经
+            //             scale: 8, // 缩放比例
+            //             address: address,
+            //         })
+            //     }
+            // })
         },
         // 切换城市
         switchCity() {

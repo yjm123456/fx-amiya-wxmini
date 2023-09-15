@@ -159,18 +159,30 @@ Page({
 
   // 获取经纬度
   getLocation() {
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res) => {
-        const longitude = res.longitude
-        const latitude = res.latitude
-        this.loadCity(longitude, latitude)
-      },
-      fail: (err) => {
-        // console.log(err)
-      },
-    })
-  },
+    // wx.getPrivacySetting({
+    //     success: res => {
+    //       if (res.needAuthorization) {
+    //         // 需要弹出隐私协议
+    //         this.setData({
+    //           showPrivacy: true
+    //         })
+    //       } else {
+    //         wx.getLocation({
+    //             type: 'wgs84',
+    //             success: (res) => {
+    //                 const longitude = res.longitude
+    //                 const latitude = res.latitude
+    //                 this.loadCity(longitude, latitude)
+    //             },
+    //             fail: (err) => {},
+    //         })
+    //       }
+    //     },
+    //     fail: () => {},
+    //     complete: () => {}
+    //   })
+    },
+  
 
   // 获取地区信息
   loadCity(longitude, latitude) {

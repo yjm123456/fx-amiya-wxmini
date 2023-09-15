@@ -85,7 +85,8 @@
         "pages/integralShop/integraShop",
         "pages/aestheticDesign/aestheticDesign",
         "pages/pointAndMoneyShop/pointAndMoneyShop",
-        "pages/vipCusomerService/vipCusomerService"
+        "pages/vipCusomerService/vipCusomerService",
+        "pages/testlive/testlive"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {
@@ -131,5 +132,6 @@
         "scope.userLocation": {
             "desc": "你的位置信息将用于地图展示"
         }
-    }
+    },
+    "__usePrivacyCheck__": true
 }

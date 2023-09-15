@@ -202,3 +202,77 @@ input {
     width: 100%;
     height: 100%;
 }
+
+/* ======== 下单信息弹窗 start ======== */
+.order_warp{
+    padding: 18rpx;
+}
+.price_info_warp{
+    display: flex;
+    align-items: center;
+}
+.price_info_warp>image{
+    width: 120rpx;
+    border-radius: 10rpx;
+    margin-right: 50rpx;
+}
+.price_info_warp>text{
+    font-size: 60rpx;
+    color: #fc4e01;
+    font-weight: 600;
+}
+.address_warp{
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 25rpx 15rpx;
+    border-radius: 15rpx;
+    overflow: hidden;
+    width: 684rpx;
+}
+.prefix_icon{
+    margin-right: 20rpx;
+    width: 60rpx;
+}
+.icon-address{
+    color: #fc4e01;
+    font-size: 58rpx;
+}
+.address_middle{
+    display: flex;
+    flex-direction: column;
+    width: 544rpx;
+    font-size: 32rpx;
+}
+.address_middle_top{
+    margin-bottom: 5rpx;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.recipient{
+    margin-right: 10rpx;
+}
+.address{
+    text-overflow: ellipsis;
+    max-lines: 1;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+.phone{
+    font-size: 28rpx;
+}
+.end_icon{
+    width: 60rpx;
+    font-size: 58rpx;
+    color: #f1f1f1;
+}
+.standard_warp{
+    background-color: #fff;
+    margin-top: 20rpx;
+    border-radius: 15rpx;
+    padding: 25rpx 20rpx;
+}
+/* ======== 下单信息弹窗 end ======== */
