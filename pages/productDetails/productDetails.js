@@ -70,20 +70,24 @@ Page({
         //选中规格的价格
         selectStandardPrice: 0,
         //选中规格的图片
-        standardsImg:'',
+        standardsImg: '',
         //选中规格的支付方式
-        selectExchangetype:0,
+        selectExchangetype: 0,
         //选中规格的积分单价(用于积分加钱购订单)
-        selectIntegrationPrice:0,
+        selectIntegrationPrice: 0,
         //总积分
-        totalIntegrationPrice:0
+        totalIntegrationPrice: 0,
+        //控制下单弹窗显示
+        orderInfoShow: false,
+        //选中的规格
+        selectedStandard:{}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 const {
@@ -96,7 +100,7 @@ Page({
                 })
             } else {
                 wx.switchTab({
-                  url: '/pages/index/index',
+                    url: '/pages/index/index',
                 })
             }
         })
@@ -121,19 +125,19 @@ Page({
             imageUrl: this.data.goodsInfo.thumbPicUrl
         }
     },
-    toRecieveVoucher(){
+    toRecieveVoucher() {
         wx.redirectTo({
-          url: '/pages/discount/discount',
+            url: '/pages/discount/discount',
         })
     },
-    showImg(event){
+    showImg(event) {
         const {
             img
         } = event.currentTarget.dataset;
         wx.previewImage({
             current: '', // 当前显示图片的 http 链接
             urls: [img] // 需要预览的图片 http 链接列表
-          })
+        })
     },
     //选择规格
     selectStandard(event) {
@@ -149,11 +153,11 @@ Page({
             selectStandardIndex: index,
             selectStandard: standard,
             selectStandardPrice: price,
-            standardsImg:img,
+            standardsImg: img,
             totalPrice: (this.data.goodsInfo.quantity) * price,
-            selectIntegrationPrice:integration,
-            selectExchangetype:exchangetype,
-            totalIntegrationPrice:(this.data.goodsInfo.quantity) * integration
+            selectIntegrationPrice: integration,
+            selectExchangetype: exchangetype,
+            totalIntegrationPrice: (this.data.goodsInfo.quantity) * integration
         })
     },
     toShoppingCart() {
@@ -173,11 +177,11 @@ Page({
             goodsInfo,
             selectStandard
         } = this.data
-        if(!selectStandard){
+        if (!selectStandard) {
             wx.showToast({
-              title: '请选择规格',
-              icon:'none',
-              duration:1000
+                title: '请选择规格',
+                icon: 'none',
+                duration: 1000
             })
             return;
         }
@@ -203,7 +207,7 @@ Page({
                 const data = {
                     GoodsId: id,
                     Num: quantity,
-                    selectStandard:this.data.selectStandard
+                    selectStandard: this.data.selectStandard
                 }
                 http("post", `/GoodsShopCar`, data).then(res => {
                     if (res.code === 0) {
@@ -212,7 +216,7 @@ Page({
                         Toast('添加失败');
                     }
                 })
-                
+
             } else {
                 if (!cityname) {
                     wx.showToast({
@@ -343,8 +347,17 @@ Page({
                     goodsInfo: {
                         ...goodsInfo,
                         quantity: 1
-                    }
+                    },
                 })
+                //实体商品添加默认选中规格
+                if(goodsInfo.goodsType==0){
+                    this.setData({
+                        selectedStandard:{
+                            ...goodsInfo.goodsStandardsPrice[0],
+                            quantity: 1
+                        }
+                    })
+                }
             }
         })
     },
@@ -419,7 +432,7 @@ Page({
             if (saleprice) {
                 this.setData({
                     totalPrice: ((ismember ? memberrankprice : saleprice) * goodsInfo.quantity).toFixed(2),
-                    totalIntegrationPrice:(integration*goodsInfo.quantity).toFixed(2),
+                    totalIntegrationPrice: (integration * goodsInfo.quantity).toFixed(2),
                     goodsInfo
                 })
             }
@@ -457,6 +470,13 @@ Page({
         let remarksValue = params.detail.value
         this.setData({
             remarksValue
+        })
+    },
+    //控制点击购买时下单弹窗显示
+    handleOrderInfoShow(e) {
+        const {orderInfoShow}=this.data;
+        this.setData({
+            orderInfoShow: !orderInfoShow
         })
     },
     // 购买
@@ -530,24 +550,24 @@ Page({
                 goodsInfo.hospitalid = hospitalid
                 goodsInfo.selectStandard = selectStandard
                 goodsInfo.selectStandardPrice = selectStandardPrice,
-                goodsInfo.selectIntegrationPrice=selectIntegrationPrice
+                    goodsInfo.selectIntegrationPrice = selectIntegrationPrice
                 //设置新属性后重新更新值
                 this.setData({
                     goodsInfo
                 })
                 var deductmoney2 = 0;
-                var voucherType=0;
-                
+                var voucherType = 0;
+
                 if (this.data.voucherType == 0) {
                     deductmoney2 = this.data.deductmoney
                 } else if (this.data.voucherType == 4) {
-                    voucherType=4
+                    voucherType = 4
                     deductmoney2 = Math.ceil(allmoney * deductmoney);
                     deductmoney2 = allmoney - deductmoney2;
                 }
                 console.log("折扣金额" + deductmoney);
                 wx.navigateTo({
-                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney2 + '&discount=' + this.data.deductmoney+'&voucherType='+voucherType+'&allintegration='+allintegration
+                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney2 + '&discount=' + this.data.deductmoney + '&voucherType=' + voucherType + '&allintegration=' + allintegration
                 })
             }
 

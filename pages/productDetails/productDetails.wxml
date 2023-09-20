@@ -26,51 +26,7 @@
         <!-- <view class="recieve_voucher" wx:if="{{goodsInfo.canUseVoucher}}" bindtap="toRecieveVoucher"><text>领取抵用券 ></text></view> -->
     </view>
     <!--  -->
-    <view class="message">
-        <!-- 如果为虚拟产品显示选择城市 -->
-        <view class="item_spe" bindtap="cityChoice" wx:if="{{goodsInfo.isMaterial==false}}">
-            <text>所在城市</text>
-            <view class="city_con">
-                <text class="city_text">{{cityNames}}</text>
-                <text class="iconfont icon-arrow-left"></text>
-            </view>
-        </view>
-        <!-- 如果为虚拟产品显示选择门店 -->
-        <view class="item_spe" bindtap="selectStore" wx:if="{{goodsInfo.isMaterial==false}}" data-cityname="{{cityNames}}">
-            <text>选择门店</text>
-            <view class="city_con">
-                <text class="city_text">{{storeInfo.name}}</text>
-                <text class="iconfont icon-arrow-left"></text>
-            </view>
-        </view>
-        <!-- 实体商品规格 -->
-        <view class="standard" wx:if="{{goodsInfo.isMaterial==true}}">
-            <view class="standard_title"><text>规格</text></view>
-            <view wx:if="{{standardsImg}}" class="standards_img">
-                <image bindtap="showImg" data-img="{{standardsImg}}" src="{{standardsImg}}"></image>
-            </view>
-            <view class="standard_item {{index==selectStandardIndex?'standard_active':''}}" wx:for="{{goodsInfo.goodsStandardsPrice}}" bindtap="selectStandard" data-exchangetype="{{goodsInfo.exchangeType}}" data-integration="{{item.integralAmount}}" data-img="{{item.standardsImg}}" data-index="{{index}}" data-price='{{item.price}}' data-standard='{{item.id}}'>
-                <view class="standard_name"><text>{{item.standards}}</text></view>
-                <view class="standard_price"><text wx:if="{{goodsInfo.exchangeType!=7}}">￥{{item.price}}</text><text wx:else>{{item.integralAmount>0 ?item.integralAmount+'积分+':''}}￥{{item.price}}</text></view>
-            </view>
-        </view>
-        <view class="item_spe" bindtap="getCustomerVoucher">
-            <text>选择抵用券</text>
-            <view class="city_con">
-                <text wx:if="{{voucherId}}" class="city_text">{{vouchername}}</text>
-                <text class="iconfont icon-arrow-left"></text>
-            </view>
-        </view>
-        <view class="item_spe item_spe_num">
-            <text>数量</text>
-            <!-- type==0 计算的是 门店价格x数量 -->
-            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.inventoryQuantity}}" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" wx:if="{{storeInfo.name}}" data-type="0" data-isMaterial="{{goodsInfo.isMaterial}}" />
-            <!-- type==0 没有选择门店的情况下数量是禁用状态 -->
-            <van-stepper min="1" integer disabled bindtap="disabledNum" max="{{goodsInfo.isLimitBuy?goodsInfo.limitBuyQuantity: goodsInfo.inventoryQuantity}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==false}}" />
-            <!-- type==1 判断是否为实物 如果是实物的话需要发货 销售价格x数量 -->
-            <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.isLimitBuy?goodsInfo.limitBuyQuantity: goodsInfo.inventoryQuantity}}" data-integration="{{selectIntegrationPrice}}" data-salePrice="{{selectStandardPrice}}" data-ismember="{{goodsInfo.isMember}}" data-memberrankprice="{{goodsInfo.memberRankPrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
-        </view>
-    </view>
+
     <view wx:if="{{goodsInfo.goodsDetailHtml!==null}}" class="desc">
         <view class="title"><text>详情介绍</text></view>
         <view class="goods_detail">
@@ -103,15 +59,48 @@
         <van-goods-action-icon icon="cart-o" text="购物车" bind:click="toShoppingCart" />
         <!-- 加入购物车(当支付方式为积分加钱时不显示) -->
         <block wx:if="{{goodsInfo.exchangeType!=0&&goodsInfo.isMaterial}}">
-            <van-goods-action-button  data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : selectStandardPrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
-        <van-goods-action-button color="#8878f5" text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
+            <van-goods-action-button data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : selectStandardPrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
+            <van-goods-action-button color="#8878f5" text="立即购买" bindtap="handleOrderInfoShow" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
         </block>
         <block wx:else>
-            <van-goods-action-button color="#8878f5" text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
+            <van-goods-action-button color="#8878f5" text="立即购买" bindtap="handleOrderInfoShow" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
         </block>
-        
+
     </van-goods-action>
 
 
 </view>
+<van-popup show="{{ orderInfoShow }}" round custom-style="height: 60%;background-color: #f1f1f1;" position="bottom" bind:close="handleOrderInfoShow">
+    <view class="order_warp">
+        <view class="price_info_warp">
+            <image mode="widthFix" src="{{selectedStandard.standardsImg}}"></image>
+            <text>￥{{selectedStandard.price}}</text>
+        </view>
+        <view class="address_warp">
+            <view class="prefix_icon">
+            <text class="iconfont icon-address"></text>
+            </view>
+            <view class="address_middle">
+                <view class="address_middle_top">
+                    <text class="recipient">王</text>
+                    <text class="address">具体地址具体地址具体地址具体地址具体地址具体地址</text>
+                </view>
+                <view class="address_middle_bottom">
+                    <text class="phone">13090909090</text>
+                </view>
+            </view>
+            <view class="iconfont icon-fasfa-angle-right end_icon">
+            </view>
+        </view>
+        <view class="standard_warp">
+            <view class="header"><text>规格</text></view>
+            <view wx:for="{{goodsInfo.goodsStandardsPrice}}">
+                <image src="{{standardsImg}}"></image>
+                <text>{{standards}}</text>
+                <text>{{price}}</text>
+            </view>
+        </view>
+    </view>
+
+</van-popup>
 <van-toast id="van-toast" />
