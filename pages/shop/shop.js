@@ -334,29 +334,17 @@ Page({
         const {
             page
         } = e.currentTarget.dataset;
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                wx.navigateTo({
-                    url: page
-                })
-            } else {
-                this.handleBindPhone();
-            }
+        wx.navigateTo({
+            url: page
         })
     },
     // 商品详情
     goodsDetails(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    goodsid
-                } = e.currentTarget.dataset;
-                wx.navigateTo({
-                    url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
-                })
-            } else {
-                this.handleBindPhone();
-            }
+        const {
+            goodsid
+        } = e.currentTarget.dataset;
+        wx.navigateTo({
+            url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
         })
 
     },

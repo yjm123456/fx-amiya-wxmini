@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        name: '',
         customerName: "",
         toHospitalPhone: "",
         liveAnchorBaseId: "",
@@ -23,14 +24,21 @@ Page({
         radio: 0,
         display: false,
         minDate: new Date(2020, 0, 1).getTime(),
-        currentDate: new Date().getTime()
+        currentDate: new Date().getTime(),
+        baseLiveAnchorId: '',
+        uploadFileUrlList: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        const {
+            baseLiveAnchorId
+        } = options;
+        this.setData({
+            baseLiveAnchorId
+        })
     },
     onClose() {
         this.setData({
@@ -85,41 +93,26 @@ Page({
 
     },
     delete1(event) {
+        const {
+            index
+        } = event.detail
+        console.log(index);
+        const newList = [...this.data.uploadFileUrlList]
+        const newFileList = [...this.data.fileList]
+        newFileList.splice(index, 1)
+        newList.splice(index, 1)
         this.setData({
-            fileList: [],
-            payVoucherPicture1: ""
-        });
-    },
-    delete2(event) {
-        this.setData({
-            fileList2: [],
-            payVoucherPicture2: ""
-        });
-    },
-    delete3(event) {
-        this.setData({
-            fileList3: [],
-            payVoucherPicture3: ""
-        });
-    },
-    delete4(event) {
-        this.setData({
-            fileList4: [],
-            payVoucherPicture4: ""
-        });
-    },
-    delete5(event) {
-        this.setData({
-            fileList5: [],
-            payVoucherPicture5: ""
+            fileList: newFileList,
+            uploadFileUrlList: newList,
         });
     },
     afterRead1(event) {
         const {
-            file
+            file,
+            index
         } = event.detail;
         self = this;
-        var list = [];
+        var list = this.data.fileList;
         list.push({
             url: file.path,
             deletable: true
@@ -127,6 +120,7 @@ Page({
         this.setData({
             fileList: list
         });
+
         // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
         wx.uploadFile({
             url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
@@ -134,116 +128,15 @@ Page({
             name: 'uploadfile',
             success(res) {
                 var url = JSON.parse(res.data).data.url
+                const newList = [...self.data.uploadFileUrlList];
+                newList[index] = url
                 self.setData({
-                    payVoucherPicture1: url
+                    uploadFileUrlList: newList
                 });
             },
         });
     },
-    afterRead2(event) {
-        const {
-            file
-        } = event.detail;
-        self = this;
-        var list = [];
-        list.push({
-            url: file.path,
-            deletable: true
-        });
-        this.setData({
-            fileList2: list
-        });
-        // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-        wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
-            filePath: file.path,
-            name: 'uploadfile',
-            success(res) {
-                var url = JSON.parse(res.data).data.url
-                self.setData({
-                    payVoucherPicture2: url
-                });
-            },
-        });
-    },
-    afterRead3(event) {
-        const {
-            file
-        } = event.detail;
-        self = this;
-        var list = [];
-        list.push({
-            url: file.path,
-            deletable: true
-        });
-        this.setData({
-            fileList3: list
-        });
-        // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-        wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
-            filePath: file.path,
-            name: 'uploadfile',
-            success(res) {
-                var url = JSON.parse(res.data).data.url
-                self.setData({
-                    payVoucherPicture3: url
-                });
-            },
-        });
-    },
-    afterRead4(event) {
-        const {
-            file
-        } = event.detail;
-        self = this;
-        var list = [];
-        list.push({
-            url: file.path,
-            deletable: true
-        });
-        this.setData({
-            fileList4: list
-        });
-        // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-        wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
-            filePath: file.path,
-            name: 'uploadfile',
-            success(res) {
-                var url = JSON.parse(res.data).data.url
-                self.setData({
-                    payVoucherPicture4: url
-                });
-            },
-        });
-    },
-    afterRead5(event) {
-        const {
-            file
-        } = event.detail;
-        self = this;
-        var list = [];
-        list.push({
-            url: file.path,
-            deletable: true
-        });
-        this.setData({
-            fileList5: list
-        });
-        // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-        wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', // 仅为示例，非真实的接口地址
-            filePath: file.path,
-            name: 'uploadfile',
-            success(res) {
-                var url = JSON.parse(res.data).data.url
-                self.setData({
-                    payVoucherPicture5: url
-                });
-            },
-        });
-    },
+
     uploadSomeMsg() {
         var that = this
         var adds = that.data.img_arr;
@@ -272,7 +165,7 @@ Page({
     getLocalityImg() {
         let that = this;
         if (this.data.img_arr.length < 5) {
-            wx.chooseImage({
+            wx.chooseMedia({
                 count: 5 - that.data.img_arr.length, //上传图片的数量 当之前上传了部分图片时 ,总数 - 已上传数 = 剩余数   (限制上传的数量)
                 sizeType: ['original', 'compressed'], //可以指定原图或压缩图,默认二者都有
                 sourceType: ['album', 'camera'], //指定图片来源是相机还是相册,默认二者都有
@@ -356,28 +249,51 @@ Page({
                         })
                     }
                 })
-                console.log("授权成功");
+
                 this.CustomerConsumptionCredentials();
             },
             fail: err => {
-                console.log("授权失败");
+
                 this.CustomerConsumptionCredentials();
             },
         })
     },
     CustomerConsumptionCredentials() {
+        let payVoucherPicture1 = "";
+        let payVoucherPicture2 = "";
+        let payVoucherPicture3 = "";
+        let payVoucherPicture4 = "";
+        let payVoucherPicture5 = "";
+        for (let index = 0; index < this.data.uploadFileUrlList.length; index++) {
+            let cur = index + 1;
+            if (cur === 1) {
+                payVoucherPicture1 = this.data.uploadFileUrlList[index]
+            }
+            if (cur === 2) {
+                payVoucherPicture2 = this.data.uploadFileUrlList[index]
+            }
+            if (cur === 3) {
+                payVoucherPicture3 = this.data.uploadFileUrlList[index]
+            }
+            if (cur === 4) {
+                payVoucherPicture4 = this.data.uploadFileUrlList[index]
+            }
+            if (cur === 5) {
+                payVoucherPicture5 = this.data.uploadFileUrlList[index]
+            }
+        }
         const data = {
             customerName: this.data.customerName,
             toHospitalPhone: this.data.toHospitalPhone,
             consumeDate: this.data.consumeDate,
-            payVoucherPicture1: this.data.payVoucherPicture1,
-            payVoucherPicture2: this.data.payVoucherPicture2,
-            payVoucherPicture3: this.data.payVoucherPicture3,
-            payVoucherPicture4: this.data.payVoucherPicture4,
-            payVoucherPicture5: this.data.payVoucherPicture5
+            baseLiveAnchorId: this.data.baseLiveAnchorId,
+            payVoucherPicture1: payVoucherPicture1,
+            payVoucherPicture2: payVoucherPicture2,
+            payVoucherPicture3: payVoucherPicture3,
+            payVoucherPicture4: payVoucherPicture4,
+            payVoucherPicture5: payVoucherPicture5
         }
         if (!data.customerName) {
-            console.log("调用");
             wx.showToast({
                 title: '请输入姓名',
                 icon: 'none'
@@ -401,15 +317,21 @@ Page({
         http("post", `/customerConsumptionCredentials`, data).then(res => {
             if (res.code === 0) {
                 wx.showToast({
-                    title: '提交成功',
+                    title: '凭证已经上传成功了,稍等一会,好礼很快就到!',
                     icon: 'none',
-                    duration: 500
+                    duration: 2000
                 });
                 setTimeout(function () {
+                    var pages = getCurrentPages(); //当前页面
+                    var prevPage = pages[pages.length - 2]; //上一页面
+                    prevPage.setData({
+                        isQRcodeRedirect:false
+                    })
+                    
                     wx.navigateBack({
                         delta: 1
-                      });
-                }, 500);
+                    });
+                }, 2000);
             }
         })
     },

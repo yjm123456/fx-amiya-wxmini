@@ -316,7 +316,7 @@
                 {
                     "name": "消费配置",
                     "pathName": "pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials",
-                    "query": "id=undefined",
+                    "query": "q=app.ameiyes.com%2Famiyabackground%2Fmedia%2FDRKeJlARss.txt%3Fid%3Djn",
                     "launchMode": "default",
                     "scene": null
                 }

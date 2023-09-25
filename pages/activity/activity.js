@@ -87,17 +87,11 @@ Page({
         })
     },
     toOrder(event) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    name
-                } = event.currentTarget.dataset;
-                wx.navigateTo({
-                    url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name=' + name,
-                })
-            } else {
-                this.showVoucherTips()
-            }
+        const {
+            name
+        } = event.currentTarget.dataset;
+        wx.navigateTo({
+            url: '/pages/LiveAnchorOrder/LiveAnchorOrder?name=' + name,
         })
     },
 
