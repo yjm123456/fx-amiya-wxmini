@@ -1,5 +1,8 @@
 // pages/aestheticsDesignReport/aestheticsDesignReport.js
 import http from './../../utils/http';
+import {
+    iscustomer
+} from "./../../api/user";
 Page({
 
     /**
@@ -27,7 +30,9 @@ Page({
         sidePicture: '',
         sidePictureList: '',
         design: '',
-        pictures: []
+        pictures: [],
+        // 授权手机号
+        controlAuthPhone: false,
     },
 
     /**
@@ -47,10 +52,46 @@ Page({
             });
             this.GetReport(reportId);
         } else {
-            this.GetUserInfo();
+            this.isCustomer((isCustomer) => {
+                if (isCustomer) {
+                    this.GetUserInfo();
+                } 
+            })
+            
         }
 
     },
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
+    },
+    // 绑定手机号
+    handleBindPhone() {
+        this.setData({
+            controlAuthPhone: true
+        })
+    },
+    // 成功绑定手机号
+    successBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+
+    },
+
+    // 取消绑定手机号
+    cancelBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+    },
+
     handleNameChange(e) {
         this.setData({
             name: e.detail.value
@@ -180,7 +221,7 @@ Page({
             file
         } = event.detail;
         wx.uploadFile({
-            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone', 
+            url: 'https://app.ameiyes.com/fxopenoss/aliyunoss/uploadone',
             filePath: file.path,
             name: 'uploadfile',
             success(res) {
@@ -225,8 +266,17 @@ Page({
             urls: this.data.pictures, // 需要预览的图片http链接列表
         })
     },
-    // 添加美学设计报告
     AddReport() {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.AddReport2();
+            } else {
+                this.handleBindPhone();
+            }
+        })
+    },
+    // 添加美学设计报告
+    AddReport2() {
         let {
             name,
             birthDay,
@@ -447,7 +497,7 @@ Page({
                     city,
                     area
                 } = res.data.birthDay
-                birthDay=res.data.birthDay.birthDay.split('T')[0];
+                birthDay = res.data.birthDay.birthDay.split('T')[0];
                 this.setData({
                     name: name,
                     birthDay: birthDay,

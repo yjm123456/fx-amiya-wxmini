@@ -68,26 +68,19 @@ Page({
         })
     },
     goodsDetails(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    goodsid,
-                    exchagetype
-                } = e.currentTarget.dataset;
-                if(exchagetype==0){
-                    wx.navigateTo({
-                        url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
-                    })
-                }else{
-                    wx.navigateTo({
-                        url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
-                    })
-                }
-                
-            } else {
-                this.handleBindPhone();
-            }
-        })
+        const {
+            goodsid,
+            exchagetype
+        } = e.currentTarget.dataset;
+        if(exchagetype==0){
+            wx.navigateTo({
+                url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
+            })
+        }else{
+            wx.navigateTo({
+                url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
+            })
+        }
 
     },
     isCustomer(callback) {

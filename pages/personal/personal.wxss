@@ -1,7 +1,15 @@
 page {
     background-color: #fff;
 }
-
+.login_tip{
+    height: 200rpx;
+    display: flex;
+    align-items: center;
+}
+.login_btn{
+    background-color: transparent;
+   border: 0;
+}
 .personal_container {
     background-color: #fff;
     margin-bottom: 0;
@@ -129,9 +137,9 @@ page {
     font-size: 30rpx;
 }
 
-text {
+/* text {
     color: #fff;
-}
+} */
 
 .info-item>view>text {
     font-size: 35rpx;

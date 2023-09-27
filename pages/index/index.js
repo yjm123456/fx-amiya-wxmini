@@ -60,16 +60,10 @@ Page({
     onLoad: function (options) {
         this.visit();
         const scene = decodeURIComponent(options.scene);
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                this.getShareInfo();
+        this.getShareInfo();
                 if (scene != 'undefined') {
                     this.setSuperior(scene);
                 }
-            } else {
-                this.showVoucherTips()
-            }
-        })
     },
     sleep(NumMillis) {
         var nowTime = new Date();
@@ -437,136 +431,106 @@ Page({
     },
     // 商品详情
     goodsDetails(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    goodsid,
-                    exchagetype
-                } = e.currentTarget.dataset;
-                if (exchagetype == 0) {
-                    wx.navigateTo({
-                        url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
-                    })
-                } else {
-                    wx.navigateTo({
-                        url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
-                    })
-                }
-
-            } else {
-                this.handleBindPhone();
-            }
-        })
+        const {
+            goodsid,
+            exchagetype
+        } = e.currentTarget.dataset;
+        if (exchagetype == 0) {
+            wx.navigateTo({
+                url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
+            })
+        } else {
+            wx.navigateTo({
+                url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
+            })
+        }
 
     },
-    toOrder(event) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    name
-                } = event.currentTarget.dataset;
-                wx.navigateTo({
-                    url: '/pages/activity/activity'
-                })
-            } else {
-                this.showVoucherTips()
-            }
-        })
-    },
-    toReport(event) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    name
-                } = event.currentTarget.dataset;
-                wx.navigateTo({
-                    url: '/pages/aestheticsDesignReportList/aestheticsDesignReportList'
-                })
-            } else {
-                this.showVoucherTips()
-            }
-        })
-    },
+    // toOrder(event) {
+    //     this.isCustomer((isCustomer) => {
+    //         if (isCustomer) {
+    //             const {
+    //                 name
+    //             } = event.currentTarget.dataset;
+    //             wx.navigateTo({
+    //                 url: '/pages/activity/activity'
+    //             })
+    //         } else {
+    //             this.showVoucherTips()
+    //         }
+    //     })
+    // },
+    // toReport(event) {
+    //     this.isCustomer((isCustomer) => {
+    //         if (isCustomer) {
+    //             const {
+    //                 name
+    //             } = event.currentTarget.dataset;
+    //             wx.navigateTo({
+    //                 url: '/pages/aestheticsDesignReportList/aestheticsDesignReportList'
+    //             })
+    //         } else {
+    //             this.showVoucherTips()
+    //         }
+    //     })
+    // },
     switchShopTab(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                if (e.currentTarget.dataset.url) {
-                    wx.switchTab({
-                        url: e.currentTarget.dataset.url,
-                    })
-                    let app=getApp();
-                    app.category=e.currentTarget.dataset.id
-                }
-            } else {
-                this.showVoucherTips()
-            }
-        })
+        if (e.currentTarget.dataset.url) {
+            wx.switchTab({
+                url: e.currentTarget.dataset.url,
+            })
+            let app=getApp();
+            app.category=e.currentTarget.dataset.id
+        }
     },
     redirect(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                if (e.currentTarget.dataset.url) {
-                    if (e.currentTarget.dataset.url == '/pages/personalInfo/personalInfo') {
-                        http("get", `/User/isComplete`).then(res => {
-                            if (res.code === 0) {
-                                var isComplete = res.data.isComplete
-                                if (isComplete) {
-                                    wx.navigateTo({
-                                        url: '/pages/memberbenefits/memberbenefits'
-                                    })
-                                } else {
-                                    wx.navigateTo({
-                                        url: e.currentTarget.dataset.url,
-                                    })
-                                }
-                            }
-                        })
-                    } else {
-                        wx.navigateTo({
-                            url: e.currentTarget.dataset.url + '?id=' + e.currentTarget.dataset.id,
-                        })
-                    }
-
-                }
+        if (e.currentTarget.dataset.url) {
+            if (e.currentTarget.dataset.url == '/pages/personalInfo/personalInfo') {
+                wx.navigateTo({
+                    url: '/pages/memberbenefits/memberbenefits'
+                })
             } else {
-                this.showVoucherTips()
+                wx.navigateTo({
+                    url: e.currentTarget.dataset.url + '?id=' + e.currentTarget.dataset.id,
+                })
             }
-        })
+
+        }
 
     },
-    switchTab(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                if (e.currentTarget.dataset.url) {
-                    if (e.currentTarget.dataset.url == '/pages/personalInfo/personalInfo') {
-                        http("get", `/User/isComplete`).then(res => {
-                            if (res.code === 0) {
-                                var isComplete = res.data.isComplete
-                                if (isComplete) {
-                                    wx.navigateTo({
-                                        url: '/pages/memberbenefits/memberbenefits'
-                                    })
-                                } else {
-                                    wx.navigateTo({
-                                        url: e.currentTarget.dataset.url,
-                                    })
-                                }
-                            }
-                        })
-                    } else {
+    // switchTab(e) {
+    //     this.isCustomer((isCustomer) => {
+    //         if (isCustomer) {
+    //             if (e.currentTarget.dataset.url) {
+    //                 if (e.currentTarget.dataset.url == '/pages/personalInfo/personalInfo') {
+    //                     http("get", `/User/isComplete`).then(res => {
+    //                         if (res.code === 0) {
+    //                             var isComplete = res.data.isComplete
+    //                             if (isComplete) {
+    //                                 wx.navigateTo({
+    //                                     url: '/pages/memberbenefits/memberbenefits'
+    //                                 })
+    //                             } else {
+    //                                 wx.navigateTo({
+    //                                     url: e.currentTarget.dataset.url,
+    //                                 })
+    //                             }
+    //                         }
+    //                     })
+    //                 } else {
 
-                        wx.switchTab({
-                            url: e.currentTarget.dataset.url + '?id=' + e.currentTarget.dataset.id,
-                        })
-                    }
+    //                     wx.switchTab({
+    //                         url: e.currentTarget.dataset.url + '?id=' + e.currentTarget.dataset.id,
+    //                     })
+    //                 }
 
-                }
-            } else {
-                this.showVoucherTips()
-            }
-        })
+    //             }
+    //         } else {
+    //             this.showVoucherTips()
+    //         }
+    //     })
 
-    },
+    // },
     onReachBottom: function () {
         this.getGoodsList()
     },

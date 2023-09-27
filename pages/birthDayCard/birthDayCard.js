@@ -57,30 +57,7 @@ Page({
             this.handleBindPhone();
         });
     },
-    // 绑定手机号
-    handleBindPhone() {
-        this.setData({
-            controlAuthPhone: true
-        })
-    },
-    // 成功绑定手机号
-    successBindPhone() {
-        this.setData({
-            controlAuthPhone: false
-        })
-        //绑定成功后获取分享信息
-        this.getShareInfo();
-    },
-
-    // 取消绑定手机号
-    cancelBindPhone() {
-        this.setData({
-            controlAuthPhone: false
-        })
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
-    },
+    
     bindAreaChange: function (e) {
         const area = e.detail.value
         this.setData({
@@ -126,7 +103,16 @@ Page({
             }
         });
     },
-    authorizeNotice (){
+    authorizeNotice(){
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.authorizeNotice2()
+            } else {
+                this.handleBindPhone();
+            }
+        })
+    },
+    authorizeNotice2 (){
         var app=getApp();
         const tmplIds = app.globalData.giftTmpId;
         wx.requestSubscribeMessage({
@@ -230,30 +216,45 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        this.init();
-    },
-    init() {
-        checkUserTokenInfo().then(res => {
-          this.isCustomer();
-        })
-      },
-    
-      isCustomer() {
-        iscustomer().then(res => {
-          if (res.code === 0) {
-            const { isCustomer } = res.data;
-            this.setData({
-              isCustomer
-            })
-            
-            if(isCustomer){
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
                 this.getBirthCard();
-            }else{
-                this.showVoucherTips();
-            }
-          }
+            } 
         })
-      },
+        
+    },
+    
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
+    },
+    // 绑定手机号
+    handleBindPhone() {
+        this.setData({
+            controlAuthPhone: true
+        })
+    },
+ // 成功绑定手机号
+    successBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+        
+    },
+
+    // 取消绑定手机号
+    cancelBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+    },
+
     /**
      * 生命周期函数--监听页面隐藏
      */

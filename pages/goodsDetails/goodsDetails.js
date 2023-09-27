@@ -22,23 +22,16 @@ Page({
 
         storeInfo: '',
 
-        storeShow: false
+        storeShow: false,
+        // 授权手机号
+        controlAuthPhone: false,
     },
 
     onLoad(e) {
         const {
             goodsId
         } = e;
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                this.getGoodsDetails(goodsId);
-
-            } else {
-                wx.switchTab({
-                    url: '/pages/index/index',
-                })
-            }
-        })
+        this.getGoodsDetails(goodsId);
     },
     /**
      * 用户点击右上角分享
@@ -58,6 +51,30 @@ Page({
                 } = res.data;
                 callback && callback(isCustomer)
             }
+        })
+    },
+    // 绑定手机号
+    handleBindPhone() {
+        this.setData({
+            controlAuthPhone: true
+        })
+    },
+ // 成功绑定手机号
+    successBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+        //绑定成功后获取分享信息
+        this.getShareInfo();
+        if (scene != 'undefined') {
+            this.setSuperior(scene);
+        }
+    },
+
+    // 取消绑定手机号
+    cancelBindPhone() {
+        this.setData({
+            controlAuthPhone: false
         })
     },
     // 根据商品id获取该商品绑定的合作医院城市列表
@@ -378,8 +395,16 @@ Page({
             }
         })
     },
-
-    purchase() {
+    purchase(){
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.purchase2()
+            } else {
+                this.handleBindPhone();
+            }
+        })
+    },
+    purchase2() {
         const {isMaterial}=this.data.goodsInfo
         if(isMaterial){
             this.setData({

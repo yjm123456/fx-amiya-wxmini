@@ -44,6 +44,7 @@
 
 .wrap .auth {
   padding: 0 0 50rpx 0;
+  display: flex;
 }
 
 .submit {

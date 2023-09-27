@@ -1,5 +1,8 @@
 // pages/appointmentHospital/appointment/appointment.js
 import http from '../../../utils/http';
+import {
+    iscustomer
+} from "./../../../api/user";
 Component({
     /**
      * 组件的属性列表
@@ -48,9 +51,19 @@ Component({
         address: '',
         merch_id:'',
         showPrivacy:false,
-        info:''
+        info:'',
+        // 授权手机号
+        controlAuthPhone: false,
+        show:false
     },
+    
+
     ready() {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.setData({show:true})
+            } 
+        })
         this.getProject(),
             this.getMerchList()
     },
@@ -58,6 +71,37 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        isCustomer(callback) {
+            iscustomer().then(res => {
+                if (res.code === 0) {
+                    const {
+                        isCustomer
+                    } = res.data;
+                    callback && callback(isCustomer)
+                }
+            })
+        },
+        // 绑定手机号
+        handleBindPhone() {
+            this.setData({
+                controlAuthPhone: true
+            })
+        },
+     // 成功绑定手机号
+        successBindPhone() {
+            this.setData({
+                controlAuthPhone: false,
+                show:true
+            })
+           
+        },
+    
+        // 取消绑定手机号
+        cancelBindPhone() {
+            this.setData({
+                controlAuthPhone: false
+            })
+        },
         // 授权位置
         getLocationAuth() {
             let ths = this;
@@ -469,7 +513,16 @@ Component({
                 currentDate: detail
             })
         },
-        submit() {
+        submit(){
+            this.isCustomer((isCustomer) => {
+                if (isCustomer) {
+                    this.submit2()
+                } else {
+                    this.handleBindPhone();
+                }
+            })
+        },
+        submit2() {
             const {
                 currentDate,
                 week,

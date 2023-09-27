@@ -76,29 +76,29 @@ Page({
         //选中规格的积分单价(用于积分加钱购订单)
         selectIntegrationPrice:0,
         //总积分
-        totalIntegrationPrice:0
+        totalIntegrationPrice:0,
+        show:false,
+        controlAuthPhone: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+        const {
+            goodsId
+        } = options;
+        this.getGoodsDetails(goodsId);
+        this.getCooperativeHospitalCity(goodsId)
+        this.setData({
+            "isIphoneX": this.isIphoneX()
+        })
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
-                const {
-                    goodsId
-                } = options;
-                this.getGoodsDetails(goodsId);
-                this.getCooperativeHospitalCity(goodsId)
-                this.setData({
-                    "isIphoneX": this.isIphoneX()
-                })
-            } else {
-                wx.switchTab({
-                  url: '/pages/index/index',
-                })
-            }
+               this.setData({
+                   show:true
+               })
+            } 
         })
     },
     isCustomer(callback) {
@@ -460,98 +460,126 @@ Page({
         })
     },
     // 购买
+   
     purchase(e) {
-        const {
-            hospitalid,
-            cityname,
-            type,
-            hospitalsaleprice,
-            allmoney,
-            allintegration
-        } = e.currentTarget.dataset
-        const {
-            goodsInfo,
-            voucherId,
-            deductmoney,
-            vouchername,
-            selectStandard,
-            selectStandardPrice,
-            selectIntegrationPrice,
-        } = this.data
-        let token = wx.getStorageSync("token")
-        if (!token) {
-            wx.showToast({
-                title: '请先登录',
-                icon: 'none',
-                duration: 2000
-            })
-            return;
-        } else {
-            // 判断是否实物商品 false不是实物 false不需要发货
-            if (goodsInfo.isMaterial === false) {
-                if (!cityname) {
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                const {
+                    hospitalid,
+                    cityname,
+                    type,
+                    hospitalsaleprice,
+                    allmoney,
+                    allintegration
+                } = e.currentTarget.dataset
+                const {
+                    goodsInfo,
+                    voucherId,
+                    deductmoney,
+                    vouchername,
+                    selectStandard,
+                    selectStandardPrice,
+                    selectIntegrationPrice,
+                } = this.data
+                let token = wx.getStorageSync("token")
+                if (!token) {
                     wx.showToast({
-                        title: '请选择城市',
-                        icon: 'none',
-                        duration: 2000
-                    })
-                    return;
-                } else if (!hospitalid) {
-                    wx.showToast({
-                        title: '请选择门店',
+                        title: '请先登录',
                         icon: 'none',
                         duration: 2000
                     })
                     return;
                 } else {
-                    goodsInfo.salePrice = hospitalsaleprice
-                    goodsInfo.allmoney = allmoney
-                    goodsInfo.hospitalid = hospitalid
-
-                    this.setData({
-                        goodsInfo
-                    })
-                    wx.navigateTo({
-                        // url: `/pages/confirmOrder/confirmOrder?goodsInfo=${JSON.stringify([goodsinfo])}`
-                        url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney + '&isCard=false'
-                    })
+                    // 判断是否实物商品 false不是实物 false不需要发货
+                    if (goodsInfo.isMaterial === false) {
+                        if (!cityname) {
+                            wx.showToast({
+                                title: '请选择城市',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                            return;
+                        } else if (!hospitalid) {
+                            wx.showToast({
+                                title: '请选择门店',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                            return;
+                        } else {
+                            goodsInfo.salePrice = hospitalsaleprice
+                            goodsInfo.allmoney = allmoney
+                            goodsInfo.hospitalid = hospitalid
+        
+                            this.setData({
+                                goodsInfo
+                            })
+                            wx.navigateTo({
+                                // url: `/pages/confirmOrder/confirmOrder?goodsInfo=${JSON.stringify([goodsinfo])}`
+                                url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney + '&isCard=false'
+                            })
+                        }
+                    } else {
+                        if (this.data.selectStandardIndex == -1) {
+                            wx.showToast({
+                                title: '请选择规格',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                            return;
+                        }
+                        //对goodsInfo重新添加两个属性
+                        goodsInfo.allmoney = allmoney
+                        goodsInfo.hospitalid = hospitalid
+                        goodsInfo.selectStandard = selectStandard
+                        goodsInfo.selectStandardPrice = selectStandardPrice,
+                        goodsInfo.selectIntegrationPrice=selectIntegrationPrice
+                        //设置新属性后重新更新值
+                        this.setData({
+                            goodsInfo
+                        })
+                        var deductmoney2 = 0;
+                        var voucherType=0;
+                        
+                        if (this.data.voucherType == 0) {
+                            deductmoney2 = this.data.deductmoney
+                        } else if (this.data.voucherType == 4) {
+                            voucherType=4
+                            deductmoney2 = Math.ceil(allmoney * deductmoney);
+                            deductmoney2 = allmoney - deductmoney2;
+                        }
+                        console.log("折扣金额" + deductmoney);
+                        wx.navigateTo({
+                            url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney2 + '&discount=' + this.data.deductmoney+'&voucherType='+voucherType+'&allintegration='+allintegration
+                        })
+                    }
+        
                 }
-            } else {
-                if (this.data.selectStandardIndex == -1) {
-                    wx.showToast({
-                        title: '请选择规格',
-                        icon: 'none',
-                        duration: 2000
-                    })
-                    return;
-                }
-                //对goodsInfo重新添加两个属性
-                goodsInfo.allmoney = allmoney
-                goodsInfo.hospitalid = hospitalid
-                goodsInfo.selectStandard = selectStandard
-                goodsInfo.selectStandardPrice = selectStandardPrice,
-                goodsInfo.selectIntegrationPrice=selectIntegrationPrice
-                //设置新属性后重新更新值
-                this.setData({
-                    goodsInfo
-                })
-                var deductmoney2 = 0;
-                var voucherType=0;
-                
-                if (this.data.voucherType == 0) {
-                    deductmoney2 = this.data.deductmoney
-                } else if (this.data.voucherType == 4) {
-                    voucherType=4
-                    deductmoney2 = Math.ceil(allmoney * deductmoney);
-                    deductmoney2 = allmoney - deductmoney2;
-                }
-                console.log("折扣金额" + deductmoney);
-                wx.navigateTo({
-                    url: "/pages/confirmOrder/confirmOrder?goodsInfo=" + encodeURIComponent(JSON.stringify([goodsInfo])) + '&type=' + type + '&allmoney=' + allmoney + '&voucherId=' + voucherId + '&voucherName=' + vouchername + '&deductMoney=' + deductmoney2 + '&discount=' + this.data.deductmoney+'&voucherType='+voucherType+'&allintegration='+allintegration
-                })
+            } else{
+                this.handleBindPhone()
             }
+        })
+        
+    },
+    // 绑定手机号
+    handleBindPhone() {
+        this.setData({
+            controlAuthPhone: true
+        })
+    },
+ // 成功绑定手机号
+    successBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+       
+    },
 
-        }
+    // 取消绑定手机号
+    cancelBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
     },
     //获取用户拥有的抵用券
     getCustomerVoucher() {

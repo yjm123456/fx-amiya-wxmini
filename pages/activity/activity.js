@@ -73,7 +73,7 @@ Page({
         const {
             name
         } = event.currentTarget.dataset;
-        console.log(name);
+        
         if (name == 'zl') {
             wx.showToast({
                 title: '敬请期待',

@@ -173,18 +173,13 @@ Page({
         })
     },
     toAddCustomerConsumptionCredential(){
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    baseLiveAnchorId
-                } = this.data
-                wx.navigateTo({
-                    url: '/pages/AddConsumptionCredential/AddConsumptionCredential?baseLiveAnchorId='+baseLiveAnchorId
-                })
-            } else {
-                this.showVoucherTips()
-            }
+        const {
+            baseLiveAnchorId
+        } = this.data
+        wx.navigateTo({
+            url: '/pages/AddConsumptionCredential/AddConsumptionCredential?baseLiveAnchorId='+baseLiveAnchorId
         })
+        
        
     },
     toOrder(event) {
@@ -221,7 +216,12 @@ Page({
             currentPageIndex: 1,
             consumptionCredentialsList: []
         });
-        this.CustomerConsumptionCredentials();
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.CustomerConsumptionCredentials();
+            } 
+        })
+       
     },
 
     /**

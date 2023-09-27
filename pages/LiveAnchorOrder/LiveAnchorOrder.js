@@ -51,7 +51,7 @@ Page({
             name,
             q
         } = options;
-        console.log(q);
+        
         if (q) {
             q=decodeURIComponent(q);
             name = q.split("?")[1].split("=")[1];
@@ -59,9 +59,14 @@ Page({
         this.setData({
             name
         })
-        checkUserTokenInfo().then(res => {
-            this.isAuthorizationUserInfo();
-        })
+        // getApp().globalData.userInfo = userInfo;
+        // this.setData({
+        //     userInfo: userInfo
+        // })
+        this.getCardInfo();
+        // checkUserTokenInfo().then(res => {
+        //     this.isAuthorizationUserInfo();
+        // })
 
     },
     getCardInfo() {
@@ -71,11 +76,10 @@ Page({
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
                 this.getUserInfo();
-                var code = name + 'mzk';
-                this.getFaceCardInfo(code);
-            } else {
-                this.showVoucherTips()
-            }
+               
+            } 
+            var code = name + 'mzk';
+            this.getFaceCardInfo(code);
         })
     },
     // 判断是否需要授权微信用户信息
@@ -595,7 +599,7 @@ Page({
                     }
                 }
             } else {
-                this.showVoucherTips()
+                this.handleBindPhone()
             }
         })
     },

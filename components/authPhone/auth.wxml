@@ -7,9 +7,10 @@
 		</view>
 		<view class="tip">
 			<text>获取您的手机号</text>
-			<text>获取您的手机号方便您使用全部功能</text>
+			<text>{{info}}</text>
 		</view>
 		<view class="auth">
+			<button class="submit" type="default" bindtap="onClose">取消</button>
 			<button class="submit" type="primary" open-type="getPhoneNumber|agreePrivacyAuthorization" bindgetphonenumber="getPhoneNumber" bindagreeprivacyauthorization="handleAgreePrivacyAuthorization">授权手机号</button>
 		</view>
 	</view>

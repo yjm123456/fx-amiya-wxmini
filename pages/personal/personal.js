@@ -35,7 +35,8 @@ Page({
         growthBalanceInfo:{},
         percentage:0,
         style:"",
-        voucherCount:0
+        voucherCount:0,
+        showLogin:true
     },
     visit() {
         http("get", `/ControlPageShow`).then(res => {
@@ -86,6 +87,9 @@ Page({
             }
         })
     },
+    login(){
+        this.handleBindPhone();
+    },
     toIntegralPage(){
         wx.navigateTo({
           url: '/pages/integral/integral',
@@ -112,20 +116,17 @@ Page({
             this.isAuthorizationUserInfo();
         })
         this.isCustomer((isCustomer) => {
-            console.log("是否是客户");
+           
             if (isCustomer) {
+                this.setData({
+                    showLogin:false
+                })
                 this.getMemberCardInfo();
                 this.getIntegral();
                 this.getBalance();
                 this.GetGrowthPoint();
                 this.getConsumptionVoucher();
-            } else {
-                wx.showToast({
-                    title: '请绑定手机号',
-                    icon: 'none'
-                })
-                this.handleBindPhone();
-            }
+            } 
         })
         
         //this.getCode()
@@ -313,10 +314,6 @@ Page({
                     url: e.currentTarget.dataset.url + '?nickname=' + e.currentTarget.dataset.nickname,
                 })
             } else {
-                wx.showToast({
-                    title: '请绑定手机号',
-                    icon: 'none'
-                })
                 this.handleBindPhone();
             }
         })
@@ -397,11 +394,17 @@ Page({
     // 成功绑定手机号
     successBindPhone() {
         this.setData({
-            controlAuthPhone: false
+            controlAuthPhone: false,
+            showLogin:false
         })
         this.setData({
             controlConsumptionVoucher: true
         })
+        this.getMemberCardInfo();
+        this.getIntegral();
+        this.getBalance();
+        this.GetGrowthPoint();
+        this.getConsumptionVoucher();
     },
 
     // 取消绑定手机号
@@ -410,12 +413,11 @@ Page({
             controlAuthPhone: false
         })
     },
-
+  
     // 获取会员信息
     getMemberCardInfo() {
         http("get", `/MemberCard/cardinfo`).then(res => {
             if (res.code === 0) {
-                console.log("结果"+res.data.memberCard.memberRankName=='MEIYA铂金卡会员');
                 if(res.data.memberCard.memberRankName=='MEIYA时尚卡会员'){
                     this.setData({style:"background-image: -webkit-linear-gradient(right, #efcd71, #fff9c8, #efcf77, #fff9c8, #e4c675, #fff9c8);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"})
                 }

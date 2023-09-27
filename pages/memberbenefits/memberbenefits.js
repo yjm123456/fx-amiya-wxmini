@@ -31,11 +31,11 @@ Page({
               })
             },
           })
-        checkUserTokenInfo().then(res => {
-            this.isAuthorizationUserInfo();
-            //this.getMemberCardInfo();
-            //this.getIntegral();
-        })
+        // checkUserTokenInfo().then(res => {
+        //     this.isAuthorizationUserInfo();
+        //     //this.getMemberCardInfo();
+        //     //this.getIntegral();
+        // })
         const query = wx.createSelectorQuery()
     query.select('#myQrcode')
         .fields({

@@ -54,7 +54,7 @@
                 <view class="standard_price"><text wx:if="{{goodsInfo.exchangeType!=7}}">￥{{item.price}}</text><text wx:else>{{item.integralAmount>0 ?item.integralAmount+'积分+':''}}￥{{item.price}}</text></view>
             </view>
         </view>
-        <view class="item_spe" bindtap="getCustomerVoucher">
+        <view wx:if="{{show}}" class="item_spe" bindtap="getCustomerVoucher">
             <text>选择抵用券</text>
             <view class="city_con">
                 <text wx:if="{{voucherId}}" class="city_text">{{vouchername}}</text>
@@ -103,7 +103,7 @@
         <van-goods-action-icon icon="cart-o" text="购物车" bind:click="toShoppingCart" />
         <!-- 加入购物车(当支付方式为积分加钱时不显示) -->
         <block wx:if="{{goodsInfo.exchangeType!=0&&goodsInfo.isMaterial}}">
-            <van-goods-action-button  data-hospitalid="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : selectStandardPrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
+            <van-goods-action-button  data-hospitalid="{{storeInfo.id}}" wx:if="{{show}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : selectStandardPrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
         <van-goods-action-button color="#8878f5" text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
         </block>
         <block wx:else>
@@ -115,3 +115,5 @@
 
 </view>
 <van-toast id="van-toast" />
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" info="用于商品售后及订单问题沟通" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

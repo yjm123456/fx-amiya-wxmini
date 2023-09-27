@@ -1,5 +1,8 @@
 // pages/appointmentHospital/appointmentPlan/appointmentPlan.js
 import http from '../../../utils/http';
+import {
+    iscustomer
+} from "./../../../api/user";
 Component({
     /**
      * 组件的属性列表
@@ -19,17 +22,56 @@ Component({
         this.setData({
             activeTabs: 0
         })
-        console.log("active值之前为" + this.data.activeTabs);
+        
         this.selectComponent('#tabs').resize();
     },
     /**
      * 组件的方法列表
      */
     methods: {
-        setActive() {
-            this.setData({
-                show: true
+        isCustomer(callback) {
+            iscustomer().then(res => {
+                if (res.code === 0) {
+                    const {
+                        isCustomer
+                    } = res.data;
+                    callback && callback(isCustomer)
+                }
             })
+        },
+        // 绑定手机号
+        handleBindPhone() {
+            this.setData({
+                controlAuthPhone: true
+            })
+        },
+     // 成功绑定手机号
+        successBindPhone() {
+            this.setData({
+                controlAuthPhone: false
+            })
+            
+        },
+    
+        // 取消绑定手机号
+        cancelBindPhone() {
+            this.setData({
+                controlAuthPhone: false
+            })
+        },
+        setActive() {
+            this.isCustomer((isCustomer) => {
+                if (isCustomer) {
+                    this.setData({
+                        show: true
+                    })
+                } else {
+                    this.setData({
+                        show: false
+                    })
+                }
+            })
+            
         },
         handleTabChange(event) {
             const {

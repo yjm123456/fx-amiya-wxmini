@@ -80,7 +80,7 @@
     </van-popup>
 </view>
 <!-- 授权手机号 -->
-<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<authPhone control="{{controlAuthPhone}}" info="用于商品售后及订单问题沟通" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
 <auth control="{{controlAuth}}" bind:getUserInfoSuccess='getUserInfoSuccess' bind:cancelGetUserInfo="cancelGetUserInfo" />
 <!-- 新客绑定提示弹窗 -->
 <van-dialog showConfirmButton="{{false}}" show="{{show}}" use-slot id="bind_tips">

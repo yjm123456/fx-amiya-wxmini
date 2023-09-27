@@ -1,6 +1,9 @@
 // pages/shoppingCart/shoppingCart.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import http from '../../utils/http';
+import {
+    iscustomer
+} from "./../../api/user";
 
 function throttle(fn, interval) {
     var enterTime = 0; //触发的时间
@@ -50,7 +53,18 @@ Page({
             text: '选择优惠券',
             value: '0'
         }],
-        originVoucherList: []
+        originVoucherList: [],
+
+    },
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
     },
     onChange(event) {
         this.setData({
@@ -221,7 +235,7 @@ Page({
                         })
                         this.setData({
                             selectedVoucher: '0',
-                            deductMoney:0
+                            deductMoney: 0
                         });
                         return;
                     }
@@ -448,8 +462,13 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getCartProduct()
-        this.getCustomerAllVoucher()
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.getCartProduct()
+                this.getCustomerAllVoucher()
+            }
+        })
+
     },
     toShopMall() {
         wx.switchTab({
@@ -527,7 +546,7 @@ Page({
         for (let i = 0; i < this.data.result.length; i++) {
             for (let j = 0; j < this.data.list.length; j++) {
                 if (this.data.result[i] === this.data.list[j].id) {
-                    if (this.data.list[j].exchangeType === 1|| this.data.list[j].exchangeType===7) {
+                    if (this.data.list[j].exchangeType === 1 || this.data.list[j].exchangeType === 7) {
                         if (this.data.list[j].isMember) {
                             sumMoney += this.data.list[j].memberPrice * this.data.list[j].num;
                         } else {
@@ -541,10 +560,10 @@ Page({
                             } else {
                                 sumMoney += this.data.list[j].voucherPrice;
                             }
-                            if(this.data.list[j].exchangeType === 1){
-                                sumPoint+= 0;
-                            }else{
-                                sumPoint+= this.data.list[j].interGrationPrice*this.data.list[j].num;
+                            if (this.data.list[j].exchangeType === 1) {
+                                sumPoint += 0;
+                            } else {
+                                sumPoint += this.data.list[j].interGrationPrice * this.data.list[j].num;
                             }
                         }
                     } else if (this.data.list[j].exchangeType === 0) {

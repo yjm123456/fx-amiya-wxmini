@@ -8,7 +8,10 @@ Component({
   properties: {
     control: {
       type: Boolean,
-    }
+    },
+   info: {
+      type: String
+    },
     
   },
 
@@ -42,6 +45,9 @@ Component({
           this.triggerEvent("authCancel");
         }
       })
+    },
+    onClose() {
+      this.triggerEvent("cancelGetUserInfo");
     }
   }
 })

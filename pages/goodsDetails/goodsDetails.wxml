@@ -73,3 +73,5 @@
         </block>
     </view>
 </van-popup>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" info="用于商品售后及订单问题沟通" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>

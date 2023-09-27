@@ -40,7 +40,8 @@ Page({
         //排序
         sort:0,
         saleCountSelected:false,
-        priceSelected:false
+        priceSelected:false,
+        showBtn:false
     },
 
     onShow() {
@@ -48,10 +49,8 @@ Page({
         this.setData({appId:assisteAppId})
         this.isCustomer((isCustomer) => {
             if (isCustomer) {
-
-            } else {
-                this.handleBindPhone();
-            }
+              this.setData({showBtn:true})  
+            } 
         })
         this.getIntegral();
         this.getGoodsCategory();
@@ -330,17 +329,11 @@ Page({
     },
     // 商品详情
     goodsDetails(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    goodsid
-                } = e.currentTarget.dataset;
-                wx.navigateTo({
-                    url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
-                })
-            } else {
-                this.handleBindPhone();
-            }
+        const {
+            goodsid
+        } = e.currentTarget.dataset;
+        wx.navigateTo({
+            url: `/pages/goodsDetails/goodsDetails?goodsId=${goodsid}`
         })
 
     },

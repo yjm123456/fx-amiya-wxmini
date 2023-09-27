@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 .c-info{
-    color: #fff;
+    
 }
 .authPopupWrapper>view:first-child {
   display: flex;
@@ -25,7 +25,10 @@
   border-radius: 50%;
   margin-bottom: 20rpx;
 }
-
+.auth{
+  padding: 0 0 50rpx 0;
+  display: flex;
+}
 .authPopupWrapper>view:nth-child(2) {
   display: flex;
   flex-direction: column;

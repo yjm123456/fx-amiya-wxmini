@@ -1,5 +1,8 @@
 // pages/AddConsumptionCredential/AddConsumptionCredential.js
 import http from "./../../utils/http"
+import {
+    iscustomer
+} from "./../../api/user";
 Page({
 
     /**
@@ -44,6 +47,36 @@ Page({
         this.setData({
             display: false
         });
+    },
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
+    },
+    // 绑定手机号
+    handleBindPhone() {
+        this.setData({
+            controlAuthPhone: true
+        })
+    },
+ // 成功绑定手机号
+    successBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
+        
+    },
+
+    // 取消绑定手机号
+    cancelBindPhone() {
+        this.setData({
+            controlAuthPhone: false
+        })
     },
     formatDate(date) {
         date = new Date(date);
@@ -234,7 +267,18 @@ Page({
             urls: img_arr
         })
     },
-    authorizeNotice() {
+
+    authorizeNotice(){
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.authorizeNotice2();
+            } else {
+                this.handleBindPhone();
+            }
+        })
+    },
+    
+    authorizeNotice2() {
         var app = getApp();
         const tmplIds = app.globalData.tmplIds;
         wx.requestSubscribeMessage({

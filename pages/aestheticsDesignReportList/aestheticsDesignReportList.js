@@ -1,5 +1,8 @@
 // pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials.js
 import http from "./../../utils/http"
+import {
+    iscustomer
+} from "./../../api/user"
 Page({
 
     /**
@@ -11,7 +14,9 @@ Page({
         nextPage: true,
         //当前商品展示列表页码
         currentPageIndex: 1,
-        reportList: []
+        reportList: [],
+        // 授权手机号
+        controlAuthPhone: false,
     },
 
     /**
@@ -20,6 +25,19 @@ Page({
     onLoad(options) {
 
     },
+    isCustomer(callback) {
+        iscustomer().then(res => {
+            if (res.code === 0) {
+                const {
+                    isCustomer
+                } = res.data;
+                callback && callback(isCustomer)
+            }
+        })
+    },
+
+
+
     toDetail(e) {
         let {
             id,
@@ -73,7 +91,7 @@ Page({
     },
     to(e) {
         wx.navigateTo({
-            url: e.currentTarget.dataset.url+'?status=add'
+            url: e.currentTarget.dataset.url + '?status=add'
         })
     },
     /**
@@ -95,7 +113,14 @@ Page({
             currentPageIndex: 1,
             reportList: []
         });
-        this.GetReports();
+        this.isCustomer((isCustomer) => {
+            if (isCustomer) {
+                this.GetReports();
+            } else {
+                // this.handleBindPhone();
+            }
+        })
+        
     },
 
     /**

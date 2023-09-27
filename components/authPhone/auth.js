@@ -16,6 +16,9 @@ Component({
           })
         }
       }
+    },
+    info: {
+      type: String
     }
   },
 

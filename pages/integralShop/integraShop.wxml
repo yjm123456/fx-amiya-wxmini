@@ -1,6 +1,6 @@
 <view class="integral">
     <text class="balance">{{balance}}</text>
-    <view class="bottom">
+    <view class="bottom" wx:if="{{showBtn}}">
         <text bindtap="handleRuleTap" data-url="/pages/integral/integral">积分记录</text>
         <text bindtap="handleRuleTap" data-url="/pages/IntegralRule/IntegralRule">积分规则</text>
     </view>

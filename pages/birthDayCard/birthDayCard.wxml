@@ -25,7 +25,7 @@
     </view>
 </scroll-view>
 <!-- 授权手机号 -->
-<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<authPhone control="{{controlAuthPhone}}" info="用于礼物物流信息沟通" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
 <!-- 新客绑定提示弹窗 -->
 <van-dialog showConfirmButton="{{false}}" show="{{show}}" use-slot id="bind_tips">
     <image class="tip_img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/7cd41576dd504750a625f314b8ec3bc2.png"></image>

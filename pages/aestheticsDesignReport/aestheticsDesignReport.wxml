@@ -199,6 +199,8 @@
         <image mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/f275266ee70949b48abe5f564c6037e9.png"></image>
     </view>
 </view>
+<!-- 授权手机号 -->
+<authPhone control="{{controlAuthPhone}}" info="用于设计环节沟通" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
 <wxs module="we">
     var indexOf = function (arr, value) {
         return arr.indexOf(value)

@@ -304,17 +304,11 @@ Page({
     },
     // 商品详情
     goodsDetails(e) {
-        this.isCustomer((isCustomer) => {
-            if (isCustomer) {
-                const {
-                    goodsid
-                } = e.currentTarget.dataset;
-                wx.navigateTo({
-                    url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
-                })
-            } else {
-                this.handleBindPhone();
-            }
+        const {
+            goodsid
+        } = e.currentTarget.dataset;
+        wx.navigateTo({
+            url: `/pages/productDetails/productDetails?goodsId=${goodsid}`
         })
 
     },

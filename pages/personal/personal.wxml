@@ -1,4 +1,6 @@
-<view class="personal_container">
+<view wx:if="{{showLogin}}" class="login_tip">
+<button class="login_btn" bindtap="login">点击登录</button></view>
+<view wx:else class="personal_container">
 <!-- style="background-image: url(../../images/bc.png);background-size: 100% 100%;" -->
     <view class="user_section" style="background-color: #8878f5;background-size: 100% 100%;">
         <view class="user_info_box">
@@ -56,6 +58,7 @@
         </view>
     </view>
 </view>
+
 <view class="cover_container">
     <!-- <view class="order" wx:if="{{showAppoint}}">
         <view class="order_title">
@@ -152,7 +155,7 @@
 
 
 <!-- 授权 -->
-<auth control="{{controlAuth}}" bind:getUserInfoSuccess='getUserInfoSuccess' bind:cancelGetUserInfo="cancelGetUserInfo" />
+<auth control="{{controlAuth}}" bind:getUserInfoSuccess='getUserInfoSuccess'   bind:cancelGetUserInfo="cancelGetUserInfo" />
 
 <!-- 授权手机号 -->
-<authPhone control="{{controlAuthPhone}}" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+<authPhone control="{{controlAuthPhone}}" info="用于获取订单,积分及其他消费信息." bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
