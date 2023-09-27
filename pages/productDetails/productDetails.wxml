@@ -71,6 +71,7 @@
             <van-stepper min="1" integer value="{{goodsInfo.quantity}}" bind:change="handleNumChange" max="{{goodsInfo.isLimitBuy?goodsInfo.limitBuyQuantity: goodsInfo.inventoryQuantity}}" data-integration="{{selectIntegrationPrice}}" data-salePrice="{{selectStandardPrice}}" data-ismember="{{goodsInfo.isMember}}" data-memberrankprice="{{goodsInfo.memberRankPrice}}" wx:if="{{!storeInfo.name && goodsInfo.isMaterial==true}}" data-type="1" data-isMaterial="{{goodsInfo.isMaterial}}" />
         </view>
     </view>
+
     <view wx:if="{{goodsInfo.goodsDetailHtml!==null}}" class="desc">
         <view class="title"><text>详情介绍</text></view>
         <view class="goods_detail">
@@ -105,11 +106,12 @@
         <block wx:if="{{goodsInfo.exchangeType!=0&&goodsInfo.isMaterial}}">
             <van-goods-action-button  data-hospitalid="{{storeInfo.id}}" wx:if="{{show}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ?(storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : selectStandardPrice ):totalPrice}}" text="加入购物车" type="warning" bind:click="addToShoppingCart" />
         <van-goods-action-button color="#8878f5" text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
+
         </block>
         <block wx:else>
-            <van-goods-action-button color="#8878f5" text="立即购买" bindtap="purchase" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
+            <van-goods-action-button color="#8878f5" text="立即购买" bindtap="handleOrderInfoShow" data-hospitalId="{{storeInfo.id}}" data-city="{{cityValue}}" data-cityName="{{cityNames}}" data-cityId="{{cityIds}}" data-type="1" data-hospitalSalePrice="{{storeInfo.hospitalSalePrice}}" data-allmoney="{{goodsInfo.quantity==1 ? (storeInfo.hospitalSalePrice ? storeInfo.hospitalSalePrice : (goodsInfo.isMember ? goodsInfo.memberRankPrice:selectStandardPrice)) : totalPrice}}" data-allintegration="{{goodsInfo.quantity==1?(selectIntegrationPrice):totalIntegrationPrice}}" />
         </block>
-        
+
     </van-goods-action>
 
 
@@ -117,3 +119,4 @@
 <van-toast id="van-toast" />
 <!-- 授权手机号 -->
 <authPhone control="{{controlAuthPhone}}" info="用于商品售后及订单问题沟通" bind:successBindPhone="successBindPhone" bind:cancelBindPhone="cancelBindPhone"></authPhone>
+
