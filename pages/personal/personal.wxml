@@ -141,12 +141,12 @@
         
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/CustomerConsumptionCredentials/CustomerConsumptionCredentials" bindtap="to" title="消费领积分" />
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/writeoffGoodGift/writeoffGoodGift" bindtap="to" title="生日/节日礼遇" />
-        <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/orderList/orderList">
+        <!-- <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/orderList/orderList">
             <view slot="title">
                 <text style="color: #000;">联系客服</text>
                 <button open-type="contact" hover-class="none" class="contact"></button>
             </view>
-        </van-cell>
+        </van-cell> -->
         <van-cell custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/personalInfo/personalInfo" bindtap="to" title="个人信息" />
         <van-cell border="{{false}}" custom-class="cell_item" is-link link-type="navigateTo" data-url="/pages/accountSettings/accountSettings" bindtap="to" title="账号设置" />
     </view>

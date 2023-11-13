@@ -14,12 +14,12 @@ Page({
     onLoad(options) {
         var app=getApp();
         const {assisteAppId}=app.globalData;
-        if(assisteAppId=="ddappid"){
+        if(assisteAppId=="dd"){
             this.setData({
                 liveAnchor:'dd'
             })
         }
-        if(assisteAppId=="jnappid"){
+        if(assisteAppId=="jn"){
             this.setData({
                 liveAnchor:'jn'
             })

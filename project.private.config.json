@@ -319,6 +319,13 @@
                     "query": "q=app.ameiyes.com%2Famiyabackground%2Fmedia%2FDRKeJlARss.txt%3Fid%3Djn",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "canshu",
+                    "pathName": "pages/index/index",
+                    "query": "q=123%3FappId%3Djn",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

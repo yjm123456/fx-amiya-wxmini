@@ -9,6 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        testApp: '',
         appId: '',
         // 轮播图
         carouselImage: [],
@@ -61,13 +62,13 @@ Page({
         this.visit();
         const scene = decodeURIComponent(options.scene);
         this.getShareInfo();
-                if (scene != 'undefined') {
-                    this.setSuperior(scene);
-                }
+        if (scene != 'undefined') {
+            this.setSuperior(scene);
+        }
     },
     sleep(NumMillis) {
         var nowTime = new Date();
-        var exitTime = nowTime .getTime() + NumMillis;
+        var exitTime = nowTime.getTime() + NumMillis;
         while (true) {
             now = new Date();
             if (now.getTime() > exitTime)
@@ -80,36 +81,56 @@ Page({
     //步骤3,如果也没有最近的登录记录,判断首页初始化时参数中是否有appid,如果有则设置为参数中的appid
     //步骤4,如果以上的值都没有则设置为当前小程序的appid
     getAppId(options) {
-        let app=getApp();
-        if(getApp().globalData.isLogin){
-            const {appId}=options;
-                if(appId){
-                    http('get','/user/recordAppId/'+appId).then(res=>{
-                        if(res.code==0){
+        
+        let app = getApp();
+        if (getApp().globalData.isLogin) {
+            
+            let {
+                q
+            } = options;
+            let appId = ''
+            let param = ''
+            if (q) {
+                param = decodeURIComponent(q);
+                appId = param.split("?")[1].split("=")[1];
+            }
+            if (appId) {
+               
+                http('get', '/user/recordAppId/' + appId).then(res => {
+                    if (res.code == 0) {
+                        this.getBindApp()
+                    }
+                })
+            } else {
+                this.getBindApp();
+            }
+        } else {
+            
+            app.getUserTokenSuccessCallback = res => {
+                let {
+                    q
+                } = options;
+                let appId = ''
+                let param = ''
+                if (q) {
+                    param = decodeURIComponent(q);
+                    appId = param.split("?")[1].split("=")[1];
+                }
+                if (appId) {
+                    http('get', '/user/recordAppId/' + appId).then(res => {
+                        if (res.code == 0) {
                             this.getBindApp()
                         }
                     })
-                }else{
+                } else {
                     this.getBindApp();
                 }
-        }else{
-            app.getUserTokenSuccessCallback=res=>{
-                const {appId}=options;
-                if(appId){
-                    http('get','/user/recordAppId/'+appId).then(res=>{
-                        if(res.code==0){
-                            this.getBindApp()
-                        }
-                    })
-                }else{
-                    this.getBindApp();
-                }
-                
+
             }
         }
-        
+
     },
-    getBindApp(options){
+    getBindApp(options) {
         http('get', '/customer/isBind').then(res => {
             var assisteAppId = res.data.assisteAppId;
             if (assisteAppId) {
@@ -130,20 +151,22 @@ Page({
                         console.log('有记录');
                         this.setData({
                             appId: lastAppId
-                        })    
+                        })
                         const {
                             appId
                         } = this.data;
                         var app = getApp()
                         app.globalData.assisteAppId = appId;
                         this.getIndexData()
-                    } else {                       
+                    } else {
                         if (options) {
-                            const {appId}=options;
+                            const {
+                                appId
+                            } = options;
                             this.setData({
                                 appId: appId
                             });
-                            
+
                             var id = this.data.appId;
                             var app = getApp()
                             app.globalData.assisteAppId = id;
@@ -479,8 +502,8 @@ Page({
             wx.switchTab({
                 url: e.currentTarget.dataset.url,
             })
-            let app=getApp();
-            app.category=e.currentTarget.dataset.id
+            let app = getApp();
+            app.category = e.currentTarget.dataset.id
         }
     },
     redirect(e) {
@@ -540,12 +563,15 @@ Page({
         // 数组中索引最大的页面--当前页面  
         let currentPage = pages[pages.length - 1];
         // 打印出当前页面中的 options  
-        const {options}=currentPage;
+        const {
+            options
+        } = currentPage;
+
         this.getAppId(options);
-        
+
     },
     //获取首页数据
-    getIndexData(){
+    getIndexData() {
         this.setData({
             pageNum: 1,
             pageSize: 10,

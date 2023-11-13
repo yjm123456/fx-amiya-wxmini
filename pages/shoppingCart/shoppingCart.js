@@ -666,7 +666,7 @@ Page({
     onReachBottom() {
         console.log("底部")
         this.getCartProduct()
-        this.getGoodsList();
+        //this.getGoodsList();
     },
 
     /**
