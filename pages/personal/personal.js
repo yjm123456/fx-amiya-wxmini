@@ -242,7 +242,7 @@ Page({
                 if (isAuthorizationUserInfo) {
                     this.setData({
                         controlAuth: true,
-                    })
+                    }) 
                 } else {
                     getApp().globalData.userInfo = userInfo;
                     this.setData({
