@@ -326,6 +326,20 @@
                     "query": "q=123%3FappId%3Djn",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/shareCustomerService/shareCustomerService",
+                    "query": "liveanchor=jn1",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/appointmentActivity/appointmentActivity",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

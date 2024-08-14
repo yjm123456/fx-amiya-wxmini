@@ -1,0 +1,17 @@
+/* pages/appointmentActivity/appointmentActivity.wxss */
+page {
+    width: 100%;
+    height: 100%;
+}
+.img {
+    width: 750rpx;
+}
+.appointment{
+    background-color: transparent;
+    position: absolute;
+    top: 1120rpx;
+    z-index: 10;
+    width: 750rpx;
+    left: 0rpx;
+    height: 140rpx;
+}

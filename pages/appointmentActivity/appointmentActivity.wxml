@@ -1,0 +1,4 @@
+<scroll-view scroll-y="{{true}}" style="width:100%;height:{{sysheight}}px;">
+    <image  class="img" mode="widthFix" src="https://ameiya.oss-cn-hangzhou.aliyuncs.com/98fd10fcd97d4273980a0193bd490c2a.jpg"></image>
+    <view class="appointment" catch:tap="appointment"></view>
+</scroll-view>

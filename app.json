@@ -86,7 +86,9 @@
         "pages/aestheticDesign/aestheticDesign",
         "pages/pointAndMoneyShop/pointAndMoneyShop",
         "pages/vipCusomerService/vipCusomerService",
-        "pages/testlive/testlive"
+        "pages/testlive/testlive",
+        "pages/shareCustomerService/shareCustomerService",
+        "pages/appointmentActivity/appointmentActivity"
     ],
     "onReachBottomDistance": 50,
     "tabBar": {

@@ -1,3 +1,4 @@
+
 import {
   decryptPhoneNumber,
   bind
@@ -52,11 +53,11 @@ Component({
       },
     // 解密手机号
     decryptPhoneNumber(iv, encryptedData) {
-        console.log("值为"+iv);
       decryptPhoneNumber({
         iv,
         encryptedData
       }).then(res => {
+          console.log(res.code)
         if (res.code === 0) {
           const {
             phoneNumber
